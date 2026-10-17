@@ -50,7 +50,7 @@
     'ex.dlFail':     { ar: 'تعذّر تحميل الملف الآن.', fr: 'Téléchargement impossible pour le moment.', en: 'Download unavailable right now.' },
     'ex.semester':   { ar: 'الفصل', fr: 'Semestre', en: 'Semester' }
   };
-  const tt = k => { const e = S[k]; return e ? (e[lang()] || e.ar) : k; };
+  const tt = k => { const e = S[k]; const s = e ? (e[lang()] || e.ar) : k; return window.CHRVVIM_GENDER ? window.CHRVVIM_GENDER.apply(s) : s; };
 
   /* تسميات الشعب والفصول والأنواع */
   const TRACKS = {
@@ -301,7 +301,7 @@
       });
       const j = await r.json().catch(() => ({}));
       if (!r.ok || !j.signedURL) throw new Error(j.message || 'sign failed');
-      window.open(BASE() + j.signedURL, '_blank', 'noopener');
+      window.open(BASE() + '/storage/v1' + j.signedURL, '_blank', 'noopener');
       /* عدّاد التحميلات (RPC يتجاوز RLS) */
       fetch(BASE() + '/rest/v1/rpc/bump_exam_download', {
         method: 'POST',
