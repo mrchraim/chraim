@@ -1277,6 +1277,47 @@ main#main > .configbar{margin-block-end:10px!important}
 .dl-past{opacity:.55;text-decoration:line-through}
 @media print{.tool-form,.tool-actions{display:none!important}}
 </style>
+
+<style id="chraim-enhance">
+/* ==== تحسينات مدمجة (استبدال حقن البروكسي من portal.py) — CHRAIM ==== */
+/* 1) شريط الأخبار بعرض الشاشة وأحجام أوضح */
+.ticker{height:auto!important;min-height:40px!important;padding-block:9px!important;
+  font-size:1rem!important;font-weight:800!important;letter-spacing:.04em}
+.ticker .tk{font-size:inherit!important}
+
+/* 2) الإحصائيات كبيرة وواضحة ومتوهجة */
+.hero .stats{gap:18px!important;margin-top:22px!important}
+.hero .stats .stat{min-width:150px!important;padding:18px 24px!important;border-radius:20px!important;
+  background:rgba(255,255,255,.14)!important;box-shadow:0 0 22px rgba(255,220,80,.25)!important}
+.hero .stats .stat b{font-size:3rem!important;font-weight:900!important;line-height:1.05!important;
+  text-shadow:0 0 18px rgba(255,220,80,.55)}
+.hero .stats .stat span{font-size:1.15rem!important;font-weight:700!important;opacity:1!important}
+
+/* 3) زر "ابدئي من هنا" بألوان متغيرة ونبض */
+.cta-main{display:inline-flex;align-items:center;gap:12px;margin-top:26px;
+  font-size:1.35rem!important;font-weight:800!important;padding:16px 38px!important;
+  border:0!important;border-radius:999px!important;color:#fff!important;cursor:pointer;
+  text-decoration:none;text-shadow:0 1px 4px rgba(0,0,0,.6);
+  background:linear-gradient(90deg,#ff2d75,#ff9a00,#ffe600,#00e676,#00b0ff,#7c4dff,#ff2d75)!important;
+  background-size:400% 100%!important;
+  animation:chraim-grad 6s linear infinite,chraim-pulse 1.7s ease-in-out infinite;
+  transition:transform .2s}
+.cta-main:hover{transform:scale(1.06)}
+@keyframes chraim-grad{to{background-position:400% 0}}
+@keyframes chraim-pulse{0%,100%{box-shadow:0 0 18px rgba(255,200,0,.5)}50%{box-shadow:0 0 44px rgba(255,80,160,.9)}}
+
+/* 4) قائمة التنقّل المتحركة (marquee) */
+#abnav{overflow:hidden}
+.chraim-marquee{display:flex;width:max-content;animation:chraim-mv 40s linear infinite}
+.chraim-marquee.rtl{animation-name:chraim-mv-rtl}
+.chraim-marquee.ltr{animation-name:chraim-mv-ltr}
+.chraim-marquee>*{flex:none!important;white-space:nowrap}
+#abnav:hover .chraim-marquee{animation-play-state:paused}
+@keyframes chraim-mv-rtl{to{transform:translateX(50%)}}
+@keyframes chraim-mv-ltr{to{transform:translateX(-50%)}}
+
+@media (prefers-reduced-motion:reduce){.cta-main,.chraim-marquee{animation:none!important}}
+</style>
 </head>
 <body>
 <div id="progress" aria-hidden="true"><i></i></div>
@@ -1340,6 +1381,7 @@ main#main > .configbar{margin-block-end:10px!important}
     <div class="stat"><b id="sSess">0</b><span>حصة</span></div>
     <div class="stat"><b id="sProf">0</b><span>أستاذ</span></div>
   </div>
+  <a class="cta-main" id="startBtn" href="#main">ابدئي من هنا <span aria-hidden="true">←</span></a>
 </div>
 
 <main id="main">
@@ -1921,6 +1963,32 @@ main#main > .configbar{margin-block-end:10px!important}
     render();
   });
   render();
+})();
+</script>
+<script id="chraim-marquee">
+/* قائمة التنقّل المتحركة — تلف محتوى #abnav داخل مسار marquee مع استنساخ للحلقة المستمرة */
+(function(){
+  var MQ='chraim-marquee';
+  function wrap(){
+    var nav=document.getElementById('abnav'); if(!nav) return;
+    if(nav.querySelector(':scope > .'+MQ)) return;              /* تم التلف مسبقاً */
+    var kids=[].slice.call(nav.children).filter(function(c){
+      return c.tagName==='A'||c.tagName==='BUTTON'||c.tagName==='LI'; });
+    if(kids.length<4) return;                                    /* لم يُملأ بعد */
+    var rtl=getComputedStyle(nav).direction==='rtl';
+    var track=document.createElement('div');
+    track.className=MQ+' '+(rtl?'rtl':'ltr');
+    kids.forEach(function(k){track.appendChild(k);});
+    var clone=track.cloneNode(true); clone.setAttribute('aria-hidden','true');
+    nav.appendChild(track); nav.appendChild(clone);
+  }
+  function boot(){wrap(); setTimeout(wrap,500); setTimeout(wrap,1200);}
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',boot);
+  else boot();
+  window.addEventListener('load',boot);
+  var t; new MutationObserver(function(){clearTimeout(t); t=setTimeout(wrap,250);})
+    .observe(document.getElementById('abnav')||document.body,{childList:true});
+  document.addEventListener('cc:lang',function(){setTimeout(wrap,300);});
 })();
 </script>
 </body>
