@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>دليل طلبة جامعة ابن زهر - أكادير</title>
+<style>
+  :root { --bg:#f6f7f9; --card:#fff; --text:#1a1d21; --muted:#5f6b76; --accent:#0b6e4f; --border:#e1e5ea; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#121417; --card:#1b1f24; --text:#eceff2; --muted:#9aa5b1; --accent:#3ecf9a; --border:#2a3037; }
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:system-ui,"Segoe UI",Tahoma,sans-serif; background:var(--bg); color:var(--text); line-height:1.6; }
+  header { padding:24px 16px 8px; max-width:900px; margin:0 auto; }
+  h1 { margin:0 0 4px; font-size:1.5rem; }
+  header p { margin:0; color:var(--muted); font-size:.95rem; }
+  main { max-width:900px; margin:0 auto; padding:8px 16px 40px; }
+  h2 { font-size:1.15rem; margin:28px 0 10px; }
+  .search { width:100%; padding:12px 14px; font-size:1rem; border:1px solid var(--border); border-radius:10px; background:var(--card); color:var(--text); }
+  .chips { display:flex; flex-wrap:wrap; gap:8px; margin:12px 0; }
+  .chip { border:1px solid var(--border); background:var(--card); color:var(--text); padding:6px 12px; border-radius:999px; cursor:pointer; font-size:.9rem; }
+  .chip.active { background:var(--accent); color:#fff; border-color:var(--accent); }
+  .grid { display:grid; gap:12px; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); }
+  .card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:14px; }
+  .card h3 { margin:0 0 6px; font-size:1rem; }
+  .card .meta { color:var(--muted); font-size:.85rem; margin-bottom:8px; }
+  .links a { display:inline-block; margin:2px 0 2px 10px; color:var(--accent); text-decoration:none; font-size:.92rem; }
+  .links a:hover { text-decoration:underline; }
+  .list { list-style:none; padding:0; margin:0; }
+  .list li { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:10px 12px; margin-bottom:8px; }
+  .list a { color:var(--text); text-decoration:none; }
+  .list a:hover { color:var(--accent); }
+  .tag { display:inline-block; font-size:.75rem; color:var(--muted); margin-inline-start:6px; }
+  .note { background:var(--card); border:1px dashed var(--border); border-radius:10px; padding:10px 12px; color:var(--muted); font-size:.9rem; }
+  .hidden { display:none; }
+  footer { text-align:center; color:var(--muted); font-size:.8rem; padding:0 16px 30px; }
+.chrvvim-topbar{display:flex;align-items:center;gap:10px;background:#071b32;color:#e6f0fa;padding:10px 16px;font-size:.9rem;flex-wrap:wrap}.chrvvim-topbar a{color:#52cdf5;text-decoration:none;font-weight:700}.chrvvim-topbar a:hover{text-decoration:underline}.chrvvim-topbar .sep{opacity:.45}.chrvvim-topbar .brand{opacity:.85}</style>
+</head>
+<body><div class="chrvvim-topbar" role="navigation" aria-label="تنقل سريع"><a href="./">← الرئيسية</a><span class="sep">·</span><span class="brand">CHRVVIM Campus — صفحة مدمجة</span></div>
+<header>
+  <h1>دليل طلبة جامعة ابن زهر - أكادير</h1>
+  <p>روابط المواقع الرسمية، استعمالات الزمن، الإعلانات، والفضاءات الطلابية في مكان واحد.</p>
+</header>
+<main>
+  <input id="q" class="search" type="search" placeholder="قلب على كلية، مدرسة، أو رابط..." aria-label="بحث">
+  <div id="chips" class="chips"></div>
+
+  <h2>المؤسسات</h2>
+  <div id="grid" class="grid"></div>
+
+  <h2>آخر الإعلانات</h2>
+  <div id="ann-note" class="note">الإعلانات الأوتوماتيكية كتظهر هنا بعد ما تشغل <code>scraper.py</code> وتحط الملف <code>announcements.json</code> بجنب هاد الصفحة.</div>
+  <ul id="ann" class="list"></ul>
+</main>
+<footer>
+  هاد الصفحة غير دليل للروابط. المعلومات الرسمية ديال استعمالات الزمن والامتحانات كتلقاها دايما عند المواقع الرسمية للمؤسسات.
+</footer>
+
+<script>
+const INSTITUTIONS = [
+  { id:"flsh", name:"كلية الآداب والعلوم الإنسانية (FLSH)", type:"كلية", phone:"0528220878",
+    links:[
+      ["الموقع الرسمي","http://www.flsh-agadir.ac.ma/"],
+      ["استعمالات الزمن","http://www.flsh-agadir.ac.ma/?page_id=249"],
+      ["الإعلانات","http://www.flsh-agadir.ac.ma/?cat=162"],
+      ["إعلانات الامتحانات","http://www.flsh-agadir.ac.ma/?cat=282"],
+      ["اللوائح والامتحانات","http://www.flsh-agadir.ac.ma/?page_id=155"],
+      ["الفضاء الطلابي","http://ent.flsh-agadir.ac.ma"],
+      ["الدروس عن بعد","http://ecours-flsh.uiz.ac.ma"]
+    ]},
+  { id:"fsa", name:"كلية العلوم (FSA)", type:"كلية", phone:"0528220957",
+    links:[["الموقع الرسمي","http://www.fsa.ac.ma/"]]},
+  { id:"fsjes", name:"كلية العلوم القانونية والاقتصادية والاجتماعية (FSJES)", type:"كلية", phone:"0528217808",
+    links:[["الموقع الرسمي","http://www.fsjes-agadir.org/"]]},
+  { id:"fmp", name:"كلية الطب والصيدلة (FMPA)", type:"كلية", phone:"0528234042",
+    links:[["الموقع الرسمي","http://fmpa.uiz.ac.ma/"]]},
+  { id:"encg", name:"المدرسة الوطنية للتجارة والتسيير (ENCG)", type:"مدرسة", phone:"0528225748",
+    links:[["الموقع الرسمي","https://encga.uiz.ac.ma/"]]},
+  { id:"ensa", name:"المدرسة الوطنية للعلوم التطبيقية (ENSA)", type:"مدرسة", phone:"0528228313",
+    links:[["الموقع الرسمي","http://www.ensa-agadir.ac.ma/"]]},
+  { id:"est", name:"المدرسة العليا للتكنولوجيا (EST)", type:"مدرسة", phone:"0528232583",
+    links:[["الموقع الرسمي","http://www.esta.ac.ma/"]]},
+  { id:"ims", name:"معهد مهن الرياضة (IMS)", type:"معهد", phone:"",
+    links:[["الموقع الرسمي","https://ims.uiz.ac.ma"]]},
+  { id:"uiz", name:"رئاسة جامعة ابن زهر", type:"الجامعة", phone:"0528227125",
+    links:[
+      ["الموقع الرسمي","https://www.uiz.ac.ma"],
+      ["إعلانات للطلبة","https://www.uiz.ac.ma/avis-aux-etudiants"],
+      ["التسجيل","http://preinscription.uiz.ac.ma/"],
+      ["الدروس عن بعد","https://www.uiz.ac.ma/elearn"],
+      ["السكولاريت أونلاين","https://www.uiz.ac.ma/escol"],
+      ["المنح","https://www.uiz.ac.ma/bourse"]
+    ]}
+];
+
+const state = { q:"", type:"الكل" };
+const $ = s => document.querySelector(s);
+
+function renderChips() {
+  const types = ["الكل", ...new Set(INSTITUTIONS.map(i => i.type))];
+  $("#chips").innerHTML = "";
+  types.forEach(t => {
+    const b = document.createElement("button");
+    b.className = "chip" + (state.type === t ? " active" : "");
+    b.textContent = t;
+    b.onclick = () => { state.type = t; renderChips(); renderGrid(); };
+    $("#chips").appendChild(b);
+  });
+}
+
+function renderGrid() {
+  const q = state.q.trim().toLowerCase();
+  const grid = $("#grid");
+  grid.innerHTML = "";
+  INSTITUTIONS.filter(i =>
+    (state.type === "الكل" || i.type === state.type) &&
+    (!q || (i.name + " " + i.links.map(l => l[0]).join(" ")).toLowerCase().includes(q))
+  ).forEach(i => {
+    const c = document.createElement("div");
+    c.className = "card";
+    const h = document.createElement("h3"); h.textContent = i.name;
+    const m = document.createElement("div"); m.className = "meta";
+    m.textContent = i.type + (i.phone ? " - " + i.phone : "");
+    const l = document.createElement("div"); l.className = "links";
+    i.links.forEach(([label, url]) => {
+      const a = document.createElement("a");
+      a.href = url; a.target = "_blank"; a.rel = "noopener noreferrer"; a.textContent = label;
+      l.appendChild(a);
+    });
+    c.append(h, m, l);
+    grid.appendChild(c);
+  });
+}
+
+async function loadAnnouncements() {
+  try {
+    const r = await fetch("announcements.json", { cache:"no-store" });
+    if (!r.ok) return;
+    const data = await r.json();
+    const ul = $("#ann");
+    (data.items || []).slice(0, 40).forEach(it => {
+      const li = document.createElement("li");
+      const a = document.createElement("a");
+      a.href = it.url; a.target = "_blank"; a.rel = "noopener noreferrer"; a.textContent = it.title;
+      const t = document.createElement("span"); t.className = "tag"; t.textContent = it.etablissement;
+      li.append(a, t);
+      ul.appendChild(li);
+    });
+    if ((data.items || []).length) $("#ann-note").classList.add("hidden");
+  } catch (e) { /* ما كاين حتى ملف، نخليو الملاحظة */ }
+}
+
+$("#q").addEventListener("input", e => { state.q = e.target.value; renderGrid(); });
+renderChips(); renderGrid(); loadAnnouncements();
+</script>
+<a class="back-float" href="index.html" aria-label="العودة إلى الصفحة الأولى">← الصفحة الأولى</a>
+<style>
+.back-float{position:fixed;top:12px;inset-inline-start:12px;z-index:998;background:var(--card,#fff);border:1px solid var(--line,#ddd);border-radius:12px;padding:8px 12px;font-size:14px;text-decoration:none;color:var(--ink,#222);box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.back-float:hover{background:var(--soft,#eee)}
+.social-strip{position:fixed;bottom:0;inset-inline:0;z-index:999;background:var(--card,#fff);border-top:1px solid var(--line,#ddd);padding:8px 16px;display:flex;align-items:center;gap:12px;font-size:13px;color:var(--muted,#666);backdrop-filter:blur(8px);flex-wrap:wrap;box-shadow:0 -2px 12px rgba(0,0,0,.06)}
+.social-strip a{color:var(--blue2,#374151);text-decoration:none;font-weight:700}
+.social-strip a:hover{text-decoration:underline}
+.social-strip .ss-close{margin-inline-start:auto;background:none;border:0;color:var(--muted,#666);cursor:pointer;font-size:18px;line-height:1}
+.social-strip.hidden{display:none}
+@media(max-width:600px){.social-strip{gap:8px;padding:6px 12px;font-size:12px}}
+</style>
+<div class="social-strip" id="socialStrip" role="complementary" aria-label="حسابات المؤسس">
+  <span>تواصل:</span>
+  <a href="https://github.com/mr1mohamed1chraim" target="_blank" rel="noopener" aria-label="GitHub">GitHub</a>
+  <a href="https://www.instagram.com/mr1mohamed1chraim" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a>
+  <a href="https://www.linkedin.com/in/mr1mohamed1chraim" target="_blank" rel="noopener" aria-label="LinkedIn">LinkedIn</a>
+  <a href="mailto:mr1mohamed1chraim@gmail.com" aria-label="Email">Email</a>
+  <button class="ss-close" id="ssClose" type="button" aria-label="إغلاق">×</button>
+</div>
+<script>
+(function(){
+  var s=document.getElementById('socialStrip');
+  if(!s) return;
+  var close=document.getElementById('ssClose');
+  try{ if(localStorage.getItem('cc_ss_closed')==='1') s.classList.add('hidden'); }catch(e){}
+  if(close) close.addEventListener('click',function(){ s.classList.add('hidden'); try{ localStorage.setItem('cc_ss_closed','1'); }catch(e){} });
+})();
+</script>
+<script src="gender.js" defer></script>
+<script src="social-bubble.js" defer></script>
+</body>
+</html>

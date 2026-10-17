@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CHRVVIM Campus — المرحلة A · لوحة التشخيص</title>
+<style>
+  :root{
+    --navy:#071b32; --navy2:#0d3a66; --bg:#eef4fa; --surface:#fff; --ink:#0f2742;
+    --muted:#5b6f85; --line:#d6e3f0; --brand:#0b5cc4; --cyan:#39c6f0; --gold:#e0adhb;
+    --ok:#0d7a4f; --okbg:#e0f6ea; --warn:#8a5a00; --warnbg:#fff3d6; --bad:#a5202f; --badbg:#fde6e8;
+    --shadow:0 12px 40px rgba(9,32,64,.10);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:
+      radial-gradient(1200px 500px at 85% -10%,#dbeafc 0,transparent 60%),
+      radial-gradient(900px 400px at 5% 0%,#e7f3fb 0,transparent 55%),
+      var(--bg);
+    color:var(--ink);font-family:"Segoe UI",Tahoma,"Noto Naskh Arabic",Arial,sans-serif;line-height:1.85}
+  a{color:var(--brand)}
+  .wrap{max-width:1120px;margin:auto;padding:0 20px 70px}
+  header.hero{background:linear-gradient(160deg,#071b32,#0d3a66 65%,#14568f);color:#fff;padding:46px 0 40px;position:relative;overflow:hidden}
+  header.hero::after{content:"";position:absolute;inset:auto 0 -1px;height:60px;background:var(--bg);
+    clip-path:polygon(0 100%,100% 30%,100% 100%)}
+  .hero-in{max-width:1120px;margin:auto;padding:0 20px;position:relative;z-index:1}
+  .eyebrow{display:inline-block;font-size:12.5px;letter-spacing:.5px;color:#9fdcff;border:1px solid #ffffff40;background:#ffffff12;border-radius:999px;padding:5px 14px;margin-bottom:16px}
+  h1{font-size:clamp(24px,3.6vw,40px);margin:0 0 10px;line-height:1.4;font-weight:800}
+  h1 b{color:var(--cyan)}
+  .hero p{margin:0;color:#cfe1f2;font-size:16px;max-width:74ch}
+  .verdict{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:26px}
+  .v{background:#ffffff14;border:1px solid #ffffff33;border-radius:14px;padding:14px 16px;backdrop-filter:blur(6px)}
+  .v b{display:block;font-size:22px;line-height:1.2}
+  .v span{font-size:12.5px;color:#bcd4e9}
+  .v.ok b{color:#7df0b6}.v.warn b{color:#ffd27a}.v.bad b{color:#ff9aa6}
+  section{margin-top:34px}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px 24px;box-shadow:var(--shadow)}
+  h2{font-size:clamp(19px,2.3vw,25px);margin:0 0 4px;display:flex;align-items:center;gap:10px}
+  h2 .n{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:9px;background:var(--navy);color:#9fdcff;font-size:15px;font-weight:800;flex:none}
+  .lead{color:var(--muted);margin:0 0 18px}
+  table{width:100%;border-collapse:collapse;font-size:14.5px;overflow:hidden;border-radius:12px}
+  th,td{text-align:right;padding:11px 13px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{background:#f2f7fc;font-size:13px;color:#274;letter-spacing:.2px}
+  tbody tr:hover{background:#f7fbff}
+  tr:last-child td{border-bottom:0}
+  code{background:#eef4fb;border:1px solid #dbe7f4;border-radius:6px;padding:1px 7px;font-size:13px;direction:ltr;display:inline-block;font-family:Consolas,monospace}
+  .badge{display:inline-block;font-size:12px;font-weight:700;padding:2px 11px;border-radius:999px;white-space:nowrap}
+  .b-ok{background:var(--okbg);color:var(--ok)}.b-warn{background:var(--warnbg);color:var(--warn)}
+  .b-bad{background:var(--badbg);color:var(--bad)}.b-gray{background:#e8eef4;color:#46586c}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+  ul.clean{list-style:none;padding:0;margin:0}
+  ul.clean li{padding:9px 0 9px 0;border-bottom:1px dashed var(--line);display:flex;gap:10px;align-items:flex-start}
+  ul.clean li:last-child{border-bottom:0}
+  .dot{width:9px;height:9px;border-radius:50%;flex:none;margin-top:8px}
+  .d-bad{background:var(--bad)}.d-warn{background:#d99b00}.d-ok{background:var(--ok)}.d-gray{background:#8fa3b8}
+  .kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+  .k{background:linear-gradient(150deg,#f7fbff,#eef5fd);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+  .k b{display:block;font-size:24px;color:var(--brand)}.k span{font-size:12.5px;color:var(--muted)}
+  .files{font-family:Consolas,monospace;font-size:12.5px;direction:ltr;background:#0a1a2c;color:#cfe1f2;border-radius:12px;padding:16px 18px;overflow:auto;white-space:pre;line-height:1.6}
+  .files .c{color:#7fe0b0}.files .m{color:#9fdcff}
+  .note{background:var(--warnbg);color:#6b4600;border-radius:12px;padding:12px 16px;font-size:13.5px;border:1px solid #f0dca8}
+  .note.ok{background:var(--okbg);color:#07573a;border-color:#bfe6d3}
+  .note.bad{background:var(--badbg);color:#7c1622;border-color:#f3c9ce}
+  .tag{font-size:11.5px;color:var(--muted)}
+  .flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:13.5px}
+  .flow .step{background:#f2f7fc;border:1px solid var(--line);border-radius:10px;padding:6px 12px}
+  .flow .ar{color:var(--muted)}
+  footer{margin-top:40px;background:var(--navy);color:#c3d6e8;border-radius:18px;padding:22px 24px;font-size:13.5px}
+  footer b{color:#fff}
+  .stamp{display:inline-flex;gap:8px;align-items:center;background:#ffffff14;border:1px solid #ffffff33;border-radius:999px;padding:5px 14px;font-size:12.5px;color:#cfe1f2;margin-top:14px}
+  @media(max-width:760px){.grid2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-in">
+    <span class="eyebrow">المرحلة A · تشخيص فقط — بلا أي تعديل أو نشر</span>
+    <h1>CHRVVIM Campus — لوحة <b>تشخيص المشروع</b></h1>
+    <p>فحص فعلي لملفات المشروع، المواقع المنشورة، وربط Supabase، ومقارنة القوالب بالمصادر الرسمية لجامعة ابن زهر. النتائج أدناه مبنية على أدلة جُمعت بتاريخ <b>2026-10-16</b>.</p>
+    <div class="verdict">
+      <div class="v ok"><b>✔ 0 تعديل</b><span>لم يُلمس أي ملف إنتاجي</span></div>
+      <div class="v ok"><b>✔ 0 نشر</b><span>لا Netlify ولا DNS</span></div>
+      <div class="v ok"><b>6.17 م.ب</b><span>نسخة احتياطية موثّقة</span></div>
+      <div class="v warn"><b>2 من 3</b><span>مواقع تعيد 503</span></div>
+      <div class="v warn"><b>4/6</b><span>أرقام «بالأرقام» غير مطابقة</span></div>
+      <div class="v bad"><b>7 من 12</b><span>مهام الأمر القطعي ناقصة</span></div>
+    </div>
+    <span class="stamp">🛡️ التشخيص قائم على جلب فعلي للمصادر، لا على افتراض</span>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section>
+    <div class="card">
+      <h2><span class="n">0</span> الخلاصة التنفيذية</h2>
+      <p class="lead">في مجلد العمل مشروعان يجب عدم الخلط بينهما.</p>
+      <div class="grid2">
+        <div>
+          <h3 style="margin:0 0 6px">🧪 القوالب (المرفقات)</h3>
+          <ul class="clean">
+            <li><span class="dot d-gray"></span><div>نماذج واجهة معاينة (HTML أحادي + ZIPs). لا قاعدة بيانات ولا لوحة إدارة فعلية.</div></li>
+            <li><span class="dot d-gray"></span><div>تحتوي بيانات مؤسسات <b>ثابتة</b> وبعض الأرقام غير المحدّثة.</div></li>
+          </ul>
+        </div>
+        <div>
+          <h3 style="margin:0 0 6px">🏛️ المشروع الحقيقي <code>chrvvim-campus/</code></h3>
+          <ul class="clean">
+            <li><span class="dot d-ok"></span><div>خادم Node بلا تبعيات + SQLite + لوحة إدارة + أمان + 3 لغات + PWA + اختبارات.</div></li>
+            <li><span class="dot d-warn"></span><div>لكنه <b>لكلية واحدة</b> (الحقوق)، ولم تُنفَّذ فيه مهام تعدد المؤسسات والمصادر والـ YouTube.</div></li>
+          </ul>
+        </div>
+      </div>
+      <div class="note" style="margin-top:16px">الموقع المنشور <code>mr1mohamed1chraim.netlify.app</code> هو <b>النسخة القديمة</b> (Supabase + gate إنستغرام)، وليس المشروع الموحّد — إذن المشروع الموحّد <b>لم يُنشر بعد</b>، وهذا متوافق مع قاعدة «لا نشر دون موافقة».</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="card">
+      <h2><span class="n">1</span> ما تم فحصه فعلياً</h2>
+      <p class="lead">كل سطر هنا ناتج فحص حقيقي، لا استنتاج نظري.</p>
+      <div class="kpi">
+        <div class="k"><b>96</b><span>عنصراً في النسخة الاحتياطية</span></div>
+        <div class="k"><b>~7 م.ب</b><span>حجم المشروع الحقيقي</span></div>
+        <div class="k"><b>88</b><span>ملفاً في chrvvim-campus</span></div>
+        <div class="k"><b>10</b><span>وثائق PDF رسمية</span></div>
+        <div class="k"><b>11</b><span>وحدة JS في الواجهة</span></div>
+        <div class="k"><b>2</b><span>ملف اختبارات</span></div>
+      </div>
+      <table style="margin-top:18px">
+        <thead><tr><th>ما فُحص</th><th>الطريقة</th><th>النتيجة</th></tr></thead>
+        <tbody>
+          <tr><td>ملفات مجلد العمل</td><td>جرد كامل بالأحجام</td><td><span class="badge b-ok">3 مجلدات + ملفات التوجيه</span></td></tr>
+          <tr><td><code>chrvvim-campus/</code></td><td>قراءة README · ARCHITECTURE · package.json · netlify.toml</td><td><span class="badge b-ok">مشروع Node كامل</span></td></tr>
+          <tr><td>المرفقات (HTML/ZIP/DOCX/MD)</td><td>فك ضغط وقراءة</td><td><span class="badge b-gray">نماذج + توثيق</span></td></tr>
+          <tr><td>المواقع الثلاثة</td><td>طلب HTTP فعلي</td><td><span class="badge b-warn">1 يعمل · 2 × 503</span></td></tr>
+          <tr><td>صفحة المؤسسات الرسمية</td><td>جلب من uiz.ac.ma</td><td><span class="badge b-ok">24 مؤسسة</span></td></tr>
+          <tr><td>الصفحة الرئيسية للجامعة</td><td>جلب واستخراج الأرقام</td><td><span class="badge b-bad">تعارض مع القالب</span></td></tr>
+          <tr><td>Supabase للموقع الحيّ</td><td>فحص المفتاح + واجهة REST</td><td><span class="badge b-warn">لا أسرار · RLS كتابة غير مُثبت</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <div class="card">
+      <h2><span class="n">2</span> المشروع الحقيقي <code>chrvvim-campus/</code></h2>
+      <p class="lead">الإصدار 2.0.0 · يحتاج Node.js ≥ 22.5 · بلا أي تبعية خارجية.</p>
+      <div class="files">chrvvim-campus/
+├─ <span class="m">server/</span>      خادم Node بلا تبعيات: index · seed · config
+│  ├─ <span class="m">lib/</span>       http · router · security · session · db · validate
+│  ├─ <span class="m">routes/</span>    public · auth · admin
+│  ├─ <span class="m">services/</span>  audit · ai
+│  └─ <span class="m">data/</span>      chrvvim.sqlite (+ wal/shm)
+├─ <span class="m">web/</span>         الواجهة (تُنشر ثابتة على Netlify)
+│  ├─ index.html  البوابة العامة (SPA بتوجيه hash)
+│  ├─ <span class="m">admin/</span>     لوحة إدارة مستقلة (html/css/js)
+│  ├─ <span class="m">assets/js/</span> app · views · data · i18n · store · gate ·
+│  │            legal-engine · legal-view · subjects-engine ·
+│  │            subjects-view · util
+│  ├─ <span class="m">data/</span>      JSON مرجعية + إعدادات الموقع
+│  ├─ <span class="m">documents/</span> 10 ملفات PDF رسمية
+│  └─ sw.js · manifest.webmanifest · 404.html
+├─ <span class="m">docs/</span>       ARCHITECTURE.md + 5 لقطات شاشة
+├─ <span class="m">scripts/</span>    check · smoke · seo · fetch-fonts
+├─ <span class="m">tests/</span>      unit.test.mjs · legal-engine.test.mjs
+└─ netlify.toml · package.json · .env.example
+
+<span class="c">// نموذج البيانات الفعلي (SQLite):</span>
+schedules · courses · professors · rooms · announcements
+admins · sessions · audit_logs</div>
+      <div class="grid3" style="margin-top:18px">
+        <div class="k"><b>عامة</b><span>بحث الفوج · استعمال الزمن .ics · المسالك · الدليل · توزيع الأفواج · الوثائق · حاسبة المعدل · المواد والمقابلات · إعلانات · 3 لغات · PWA</span></div>
+        <div class="k"><b>إدارة</b><span>جلسة SQLite + CSRF · CRUD كامل · أدوار (مدير/ناشر/محرر) · سجل تدقيق · نشر جماعي · مساعد صياغة</span></div>
+        <div class="k"><b>أمان</b><span>scrypt · HMAC · HttpOnly · SameSite=Strict · CSP · حدّ معدّل · تحقق صارم · منع Path Traversal</span></div>
+      </div>
+      <div class="note bad" style="margin-top:16px">⚠️ هذا نموذج <b>لكلية واحدة</b>. لا وجود لـ <code>institutions</code> · <code>programs</code> · <code>source_checks</code> · <code>review_queue</code> · <code>ai_resources</code> المذكورة في مواصفاتك.</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="grid2">
+      <div class="card">
+        <h2><span class="n">3</span> المواقع المنشورة</h2>
+        <table>
+          <thead><tr><th>الرابط</th><th>الحالة</th><th>المحتوى</th></tr></thead>
+          <tbody>
+            <tr><td>mr1mohamed1chraim</td><td><span class="badge b-ok">200</span></td><td>النسخة القديمة (Supabase · gate)</td></tr>
+            <tr><td>mrchraimfsjpachrvvim</td><td><span class="badge b-bad">503</span></td><td>لا استجابة</td></tr>
+            <tr><td>chrvvim0k0l0a0k0</td><td><span class="badge b-bad">503</span></td><td>لا استجابة</td></tr>
+          </tbody>
+        </table>
+        <div class="note" style="margin-top:14px">الموقع العامل <b>لا يحتوي</b> ملفات المشروع الموحّد (<code>sw.js</code> · <code>academic-guide.json</code> · <code>views.js</code>) ← المشروع الموحّد غير منشور.</div>
+      </div>
+      <div class="card">
+        <h2><span class="n">4</span> فحص Supabase</h2>
+        <ul class="clean">
+          <li><span class="dot d-ok"></span><div>لا يوجد <code>service_role</code> — مفتاح عام <code>sb_publishable_…</code> فقط.</div></li>
+          <li><span class="dot d-ok"></span><div>نقاط الجذر محميّة: 401 «Secret API key required».</div></li>
+          <li><span class="dot d-ok"></span><div>جداول موجودة: <code>announcements</code> · <code>admins</code>.</div></li>
+          <li><span class="dot d-bad"></span><div>جداول مواصفاتك غير موجودة إطلاقاً.</div></li>
+          <li><span class="dot d-warn"></span><div>القراءة كـ anon ترجع <b>صفر صفوف</b>.</div></li>
+          <li><span class="dot d-warn"></span><div>RLS للكتابة <b>غير مُثبت</b> — لم يُجرَ أي إدخال احتراماً للإنتاج.</div></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="card">
+      <h2><span class="n">5</span> التحقق من المصادر الرسمية — تعارض مؤكد</h2>
+      <p class="lead">«الجامعة بالأرقام» في القالب مقابل الصفحة الرئيسية الرسمية اليوم.</p>
+      <table>
+        <thead><tr><th>المؤشر</th><th>في القالب</th><th>الرسمي اليوم</th><th>الحكم</th></tr></thead>
+        <tbody>
+          <tr><td>عدد المؤسسات</td><td>21</td><td>23 (الرئيسية) / 24 (صفحة المؤسسات)</td><td><span class="badge b-bad">غير مطابق</span></td></tr>
+          <tr><td>المدن الجامعية</td><td>8</td><td>8</td><td><span class="badge b-ok">مطابق</span></td></tr>
+          <tr><td>المسالك</td><td>175</td><td>241</td><td><span class="badge b-bad">غير مطابق</span></td></tr>
+          <tr><td>الطلبة</td><td>146,918</td><td>147,806</td><td><span class="badge b-bad">غير مطابق</span></td></tr>
+          <tr><td>الأساتذة الباحثون</td><td>1,475</td><td>1,592</td><td><span class="badge b-bad">غير مطابق</span></td></tr>
+          <tr><td>بنيات البحث</td><td>92</td><td>92</td><td><span class="badge b-ok">مطابق</span></td></tr>
+        </tbody>
+      </table>
+      <div class="grid2" style="margin-top:18px">
+        <div class="note ok"><b>✅ لائحة المؤسسات سليمة:</b> 29 صفاً في القالب = 24 مطابقة للرسمي + 5 «قيد التحقق». الخمسة (المدارس الوطنية للتكنولوجيات المتقدمة بالعيون والداخلة، الصناعات الغذائية بيوكرى، كلية العلوم والتقنيات بكلميم، معهد مهن الرياضة) غير مدرجة رسمياً ← تصنيفها صحيح.</div>
+        <div class="note bad"><b>⚠️ خطران:</b> (1) الأرقام أعلاه معروضة كأنها «فُحصت 2026-10-16» وهي غير مطابقة ← خرق شرط الدقة. (2) علامة «مؤكد» في الكود مكتوبة بفهرس صلب <code>off: i&lt;=22 || i===28</code> ← هشّة عند أي تغيير.</div>
+      </div>
+      <div class="note" style="margin-top:14px">📌 الصفحة الرئيسية تؤكد أخباراً رسمية تدعم تصنيف «قيد التحقق»: الانطلاقة الرسمية لكلية العلوم والتقنيات بكلميم (10-09-2026) والمدرسة الوطنية للتكنولوجيات المتقدمة بالداخلة (29-09-2026).</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="card">
+      <h2><span class="n">6</span> فجوة المطابقة مع الأمر القطعي</h2>
+      <p class="lead">حالة كل مهمة من المهام الـ 12 في المشروع الحقيقي.</p>
+      <table>
+        <thead><tr><th>#</th><th>المهمة المطلوبة</th><th>الحالة</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>دليل مؤسسات متعدد الكليات</td><td><span class="badge b-warn">جزئي (في القالب فقط)</span></td></tr>
+          <tr><td>2</td><td>فضاء أكاديمي مستقل لكل مؤسسة</td><td><span class="badge b-bad">ناقص</span></td></tr>
+          <tr><td>3</td><td>استعمالات زمنية / أفواج / قاعات</td><td><span class="badge b-ok">منجَز (لكلية الحقوق)</span></td></tr>
+          <tr><td>4</td><td>مكتبة رقمية للدروس والملفات</td><td><span class="badge b-warn">جزئي (PDF فقط)</span></td></tr>
+          <tr><td>5</td><td>مساعد الطالب الذكي</td><td><span class="badge b-bad">ناقص</span></td></tr>
+          <tr><td>6</td><td>مركز إعلانات موحّد</td><td><span class="badge b-ok">منجَز</span></td></tr>
+          <tr><td>7</td><td>تحديث مستمر من المصادر الرسمية</td><td><span class="badge b-bad">ناقص</span></td></tr>
+          <tr><td>8</td><td>بحث موحّد + رحلة طالب</td><td><span class="badge b-warn">جزئي</span></td></tr>
+          <tr><td>9</td><td>التوجيه الأكاديمي والأرشفة</td><td><span class="badge b-warn">جزئي</span></td></tr>
+          <tr><td>10</td><td>لوحة إدارة + RLS</td><td><span class="badge b-ok">منجَز (SQLite، لا Supabase RLS)</span></td></tr>
+          <tr><td>11</td><td>قواعد التنفيذ والقبول</td><td><span class="badge b-ok">منجَز</span></td></tr>
+          <tr><td>12</td><td>ربط كل درس بفيديو YouTube</td><td><span class="badge b-bad">غير موجود إطلاقاً</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <div class="card">
+      <h2><span class="n">7</span> سجل المخاطر</h2>
+      <table>
+        <thead><tr><th>#</th><th>الخطورة</th><th>المخاطرة</th><th>الأثر</th><th>التوصية</th></tr></thead>
+        <tbody>
+          <tr><td>R1</td><td><span class="badge b-bad">عالية</span></td><td>أرقام «الجامعة بالأرقام» غير مطابقة للرسمي</td><td>تضليل الطالب + خرق شرط الدقة</td><td>تصحيح من المصدر أو حذف القسم</td></tr>
+          <tr><td>R2</td><td><span class="badge b-bad">عالية</span></td><td>الدمج فوق الموقع الحيّ قد يفقده ميزات Supabase/gate</td><td>فقدان وظائف ومحتوى</td><td>نشر تجريبي منفصل + مقارنة ميزات</td></tr>
+          <tr><td>R3</td><td><span class="badge b-bad">عالية</span></td><td>RLS للكتابة في Supabase غير مُتحقَّق</td><td> احتمال وصول غير مصرّح به</td><td>مراجعة السياسات + اختبار بجلسة مدير (بإذنك)</td></tr>
+          <tr><td>R4</td><td><span class="badge b-warn">متوسطة</span></td><td>موقعان مربوطان يعيدان 503</td><td>روابط ميتة للطالب</td><td>تشخيص لوحة Netlify أو إزالتها</td></tr>
+          <tr><td>R5</td><td><span class="badge b-warn">متوسطة</span></td><td>علامة «مؤكد» بفهرس صلب في القالب</td><td>تصنيف خاطئ عند أي تغيير</td><td>ربط التصنيف ببيانات مصدرها</td></tr>
+          <tr><td>R6</td><td><span class="badge b-warn">متوسطة</span></td><td>لوحة الإدارة تحتاج Node، والنشر ثابت</td><td>لوحة معطّلة على النشر الثابت</td><td>إبقاء الإدارة على خادم + توضيح ذلك</td></tr>
+          <tr><td>R7</td><td><span class="badge b-gray">منخفضة</span></td><td>تباين الأسماء الرسمية (علوم قانونية/سياسية)</td><td>التباس في الهوية</td><td>توحيد بتسمية رسمية + رابط رسمي</td></tr>
+          <tr><td>R8</td><td><span class="badge b-gray">منخفضة</span></td><td>لم تُشغَّل اختبارات آلية في هذه الجلسة</td><td>ثقة أقل بالسلامة</td><td>تشغيل check · smoke · test</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <div class="grid2">
+      <div class="card">
+        <h2><span class="n">8</span> قيود بيئة التشغيل</h2>
+        <ul class="clean">
+          <li><span class="dot d-bad"></span><div><b>Node.js غير مثبّت</b> (<code>node</code> · <code>npm</code> · <code>npx</code> مفقودة) ← تعذّر تشغيل <code>check.mjs</code> و<code>smoke.mjs</code> والاختبارات.</div></li>
+          <li><span class="dot d-bad"></span><div><b>Netlify CLI غير مثبّت</b> ← النشر مستحيل تقنياً الآن (وهو ممنوع أصلاً دون موافقتك).</div></li>
+          <li><span class="dot d-ok"></span><div>الوصول للمصادر الرسمية والموقع الحيّ نجح ← التشخيص مبني على أدلة فعلية.</div></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2><span class="n">9</span> النسخ الاحتياطي وخطة الرجوع</h2>
+        <div class="note ok"><b>النسخة الموثّقة:</b><br><code>_backups/CHRVVIM_backup_2026-10-16.zip</code><br>6.17 م.ب · 96 عنصراً · يشمل المشروع كاملاً + إعدادات Netlify.</div>
+        <div class="flow" style="margin-top:14px">
+          <span class="step">فك الضغط فوق المشروع</span><span class="ar">←</span>
+          <span class="step">إعادة netlify.toml و .netlify/state.json للجذر</span>
+        </div>
+        <div class="note" style="margin-top:14px">لم يُعدَّل أي ملف إنتاجي أثناء هذه المرحلة.</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="card">
+      <h2><span class="n">10</span> خطة المراحل المقترحة</h2>
+      <div class="flow">
+        <span class="step">B · نسخ احتياطي + نسخة معاينة</span><span class="ar">←</span>
+        <span class="step">C · نموذج بيانات متعدد المؤسسات</span><span class="ar">←</span>
+        <span class="step">D · تصحيح بيانات القالب</span><span class="ar">←</span>
+        <span class="step">E · دمج ميزات الموقع الحيّ</span><span class="ar">←</span>
+        <span class="step">F · منظومة المصادر والمراجعة</span><span class="ar">←</span>
+        <span class="step">G · مساعد الطالب الذكي</span><span class="ar">←</span>
+        <span class="step">H · ربط دروس YouTube</span><span class="ar">←</span>
+        <span class="step">I · اختبارات الأمان والجودة</span><span class="ar">←</span>
+        <span class="step">J · النشر بموافقتك فقط</span>
+      </div>
+      <h3 style="margin:22px 0 6px">قرارات مطلوبة منك</h3>
+      <ul class="clean">
+        <li><span class="dot d-warn"></span><div>أي مشروع نعتمد أصلاً؟ <b>المشروع الحقيقي chrvvim-campus</b> أم القوالب؟ (التوصية: الحقيقي).</div></li>
+        <li><span class="dot d-warn"></span><div>هل نتحقق من سياسات RLS للكتابة في Supabase (يتطلب جلسة مدير/إذنك)؟</div></li>
+        <li><span class="dot d-warn"></span><div>هل نصحّح «الجامعة بالأرقام» في القالب فوراً، أم نستبدل القالب بالمشروع الحقيقي؟</div></li>
+        <li><span class="dot d-warn"></span><div>هل نكمل تلقائياً إلى المرحلة B أم ننتظر تعليماتك؟</div></li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    <b>تأكيدات ختامية:</b><br>
+    ✅ لم يُعدَّل أي ملف من ملفات المشروع &nbsp;·&nbsp; ✅ لم تُنفَّذ أي عملية نشر أو تغيير إعدادات إنتاج أو DNS &nbsp;·&nbsp; ✅ لم يُحذف أو يُستبدل أي محتوى أو رابط &nbsp;·&nbsp; ✅ أُنشئت نسخة احتياطية قابلة للاسترجاع.
+    <div class="tag" style="margin-top:10px;color:#9fb6cc">⚠️ لا يمكن ادّعاء نجاح اختبارات لم تُشغَّل (Node.js غير مثبّت). CHRVVIM Campus خدمة مستقلة غير رسمية — المصدر الرسمي هو موقع الجامعة/الكلية.</div>
+  </footer>
+
+</div>
+</body>
+</html>

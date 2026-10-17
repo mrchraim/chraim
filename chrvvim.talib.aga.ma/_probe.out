@@ -1,0 +1,38 @@
+﻿page bytes: 41255 final: https://www.uiz.ac.ma/nos-etablissements
+
+=== all distinct hosts in hrefs ===
+  ar.uiz.ac.ma                       ╪╣╪▒╪ذ┘è
+  bo.uiz.ac.ma                       Bureau d&#039;ordre digital
+  drive.google.com                   Coop├رration et partenariat | Propri├رt├ر Intellectuelle
+  formation-continue.uiz.ac.ma       Formation Continue
+  gconcours.uiz.ac.ma                Recrutement des PESA
+  preinscription.uiz.ac.ma           Inscriptions des ├رtudiants
+  preinsdoc.uiz.ac.ma                Inscription en doctorat
+  twitter.com                         | Twitter
+  web.facebook.com                    | Facebook
+  www.instagram.com                  
+  www.linkedin.com                    | Linkedin
+  www.marchespublics.gov.ma          March├ر publique
+  www.uiz.ac.ma                       | Activit├رs sportives
+  www.youtube.com                     | Youtube
+
+=== text near 'ablissement' ===
+  ... ut icon" href="/sites/default/files/favicon_0.ico" type="image/vnd.microsoft.icon" /> Nos ├رtablissements | Universit├ر Ibn Zohr @import url("/c
+
+=== candidate host liveness ===
+  OK  fsjes-agadir.uiz.ac.ma     812 bytes -> https://fsjes-agadir.uiz.ac.ma/
+  OK  fega.uiz.ac.ma             237876 bytes -> https://fega.uiz.ac.ma/
+  OK  fsa.uiz.ac.ma              154550 bytes -> https://fsa.uiz.ac.ma/
+  OK  fmpa.uiz.ac.ma             86006 bytes -> https://fmpa.uiz.ac.ma/
+  OK  encga.uiz.ac.ma            233119 bytes -> https://encga.uiz.ac.ma/
+  OK  esef.uiz.ac.ma             245040 bytes -> https://esef.uiz.ac.ma/
+  OK  ims.uiz.ac.ma              256679 bytes -> https://ims.uiz.ac.ma/
+  OK  fsa-am.uiz.ac.ma           145910 bytes -> http://fsa-am.uiz.ac.ma/ar
+  OK  www.esta.ac.ma             65221 bytes -> http://www.esta.ac.ma/
+  --  flsh.uiz.ac.ma             <urlopen error [Errno 11001] getaddrinfo failed>
+  --  fsjes-am.uiz.ac.ma         <urlopen error [Errno 11001] getaddrinfo failed>
+  --  ensa.uiz.ac.ma             <urlopen error timed out>
+  --  ens.uiz.ac.ma              <urlopen error [Errno 11001] getaddrinfo failed>
+  --  est.uiz.ac.ma              <urlopen error [Errno 11001] getaddrinfo failed>
+  --  esta.uiz.ac.ma             <urlopen error [Errno 11001] getaddrinfo failed>
+  --  iscae.uiz.ac.ma            <urlopen error [Errno 11001] getaddrinfo failed>

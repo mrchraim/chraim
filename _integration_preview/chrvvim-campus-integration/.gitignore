@@ -1,0 +1,19 @@
+# Secrets & runtime state
+.env
+server/data/
+*.sqlite
+*.sqlite-journal
+*.sqlite-wal
+*.sqlite-shm
+
+# Node / tooling
+node_modules/
+npm-debug.log*
+pnpm-debug.log*
+.DS_Store
+Thumbs.db
+
+# Deployment caches
+.netlify/
+.vercel/
+.cache/

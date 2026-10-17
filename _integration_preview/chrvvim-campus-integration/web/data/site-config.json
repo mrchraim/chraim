@@ -1,0 +1,22 @@
+{
+  "academic_year": "2026-2027",
+  "note": "إعدادات الموقع الموحّد: الروابط الرسمية وبوابة المتابعة الاختيارية. يمكن تعديلها دون لمس الكود.",
+  "official_links": [
+    { "s": "S1", "t": "استعمال الزمن — الفصل الأول (جذع مشترك)", "u": "https://fsjpa.uiz.ac.ma/announcements/13" },
+    { "s": "S3", "t": "استعمال الزمن — الفصل الثالث (جذع مشترك) + توزيع الأفواج", "u": "https://fsjpa.uiz.ac.ma/announcements/11" },
+    { "s": "S5", "t": "استعمال الزمن — الفصل الخامس + المسارات + توزيع الأفواج", "u": "https://fsjpa.uiz.ac.ma/announcements/8" },
+    { "s": "FR", "t": "Emploi du temps — Droit en Français (S1 · S3 · S5)", "u": "https://fsjpa.uiz.ac.ma/announcements/12" },
+    { "s": "ALL", "t": "جميع إعلانات كلية العلوم القانونية والسياسية — أكادير", "u": "https://fsjpa.uiz.ac.ma/" }
+  ],
+  "official_site": "https://fsjpa.uiz.ac.ma/",
+  "wa_contact": "https://wa.me/212665366326",
+  "gate": {
+    "enabled": false,
+    "free_searches": 1,
+    "wait_seconds": 6,
+    "accounts": [
+      { "handle": "chrvvim", "label": "الحساب الشخصي" },
+      { "handle": "riqqa.ma", "label": "حساب RIQQA" }
+    ]
+  }
+}

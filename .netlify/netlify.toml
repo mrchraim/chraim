@@ -1,0 +1,61 @@
+headersOrigin = "config"
+redirectsOrigin = "config"
+plugins = []
+
+[functions]
+
+[functions."*"]
+
+[build]
+publish = "C:\\Users\\Mohamed Chraim\\OneDrive\\المستندات\\Default Project\\web"
+publishOrigin = "config"
+commandOrigin = "config"
+command = "node scripts/check.mjs"
+base = "C:\\Users\\Mohamed Chraim\\OneDrive\\المستندات\\Default Project\\chrvvim-campus"
+
+[build.environment]
+
+[build.processing]
+
+[build.processing.css]
+
+[build.processing.html]
+
+[build.processing.images]
+
+[build.processing.js]
+
+[build.services]
+
+[[headers]]
+for = "/*"
+
+[headers.values]
+X-Content-Type-Options = "nosniff"
+X-Frame-Options = "DENY"
+Referrer-Policy = "strict-origin-when-cross-origin"
+Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+
+[[headers]]
+for = "/assets/*"
+
+[headers.values]
+Cache-Control = "public, max-age=600, must-revalidate"
+
+[[headers]]
+for = "/data/*"
+
+[headers.values]
+Cache-Control = "public, max-age=600"
+
+[[redirects]]
+from = "/admin/*"
+to = "/admin/index.html"
+status = 200.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]

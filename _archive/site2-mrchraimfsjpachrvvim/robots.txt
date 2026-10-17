@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /admin.html
+Disallow: /admin
+Allow: /
+
+Sitemap: https://mrchraimfsjpachrvvim.netlify.app/sitemap.xml
+Sitemap: https://chrvvim0k0l0a0k0.netlify.app/sitemap.xml
+Sitemap: https://mr1mohamed1chraim.netlify.app/sitemap.xml
