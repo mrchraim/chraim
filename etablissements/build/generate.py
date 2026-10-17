@@ -51,7 +51,7 @@ HEAD = """<!doctype html>
 <meta name="theme-color" content="#0b1220">
 <title>{title} | CHRAIM</title>
 <meta name="description" content="{desc}">
-<link rel="canonical" href="/etablissements/{slug}">
+<link rel="canonical" href="{canonical}">
 <link rel="stylesheet" href="/assets/fonts/fonts.css">
 <link rel="stylesheet" href="/etablissements/style.css">
 </head>
@@ -59,11 +59,11 @@ HEAD = """<!doctype html>
 <header class="top">
   <a class="brand" href="/">CHRAIM<span>دليل مؤسسات ابن زهر</span></a>
   <nav class="nav">
-    <a href="/etablissements/">كل المؤسسات</a>
+    <a href="/portal.html">بوابة الطالب</a>
+    <a href="/platform/">منصة الامتحانات</a>
     <a href="/university-directory.html">الدليل</a>
     <a href="/academic-offer.html">التكوينات</a>
     <a href="/academic-updates.html">المستجدات</a>
-    <a href="/">الرئيسية</a>
   </nav>
   <button id="themeBtn" class="theme" aria-label="تبديل الوضع الليلي">◐</button>
 </header>
@@ -86,7 +86,8 @@ def detail(e):
     typ = TYPE_AR.get(e.get("type"), "مؤسسة")
     city = e.get("city_ar", "")
     parts = [HEAD.format(title=esc(name), desc=esc(
-        (e.get("presentation_ar") or name)[:150]), slug=slug)]
+        (e.get("presentation_ar") or name)[:150]), slug=slug,
+        canonical="/etablissements/" + slug)]
 
     parts.append('<section class="hero"><div class="wrap">')
     parts.append('<p class="crumb"><a href="/etablissements/">المؤسسات</a> / %s</p>' % esc(name))
@@ -158,28 +159,25 @@ def detail(e):
         "".join(parts))
 
 
-def index():
-    parts = [HEAD.format(title="دليل مؤسسات جامعة ابن زهر",
-                         desc="دليل مؤسسات جامعة ابن زهر: الكليات والمدارس والمعاهد، المسؤولون، الاتصالات والروابط الرسمية.",
-                         slug="index")]
-    uni = UNI
-    parts.append('<section class="hero"><div class="wrap">')
+def hero_block():
+    parts = ['<section class="hero"><div class="wrap">']
     parts.append('<h1>دليل مؤسسات جامعة ابن زهر</h1>')
-    parts.append('<p class="fr">%s</p>' % esc(uni.get("name_fr", "Université Ibn Zohr")))
+    parts.append('<p class="fr">%s</p>' % esc(UNI.get("name_fr", "Université Ibn Zohr")))
     parts.append('<div class="pills">')
-    for st in (uni.get("stats") or []):
+    for st in (UNI.get("stats") or []):
         if isinstance(st, dict):
             parts.append('<span class="pill">%s: <b>%s</b></span>'
                          % (esc(st.get("label", "")), esc(st.get("value", ""))))
     parts.append('</div></div></section>')
+    return "".join(parts)
 
-    parts.append('<main class="wrap">')
-    parts.append('<section class="box"><div class="filters">')
+
+def directory_block():
+    parts = ['<section class="box"><div class="filters">']
     parts.append('<input id="q" type="search" placeholder="ابحث عن مؤسسة أو مدينة…" aria-label="بحث">')
     parts.append('<div id="chips" class="chips"></div>')
     parts.append('</div><div id="grid" class="grid"></div>')
     parts.append('<p id="none" class="empty" hidden>لا توجد نتائج مطابقة.</p></section>')
-
     if OUTSIDE:
         parts.append('<section class="box"><h2>مؤسسات خارج القائمة الرسمية</h2><ul class="res">')
         for o in OUTSIDE:
@@ -189,15 +187,72 @@ def index():
             if o.get("note_ar"):
                 parts.append('<li class="note"><span class="muted">%s</span></li>' % esc(o["note_ar"]))
         parts.append('</ul></section>')
+    return "".join(parts)
 
-    parts.append('</main>')
-    parts.append('<script type="application/json" id="data">%s</script>' % json.dumps(
+
+def data_block():
+    return '<script type="application/json" id="data">%s</script>' % json.dumps(
         [{"slug": e["slug"], "name": e["name_ar"], "fr": e.get("name_fr", ""),
           "type": TYPE_AR.get(e.get("type"), "مؤسسة"),
           "city": e.get("city_ar", "")} for e in EST],
-        ensure_ascii=False))
+        ensure_ascii=False)
+
+
+# أقسام المنصة الموحّدة — تظهر في الصفحة الرئيسية
+SECTIONS = [
+    ("/portal.html", "بوابة الطالب",
+     "الجداول، الوثائق، أرشيف الامتحانات، حاسبة المعدل وأدوات الدراسة"),
+    ("/platform/", "منصة الامتحانات",
+     "فروض وامتحانات وملخصات مجانية لكل جامعات المغرب — تصفح، حمّل، وساهم"),
+    ("/academic-offer.html", "دليل التكوينات",
+     "فهرس قابل للبحث في 382 تكويناً رسمياً بجامعة ابن زهر"),
+    ("/academic-updates.html", "المستجدات الجامعية",
+     "إعلانات ومواعيد وروابط التسجيل — 2026-2027"),
+    ("/rafiq-altalib.html", "رفيق الطالب",
+     "جدولك الأسبوعي، حاسبة المعدل، وتتبّع المواعيد"),
+    ("/university-directory.html", "دليل جامعة ابن زهر",
+     "بوابة كل المؤسسات الرسمية في مكان واحد"),
+]
+
+
+def sections_block():
+    parts = ['<section class="box"><h2>أقسام المنصة</h2><div class="grid">']
+    for href, title, desc in SECTIONS:
+        parts.append('<a class="card" href="%s"><b>%s</b>'
+                     '<span class="cfr">%s</span>'
+                     '<span class="meta"><span>↗ افتح</span></span></a>'
+                     % (esc(href), esc(title), esc(desc)))
+    parts.append('</div></section>')
+    return "".join(parts)
+
+
+def index():
+    """دليل المؤسسات داخل /etablissements/."""
+    parts = [HEAD.format(title="دليل مؤسسات جامعة ابن زهر",
+                         desc="دليل مؤسسات جامعة ابن زهر: الكليات والمدارس والمعاهد، المسؤولون، الاتصالات والروابط الرسمية.",
+                         slug="index", canonical="/etablissements/")]
+    parts.append(hero_block())
+    parts.append('<main class="wrap">')
+    parts.append(directory_block())
+    parts.append('</main>')
+    parts.append(data_block())
     parts.append(FOOT.format(checked=CHECKED))
     io.open(os.path.join(ROOT, "index.html"), "w", encoding="utf-8").write("".join(parts))
+
+
+def home():
+    """الصفحة الرئيسية للموقع (الجذر) — تفتح على دليل المؤسسات + أقسام المنصة."""
+    parts = [HEAD.format(title="دليل مؤسسات جامعة ابن زهر",
+                         desc="CHRAIM — دليل مؤسسات جامعة ابن زهر: الكليات والمدارس، المسؤولون، الاتصالات، مع بوابة الطالب ومنصة الامتحانات.",
+                         slug="", canonical="/")]
+    parts.append(hero_block())
+    parts.append('<main class="wrap">')
+    parts.append(sections_block())
+    parts.append(directory_block())
+    parts.append('</main>')
+    parts.append(data_block())
+    parts.append(FOOT.format(checked=CHECKED))
+    io.open(os.path.join(REPO, "index.html"), "w", encoding="utf-8").write("".join(parts))
 
 
 CSS = """/* CHRAIM — unified 'etablissements' section. Matches the main site design system. */
@@ -377,9 +432,10 @@ def main():
     io.open(os.path.join(ROOT, "style.css"), "w", encoding="utf-8").write(CSS)
     io.open(os.path.join(ROOT, "app.js"), "w", encoding="utf-8").write(JS)
     index()
+    home()
     for e in EST:
         detail(e)
-    print("generated: index + %d institution pages" % len(EST))
+    print("generated: home + index + %d institution pages" % len(EST))
 
 
 if __name__ == "__main__":

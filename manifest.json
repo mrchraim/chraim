@@ -2,7 +2,7 @@
   "name": "CHRVVIM Campus — بوابة الطالب",
   "short_name": "CHRVVIM",
   "description": "بوابة طلابية مستقلة للجداول والوثائق والموارد الأكاديمية بكلية العلوم القانونية والسياسية بأكادير.",
-  "start_url": "/",
+  "start_url": "/portal.html",
   "scope": "/",
   "display": "standalone",
   "orientation": "any",
