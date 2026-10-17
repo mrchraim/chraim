@@ -1,0 +1,951 @@
+/* CHRVVIM Campus — بيانات بوابة المؤسسات الرسمية (مصدر: portal-preview/build/data.json)
+   checked: 2026-10-16 · عدد المؤسسات: 24
+   يُحمَّل قبل app.js ويُستعمل في تبويب "المؤسسات والجامعة" لعرض المعلومات داخل الموقع. */
+window.CHRVVIM_PORTAL = {
+ "checked": "2026-10-16",
+ "university": {
+  "name_ar": "جامعة ابن زهر",
+  "name_fr": "Université Ibn Zohr",
+  "stats": [
+   {
+    "label": "مؤسسة",
+    "value": "23",
+    "note": "حسب الصفحة الرئيسية"
+   },
+   {
+    "label": "اسماً في صفحة المؤسسات",
+    "value": "24",
+    "note": "القائمة المنشورة"
+   },
+   {
+    "label": "مدن جامعية",
+    "value": "8",
+    "note": ""
+   },
+   {
+    "label": "مسلكاً",
+    "value": "241",
+    "note": ""
+   },
+   {
+    "label": "طالباً",
+    "value": "147,806",
+    "note": ""
+   },
+   {
+    "label": "أستاذ باحث",
+    "value": "1,592",
+    "note": ""
+   },
+   {
+    "label": "بنية بحث",
+    "value": "92",
+    "note": ""
+   }
+  ],
+  "home": "https://www.uiz.ac.ma/index.php/accueil",
+  "directory": "https://www.uiz.ac.ma/nos-etablissements"
+ },
+ "establishments": [
+  {
+   "slug": "flsh-agadir",
+   "name_ar": "كلية الآداب والعلوم الإنسانية",
+   "name_fr": "Faculté des Lettres et des Sciences Humaines - Agadir",
+   "type": "fac",
+   "city_ar": "أكادير",
+   "leadership": [
+    {
+     "role_ar": "العميد",
+     "role_fr": "Doyen",
+     "name": "NAJI MOHAMED"
+    },
+    {
+     "role_ar": "نائب العميد",
+     "role_fr": "Vice Doyen",
+     "name": "Mustafa MAMOUNI ALAOUI"
+    },
+    {
+     "role_ar": "الكاتب العام",
+     "role_fr": "Secrétaire Général",
+     "name": "EDDAOUDI RACHID"
+    }
+   ],
+   "address": "B.P 29/S Agadir 80000",
+   "phone": "0528220878 / 0528220558",
+   "fax": "0528221620",
+   "website": "http://www.flsh-agadir.ac.ma/",
+   "website_alt": "https://www.flsh-agadir.ac.ma/",
+   "uiz_url": "https://www.uiz.ac.ma/faculte-des-lettres-et-des-sciences-humaines-agadir",
+   "presentation_ar": "تأسست كلية الآداب والعلوم الإنسانية بأكادير بمقتضى القرار الصادر في 5 يناير 1983، وكانت ملحقة في البداية بجامعة القرويين بمراكش، ثم انفصلت سنة 1989 لتصبح تابعة لجامعة ابن زهر بأكادير. وفي شتنبر 1984 استقبلت أولى دفعات الطلبة المسجلين بقسمَي اللغة العربية وآدابها واللغة الفرنسية وآدابها، وقسم التاريخ والجغرافيا. وفي السنوات التالية أُنشئت أقسام اللغة الإنجليزية وآدابها وقسم الدراسات الإسلامية (1986-1987)، وقسم اللغة الإسبانية وآدابها (1992-1993)، ثم قسم علم الاجتماع وقسم الدراسات الأمازيغية (2007-2008). وقد أُنشئت هذه الكلية في جنوب المغرب لتقريب التعليم الجامعي ولتلبية الحاجة المتنامية إلى عدد الطلبة في هذه الجهات. تُدرّس الشواغر حسب نظام LMD (إجازة، ماستر، دكتوراه) بأكثر من 28 000 طالب، وتغطي 5 جهات من المغرب (أكثر من 52% من المساحة الوطنية). يُدار المجلس بعميد ويعاونه مجلس الكلية.",
+   "programs_ar": [
+    "دراسات إنجليزية — إجازة أساسية BAC+3",
+    "دراسات فرنسية — إجازة أساسية BAC+3",
+    "دراسات إسبانية — إجازة أساسية BAC+3",
+    "اللغات الأجنبية التطبيقية (الترجمة في أكادير) — إجازة مهنية BAC+3",
+    "ديداكتيك الفرنسية لغة أجنبية — إجازة مهنية BAC+3",
+    "الفنون والتواصل — ماستر متخصص BAC+5",
+    "تواصل المنظمات — ماستر متخصص BAC+5",
+    "مهن وممارسات الإعلام — ماستر متخصص BAC+5",
+    "اللغة والثقافة الأمازيغية — ماستر أساسي BAC+5",
+    "Applied Linguistics and English Language Teaching — ماستر أساسي BAC+5"
+   ],
+   "resources": [
+    {
+     "label": "منصة التعليم عن بعد (Moodle) للكلية",
+     "url": "https://ecours-flsh.uiz.ac.ma",
+     "tag": "un"
+    },
+    {
+     "label": "بوابة التكوين المستمر — الدراسات الإنجليزية (LEF)",
+     "url": "https://www.uiz.ac.ma/formation/diplome/lef",
+     "tag": "off"
+    },
+    {
+     "label": "بوابة التكوين المستمر — الماستر (MS)",
+     "url": "https://www.uiz.ac.ma/formation/diplome/ms",
+     "tag": "off"
+    },
+    {
+     "label": "تكوين: دراسات إنجليزية (إجازة أساسية)",
+     "url": "https://www.uiz.ac.ma/node/179",
+     "tag": "off"
+    },
+    {
+     "label": "تكوين: اللغات الأجنبية التطبيقية — الترجمة (إجازة مهنية)",
+     "url": "https://www.uiz.ac.ma/node/173",
+     "tag": "off"
+    },
+    {
+     "label": "تكوين: الفنون والتواصل (ماستر متخصص)",
+     "url": "https://www.uiz.ac.ma/node/244",
+     "tag": "off"
+    },
+    {
+     "label": "تكوين: اللغة والثقافة الأمازيغية (ماستر أساسي)",
+     "url": "https://www.uiz.ac.ma/node/183",
+     "tag": "off"
+    },
+    {
+     "label": "تكوين مهني: مسار الإجازة التميز S5/S6",
+     "url": "https://www.supmaroc.com/flsh-agadir-parcours-licence-excellence-2026-2027/",
+     "tag": "un"
+    },
+    {
+     "label": "الماستر: لوائح المقبولين وجدول الاختبارات (أرشيف)",
+     "url": "https://www.almaster-maroc.com/2026/07/Resultats-Preselection-Master-FLSH-Agadir-2026-2027.html",
+     "tag": "un,exp"
+    },
+    {
+     "label": "PDF: جدول الحصص 2017-2018 (الدراسات الإنجليزية)",
+     "url": "http://www.flsh-agadir.ac.ma/wp-content/uploads/2017/09/emploi-2017-2018-cp.pdf",
+     "tag": "off,old"
+    }
+   ],
+   "refs": [
+    "uiz.ac.ma/fr/node/111"
+   ]
+  },
+  {
+   "slug": "fsa-agadir",
+   "name_ar": "كلية العلوم",
+   "name_fr": "Faculté des Sciences - Agadir",
+   "type": "fac",
+   "city_ar": "أكادير",
+   "leadership": [
+    {
+     "role_ar": "العميد",
+     "role_fr": "Doyen",
+     "name": "AHMED ELMOUDEN"
+    },
+    {
+     "role_ar": "نائب العميد",
+     "role_fr": "Vice Doyen",
+     "name": "SAHSAH HASSAN"
+    },
+    {
+     "role_ar": "نائب العميد",
+     "role_fr": "Vice Doyen",
+     "name": "EL GRIDANI ABDERRAHMAN"
+    },
+    {
+     "role_ar": "الكاتب العام",
+     "role_fr": "Secrétaire Général",
+     "name": "MOHIB ABDELGHAFOUR"
+    }
+   ],
+   "address": "B.P 8106 Cité Dakhla Agadir",
+   "phone": "0528220957",
+   "fax": "0528220100",
+   "website": "http://www.fsa.ac.ma/",
+   "website_alt": null,
+   "extra_links": [
+    "https://www.fsa.ac.ma/"
+   ],
+   "uiz_url": "https://www.uiz.ac.ma/faculte-des-sciences-agadir",
+   "presentation_ar": "كلية العلوم بأكادير مؤسسة عمومية للتعليم العالي المغربي، تأسست سنة 1984. تُقدم تكويناً علمياً في الفيزياء والرياضيات والكيمياء وعلوم الحياة والإعلام الآلي وعلوم الأرض. وتُسلّم الشواغر حسب نظام LMD (إجازة، ماستر، دكتوراه). وتتمثل مهمتها أيضاً في تنمية البحث العلمي والتقني بما يلبي متطلبات التنمية الاقتصادية والاجتماعية والثقافية، ولاسيما في جنوب المغرب. وهي من أهم مؤسسات جامعة ابن زهر بأكادير، وتغطي جنوب البلاد كلها. الالتحاق بالشواغر مفتوح لجميع الحاصلين على البكالوريا العلمية أو شهادة معادلة، والشواغر من نوعين: شواغر أساسية تُدرَّس فيها العلوم الأساسية، وشواغر مهنية ذات طابع احترافي. ويشمل التدريس محاضرات (CM) وعمليات موجهة (TD) وعمليات تطبيقية (TP) وأنشطة تطبيقية ومتربصات.",
+   "programs_ar": [],
+   "resources": [],
+   "refs": [
+    "uiz.ac.ma/fr/node/110"
+   ]
+  },
+  {
+   "slug": "fsjes-agadir",
+   "name_ar": "كلية العلوم القانونية والاقتصادية والاجتماعية",
+   "name_fr": "Faculté des Sciences Juridiques, Économiques et Sociales - Agadir",
+   "type": "fac",
+   "city_ar": "أكادير",
+   "leadership": [
+    {
+     "role_ar": "العميد",
+     "role_fr": "Doyen",
+     "name": "MAGGOURI ABDELAALI"
+    },
+    {
+     "role_ar": "نائب العميد",
+     "role_fr": "Vice Doyen",
+     "name": "ABDELLATIF KOUKOUS"
+    },
+    {
+     "role_ar": "الكاتب العام",
+     "role_fr": "Secrétaire Général",
+     "name": "BAKRIM Ahmed"
+    }
+   ],
+   "address": "B.P 8658 Cité Dakhla Agadir",
+   "phone": "0528217808 / 0528232817",
+   "fax": "0528232820",
+   "website": "http://www.fsjes-agadir.org/",
+   "website_alt": "https://efaculty.fsjes-agadir.org/",
+   "extra_links": [
+    "https://www.fsjes-agadir.org/"
+   ],
+   "uiz_url": "https://www.uiz.ac.ma/faculte-des-sciences-juridiques-economiques-et-sociales-agadir",
+   "presentation_ar": "افتُتحت كلية العلوم القانونية والاقتصادية والاجتماعية بأكادير سنة 1999، وتستقبل كل سنة أكثر من 7000 طالب على حرّ يبلغ نحو 9 هكتارات يضم 11 قاعة دراسية بسعة 250 مقعداً، وعدداً من قاعات العمليات الموجهة ومختبرات البحث ومكتبة جامعية. إلى جانب تكوين أساسي مشترك ومجّاني، تقدم الكلية واسعاً من وحدات القيمة الاختيارية، فضلاً عن 3 مسارات للإجازة الأساسية و12 ماستراً تغطي كافة المواضيع الاقتصادية والقانونية. وقد شارك أكثر من 110 أستاذاً باحثاً في الرياد العلمي للكلية وطنياً ودولياً. وتُنظم حياة جمعوية نشيطة العديد من المحافل التي يقدّرها الطلبة والمهنيون: منتديات، وطاولات مستديرة، وندوات، ومؤتمرات وطنية ودولية، وأنشطة رياضية وغيرها.",
+   "programs_ar": [
+    "3 مسارات للإجازة الأساسية",
+    "12 ماستراً تغطي المواضيع الاقتصادية والقانونية"
+   ],
+   "resources": [
+    {
+     "label": "استعمالات الزمن (خريف 2022-2023)",
+     "url": "https://efaculty.fsjes-agadir.org/",
+     "tag": "off,old"
+    }
+   ]
+  },
+  {
+   "slug": "fmp-agadir",
+   "name_ar": "كلية الطب والصيدلة",
+   "name_fr": "Faculté de Médecine et de Pharmacie - Agadir",
+   "type": "fac",
+   "city_ar": "أكادير",
+   "leadership": [
+    {
+     "role_ar": "العميد",
+     "role_fr": "Doyen",
+     "name": "SOUFI MEHDI"
+    },
+    {
+     "role_ar": "نائب العميد",
+     "role_fr": "Vice Doyen",
+     "name": "ZOHRA LEMKHENETE"
+    },
+    {
+     "role_ar": "نائب العميد",
+     "role_fr": "Vice Doyen",
+     "name": "YOUSSEF KHABBAL"
+    },
+    {
+     "role_ar": "الكاتب العام",
+     "role_fr": "Secrétaire Général",
+     "name": "BOUGDAL AHMED"
+    }
+   ],
+   "address": "BP 7519, Quartier Tilila CP 80060 Agadir",
+   "phone": "+212 (0)528234042",
+   "fax": "+212 (0)528234041",
+   "website": "http://fmpa.uiz.ac.ma/",
+   "website_alt": null,
+   "uiz_url": "https://www.uiz.ac.ma/faculte-de-medecine-et-de-pharmacie-agadir",
+   "presentation_ar": "كلية الطب والصيدلة بأكادير مبنيّة على قطعة أرضية تبلغ 10.89 هكتاراً، على مقربة من المدرسة الوطنية الجديدة للعلوم التطبيقية والمدينة الجامعية الجديدة ومركز المستشفيات الجامعية المستقبَل. طاقة الاستيعاب 4500 طالب. استقبلت أول دفعة خلال الموسم الجامعي 2016-2017 بالمجمّع الجامعي الجديد. الإطار البيداغوجي: 15 أستاذاً باحثاً (2 من أساتذة التعليم العالي، و4 أساتذة مبرزين، و9 أساتذة مساعدين). تشمل تخصصات الأساتذة: الغدة الدرقية والأمراض الاستقلابية، والصيدلة العلاجية، وأمراض الكلى، والتخدير والعناية المركزة، والطب الباطني، والأحياء المجهرية، وعلم التشريح، والأمراض العدوية، والطفيليات، والكيمياء الحيوية، وعلم الأنسجة والتوأمية، وأمراض الرئة، والفيزياء الحيوية. مُعدّات المؤسسة: 4 قاعات دراسية، و6 قاعات للدروس، و16 قاعة للعمليات الموجهة، و16 مختبراً للعمليات التطبيقية، ومكتبة ومركز توثيق، ومركز للمحاكاة الطبية، ومركز للتكوين المستمر، ومركز للبحث، و3 قاعات للمناقشة. كلفة المشروع 315 مليون درهم من صندوق التنمية السعودي، وسُلّمت قاعات الكلية في يوليوز 2017. شراكات أكاديمية مع كليات الطب والعلوم الصحية بالمغرب، وجامعة بريتاني الغربية (فرنسا)، وجامعة بورتو (البرتغال)، وجامعة لاس بالماس دي غران كناريا (إسبانيا)، وجامعة كلود بيرنان ليون الأولى (فرنسا).",
+   "programs_ar": [],
+   "resources": []
+  },
+  {
+   "slug": "encg-agadir",
+   "name_ar": "المدرسة الوطنية للتجارة والتسيير",
+   "name_fr": "Ecole Nationale de Commerce et de Gestion - Agadir",
+   "type": "school",
+   "city_ar": "أكادير",
+   "leadership": [
+    {
+     "role_ar": "المدير",
+     "role_fr": "Directeur",
+     "name": "MOHAMED HICHAM HAMRI"
+    },
+    {
+     "role_ar": "المدير المساعد",
+     "role_fr": "Directeur Adjoint",
+     "name": "Abdelhamid AIT BIHI"
+    },
+    {
+     "role_ar": "الكاتب العام",
+     "role_fr": "Secrétaire Général",
+     "name": "GUINTAOUI MOHAMED"
+    }
+   ],
+   "address": "B.P 37/S Hay Salam Agadir",
+   "phone": "0528225748 / 0528225749",
+   "fax": "0528225741",
+   "website": "https://encga.uiz.ac.ma/",
+   "website_alt": "https://www.encg-agadir.ac.ma/",
+   "uiz_url": "https://www.uiz.ac.ma/ecole-nationale-de-commerce-et-de-gestion-agadir",
+   "presentation_ar": "تُقدم المدرسة الوطنية للتجارة والتسيير بأكادير، التابعة لجامعة ابن زهر، تكويناً في التدبير في بيئة مواتية للتعلم وتبادل المعرفة، مدعومة بشراكات مهنية واسعة. وتسمح تنوع العرض بمجانية كل طالب في إيجاد مسار يناسب مشروعه الشخصي والمهني. تُدرّس 4 تخصصات على مستوى +5 ضمن دبلوم المدارس الوطنية للتجارة والتسيير: التدبير المالي والمحاسبي، والتدقيق ومراقبة التسيير، والتسويق، والتجارة الدولية. كما تُدرّس 6 ماسترات متخصصة: تمويل السوق وإدارة المخاطر، وإدارة الموارد البشرية، واللوجستية وإدارة المنصات، ومراقبة التسيير والتمويل، والتخطيط والسياحة التدبيرية، والهندسة والتدبير الاجتماعي للتنمية. وتنعقد أنشطة البحث والتكوين الدكتوراه في تدبير العلوم والتقنيات منذ سنة 2008، ويشارك نحو خمسين دكتور وأستاذ باحث في فرق ومختبرات بحثية معتمدة لدى جامعة ابن زهر. وتنسّق المدرسة عرضاً للتكوين المستمر مع الشركات والإدارات العمومية بالجهة. وتحافظ على شراكات دولية مع إسبانيا وبلجيكا وألمانيا وكندا، مع برامج لتبادل الطلبة وحركية الأساتذة.",
+   "programs_ar": [
+    "4 تخصصات دبلوم المدارس الوطنية (+5): التدبير المالي والمحاسبي · التدقيق ومراقبة التسيير · التسويق · التجارة الدولية",
+    "6 ماسترات متخصصة: تمويل السوق وإدارة المخاطر · إدارة الموارد البشرية · اللوجستية وإدارة المنصات · مراقبة التسيير والتمويل · التخطيط والسياحة التدبيرية · الهندسة والتدبير الاجتماعي للتنمية",
+    "تكوين دكتوراه في تدبير العلوم والتقنيات (معتمد منذ 2008)"
+   ],
+   "resources": []
+  },
+  {
+   "slug": "ensa-agadir",
+   "name_ar": "المدرسة الوطنية للعلوم التطبيقية",
+   "name_fr": "Ecole Nationale des Sciences Appliquées - Agadir",
+   "type": "school",
+   "city_ar": "أكادير",
+   "leadership": [
+    {
+     "role_ar": "المدير",
+     "role_fr": "Directeur PI",
+     "name": "Hicham JAMOULI"
+    },
+    {
+     "role_ar": "الكاتب العام",
+     "role_fr": "Secrétaire Général",
+     "name": "MAHA EL GHILALI"
+    }
+   ],
+   "address": "BP 1136 Agadir",
+   "phone": "0528228313",
+   "fax": "0528232007",
+   "website": "http://www.ensa-agadir.ac.ma/",
+   "website_alt": null,
+   "uiz_url": "https://www.uiz.ac.ma/ecole-nationale-des-sciences-appliquees-agadir",
+   "presentation_ar": "سنة 1999 افتتحت جامعة ابن زهر أول مدرسة للهندسة بالجهة: المدرسة الوطنية للعلوم التطبيقية بأكادير، وهي مؤسسة لتكوين المهندسين تُقدّم خلال خمس سنوات للبكالوريين المتقدمين تكويناً مهنياً ومتعدد المجالات وكاملاً. تُخرِّج المهندسين القادرين على تحمل المسؤوليات المنوطة بهم ومنافسة خريجي كبرى المدارس الهندسية الدولية. يُسمح لحاملي البكالوريا العلمية والتقنية بالالتحاق بعد استيفاء شروط الانتقاء واجتياز الاختبار المشترك مع كل المدارس الوطنية للعلوم التطبيقية (ensa-concours.ma). وتنتخب المدرسة في سنتها الثالثة، وبعد اختبار داخلي، الطلبة الحاصلين على أربع سنوات جامعية بنجاح، أو على دبلوم التكنولوجيا التطبيقية، أو تلاميذ الأقسام التحضيرية. كما يُقبل الطلبة الحاصلون على إجازة أو ماستر علمي بتقديم ملف لدخول السنة الرابعة. وتُسلّم المدرسة شواغر ماستر، وتضم هياكل بحثية وتكوينات دكتوراه. تشمل دورة تحضيرية من سنتين ودورة المهندس في التخصصات: هندسة الإجراءات في الطاقة والبيئة، والهندسة المدنية (الأشغال العمومية)، والهندسة الصناعية، وعلوم الحاسوب، والهندسة الكهربائية، والهندسة الميكانيكية. وتُدرّس ماستران متخصصان: كفاءة الطاقة والتحكم في المباني، والهندسة المالية. يلتحق كل سنة بمرحلة التحضيرية 180 بكالوريا مغربياً ونحو 10 بكالوريين أجانب، ومعظمهم من إفريقيا. ويستقبل دور المهندس نحو 60 طالباً من الاختبار الوطني المشترك، و20 إلى 40 طالباً من دبلوم التكنولوجيا التطبيقية وشهادة التأهيل الجامعي وما يعادلها. وتضم المدرسة أكثر من 1100 طالب بمعدّل 200 خريج سنوياً. ويضم الفريق البيداغوجي 56 أستاذاً: 15 أستاذاً للتعليم العالي، و18 أستاذاً مؤهلاً لتوجيه البحث، و21 أستاذاً مساعداً، وأستاذين للثانوي. ويضم الطاقم الإداري 11 عاملاً و4 مهندسين و8 تقنيين و4 مساعدين تقنيين.",
+   "programs_ar": [
+    "دورة تحضيرية من سنتين",
+    "دورة المهندس: هندسة الإجراءات في الطاقة والبيئة · الهندسة المدنية · الهندسة الصناعية · علوم الحاسوب · الهندسة الكهربائية · الهندسة الميكانيكية",
+    "ماستر متخصص: كفاءة الطاقة والتحكم في المباني",
+    "ماستر متخصص: الهندسة المالية"
+   ],
+   "resources": []
+  },
+  {
+   "slug": "esta-agadir",
+   "name_ar": "المدرسة العليا للتكنولوجيا",
+   "name_fr": "Ecole Supérieure de Technologie - Agadir",
+   "type": "school",
+   "city_ar": "أكادير",
+   "leadership": [
+    {
+     "role_ar": "المدير",
+     "role_fr": "Directeur",
+     "name": "MEDIOUNI MOHAMED"
+    },
+    {
+     "role_ar": "المدير المساعد",
+     "role_fr": "Directeur Adjoint",
+     "name": "EL IHSSINI HOSSINE"
+    },
+    {
+     "role_ar": "الكاتب العام",
+     "role_fr": "Secrétaire Général",
+     "name": "AZEDINE MAAZOUZ"
+    }
+   ],
+   "address": "B.P 33/S Agadir",
+   "phone": "0528232583 / 0661686316",
+   "fax": "0528227824",
+   "website": "http://www.esta.ac.ma/",
+   "website_alt": "https://www.esta.ac.ma/",
+   "uiz_url": "https://www.uiz.ac.ma/ecole-superieure-de-technologie-agadir",
+   "presentation_ar": "تُعد المدرسة العليا للتكنولوجيا بأكادير من أوائل المدارس في المغرب بحسب نموذج المدرسة العليا للتكنولوجيا. وقد أثبتت فاعليتها في تنمية التكوين التقني عبر فتح شواغر دبلوم جامعي للتكنولوجية جذّابة، مرتبطة بالحاجيات الجهوية والوطنية، ومراعية للتنمية الاقتصادية والاجتماعية والتقدم التقني في مختلف القطاعات التي تظهر فيها وظائف تقنية جديدة للإشراف. هذه الوظائف تستلزم تخصصاً أعمق وتكويناً عاماً أوسع، ومواصلة للتفكير، وإتقاناً كافياً لوسائل التعبير والتواصل، وقدرة على التكيف مع محيط في تبدل دائم. وفي الموسم الجامعي 2014/2015 شكّل ذلك نقطة تحوّل للمدرسة، التي فتحت أربع شواغر للإجازة المهنية إضافة إلى تكوينات دبلوم التكنولوجيا التطبيقية. وتُسهم المدرسة في التكوين-البحث-المؤسسة بوصفها واجهة مطورة بين الجامعة والقطاع الاقتصادي.",
+   "programs_ar": [
+    "دبلوم جامعي للتكنولوجية (DUT)",
+    "إجازات مهنية (من بينها 4 فُتحت في 2014/2015)"
+   ],
+   "resources": []
+  },
+  {
+   "slug": "esef-agadir",
+   "name_ar": "المدرسة العليا للتربية والتكوين",
+   "name_fr": "Ecole Supérieure de l'Education et de la Formation - Agadir",
+   "type": "school",
+   "city_ar": "أكادير",
+   "leadership": [
+    {
+     "role_ar": "المدير",
+     "role_fr": "Directeur",
+     "name": "AMSIDDER ABDERRAHMANE"
+    },
+    {
+     "role_ar": "المدير المساعد",
+     "role_fr": "Directeur Adjoint",
+     "name": "HILAL ELMOKHTAR"
+    },
+    {
+     "role_ar": "الكاتب العام",
+     "role_fr": "Secrétaire Général",
+     "name": "WAHMANE RACHID"
+    }
+   ],
+   "address": "Nouveau Complexe Universitaire d'Agadir",
+   "phone": "+212 528227125",
+   "fax": "+212 528227260",
+   "website": "http://esefa.uiz.ac.ma/",
+   "website_alt": null,
+   "uiz_url": "https://www.uiz.ac.ma/ecole-superieure-de-leducation-et-de-la-formation-agadir",
+   "presentation_ar": "افتُتحت المدرسة العليا للتربية والتكوين بأكادير سنة 2019، وهي مؤسسة عمومية للتعليم العالي تابعة لجامعة ابن زهر. تتمثل مهمتها الأساسية في تقديم تكوين ملائم لقطاع التربية، بما ينسجم مع الرؤية الاستراتيجية 2015-2030 والقانون الإطار 51.17. وقد أُنشئت لتوفير كفاءات مكوّنة في البيداغوجية والدراسة وأساليب التدريس وعلوم التربية، قصد تلبية الاحتياجات المتنامية في قطاع التدريس. وتقترح تكوينات من نوع إجازة للتعليم الابتدائي والثانوي. كما تقترح دورات لمواكبة القطاع الخاص وتعزيز قدرات أطره التدريسية. وتُفتح تكوينات حسب الطلب بحسب احتياجات المتدخلين التربويين: الأساتذة، والمفتشون، والموجّهون، ومسؤولو المؤسسات، والأساتذة المتربصون. وأخيراً، تقترح المدرسة تكوينات في اللغات (العربية والفرنسية والإنجليزية) وفي التواصل وفي البيداغوجية الرقمية. وتقترح حالياً إجازات التعليم الثانوي في: اللغة الفرنسية، واللغة الإنجليزية، والرياضيات، والإعلام الآلي، وعلوم الحياة والأرض، والفيزياء والكيمياء، والاقتصاد والتسيير، إضافة إلى إجازة التعليم الابتدائي.",
+   "programs_ar": [
+    "إجازة التعليم الثانوي: اللغة الفرنسية · اللغة الإنجليزية · الرياضيات · الإعلام الآلي · علوم الحياة والأرض · الفيزياء والكيمياء · الاقتصاد والتسيير",
+    "إجازة التعليم الابتدائي"
+   ],
+   "resources": []
+  },
+  {
+   "slug": "chariaa-ait-melloul",
+   "name_ar": "كلية الشريعة",
+   "name_fr": "Faculté Chariaa - Ait Melloul",
+   "type": "fac",
+   "city_ar": "أيت ملول",
+   "leadership": [
+    {
+     "role_ar": "العميد",
+     "role_fr": "Doyen",
+     "name": "AIT EL MAKI ABDELAZIZ"
+    },
+    {
+     "role_ar": "نائب العميد",
+     "role_fr": "Vice Doyen",
+     "name": "Sidi Mohamed EL OUARDI"
+    },
+    {
+     "role_ar": "الكاتب العام",
+     "role_fr": "Secrétaire Général",
+     "name": "OUBAHMAN ALI"
+    }
+   ],
+   "address": "B.P 52 Almazar Ait Melloul",
+   "phone": "0528241868 / 0528241869",
+   "fax": "0528241228",
+   "website": "http://www.chariaa-agadir.ac.ma",
+   "website_alt": null,
+   "uiz_url": "https://www.uiz.ac.ma/faculte-chariaa-ait-melloul",
+   "presentation_ar": "تأسست كلية الشريعة بعد المقابلة الملكية السامية التي تشرف بها وفد جمعية علماء سوس بمعية الأمين العام لرابطة علماء المغرب ووفد من علماء القرويين بالقصر الملكي العامر بفاس بتاريخ 28 جمادى الآخرة سنة 1398هـ الموافق 5 يونيو 1978م، حيث عُرضت فيها رغبة الوفد ورغبة جمعية علماء سوس بإنشاء كلية الشريعة بأكادير، فأصدر أمير المؤمنين أوامره السامية بتأسيسها. وقد شُرعت في تأدية الرسالة وفتحت أبوابها ونظمت الدراسة ابتداءً من الموسم الجامعي 1978-1979م. وأُحدثت بمقتضى المرسوم الحكومي رقم 2.79.283 الصادر في 23 رجب 1399هـ الموافق 19 يونيو 1979م، ومنشور في الجريدة الرسمية عدد 3477 صحيفة 1736 بتاريخ 24 رجب 1399هـ الموافق 20 يونيو 1979م. يربط هذا التكوين بين الدراسات الشرعية والدراسات القانونية لما لذلك من أهمية، باعتبار أن الأحكام الشرعية مصدر مادي للقانون، وباعتبار أن الشريعة والقانون يقتسمان تنظيم العلاقات بين الأشخاص، خاصة في المجال الأسري والمجال المدني، فيتحقق بينهما التكامل. ويهتم علم الشريعة بمجال العبادات والمعاملات والعادات فيحدد علاقة الإنسان بخالقه وعلاقاته بغيره من الناس في معاملاته اليومية كما ينظم السلوك الاجتماعي للأفراد وعلاقاتهم الأسرية، بينما تمكن دراسة العلوم القانونية الطالب من معرفة حقوقه والتزاماته في حياته الخاصة والعامة. ويتيح هذا المزج للطلبة: دراسة نظرية وتطبيقية تكفل لهم معلومات أساسية في المجال الشرعي والقانوني مرتبطة بالاهتمام العام بالمواطن المغربي وبواقعه المعاش؛ والإحاطة بالمصادر الأساسية للقواعد الشرعية وبالظروف التي نشأت فيها وتطورها؛ والتمكن من القواعد القانونية ومعرفة مصادرها والمساطر المعتمدة في تطبيقها لدى المحاكم؛ والقدرة على استعمال المعلومات المحصل عليها في التوجيه الديني الصحيح؛ والقدرة على ممارسة الوظائف الدينية والقانونية بكفاءة؛ والقدرة على التواصل مع مختلف شرائح المجتمع والحوار مع المتكلمين بلغة أجنبية؛ والقدرة على التوجيه وتوضيح رأي الشريعة الإسلامية في مختلف القضايا؛ والقدرة على التوفيق بين الآراء المختلفة وحل النزاعات القانونية.",
+   "programs_ar": [],
+   "resources": []
+  },
+  {
+   "slug": "fsa-ait-melloul",
+   "name_ar": "كلية العلوم التطبيقية",
+   "name_fr": "Faculté des Sciences Appliquées - Ait Melloul",
+   "type": "fac",
+   "city_ar": "أيت ملول",
+   "leadership": [
+    {
+     "role_ar": "العميد",
+     "role_fr": "Doyen",
+     "name": "RACHIDI ALI"
+    },
+    {
+     "role_ar": "نائب العميد",
+     "role_fr": "Vice Doyen",
+     "name": "TAHER ZAKI"
+    },
+    {
+     "role_ar": "نائب العميد",
+     "role_fr": "Vice Doyen",
+     "name": "TIRBIYINE AHMED"
+    },
+    {
+     "role_ar": "الكاتب العام",
+     "role_fr": "Secrétaire Général",
+     "name": "AHMED NAAIM"
+    }
+   ],
+   "address": "Route Nationale N°10, Cité d'Azrou, à côté de l'Institut Agronomique et Vétérinaire Hassan II, Ait Melloul",
+   "phone": null,
+   "fax": null,
+   "website": "http://fsa-am.uiz.ac.ma",
+   "website_alt": null,
+   "uiz_url": "https://www.uiz.ac.ma/faculte-des-sciences-appliquees-ait-melloul",
+   "presentation_ar": null,
+   "programs_ar": [],
+   "resources": []
+  },
+  {
+   "slug": "flash-ait-melloul",
+   "name_ar": "كلية اللغات والفنون والعلوم الإنسانية",
+   "name_fr": "Faculté des Langues, Arts et Sciences Humaines - Ait Melloul",
+   "type": "fac",
+   "city_ar": "أيت ملول",
+   "leadership": [
+    {
+     "role_ar": "العميد",
+     "role_fr": "Doyen",
+     "name": "ABDELKHALEQ JAYED"
+    },
+    {
+     "role_ar": "نائب العميد",
+     "role_fr": "Vice Doyen",
+     "name": "ABDELKADER MELLOUK"
+    },
+    {
+     "role_ar": "نائب العميد",
+     "role_fr": "Vice Doyen",
+     "name": "MOHAMED OUDADA"
+    },
+    {
+     "role_ar": "الكاتب العام",
+     "role_fr": "Secrétaire Général",
+     "name": "LHOU BENHICH"
+    }
+   ],
+   "address": "Route Nationale N°10, Cité d'Azrou, à côté de l'Institut Agronomique et Vétérinaire Hassan II, Ait Melloul",
+   "phone": null,
+   "fax": null,
+   "website": "http://www.flash.uiz.ac.ma/",
+   "website_alt": null,
+   "uiz_url": "https://www.uiz.ac.ma/faculte-des-langues-arts-et-sciences-humaines-ait-melloul",
+   "presentation_ar": null,
+   "programs_ar": [],
+   "resources": []
+  },
+  {
+   "slug": "fsjes-ait-melloul",
+   "name_ar": "كلية العلوم القانونية والاقتصادية والاجتماعية",
+   "name_fr": "Faculté des Sciences Juridiques, Économiques et Sociales - Ait Melloul",
+   "type": "fac",
+   "city_ar": "أيت ملول",
+   "leadership": [
+    {
+     "role_ar": "العميد",
+     "role_fr": "Doyen",
+     "name": "RAHIM ETTOR"
+    },
+    {
+     "role_ar": "نائب العميد",
+     "role_fr": "Vice Doyen",
+     "name": "HASSAN LILI"
+    },
+    {
+     "role_ar": "نائب العميد",
+     "role_fr": "Vice Doyen",
+     "name": "BRAHIM MOULAY GOUMGHAR"
+    },
+    {
+     "role_ar": "الكاتب العام",
+     "role_fr": "Secrétaire Général",
+     "name": "AKHARAZ AHMED"
+    }
+   ],
+   "address": "Route Nationale N°10, Cité d'Azrou, Ait Melloul",
+   "phone": null,
+   "fax": "+212 528242423",
+   "website": "http://fsjes-cuam.uiz.ac.ma/",
+   "website_alt": null,
+   "uiz_url": "https://www.uiz.ac.ma/faculte-des-sciences-juridiques-economiques-et-sociales-ait-melloul",
+   "presentation_ar": "كلية العلوم القانونية والاقتصادية والاجتماعية بأيت ملول مؤسسة عمومية للتعليم العالي والبحث العلمي، تابعة لجامعة ابن زهر بأكادير، أُنشئت سنة 2015. وهي تُهيّئ لبكالوريوسي الأقاليم الآتية: إنزكان أيت ملول، وشتوكة أيت باها، وتارودانت، وتزنيت، شواغرَ في «العلوم الاقتصادية والتسيير» و«الحقوق باللغة العربية». تستقبل الكلية أكثر من 6000 طالب كل سنة، وتضم 5 أطر إدارية وأكثر من 30 أستاذاً. وتتمثل مهامها في: تكوين الأطر المتوسطة والعليا في المجالات القانونية والاقتصادية والاجتماعية، وتهيئة الطلبة وتيسير إدماجهم في الحياة المهنية، وتلبية احتياجات المؤسسات الخاصة والعمومية للمجتمع المغربي، وتنمية البحث العلمي في المجالات القانونية والاقتصادية والتسييرية والاجتماعية. وتستقبل الطلبة من أقاليم إنزكان أيت ملول وشتوكة أيت باها وتارودانت وتزنيت والمناطق المجاورة لها.",
+   "programs_ar": [
+    "العلوم الاقتصادية والتسيير",
+    "الحقوق باللغة العربية"
+   ],
+   "resources": []
+  },
+  {
+   "slug": "fpo-ouarzazate",
+   "name_ar": "الكلية المتعددة التخصصات",
+   "name_fr": "Faculté Polydisciplinaire - Ouarzazate",
+   "type": "fac",
+   "city_ar": "ورزازات",
+   "leadership": [
+    {
+     "role_ar": "العميد",
+     "role_fr": "Doyen",
+     "name": "Nabil SAFFAJ"
+    },
+    {
+     "role_ar": "نائب العميد",
+     "role_fr": "Vice Doyen",
+     "name": "Mohamed BENADDY"
+    },
+    {
+     "role_ar": "نائب العميد",
+     "role_fr": "Vice Doyen",
+     "name": "Driss BOUTAAYAMOU"
+    },
+    {
+     "role_ar": "الكاتب العام",
+     "role_fr": "Secrétaire Général",
+     "name": "AZIZ OUHEDDA"
+    }
+   ],
+   "address": "Avenue Moulay Ettahar Ben Abdulkarim, Ouarzazate",
+   "phone": "0524885798",
+   "fax": "0524885801",
+   "website": "https://fpo.uiz.ac.ma",
+   "website_alt": "https://www.fpo.ma/",
+   "uiz_url": "https://www.uiz.ac.ma/faculte-polydisciplinaire-ouarzazate",
+   "presentation_ar": "الكلية المتعددة التخصصات بوَرزازات تابعة لجامعة ابن زهر بأكادير، وهي مؤسسة شابة وديناميكية ومطّلّة على المستقبل. تُدرّس فيها تكوينات متعددة التخصصات، وتضع لنفسها في سياسة التكوين عدة أهداف أبرزها: الانفتاح على المحيط الاقتصادي والاجتماعي، وتنمية البحث العلمي وترسيخ محاوره في البيئة المحيطة، أي منطقة درعة، واستقبال الطلبة ومواكبتهم بيداغوجياً وتوجيههم لتهيئتهم لإدماج أفضل في المجال المهني. وفي مجال البحث العلمي اعتُمدت عدة فرق لتنمية البحث الأكاديمي داخل المؤسسة، وقد وُقّعت تعاونات بحثية مع شركاء جامعيين وطنيين ودوليين في مجالات متعددة تندرج في خمسة محاور فاعلة: السينما، واللغات، والرياضيات التطبيقية، وعلوم المهندس، والأدب، والبيئة، والإعلام الآلي، والمصادر المتجددة. وتقع الكلية على مساحة 31 هكتاراً و97 آراً و75 سنتياراً، منها 5 هكتارات مغطاة، وتشمل: مبنى إدارياً واحداً، و3 قاعات دراسية، و40 قاعة للدروس والعمليات التطبيقية، ومكتبة قيد الإنجاز والتجهيز، وستوديو (قيد الإنجاز والتجهيز) يضم منصة تلفزيونية وغرفة تحكّم وقبوًّا للتسجيل ومنصة لما بعد الإنتاج.",
+   "programs_ar": [],
+   "resources": []
+  },
+  {
+   "slug": "est-ouarzazate",
+   "name_ar": "المدرسة العليا للتكنولوجيا",
+   "name_fr": "Ecole Supérieure de Technologie - Ouarzazate",
+   "type": "school",
+   "city_ar": "ورزازات",
+   "leadership": [
+    {
+     "role_ar": "المدير",
+     "role_fr": "Directeur",
+     "name": "Lahcen BAMMOU"
+    }
+   ],
+   "address": null,
+   "phone": null,
+   "fax": null,
+   "website": null,
+   "website_alt": null,
+   "uiz_url": "https://www.uiz.ac.ma/ecole-superieure-de-technologie-ouarzazate",
+   "presentation_ar": null,
+   "programs_ar": [],
+   "resources": []
+  },
+  {
+   "slug": "fpt-taroudant",
+   "name_ar": "الكلية المتعددة التخصصات",
+   "name_fr": "Faculté Polydisciplinaire - Taroudant",
+   "type": "fac",
+   "city_ar": "تارودانت",
+   "leadership": [
+    {
+     "role_ar": "العميد",
+     "role_fr": "Doyen",
+     "name": "HASSAN HMAYZ"
+    },
+    {
+     "role_ar": "نائب العميد",
+     "role_fr": "Vice Doyen",
+     "name": "ELMORJANI ZINE ELAABIDINE"
+    },
+    {
+     "role_ar": "نائب العميد",
+     "role_fr": "Vice Doyen",
+     "name": "HAMADI ABDELLATIF"
+    },
+    {
+     "role_ar": "الكاتب العام",
+     "role_fr": "Secrétaire Général",
+     "name": "AIT TALEB ABDELAZIZ"
+    }
+   ],
+   "address": "Hay El Mohammadi (Lastah), B.P 271, Taroudant",
+   "phone": "0528551010",
+   "fax": "0528551020",
+   "website": "http://www.fpt.ac.ma",
+   "website_alt": null,
+   "uiz_url": "https://www.uiz.ac.ma/faculte-polydisciplinaire-taroudant",
+   "presentation_ar": "افتُتحت الكلية المتعددة التخصصات بتارودانت سنة 2010، وهي إحدى المحطات الجامعية للجنوب الكبير الذي تسعى جامعة ابن زهر إلى تحقيق هدفين رئيسيين: تقريب التكوين الجامعي من شباب هذه الجهات، واندماج الجامعة في سياقها عبر تكوينات مهنية متجذّرة في المحيط الاقتصادي والاجتماعي. يشارك نحو 30 أستاذاً باحثاً و14 إطاراً إدارياً وتقنياً في تطوير هذه الكلية الشابة، بتعاون وثيق مع مختلف مكوّنات الجامعة. وتهيّئ الشواغر الطلبة في مختلف الحقول التدريسية: العلوم والتقنيات، والاقتصاد والتسيير، والآداب والعلوم الإنسانية والاجتماعية. وقد عرفت الكلية، خلال أولي سنتين من وجودها، حياة جمعوية وثقافية نشيطة، عبر تنظيم العديد من المظاهرات العلمية والثقافية، كثيرٌ منها بمبادرة الطلبة داخل الإطار البيداغوجي والإداري المتفاني.",
+   "programs_ar": [],
+   "resources": []
+  },
+  {
+   "slug": "ensiasd-taroudant",
+   "name_ar": "المدرسة الوطنية العليا للذكاء الاصطناعي وعلوم البيانات",
+   "name_fr": "Ecole Nationale Supérieure de l'Intelligence Artificielle et Sciences des Données de Taroudant",
+   "type": "school",
+   "city_ar": "تارودانت",
+   "leadership": [
+    {
+     "role_ar": "المدير",
+     "role_fr": "Directeur PI",
+     "name": "ANTARI JILALI"
+    },
+    {
+     "role_ar": "الكاتب العام",
+     "role_fr": "Secrétaire Général",
+     "name": "Abderahim AHMEDOUNACER"
+    }
+   ],
+   "address": null,
+   "phone": null,
+   "fax": null,
+   "website": "www.ensiasdt.ac.ma",
+   "website_alt": null,
+   "uiz_url": "https://www.uiz.ac.ma/ecole-nationale-superieure-de-lintelligence-artificielle-et-sciences-des-donnees-de-taroudant-0",
+   "presentation_ar": null,
+   "programs_ar": [],
+   "resources": []
+  },
+  {
+   "slug": "fp-smara",
+   "name_ar": "الكلية المتعددة التخصصات",
+   "name_fr": "Faculté Polydisciplinaire - Smara",
+   "type": "fac",
+   "city_ar": "السمارة",
+   "leadership": [
+    {
+     "role_ar": "العميد",
+     "role_fr": "Doyen",
+     "name": "P.I M'HAMED MAHDANE"
+    },
+    {
+     "role_ar": "الكاتب العام",
+     "role_fr": "Secrétaire Général",
+     "name": "Abdelfattah EL MESSOUDI"
+    }
+   ],
+   "address": "B.P 195, Smara",
+   "phone": "0528888936",
+   "fax": "0528888937",
+   "website": "https://www.chariaasmara.com/fr/",
+   "website_alt": null,
+   "uiz_url": "https://www.uiz.ac.ma/faculte-polydisciplinaire-smara",
+   "presentation_ar": null,
+   "programs_ar": [],
+   "resources": []
+  },
+  {
+   "slug": "est-guelmim",
+   "name_ar": "المدرسة العليا للتكنولوجيا",
+   "name_fr": "Ecole Supérieure de Technologie - Guelmim",
+   "type": "school",
+   "city_ar": "كلميم",
+   "leadership": [
+    {
+     "role_ar": "المدير",
+     "role_fr": "Directeur",
+     "name": "RACHID MARKAZI"
+    },
+    {
+     "role_ar": "الكاتب العام",
+     "role_fr": "Secrétaire Général",
+     "name": "ALAOUI MOULAY YOUSSEF"
+    }
+   ],
+   "address": "Avenue Abou Maachar Al Balkhi, B.P 1317, Guelmim",
+   "phone": "0528770273",
+   "fax": "0528772746",
+   "website": "http://www.estg.ac.ma/",
+   "website_alt": "http://www.estg.ac.ma/",
+   "uiz_url": "https://www.uiz.ac.ma/ecole-superieure-de-technologie-guelmim",
+   "presentation_ar": "أنشأت جامعة ابن زهر المدرسة العليا للتكنولوجيا بكلميم لمواكبة الإصلاحات التي يعرفها قطاع التكوين والتربية، ولاسيما اللامركزية وإنشاء هيئات جامعية تلبي، في مجال التكوين، الحاجيات الجهوية. وقد دعت هذه الإنشاء غياب الهياكل الجامعية بالجهة رغم الموقع الاستراتيجي الذي تشغله. وسائراً على الاستراتيجية الوطنية المتمثلة في توجيه 33% من حاملي البكالوريا نحو شواغر العلوم والتقنيات، ومراعاةً لبعض الحاجيات الجهوية، افتُتحت تكوينات دبلوم جامعي للتكنولوجية قادرة على مواكبة التنمية الاقتصادية بالجهة. وللانفتاح أكثر على المحيط الاقتصادي والاجتماعي، ستُفتح شواغر دبلوم جامعي من مستوى +3 وتكوينات مستمرة. وعند بلوغ الطاقة الكاملة تستطيع هذه المدرسة تسويق 500 خريج سنوياً، وتوجيه نحو مائة دبلوم جامعي، وتأمين التكوين المستمر لـ 300 إطار.",
+   "programs_ar": [
+    "دبلوم جامعي للتكنولوجية (DUT)",
+    "دبلوم جامعي +3 (DU)",
+    "تكوين مستمر"
+   ],
+   "resources": []
+  },
+  {
+   "slug": "feg-guelmim",
+   "name_ar": "كلية الاقتصاد والتسيير",
+   "name_fr": "Faculté d'Economie et de Gestion - Guelmim",
+   "type": "fac",
+   "city_ar": "كلميم",
+   "leadership": [
+    {
+     "role_ar": "العميد",
+     "role_fr": "Doyen",
+     "name": "YOUSSEF EL WAZANI"
+    },
+    {
+     "role_ar": "نائب العميد",
+     "role_fr": "Vice Doyen",
+     "name": "EL KHOURCHI BABA"
+    },
+    {
+     "role_ar": "الكاتب العام",
+     "role_fr": "Secrétaire Général",
+     "name": "KHARBOUCH MOHAMED"
+    }
+   ],
+   "address": null,
+   "phone": null,
+   "fax": null,
+   "website": null,
+   "website_alt": null,
+   "uiz_url": "https://www.uiz.ac.ma/faculte-deconomie-et-de-gestion-guelmim",
+   "presentation_ar": null,
+   "programs_ar": [],
+   "resources": []
+  },
+  {
+   "slug": "fmp-guelmim",
+   "name_ar": "كلية الطب والصيدلة",
+   "name_fr": "Faculté de Médecine et de Pharmacie - Guelmim",
+   "type": "fac",
+   "city_ar": "كلميم",
+   "leadership": [
+    {
+     "role_ar": "العميدة",
+     "role_fr": "Doyenne",
+     "name": "Imane AZZAM"
+    },
+    {
+     "role_ar": "الكاتب العام",
+     "role_fr": "Secrétaire Général",
+     "name": "MOHAMED AIT AHMED"
+    }
+   ],
+   "address": null,
+   "phone": null,
+   "fax": null,
+   "website": "http://fmpg.uiz.ac.ma/",
+   "website_alt": null,
+   "uiz_url": "https://www.uiz.ac.ma/faculte-de-medecine-et-de-pharmacie-guelmim",
+   "presentation_ar": null,
+   "programs_ar": [],
+   "resources": []
+  },
+  {
+   "slug": "est-laayoune",
+   "name_ar": "المدرسة العليا للتكنولوجيا",
+   "name_fr": "Ecole Supérieure de Technologie - Laâyoune",
+   "type": "school",
+   "city_ar": "العيون",
+   "leadership": [
+    {
+     "role_ar": "المدير",
+     "role_fr": "Directeur",
+     "name": "HAMID RGUIBI IDRISSI"
+    },
+    {
+     "role_ar": "المدير المساعد",
+     "role_fr": "Directeur Adjoint",
+     "name": "SIDATI KHABID"
+    },
+    {
+     "role_ar": "الكاتب العام",
+     "role_fr": "Secrétaire Général",
+     "name": "MAHMOUD EL BALLAOUI"
+    }
+   ],
+   "address": "Quartier 25 Mars, BP 3007, Laâyoune",
+   "phone": "+212 (0)658566033",
+   "fax": null,
+   "website": "http://w2.estl.ac.ma/",
+   "website_alt": null,
+   "uiz_url": "https://www.uiz.ac.ma/ecole-superieure-de-technologie-laayoune",
+   "presentation_ar": "المدرسة العليا للتكنولوجيا بالعيون مؤسسة عمومية للتعليم العالي، أُنشئت سنة 2014، وتُعد مكوّنة من جامعة ابن زهر. وهي مبنيّة على مساحة 3.70 هكتاراً تشمل: قاعة دراسية بسعة 200 مقعداً، و6 قاعات للدروس بسعة 80، و6 قاعات للعمليات الموجهة بسعة 48، و6 قاعات لتكوين متخصص، و9 قاعات للعمليات التطبيقية، ومكتبة ومركز توثيق، ومصالح إدارية، ومصلحة شؤون الطلبة، ومصالح بيداغوجية (بما فيها مقصف)، وقاعة صلاة، ومقصف للطلبة، وعيادة، ومصلحة تجديد النسخ، وفضاء ورشة، وغرفة باردة، وورشة صيانة، ومستودع للمعدات والمواد، ومبنيين صحّيين (للرجال والنساء). وتتمثل مهامها في: تكوين تقنيين عليا متعدد المجالات وكفؤين وعمليين، وتطوير علاقات تعاون وشراكة مع المحيط الاقتصادي والاجتماعي، وتنمية التكوين المستمر للعاملين في المؤسسات العمومية والخاصة عبر تنظيم ندوات وورشات، وتسريع نقل التقنية عبر تكامل المدرسة-المؤسسات، وتيسير إدماج الخريجين المستقبَلين في سوق الشغل. ويُقام الالتحاق بالمدرسة بانتقاء مسبق مبني على النتائج المحصّل عليها في البكالوريا. وتُسلّم المدرسة خلال سنتين تكويناً علمياً وتقنياً يُتوَّج بشهادة دبلوم جامعي للتكنولوجية، ويُخرِّج تقنيين عليا في: هندسة الإعلام الآلي، وتقنيات التدبير، وتقنيات التسويق والتواصل.",
+   "programs_ar": [
+    "دبلوم جامعي للتكنولوجية (سنتان): هندسة الإعلام الآلي · تقنيات التدبير · تقنيات التسويق والتواصل"
+   ],
+   "resources": []
+  },
+  {
+   "slug": "fmp-laayoune",
+   "name_ar": "كلية الطب والصيدلة",
+   "name_fr": "Faculté de Médecine et de Pharmacie - Laâyoune",
+   "type": "fac",
+   "city_ar": "العيون",
+   "leadership": [
+    {
+     "role_ar": "العميدة",
+     "role_fr": "Doyenne",
+     "name": "FATIMA ZAHRA ELHAFIDI ELALAOUI"
+    },
+    {
+     "role_ar": "الكاتب العام",
+     "role_fr": "Secrétaire Général",
+     "name": "ABDELLAH ELHOURRE"
+    }
+   ],
+   "address": null,
+   "phone": null,
+   "fax": null,
+   "website": null,
+   "website_alt": null,
+   "uiz_url": "https://www.uiz.ac.ma/faculte-de-medecine-et-de-pharmacie-laayoune",
+   "presentation_ar": null,
+   "programs_ar": [],
+   "resources": []
+  },
+  {
+   "slug": "encg-dakhla",
+   "name_ar": "المدرسة الوطنية للتجارة والتسيير",
+   "name_fr": "Ecole Nationale de Commerce et de Gestion - Dakhla",
+   "type": "school",
+   "city_ar": "الداخلة",
+   "leadership": [
+    {
+     "role_ar": "المدير",
+     "role_fr": "Directeur",
+     "name": "AZIZ SAIR"
+    },
+    {
+     "role_ar": "المدير المساعد",
+     "role_fr": "Directeur Adjoint",
+     "name": "LAHOUCINE ASSELLAM"
+    },
+    {
+     "role_ar": "الكاتب العام",
+     "role_fr": "Secrétaire Général",
+     "name": "ABOUABDELLAH AHMED"
+    }
+   ],
+   "address": "BP 386, Dakhla",
+   "phone": "+212 528935853",
+   "fax": "+212 528930658",
+   "website": "http://www.encg-dakhla.ac.ma/",
+   "website_alt": null,
+   "uiz_url": "https://www.uiz.ac.ma/ecole-nationale-de-commerce-et-de-gestion-dakhla",
+   "presentation_ar": "يُعدّ تكوين المدرسة الوطنية للتجارة والتسيير بالداخلة ناجحاً في توجيه برامجها نحو احتياجات الاقتصاد الوطني وسوق الشغل. وتشكّل الإبداع والصرامة والكفاءة ثقافة وقيم كل تلميذ في المدرسة. ولتحقيق ذلك، يُعتمد نهج تكوين عالي الجودة، مرن وتطوري وسهل التكيّف مع احتياجات المؤسسات من حيث الكم والنوع، وهو مفتوح على الدولية اعتماداً على استراتيجية بيداغوجية حديثة تقوم على البنية «المعيارية». فالوحدة المعيارية هي الوحدة الأساسية في نظام التكوين، وتتألف من واحد إلى أربعة عناصر قد تُدرَّس بلغة واحدة أو أكثر، وقد تكون مادة نظرية و/أو عمليات موجهة و/أو عمليات تطبيقية، أو نشاطاً عملياً في الميدان أو مشروعاً أو تربصاً أو مشاركة فعّالة في العمل الجمعوي. كما يُعتمد على متدخلين مهنيين (رؤساء ومسؤولو شركات، خبراء، مستشارون ماليون وضريبيون) وعلى أستاذة زائرين وطنيين وأجانب. وتولي المدرسة أهمية كبيرة للحياة الجمعوية التي تمثّل مساحة للتطور والنمو الشخصي، مع تنوع المجالات الثقافية والفنية والرياضية والبيداغوجية. وتتوفر المدرسة على 16 428 متراً مربعاً، تشمل مصالح إدارية (498 متراً مربعاً)، وقسماً للدروس (1498 متراً مربعاً): قاعة دراسية بسعة 250، و5 قاعات بسعة 100، وقاعدتين إعلاميتين بسعة 60، و3 مكاتب بيداغوجية، ومكتبة ومركز توثيق (500 متراً مربعاً)، ومرافق صحية (148 متراً مربعاً)، إضافة إلى المرافق الملحقة (مقصف، قاعة صلاة، سياج، تجهيزات خارجية وفضاءات خضراء، موقف سيارات، وممرات). الانتقاء صارم: تُقبل المدارس الوطنية للتجارة والتسيير أفضل المرشحين بعد اجتياز الاختبار الوطني المفتوح لحاملي البكالوريا في: العلوم التجريبية، والرياضيات، والعلوم الاقتصادية، والمحاسبة، والتدبير الإداري، والتدبير المحاسبي، والبكالوريا الفرنسي. وتُجرى الترتيبات الأولى بالجدارة على أساس نقط البكالوريا، ويُجرى الاختبار الوطني على شكل اختبار الميل للتكوين في تدبير التسيير (TAFEM). أما الطلبة الأجانب ولاسيما الأفارقة فيُسجلون بترخيص الالتحاق الصادر عن وزارة التعليم العالي على اقتراح الوكالة المغربية للتعاون الدولي.",
+   "programs_ar": [],
+   "resources": []
+  },
+  {
+   "slug": "est-dakhla",
+   "name_ar": "المدرسة العليا للتكنولوجيا",
+   "name_fr": "Ecole Supérieure de Technologie - Dakhla",
+   "type": "school",
+   "city_ar": "الداخلة",
+   "leadership": [
+    {
+     "role_ar": "المدير",
+     "role_fr": "Directeur",
+     "name": "MAHANI ZOUHIR"
+    },
+    {
+     "role_ar": "الكاتب العام",
+     "role_fr": "Secrétaire Général",
+     "name": "Naoual NASSIRI"
+    }
+   ],
+   "address": null,
+   "phone": null,
+   "fax": null,
+   "website": null,
+   "website_alt": null,
+   "uiz_url": "https://www.uiz.ac.ma/ecole-superieure-de-technologie-dakhla",
+   "presentation_ar": null,
+   "programs_ar": [],
+   "resources": []
+  }
+ ],
+ "outside_directory": [
+  {
+   "slug": "ims-agadir",
+   "name_ar": "معهد مهن الرياضة",
+   "name_fr": "Institut des Métiers du Sport",
+   "type": "inst",
+   "city_ar": "أكادير",
+   "website": "http://www.ims.uiz.ma/",
+   "note_ar": "مذكور في النسخة السابقة لهذه البوابة، لكنه غير وارد في صفحة «المؤسسات» المنشورة على موقع جامعة ابن زهر (فُحصت 2026-10-16). يُعرض هنا بوضوح «خارج القائمة الرسمية» حتى لا يضيع رابطه، ودون إضافة أي معطيات غير مؤكدة."
+  }
+ ]
+};
