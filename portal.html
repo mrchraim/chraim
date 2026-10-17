@@ -1316,6 +1316,14 @@ main#main > .configbar{margin-block-end:10px!important}
 @keyframes chraim-mv-rtl{to{transform:translateX(50%)}}
 @keyframes chraim-mv-ltr{to{transform:translateX(-50%)}}
 
+/* 5) إبراز الخيار النشط (الذي فُتحت لوحته) — يعمل على أي عنصر data-jump */
+.quick-card.is-active{border-color:var(--q-accent,#c6a568)!important;
+  box-shadow:0 0 0 2px color-mix(in srgb,var(--q-accent,#c6a568) 55%,transparent),
+             0 12px 26px rgba(7,25,50,.12)!important;transform:translateY(-2px)}
+.quick-card.is-active:before{opacity:1!important;width:4px!important}
+#abnav a.is-active{color:var(--gold,#c6a568)!important;font-weight:800!important;
+  text-decoration:underline;text-underline-offset:4px}
+
 @media (prefers-reduced-motion:reduce){.cta-main,.chraim-marquee{animation:none!important}}
 </style>
 </head>
@@ -1746,15 +1754,76 @@ main#main > .configbar{margin-block-end:10px!important}
 <script src="social-bubble.js" defer></script>
 <script src="chrvvim-plus.js?v=20261017t2" defer></script>
 <script src="chrvvim-studio.js" defer></script>
-<script>
+<script id="chraim-jump">
+/* ===== فتح اللوحة عند النقر على أي خيار (data-jump) =====
+   يعمل لكل بطاقة سريعة، ولكل عنصر في شريط التنقّل العلوي #abnav،
+   وحتى النسخ المكرّرة داخل شريط الـmarquee المتحرّك — عبر تفويض واحد
+   على document في طور الالتقاط (capture) يسبق أي معالج قديم في app.js.
+   الفائدة:
+     • يُلغي سلوك الرابط #top الذي كان يمنع النزول إلى اللوحة.
+     • ينزل إلى اللوحة مع مراعاة ارتفاع الشريط العلوي وشريط التبويبات
+       الثابتين، فلا يختفي عنوان اللوحة تحتهما.
+     • يحترم إعداد «تقليل الحركة» (prefers-reduced-motion).
+     • يوسم الخيار النشط ليتبيّن أي قسم مفتوح. */
 (function(){
-  document.querySelectorAll('[data-jump]').forEach(function(btn){
-    btn.addEventListener('click',function(){
-      var key=btn.getAttribute('data-jump');
-      var tab=document.querySelector('.tab[data-p="'+key+'"]');
-      if(tab){tab.click();var panel=document.getElementById('p-'+key);if(panel){panel.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});}}
-    });
-  });
+  var RM = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+
+  /* مجموع ارتفاع العناصر الثابتة أعلى الشاشة (الشريط العلوي + شريط التبويبات) */
+  function offTop(){
+    var off = 0;
+    var els = [
+      document.querySelector('header.appbar'),
+      document.querySelector('.layout .tabs') || document.querySelector('.tabs')
+    ];
+    for(var i = 0; i < els.length; i++){
+      var el = els[i];
+      if(!el || !el.offsetHeight) continue;
+      var s = getComputedStyle(el);
+      if(s.position !== 'fixed' && s.position !== 'sticky') continue;
+      /* العمود الجانبي للتبويبات (على الشاشات العريضة) لا يحجب المحتوى رأسياً */
+      if(el.classList.contains('tabs') && el.getBoundingClientRect().width < window.innerWidth * 0.55) continue;
+      /* نستعمل قيمة top الثابتة + الارتفاع، لا الموضع الحالي (الذي يتغيّر أثناء التمرير) */
+      var top = parseFloat(s.top); if(isNaN(top)) top = 0;
+      off = Math.max(off, top + el.offsetHeight);
+    }
+    return off;
+  }
+
+  function panelFor(key){
+    var tab = document.querySelector('.tab[data-p="' + key + '"]');
+    if(tab) tab.click();
+    return document.getElementById('p-' + key);
+  }
+
+  function reveal(panel){
+    if(!panel) return;
+    var y = panel.getBoundingClientRect().top + (window.pageYOffset || document.documentElement.scrollTop) - offTop() - 12;
+    if(y < 0) y = 0;
+    try{ window.scrollTo({top: y, behavior: RM ? 'auto' : 'smooth'}); }
+    catch(e){ window.scrollTo(0, y); }
+    try{ panel.setAttribute('tabindex','-1'); panel.focus({preventScroll:true}); }catch(e){}
+  }
+
+  function markActive(key){
+    var all = document.querySelectorAll('[data-jump]');
+    for(var i = 0; i < all.length; i++){
+      all[i].classList.toggle('is-active', all[i].getAttribute('data-jump') === key);
+    }
+  }
+
+  document.addEventListener('click', function(ev){
+    var el = ev.target;
+    while(el && el !== document && !(el.getAttribute && el.getAttribute('data-jump'))){ el = el.parentNode; }
+    if(!el || el === document) return;
+    var key = el.getAttribute('data-jump');
+    if(!key) return;
+    var panel = panelFor(key);
+    if(!panel) return;            /* لا توجد لوحة لهذا الخيار ⇒ اترك الرابط يعمل كعادته */
+    ev.preventDefault();          /* أوقف القفز إلى #top */
+    ev.stopPropagation();          /* أوقف معالج app.js القديم (تفادي النزول المزدوج) */
+    reveal(panel);
+    markActive(key);
+  }, true);                        /* طور الالتقاط: يسبق المعالجات المسجّلة على العنصر */
 })();
 </script>
 <script>
