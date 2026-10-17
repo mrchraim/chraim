@@ -1,0 +1,1 @@
+const DAY_I18N={'الإثنين':{ar:'الإثنين',fr:'Lundi',en:'Monday'},'الثلاثاء':{ar:'الثلاثاء',fr:'Mardi',en:'Tuesday'},'الأربعاء':{ar:'الأربعاء',fr:'Mercredi',en:'Wednesday'},'الخميس':{ar:'الخميس',fr:'Jeudi',en:'Thursday'},'الجمعة':{ar:'الجمعة',fr:'Vendredi',en:'Friday'},'السبت':{ar:'السبت',fr:'Samedi',en:'Saturday'}}

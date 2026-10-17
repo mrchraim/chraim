@@ -1,0 +1,26 @@
+{
+  "name": "chrvvim-campus",
+  "version": "2.0.0",
+  "private": true,
+  "description": "CHRVVIM CAMPUS — بوابة الطالب: دلائل الأفواج، استعمال الزمن، المواد، القاعات، الوثائق والإعلانات، مع لوحة إدارة.",
+  "type": "module",
+  "engines": {
+    "node": ">=22.5.0"
+  },
+  "scripts": {
+    "start": "node server/index.mjs",
+    "dev": "node --watch server/index.mjs",
+    "seed": "node server/seed.mjs",
+    "check": "node scripts/check.mjs",
+    "smoke": "node scripts/smoke.mjs",
+    "test": "node --test tests/"
+  },
+  "keywords": [
+    "student-portal",
+    "timetable",
+    "university",
+    "morocco",
+    "chrvvim"
+  ],
+  "license": "MIT"
+}

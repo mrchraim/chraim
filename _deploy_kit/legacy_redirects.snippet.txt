@@ -1,0 +1,24 @@
+# Snapshot of legacy -> new redirect rules (LOCAL ONLY, NOT ACTIVE).
+# Prepared for CHRVVIM AI HUB - phase 4.
+# These rules ONLY take effect on a site that SERVES the old hostname.
+# They cannot be applied to *.netlify.app because those hostnames are owned by Netlify.
+# Replace NEW_ORIGIN with the real production origin, e.g. https://chrvvim-ai-hub.pages.dev
+
+# --- old root URLs -> new central portal (301) ---
+https://chrvvim0k0l0a0k0.netlify.app/*      NEW_ORIGIN/#hub          301
+https://mrchraimfsjpachrvvim.netlify.app/*  NEW_ORIGIN/#hub          301
+
+# --- temporarily served old site -> new portal (302 during transition) ---
+https://mr1mohamed1chraim.netlify.app/*     NEW_ORIGIN/#hub          302
+
+# --- deep links: hashes are client-side; routes are identical, no rule needed ---
+# OLD/#finder -> NEW/#finder   (finder, timetable, tracks, directory,
+#                               documents, gpa, stats, about)  => 1:1, no redirect
+
+# --- admin (requires Node server) ---
+# OLD/admin -> NEW_ORIGIN/admin/   302
+
+# --- fallback for unknown paths -> central portal ---
+# NEW_ORIGIN/*  NEW_ORIGIN/#hub  302   (only if a SPA fallback is not already present)
+
+# --- safety: no rule may point to itself (prevents redirect loops) ---

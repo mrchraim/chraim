@@ -1,0 +1,635 @@
+{
+  "generated_from": "documents/ directory",
+  "generated_on": "2026-10-16",
+  "count": 33,
+  "items": [
+    {
+      "filename": "learn-code-famille.pdf",
+      "path": "documents/learn-code-famille.pdf",
+      "label": "learn code famille",
+      "type": "PDF",
+      "bytes": 195597,
+      "label_note": "اسم وصفي مستنتج من اسم الملف؛ راجع الوثيقة للتأكد من المحتوى والتاريخ"
+    },
+    {
+      "filename": "learn-droit-penal-special.pdf",
+      "path": "documents/learn-droit-penal-special.pdf",
+      "label": "learn droit penal special",
+      "type": "PDF",
+      "bytes": 934244,
+      "label_note": "اسم وصفي مستنتج من اسم الملف؛ راجع الوثيقة للتأكد من المحتوى والتاريخ"
+    },
+    {
+      "filename": "learn-gouvernance-judiciaire.pdf",
+      "path": "documents/learn-gouvernance-judiciaire.pdf",
+      "label": "learn gouvernance judiciaire",
+      "type": "PDF",
+      "bytes": 1532121,
+      "label_note": "اسم وصفي مستنتج من اسم الملف؛ راجع الوثيقة للتأكد من المحتوى والتاريخ"
+    },
+    {
+      "filename": "learn-justiciables-gouvernance.pdf",
+      "path": "documents/learn-justiciables-gouvernance.pdf",
+      "label": "learn justiciables gouvernance",
+      "type": "PDF",
+      "bytes": 1709572,
+      "label_note": "اسم وصفي مستنتج من اسم الملف؛ راجع الوثيقة للتأكد من المحتوى والتاريخ"
+    },
+    {
+      "filename": "learn-procedure-penale.pdf",
+      "path": "documents/learn-procedure-penale.pdf",
+      "label": "learn procedure penale",
+      "type": "PDF",
+      "bytes": 1676618,
+      "label_note": "اسم وصفي مستنتج من اسم الملف؛ راجع الوثيقة للتأكد من المحتوى والتاريخ"
+    },
+    {
+      "filename": "s1-fr-private.pdf",
+      "path": "documents/s1-fr-private.pdf",
+      "label": "s1 fr private",
+      "type": "PDF",
+      "bytes": 156260,
+      "label_note": "اسم وصفي مستنتج من اسم الملف؛ راجع الوثيقة للتأكد من المحتوى والتاريخ"
+    },
+    {
+      "filename": "s1-fr-public.pdf",
+      "path": "documents/s1-fr-public.pdf",
+      "label": "s1 fr public",
+      "type": "PDF",
+      "bytes": 180667,
+      "label_note": "اسم وصفي مستنتج من اسم الملف؛ راجع الوثيقة للتأكد من المحتوى والتاريخ"
+    },
+    {
+      "filename": "s1-private-groups.pdf",
+      "path": "documents/s1-private-groups.pdf",
+      "label": "s1 private groups",
+      "type": "PDF",
+      "bytes": 180813,
+      "label_note": "اسم وصفي مستنتج من اسم الملف؛ راجع الوثيقة للتأكد من المحتوى والتاريخ"
+    },
+    {
+      "filename": "s1-private-timetable.pdf",
+      "path": "documents/s1-private-timetable.pdf",
+      "label": "s1 private timetable",
+      "type": "PDF",
+      "bytes": 173500,
+      "label_note": "اسم وصفي مستنتج من اسم الملف؛ راجع الوثيقة للتأكد من المحتوى والتاريخ"
+    },
+    {
+      "filename": "s1-public-groups.pdf",
+      "path": "documents/s1-public-groups.pdf",
+      "label": "s1 public groups",
+      "type": "PDF",
+      "bytes": 182909,
+      "label_note": "اسم وصفي مستنتج من اسم الملف؛ راجع الوثيقة للتأكد من المحتوى والتاريخ"
+    },
+    {
+      "filename": "s1-public-timetable.pdf",
+      "path": "documents/s1-public-timetable.pdf",
+      "label": "s1 public timetable",
+      "type": "PDF",
+      "bytes": 101925,
+      "label_note": "اسم وصفي مستنتج من اسم الملف؛ راجع الوثيقة للتأكد من المحتوى والتاريخ"
+    },
+    {
+      "filename": "s3-fr-private.pdf",
+      "path": "documents/s3-fr-private.pdf",
+      "label": "s3 fr private",
+      "type": "PDF",
+      "bytes": 178170,
+      "label_note": "اسم وصفي مستنتج من اسم الملف؛ راجع الوثيقة للتأكد من المحتوى والتاريخ"
+    },
+    {
+      "filename": "s3-fr-public.pdf",
+      "path": "documents/s3-fr-public.pdf",
+      "label": "s3 fr public",
+      "type": "PDF",
+      "bytes": 152815,
+      "label_note": "اسم وصفي مستنتج من اسم الملف؛ راجع الوثيقة للتأكد من المحتوى والتاريخ"
+    },
+    {
+      "filename": "s3-private-groups.pdf",
+      "path": "documents/s3-private-groups.pdf",
+      "label": "s3 private groups",
+      "type": "PDF",
+      "bytes": 189834,
+      "label_note": "اسم وصفي مستنتج من اسم الملف؛ راجع الوثيقة للتأكد من المحتوى والتاريخ"
+    },
+    {
+      "filename": "s3-private-timetable.pdf",
+      "path": "documents/s3-private-timetable.pdf",
+      "label": "s3 private timetable",
+      "type": "PDF",
+      "bytes": 222106,
+      "label_note": "اسم وصفي مستنتج من اسم الملف؛ راجع الوثيقة للتأكد من المحتوى والتاريخ"
+    },
+    {
+      "filename": "s3-public-french-groups.pdf",
+      "path": "documents/s3-public-french-groups.pdf",
+      "label": "s3 public french groups",
+      "type": "PDF",
+      "bytes": 183944,
+      "label_note": "اسم وصفي مستنتج من اسم الملف؛ راجع الوثيقة للتأكد من المحتوى والتاريخ"
+    },
+    {
+      "filename": "s3-public-groups.pdf",
+      "path": "documents/s3-public-groups.pdf",
+      "label": "s3 public groups",
+      "type": "PDF",
+      "bytes": 182682,
+      "label_note": "اسم وصفي مستنتج من اسم الملف؛ راجع الوثيقة للتأكد من المحتوى والتاريخ"
+    },
+    {
+      "filename": "s3-public-timetable.pdf",
+      "path": "documents/s3-public-timetable.pdf",
+      "label": "s3 public timetable",
+      "type": "PDF",
+      "bytes": 104301,
+      "label_note": "اسم وصفي مستنتج من اسم الملف؛ راجع الوثيقة للتأكد من المحتوى والتاريخ"
+    },
+    {
+      "filename": "s5-admin-finance-timetable.pdf",
+      "path": "documents/s5-admin-finance-timetable.pdf",
+      "label": "s5 admin finance timetable",
+      "type": "PDF",
+      "bytes": 154829,
+      "label_note": "اسم وصفي مستنتج من اسم الملف؛ راجع الوثيقة للتأكد من المحتوى والتاريخ"
+    },
+    {
+      "filename": "s5-business-english-groups.pdf",
+      "path": "documents/s5-business-english-groups.pdf",
+      "label": "s5 business english groups",
+      "type": "PDF",
+      "bytes": 172604,
+      "label_note": "اسم وصفي مستنتج من اسم الملف؛ راجع الوثيقة للتأكد من المحتوى والتاريخ"
+    },
+    {
+      "filename": "s5-business-groups.pdf",
+      "path": "documents/s5-business-groups.pdf",
+      "label": "s5 business groups",
+      "type": "PDF",
+      "bytes": 174550,
+      "label_note": "اسم وصفي مستنتج من اسم الملف؛ راجع الوثيقة للتأكد من المحتوى والتاريخ"
+    },
+    {
+      "filename": "s5-business-timetable.pdf",
+      "path": "documents/s5-business-timetable.pdf",
+      "label": "s5 business timetable",
+      "type": "PDF",
+      "bytes": 77222,
+      "label_note": "اسم وصفي مستنتج من اسم الملف؛ راجع الوثيقة للتأكد من المحتوى والتاريخ"
+    },
+    {
+      "filename": "s5-civil-english-groups.pdf",
+      "path": "documents/s5-civil-english-groups.pdf",
+      "label": "s5 civil english groups",
+      "type": "PDF",
+      "bytes": 169075,
+      "label_note": "اسم وصفي مستنتج من اسم الملف؛ راجع الوثيقة للتأكد من المحتوى والتاريخ"
+    },
+    {
+      "filename": "s5-civil-groups.pdf",
+      "path": "documents/s5-civil-groups.pdf",
+      "label": "s5 civil groups",
+      "type": "PDF",
+      "bytes": 170058,
+      "label_note": "اسم وصفي مستنتج من اسم الملف؛ راجع الوثيقة للتأكد من المحتوى والتاريخ"
+    },
+    {
+      "filename": "s5-civil-timetable.pdf",
+      "path": "documents/s5-civil-timetable.pdf",
+      "label": "s5 civil timetable",
+      "type": "PDF",
+      "bytes": 82456,
+      "label_note": "اسم وصفي مستنتج من اسم الملف؛ راجع الوثيقة للتأكد من المحتوى والتاريخ"
+    },
+    {
+      "filename": "s5-criminal-timetable.pdf",
+      "path": "documents/s5-criminal-timetable.pdf",
+      "label": "s5 criminal timetable",
+      "type": "PDF",
+      "bytes": 78739,
+      "label_note": "اسم وصفي مستنتج من اسم الملف؛ راجع الوثيقة للتأكد من المحتوى والتاريخ"
+    },
+    {
+      "filename": "s5-fr-affaires.pdf",
+      "path": "documents/s5-fr-affaires.pdf",
+      "label": "s5 fr affaires",
+      "type": "PDF",
+      "bytes": 164906,
+      "label_note": "اسم وصفي مستنتج من اسم الملف؛ راجع الوثيقة للتأكد من المحتوى والتاريخ"
+    },
+    {
+      "filename": "s5-fr-contentieux.pdf",
+      "path": "documents/s5-fr-contentieux.pdf",
+      "label": "s5 fr contentieux",
+      "type": "PDF",
+      "bytes": 168607,
+      "label_note": "اسم وصفي مستنتج من اسم الملف؛ راجع الوثيقة للتأكد من المحتوى والتاريخ"
+    },
+    {
+      "filename": "s5-fr-institutions.pdf",
+      "path": "documents/s5-fr-institutions.pdf",
+      "label": "s5 fr institutions",
+      "type": "PDF",
+      "bytes": 180205,
+      "label_note": "اسم وصفي مستنتج من اسم الملف؛ راجع الوثيقة للتأكد من المحتوى والتاريخ"
+    },
+    {
+      "filename": "s5-political-intl-timetable.pdf",
+      "path": "documents/s5-political-intl-timetable.pdf",
+      "label": "s5 political intl timetable",
+      "type": "PDF",
+      "bytes": 150105,
+      "label_note": "اسم وصفي مستنتج من اسم الملف؛ راجع الوثيقة للتأكد من المحتوى والتاريخ"
+    },
+    {
+      "filename": "s5-professions-english-groups.pdf",
+      "path": "documents/s5-professions-english-groups.pdf",
+      "label": "s5 professions english groups",
+      "type": "PDF",
+      "bytes": 174716,
+      "label_note": "اسم وصفي مستنتج من اسم الملف؛ راجع الوثيقة للتأكد من المحتوى والتاريخ"
+    },
+    {
+      "filename": "s5-professions-groups.pdf",
+      "path": "documents/s5-professions-groups.pdf",
+      "label": "s5 professions groups",
+      "type": "PDF",
+      "bytes": 178774,
+      "label_note": "اسم وصفي مستنتج من اسم الملف؛ راجع الوثيقة للتأكد من المحتوى والتاريخ"
+    },
+    {
+      "filename": "s5-professions-timetable.pdf",
+      "path": "documents/s5-professions-timetable.pdf",
+      "label": "s5 professions timetable",
+      "type": "PDF",
+      "bytes": 104880,
+      "label_note": "اسم وصفي مستنتج من اسم الملف؛ راجع الوثيقة للتأكد من المحتوى والتاريخ"
+    }
+  ],
+  "external": [
+    {
+      "etablissement": "كلية العلوم القانونية والسياسية بأكادير",
+      "semester": "S1",
+      "program": "القانون الخاص",
+      "type": "استعمال الزمن / ملف الفصل",
+      "year": "2026-2027",
+      "url": "https://drive.google.com/file/d/1taHnfrWbpMH3ULtGh2ayNS5txYERxrxX/view",
+      "note": "رابط من إعلان الكلية؛ محتوى الملف لم يُفحص صفحة بصفحة"
+    },
+    {
+      "etablissement": "كلية العلوم القانونية والسياسية بأكادير",
+      "semester": "S1",
+      "program": "القانون العام",
+      "type": "استعمال الزمن / ملف الفصل",
+      "year": "2026-2027",
+      "url": "https://drive.google.com/file/d/1tEU2dRsBwYTRR8EK_uP-np2F2e0LaNOA/view",
+      "note": "رابط من إعلان الكلية؛ محتوى الملف لم يُفحص صفحة بصفحة"
+    },
+    {
+      "etablissement": "كلية العلوم القانونية والسياسية بأكادير",
+      "semester": "S3",
+      "program": "القانون الخاص",
+      "type": "استعمال الزمن / ملف الفصل",
+      "year": "2026-2027",
+      "url": "https://drive.google.com/file/d/19LwyT1xAHAnGI03ASlL5oglsEpiIbEZT/view",
+      "note": "رابط من إعلان الكلية؛ محتوى الملف لم يُفحص صفحة بصفحة"
+    },
+    {
+      "etablissement": "كلية العلوم القانونية والسياسية بأكادير",
+      "semester": "S3",
+      "program": "القانون العام",
+      "type": "استعمال الزمن / ملف الفصل",
+      "year": "2026-2027",
+      "url": "https://drive.google.com/file/d/17LOhrASYRTROL-O5pP6W-qESPEKII6dn/view",
+      "note": "رابط من إعلان الكلية؛ محتوى الملف لم يُفحص صفحة بصفحة"
+    },
+    {
+      "etablissement": "كلية العلوم القانونية والسياسية بأكادير",
+      "semester": "S5",
+      "program": "قانون الأعمال",
+      "type": "استعمال الزمن / ملف الفصل",
+      "year": "2026-2027",
+      "url": "https://drive.google.com/file/d/1Oo4H1xl9Dhvjc2fyRrQWEWCjlro2Jswe/view",
+      "note": "رابط من إعلان الكلية؛ محتوى الملف لم يُفحص صفحة بصفحة"
+    },
+    {
+      "etablissement": "كلية العلوم القانونية والسياسية بأكادير",
+      "semester": "S5",
+      "program": "القانون والمنازعات الخاصة",
+      "type": "استعمال الزمن / ملف الفصل",
+      "year": "2026-2027",
+      "url": "https://drive.google.com/file/d/1_IzW8aQcBDR2EQor9EXKnacWjzK9QZjX/view",
+      "note": "رابط من إعلان الكلية؛ محتوى الملف لم يُفحص صفحة بصفحة"
+    },
+    {
+      "etablissement": "كلية العلوم القانونية والسياسية بأكادير",
+      "semester": "S5",
+      "program": "المؤسسات السياسية والعمل العمومي",
+      "type": "استعمال الزمن / ملف الفصل",
+      "year": "2026-2027",
+      "url": "https://drive.google.com/file/d/175GNRX0KXmPtNS_vrrbiprjIj2t15Ofj/view",
+      "note": "رابط من إعلان الكلية؛ محتوى الملف لم يُفحص صفحة بصفحة"
+    },
+    {
+      "etablissement": "كلية العلوم بأكادير",
+      "semester": "S1",
+      "program": "BG1 جيولوجيا",
+      "type": "تقويم الأعمال التطبيقية",
+      "year": "2026-2027",
+      "url": "https://fsa.uiz.ac.ma/uploads/1791299396800-iw6jbrzvflo.pdf",
+      "note": "رابط PDF مباشر؛ خاص التحقق من صلاحية الرابط عند الفتح"
+    },
+    {
+      "etablissement": "كلية العلوم بأكادير",
+      "semester": "عام",
+      "program": "جميع المسالك",
+      "type": "بوابة استعمالات الزمن",
+      "year": "2026-2027",
+      "url": "https://scol.fsa.ac.ma/edt/",
+      "note": "بوابة تفاعلية؛ لم تُستخرج جميع الملفات منها"
+    },
+    {
+      "etablissement": "كلية العلوم بأكادير",
+      "semester": "عام",
+      "program": "كلية العلوم",
+      "type": "الموقع الرسمي",
+      "year": "—",
+      "url": "https://fsa.uiz.ac.ma/",
+      "note": "بوابة المؤسسة"
+    },
+    {
+      "etablissement": "كلية الآداب والعلوم الإنسانية بأكادير",
+      "semester": "S5",
+      "program": "الدراسات الفرنسية",
+      "type": "لائحة طلبة/مجموعات قديمة",
+      "year": "غير مؤكد",
+      "url": "https://www.flsh-agadir.ac.ma/wp-content/uploads/2013/03/SEMESTRE5-2.pdf",
+      "note": "أرشيف قديم؛ ليس جدولاً حديثاً مؤكداً"
+    },
+    {
+      "etablissement": "كلية الآداب والعلوم الإنسانية بأكادير",
+      "semester": "عام",
+      "program": "كلية الآداب",
+      "type": "الموقع الرسمي",
+      "year": "—",
+      "url": "https://www.flsh-agadir.ac.ma/",
+      "note": "يلزم استكمال جرد الأرشيف"
+    },
+    {
+      "etablissement": "FLASH أيت ملول",
+      "semester": "S3",
+      "program": "الدراسات الإنجليزية ALAN3503",
+      "type": "لائحة مجموعات",
+      "year": "2026-2027",
+      "url": "https://flash.uiz.ac.ma/wp-content/uploads/2026/10/ALAN3503.pdf",
+      "note": "ملف مباشر؛ يلزم التحقق من المحتوى"
+    },
+    {
+      "etablissement": "FLASH أيت ملول",
+      "semester": "S3",
+      "program": "الدراسات الإنجليزية ALAN3403",
+      "type": "لائحة مجموعات",
+      "year": "2026-2027",
+      "url": "https://flash.uiz.ac.ma/wp-content/uploads/2026/10/ALAN3403.pdf",
+      "note": "ملف مباشر؛ يلزم التحقق من المحتوى"
+    },
+    {
+      "etablissement": "FLASH أيت ملول",
+      "semester": "S3",
+      "program": "الدراسات الإنجليزية ALAN3103",
+      "type": "لائحة مجموعات",
+      "year": "2026-2027",
+      "url": "https://flash.uiz.ac.ma/wp-content/uploads/2026/10/ALAN3103.pdf",
+      "note": "ملف مباشر؛ يلزم التحقق من المحتوى"
+    },
+    {
+      "etablissement": "FLASH أيت ملول",
+      "semester": "S3",
+      "program": "الدراسات الإنجليزية ALAN3803",
+      "type": "لائحة مجموعات",
+      "year": "2026-2027",
+      "url": "https://flash.uiz.ac.ma/wp-content/uploads/2026/10/ALAN3803.pdf",
+      "note": "ملف مباشر؛ يلزم التحقق من المحتوى"
+    },
+    {
+      "etablissement": "FLASH أيت ملول",
+      "semester": "S3",
+      "program": "الدراسات الإنجليزية ALAN3303",
+      "type": "لائحة مجموعات",
+      "year": "2026-2027",
+      "url": "https://flash.uiz.ac.ma/wp-content/uploads/2026/10/ALAN3303.pdf",
+      "note": "ملف مباشر؛ يلزم التحقق من المحتوى"
+    },
+    {
+      "etablissement": "FLASH أيت ملول",
+      "semester": "S3",
+      "program": "الدراسات الإنجليزية ALAN3603",
+      "type": "لائحة مجموعات",
+      "year": "2026-2027",
+      "url": "https://flash.uiz.ac.ma/wp-content/uploads/2026/10/ALAN3603.pdf",
+      "note": "ملف مباشر؛ يلزم التحقق من المحتوى"
+    },
+    {
+      "etablissement": "FLASH أيت ملول",
+      "semester": "S3",
+      "program": "الدراسات الإنجليزية ALAN3203",
+      "type": "لائحة مجموعات",
+      "year": "2026-2027",
+      "url": "https://flash.uiz.ac.ma/wp-content/uploads/2026/10/ALAN3203.pdf",
+      "note": "ملف مباشر؛ يلزم التحقق من المحتوى"
+    },
+    {
+      "etablissement": "FLASH أيت ملول",
+      "semester": "S5",
+      "program": "الدراسات الإنجليزية ALAN5303",
+      "type": "لائحة مجموعات",
+      "year": "2026-2027",
+      "url": "https://flash.uiz.ac.ma/wp-content/uploads/2026/10/ALAN5303.pdf",
+      "note": "ملف مباشر؛ يلزم التحقق من المحتوى"
+    },
+    {
+      "etablissement": "FLASH أيت ملول",
+      "semester": "S5",
+      "program": "الدراسات الإنجليزية ALAN5203",
+      "type": "لائحة مجموعات",
+      "year": "2026-2027",
+      "url": "https://flash.uiz.ac.ma/wp-content/uploads/2026/10/ALAN5203.pdf",
+      "note": "ملف مباشر؛ يلزم التحقق من المحتوى"
+    },
+    {
+      "etablissement": "FLASH أيت ملول",
+      "semester": "S5",
+      "program": "الدراسات الإنجليزية ALAN5703",
+      "type": "لائحة مجموعات",
+      "year": "2026-2027",
+      "url": "https://flash.uiz.ac.ma/wp-content/uploads/2026/10/ALAN5703.pdf",
+      "note": "ملف مباشر؛ يلزم التحقق من المحتوى"
+    },
+    {
+      "etablissement": "FLASH أيت ملول",
+      "semester": "S5",
+      "program": "الدراسات الإنجليزية ALAN5103",
+      "type": "لائحة مجموعات",
+      "year": "2026-2027",
+      "url": "https://flash.uiz.ac.ma/wp-content/uploads/2026/10/ALAN5103.pdf",
+      "note": "ملف مباشر؛ يلزم التحقق من المحتوى"
+    },
+    {
+      "etablissement": "FLASH أيت ملول",
+      "semester": "S5",
+      "program": "الدراسات الإنجليزية ALAN5503",
+      "type": "لائحة مجموعات",
+      "year": "2026-2027",
+      "url": "https://flash.uiz.ac.ma/wp-content/uploads/2026/10/ALAN5503.pdf",
+      "note": "ملف مباشر؛ يلزم التحقق من المحتوى"
+    },
+    {
+      "etablissement": "FLASH أيت ملول",
+      "semester": "S5",
+      "program": "الدراسات الإنجليزية ALAN5603",
+      "type": "لائحة مجموعات",
+      "year": "2026-2027",
+      "url": "https://flash.uiz.ac.ma/wp-content/uploads/2026/10/ALAN5603.pdf",
+      "note": "ملف مباشر؛ يلزم التحقق من المحتوى"
+    },
+    {
+      "etablissement": "FLASH أيت ملول",
+      "semester": "S5",
+      "program": "الدراسات الإنجليزية ALAN5403",
+      "type": "لائحة مجموعات",
+      "year": "2026-2027",
+      "url": "https://flash.uiz.ac.ma/wp-content/uploads/2026/10/ALAN5403.pdf",
+      "note": "ملف مباشر؛ يلزم التحقق من المحتوى"
+    },
+    {
+      "etablissement": "FLASH أيت ملول",
+      "semester": "S1",
+      "program": "الجغرافيا G1–G6",
+      "type": "لوائح مجموعات TP",
+      "year": "2026-2027",
+      "url": "https://flash.uiz.ac.ma/إعلان-عن-مجموعات-وحدة-التطبيقات-الف/",
+      "note": "صفحة إعلان تتضمن روابط ملفات المجموعات"
+    },
+    {
+      "etablissement": "FLASH أيت ملول",
+      "semester": "S3/S5",
+      "program": "الجغرافيا والتهيئة والتنمية",
+      "type": "لوائح مجموعات تطبيقية",
+      "year": "2026-2027",
+      "url": "https://flash.uiz.ac.ma/اللائحة-المحينة-لمجموعات-وحدات-التطبي/",
+      "note": "صفحة إعلان؛ الملفات الداخلية تحتاج استخراجاً"
+    },
+    {
+      "etablissement": "كلية الاقتصاد والتدبير بأكادير",
+      "semester": "S1/S3/S5",
+      "program": "الاقتصاد والتدبير",
+      "type": "استعمالات الزمن وتوزيع الأقسام",
+      "year": "2026-2027",
+      "url": "https://fega.uiz.ac.ma/announcements/11",
+      "note": "صفحة إعلان تضم روابط متعددة؛ يلزم فتح كل ملف"
+    },
+    {
+      "etablissement": "كلية الاقتصاد والتدبير بأكادير",
+      "semester": "عام",
+      "program": "FEGA",
+      "type": "الموقع الرسمي",
+      "year": "—",
+      "url": "https://fega.uiz.ac.ma/",
+      "note": "بوابة المؤسسة"
+    },
+    {
+      "etablissement": "ENCG أكادير",
+      "semester": "عام",
+      "program": "توقيت الخريف",
+      "type": "استعمال الزمن الجماعي",
+      "year": "2026-2027",
+      "url": "https://encga.uiz.ac.ma/?p=5643",
+      "note": "إعلان رسمي؛ رابط تنزيل داخل الصفحة"
+    },
+    {
+      "etablissement": "ENCG أكادير",
+      "semester": "عام",
+      "program": "الأقسام والمجموعات",
+      "type": "لوائح الأفواج",
+      "year": "2026-2027",
+      "url": "https://encga.uiz.ac.ma/?p=5663",
+      "note": "إعلان رسمي؛ يتضمن روابط ملفات Drive"
+    },
+    {
+      "etablissement": "ENCG أكادير",
+      "semester": "ماستر S1",
+      "program": "عدة مسالك",
+      "type": "جداول الماستر",
+      "year": "2026-2027",
+      "url": "https://encga.uiz.ac.ma/?p=5703",
+      "note": "إعلان رسمي؛ خاص استخراج كل رابط داخلي"
+    },
+    {
+      "etablissement": "ESEF أكادير",
+      "semester": "عام",
+      "program": "الإجازة في التربية",
+      "type": "لوائح الطلبة حسب الفوج",
+      "year": "2026-2027",
+      "url": "https://esef.uiz.ac.ma/en/licence-deducation-liste-des-etudiants-par-groupe-au-titre-de-lannee-universitaire-2026-2027/",
+      "note": "الإعلان يشير إلى مجلد Drive"
+    },
+    {
+      "etablissement": "ESEF أكادير",
+      "semester": "عام",
+      "program": "جميع التخصصات",
+      "type": "استعمالات الزمن",
+      "year": "2026-2027",
+      "url": "https://esef.uiz.ac.ma/ar/استعمالات-الزمن/",
+      "note": "صفحة تجميع؛ بعض العناصر صور"
+    },
+    {
+      "etablissement": "ESEF أكادير",
+      "semester": "عام",
+      "program": "لوائح الأفواج",
+      "type": "مجلد Google Drive",
+      "year": "2026-2027",
+      "url": "https://drive.google.com/drive/folders/1xJhQczSopufT_mTbJ5-W3o__39mppAyU?usp=sharing",
+      "note": "مجلد المصدر؛ محتوياته لم تُحصَ"
+    },
+    {
+      "etablissement": "ENSIASD",
+      "semester": "S1/S3/S5",
+      "program": "مسالك الهندسة",
+      "type": "استعمالات الزمن",
+      "year": "2026-2027",
+      "url": "https://ensiasd.uiz.ac.ma/2026/09/11/emplois-du-temps-1%CA%B3%E1%B5%89-annee-cycle-ingenieur-cycle-preparatoire-session-dautomne-annee-universitaire-2026-2027/",
+      "note": "صفحة إعلان؛ يلزم استخراج كل رابط"
+    },
+    {
+      "etablissement": "IMS أكادير",
+      "semester": "عام",
+      "program": "APAS/EMS/ES وMS",
+      "type": "جداول أربع مجموعات",
+      "year": "2026-2027",
+      "url": "https://ims.uiz.ac.ma/announcements/1",
+      "note": "إعلان رسمي يتضمن أربعة جداول"
+    },
+    {
+      "etablissement": "جامعة ابن زهر",
+      "semester": "عام",
+      "program": "جميع المؤسسات",
+      "type": "دليل المؤسسات الرسمي",
+      "year": "—",
+      "url": "https://www.uiz.ac.ma/nos-etablissements",
+      "note": "لائحة المؤسسات؛ ليست ملفات جداول"
+    },
+    {
+      "etablissement": "كلية متعددة التخصصات ورزازات",
+      "semester": "عام",
+      "program": "خدمات الطلبة",
+      "type": "بوابة استعمالات الزمن",
+      "year": "—",
+      "url": "https://fpo.uiz.ac.ma/espace-etudiant",
+      "note": "بوابة خدمات تتطلب التحقق من الروابط الداخلية"
+    }
+  ],
+  "external_count": 40,
+  "external_source": "CHRVVIM_Uiz_Document_Index (official UIZ faculty pages, 2026-10-17)"
+}
