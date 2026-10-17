@@ -1,0 +1,9 @@
+node_modules
+dist
+dist-electron
+*.local
+.DS_Store
+*.tsbuildinfo
+electron/resources/speech-helper
+release
+.omb-scratch

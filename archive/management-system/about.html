@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>من نحن — منصة الطلبة</title>
+  <meta name="description" content="منصة تعليمية مجانية مستقلة لمساعدة طلبة الجامعات المغربية — تعرف علينا وتواصل معنا.">
+  <link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html">📚 <span data-site-name></span></a>
+      <nav class="site-nav" id="site-nav">
+        <a href="index.html" data-t="home"></a>
+        <a href="browse.html" data-t="browse"></a>
+        <a href="announcements.html" data-t="announcements"></a>
+        <a href="contribute.html" data-t="contribute"></a>
+        <a href="about.html" class="active" data-t="about"></a>
+      </nav>
+      <div class="header-actions">
+        <button class="lang-btn" id="lang-toggle" onclick="toggleLang()">FR</button>
+        <a href="account.html" class="btn btn-primary btn-sm" id="account-link" data-t="login"></a>
+        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="page-hero">
+    <div class="container"><h1>🤝 <span data-t="about_title"></span></h1></div>
+  </div>
+
+  <main class="container section">
+    <div class="card" style="max-width:720px;margin:0 auto 24px">
+      <p style="font-size:16px;line-height:2" data-t="about_text"></p>
+    </div>
+
+    <h2 class="section-title" style="max-width:720px;margin:0 auto 16px">✉️ <span data-t="contact_title"></span></h2>
+    <div class="card" style="max-width:720px;margin:0 auto">
+      <form id="ct-form" onsubmit="event.preventDefault(); sendContact();">
+        <div class="form-row">
+          <div class="form-group">
+            <label data-t="name"></label>
+            <input type="text" id="ct-name" required>
+          </div>
+          <div class="form-group">
+            <label data-t="email"></label>
+            <input type="email" id="ct-email">
+          </div>
+        </div>
+        <div class="form-group">
+          <label data-t="message"></label>
+          <textarea id="ct-msg" rows="5" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" data-t="send_msg"></button>
+      </form>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-bottom"><span data-t="footer_rights"></span> © 2026 <span data-site-name></span></div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/config.js"></script>
+  <script src="js/site.js"></script>
+  <script>
+    document.querySelectorAll("[data-site-name]").forEach(el => el.textContent = SITE.name_ar);
+    (async () => {
+      await initSite();
+      document.querySelectorAll("[data-site-name]").forEach(el => el.textContent = SITE["name_" + lang]);
+    })();
+  </script>
+</body>
+</html>

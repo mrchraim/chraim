@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ادعمنا — منصة الطلبة</title>
+  <meta name="description" content="منصة الطلبة مجانية بالكامل — ساعدنا بال donation أو الشراكات لاستمرار الخدمة.">
+  <link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html">📚 <span data-site-name></span></a>
+      <nav class="site-nav" id="site-nav">
+        <a href="index.html" data-t="home"></a>
+        <a href="browse.html" data-t="browse"></a>
+        <a href="announcements.html" data-t="announcements"></a>
+        <a href="contribute.html" data-t="contribute"></a>
+        <a href="about.html" data-t="about"></a>
+      </nav>
+      <div class="header-actions">
+        <button class="lang-btn" id="lang-toggle" onclick="toggleLang()">FR</button>
+        <a href="account.html" class="btn btn-primary btn-sm" id="account-link" data-t="login"></a>
+        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="page-hero">
+    <div class="container"><h1>💛 <span data-t="support_title"></span></h1></div>
+  </div>
+
+  <main class="container section" style="max-width:640px">
+    <div class="card" style="text-align:center;line-height:2">
+      <div style="font-size:52px;margin-bottom:12px">☕</div>
+      <p style="font-size:16px" data-t="support_text"></p>
+      <div style="margin-top:20px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+        <a href="about.html" class="btn btn-primary" data-t="contact_title"></a>
+        <a href="#" id="tg-support" target="_blank" class="btn btn-accent">✈️ Telegram</a>
+      </div>
+    </div>
+    <div class="ad-slot" style="margin-top:24px">مساحة إعلان خفيف (AdSense)</div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-bottom"><span data-t="footer_rights"></span> © 2026 <span data-site-name></span></div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/config.js"></script>
+  <script src="js/site.js"></script>
+  <script>
+    document.querySelectorAll("[data-site-name]").forEach(el => el.textContent = SITE.name_ar);
+    (async () => {
+      await initSite();
+      document.querySelectorAll("[data-site-name]").forEach(el => el.textContent = SITE["name_" + lang]);
+      document.getElementById("tg-support").href = SITE.telegram;
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ساهم بامتحان أو فرض — منصة الطلبة</title>
+  <meta name="description" content="شارك امتحاناتك وفروضك مع زملائك — تُراجع كل مساهمة قبل النشر لضمان الجودة.">
+  <link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html">📚 <span data-site-name></span></a>
+      <nav class="site-nav" id="site-nav">
+        <a href="index.html" data-t="home"></a>
+        <a href="browse.html" data-t="browse"></a>
+        <a href="announcements.html" data-t="announcements"></a>
+        <a href="contribute.html" class="active" data-t="contribute"></a>
+        <a href="about.html" data-t="about"></a>
+      </nav>
+      <div class="header-actions">
+        <button class="lang-btn" id="lang-toggle" onclick="toggleLang()">FR</button>
+        <a href="account.html" class="btn btn-primary btn-sm" id="account-link" data-t="login"></a>
+        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="page-hero">
+    <div class="container">
+      <h1>➕ <span data-t="contrib_title"></span></h1>
+      <p data-t="contrib_sub"></p>
+    </div>
+  </div>
+
+  <main class="container section" style="max-width:640px">
+    <div class="card">
+      <form id="contrib-form">
+        <div id="contrib-form-inner">
+          <div class="form-row">
+            <div class="form-group">
+              <label data-t="university"></label>
+              <select id="c-university" required></select>
+            </div>
+            <div class="form-group">
+              <label data-t="department"></label>
+              <select id="c-department" required></select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label data-t="semester"></label>
+              <select id="c-semester" required></select>
+            </div>
+            <div class="form-group">
+              <label data-t="subject"></label>
+              <select id="c-subject" required></select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label data-t="ann_cat"></label>
+              <select id="c-type">
+                <option value="exam" data-t="exam">امتحان</option>
+                <option value="assignment" data-t="assignment">فرض</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label data-t="year"></label>
+              <input type="number" id="c-year" min="2000" max="2100" placeholder="2025">
+            </div>
+          </div>
+          <div class="form-group">
+            <label data-t="session"></label>
+            <select id="c-session">
+              <option value="normal" data-t="normal">عادية</option>
+              <option value="makeup" data-t="makeup">تعويضية</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label data-t="file"></label>
+            <input type="file" id="c-file" accept=".pdf,.jpg,.png" required>
+          </div>
+          <div class="form-group">
+            <label data-t="file_corr"></label>
+            <input type="file" id="c-correction" accept=".pdf,.jpg,.png">
+          </div>
+          <button type="button" class="btn btn-primary btn-block" onclick="submitContribution()" data-t="submit_contrib"></button>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-bottom"><span data-t="footer_rights"></span> © 2026 <span data-site-name></span></div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/config.js"></script>
+  <script src="js/site.js"></script>
+  <script>
+    document.querySelectorAll("[data-site-name]").forEach(el => el.textContent = SITE.name_ar);
+    (async () => {
+      const content = loadContribute();
+      await initSite();
+      document.querySelectorAll("[data-site-name]").forEach(el => el.textContent = SITE["name_" + lang]);
+      await content;
+    })();
+  </script>
+</body>
+</html>

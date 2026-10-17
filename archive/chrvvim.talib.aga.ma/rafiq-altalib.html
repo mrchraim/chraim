@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>رفيق الطالب - جامعة ابن زهر أكادير</title>
+<meta name="description" content="دليل الطالب بجامعة ابن زهر أكادير: الإعلانات، استعمالات الزمن، حاسبة المعدل، ومواعيد الامتحانات.">
+<style>
+  :root{--bg:#f5f7f6;--card:#fff;--text:#16201c;--muted:#5d6b64;--accent:#0b6e4f;--accent-2:#e8f4ef;--border:#dfe6e2;--danger:#c0392b;--warn:#b7791f}
+  @media (prefers-color-scheme:dark){:root{--bg:#101412;--card:#181e1b;--text:#eaf0ed;--muted:#97a69f;--accent:#3ecf9a;--accent-2:#16302a;--border:#27302c;--danger:#ff7b6b;--warn:#f0b957}}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,"Segoe UI",Tahoma,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  header{padding:20px 16px 4px;max-width:960px;margin:0 auto}
+  h1{margin:0;font-size:1.45rem}
+  header p{margin:2px 0 0;color:var(--muted);font-size:.92rem}
+  nav{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--border);margin-top:12px}
+  .tabs{display:flex;gap:6px;overflow-x:auto;max-width:960px;margin:0 auto;padding:8px 16px;scrollbar-width:none}
+  .tabs::-webkit-scrollbar{display:none}
+  .tab{flex:0 0 auto;border:1px solid var(--border);background:var(--card);color:var(--text);padding:8px 14px;border-radius:999px;cursor:pointer;font-size:.92rem;font-family:inherit}
+  .tab[aria-selected=true]{background:var(--accent);border-color:var(--accent);color:#fff}
+  main{max-width:960px;margin:0 auto;padding:12px 16px 48px}
+  section{display:none}
+  section.active{display:block}
+  h2{font-size:1.1rem;margin:22px 0 10px}
+  input,select,button,textarea{font-family:inherit;font-size:1rem}
+  input,select{width:100%;padding:10px 12px;border:1px solid var(--border);border-radius:10px;background:var(--card);color:var(--text)}
+  label{display:block;font-size:.82rem;color:var(--muted);margin-bottom:4px}
+  .btn{border:0;background:var(--accent);color:#fff;padding:10px 16px;border-radius:10px;cursor:pointer;font-weight:600}
+  .btn.ghost{background:transparent;color:var(--accent);border:1px solid var(--accent)}
+  .btn.small{padding:5px 10px;font-size:.82rem;border-radius:8px}
+  .btn.danger{background:transparent;color:var(--danger);border:1px solid var(--danger)}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+  .chip{border:1px solid var(--border);background:var(--card);color:var(--text);padding:5px 12px;border-radius:999px;cursor:pointer;font-size:.88rem}
+  .chip.on{background:var(--accent-2);border-color:var(--accent);color:var(--accent);font-weight:600}
+  .grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px}
+  .card h3{margin:0 0 4px;font-size:1rem}
+  .meta{color:var(--muted);font-size:.84rem;margin-bottom:6px}
+  .links a{display:inline-block;margin:2px 0 2px 12px;color:var(--accent);text-decoration:none;font-size:.9rem}
+  .links a:hover{text-decoration:underline}
+  .form{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));align-items:end;margin-bottom:14px}
+  ul.list{list-style:none;margin:0;padding:0}
+  .row{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:10px 12px;margin-bottom:8px;display:flex;gap:10px;align-items:flex-start;justify-content:space-between}
+  .row a{color:var(--text);text-decoration:none;font-weight:500}
+  .row a:hover{color:var(--accent)}
+  .tag{display:inline-block;font-size:.72rem;padding:1px 8px;border-radius:999px;background:var(--accent-2);color:var(--accent);margin-inline-end:6px}
+  .note{background:var(--card);border:1px dashed var(--border);border-radius:10px;padding:10px 12px;color:var(--muted);font-size:.88rem;margin:10px 0}
+  .day{margin-bottom:14px}
+  .day h3{font-size:.98rem;margin:0 0 6px}
+  .day.today h3{color:var(--accent)}
+  .time{font-variant-numeric:tabular-nums;color:var(--accent);font-weight:700;white-space:nowrap}
+  .big{font-size:2rem;font-weight:800;color:var(--accent)}
+  .stat{display:flex;gap:16px;flex-wrap:wrap;align-items:baseline}
+  .left-soon{color:var(--warn);font-weight:700}
+  .left-over{color:var(--danger);font-weight:700}
+  .done a,.done span.t{text-decoration:line-through;color:var(--muted)}
+  table{width:100%;border-collapse:collapse}
+  td{padding:4px 4px}
+  .hidden{display:none}
+  .actions{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+  footer{text-align:center;color:var(--muted);font-size:.78rem;padding:0 16px 30px}
+  @media print{nav,header p,.form,.actions,.btn,footer{display:none!important}section{display:none!important}section.active{display:block!important}}
+.chrvvim-topbar{display:flex;align-items:center;gap:10px;background:#071b32;color:#e6f0fa;padding:10px 16px;font-size:.9rem;flex-wrap:wrap}.chrvvim-topbar a{color:#52cdf5;text-decoration:none;font-weight:700}.chrvvim-topbar a:hover{text-decoration:underline}.chrvvim-topbar .sep{opacity:.45}.chrvvim-topbar .brand{opacity:.85}</style>
+</head>
+<body><div class="chrvvim-topbar" role="navigation" aria-label="تنقل سريع"><a href="./">← الرئيسية</a><span class="sep">·</span><span class="brand">CHRVVIM Campus — صفحة مدمجة</span></div>
+<header>
+  <h1>رفيق الطالب</h1>
+  <p>جامعة ابن زهر - أكادير: كل ما يحتاجه الطالب في مكان واحد.</p>
+</header>
+<nav><div class="tabs" role="tablist" id="tabs"></div></nav>
+<main>
+
+<section id="home">
+  <input id="q" type="search" placeholder="قلب على كلية، مدرسة، أو خدمة..." aria-label="بحث">
+  <div id="chips" class="chips"></div>
+  <h2>المؤسسات</h2>
+  <div id="grid" class="grid"></div>
+  <h2>خدمات الطالب (الجامعة)</h2>
+  <div id="services" class="grid"></div>
+</section>
+
+<section id="news">
+  <input id="nq" type="search" placeholder="قلب فالإعلانات (شعبة، ماستر، استعمال الزمن...)" aria-label="بحث في الإعلانات">
+  <div id="nEtab" class="chips"></div>
+  <div id="nType" class="chips"></div>
+  <div id="nNote" class="note hidden"></div>
+  <ul id="nList" class="list"></ul>
+</section>
+
+<section id="tt">
+  <h2>جدولي الأسبوعي</h2>
+  <div class="note">كتب هنا الحصص ديالك (الفوج، القسم/السكسيون، الأستاذ، القاعة). كيتحفظو فـ هاد الجهاز غير، وماكيتصيفطو لحتى شي سيرفر.</div>
+  <form id="ttForm" class="form">
+    <div><label>اليوم</label><select id="ttDay"></select></div>
+    <div><label>من</label><input id="ttFrom" type="time" required></div>
+    <div><label>إلى</label><input id="ttTo" type="time" required></div>
+    <div><label>المادة</label><input id="ttSubj" required maxlength="60"></div>
+    <div><label>النوع</label><select id="ttKind"><option>CM</option><option>TD</option><option>TP</option><option>أخرى</option></select></div>
+    <div><label>الفوج</label><input id="ttGroup" maxlength="20" placeholder="G1"></div>
+    <div><label>القسم</label><input id="ttSect" maxlength="20" placeholder="A"></div>
+    <div><label>الأستاذ</label><input id="ttProf" maxlength="60"></div>
+    <div><label>القاعة / المدرج</label><input id="ttRoom" maxlength="30"></div>
+    <div><button class="btn" type="submit">زيد الحصة</button></div>
+  </form>
+  <div class="actions">
+    <button class="btn ghost small" id="ttPrint" type="button">طبع / PDF</button>
+    <button class="btn ghost small" id="ttExport" type="button">تصدير (JSON)</button>
+    <button class="btn danger small" id="ttClear" type="button">مسح الكل</button>
+  </div>
+  <div id="ttView"></div>
+</section>
+
+<section id="gpa">
+  <h2>حاسبة المعدل (على 20)</h2>
+  <div class="note">كتحسب المعدل بالمعامل. النتيجة تقريبية؛ قواعد التصحيح والتعويض الرسمية كتختلف حسب المؤسسة.</div>
+  <div id="gpaRows"></div>
+  <div class="actions">
+    <button class="btn ghost small" id="gpaAdd" type="button">+ زيد مادة</button>
+    <button class="btn danger small" id="gpaReset" type="button">إعادة</button>
+  </div>
+  <div class="card"><div class="stat"><span>المعدل:</span><span class="big" id="gpaAvg">-</span><span id="gpaMention" class="meta"></span></div></div>
+</section>
+
+<section id="todo">
+  <h2>الامتحانات والمواعيد</h2>
+  <form id="tdForm" class="form">
+    <div style="grid-column:span 2"><label>شنو؟</label><input id="tdTitle" required maxlength="80" placeholder="امتحان الجبر 1"></div>
+    <div><label>النوع</label><select id="tdKind"><option>امتحان</option><option>فرض / TP</option><option>تسليم مشروع</option><option>أخرى</option></select></div>
+    <div><label>التاريخ</label><input id="tdDate" type="date" required></div>
+    <div><button class="btn" type="submit">زيد</button></div>
+  </form>
+  <ul id="tdList" class="list"></ul>
+</section>
+
+</main>
+<footer>
+  هاد الموقع دليل غير رسمي. استعمالات الزمن والنتائج والإعلانات الرسمية كتلقاها دايماً عند المواقع الرسمية للمؤسسات.
+</footer>
+
+<script>
+/*DATA*/
+const EMBEDDED = {"updated_at": "2026-10-17T02:55:00+00:00", "note": "Extraction manuelle depuis les sites officiels le 17/10/2026. Les fichiers eux-memes (PDF/images) ne sont pas telecharges, seulement les liens des pages.", "errors": [{"source": "fsjes-agadir", "error": "Le site interdit l'acces automatise (robots.txt)"}, {"source": "encga", "error": "Le site interdit l'acces automatise (robots.txt)"}, {"source": "fsa", "error": "La version lisible du site date de 2015, a verifier manuellement"}], "items": [{"etablissement": "FLSH Agadir", "type": "emplois_du_temps", "date": "2026-10", "title": "عاجل!! تحديثات استعمال الزمن الخاص بشعبة اللغة العربية وآدابها (مسلك الدراسات العربية) للدورة الخريفية 2026-2027", "url": "http://www.flsh-agadir.ac.ma/?p=36917"}, {"etablissement": "FLSH Agadir", "type": "emplois_du_temps", "date": "2026-10", "title": "Les emplois du temps des modules transversaux pour la filière Études Amazighes", "url": "http://www.flsh-agadir.ac.ma/?p=36911"}, {"etablissement": "FLSH Agadir", "type": "emplois_du_temps", "date": "2026-10-02", "title": "Les emplois du temps des modules transversaux pour la filière sociologie", "url": "http://www.flsh-agadir.ac.ma/?p=36902"}, {"etablissement": "FLSH Agadir", "type": "emplois_du_temps", "date": "2026-09-07", "title": "استعمالات زمن الدورة الخريفية الخاصة بشعبة الدراسات الإسبانية 2026-2027", "url": "http://www.flsh-agadir.ac.ma/?p=36666"}, {"etablissement": "FLSH Agadir", "type": "emplois_du_temps", "date": "2026-09", "title": "استعمالات زمن الدورة الخريفية الخاصة بشعبة الدراسات الأمازيغية 2026-2027", "url": "http://www.flsh-agadir.ac.ma/?p=36665"}, {"etablissement": "FLSH Agadir", "type": "emplois_du_temps", "date": "2026-09", "title": "استعمالات زمن الدورة الخريفية الخاصة بشعبة الدراسات الفرنسية 2026-2027", "url": "http://www.flsh-agadir.ac.ma/?p=36664"}, {"etablissement": "FLSH Agadir", "type": "emplois_du_temps", "date": "2026-09", "title": "استعمالات زمن الدورة الخريفية الخاصة بشعبة الدراسات العربية 2026-2027", "url": "http://www.flsh-agadir.ac.ma/?p=36663"}, {"etablissement": "FLSH Agadir", "type": "emplois_du_temps", "date": "2026-09", "title": "استعمالات زمن الدورة الخريفية الخاصة بشعبة الدراسات الإسلامية 2026-2027", "url": "http://www.flsh-agadir.ac.ma/?p=36667"}, {"etablissement": "FLSH Agadir", "type": "emplois_du_temps", "date": "2026-09", "title": "استعمالات زمن الدورة الخريفية الخاصة بشعبة التاريخ والحضارة 2026-2027", "url": "http://www.flsh-agadir.ac.ma/?p=36668"}, {"etablissement": "FLSH Agadir", "type": "emplois_du_temps", "date": "2026-09", "title": "استعمالات زمن الدورة الخريفية الخاصة بشعبة الجغرافيا 2026-2027", "url": "http://www.flsh-agadir.ac.ma/?p=36669"}, {"etablissement": "FLSH Agadir", "type": "emplois_du_temps", "date": "2026-09", "title": "استعمالات زمن الدورة الخريفية الخاصة بشعبة علم الاجتماع 2026-2027", "url": "http://www.flsh-agadir.ac.ma/?p=36670"}, {"etablissement": "FLSH Agadir", "type": "examens", "date": "2026-06-03", "title": "برنامج امتحانات الدورة الخريفية الاستدراكية : Filología Hispánica 2025-2026", "url": "http://www.flsh-agadir.ac.ma/?p=36428"}, {"etablissement": "FLSH Agadir", "type": "concours", "date": "2026-10-05", "title": "لائحة الطلبة المدعوين للاختبار الشفوي - ماستر Français, communication et translittératie numérique (2026-2028)", "url": "http://www.flsh-agadir.ac.ma/?p=36926"}, {"etablissement": "FLSH Agadir", "type": "concours", "date": "2026-10", "title": "لائحة الطلبة المدعوين للاختبار الشفوي - ماستر المغرب في إفريقيا: تاريخ وتراث 2026-2027", "url": "http://www.flsh-agadir.ac.ma/?p=36927"}, {"etablissement": "FLSH Agadir", "type": "concours", "date": "2026-10", "title": "لائحة الطلبة المدعوين للاختبار الشفوي - ماستر الأدب الأمازيغي والترجمة (التوقيت العادي، فوج 2026-2028)", "url": "http://www.flsh-agadir.ac.ma/?p=36920"}, {"etablissement": "FLSH Agadir", "type": "concours", "date": "2026-10", "title": "لائحة الطلبة المدعوين للاختبار الشفوي - ماستر: دراسات الخطاب امتداد وأصول", "url": "http://www.flsh-agadir.ac.ma/?p=36898"}, {"etablissement": "FLSH Agadir", "type": "concours", "date": "2026-10", "title": "الاختبار الشفوي - ماستر Advanced theoretical linguistics and its computational dimensions (التوقيت العادي 2026/2027)", "url": "http://www.flsh-agadir.ac.ma/?p=36884"}, {"etablissement": "FLSH Agadir", "type": "concours", "date": "2026-10", "title": "الاختبار الشفوي - ماستر Advanced theoretical linguistics and its computational dimensions (التوقيت الميسر 2026/2027)", "url": "http://www.flsh-agadir.ac.ma/?p=36886"}, {"etablissement": "FLSH Agadir", "type": "concours", "date": "2026-10", "title": "الاختبار الشفوي - ماستر Applied Linguistics and Teaching English to Speakers of Other Languages (التوقيت العادي 2026/2027)", "url": "http://www.flsh-agadir.ac.ma/?p=36885"}, {"etablissement": "FLSH Agadir", "type": "avis", "date": "2026-08-22", "title": "إعلان عن فتح باب الترشيح", "url": "http://www.flsh-agadir.ac.ma/?p=36651"}, {"etablissement": "FLSH Agadir", "type": "avis", "date": "2026-07-22", "title": "التكوينات الجديدة المعتمدة برسم الموسم الجامعي 2026/2027", "url": "http://www.flsh-agadir.ac.ma/?p=36637"}, {"etablissement": "FLSH Agadir", "type": "espace_etudiant", "date": "", "title": "الفضاء الطلابي (النقط والوضعية البيداغوجية - رقم مسار أو الرقم الوطني مع APOGEE)", "url": "http://ent.flsh-agadir.ac.ma/login"}, {"etablissement": "EST Agadir", "type": "emplois_du_temps", "date": "2026", "title": "Emplois du temps 2026-2027 (affichés sur la plateforme ecours.esta.ac.ma)", "url": "http://www.esta.ac.ma/?page_id=469"}, {"etablissement": "EST Agadir", "type": "concours", "date": "2026-09", "title": "Liste des candidats en liste d'attente au DBT - 2026-2027 (Bachelor temps aménagé)", "url": "http://www.esta.ac.ma/?page_id=4583"}, {"etablissement": "EST Agadir", "type": "avis", "date": "2026-05-12", "title": "Cahier des Normes Pédagogiques Nationales (DUT et DBT)", "url": "http://www.esta.ac.ma/?p=40"}, {"etablissement": "ENSA Agadir", "type": "concours", "date": "2026-09", "title": "Résultat final - Concours d'accès latéral 2026-2027", "url": "http://www.ensa-agadir.ac.ma/pages/concourslatresultats"}, {"etablissement": "ENSA Agadir", "type": "concours", "date": "2026-09", "title": "Résultat final du transfert vers l'ENSA-Agadir 2026-2027", "url": "http://www.ensa-agadir.ac.ma/pages/transfertresultats"}, {"etablissement": "ENSA Agadir", "type": "avis", "date": "2026-08", "title": "Avis aux étudiants admis à l'ENSA Agadir (CNC, accès latéral, transfert) 2026-2027", "url": "http://www.ensa-agadir.ac.ma/pages/admisensa"}, {"etablissement": "ENSA Agadir", "type": "espace_etudiant", "date": "", "title": "EnsaUP - espace étudiant", "url": "https://ensaup.uiz.ac.ma"}, {"etablissement": "FMP Agadir", "type": "emplois_du_temps", "date": "", "title": "Emplois de temps - Faculté de Médecine et de Pharmacie d'Agadir", "url": "https://fmpa.uiz.ac.ma/emplois-temps/"}, {"etablissement": "FMP Agadir", "type": "listes", "date": "", "title": "Liste des étudiants de la 1ère et 2ème année de Pharmacie (TD/TP)", "url": "https://fmpa.uiz.ac.ma/liste-des-etudiants-de-la-2eme-annee-de-pharmacie-td/"}, {"etablissement": "FMP Agadir", "type": "avis", "date": "2026", "title": "(Rectification) Stages d'externat 4ème année 2026-2027", "url": "https://fmpa.uiz.ac.ma/stages-dexternat-4eme-annee-2026-2027/"}, {"etablissement": "FMP Agadir", "type": "avis", "date": "2026", "title": "Avis aux étudiants - Bourse d'externat", "url": "https://fmpa.uiz.ac.ma/avis-au-etudiants-bourse-dexternat/"}, {"etablissement": "FMP Agadir", "type": "avis", "date": "2026", "title": "Avis important (liste d'attente 3) - Filière pharmacie", "url": "https://fmpa.uiz.ac.ma/avis-important-liste-dattente-3/"}, {"etablissement": "FMP Agadir", "type": "espace_etudiant", "date": "", "title": "myFMPA - espace étudiant", "url": "https://myfmpa.uiz.ac.ma"}, {"etablissement": "Institut des Métiers du Sport", "type": "avis", "date": "2026-09-10", "title": "Avis aux étudiants IMS : démarrage des enseignements le lundi 14 septembre 2026 à 9h30 (locaux de la FMPA)", "url": "https://www.uiz.ac.ma/avis-aux-etudiants"}, {"etablissement": "Universite Ibn Zohr", "type": "avis", "date": "2026-10-13", "title": "Portail officiel de l'université : actualités et avis aux étudiants", "url": "https://www.uiz.ac.ma/"}]};
+
+const INSTITUTIONS = [
+  {name:"كلية الآداب والعلوم الإنسانية (FLSH)",type:"كلية",phone:"0528220878",links:[["الموقع الرسمي","http://www.flsh-agadir.ac.ma/"],["استعمالات الزمن","http://www.flsh-agadir.ac.ma/?page_id=249"],["الإعلانات","http://www.flsh-agadir.ac.ma/?cat=162"],["إعلانات الامتحانات","http://www.flsh-agadir.ac.ma/?cat=282"],["الفضاء الطلابي","http://ent.flsh-agadir.ac.ma"],["الدروس عن بعد","http://ecours-flsh.uiz.ac.ma"]]},
+  {name:"كلية العلوم (FSA)",type:"كلية",phone:"0528220957",links:[["الموقع الرسمي","http://www.fsa.ac.ma/"]]},
+  {name:"كلية العلوم القانونية والاقتصادية والاجتماعية (FSJES)",type:"كلية",phone:"0528217808",links:[["الموقع الرسمي","http://www.fsjes-agadir.org/"]]},
+  {name:"كلية الطب والصيدلة (FMPA)",type:"كلية",phone:"0528227170",links:[["الموقع الرسمي","https://fmpa.uiz.ac.ma/"],["استعمالات الزمن","https://fmpa.uiz.ac.ma/emplois-temps/"],["myFMPA","https://myfmpa.uiz.ac.ma"],["الدروس عن بعد","http://ecours-fmpa.uiz.ac.ma/"]]},
+  {name:"المدرسة الوطنية للتجارة والتسيير (ENCG)",type:"مدرسة",phone:"0528225748",links:[["الموقع الرسمي","https://encga.uiz.ac.ma/"]]},
+  {name:"المدرسة الوطنية للعلوم التطبيقية (ENSA)",type:"مدرسة",phone:"0528228313",links:[["الموقع الرسمي","http://www.ensa-agadir.ac.ma/"],["EnsaUP","https://ensaup.uiz.ac.ma"]]},
+  {name:"المدرسة العليا للتكنولوجيا (EST)",type:"مدرسة",phone:"0528232583",links:[["الموقع الرسمي","http://www.esta.ac.ma/"],["استعمالات الزمن","http://www.esta.ac.ma/?page_id=469"],["المنصة البيداغوجية","https://ecours.esta.ac.ma/"]]},
+  {name:"معهد مهن الرياضة (IMS)",type:"معهد",phone:"",links:[["الموقع الرسمي","https://ims.uiz.ac.ma"]]},
+  {name:"رئاسة جامعة ابن زهر",type:"الجامعة",phone:"0528227125",links:[["الموقع الرسمي","https://www.uiz.ac.ma"],["إعلانات للطلبة","https://www.uiz.ac.ma/avis-aux-etudiants"]]}
+];
+const SERVICES = [
+  ["التسجيل","http://preinscription.uiz.ac.ma/"],["الدروس عن بعد","https://www.uiz.ac.ma/elearn"],["السكولاريت أونلاين","https://www.uiz.ac.ma/escol"],
+  ["المنح","https://www.uiz.ac.ma/bourse"],["السكن والمطعم","https://www.uiz.ac.ma/logement-et-restauration"],["التأمين الصحي","https://www.uiz.ac.ma/assurance-maladie"],
+  ["الأنشطة الرياضية","https://www.uiz.ac.ma/sport"],["الحياة اليومية","https://www.uiz.ac.ma/vie-pratique"],["النوادي والجمعيات","https://www.uiz.ac.ma/club"],["الموارد الإلكترونية","https://www.uiz.ac.ma/e-ressources"]
+];
+const DAYS = ["الاثنين","الثلاثاء","الأربعاء","الخميس","الجمعة","السبت","الأحد"];
+const TYPE_LABEL = {emplois_du_temps:"استعمال الزمن",examens:"امتحانات",avis:"إعلان",concours:"مباريات وقبول",listes:"لوائح",espace_etudiant:"فضاء الطالب",info:"إعلان عام",warning:"تنبيه"};
+
+const $ = s => document.querySelector(s);
+const el = (tag, props = {}, ...kids) => { const e = document.createElement(tag); Object.assign(e, props); kids.flat().forEach(k => e.append(k)); return e; };
+const store = {
+  get(k, d){ try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch(e){ return d; } },
+  set(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch(e){} }
+};
+const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+const link = (txt, url) => el("a", {href:url, target:"_blank", rel:"noopener noreferrer", textContent:txt});
+
+/* ---------- Tabs ---------- */
+const TABS = [["home","الدليل"],["news","الإعلانات"],["tt","جدولي"],["gpa","المعدل"],["todo","المواعيد"]];
+function showTab(id){
+  if (!TABS.some(t => t[0] === id)) id = "home";
+  document.querySelectorAll("section").forEach(s => s.classList.toggle("active", s.id === id));
+  document.querySelectorAll(".tab").forEach(b => b.setAttribute("aria-selected", b.dataset.id === id));
+  try { history.replaceState(null, "", "#" + id); } catch(e){}
+}
+TABS.forEach(([id, label]) => {
+  const b = el("button", {className:"tab", textContent:label, role:"tab"}); b.dataset.id = id;
+  b.onclick = () => showTab(id); $("#tabs").append(b);
+});
+
+/* ---------- Home / directory ---------- */
+const home = {q:"", type:"الكل"};
+function renderHome(){
+  const types = ["الكل", ...new Set(INSTITUTIONS.map(i => i.type))];
+  const chips = $("#chips"); chips.replaceChildren();
+  types.forEach(t => { const c = el("button", {className:"chip" + (home.type === t ? " on" : ""), textContent:t}); c.onclick = () => { home.type = t; renderHome(); }; chips.append(c); });
+  const q = home.q.trim().toLowerCase(), grid = $("#grid"); grid.replaceChildren();
+  INSTITUTIONS.filter(i => (home.type === "الكل" || i.type === home.type) && (!q || (i.name + i.links.map(l => l[0]).join(" ")).toLowerCase().includes(q)))
+    .forEach(i => grid.append(el("div", {className:"card"},
+      el("h3", {textContent:i.name}),
+      el("div", {className:"meta", textContent:i.type + (i.phone ? " - " + i.phone : "")}),
+      el("div", {className:"links"}, i.links.map(([l,u]) => link(l,u))))));
+  const sv = $("#services"); sv.replaceChildren();
+  SERVICES.filter(([l]) => !q || l.toLowerCase().includes(q))
+    .forEach(([l,u]) => sv.append(el("div", {className:"card"}, link(l,u))));
+}
+$("#q").addEventListener("input", e => { home.q = e.target.value; renderHome(); });
+
+/* ---------- News ---------- */
+const news = {items:[], q:"", etab:"الكل", type:"الكل"};
+function renderNews(){
+  const mk = (box, vals, key) => { box.replaceChildren(); vals.forEach(v => { const c = el("button", {className:"chip" + (news[key] === v ? " on" : ""), textContent:key === "type" && TYPE_LABEL[v] ? TYPE_LABEL[v] : v}); c.onclick = () => { news[key] = v; renderNews(); }; box.append(c); }); };
+  mk($("#nEtab"), ["الكل", ...new Set(news.items.map(i => i.etablissement))], "etab");
+  mk($("#nType"), ["الكل", ...new Set(news.items.map(i => i.type))], "type");
+  const q = news.q.trim().toLowerCase(), ul = $("#nList"); ul.replaceChildren();
+  const rows = news.items.filter(i => (news.etab === "الكل" || i.etablissement === news.etab) && (news.type === "الكل" || i.type === news.type) && (!q || i.title.toLowerCase().includes(q)))
+    .sort((a,b) => (b.date || "").localeCompare(a.date || ""));
+  rows.forEach(i => ul.append(el("li", {className:"row"},
+    el("div", {}, el("div", {}, el("span", {className:"tag", textContent:i.etablissement}), el("span", {className:"tag", textContent:TYPE_LABEL[i.type] || i.type})), link(i.title, i.url)),
+    el("span", {className:"meta", textContent:i.date || ""}))));
+  if (!rows.length && news.items.length) ul.append(el("li", {className:"note", textContent:"ما كاين حتى نتيجة."}));
+}
+$("#nq").addEventListener("input", e => { news.q = e.target.value; renderNews(); });
+async function loadNews(){
+  let data = null;
+  try { const r = await fetch("announcements.json", {cache:"no-store"}); if (r.ok) data = await r.json(); } catch(e){}
+  if (!data) data = EMBEDDED;
+  const note = $("#nNote");
+  if (!data) { note.textContent = "ما قدرناش نحملو الإعلانات. تأكد بلي الملف announcements.json كاين حدا هاد الصفحة."; note.classList.remove("hidden"); return; }
+  news.items = data.items || [];
+  note.textContent = "آخر تحديث: " + (data.updated_at || "").slice(0, 10) + ". تأكد دايماً من المصدر الرسمي.";
+  note.classList.remove("hidden");
+  renderNews();
+}
+
+/* ---------- Timetable ---------- */
+let tt = store.get("tt", []);
+DAYS.forEach((d, i) => $("#ttDay").append(el("option", {value:i, textContent:d})));
+function todayIdx(){ const d = new Date().getDay(); return d === 0 ? 6 : d - 1; }
+function renderTT(){
+  const box = $("#ttView"); box.replaceChildren();
+  if (!tt.length) { box.append(el("div", {className:"note", textContent:"ما زال ما زدتي حتى حصة."})); return; }
+  DAYS.forEach((d, i) => {
+    const items = tt.filter(x => +x.day === i).sort((a,b) => a.from.localeCompare(b.from));
+    if (!items.length) return;
+    const wrap = el("div", {className:"day" + (i === todayIdx() ? " today" : "")}, el("h3", {textContent:d + (i === todayIdx() ? " (اليوم)" : "")}));
+    items.forEach(x => {
+      const det = [x.kind, x.group && "فوج " + x.group, x.sect && "قسم " + x.sect, x.prof, x.room].filter(Boolean).join(" - ");
+      const del = el("button", {className:"btn danger small", textContent:"حذف"}); del.onclick = () => { tt = tt.filter(y => y.id !== x.id); store.set("tt", tt); renderTT(); };
+      wrap.append(el("div", {className:"row"}, el("div", {}, el("div", {}, el("span", {className:"time", textContent:x.from + " - " + x.to}), " ", el("strong", {textContent:x.subj})), el("div", {className:"meta", textContent:det})), del));
+    });
+    box.append(wrap);
+  });
+}
+$("#ttForm").addEventListener("submit", e => {
+  e.preventDefault();
+  if ($("#ttFrom").value >= $("#ttTo").value) { alert("وقت النهاية خاصو يكون من بعد البداية."); return; }
+  tt.push({id:uid(), day:$("#ttDay").value, from:$("#ttFrom").value, to:$("#ttTo").value, subj:$("#ttSubj").value.trim(), kind:$("#ttKind").value, group:$("#ttGroup").value.trim(), sect:$("#ttSect").value.trim(), prof:$("#ttProf").value.trim(), room:$("#ttRoom").value.trim()});
+  store.set("tt", tt); ["ttSubj","ttGroup","ttSect","ttProf","ttRoom"].forEach(id => $("#" + id).value = ""); renderTT();
+});
+$("#ttClear").onclick = () => { if (confirm("تمسح كل الحصص؟")) { tt = []; store.set("tt", tt); renderTT(); } };
+$("#ttPrint").onclick = () => window.print();
+$("#ttExport").onclick = () => {
+  const a = el("a", {href:URL.createObjectURL(new Blob([JSON.stringify(tt, null, 2)], {type:"application/json"})), download:"jadwali.json"});
+  document.body.append(a); a.click(); a.remove();
+};
+
+/* ---------- GPA ---------- */
+let gpa = store.get("gpa", [{n:"",g:"",c:"1"},{n:"",g:"",c:"1"},{n:"",g:"",c:"1"}]);
+function mention(a){ return a >= 16 ? "ممتاز (très bien)" : a >= 14 ? "حسن (bien)" : a >= 12 ? "مستحسن (assez bien)" : a >= 10 ? "مقبول (passable)" : "أقل من 10"; }
+function calcGPA(){
+  let s = 0, w = 0;
+  gpa.forEach(r => { const g = parseFloat(r.g), c = parseFloat(r.c); if (isFinite(g) && isFinite(c) && g >= 0 && g <= 20 && c > 0) { s += g * c; w += c; } });
+  $("#gpaAvg").textContent = w ? (s / w).toFixed(2) : "-";
+  $("#gpaMention").textContent = w ? mention(s / w) : "";
+}
+function renderGPA(){
+  const box = $("#gpaRows"); box.replaceChildren();
+  gpa.forEach((r, i) => {
+    const mkIn = (key, ph, type, extra = {}) => { const inp = el("input", Object.assign({type, placeholder:ph, value:r[key]}, extra)); inp.oninput = () => { r[key] = inp.value; store.set("gpa", gpa); calcGPA(); }; return inp; };
+    const del = el("button", {className:"btn danger small", textContent:"X", type:"button"}); del.onclick = () => { gpa.splice(i, 1); store.set("gpa", gpa); renderGPA(); };
+    box.append(el("div", {className:"form", style:"grid-template-columns:2fr 1fr 1fr auto;margin-bottom:8px"}, mkIn("n","المادة","text",{maxLength:50}), mkIn("g","النقطة /20","number",{min:0,max:20,step:"0.01"}), mkIn("c","المعامل","number",{min:0.1,step:"0.1"}), del));
+  });
+  calcGPA();
+}
+$("#gpaAdd").onclick = () => { gpa.push({n:"",g:"",c:"1"}); store.set("gpa", gpa); renderGPA(); };
+$("#gpaReset").onclick = () => { gpa = [{n:"",g:"",c:"1"},{n:"",g:"",c:"1"},{n:"",g:"",c:"1"}]; store.set("gpa", gpa); renderGPA(); };
+
+/* ---------- Deadlines ---------- */
+let td = store.get("td", []);
+function renderTD(){
+  const ul = $("#tdList"); ul.replaceChildren();
+  const today = new Date(); today.setHours(0,0,0,0);
+  [...td].sort((a,b) => a.done - b.done || a.date.localeCompare(b.date)).forEach(x => {
+    const days = Math.round((new Date(x.date + "T00:00:00") - today) / 86400000);
+    const txt = x.done ? "تم" : days < 0 ? "فات بـ " + (-days) + " يوم" : days === 0 ? "اليوم!" : days === 1 ? "غدا" : "باقي " + days + " يوم";
+    const cls = x.done ? "meta" : days < 0 ? "left-over" : days <= 3 ? "left-soon" : "meta";
+    const chk = el("input", {type:"checkbox", checked:x.done, style:"width:auto"}); chk.onchange = () => { x.done = chk.checked; store.set("td", td); renderTD(); };
+    const del = el("button", {className:"btn danger small", textContent:"حذف"}); del.onclick = () => { td = td.filter(y => y.id !== x.id); store.set("td", td); renderTD(); };
+    ul.append(el("li", {className:"row" + (x.done ? " done" : "")}, chk,
+      el("div", {style:"flex:1"}, el("div", {}, el("span", {className:"tag", textContent:x.kind}), el("span", {className:"t", textContent:x.title})), el("div", {className:"meta", textContent:x.date})),
+      el("span", {className:cls, textContent:txt}), del));
+  });
+  if (!td.length) ul.append(el("li", {className:"note", textContent:"ما زال ما زدتي حتى موعد."}));
+}
+$("#tdForm").addEventListener("submit", e => {
+  e.preventDefault();
+  td.push({id:uid(), title:$("#tdTitle").value.trim(), kind:$("#tdKind").value, date:$("#tdDate").value, done:false});
+  store.set("td", td); $("#tdTitle").value = ""; renderTD();
+});
+
+/* ---------- Init ---------- */
+renderHome(); renderTT(); renderGPA(); renderTD(); loadNews();
+showTab(location.hash.slice(1));
+window.addEventListener("hashchange", () => showTab(location.hash.slice(1)));
+</script>
+<a class="back-float" href="index.html" aria-label="العودة إلى الصفحة الأولى">← الصفحة الأولى</a>
+<style>
+.back-float{position:fixed;top:12px;inset-inline-start:12px;z-index:998;background:var(--card,#fff);border:1px solid var(--line,#ddd);border-radius:12px;padding:8px 12px;font-size:14px;text-decoration:none;color:var(--ink,#222);box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.back-float:hover{background:var(--soft,#eee)}
+.social-strip{position:fixed;bottom:0;inset-inline:0;z-index:999;background:var(--card,#fff);border-top:1px solid var(--line,#ddd);padding:8px 16px;display:flex;align-items:center;gap:12px;font-size:13px;color:var(--muted,#666);backdrop-filter:blur(8px);flex-wrap:wrap;box-shadow:0 -2px 12px rgba(0,0,0,.06)}
+.social-strip a{color:var(--blue2,#374151);text-decoration:none;font-weight:700}
+.social-strip a:hover{text-decoration:underline}
+.social-strip .ss-close{margin-inline-start:auto;background:none;border:0;color:var(--muted,#666);cursor:pointer;font-size:18px;line-height:1}
+.social-strip.hidden{display:none}
+@media(max-width:600px){.social-strip{gap:8px;padding:6px 12px;font-size:12px}}
+</style>
+<div class="social-strip" id="socialStrip" role="complementary" aria-label="حسابات المؤسس">
+  <span>تواصل:</span>
+  <a href="https://github.com/mr1mohamed1chraim" target="_blank" rel="noopener" aria-label="GitHub">GitHub</a>
+  <a href="https://www.instagram.com/mr1mohamed1chraim" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a>
+  <a href="https://www.linkedin.com/in/mr1mohamed1chraim" target="_blank" rel="noopener" aria-label="LinkedIn">LinkedIn</a>
+  <a href="mailto:mr1mohamed1chraim@gmail.com" aria-label="Email">Email</a>
+  <button class="ss-close" id="ssClose" type="button" aria-label="إغلاق">×</button>
+</div>
+<script>
+(function(){
+  var s=document.getElementById('socialStrip');
+  if(!s) return;
+  var close=document.getElementById('ssClose');
+  try{ if(localStorage.getItem('cc_ss_closed')==='1') s.classList.add('hidden'); }catch(e){}
+  if(close) close.addEventListener('click',function(){ s.classList.add('hidden'); try{ localStorage.setItem('cc_ss_closed','1'); }catch(e){} });
+})();
+</script>
+<script src="gender.js" defer></script>
+<script src="social-bubble.js" defer></script>
+</body>
+</html>

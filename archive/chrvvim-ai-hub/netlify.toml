@@ -1,0 +1,15 @@
+# ==========================================================================
+# CHRVVIM AI HUB — consolidated primary site (Netlify)
+#
+# Publish directory is `site/`, which mirrors the live primary deployment:
+#   https://mr1mohamed1chraim.netlify.app/
+#
+# Redirects and headers live in site/_redirects and site/_headers so the
+# publish directory stays self-contained (same as the deployed original).
+#
+# No build step is required — this is a static site (no external dependencies).
+# ==========================================================================
+
+[build]
+  publish = "site"
+  command = ""

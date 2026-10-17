@@ -1,0 +1,14 @@
+# Local / editor noise
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log
+*.tmp
+
+# Netlify local state (never commit account binding)
+.netlify/
+
+# Secrets — never commit real credentials
+.env
+.env.*
+!.env.example

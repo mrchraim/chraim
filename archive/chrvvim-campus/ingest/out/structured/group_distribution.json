@@ -1,0 +1,186 @@
+{
+  "kind": "group_distribution",
+  "count": 2,
+  "items": [
+    {
+      "file": "3995_1775318613_توزيع-أفواج-السداسي-2-مسلك-القانون-الخاص-جذع-مشترك-2025-2026-1-1-.pdf.txt",
+      "kind": "group_distribution",
+      "source_text": "text/3995_1775318613_توزيع-أفواج-السداسي-2-مسلك-القانون-الخاص-جذع-مشترك-2025-2026-1-1-.pdf.txt",
+      "data": {
+        "title": "توزيع أفواج السداسي الثاني : مسلك القانون الخاص - جذع مشترك",
+        "semester": "الثاني",
+        "academic_year": "2026-2025",
+        "groups": [
+          {
+            "code": "A",
+            "range_raw": "A'MIL AHACHTAR"
+          },
+          {
+            "code": "B",
+            "range_raw": "AHACHTARI AIT TAMANET"
+          },
+          {
+            "code": "C",
+            "range_raw": "AIT TAMANETE AMZIL"
+          },
+          {
+            "code": "D",
+            "range_raw": "AMZILE BABA"
+          },
+          {
+            "code": "E",
+            "range_raw": "BABA ALI BEN CHRIF"
+          },
+          {
+            "code": "F",
+            "range_raw": "BEN CHRIFI BOUDLAL"
+          },
+          {
+            "code": "G",
+            "range_raw": "BOUDLALI BOUSTI"
+          },
+          {
+            "code": "H",
+            "range_raw": "BOUSTID DAOU"
+          },
+          {
+            "code": "I",
+            "range_raw": "DAOUAICHE EL BOURAHI"
+          },
+          {
+            "code": "J",
+            "range_raw": "EL BOURAHY EL MANSOURI"
+          },
+          {
+            "code": "K",
+            "range_raw": "EL MANSOURY ELIBRAHIM"
+          },
+          {
+            "code": "L",
+            "range_raw": "ELIBRAHIMI ETTALIBI"
+          },
+          {
+            "code": "M",
+            "range_raw": "ETTALIBY HAMIDI"
+          },
+          {
+            "code": "N",
+            "range_raw": "HAMIDY IRIDOD"
+          },
+          {
+            "code": "O",
+            "range_raw": "IRIDODI KRAK"
+          },
+          {
+            "code": "P",
+            "range_raw": "KRAKI MAHRACH"
+          },
+          {
+            "code": "Q",
+            "range_raw": "MAHRACHE NOGOT"
+          },
+          {
+            "code": "R",
+            "range_raw": "NOGOTI OUMARI"
+          },
+          {
+            "code": "S",
+            "range_raw": "OUMARY SEYDA"
+          },
+          {
+            "code": "T",
+            "range_raw": "SEYDI ZYNIAH"
+          }
+        ],
+        "group_count": 20,
+        "distribution_rule": "alphabetical_name_ranges",
+        "note": [
+          "ملحوظة:",
+          "الأسماء المركبة و مصحوبة بفراغ تات ي دائما قبل الأسماء الغير المركبة",
+          "Les lettres avec Espace (déttachées) viennent toujours avant les lettres  sans",
+          "espace (attachées)"
+        ],
+        "note_unparsed": false
+      },
+      "status": "parsed"
+    },
+    {
+      "file": "3995_1775318649_توزيع-أفواج-السداسي-4-مسلك-القانون-الخاص-جذع-مشترك-2025-2026-1-.pdf.txt",
+      "kind": "group_distribution",
+      "source_text": "text/3995_1775318649_توزيع-أفواج-السداسي-4-مسلك-القانون-الخاص-جذع-مشترك-2025-2026-1-.pdf.txt",
+      "data": {
+        "title": "توزيع أفواج السداسي الرابع : مسلك القانون الخاص - جذع مشترك",
+        "semester": "الرابع",
+        "academic_year": "2026-2025",
+        "groups": [
+          {
+            "code": "A",
+            "range_raw": "A'MIL AIT BOUDDI"
+          },
+          {
+            "code": "B",
+            "range_raw": "AIT BOUDDY AMZIL"
+          },
+          {
+            "code": "C",
+            "range_raw": "AMZILE BAMMAD"
+          },
+          {
+            "code": "D",
+            "range_raw": "BAMMADI BOUADN"
+          },
+          {
+            "code": "E",
+            "range_raw": "BOUADNI BOUTCHKIL"
+          },
+          {
+            "code": "F",
+            "range_raw": "BOUTCHKILI EL AATID"
+          },
+          {
+            "code": "G",
+            "range_raw": "EL AATIDI EL MILOUD"
+          },
+          {
+            "code": "H",
+            "range_raw": "EL MILOUDI ESSAADI"
+          },
+          {
+            "code": "I",
+            "range_raw": "ESSAADY HMIDOU"
+          },
+          {
+            "code": "J",
+            "range_raw": "HMIDOUCH KHADIR"
+          },
+          {
+            "code": "K",
+            "range_raw": "KHADIRI LOUZAL"
+          },
+          {
+            "code": "L",
+            "range_raw": "LOUZALI OUAHNIN"
+          },
+          {
+            "code": "M",
+            "range_raw": "OUAHNINI ROUISSAM"
+          },
+          {
+            "code": "N",
+            "range_raw": "ROUISSAME ZYATI"
+          }
+        ],
+        "group_count": 14,
+        "distribution_rule": "alphabetical_name_ranges",
+        "note": [
+          "ملحوظة:",
+          "الأسماء المركبة و مصحوبة بفراغ  تات ي دائما قبل الأسماء الغير المركبة",
+          "Les lettres avec Espace (déttachées) viennent toujours avant les lettres  sans",
+          "espace (attachées)"
+        ],
+        "note_unparsed": false
+      },
+      "status": "parsed"
+    }
+  ]
+}

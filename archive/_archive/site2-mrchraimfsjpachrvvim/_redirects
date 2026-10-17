@@ -1,0 +1,5 @@
+/api/public/announcements  /.netlify/functions/announcements  200
+/admin  /admin.html  301!
+/documents/*  /public/documents/:splat  200
+/assets/*  /public/assets/:splat  200
+/*  /index.html  404

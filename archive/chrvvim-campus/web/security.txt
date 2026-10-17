@@ -1,0 +1,4 @@
+Contact: https://wa.me/212665366326
+Expires: 2027-10-16T22:37:12Z
+Preferred-Languages: ar, fr, en
+Canonical: https://mr1mohamed1chraim.netlify.app/.well-known/security.txt

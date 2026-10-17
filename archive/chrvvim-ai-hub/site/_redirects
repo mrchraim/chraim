@@ -1,0 +1,14 @@
+# CHRVVIM Campus — primary site redirects
+# Source of truth for the consolidated primary deployment.
+# Order matters: first match wins (Netlify processes top-down).
+# `!` forces the rule even when a real file exists at the path.
+
+# Admin console: pretty URL -> actual file (forced, permanent)
+/admin            /admin.html    301!
+
+# Back-compat aliases for the legacy /public/* source layout (live site serves both)
+/public/documents/*  /documents/:splat   200
+/public/assets/*     /assets/:splat      200
+
+# SPA fallback for unknown paths (returns the app shell with a 404 status)
+/*  /index.html  404

@@ -1,0 +1,10 @@
+# Legacy site: chrvvim0k0l0a0k0.netlify.app  ->  primary (301, permanent)
+#
+# Deploy this `_redirects` file to the legacy Netlify site's publish
+# directory and redeploy that site. Netlify preserves the query string by
+# default; the :splat keeps the path so deep links still resolve on the
+# destination (which itself falls back to the app shell).
+#
+# There is no loop: the destination host is different from this host.
+
+/*  https://mr1mohamed1chraim.netlify.app/:splat  301!

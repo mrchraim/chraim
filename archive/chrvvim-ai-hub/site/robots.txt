@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /admin.html
+Disallow: /admin
+Allow: /
+
+Sitemap: https://mr1mohamed1chraim.netlify.app/sitemap.xml

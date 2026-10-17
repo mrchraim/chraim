@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تصفح المواد — منصة الطلبة</title>
+  <meta name="description" content="تصفح المواد الدراسية حسب الجامعة والشعبة والسداسي — مع بحث فوري في جميع الجامعات المغربية.">
+  <link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html">📚 <span data-site-name></span></a>
+      <nav class="site-nav" id="site-nav">
+        <a href="index.html" data-t="home"></a>
+        <a href="browse.html" class="active" data-t="browse"></a>
+        <a href="announcements.html" data-t="announcements"></a>
+        <a href="contribute.html" data-t="contribute"></a>
+        <a href="about.html" data-t="about"></a>
+      </nav>
+      <div class="header-actions">
+        <button class="lang-btn" id="lang-toggle" onclick="toggleLang()">FR</button>
+        <a href="account.html" class="btn btn-primary btn-sm" id="account-link" data-t="login"></a>
+        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="page-hero">
+    <div class="container">
+      <h1 data-t="browse"></h1>
+      <p id="subjects-count"></p>
+    </div>
+  </div>
+
+  <main class="container section">
+    <div class="filters-bar">
+      <input type="text" id="browse-search" data-t-ph="search_ph">
+      <select id="f-university"></select>
+      <select id="f-department"></select>
+      <select id="f-semester"></select>
+    </div>
+    <div class="grid grid-3" id="subjects-list"><div class="empty"><span class="icon">⏳</span><span data-t="loading"></span></div></div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-bottom"><span data-t="footer_rights"></span> © 2026 <span data-site-name></span></div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/config.js"></script>
+  <script src="js/site.js"></script>
+  <script>
+    document.querySelectorAll("[data-site-name]").forEach(el => el.textContent = SITE.name_ar);
+    (async () => {
+      const content = loadBrowse();
+      await initSite();
+      document.querySelectorAll("[data-site-name]").forEach(el => el.textContent = SITE["name_" + lang]);
+      await content;
+    })();
+  </script>
+</body>
+</html>

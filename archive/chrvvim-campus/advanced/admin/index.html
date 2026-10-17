@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#0b2a6f">
+<title>إدارة CHRVVIM</title><link rel="stylesheet" href="/admin/admin.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="/">CHRVVIM <span>ADMIN</span></a><span class="top-note">منطقة إدارة خاصة</span></header>
+<main class="shell">
+  <section id="loginView" class="login-card card" aria-labelledby="loginTitle">
+    <div class="mark">C</div><p class="eyebrow">CONTROL PANEL</p><h1 id="loginTitle">تسجيل الدخول الإداري</h1>
+    <p class="muted">هذه الواجهة لا تسمح بالتعديل دون جلسة مصادق عليها من الخادم.</p>
+    <form id="loginForm">
+      <label for="email">البريد الإلكتروني الإداري</label><input id="email" name="email" type="email" autocomplete="username" required maxlength="254">
+      <label for="password">كلمة المرور</label><input id="password" name="password" type="password" autocomplete="current-password" required maxlength="200">
+      <button class="btn primary full" type="submit">دخول آمن <span>←</span></button><p id="loginMessage" class="message" role="status"></p>
+    </form>
+    <p class="security-note">لا تشارك كلمة المرور. استخدم HTTPS عند النشر الفعلي.</p>
+  </section>
+
+  <section id="adminView" hidden>
+    <div class="welcome card"><div><p class="eyebrow">CHRVVIM · MANAGEMENT</p><h1>لوحة التحكم</h1><p class="muted">إدارة المحتوى الأكاديمي ومراجعة التغييرات قبل نشرها.</p></div><div class="welcome-actions"><span id="adminEmail" class="admin-email"></span><button id="logoutBtn" class="btn secondary">تسجيل الخروج</button></div></div>
+    <div class="notice"><strong>وضع آمن افتراضياً:</strong> السجلات الجديدة تبدأ بحالة «مسودة». لا تظهر للطلبة عبر واجهة API العامة حتى تُنشر.</div>
+    <nav class="nav" aria-label="أقسام الإدارة">
+      <button class="nav-btn active" data-entity="schedules">استعمال الزمن</button><button class="nav-btn" data-entity="courses">المواد</button><button class="nav-btn" data-entity="professors">الأساتذة</button><button class="nav-btn" data-entity="rooms">القاعات</button><button class="nav-btn" data-entity="announcements">الإعلانات والإشعارات</button><button class="nav-btn" data-entity="accounts">الحسابات والصلاحيات</button><button class="nav-btn" data-entity="audit">سجل التعديلات</button>
+    </nav>
+    <section class="card content-card">
+      <div class="content-head"><div><p class="eyebrow">CONTENT MANAGER</p><h2 id="entityTitle">استعمال الزمن</h2><p id="entityHint" class="muted">إضافة الحصص وتعديلها ومراجعة حالة النشر.</p></div><button id="createBtn" class="btn primary">＋ إضافة سجل</button></div>
+      <div id="toolbar" class="toolbar"><input id="searchInput" type="search" placeholder="ابحث في السجلات…" aria-label="بحث في السجلات"><select id="statusFilter" aria-label="تصفية حسب الحالة"><option value="">كل الحالات</option><option value="draft">مسودة</option><option value="published">منشور</option><option value="archived">مؤرشف</option></select><button id="refreshBtn" class="btn secondary">تحديث</button></div>
+      <p id="listMessage" class="message" role="status"></p><div id="records" class="records"><p class="empty">جارٍ التحميل…</p></div><div class="pagination"><span id="countLabel" class="muted"></span><button id="prevBtn" class="btn secondary" disabled>السابق</button><button id="nextBtn" class="btn secondary" disabled>التالي</button></div>
+    </section>
+    <section id="editorCard" class="card editor-card" hidden><div class="content-head"><div><p class="eyebrow">RECORD EDITOR</p><h2 id="editorTitle">إضافة سجل</h2></div><button id="cancelEditBtn" class="btn secondary" type="button">إغلاق</button></div><form id="recordForm"><div id="formFields" class="form-grid"></div><p id="formMessage" class="message" role="status"></p><div class="form-actions"><button class="btn primary" type="submit">حفظ التغييرات</button><button id="cancelEditBtn2" class="btn secondary" type="button">إلغاء</button></div></form></section>
+    <p class="footer-note">سجل التعديلات مخصص للمراجعة التشغيلية. لا تخزن بيانات الطلبة الشخصية في هذه اللوحة دون حاجة وصلاحيات واضحة.</p>
+  </section>
+</main>
+<script src="/admin/admin.js" defer></script>
+</body></html>

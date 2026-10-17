@@ -1,0 +1,86 @@
+{
+  "academic_year": "2026-2027",
+  "note": "وثائق مقدمة من المستخدم؛ راجع تاريخ التحيين والنسخة الرسمية قبل الاعتماد.",
+  "documents": [
+    {
+      "title": "استعمال الزمن — السداسي الخامس — مسار القانون المدني",
+      "file": "public/documents/s5-civil-law-timetable-updated-2026-10-10.pdf",
+      "semester": "S5",
+      "track": "القانون الخاص",
+      "description": "جدول استعمال الزمن محين بتاريخ 10-10-2026",
+      "type": "PDF"
+    },
+    {
+      "title": "توزيع أفواج الإنجليزية — مسار القانون المدني",
+      "file": "public/documents/s5-civil-english-groups.pdf",
+      "semester": "S5",
+      "track": "القانون الخاص",
+      "description": "توزيع الأفواج Ang-A وAng-B",
+      "type": "PDF"
+    },
+    {
+      "title": "توزيع أفواج المهن القانونية والقضائية",
+      "file": "public/documents/s5-legal-professions-groups.pdf",
+      "semester": "S5",
+      "track": "القانون الخاص",
+      "description": "الأفواج A إلى H",
+      "type": "PDF"
+    },
+    {
+      "title": "استعمال الزمن — السداسي الثالث — القانون العام",
+      "file": "public/documents/s3-public-law-timetable-updated-2026-10-10.pdf",
+      "semester": "S3",
+      "track": "القانون العام",
+      "description": "جدول محين بتاريخ 10-10-2026",
+      "type": "PDF"
+    },
+    {
+      "title": "توزيع أفواج القانون المدني",
+      "file": "public/documents/s5-civil-law-groups.pdf",
+      "semester": "S5",
+      "track": "القانون الخاص",
+      "description": "الأفواج A إلى C",
+      "type": "PDF"
+    },
+    {
+      "title": "توزيع أفواج الفرنسية — القانون العام",
+      "file": "public/documents/s3-public-french-groups.pdf",
+      "semester": "S3",
+      "track": "القانون العام",
+      "description": "الأفواج Fr-A وFr-B",
+      "type": "PDF"
+    },
+    {
+      "title": "استعمال الزمن — السداسي الخامس — مسار العلوم الجنائية",
+      "file": "public/documents/s5-criminal-sciences-timetable-updated-2026-10-10.pdf",
+      "semester": "S5",
+      "track": "القانون الخاص",
+      "description": "جدول محين بتاريخ 10-10-2026",
+      "type": "PDF"
+    },
+    {
+      "title": "استعمال الزمن — السداسي الخامس — الدراسات السياسية والدولية",
+      "file": "public/documents/s5-political-studies-timetable-updated-2026-10-10.pdf",
+      "semester": "S5",
+      "track": "القانون العام",
+      "description": "جدول محين بتاريخ 10-10-2026",
+      "type": "PDF"
+    },
+    {
+      "title": "توزيع أفواج السداسي الثالث — القانون العام",
+      "file": "public/documents/s3-public-law-groups.pdf",
+      "semester": "S3",
+      "track": "القانون العام",
+      "description": "الأفواج A إلى D",
+      "type": "PDF"
+    },
+    {
+      "title": "توزيع أفواج الإنجليزية — المهن القانونية والقضائية",
+      "file": "public/documents/s5-legal-professions-english-groups.pdf",
+      "semester": "S5",
+      "track": "القانون الخاص",
+      "description": "الأفواج Ang-A إلى Ang-D",
+      "type": "PDF"
+    }
+  ]
+}

@@ -1,0 +1,148 @@
+{
+  "meta": {
+    "app": "CHRVVIM CAMPUS",
+    "feature": "دليل المواد والمقابلات الجامعية الذكي",
+    "institution_ar": "كلية العلوم القانونية والسياسية — جامعة ابن زهر، أكادير",
+    "updated_at": "2026-10-14",
+    "status": "extracted_from_user_document_ocr",
+    "document_title_ar": "المتطلبات الأساسية",
+    "note": "استُخرجت الجداول آلياً (OCR) من صور الوثيقة التي أرسلها المستخدم. عناوين الوحدات مأخوذة من عمودَي «الوحدة/عنوان» في الوثيقة، مع الاستعانة بالتسميات الفرنسية المقابلة. كل اسم غير مؤكّد يحمل confidence=\\u200b\\\"needs_review\\\" أو يُدرج في مصفوفة review. الوثيقة تُسمّي الجدول «المتطلبات الأساسية» وتُقرن الفصول (1/3 و2/4 و3/5 و4/6) لكنها لا تنصّ على قاعدة إعفاء/تعويض صريحة، لذلك تبقى rule=unknown حتى يحدّد المستخدم القاعدة الرسمية.",
+    "pairing_source": "ترويسات الوثيقة: «المتطلبات الأساسية: الفصل 1/الفصل 3» و«الفصل 2/الفصل 4» (imgA)، و«الفصل 3/الفصل 5 و الفصل 4/الفصل 6» (imgB)",
+    "sources": [
+      "photo 5 / photo 555 (sha1 984327F2…): الجذع المشترك — القانون بالعربية (نظام 2025/2026)",
+      "photo 5555 / photo 55555 (sha1 46F88198…): مسار القانون الخاص + مسار العلوم الجنائية (نظاما 2025/2026 و2023/2024)",
+      "photo 55 (sha1 0CD16147…): تكبير لترويسة الجدول والصفوف الأولى"
+    ]
+  },
+  "systems": ["2025/2026", "2023/2024"],
+  "pairings": [
+    { "track": "common-ar", "from": "S1", "to": "S3" },
+    { "track": "common-ar", "from": "S3", "to": "S1" },
+    { "track": "common-ar", "from": "S2", "to": "S4" },
+    { "track": "common-ar", "from": "S4", "to": "S2" },
+    { "track": "private-law", "from": "S3", "to": "S5" },
+    { "track": "private-law", "from": "S5", "to": "S3" },
+    { "track": "private-law", "from": "S4", "to": "S6" },
+    { "track": "private-law", "from": "S6", "to": "S4" },
+    { "track": "criminal-sciences", "from": "S3", "to": "S5" },
+    { "track": "criminal-sciences", "from": "S5", "to": "S3" },
+    { "track": "criminal-sciences", "from": "S4", "to": "S6" },
+    { "track": "criminal-sciences", "from": "S6", "to": "S4" }
+  ],
+  "rules": {
+    "default": "unknown",
+    "allowed": ["equivalence", "compensation", "exemption", "prerequisite", "none", "unknown"],
+    "note": "عنوان الجدول الرسمي «المتطلبات الأساسية». لم تُذكر قاعدة إعفاء/تعويض صريحة في الوثيقة. يمنع المحرك إصدار قرار إعفاء عندما تكون القاعدة unknown، ويعرض الفصل المقابل كعلاقة «متطلبات» مؤقتة تحتاج تأكيداً."
+  },
+  "tracks": [
+    { "id": "common-ar", "system": "2025/2026", "name": { "ar": "الجذع المشترك — القانون بالعربية", "fr": "Tronc commun — Droit en arabe", "en": "Common core — Law in Arabic" } },
+    { "id": "private-law", "system": "2025/2026", "name": { "ar": "مسار القانون الخاص", "fr": "Filière Droit privé", "en": "Private Law" } },
+    { "id": "criminal-sciences", "system": "2025/2026", "name": { "ar": "مسار العلوم الجنائية", "fr": "Filière Sciences pénales", "en": "Criminal Sciences" } }
+  ],
+  "subjects": [
+    { "id": "ca-s1-1", "system": "2025/2026", "track": "common-ar", "semester": "S1", "name": { "ar": "مدخل لدراسة القانون", "fr": "Introduction à l'étude du droit", "en": "Introduction to the study of law" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+    { "id": "ca-s1-2", "system": "2025/2026", "track": "common-ar", "semester": "S1", "name": { "ar": "مدخل لدراسة الشريعة", "fr": "Introduction à l'étude de la charia", "en": "Introduction to the study of Sharia" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+    { "id": "ca-s1-3", "system": "2025/2026", "track": "common-ar", "semester": "S1", "name": { "ar": "علم الاجتماع القانوني", "fr": "Sociologie juridique", "en": "Legal sociology" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+    { "id": "ca-s1-4", "system": "2025/2026", "track": "common-ar", "semester": "S1", "name": { "ar": "النظرية العامة للقانون الدستوري", "fr": "La théorie générale du droit constitutionnel", "en": "General theory of constitutional law" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+    { "id": "ca-s1-5", "system": "2025/2026", "track": "common-ar", "semester": "S1", "name": { "ar": "مدخل في علم السياسة", "fr": "Introduction à la science politique", "en": "Introduction to political science" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+    { "id": "ca-s1-6", "system": "2025/2026", "track": "common-ar", "semester": "S1", "name": { "ar": "المدخل للاقتصاد والتسيير", "fr": "Introduction à l'étude de l'économie et de la gestion", "en": "Introduction to economics and management" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+    { "id": "ca-s1-7", "system": "2025/2026", "track": "common-ar", "semester": "S1", "name": { "ar": "منهجية العمل الجامعي", "fr": "Méthodologie de travail universitaire", "en": "University work methodology" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+
+    { "id": "ca-s2-1", "system": "2025/2026", "track": "common-ar", "semester": "S2", "name": { "ar": "النظرية العامة للالتزامات والعقود", "fr": "La théorie générale des obligations et des contrats", "en": "General theory of obligations and contracts" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+    { "id": "ca-s2-2", "system": "2025/2026", "track": "common-ar", "semester": "S2", "name": { "ar": "القانون التجاري الأساسي", "fr": "Droit commercial fondamental", "en": "Fundamental commercial law" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+    { "id": "ca-s2-3", "system": "2025/2026", "track": "common-ar", "semester": "S2", "name": { "ar": "القانون الجنائي العام", "fr": "Droit pénal général", "en": "General criminal law" }, "correspondsTo": [], "rule": "unknown", "confidence": "needs_review", "reviewNote": "الاسم العربي مقروء جزئياً؛ يحتاج تأكيداً." },
+    { "id": "ca-s2-4", "system": "2025/2026", "track": "common-ar", "semester": "S2", "name": { "ar": "القانون المدني", "fr": "Droit civil", "en": "Civil law" }, "correspondsTo": [], "rule": "unknown", "confidence": "needs_review", "reviewNote": "كلمة واحدة غير واضحة في S2 — تحتاج تأكيداً." },
+    { "id": "ca-s2-5", "system": "2025/2026", "track": "common-ar", "semester": "S2", "name": { "ar": "مقدمة في العلاقات الدولية", "fr": "Introduction aux relations internationales", "en": "Introduction to international relations" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+    { "id": "ca-s2-6", "system": "2025/2026", "track": "common-ar", "semester": "S2", "name": { "ar": "المدخل للقانون الإداري والتنظيم الإداري", "fr": "Introduction au droit administratif et à l'organisation administrative", "en": "Introduction to administrative law and organisation" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+    { "id": "ca-s2-7", "system": "2025/2026", "track": "common-ar", "semester": "S2", "name": { "ar": "قانون المعاملات الإلكترونية", "fr": "Tableaux et droits sur les échanges électroniques", "en": "Electronic transactions law" }, "correspondsTo": [], "rule": "unknown", "confidence": "needs_review", "reviewNote": "الاسم العربي/الفرنسي غير واضح في S2 — يحتاج تأكيداً." },
+    { "id": "ca-s2-8", "system": "2025/2026", "track": "common-ar", "semester": "S2", "name": { "ar": "المهارات الرقمية والذكاء الاصطناعي", "fr": "Les compétences numériques et l'intelligence artificielle", "en": "Digital skills and artificial intelligence" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+
+    { "id": "ca-s3-1", "system": "2025/2026", "track": "common-ar", "semester": "S3", "name": { "ar": "القانون الجنائي الخاص", "fr": "Droit pénal spécial", "en": "Special criminal law" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+    { "id": "ca-s3-2", "system": "2025/2026", "track": "common-ar", "semester": "S3", "name": { "ar": "قانون الأسرة", "fr": "Droit de la famille", "en": "Family law" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+    { "id": "ca-s3-3", "system": "2025/2026", "track": "common-ar", "semester": "S3", "name": { "ar": "القانون الاجتماعي", "fr": "Droit social", "en": "Social law" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+    { "id": "ca-s3-4", "system": "2025/2026", "track": "common-ar", "semester": "S3", "name": { "ar": "النشاط الإداري", "fr": "L'activité administrative", "en": "Administrative activity" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+    { "id": "ca-s3-5", "system": "2025/2026", "track": "common-ar", "semester": "S3", "name": { "ar": "المالية العامة", "fr": "Finances publiques", "en": "Public finance" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+    { "id": "ca-s3-6", "system": "2025/2026", "track": "common-ar", "semester": "S3", "name": { "ar": "المسؤولية المدنية", "fr": "La responsabilité civile", "en": "Civil liability" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+    { "id": "ca-s3-7", "system": "2025/2026", "track": "common-ar", "semester": "S3", "name": { "ar": "اللغة الفرنسية", "fr": "Langue française", "en": "French language" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+
+    { "id": "ca-s4-1", "system": "2025/2026", "track": "common-ar", "semester": "S4", "name": { "ar": "القانون العقاري", "fr": "Droit immobilier", "en": "Real estate law" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+    { "id": "ca-s4-2", "system": "2025/2026", "track": "common-ar", "semester": "S4", "name": { "ar": "قانون الشركات", "fr": "Droit des sociétés", "en": "Company law" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+    { "id": "ca-s4-3", "system": "2025/2026", "track": "common-ar", "semester": "S4", "name": { "ar": "مادة غير واضحة", "fr": "(à confirmer)", "en": "(to confirm)" }, "correspondsTo": [], "rule": "unknown", "confidence": "needs_review", "reviewNote": "اسم مادة غير مقروء في S4 (قُرئ «الفضائي») — يحتاج تأكيداً." },
+    { "id": "ca-s4-4", "system": "2025/2026", "track": "common-ar", "semester": "S4", "name": { "ar": "حقوق الإنسان والحريات العامة", "fr": "Droits de l'homme et libertés publiques", "en": "Human rights and public freedoms" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+    { "id": "ca-s4-5", "system": "2025/2026", "track": "common-ar", "semester": "S4", "name": { "ar": "المنازعات الإدارية", "fr": "Contentieux administratif", "en": "Administrative litigation" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+    { "id": "ca-s4-6", "system": "2025/2026", "track": "common-ar", "semester": "S4", "name": { "ar": "علم الإجرام", "fr": "Criminologie", "en": "Criminology" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+    { "id": "ca-s4-7", "system": "2025/2026", "track": "common-ar", "semester": "S4", "name": { "ar": "اللغة الفرنسية", "fr": "Langue française", "en": "French language" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+
+    { "id": "pl-s5-1", "system": "2025/2026", "track": "private-law", "semester": "S5", "name": { "ar": "القانون الدولي الخاص", "fr": "Droit international privé", "en": "Private international law" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+    { "id": "pl-s5-2", "system": "2025/2026", "track": "private-law", "semester": "S5", "name": { "ar": "قانون التأمين", "fr": "Droit des assurances", "en": "Insurance law" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+    { "id": "pl-s5-3", "system": "2025/2026", "track": "private-law", "semester": "S5", "name": { "ar": "العقود المدنية الخاصة", "fr": "Les contrats civils spéciaux", "en": "Special civil contracts" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+    { "id": "pl-s5-4", "system": "2025/2026", "track": "private-law", "semester": "S5", "name": { "ar": "الحقوق العينية", "fr": "Droits réels", "en": "Real rights" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+    { "id": "pl-s5-5", "system": "2025/2026", "track": "private-law", "semester": "S5", "name": { "ar": "التوثيق وتحرير العقود", "fr": "Documentation et rédaction des contrats", "en": "Documentation and contract drafting" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+    { "id": "pl-s5-6", "system": "2025/2026", "track": "private-law", "semester": "S5", "name": { "ar": "اللغات الأجنبية: الإنجليزية", "fr": "Langues étrangères : anglais", "en": "Foreign languages: English" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+    { "id": "pl-s5-7", "system": "2025/2026", "track": "private-law", "semester": "S5", "name": { "ar": "الرقمنة والذكاء الاصطناعي", "fr": "Digitalisation et intelligence artificielle", "en": "Digitalisation and AI" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+
+    { "id": "pl-s6-1", "system": "2025/2026", "track": "private-law", "semester": "S6", "name": { "ar": "قانون المسطرة المدنية", "fr": "Procédure civile", "en": "Civil procedure" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+    { "id": "pl-s6-2", "system": "2025/2026", "track": "private-law", "semester": "S6", "name": { "ar": "قانون المسطرة الجنائية", "fr": "Procédure pénale", "en": "Criminal procedure" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+    { "id": "pl-s6-3", "system": "2025/2026", "track": "private-law", "semester": "S6", "name": { "ar": "قانون حماية المستهلك", "fr": "Droit de la consommation", "en": "Consumer protection law" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+    { "id": "pl-s6-4", "system": "2025/2026", "track": "private-law", "semester": "S6", "name": { "ar": "المواريث والحقوق المالية", "fr": "Successions et droits patrimoniaux", "en": "Successions and patrimonial rights" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+    { "id": "pl-s6-5", "system": "2025/2026", "track": "private-law", "semester": "S6", "name": { "ar": "مبادئ القانون المدني بالفرنسية", "fr": "Principes de droit civil en français", "en": "Civil law principles in French" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+    { "id": "pl-s6-6", "system": "2025/2026", "track": "private-law", "semester": "S6", "name": { "ar": "اللغات الأجنبية: الإنجليزية", "fr": "Langues étrangères : anglais", "en": "Foreign languages: English" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+    { "id": "pl-s6-7", "system": "2025/2026", "track": "private-law", "semester": "S6", "name": { "ar": "الثقافة المقاولاتية", "fr": "Culture entrepreneuriale", "en": "Entrepreneurial culture" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+
+    { "id": "pl-s3-1", "system": "2023/2024", "track": "private-law", "semester": "S3", "name": { "ar": "قانون الأسرة", "fr": "Droit de la famille", "en": "Family law" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+    { "id": "pl-s3-2", "system": "2023/2024", "track": "private-law", "semester": "S3", "name": { "ar": "القانون الاجتماعي", "fr": "Droit social", "en": "Social law" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+    { "id": "pl-s3-3", "system": "2023/2024", "track": "private-law", "semester": "S3", "name": { "ar": "القانون الجنائي الخاص", "fr": "Droit pénal spécial", "en": "Special criminal law" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+    { "id": "pl-s3-4", "system": "2023/2024", "track": "private-law", "semester": "S3", "name": { "ar": "المالية العامة", "fr": "Finances publiques", "en": "Public finance" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+    { "id": "pl-s3-5", "system": "2023/2024", "track": "private-law", "semester": "S3", "name": { "ar": "النشاط الإداري", "fr": "L'activité administrative", "en": "Administrative activity" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+    { "id": "pl-s3-6", "system": "2023/2024", "track": "private-law", "semester": "S3", "name": { "ar": "اللغات الأجنبية: الفرنسية", "fr": "Langues étrangères : français", "en": "Foreign languages: French" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+    { "id": "pl-s3-7", "system": "2023/2024", "track": "private-law", "semester": "S3", "name": { "ar": "المسؤولية المدنية", "fr": "La responsabilité civile", "en": "Civil liability" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+
+    { "id": "pl-s4-1", "system": "2023/2024", "track": "private-law", "semester": "S4", "name": { "ar": "التنظيم القضائي", "fr": "Organisation judiciaire", "en": "Judicial organisation" }, "correspondsTo": [], "rule": "unknown", "confidence": "needs_review", "reviewNote": "قُرئت «القضاء» — الاسم الكامل غير مؤكّد." },
+    { "id": "pl-s4-2", "system": "2023/2024", "track": "private-law", "semester": "S4", "name": { "ar": "قانون الشركات", "fr": "Droit des sociétés", "en": "Company law" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+    { "id": "pl-s4-3", "system": "2023/2024", "track": "private-law", "semester": "S4", "name": { "ar": "القانون العقاري", "fr": "Droit immobilier", "en": "Real estate law" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+    { "id": "pl-s4-4", "system": "2023/2024", "track": "private-law", "semester": "S4", "name": { "ar": "المنازعات الإدارية", "fr": "Contentieux administratif", "en": "Administrative litigation" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+    { "id": "pl-s4-5", "system": "2023/2024", "track": "private-law", "semester": "S4", "name": { "ar": "حقوق الإنسان والحريات العامة", "fr": "Droits de l'homme et libertés publiques", "en": "Human rights and public freedoms" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+    { "id": "pl-s4-6", "system": "2023/2024", "track": "private-law", "semester": "S4", "name": { "ar": "اللغات الأجنبية: الفرنسية", "fr": "Langues étrangères : français", "en": "Foreign languages: French" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+    { "id": "pl-s4-7", "system": "2023/2024", "track": "private-law", "semester": "S4", "name": { "ar": "مادة غير واضحة", "fr": "(à confirmer)", "en": "(to confirm)" }, "correspondsTo": [], "rule": "unknown", "confidence": "needs_review", "reviewNote": "عنصر غير مقروء في S4 (النظام السابق) — يحتاج تأكيداً." },
+
+    { "id": "cs-s5-1", "system": "2025/2026", "track": "criminal-sciences", "semester": "S5", "name": { "ar": "السياسة الجنائية", "fr": "Politique criminelle", "en": "Criminal policy" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+    { "id": "cs-s5-2", "system": "2025/2026", "track": "criminal-sciences", "semester": "S5", "name": { "ar": "القانون الجنائي للأعمال", "fr": "Droit pénal des affaires", "en": "Business criminal law" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+    { "id": "cs-s5-3", "system": "2025/2026", "track": "criminal-sciences", "semester": "S5", "name": { "ar": "الجرائم ذات الطبيعة الخاصة", "fr": "Crimes de nature spéciale", "en": "Crimes of a special nature" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+    { "id": "cs-s5-4", "system": "2025/2026", "track": "criminal-sciences", "semester": "S5", "name": { "ar": "القانون الجنائي للأسرة", "fr": "Droit pénal de la famille", "en": "Family criminal law" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+    { "id": "cs-s5-5", "system": "2025/2026", "track": "criminal-sciences", "semester": "S5", "name": { "ar": "مادة غير واضحة", "fr": "(à confirmer)", "en": "(to confirm)" }, "correspondsTo": [], "rule": "unknown", "confidence": "needs_review", "reviewNote": "اسم مادة غير مقروء في S5 جنائي (قُرئ «الجريمة») — يحتاج تأكيداً." },
+    { "id": "cs-s5-6", "system": "2025/2026", "track": "criminal-sciences", "semester": "S5", "name": { "ar": "اللغات الأجنبية: الإنجليزية", "fr": "Langues étrangères : anglais", "en": "Foreign languages: English" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+    { "id": "cs-s5-7", "system": "2025/2026", "track": "criminal-sciences", "semester": "S5", "name": { "ar": "الرقمنة والذكاء الاصطناعي", "fr": "Digitalisation et intelligence artificielle", "en": "Digitalisation and AI" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+
+    { "id": "cs-s6-1", "system": "2025/2026", "track": "criminal-sciences", "semester": "S6", "name": { "ar": "السياسة العقابية", "fr": "Politique pénitentiaire", "en": "Penitentiary policy" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+    { "id": "cs-s6-2", "system": "2025/2026", "track": "criminal-sciences", "semester": "S6", "name": { "ar": "مادة غير واضحة", "fr": "(à confirmer)", "en": "(to confirm)" }, "correspondsTo": [], "rule": "unknown", "confidence": "needs_review", "reviewNote": "اسم مادة غير مقروء في S6 جنائي (قُرئ «الضحية») — يحتاج تأكيداً." },
+    { "id": "cs-s6-3", "system": "2025/2026", "track": "criminal-sciences", "semester": "S6", "name": { "ar": "قانون المسطرة الجنائية", "fr": "Procédure pénale", "en": "Criminal procedure" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+    { "id": "cs-s6-4", "system": "2025/2026", "track": "criminal-sciences", "semester": "S6", "name": { "ar": "قانون المسطرة المدنية", "fr": "Procédure civile", "en": "Civil procedure" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+    { "id": "cs-s6-5", "system": "2025/2026", "track": "criminal-sciences", "semester": "S6", "name": { "ar": "مبادئ القانون الجنائي بالفرنسية", "fr": "Principes de droit pénal en français", "en": "Criminal law principles in French" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+    { "id": "cs-s6-6", "system": "2025/2026", "track": "criminal-sciences", "semester": "S6", "name": { "ar": "اللغات الأجنبية: الإنجليزية", "fr": "Langues étrangères : anglais", "en": "Foreign languages: English" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+    { "id": "cs-s6-7", "system": "2025/2026", "track": "criminal-sciences", "semester": "S6", "name": { "ar": "الثقافة المقاولاتية", "fr": "Culture entrepreneuriale", "en": "Entrepreneurial culture" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+
+    { "id": "cs-s3-1", "system": "2023/2024", "track": "criminal-sciences", "semester": "S3", "name": { "ar": "قانون الأسرة", "fr": "Droit de la famille", "en": "Family law" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+    { "id": "cs-s3-2", "system": "2023/2024", "track": "criminal-sciences", "semester": "S3", "name": { "ar": "القانون الاجتماعي", "fr": "Droit social", "en": "Social law" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+    { "id": "cs-s3-3", "system": "2023/2024", "track": "criminal-sciences", "semester": "S3", "name": { "ar": "القانون الجنائي الخاص", "fr": "Droit pénal spécial", "en": "Special criminal law" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+    { "id": "cs-s3-4", "system": "2023/2024", "track": "criminal-sciences", "semester": "S3", "name": { "ar": "المالية العامة", "fr": "Finances publiques", "en": "Public finance" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+    { "id": "cs-s3-5", "system": "2023/2024", "track": "criminal-sciences", "semester": "S3", "name": { "ar": "النشاط الإداري", "fr": "L'activité administrative", "en": "Administrative activity" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+    { "id": "cs-s3-6", "system": "2023/2024", "track": "criminal-sciences", "semester": "S3", "name": { "ar": "اللغات الأجنبية: الفرنسية", "fr": "Langues étrangères : français", "en": "Foreign languages: French" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+    { "id": "cs-s3-7", "system": "2023/2024", "track": "criminal-sciences", "semester": "S3", "name": { "ar": "المسؤولية المدنية", "fr": "La responsabilité civile", "en": "Civil liability" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+
+    { "id": "cs-s4-1", "system": "2023/2024", "track": "criminal-sciences", "semester": "S4", "name": { "ar": "التنظيم القضائي", "fr": "Organisation judiciaire", "en": "Judicial organisation" }, "correspondsTo": [], "rule": "unknown", "confidence": "needs_review", "reviewNote": "قُرئت «القضاء» — الاسم الكامل غير مؤكّد." },
+    { "id": "cs-s4-2", "system": "2023/2024", "track": "criminal-sciences", "semester": "S4", "name": { "ar": "قانون الشركات", "fr": "Droit des sociétés", "en": "Company law" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+    { "id": "cs-s4-3", "system": "2023/2024", "track": "criminal-sciences", "semester": "S4", "name": { "ar": "القانون العقاري", "fr": "Droit immobilier", "en": "Real estate law" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+    { "id": "cs-s4-4", "system": "2023/2024", "track": "criminal-sciences", "semester": "S4", "name": { "ar": "المنازعات الإدارية", "fr": "Contentieux administratif", "en": "Administrative litigation" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+    { "id": "cs-s4-5", "system": "2023/2024", "track": "criminal-sciences", "semester": "S4", "name": { "ar": "حقوق الإنسان والحريات العامة", "fr": "Droits de l'homme et libertés publiques", "en": "Human rights and public freedoms" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+    { "id": "cs-s4-6", "system": "2023/2024", "track": "criminal-sciences", "semester": "S4", "name": { "ar": "اللغات الأجنبية: الفرنسية", "fr": "Langues étrangères : français", "en": "Foreign languages: French" }, "correspondsTo": [], "rule": "unknown", "confidence": "confirmed" },
+    { "id": "cs-s4-7", "system": "2023/2024", "track": "criminal-sciences", "semester": "S4", "name": { "ar": "مادة غير واضحة", "fr": "(à confirmer)", "en": "(to confirm)" }, "correspondsTo": [], "rule": "unknown", "confidence": "needs_review", "reviewNote": "عنصر غير مقروء في S4 (النظام السابق) — يحتاج تأكيداً." }
+  ],
+  "review": [
+    { "image": "photo 5 / 555", "track": "common-ar", "semester": "S2", "ocr": "المدم / القانون الجنائي", "note": "مادتان في S2 (الجذع المشترك) غير واضحتين — تحتاجان تأكيداً." },
+    { "image": "photo 5 / 555", "track": "common-ar", "semester": "S4", "ocr": "الفضائي", "note": "اسم مادة في S4 غير مقروء — يحتاج تأكيداً." },
+    { "image": "photo 5555", "track": "private-law", "semester": "S4", "ocr": "القضاء / الاجرا", "note": "عنصران في S4 (النظام السابق) غير واضحين — يحتاجان تأكيداً." },
+    { "image": "photo 5555", "track": "criminal-sciences", "semester": "S5", "ocr": "الجريمة", "note": "اسم مادة في S5 (العلوم الجنائية) غير مقروء — يحتاج تأكيداً." },
+    { "image": "photo 5555", "track": "criminal-sciences", "semester": "S6", "ocr": "الضحية", "note": "اسم مادة في S6 (العلوم الجنائية) غير مقروء — يحتاج تأكيداً." },
+    { "image": "ترويسة الوثيقة", "track": null, "semester": null, "ocr": "المتطلبات الأساسية", "note": "الوثيقة تُسمّي الجدول «المتطلبات الأساسية» وتُقرن الفصول (1/3 · 2/4 · 3/5 · 4/6) لكنها لا تنصّ على قاعدة إعفاء/تعويض صريحة — يُرجى تحديد القاعدة الرسمية." }
+  ]
+}

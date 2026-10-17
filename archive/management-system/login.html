@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>نظام الإدارة | Management System</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body class="auth-body">
+
+  <div class="lang-switch">
+    <button data-lang="ar" class="active" onclick="switchLang('ar')">عربي</button>
+    <button data-lang="en" onclick="switchLang('en')">EN</button>
+  </div>
+
+  <div class="auth-container">
+    <div class="auth-card">
+      <div class="auth-logo">
+        <div class="logo-icon">⚙️</div>
+        <h1 data-i18n="site_name">نظام الإدارة المتكامل</h1>
+        <p data-i18n="welcome">مرحباً بك، سجل دخولك للمتابعة</p>
+      </div>
+
+      <a class="back-to-site" href="index.html">📚 <span data-i18n="back_to_site">تصفّح الموقع العام</span></a>
+
+      <!-- تسجيل الدخول -->
+      <form id="login-form" class="auth-form">
+        <div class="form-group">
+          <label data-i18n="email">البريد الإلكتروني</label>
+          <input type="email" id="login-email" data-i18n-placeholder="email" placeholder="البريد الإلكتروني" required />
+        </div>
+        <div class="form-group">
+          <label data-i18n="password">كلمة المرور</label>
+          <input type="password" id="login-password" data-i18n-placeholder="password" placeholder="كلمة المرور" required />
+        </div>
+        <div class="form-row">
+          <label class="checkbox-label">
+            <input type="checkbox" /> <span data-i18n="remember">تذكرني</span>
+          </label>
+          <a href="#" class="link-small" data-i18n="forgot_password" onclick="forgotPassword(event)">نسيت كلمة المرور؟</a>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block" data-i18n="login">تسجيل الدخول</button>
+        <div id="login-error" class="form-error" style="display:none"></div>
+      </form>
+
+      <!-- إنشاء حساب -->
+      <form id="register-form" class="auth-form" style="display:none">
+        <div class="form-group">
+          <label data-i18n="full_name">الاسم الكامل</label>
+          <input type="text" id="reg-name" data-i18n-placeholder="full_name" placeholder="الاسم الكامل" required />
+        </div>
+        <div class="form-group">
+          <label data-i18n="email">البريد الإلكتروني</label>
+          <input type="email" id="reg-email" data-i18n-placeholder="email" placeholder="البريد الإلكتروني" required />
+        </div>
+        <div class="form-group">
+          <label data-i18n="password">كلمة المرور</label>
+          <input type="password" id="reg-password" data-i18n-placeholder="password" placeholder="كلمة المرور" required minlength="6" />
+        </div>
+        <div class="form-group">
+          <label data-i18n="confirm_password">تأكيد كلمة المرور</label>
+          <input type="password" id="reg-confirm" data-i18n-placeholder="confirm_password" placeholder="تأكيد كلمة المرور" required minlength="6" />
+        </div>
+        <button type="submit" class="btn btn-primary btn-block" data-i18n="register">إنشاء حساب جديد</button>
+        <div id="reg-error" class="form-error" style="display:none"></div>
+        <div id="reg-success" class="form-success" style="display:none"></div>
+      </form>
+
+      <div class="auth-footer">
+        <span id="toggle-text" data-i18n="no_account">ليس لديك حساب؟</span>
+        <a href="#" id="toggle-link" data-i18n="register">إنشاء حساب جديد</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/auth.js"></script>
+  <script>
+    initI18n();
+    updateLangBtns();
+
+    let isLogin = true;
+
+    document.getElementById("toggle-link").addEventListener("click", (e) => {
+      e.preventDefault();
+      isLogin = !isLogin;
+      document.getElementById("login-form").style.display = isLogin ? "block" : "none";
+      document.getElementById("register-form").style.display = isLogin ? "none" : "block";
+      document.getElementById("toggle-text").textContent = isLogin ? t("no_account") : t("have_account");
+      document.getElementById("toggle-link").textContent = isLogin ? t("register") : t("login");
+      document.getElementById("login-error").style.display = "none";
+      document.getElementById("reg-error").style.display = "none";
+      document.getElementById("reg-success").style.display = "none";
+    });
+
+    // تسجيل الدخول
+    document.getElementById("login-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const errEl = document.getElementById("login-error");
+      errEl.style.display = "none";
+      try {
+        await signIn(
+          document.getElementById("login-email").value.trim(),
+          document.getElementById("login-password").value
+        );
+        window.location.href = "dashboard.html";
+      } catch (err) {
+        errEl.textContent = t("login_error") + ": " + err.message;
+        errEl.style.display = "block";
+      }
+    });
+
+    // إنشاء حساب
+    document.getElementById("register-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const errEl = document.getElementById("reg-error");
+      const okEl = document.getElementById("reg-success");
+      errEl.style.display = "none";
+      okEl.style.display = "none";
+      const pass = document.getElementById("reg-password").value;
+      const confirm = document.getElementById("reg-confirm").value;
+      if (pass !== confirm) {
+        errEl.textContent = currentLang === "ar" ? "كلمتا المرور غير متطابقتين" : "Passwords do not match";
+        errEl.style.display = "block";
+        return;
+      }
+      try {
+        await signUp(
+          document.getElementById("reg-email").value.trim(),
+          pass,
+          document.getElementById("reg-name").value.trim(),
+          document.getElementById("reg-name").value.trim()
+        );
+        okEl.textContent = t("register_success");
+        okEl.style.display = "block";
+        setTimeout(() => { document.getElementById("toggle-link").click(); }, 2000);
+      } catch (err) {
+        errEl.textContent = t("register_error") + ": " + err.message;
+        errEl.style.display = "block";
+      }
+    });
+
+    function updateLangBtns() {
+      document.querySelectorAll("[data-lang]").forEach((btn) => {
+        btn.classList.toggle("active", btn.getAttribute("data-lang") === currentLang);
+      });
+    }
+
+    // استعادة كلمة المرور
+    async function forgotPassword(e) {
+      e.preventDefault();
+      const email = document.getElementById("login-email").value.trim();
+      const errEl = document.getElementById("login-error");
+      if (!email) {
+        errEl.textContent = currentLang === "ar" ? "أدخل بريدك الإلكتروني أولاً" : "Enter your email first";
+        errEl.style.display = "block";
+        return;
+      }
+      try {
+        await db.auth.resetPasswordForEmail(email);
+        errEl.textContent = t("reset_password_sent");
+        errEl.style.color = "var(--success)";
+        errEl.style.display = "block";
+      } catch (err) {
+        errEl.textContent = t("error") + ": " + err.message;
+        errEl.style.display = "block";
+      }
+    }
+    function switchLang(lang) {
+      setLang(lang);
+      updateLangBtns();
+      document.getElementById("toggle-text").textContent = isLogin ? t("no_account") : t("have_account");
+      document.getElementById("toggle-link").textContent = isLogin ? t("register") : t("login");
+    }
+  </script>
+</body>
+</html>

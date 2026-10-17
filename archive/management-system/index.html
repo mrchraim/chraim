@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>منصة الطلبة — امتحانات وفروض وملخصات مجانية لكل جامعات المغرب</title>
+  <meta name="description" content="منصة تعليمية مجانية: فروض وامتحانات محلولة وملخصات PDF لجميع الجامعات المغربية — تصفح حسب الجامعة والشعبة والسداسي والمادة.">
+  <meta name="keywords" content="امتحانات, فروض, ملخصات, جامعات المغرب, تحميل PDF, منهج, إجازة">
+  <meta property="og:title" content="منصة الطلبة — امتحانات وفروض مجانية">
+  <meta property="og:description" content="كل دروسك وامتحاناتك في مكان واحد — مجاناً وبلا تسجيل.">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://management-system-16j.pages.dev/">
+  <link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html">📚 <span data-site-name></span></a>
+      <nav class="site-nav" id="site-nav">
+        <a href="index.html" class="active" data-t="home"></a>
+        <a href="browse.html" data-t="browse"></a>
+        <a href="announcements.html" data-t="announcements"></a>
+        <a href="contribute.html" data-t="contribute"></a>
+        <a href="about.html" data-t="about"></a>
+      </nav>
+      <div class="header-actions">
+        <button class="lang-btn" id="lang-toggle" onclick="toggleLang()">FR</button>
+        <a href="account.html" class="btn btn-primary btn-sm" id="account-link" data-t="login"></a>
+        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h1 data-t="hero_title"></h1>
+      <p data-t="hero_sub"></p>
+      <form class="search-box" onsubmit="event.preventDefault(); location.href='browse.html?q=' + encodeURIComponent(document.getElementById('q').value);">
+        <input type="text" id="q" data-t-ph="search_ph">
+        <button type="submit" data-t="search"></button>
+      </form>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title" data-t="quick_browse"></h2>
+      <div class="grid grid-4">
+        <a class="card quick-card" href="browse.html"><span class="icon">🏛️</span><h3 data-t="university"></h3><p data-t="browse"></p></a>
+        <a class="card quick-card" href="browse.html"><span class="icon">📖</span><h3 data-t="subject"></h3><p data-t="browse"></p></a>
+        <a class="card quick-card" href="browse.html"><span class="icon">🗓️</span><h3 data-t="semester"></h3><p data-t="browse"></p></a>
+        <a class="card quick-card" href="contribute.html"><span class="icon">➕</span><h3 data-t="contribute"></h3><p data-t="contrib_sub"></p></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <h2 class="section-title" data-t="quick_exams"></h2>
+      <div id="home-exams"><div class="empty"><span class="icon">⏳</span><span data-t="loading"></span></div></div>
+      <p style="text-align:center;margin-top:16px"><a class="btn btn-outline" href="browse.html" data-t="view_all"></a></p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <h2 class="section-title" data-t="quick_ann"></h2>
+      <div id="home-ann"></div>
+      <p style="text-align:center;margin-top:16px"><a class="btn btn-outline" href="announcements.html" data-t="view_all"></a></p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="telegram-banner">
+        <div style="font-size:40px">✈️</div>
+        <div class="tg-text">
+          <h3 data-t="tg_title"></h3>
+          <p data-t="tg_sub"></p>
+        </div>
+        <a href="#" id="tg-link" target="_blank" data-t="join"></a>
+      </div>
+      <div class="ad-slot">مساحة إعلان خفيف</div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h4 data-t="footer_about"></h4>
+          <p style="font-size:13px;opacity:.8" data-t="site_desc"></p>
+        </div>
+        <div>
+          <h4 data-t="footer_links"></h4>
+          <a href="browse.html" data-t="browse"></a>
+          <a href="announcements.html" data-t="announcements"></a>
+          <a href="contribute.html" data-t="contribute"></a>
+          <a href="support.html" data-t="support_title"></a>
+        </div>
+        <div>
+          <h4 data-t="footer_contact"></h4>
+          <a href="about.html" data-t="about"></a>
+          <a href="privacy.html" data-t="privacy_title"></a>
+          <a href="#" id="tg-footer" target="_blank">Telegram</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span data-t="footer_rights"></span> © 2026 <span data-site-name></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/config.js"></script>
+  <script src="js/site.js"></script>
+  <script>
+    document.querySelectorAll("[data-site-name]").forEach(el => el.textContent = SITE.name_ar);
+    (async () => {
+      const content = loadHome();
+      await initSite();
+      document.querySelectorAll("[data-site-name]").forEach(el => el.textContent = SITE["name_" + lang]);
+      document.getElementById("tg-link").href = SITE.telegram;
+      document.getElementById("tg-footer").href = SITE.telegram;
+      await content;
+    })();
+  </script>
+</body>
+</html>

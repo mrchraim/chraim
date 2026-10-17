@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>حسابي — منصة الطلبة</title>
+  <meta name="robots" content="noindex">
+  <link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html">📚 <span data-site-name></span></a>
+      <nav class="site-nav" id="site-nav">
+        <a href="index.html" data-t="home"></a>
+        <a href="browse.html" data-t="browse"></a>
+        <a href="announcements.html" data-t="announcements"></a>
+        <a href="contribute.html" data-t="contribute"></a>
+        <a href="about.html" data-t="about"></a>
+      </nav>
+      <div class="header-actions">
+        <button class="lang-btn" id="lang-toggle" onclick="toggleLang()">FR</button>
+        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container section" style="max-width:460px">
+    <div class="card">
+      <h2 id="auth-title" data-t="reg_title" style="margin-bottom:4px"></h2>
+      <p id="auth-sub" data-t="reg_sub" style="color:var(--text-muted);font-size:14px;margin-bottom:20px"></p>
+      <div id="auth-box">
+        <div class="form-group">
+          <label data-t="email"></label>
+          <input type="email" id="auth-email" required>
+        </div>
+        <div class="form-group">
+          <label data-t="password"></label>
+          <input type="password" id="auth-pass" required minlength="6">
+        </div>
+        <button class="btn btn-primary btn-block" onclick="studentSignin()" data-t="signin"></button>
+        <p style="text-align:center;margin-top:14px;font-size:14px">
+          <span id="switch-text" data-t="no_account"></span>
+          <a href="#" onclick="event.preventDefault(); document.getElementById('auth-box').dataset.mode = document.getElementById('auth-box').dataset.mode === 'signup' ? '' : 'signup'; switchAuthMode();" id="switch-link" style="color:var(--primary);font-weight:700" data-t="signup"></a>
+        </p>
+      </div>
+    </div>
+
+    <div id="account-panel" style="display:none;margin-top:20px">
+      <div class="card" style="margin-bottom:16px;display:flex;align-items:center;gap:14px">
+        <span style="font-size:32px">⭐</span>
+        <div style="flex:1">
+          <strong id="acc-email"></strong>
+          <p style="font-size:13px;color:var(--text-muted)" data-t="favs"></p>
+        </div>
+        <button class="btn btn-outline btn-sm" onclick="studentSignout()" data-t="logout"></button>
+      </div>
+      <div id="favs-list"></div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-bottom"><span data-t="footer_rights"></span> © 2026 <span data-site-name></span></div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/config.js"></script>
+  <script src="js/site.js"></script>
+  <script>
+    document.querySelectorAll("[data-site-name]").forEach(el => el.textContent = SITE.name_ar);
+    function switchAuthMode() {
+      const box = document.getElementById("auth-box");
+      const signup = box.dataset.mode === "signup";
+      document.querySelector("#auth-box button").textContent = signup ? t("signup") : t("signin");
+      document.getElementById("switch-text").textContent = signup ? t("have_account") : t("no_account");
+      document.getElementById("switch-link").textContent = signup ? t("signin") : t("signup");
+      document.getElementById("auth-title").textContent = signup ? t("signup") : t("reg_title");
+    }
+    (async () => {
+      await initSite();
+      document.querySelectorAll("[data-site-name]").forEach(el => el.textContent = SITE["name_" + lang]);
+      const user = await getStudent();
+      if (user) {
+        document.getElementById("auth-box").closest(".card").style.display = "none";
+        document.getElementById("account-panel").style.display = "block";
+        document.getElementById("acc-email").textContent = user.email;
+        await loadFavorites();
+      } else {
+        document.getElementById("auth-box").dataset.mode = "";
+      }
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,423 @@
+{
+  "metadata": {
+    "title": "دليل السداسي الخامس وتوزيع الفرنسية للسداسي الثالث",
+    "academic_year": "2026-2027",
+    "source": "ملخص المستخدم المقدم في المحادثة بتاريخ 2026-10-11",
+    "status": "user_supplied_not_independently_verified",
+    "important_note": "المعلومات أدناه منظمة كما قدمها المستخدم، ولم تُتحقق مستقلاً من إعلان رسمي للكلية. يجب مراجعة أي تعارض أو اسم أستاذ أو توقيت قبل الاعتماد الرسمي."
+  },
+  "s3_french_sections": {
+    "law_public_common_core": {
+      "label": "القانون العام — الجذع المشترك",
+      "language_sections": [
+        {
+          "name": "Fr-A",
+          "from": "AABID",
+          "to": "EL KARZABI"
+        },
+        {
+          "name": "Fr-B",
+          "from": "EL KARZABY",
+          "to": "ZOUINE"
+        }
+      ],
+      "sections": [
+        {
+          "name": "A",
+          "from": "AABID",
+          "to": "BELLATI"
+        },
+        {
+          "name": "B",
+          "from": "BELLATY",
+          "to": "EL KARZABI"
+        },
+        {
+          "name": "C",
+          "from": "EL KARZABY",
+          "to": "KERRAMI"
+        },
+        {
+          "name": "D",
+          "from": "KERRAMY",
+          "to": "ZOUINE"
+        }
+      ],
+      "sorting_note": "الأسماء المركبة والمصحوبة بفراغ تأتي قبل الأسماء غير المركبة، حسب الملخص المقدم."
+    }
+  },
+  "s5_tracks": [
+    {
+      "id": "contentieux-prive",
+      "name": "القانون والنزاع الخاص",
+      "name_fr": "Droit et Contentieux Privé",
+      "type": "schedule",
+      "schedule": [
+        {
+          "day": "الإثنين",
+          "time": "12:00–14:00",
+          "subject": "Anglais 1",
+          "professor": "Pr. R. ABAAZI",
+          "room": "Salle 2 Annexe"
+        },
+        {
+          "day": "الأربعاء",
+          "time": "08:00–10:00",
+          "subject": "Droits réels",
+          "professor": "Pr K. LEGTATI",
+          "room": "Salle 3 Annexe"
+        },
+        {
+          "day": "الأربعاء",
+          "time": "10:00–12:00",
+          "subject": "Contrats spéciaux",
+          "professor": "Pr L. LEKOUISSI",
+          "room": "Salle 2 Annexe"
+        },
+        {
+          "day": "الأربعاء",
+          "time": "16:00–18:00",
+          "subject": "Développement personnel",
+          "professor": "Pr M. EDDAHANI",
+          "room": "Salle 3 Annexe"
+        },
+        {
+          "day": "الخميس",
+          "time": "14:00–16:00",
+          "subject": "Droit international privé",
+          "professor": "Pr Y. BENDAHMANE",
+          "room": "Salle 1 Annexe"
+        },
+        {
+          "day": "الجمعة",
+          "time": "10:00–12:00",
+          "subject": "Techniques rédactionnelles et de plaidoirie",
+          "professor": "Dr O. ZIAT",
+          "room": "Salle 1 Annexe"
+        },
+        {
+          "day": "الجمعة",
+          "time": "14:00–16:00",
+          "subject": "Statut des professionnels du droit",
+          "professor": "Pr Y. BENDAHMANE",
+          "room": "Salle 1 Annexe"
+        }
+      ]
+    },
+    {
+      "id": "affaires",
+      "name": "قانون الأعمال",
+      "name_fr": "Droit des Affaires",
+      "type": "schedule",
+      "schedule": [
+        {
+          "day": "الإثنين",
+          "time": "10:00–12:00",
+          "subject": "Anglais 1",
+          "professor": "Pr. R. ABAAZI",
+          "room": "Salle 1 Annexe"
+        },
+        {
+          "day": "الثلاثاء",
+          "time": "10:00–12:00",
+          "subject": "Droit boursier",
+          "professor": "Pr S. AZZI",
+          "room": "Amphi 3 Annexe"
+        },
+        {
+          "day": "الثلاثاء",
+          "time": "14:00–16:00",
+          "subject": "Droit des assurances",
+          "professor": "Pr Y. BENDAHMANE",
+          "room": "Salle 2 Annexe"
+        },
+        {
+          "day": "الأربعاء",
+          "time": "08:00–10:00",
+          "subject": "Contrats spéciaux",
+          "professor": "Pr L. LEKOUISSI",
+          "room": "Salle 1 Annexe"
+        },
+        {
+          "day": "الأربعاء",
+          "time": "14:00–16:00",
+          "subject": "Développement personnel",
+          "professor": "Pr M. EDDAHANI",
+          "room": "Salle 1 Annexe"
+        },
+        {
+          "day": "الأربعاء",
+          "time": "16:00–18:00",
+          "subject": "Droit des entreprises en difficulté",
+          "professor": "P. L. ASSAKTI",
+          "room": "Salle 1 Annexe"
+        },
+        {
+          "day": "الجمعة",
+          "time": "10:00–12:00",
+          "subject": "Droit pénal des affaires",
+          "professor": "Pr S. AZZI",
+          "room": "Salle 2 Annexe"
+        }
+      ]
+    },
+    {
+      "id": "institutions-politiques",
+      "name": "المؤسسات السياسية والعمل العمومي",
+      "name_fr": "Institutions politiques et action publique",
+      "type": "schedule",
+      "schedule": [
+        {
+          "day": "الإثنين",
+          "time": "14:00–16:00",
+          "subject": "Anglais 1",
+          "professor": "Pr. R. ABAAZI",
+          "room": "Salle 2 Annexe"
+        },
+        {
+          "day": "الثلاثاء",
+          "time": "14:00–16:00",
+          "subject": "Politiques publiques",
+          "professor": "Pr H. ZOUAOUI",
+          "room": "Salle 1 Annexe"
+        },
+        {
+          "day": "الأربعاء",
+          "time": "10:00–12:00",
+          "subject": "Droit international de la Mer",
+          "professor": "Pr R. EL FELLAH",
+          "room": "Salle 1 Annexe"
+        },
+        {
+          "day": "الأربعاء",
+          "time": "16:00–18:00",
+          "subject": "Développement personnel",
+          "professor": "Pr M. EDDAHANI",
+          "room": "Salle 3 Annexe"
+        },
+        {
+          "day": "السبت",
+          "time": "08:00–10:00",
+          "subject": "Instances de régulation et de gouvernance",
+          "professor": "Pr R. EL BAZZIM",
+          "room": "Salle 2 Annexe"
+        },
+        {
+          "day": "السبت",
+          "time": "10:00–12:00",
+          "subject": "Collectivités territoriales",
+          "professor": "Pr A. IDRISSI",
+          "room": "Salle 2 Annexe"
+        },
+        {
+          "day": "السبت",
+          "time": "14:00–16:00",
+          "subject": "Droit diplomatique et consulaire",
+          "professor": "Pr O. QAISSI",
+          "room": "Salle 2 Annexe"
+        }
+      ]
+    },
+    {
+      "id": "parcours-civil",
+      "name": "مسار القانون المدني",
+      "name_fr": "Parcours Droit Civil",
+      "type": "pathway",
+      "courses": [
+        {
+          "subject": "الحقوق العينية والقانون العقاري",
+          "professors": [
+            "مليحة حبفو بن",
+            "ليلى يسري",
+            "خالد مجاهد"
+          ]
+        },
+        {
+          "subject": "العقود المدنية الخاصة",
+          "professors": [
+            "خالد مجاهد"
+          ]
+        },
+        {
+          "subject": "توثيق وتحرير العقود",
+          "professors": [
+            "ليلى يسري",
+            "بوبكر اشاقني"
+          ]
+        },
+        {
+          "subject": "القانون الدولي الخاص",
+          "professors": [
+            "ليلى يسري",
+            "محمد الشافعي"
+          ]
+        },
+        {
+          "subject": "قانون التأمين",
+          "professors": [
+            "عبد الكريم آيت يونس",
+            "عمر دماغي"
+          ]
+        },
+        {
+          "subject": "قانون الذكاء الاصطناعي والرقمنة",
+          "professors": [
+            "الحسن حيدبوا",
+            "أسيا الخليلي"
+          ],
+          "note": "اللغة الإنجليزية بحسب الملخص المقدم"
+        }
+      ]
+    },
+    {
+      "id": "parcours-professions",
+      "name": "مسار المهن القانونية والقضائية",
+      "name_fr": "Professions Juridiques et Judiciaires",
+      "type": "pathway",
+      "courses": [
+        {
+          "subject": "صعوبات المقاولة",
+          "professors": [
+            "محمد فايوط"
+          ]
+        },
+        {
+          "subject": "العقود الخاصة",
+          "professors": [
+            "فاطمة أوكالمو",
+            "إبراهيم حطاب"
+          ]
+        },
+        {
+          "subject": "قانون التأمين",
+          "professors": [
+            "الرشيد أضاوخ",
+            "عبد اللطيف يدكأ"
+          ]
+        },
+        {
+          "subject": "الحقوق العينية",
+          "professors": [
+            "عبد اللطيف يدكأ",
+            "إدريس الحياني"
+          ]
+        },
+        {
+          "subject": "اللغة الأجنبية (الإنجليزية)",
+          "professors": [
+            "شيماء ضياض",
+            "رجاء حيدي لالة أرسلان"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "parcours-criminelles",
+      "name": "مسار العلوم الجنائية",
+      "name_fr": "Sciences Criminelles",
+      "type": "pathway",
+      "courses": [
+        {
+          "subject": "مسرح الجريمة",
+          "professors": [
+            "محمد فايوط"
+          ]
+        },
+        {
+          "subject": "السياسة الجنائية",
+          "professors": [
+            "إبراهيم حطاب",
+            "يونس إديعس"
+          ]
+        },
+        {
+          "subject": "قانون الذكاء الاصطناعي والرقمي",
+          "professors": [
+            "يونس إديعس",
+            "عبد الكريم آيت يونس"
+          ]
+        },
+        {
+          "subject": "الجرائم ذات الطبيعة الخاصة",
+          "professors": [
+            "عمر دماغي"
+          ]
+        },
+        {
+          "subject": "اللغة الأجنبية (الإنجليزية)",
+          "professors": [
+            "شيماء ضياض"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "parcours-affaires",
+      "name": "مسار قانون المال والأعمال",
+      "name_fr": "Droit des Affaires",
+      "type": "pathway",
+      "courses": [
+        {
+          "subject": "العقود الخاصة",
+          "professors": [
+            "Pr L. LEKOUISSI"
+          ]
+        },
+        {
+          "subject": "قانون البورصة (Droit boursier)",
+          "professors": [
+            "Pr S. AZZI"
+          ]
+        },
+        {
+          "subject": "قانون التأمينات",
+          "professors": [
+            "Pr Y. BENDAHMANE"
+          ]
+        },
+        {
+          "subject": "صعوبات المقاولة",
+          "professors": [
+            "P. L. ASSAKTI"
+          ]
+        },
+        {
+          "subject": "القانون الجنائي للأعمال",
+          "professors": [
+            "Pr S. AZZI"
+          ]
+        },
+        {
+          "subject": "التنمية الذاتية والإنجليزية",
+          "professors": [
+            "Pr M. EDDAHANI",
+            "Pr R. ABAAZI"
+          ]
+        }
+      ]
+    }
+  ],
+  "verification_flags": [
+    {
+      "type": "possible_schedule_collision",
+      "day": "الأربعاء",
+      "time": "16:00–18:00",
+      "room": "Salle 3 Annexe",
+      "subject": "Développement personnel",
+      "tracks": [
+        "القانون والنزاع الخاص",
+        "المؤسسات السياسية والعمل العمومي"
+      ],
+      "note": "الحصة مذكورة في المسارين بنفس اليوم والتوقيت والقاعة والأستاذ. قد تكون حصة مشتركة أو تحتاج إلى تأكيد؛ لم يتم تعديلها."
+    },
+    {
+      "type": "unverified_teacher_name",
+      "name": "P. L. ASSAKTI",
+      "note": "حُفظ الاسم كما ورد، وينبغي التحقق من الصيغة الرسمية."
+    },
+    {
+      "type": "unverified_sorting_rule",
+      "note": "قاعدة ترتيب الأسماء المركبة والفراغات في توزيع الفرنسية نقلت من ملخص المستخدم وتحتاج إلى اختبارها على اللائحة الرسمية قبل استخدامها آلياً."
+    }
+  ]
+}

@@ -1,0 +1,357 @@
+{
+  "meta": {
+    "app": "CHRVVIM CAMPUS",
+    "owner": "محمد شرايم",
+    "brand": "CHRVVIM",
+    "academic_year": "2026-2027",
+    "institution_ar": "كلية العلوم القانونية والسياسية — جامعة ابن زهر، أكادير",
+    "institution_fr": "Faculté des Sciences Juridiques et Politiques — Université Ibn Zohr, Agadir",
+    "updated_at": "2026-10-13",
+    "status": "user_supplied_not_independently_verified",
+    "sources": [
+      "توزيعات الأفواج والجداول من صور ووثائق المستخدم (2026/2027)",
+      "وثائق PDF رسمية مرفقة داخل مجلد web/documents",
+      "الدليل الأكاديمي المدمج (نسختا v6 وCAMPUS)"
+    ],
+    "note": "جميع البيانات المرجعية هنا قابلة للتعديل من لوحة الإدارة. تُعرض الحصص المنشورة في قاعدة البيانات إن وُجدت، وإلا يُستخدم هذا الملف كمرجع افتراضي. يجب مطابقة الأسماء والتوقيت والقاعات مع الوثيقة الرسمية قبل الاعتماد النهائي."
+  },
+  "sections": {
+    "private": { "ar": "القانون الخاص", "fr": "Droit privé", "en": "Private Law" },
+    "public": { "ar": "القانون العام", "fr": "Droit public", "en": "Public Law" }
+  },
+  "days": ["الإثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت"],
+  "day_translations": {
+    "fr": ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"],
+    "en": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+  },
+  "semesters": {
+    "S1": {
+      "label": { "ar": "السداسي الأول", "fr": "Semestre 1", "en": "Semester 1" },
+      "note": { "ar": "الجذع المشترك — جدول مشترك لجميع الأفواج.", "fr": "Tronc commun — emploi du temps commun.", "en": "Common core — shared timetable." },
+      "shared_ranges": {
+        "common_core": [
+          { "group": "A", "subgroups": "", "from": "AABA", "to": "AGHAD" },
+          { "group": "B", "subgroups": "", "from": "AGHADI", "to": "AIT LHYANE" },
+          { "group": "C", "subgroups": "", "from": "AIT LHYANI", "to": "AMALLAZ" },
+          { "group": "D", "subgroups": "", "from": "AMALLAZI", "to": "ATTAR" },
+          { "group": "E", "subgroups": "", "from": "ATTARI", "to": "BASSIM" },
+          { "group": "F", "subgroups": "", "from": "BASSIMI", "to": "BHIJA" },
+          { "group": "G", "subgroups": "", "from": "BHIJI", "to": "BOULAK" },
+          { "group": "H", "subgroups": "", "from": "BOULAKI", "to": "CHAKRI" },
+          { "group": "I", "subgroups": "", "from": "CHAKRY", "to": "EL AALLALI" },
+          { "group": "J", "subgroups": "", "from": "EL AALLALY", "to": "EL HOUSSAINI" },
+          { "group": "K", "subgroups": "", "from": "EL HOUSSAINY", "to": "ELBOAZZAOUI" },
+          { "group": "L", "subgroups": "", "from": "ELBOAZZAOUY", "to": "ERRASSIFI" },
+          { "group": "M", "subgroups": "", "from": "ERRASSIFY", "to": "HABAD" },
+          { "group": "N", "subgroups": "", "from": "HABADI", "to": "IDLAHCEN" },
+          { "group": "O", "subgroups": "", "from": "IDLAHCENE", "to": "KHALIFA" },
+          { "group": "P", "subgroups": "", "from": "KHALIFI", "to": "LOUHOU" },
+          { "group": "Q", "subgroups": "", "from": "LOUHOUHI", "to": "NKHILI" },
+          { "group": "R", "subgroups": "", "from": "NKHILY", "to": "OUMLOUL" },
+          { "group": "S", "subgroups": "", "from": "OUMLOULI", "to": "SIADI" },
+          { "group": "T", "subgroups": "", "from": "SIADY", "to": "ZYOUGUAY" }
+        ]
+      },
+      "tracks": {
+        "s1-private": {
+          "section": "private",
+          "label": { "ar": "الجذع المشترك — القانون الخاص", "fr": "Tronc commun — Droit privé", "en": "Common core — Private Law" },
+          "type": "schedule",
+          "schedule_mode": "shared",
+          "ranges_ref": "common_core",
+          "ranges_note": { "ar": "حدود الألقاب A–T من ملخص المستخدم؛ يلزم التحقق الرسمي.", "fr": "Plages A–T fournies par l'utilisateur.", "en": "A–T ranges supplied by the user." },
+          "source_note": "من ملخص المستخدم؛ يحتاج إلى تأكيد رسمي قبل النشر.",
+          "schedule": [
+            { "day": "الإثنين", "time": "14:00-16:00", "subject": "Introduction à la sociologie du droit", "professor": "Pr. H. ZOUAOUI", "room": "Amphi 4 Annexe" },
+            { "day": "الثلاثاء", "time": "08:00-10:00", "subject": "Théorie générale du droit constitutionnel", "professor": "Pr. R. EL FELLAH", "room": "Amphi 4 Annexe" },
+            { "day": "الثلاثاء", "time": "10:00-12:00", "subject": "Introduction à l'économie et à la gestion", "professor": "Dr. M. BOUTEBHIRT", "room": "Amphi 3 Annexe" },
+            { "day": "الأربعاء", "time": "14:00-16:00", "subject": "Introduction à l'étude du droit", "professor": "Pr. L. ASSAKTI", "room": "Amphi 4 Annexe" },
+            { "day": "الأربعاء", "time": "16:00-18:00", "subject": "Méthodologie du travail universitaire", "professor": "Dr. A. ELMOUDENE", "room": "Amphi 4 Annexe" },
+            { "day": "الخميس", "time": "16:00-18:00", "subject": "Introduction à l'étude du droit musulman", "professor": "Pr. Y. BENDAHMANE", "room": "Amphi 4 Annexe" },
+            { "day": "السبت", "time": "08:00-10:00", "subject": "Introduction à la science politique", "professor": "Pr. O. QAISSI", "room": "Amphi 4 Annexe" }
+          ]
+        },
+        "s1-public": {
+          "section": "public",
+          "label": { "ar": "الجذع المشترك — القانون العام", "fr": "Tronc commun — Droit public", "en": "Common core — Public Law" },
+          "type": "schedule",
+          "schedule_mode": "shared",
+          "ranges_ref": "common_core",
+          "ranges_note": { "ar": "حدود الألقاب A–T من ملخص المستخدم؛ يلزم التحقق الرسمي.", "fr": "Plages A–T fournies par l'utilisateur.", "en": "A–T ranges supplied by the user." },
+          "source_note": "من ملخص المستخدم؛ يحتاج إلى تأكيد رسمي قبل النشر.",
+          "schedule": [
+            { "day": "الإثنين", "time": "16:00-18:00", "subject": "Histoire des faits et des institutions sociales", "professor": "Pr. H. ZOUAOUI", "room": "Salle 2 Annexe" },
+            { "day": "الثلاثاء", "time": "10:00-12:00", "subject": "Théorie générale du droit constitutionnel", "professor": "Pr. R. EL FELLAH", "room": "Salle 2 Annexe" },
+            { "day": "الأربعاء", "time": "13:00-15:00", "subject": "Introduction à l'économie et à la gestion", "professor": "Dr. H. AKIF", "room": "Salle 2 Annexe" },
+            { "day": "الأربعاء", "time": "16:00-18:00", "subject": "Méthodologie du travail universitaire", "professor": "Dr. L. ASMOUG", "room": "Salle 2 Annexe" },
+            { "day": "الخميس", "time": "14:00-16:00", "subject": "Introduction à l'étude du droit", "professor": "Pr. L. ASSAKTI", "room": "Salle 2 Annexe" },
+            { "day": "الخميس", "time": "16:00-18:00", "subject": "Introduction à l'étude du droit musulman", "professor": "Pr. Y. BENDAHMANE", "room": "Amphi 4 Annexe" },
+            { "day": "السبت", "time": "10:00-12:00", "subject": "Introduction à la science politique", "professor": "Pr. O. QAISSI", "room": "Salle 2 Annexe" }
+          ]
+        }
+      }
+    },
+    "S3": {
+      "label": { "ar": "السداسي الثالث", "fr": "Semestre 3", "en": "Semester 3" },
+      "note": { "ar": "الجذع المشترك للسداسي الثالث (القانون الخاص والعام).", "fr": "Tronc commun du semestre 3 (privé et public).", "en": "Semester 3 common core (private and public)." },
+      "tracks": {
+        "s3-private": {
+          "section": "private",
+          "label": { "ar": "الجذع المشترك — القانون الخاص", "fr": "Tronc commun — Droit privé", "en": "Common core — Private Law" },
+          "type": "schedule",
+          "schedule_mode": "shared",
+          "ranges_note": { "ar": "الأفواج A–N حسب توزيع الألقاب.", "fr": "Groupes A–N.", "en": "Groups A–N." },
+          "source_note": "مستخرج من وثيقة استعمال الزمن المحدثة 2026-10-10؛ يوجد اختلاف في توقيت بعض الحصص بين المصادر، راجعه.",
+          "schedule": [
+            { "day": "الإثنين", "time": "08:00-10:00", "subject": "Droit de la famille", "professor": "Dr K. LAGTATI", "room": "Amphi 4 Annexe" },
+            { "day": "الإثنين", "time": "16:00-18:00", "subject": "Droit pénal spécial", "professor": "Pr M. LAACHRATE", "room": "Amphi 4 Annexe" },
+            { "day": "الثلاثاء", "time": "08:00-10:00", "subject": "Action administrative", "professor": "Pr D. BOUZAFFOUR", "room": "Amphi 3 Annexe" },
+            { "day": "الثلاثاء", "time": "10:00-12:00", "subject": "Responsabilité civile", "professor": "Pr L. LEKOUISSI", "room": "Salle 1 Annexe" },
+            { "day": "الأربعاء", "time": "16:00-18:00", "subject": "Français 1", "professor": "Dr N. TAMSOURI", "room": "Amphi 3 Annexe" },
+            { "day": "الخميس", "time": "10:00-12:00", "subject": "Droit social", "professor": "Pr S. AZZI", "room": "Amphi 4 Annexe" },
+            { "day": "الجمعة", "time": "16:00-18:00", "subject": "Finances publiques", "professor": "Pr R. EL BAZZIM", "room": "Amphi 4 Annexe" }
+          ],
+          "ranges": [
+            { "group": "A", "subgroups": "", "from": "AABACH", "to": "AIT BACH" },
+            { "group": "B", "subgroups": "", "from": "AIT BACHI", "to": "AMHRI" },
+            { "group": "C", "subgroups": "", "from": "AMHRY", "to": "BAHNINE" },
+            { "group": "D", "subgroups": "", "from": "BAHNINI", "to": "BILLA" },
+            { "group": "E", "subgroups": "", "from": "BILLAA", "to": "BOUSSOUSS" },
+            { "group": "F", "subgroups": "", "from": "BOUSSOUSSE", "to": "EDDARAI" },
+            { "group": "G", "subgroups": "", "from": "EDDARAY", "to": "EL MANSOURI" },
+            { "group": "H", "subgroups": "", "from": "EL MANSOURY", "to": "ELOUARDI" },
+            { "group": "I", "subgroups": "", "from": "ELOUARDY", "to": "HALLAL" },
+            { "group": "J", "subgroups": "", "from": "HALLALI", "to": "JELAIDI" },
+            { "group": "K", "subgroups": "", "from": "JELAIDY", "to": "LHADDANE" },
+            { "group": "L", "subgroups": "", "from": "LHADDANI", "to": "OUAHMANE" },
+            { "group": "M", "subgroups": "", "from": "OUAHMANI", "to": "SAAID" },
+            { "group": "N", "subgroups": "", "from": "SAAIDI", "to": "ZYOUGUAY" }
+          ]
+        },
+        "s3-public": {
+          "section": "public",
+          "label": { "ar": "الجذع المشترك — القانون العام", "fr": "Tronc commun — Droit public", "en": "Common core — Public Law" },
+          "type": "schedule",
+          "schedule_mode": "shared",
+          "ranges_note": { "ar": "الأقسام A–D وتوزيع الفرنسية Fr-A/Fr-B.", "fr": "Sections A–D et groupes de français Fr-A/Fr-B.", "en": "Sections A–D and French groups Fr-A/Fr-B." },
+          "source_note": "مستخرج من وثيقة استعمال الزمن المحدثة 2026-10-10.",
+          "schedule": [
+            { "day": "الإثنين", "time": "10:00-12:00", "subject": "Droit de la famille", "professor": "Dr K. LAGTATI", "room": "Salle 2 Annexe" },
+            { "day": "الثلاثاء", "time": "10:00-12:00", "subject": "Action administrative", "professor": "Pr D. BOUZAFFOUR", "room": "Amphi 4 Annexe" },
+            { "day": "الأربعاء", "time": "08:00-10:00", "subject": "Droit international public", "professor": "Pr R. EL FELLAH", "room": "Salle 2 Annexe" },
+            { "day": "الأربعاء", "time": "16:00-18:00", "subject": "Français 1", "professor": "Dr N. TAMSOURI", "room": "Amphi 3 Annexe" },
+            { "day": "الخميس", "time": "12:00-14:00", "subject": "Droit social", "professor": "Pr S. AZZI", "room": "Salle 2 Annexe" },
+            { "day": "الجمعة", "time": "14:00-16:00", "subject": "Finances publiques", "professor": "Pr R. EL BAZZIM", "room": "Salle 2 Annexe" },
+            { "day": "السبت", "time": "12:00-14:00", "subject": "Droit de l'environnement", "professor": "Pr O. QAISSI", "room": "Salle 2 Annexe" }
+          ],
+          "ranges": [
+            { "group": "A", "subgroups": "", "from": "AABID", "to": "BELLATI" },
+            { "group": "B", "subgroups": "", "from": "BELLATY", "to": "EL KARZABI" },
+            { "group": "C", "subgroups": "", "from": "EL KARZABY", "to": "KERRAMI" },
+            { "group": "D", "subgroups": "", "from": "KERRAMY", "to": "ZOUINE" }
+          ],
+          "french": {
+            "label": { "ar": "توزيع اللغة الفرنسية", "fr": "Répartition du français", "en": "French distribution" },
+            "language_sections": [
+              { "name": "Fr-A", "from": "AABID", "to": "EL KARZABI" },
+              { "name": "Fr-B", "from": "EL KARZABY", "to": "ZOUINE" }
+            ],
+            "note": { "ar": "الأسماء المركبة والمصحوبة بفراغ تأتي قبل غير المركبة، حسب الملخص المقدم.", "fr": "Règle de tri issue du résumé fourni.", "en": "Sorting rule from the supplied summary." }
+          }
+        }
+      }
+    },
+    "S5": {
+      "label": { "ar": "السداسي الخامس", "fr": "Semestre 5", "en": "Semester 5" },
+      "note": { "ar": "مسالك ومسارات السداسي الخامس.", "fr": "Parcours et filières du semestre 5.", "en": "Semester 5 tracks and pathways." },
+      "tracks": {
+        "business": {
+          "section": "private",
+          "label": { "ar": "قانون المال والأعمال", "fr": "Droit des affaires", "en": "Business Law" },
+          "type": "schedule",
+          "schedule_mode": "per-group",
+          "ranges_note": { "ar": "الأفواج A–C حسب توزيع الألقاب.", "fr": "Groupes A–C.", "en": "Groups A–C." },
+          "source_note": "من وثائق توزيع الأفواج الرسمية.",
+          "ranges": [
+            { "group": "A", "subgroups": "1-2-3", "from": "AABACH", "to": "CHAKOUR" },
+            { "group": "B", "subgroups": "4-5-6", "from": "CHAKOURI", "to": "JAKAN" },
+            { "group": "C", "subgroups": "7-8-9", "from": "JAKANE", "to": "ZYN ELABYDYNE" }
+          ],
+          "english_ranges": [
+            { "group": "Ang-A", "subgroups": "1-6", "from": "AABACH", "to": "JAKAN" },
+            { "group": "Ang-B", "subgroups": "7-9", "from": "JAKANE", "to": "ZYN ELABYDYNE" }
+          ],
+          "schedule": {
+            "A": [
+              { "day": "الإثنين", "time": "10:00-12:00", "subject": "Droit des entreprises en difficulté", "professor": "Pr. L. ASSAKTI", "room": "Amphi 3 Annexe" },
+              { "day": "الإثنين", "time": "10:00-12:00", "subject": "Anglais 1", "professor": "Pr. R. ABAAZI", "room": "Salle 1 Annexe" },
+              { "day": "الإثنين", "time": "14:00-16:00", "subject": "Droit pénal des affaires", "professor": "Pr S. AZZI", "room": "Salle 2 Annexe" },
+              { "day": "الأربعاء", "time": "08:00-10:00", "subject": "Contrats spéciaux", "professor": "Pr L. LEKOUISSI", "room": "Salle 1 Annexe" },
+              { "day": "الأربعاء", "time": "14:00-16:00", "subject": "Droit des assurances", "professor": "Pr Y. BENDAHMANE", "room": "Salle 1 Annexe" },
+              { "day": "الأربعاء", "time": "16:00-18:00", "subject": "Droit boursier", "professor": "Pr S. AZZI", "room": "Salle 1 Annexe" },
+              { "day": "الجمعة", "time": "10:00-12:00", "subject": "Développement personnel", "professor": "Pr M. EDDAHANI", "room": "Salle 2 Annexe" }
+            ]
+          }
+        },
+        "civil": {
+          "section": "private",
+          "label": { "ar": "القانون المدني", "fr": "Droit civil", "en": "Civil Law" },
+          "type": "schedule",
+          "schedule_mode": "per-group",
+          "ranges_note": { "ar": "الأفواج A–C وأفواج الإنجليزية.", "fr": "Groupes A–C et groupes d'anglais.", "en": "Groups A–C and English groups." },
+          "source_note": "من وثائق توزيع الأفواج الرسمية.",
+          "ranges": [
+            { "group": "A", "subgroups": "1-2-3", "from": "AABACH", "to": "CHAKIR" },
+            { "group": "B", "subgroups": "4-5-6", "from": "CHAKIRI", "to": "JAIK" },
+            { "group": "C", "subgroups": "7-8-9", "from": "JAIKI", "to": "ZYN ELABYDYNE" }
+          ],
+          "english_ranges": [
+            { "group": "Ang-A", "subgroups": "1-6", "from": "AABACH", "to": "JAIK" },
+            { "group": "Ang-B", "subgroups": "7-9", "from": "JAIKI", "to": "ZYN ELABYDYNE" }
+          ],
+          "schedule": {
+            "A": [
+              { "day": "الإثنين", "time": "12:00-14:00", "subject": "Anglais 1", "professor": "Pr. R. ABAAZI", "room": "Salle 2 Annexe" },
+              { "day": "الأربعاء", "time": "08:00-10:00", "subject": "Droits réels", "professor": "Pr K. LEGTATI", "room": "Salle 3 Annexe" },
+              { "day": "الأربعاء", "time": "10:00-12:00", "subject": "Contrats spéciaux", "professor": "Pr L. LEKOUISSI", "room": "Salle 2 Annexe" },
+              { "day": "الأربعاء", "time": "16:00-18:00", "subject": "Développement personnel", "professor": "Pr M. EDDAHANI", "room": "Salle 3 Annexe" },
+              { "day": "الخميس", "time": "14:00-16:00", "subject": "Droit international privé", "professor": "Pr Y. BENDAHMANE", "room": "Salle 1 Annexe" },
+              { "day": "الجمعة", "time": "10:00-12:00", "subject": "Techniques rédactionnelles et de plaidoirie", "professor": "Dr O. ZIAT", "room": "Salle 1 Annexe" },
+              { "day": "الجمعة", "time": "14:00-16:00", "subject": "Statut des professionnels du droit", "professor": "Pr Y. BENDAHMANE", "room": "Salle 1 Annexe" }
+            ]
+          }
+        },
+        "siyassia": {
+          "section": "public",
+          "label": { "ar": "المؤسسات السياسية والعمل العمومي", "fr": "Institutions politiques et action publique", "en": "Political Institutions & Public Action" },
+          "type": "schedule",
+          "schedule_mode": "per-group",
+          "ranges_note": { "ar": "فوج واحد.", "fr": "Groupe unique.", "en": "Single group." },
+          "source_note": "من وثائق الكلية؛ يحتاج تحققاً نهائياً.",
+          "ranges": [
+            { "group": "A", "subgroups": "—", "from": "—", "to": "—" }
+          ],
+          "schedule": {
+            "A": [
+              { "day": "الإثنين", "time": "14:00-16:00", "subject": "Anglais 1", "professor": "Pr. R. ABAAZI", "room": "Salle 2 Annexe" },
+              { "day": "الثلاثاء", "time": "10:00-12:00", "subject": "Droit international de la Mer", "professor": "Pr R. EL FELLAH", "room": "Salle 1 Annexe" },
+              { "day": "الثلاثاء", "time": "14:00-16:00", "subject": "Instances de régulation et de gouvernance", "professor": "Pr R. EL BAZZIM", "room": "Salle 1 Annexe" },
+              { "day": "الثلاثاء", "time": "16:00-18:00", "subject": "Développement personnel", "professor": "Pr M. EDDAHANI", "room": "Salle 3 Annexe" },
+              { "day": "السبت", "time": "08:00-10:00", "subject": "Politiques publiques", "professor": "Pr H. ZOUAOUI", "room": "Salle 2 Annexe" },
+              { "day": "السبت", "time": "10:00-12:00", "subject": "Collectivités territoriales", "professor": "Pr A. IDRISSI", "room": "Salle 2 Annexe" },
+              { "day": "السبت", "time": "14:00-16:00", "subject": "Droit diplomatique et consulaire", "professor": "Pr O. QAISSI", "room": "Salle 2 Annexe" }
+            ]
+          }
+        },
+        "contentieux-prive": {
+          "section": "private",
+          "label": { "ar": "القانون والنزاع الخاص", "fr": "Droit et contentieux privé", "en": "Private Law & Litigation" },
+          "type": "schedule",
+          "schedule_mode": "shared",
+          "ranges_note": { "ar": "معلومات غير متوفرة في المصدر.", "fr": "Non fourni.", "en": "Not provided." },
+          "source_note": "من ملخص المستخدم؛ يحتاج إلى تأكيد رسمي.",
+          "ranges": [],
+          "schedule": [
+            { "day": "الإثنين", "time": "12:00-14:00", "subject": "Anglais 1", "professor": "Pr. R. ABAAZI", "room": "Salle 2 Annexe" },
+            { "day": "الأربعاء", "time": "08:00-10:00", "subject": "Droits réels", "professor": "Pr K. LEGTATI", "room": "Salle 3 Annexe" },
+            { "day": "الأربعاء", "time": "10:00-12:00", "subject": "Contrats spéciaux", "professor": "Pr L. LEKOUISSI", "room": "Salle 2 Annexe" },
+            { "day": "الأربعاء", "time": "16:00-18:00", "subject": "Développement personnel", "professor": "Pr M. EDDAHANI", "room": "Salle 3 Annexe" },
+            { "day": "الخميس", "time": "14:00-16:00", "subject": "Droit international privé", "professor": "Pr Y. BENDAHMANE", "room": "Salle 1 Annexe" },
+            { "day": "الجمعة", "time": "10:00-12:00", "subject": "Techniques rédactionnelles et de plaidoirie", "professor": "Dr O. ZIAT", "room": "Salle 1 Annexe" },
+            { "day": "الجمعة", "time": "14:00-16:00", "subject": "Statut des professionnels du droit", "professor": "Pr Y. BENDAHMANE", "room": "Salle 1 Annexe" }
+          ]
+        },
+        "legal-professions": {
+          "section": "private",
+          "label": { "ar": "مسار المهن القانونية والقضائية", "fr": "Professions juridiques et judiciaires", "en": "Legal & Judicial Professions" },
+          "type": "pathway",
+          "ranges_note": { "ar": "الأفواج A–H وأفواج الإنجليزية Ang-A إلى Ang-D.", "fr": "Groupes A–H et anglais Ang-A à Ang-D.", "en": "Groups A–H and English Ang-A to Ang-D." },
+          "source_note": "من ملخص المستخدم؛ يحتاج إلى تأكيد رسمي.",
+          "ranges": [
+            { "group": "A", "subgroups": "", "from": "AABACH", "to": "ANNASSIH" },
+            { "group": "B", "subgroups": "", "from": "ANNASSIHI", "to": "BOUASRY" },
+            { "group": "C", "subgroups": "", "from": "BOUASRYA", "to": "EDDABOUZ" },
+            { "group": "D", "subgroups": "", "from": "EDDABOUZI", "to": "ELHAMIL" },
+            { "group": "E", "subgroups": "", "from": "ELHAMILI", "to": "HNAIN" },
+            { "group": "F", "subgroups": "", "from": "HNAINA", "to": "LAMIN" },
+            { "group": "G", "subgroups": "", "from": "LAMINE", "to": "OUKASSI" },
+            { "group": "H", "subgroups": "", "from": "OUKASSY", "to": "ZYN ELABYDYNE" }
+          ],
+          "english_ranges": [
+            { "group": "Ang-A", "subgroups": "1-6", "from": "AABACH", "to": "BOUASRY" },
+            { "group": "Ang-B", "subgroups": "7-12", "from": "BOUASRYA", "to": "ELHAMIL" },
+            { "group": "Ang-C", "subgroups": "13-18", "from": "ELHAMILI", "to": "LAMIN" },
+            { "group": "Ang-D", "subgroups": "19-24", "from": "LAMINE", "to": "ZYN ELABYDYNE" }
+          ],
+          "courses": [
+            { "subject": "صعوبات المقاولة", "professors": ["محمد فايوط"] },
+            { "subject": "العقود الخاصة", "professors": ["فاطمة أوكالمو", "إبراهيم حطاب"] },
+            { "subject": "قانون التأمين", "professors": ["الرشيد أضاوخ", "عبد اللطيف يدكأ"] },
+            { "subject": "الحقوق العينية", "professors": ["عبد اللطيف يدكأ", "إدريس الحياني"] },
+            { "subject": "اللغة الأجنبية (الإنجليزية)", "professors": ["شيماء ضياض", "رجاء حيدي لالة أرسلان"] }
+          ]
+        },
+        "criminelles": {
+          "section": "private",
+          "label": { "ar": "مسار العلوم الجنائية", "fr": "Sciences criminelles", "en": "Criminal Sciences" },
+          "type": "pathway",
+          "ranges": [],
+          "ranges_note": { "ar": "معلومات غير متوفرة في المصدر.", "fr": "Non fourni.", "en": "Not provided." },
+          "source_note": "من ملخص المستخدم؛ يحتاج إلى تأكيد رسمي.",
+          "courses": [
+            { "subject": "مسرح الجريمة", "professors": ["محمد فايوط"] },
+            { "subject": "السياسة الجنائية", "professors": ["إبراهيم حطاب", "يونس إديعس"] },
+            { "subject": "قانون الذكاء الاصطناعي والرقمي", "professors": ["يونس إديعس", "عبد الكريم آيت يونس"] },
+            { "subject": "الجرائم ذات الطبيعة الخاصة", "professors": ["عمر دماغي"] },
+            { "subject": "اللغة الأجنبية (الإنجليزية)", "professors": ["شيماء ضياض"] }
+          ]
+        },
+        "admin-finance": {
+          "section": "public",
+          "label": { "ar": "الدراسات الإدارية والمالية", "fr": "Études administratives et financières", "en": "Administrative & Financial Studies" },
+          "type": "pathway",
+          "ranges": [],
+          "ranges_note": { "ar": "معلومات غير متوفرة في المصدر.", "fr": "Non fourni.", "en": "Not provided." },
+          "source_note": "من ملخص المستخدم؛ يحتاج إلى تأكيد رسمي.",
+          "courses": [
+            { "subject": "إجراءات التقاضي في مادة المرافق العامة الكبرى", "professors": ["رميسي سعس"] },
+            { "subject": "منازعات المرافق العامة الكبرى", "professors": ["رميسي سعس"] },
+            { "subject": "تدبير الوظيفة العمومية ومواردها البشرية", "professors": ["ريديقة رشيد"] },
+            { "subject": "الصفقات العمومية والسياسات العمومية", "professors": ["عبد اللطيف الهلالي", "خالد الهبهلي"] },
+            { "subject": "مناهج العلوم الاجتماعية", "professors": ["إبراهيم تيتلوات"] },
+            { "subject": "اللغة الأجنبية (الإنجليزية 3)", "professors": [], "note": "الفوج A-ang؛ قاعة 12 الملحق" }
+          ]
+        },
+        "politiques-internationales": {
+          "section": "public",
+          "label": { "ar": "الدراسات السياسية والدولية", "fr": "Études politiques et internationales", "en": "Political & International Studies" },
+          "type": "pathway",
+          "ranges": [],
+          "ranges_note": { "ar": "معلومات غير متوفرة في المصدر.", "fr": "Non fourni.", "en": "Not provided." },
+          "source_note": "من ملخص المستخدم؛ يحتاج إلى تأكيد رسمي.",
+          "courses": [
+            { "subject": "القانون الدولي الإنساني", "professors": ["فاطمة الزهراء العينيا"] },
+            { "subject": "العمل البرلماني", "professors": ["أيايه مبارك"] },
+            { "subject": "تحليل الخطاب والتواصل السياسي", "professors": ["عبد القادر الرضاضي", "خالد الالهبالي", "محمد الوسراوي"] },
+            { "subject": "علم الاجتماع السياسي", "professors": ["عبد القادر الرضاضي", "خالد الالهبالي", "محمد الوسراوي"] },
+            { "subject": "العلاقات الدولية", "professors": ["عبد القادر الرضاضي", "خالد الالهبالي", "محمد الوسراوي"] }
+          ]
+        }
+      }
+    }
+  },
+  "verification": [
+    {
+      "type": "schedule_discrepancy",
+      "note": "توقيت بعض حصص السداسي الثالث (Droit social / Droit pénal spécial) يختلف بين مصدر الوثيقة المحدثة ومصدر الدليل السابق. اعتُمدت الوثيقة المحدثة 2026-10-10، ويلزم التحقق النهائي مع الكلية."
+    },
+    {
+      "type": "possible_schedule_collision",
+      "note": "حصة «Développement personnel» تظهر في أكثر من مسار بنفس اليوم والتوقيت والقاعة؛ قد تكون مشتركة أو تحتاج تأكيداً."
+    },
+    {
+      "type": "unverified_ranges",
+      "note": "حدود الألقاب (A–T لـS1، A–N لـS3، أفواج S5) منقولة من صور ووثائق المستخدم؛ يجب مطابقتها مع اللائحة الرسمية."
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "name": "CHRVVIM Campus — بوابة الطالب",
+  "short_name": "CHRVVIM",
+  "description": "بوابة طلابية مستقلة للجداول والوثائق والموارد الأكاديمية بكلية العلوم القانونية والسياسية بأكادير.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0b1220",
+  "theme_color": "#0b1220",
+  "lang": "ar",
+  "dir": "rtl",
+  "icons": [
+    {
+      "src": "assets/chrvvim-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

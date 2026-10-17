@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="CHRVVIM — دليل الطالب بأكادير ومبادرة محمد شرايم لتيسير الوصول إلى المعلومات الجامعية والقانونية.">
+<meta property="og:title" content="CHRVVIM — محمد شرايم | دليل الطالب بأكادير">
+<meta property="og:description" content="بوابة طلابية أكاديمية وهوية رقمية تهتم بالقانون والبحث والتعليم الرقمي.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0b2a6f">
+<title>دليل الطالب — أكادير | CHRVVIM</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<style>
+:root{--blue:#0b2a6f;--blue2:#1747b8;--gold:#d4a72c;--gold2:#f6dd8e;--bg:#f3f5fb;--ink:#12203f;--card:#fff;--line:#dde4f3;--muted:#64708f;--soft:#e9eefb;--green:#16794b;--red:#a52a2a}
+:root.dark{--bg:#0a1226;--ink:#e8edfb;--card:#121c38;--line:#223157;--muted:#93a0c4;--soft:#182648}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:"Segoe UI",Tahoma,"Noto Naskh Arabic",Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65}
+button,input,select,textarea{font:inherit}button,a{touch-action:manipulation}
+a{color:var(--blue2)}header{background:linear-gradient(135deg,#071b4d,var(--blue2) 60%,var(--blue));color:#fff;text-align:center;padding:24px 16px 48px;border-bottom:4px solid var(--gold)}
+header h1{margin:8px 0;font-size:clamp(1.55rem,5vw,2.35rem)}header h1 b{color:var(--gold2)}header p{margin:0;opacity:.93}
+.disclaimer{display:inline-block;font-size:.78rem;background:rgba(211,47,47,.2);border:1px solid rgba(211,47,47,.4);border-radius:8px;padding:4px 10px;color:#ffd6d6}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:10px;max-width:1100px;margin:0 auto;padding:10px 14px 0}.brand{font-weight:900;color:var(--blue2);letter-spacing:.08em}.brand span{color:var(--gold)}
+main{max-width:1100px;margin:-30px auto 30px;padding:0 14px;position:relative}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:0 8px 24px rgba(11,42,111,.08);margin-bottom:14px}
+.tabs{display:flex;gap:6px;overflow-x:auto;margin-bottom:12px;padding-bottom:3px}.tab{flex:1 0 auto;padding:10px 14px;border:0;border-radius:10px;background:var(--soft);color:var(--blue2);font-weight:700;cursor:pointer;white-space:nowrap}.tab.on{background:var(--blue);color:var(--gold2)}
+.panel{display:none}.panel.on{display:block}label{display:block;font-weight:700;color:var(--blue2);margin-bottom:6px}
+input,select,textarea{width:100%;padding:11px 12px;border:1.5px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);min-width:0}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:end}.row .field{flex:1;min-width:180px}.btn{border:0;border-radius:10px;padding:10px 16px;font-weight:700;cursor:pointer;background:var(--gold);color:var(--blue)}.btn.sec{background:var(--soft);color:var(--blue2)}.btn:focus-visible,.tab:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.note{background:#fff8e1;color:#4a3b00;border:1px solid var(--gold);border-radius:10px;padding:9px 12px;font-size:.9rem;margin-bottom:12px}.muted{color:var(--muted);font-size:.88rem}.empty{text-align:center;color:var(--muted);padding:18px}.result{border:2px solid var(--gold);border-radius:12px;padding:14px;margin-top:12px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}.chip{display:inline-block;background:var(--gold);color:var(--blue);padding:2px 10px;border-radius:99px;font-weight:700;font-size:.85rem}.chip.blue{background:var(--blue);color:#fff}
+.scroll{overflow-x:auto}table{width:100%;border-collapse:collapse;font-size:.9rem;min-width:650px}th{background:var(--blue);color:#fff;padding:9px}td{border:1px solid var(--line);padding:8px;text-align:center;vertical-align:middle}.today-box{background:var(--soft);border-radius:12px;padding:10px 12px;margin-bottom:10px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}.mini{background:var(--soft);border:1px solid var(--line);border-radius:12px;padding:14px}.mini h3{margin:0 0 5px;color:var(--blue2);font-size:1.05rem}
+.profile-hero{background:linear-gradient(135deg,#071b4d,#132f78 65%,#7a5b14);color:white;border-radius:14px;padding:24px;display:grid;grid-template-columns:1fr;gap:10px}.profile-hero h2{font-size:clamp(1.6rem,5vw,2.3rem);margin:0}.gold{color:var(--gold2)}.socials{display:flex;flex-wrap:wrap;gap:8px}.socials a{display:inline-block;background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:8px 12px;text-decoration:none;font-weight:700}.socials a[aria-disabled="true"]{opacity:.6;cursor:not-allowed}
+.document-card{display:flex;flex-direction:column;gap:8px;padding:16px;border:1px solid var(--line);border-radius:14px;background:var(--card);min-width:0}.document-card h3{margin:0;color:var(--blue2);font-size:1rem}.document-meta{font-size:.8rem;color:var(--muted)}.document-open{display:inline-flex;align-self:flex-start;gap:7px;align-items:center;padding:9px 12px;border-radius:9px;background:var(--blue);color:#fff;text-decoration:none;font-weight:700}.document-open:hover{background:var(--blue2)}\nfooter{text-align:center;color:var(--muted);font-size:.8rem;padding:6px 0 26px}
+@media(min-width:760px){.profile-hero{grid-template-columns:1fr auto;align-items:center}}
+@media print{header .disclaimer,.topbar,.tabs,.btn,.note,#p-search,#p-subj,#p-rooms,#p-profile,footer{display:none!important}.panel{display:none!important}#p-tt{display:block!important}body{background:#fff;color:#000}.card{box-shadow:none}}
+
+/* CHRVVIM Founder — Premium Navy & Gold */
+.chrvvim-founder{position:relative;overflow:hidden;border-top:3px solid var(--gold,#d4a72c)}
+.chrvvim-founder-header{padding:4px 0 16px}
+.chrvvim-eyebrow{display:inline-block;color:var(--gold,#d4a72c);font-size:.75rem;font-weight:800;letter-spacing:.12em}
+.chrvvim-founder h2{margin:8px 0;color:var(--blue2,#1747b8);font-size:clamp(1.25rem,4vw,1.8rem)}
+.chrvvim-name{margin:0 0 8px;font-size:1.1rem;font-weight:800}
+.chrvvim-name span{color:var(--gold,#d4a72c)}
+.chrvvim-bio{max-width:720px;margin:0;color:var(--muted,#64708f);line-height:1.9}
+.chrvvim-section-title{margin:12px 0;font-size:1rem}
+.chrvvim-social-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,245px),1fr));gap:10px}
+.chrvvim-social-link{display:flex;align-items:center;gap:12px;min-width:0;padding:13px;border:1px solid var(--line,#dde4f3);border-radius:13px;background:var(--soft,#e9eefb);color:var(--ink,#12203f);text-decoration:none;transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}
+.chrvvim-social-link:hover{transform:translateY(-2px);border-color:var(--gold,#d4a72c);box-shadow:0 6px 16px rgba(11,42,111,.08)}
+.chrvvim-social-link:focus-visible{outline:3px solid var(--gold,#d4a72c);outline-offset:3px}
+.chrvvim-social-icon{display:grid;place-items:center;flex:0 0 42px;width:42px;height:42px;border-radius:12px;background:var(--blue,#0b2a6f);color:var(--gold2,#f6dd8e);font-size:1.5rem;font-weight:800}
+.chrvvim-social-copy{display:flex;flex:1;flex-direction:column;min-width:0;gap:3px}
+.chrvvim-social-copy strong{color:var(--blue2,#1747b8)}
+.chrvvim-social-copy span{color:var(--muted,#64708f);font-size:.83rem;overflow-wrap:anywhere}
+.chrvvim-arrow{align-self:center;color:var(--gold,#d4a72c);font-size:1.15rem}
+.chrvvim-disclaimer{margin:14px 0 0;color:var(--muted,#64708f);font-size:.78rem;line-height:1.8}
+:root.dark .chrvvim-founder h2,:root.dark .chrvvim-social-copy strong{color:var(--gold2,#f6dd8e)}
+@media(prefers-reduced-motion:reduce){.chrvvim-social-link{transition:none}.chrvvim-social-link:hover{transform:none}}
+
+.announcements-card{margin:14px auto;max-width:1000px;border-right:4px solid var(--gold,#d4a72c)}.announcements-card h2{margin:0 0 10px;font-size:1.05rem}.announcement{padding:10px 12px;border-radius:10px;background:var(--soft,#f5f7fb);margin:8px 0;line-height:1.8}.announcement strong{display:block;margin-bottom:3px}.announcement.urgent{border-right:4px solid #c62828}.announcement.warning{border-right:4px solid #c88719}.announcement.event{border-right:4px solid #2366c7}.announcement time{display:block;color:var(--muted,#64708f);font-size:.78rem;margin-top:4px}
+
+/* Founder profile — calm editorial legal identity */
+.founder-page{--fn:#0c1c32;--fg:#c4a66a;--fm:#657184;position:relative;overflow:hidden;border:1px solid #e4e7eb;border-radius:22px;background:#fbfaf7;color:var(--fn);box-shadow:0 18px 55px rgba(20,31,49,.08)}
+.founder-cover{height:150px;position:relative;overflow:hidden;background:radial-gradient(circle at 75% 30%,rgba(196,166,106,.18),transparent 25%),linear-gradient(115deg,#0a182b,#142b42 60%,#243d50)}
+.founder-cover:before{content:"";position:absolute;inset:0;opacity:.16;background-image:repeating-linear-gradient(135deg,transparent 0 18px,rgba(225,205,160,.3) 19px,transparent 20px 38px)}
+.legal-symbol{position:absolute;right:7%;top:-42px;font-size:180px;color:rgba(228,205,155,.15);line-height:1;font-family:serif}.cover-seal{position:absolute;left:22px;bottom:20px;border:1px solid rgba(226,201,151,.45);border-radius:50px;padding:7px 14px;color:#e8d7b2;font-size:.72rem;letter-spacing:.18em}.founder-hero{position:relative;display:grid;grid-template-columns:170px 1fr;gap:25px;align-items:center;padding:0 30px 26px;margin-top:-52px}.founder-photo-wrap{width:158px;height:158px;position:relative;z-index:1}.founder-photo{width:100%;height:100%;object-fit:cover;object-position:center 25%;border-radius:50%;border:5px solid #fbfaf7;box-shadow:0 12px 32px rgba(5,20,36,.24)}.photo-ring{position:absolute;inset:-7px;border:1px solid var(--fg);border-radius:50%;pointer-events:none}.founder-kicker{font-size:.68rem;font-weight:800;letter-spacing:.16em;color:#9a7a3f}.founder-intro h2{font-size:clamp(1.55rem,4vw,2.4rem);line-height:1.25;margin:7px 0;color:#14283d}.founder-intro h2 span{display:block;font-size:.56em;font-weight:500;color:#6b7887;direction:ltr;text-align:right;margin-top:5px}.founder-brand{font-weight:900;letter-spacing:.15em;margin:0;color:#132b42}.founder-brand span{color:#a9874b}.founder-brand b{font-size:.78rem;letter-spacing:0;color:#8a7654;margin-right:8px}.founder-role{font-weight:700;color:#4c5b6c;margin:9px 0}.founder-lead{max-width:780px;color:#596778;line-height:2;margin:7px 0}.founder-pills,.founder-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:13px}.founder-pills span,.founder-tags span{border:1px solid #e5dcc8;background:#f5f0e6;color:#5b4a2d;border-radius:50px;padding:5px 10px;font-size:.78rem}.founder-content-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding:0 24px 20px}.founder-info-card{padding:18px;border:1px solid #e7e6e0;border-radius:15px;background:rgba(255,255,255,.78)}.founder-card-mark{font-size:.63rem;letter-spacing:.14em;color:#a18650;font-weight:800}.founder-info-card h3,.founder-connect h3{margin:7px 0 8px;color:#172d43;font-size:1.08rem}.founder-info-card p{margin:0;color:#596778;line-height:1.95;font-size:.93rem}.founder-info-card .founder-muted{font-size:.82rem;margin-top:8px;color:#7b8490}.founder-mission{margin:0 24px 22px;padding:22px 24px;border-radius:15px;background:linear-gradient(115deg,#102239,#1b354b);color:#f5f1e8;position:relative;overflow:hidden}.founder-mission:after{content:"⚖";position:absolute;left:20px;top:-28px;font-size:125px;color:rgba(210,185,132,.1)}.founder-mission h3{position:relative;margin:8px 0;color:#e3cc9d;font-size:clamp(1.15rem,3vw,1.65rem)}.founder-mission p{position:relative;margin:0;max-width:760px;color:#d2dbe2;line-height:1.9}.founder-connect{padding:0 24px 22px;display:grid;grid-template-columns:minmax(180px,.7fr) 1.3fr;gap:20px;align-items:start}.founder-connect h3{font-size:1.3rem}.founder-connect p{color:#6a7684;line-height:1.8;font-size:.88rem}.founder-footnote{padding:13px 20px;text-align:center;border-top:1px solid #e7e6e0;color:#8b929b;font-size:.75rem;letter-spacing:.02em}.chrvvim-social-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.chrvvim-social-link{display:flex;align-items:center;gap:10px;min-width:0;padding:10px;border:1px solid #e6e4de;border-radius:12px;background:#fff;color:#14283d;text-decoration:none;transition:transform .18s ease,border-color .18s ease}.chrvvim-social-link:hover{transform:translateY(-2px);border-color:#c4a66a}.chrvvim-social-icon{display:grid;place-items:center;flex:0 0 35px;height:35px;border-radius:10px;background:#132b42;color:#e5cf9f;font-size:1.3rem;font-weight:800}.chrvvim-social-copy{display:flex;flex-direction:column;min-width:0;gap:2px}.chrvvim-social-copy strong{font-size:.82rem}.chrvvim-social-copy span{font-size:.74rem;color:#798390;overflow-wrap:anywhere}.chrvvim-arrow{margin-right:auto;color:#a9874b}.founder-page a:focus-visible{outline:3px solid #b9944c;outline-offset:3px}
+@media(max-width:680px){.founder-cover{height:125px}.founder-hero{grid-template-columns:1fr;gap:13px;padding:0 18px 22px;margin-top:-48px}.founder-photo-wrap{width:130px;height:130px}.founder-intro h2{font-size:1.75rem}.founder-content-grid{grid-template-columns:1fr;padding:0 14px 16px}.founder-mission{margin:0 14px 18px;padding:18px}.founder-connect{grid-template-columns:1fr;padding:0 14px 18px;gap:8px}.chrvvim-social-grid{grid-template-columns:1fr 1fr}.cover-seal{left:12px;bottom:12px;font-size:.62rem}.legal-symbol{font-size:145px;right:3%}}
+@media(max-width:380px){.chrvvim-social-grid{grid-template-columns:1fr}.founder-hero{padding-inline:14px}}
+@media(prefers-reduced-motion:reduce){.chrvvim-social-link{transition:none}.chrvvim-social-link:hover{transform:none}}
+
+</style>
+</head>
+<body>
+<div class="topbar"><div class="brand">CHRVVIM <span>LEGAL</span></div><button class="btn sec" id="themeBtn" aria-label="تبديل الوضع الليلي">🌙 الوضع الليلي</button></div>
+<header>
+  <div class="disclaimer">⚠️ نسخة أولية غير رسمية · راجع الإعلانات والجداول الرسمية للكلية</div>
+  <section class="card announcements-card" id="announcementsCard" hidden aria-labelledby="announcementsTitle"><h2 id="announcementsTitle">📢 الإعلانات والتنبيهات</h2><div id="announcementsBody"><p class="empty">لا توجد إعلانات منشورة حالياً.</p></div></section>
+  <h1>🎓 دليل الطالب <b>أكادير</b></h1>
+  <p>بوابة طلابية تجريبية — كلية العلوم القانونية والسياسية، جامعة ابن زهر</p>
+</header>
+<main>
+  <div class="tabs" role="tablist" aria-label="أقسام الموقع">
+    <button class="tab on" data-p="search" role="tab" aria-selected="true">🔎 البحث عن فوجي</button>
+    <button class="tab" data-p="tt" role="tab" aria-selected="false">🗓️ استعمال الزمن</button>
+    <button class="tab" data-p="subj" role="tab" aria-selected="false">👨‍🏫 المواد والأساتذة</button>
+    <button class="tab" data-p="rooms" role="tab" aria-selected="false">🏫 القاعات</button>
+    <button class="tab" data-p="s5" role="tab" aria-selected="false">📚 السداسي الخامس والمسارات</button>
+    <button class="tab" data-p="documents" role="tab" aria-selected="false">📄 الوثائق الجامعية</button>
+    <button class="tab" data-p="profile" role="tab" aria-selected="false">✦ عن المؤسس</button>
+  </div>
+  <section class="card panel on" id="p-search">
+    <div class="note">💡 البحث بالاسم العائلي لا يثبت الفوج الجامعي وحده ما لم تتوفر لائحة رسمية تربط الأسماء بالأفواج. هذه النسخة لا تخزن الاسم الذي تكتبه.</div>
+    <label for="q">الاسم العائلي (كما يظهر في اللائحة الرسمية)</label>
+    <div class="row"><div class="field"><input type="text" id="q" autocomplete="off" placeholder="مثال: CHRAIM"></div><button class="btn" id="go">بحث</button></div>
+    <div id="res"><p class="empty">اكتب الاسم العائلي ثم اضغط «بحث».</p></div>
+    <hr><h3>البحث في توزيعات الأفواج حسب اللقب — 2026/2027</h3><p class="muted">يعرض الفوج المحتمل بحسب حدود الألقاب الواردة في الصور، مع ضرورة التحقق من التهجئة والترتيب الرسمي.</p><div id="surnameGroupResults"><p class="empty">أدخل لقبك أعلاه ثم اضغط بحث.</p></div>
+  </section>
+  <section class="card panel" id="p-tt">
+    <label for="ttGroup">اختار الفوج</label>
+    <div class="row" style="margin-bottom:12px"><div class="field"><select id="ttGroup"></select></div><button class="btn" id="ttShow">عرض</button><button class="btn sec" id="printBtn">🖨️ طباعة</button></div>
+    <div class="note" id="ttNote">بيانات الجدول الأولية تحتاج إلى مطابقة نهائية مع الصور الأصلية، خصوصاً الفترات الزمنية وبعض المجموعات.</div>
+    <div class="scroll" id="ttBody"></div>
+  </section>
+  <section class="card panel" id="p-subj"><div class="scroll" id="subjBody"></div></section>
+  <section class="card panel" id="p-rooms"><div class="scroll" id="roomBody"></div></section>
+  <section class="card panel" id="p-s5">
+    <h2>الدليل الأكاديمي 2026–2027</h2>
+    <p class="note">يشمل السداسي الأول، والسداسي الثالث وتوزيع الأفواج، ومسالك السداسي الخامس. البيانات المقدمة من المستخدم لا تُعد إعلاناً رسمياً مؤكداً.</p>
+    <hr>
+    <h3>السداسي الأول — الجذع المشترك</h3>
+    <label for="s1Track">اختر الشعبة</label>
+    <div class="row" style="margin-bottom:12px"><div class="field"><select id="s1Track"></select></div><button class="btn" id="s1Show">عرض</button></div>
+    <div class="scroll" id="s1Body"><p class="empty">جارٍ تحميل بيانات السداسي الأول…</p></div>
+    <hr>
+    <h3>السداسي الثالث — القانون الخاص وتوزيع الأفواج</h3>
+    <div class="scroll" id="s3GroupsBody"></div>
+    <h4>حصص السداسي الثالث المنشورة</h4>
+    <div class="scroll" id="s3DetailsBody"><p class="empty">جارٍ تحميل الحصص المنشورة…</p></div>
+    <hr>
+    <h2>السداسي الخامس والمسارات</h2>
+    <p class="note" id="s5Note">البيانات منظمة من ملخص المستخدم، ولم يتم التحقق منها مستقلاً من إعلان رسمي.</p>
+    <label for="s5Track">اختر المسلك أو المسار</label>
+    <div class="row" style="margin-bottom:12px"><div class="field"><select id="s5Track"></select></div><button class="btn" id="s5Show">عرض</button></div>
+    <div class="scroll" id="s5Body"><p class="empty">جارٍ تحميل بيانات المسالك…</p></div>
+    <hr>
+    <h3>السداسي الثالث — توزيع الفرنسية (القانون العام)</h3>
+    <div id="s3FrenchBody"></div>
+  </section>
+  <section class="card panel" id="p-documents">
+    <h2>مركز الوثائق الجامعية — 2026/2027</h2>
+    <p class="note">الوثائق الأصلية بصيغة PDF كما تم تزويدها. تحقق من تاريخ التحيين والنسخة الرسمية قبل الاعتماد، خصوصاً الجداول الزمنية.</p>
+    <div class="row" style="margin-bottom:12px">
+      <div class="field"><label for="docSemester">السداسي</label><select id="docSemester"><option value="">كل الفصول</option><option value="S3">السداسي الثالث</option><option value="S5">السداسي الخامس</option></select></div>
+      <div class="field"><label for="docTrack">الشعبة</label><select id="docTrack"><option value="">كل الشعب</option><option value="القانون الخاص">القانون الخاص</option><option value="القانون العام">القانون العام</option></select></div>
+    </div>
+    <div class="grid" id="documentsList"><p class="empty">جارٍ تحميل الوثائق…</p></div>
+  </section>
+  <section class="card panel" id="p-profile">
+    <section class="founder-page" id="founder-social" aria-labelledby="founder-title" dir="rtl">
+      <div class="founder-cover" aria-hidden="true"><span class="legal-symbol">⚖</span><span class="cover-seal">CHRVVIM · LEGAL</span><span class="cover-lines"></span></div>
+      <div class="founder-hero">
+        <div class="founder-photo-wrap"><img class="founder-photo" src="/public/assets/founder-mohamed-chraim.jpeg" alt="الصورة الشخصية لمحمد شرايم، مؤسس CHRVVIM" loading="lazy"><span class="photo-ring" aria-hidden="true"></span></div>
+        <div class="founder-intro"><span class="founder-kicker">FOUNDER · LAW · DIGITAL EDUCATION</span>
+          <h2 id="founder-title">محمد شرايم <span>Mohamed Chraim</span></h2>
+          <p class="founder-brand">CHRVVIM <span>®</span> <b>@chrvvim</b></p>
+          <p class="founder-role">طالب قانون · مهتم بالبحث القانوني والكتابة · مطوّر منصة طلابية</p>
+          <p class="founder-lead">أؤمن بأن الوصول إلى المعلومة الأكاديمية الواضحة يساعد الطالب على تنظيم مساره الجامعي، وبأن المعرفة القانونية تبدأ بالبحث الدقيق والتفكير النقدي.</p>
+          <div class="founder-pills"><span>القانون الخاص</span><span>العلوم الجنائية</span><span>الكتابة</span><span>التقنية التعليمية</span></div>
+        </div>
+      </div>
+      <div class="founder-content-grid">
+        <article class="founder-info-card"><span class="founder-card-mark">01 / BIOGRAPHY</span><h3>نبذة عن المؤسس</h3><p>محمد شرايم طالب في كلية العلوم القانونية والسياسية بأكادير، جامعة ابن زهر. يهتم بالقانون والبحث والكتابة، ويعمل على تطوير CHRVVIM كمبادرة رقمية تساعد الطلبة على الوصول إلى المعلومات الجامعية وتنظيمها في مكان واحد.</p></article>
+        <article class="founder-info-card"><span class="founder-card-mark">02 / ACADEMIC PATH</span><h3>المسار الأكاديمي</h3><p>جامعة ابن زهر — كلية العلوم القانونية والسياسية، أكادير، المغرب.</p><p class="founder-muted">التخصص الدراسي المعلن: القانون الخاص باللغة العربية. يمكن إضافة معلومات أكاديمية أخرى بعد التأكد منها.</p></article>
+        <article class="founder-info-card"><span class="founder-card-mark">03 / RESEARCH</span><h3>اهتمامات البحث</h3><div class="founder-tags"><span>القانون المغربي</span><span>القانون الجنائي</span><span>العلوم الجنائية</span><span>علم الإجرام</span><span>الوعي القانوني</span><span>الوصول إلى المعرفة</span></div></article>
+        <article class="founder-info-card"><span class="founder-card-mark">04 / IDEAS</span><h3>الكتابة والأفكار</h3><p>الكتابة والأدب والفلسفة والتفكير التحليلي؛ اهتمامات تدعم قراءة النصوص القانونية وصياغة الأفكار بصورة دقيقة ومتوازنة.</p></article>
+      </div>
+      <section class="founder-mission"><span class="founder-kicker">THE MISSION</span><h3>المعلومة الجامعية أقرب، والمسار أوضح.</h3><p>تطوير مساحة طلابية تجمع الإرشاد الأكاديمي والجداول والإعلانات والموارد، مع احترام دقة المعلومات وبيان ما يحتاج منها إلى تحقق رسمي.</p></section>
+      <section class="founder-connect"><div><span class="founder-kicker">DIGITAL PRESENCE</span><h3>تواصل مع CHRVVIM</h3><p>روابط الحسابات المدرجة أدناه هي الروابط المتاحة ضمن إعدادات المشروع؛ لا تعني علامة توثيق ولا تمثل اعتماداً رسمياً.</p></div>
+        <div class="chrvvim-social-grid" id="founderSocialLinks"><p class="founder-muted">جارٍ تحميل روابط التواصل…</p></div>
+      </section>
+      <div class="founder-footnote">CHRVVIM · منصة طلابية مستقلة وغير رسمية. لا تمثل جامعة ابن زهر أو الكلية بصفة رسمية.</div>
+    </section>
+  </section>
+</main>
+<footer><p>السداسي الثالث · الجذع المشترك · القانون الخاص · نسخة تجريبية</p><p>لا تدخل بيانات حساسة مثل رقم البطاقة الوطنية أو كلمات المرور.</p></footer>
+<script src="app.js" defer></script>
+</body>
+</html>

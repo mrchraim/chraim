@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>لوحة التحكم | Management System</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <!-- نافذة: موظف جديد -->
+  <div id="employee-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 data-i18n="new_employee">موظف جديد</h3>
+        <button class="modal-close" onclick="closeModal('employee-modal')">&times;</button>
+      </div>
+      <form id="emp-form" onsubmit="event.preventDefault(); createEmployee();">
+        <div class="form-group">
+          <label data-i18n="employee_name">اسم الموظف</label>
+          <input type="text" id="emp-name" required />
+        </div>
+        <div class="form-row-2">
+          <div class="form-group">
+            <label data-i18n="job_title">المسمى الوظيفي</label>
+            <input type="text" id="emp-job" />
+          </div>
+          <div class="form-group">
+            <label data-i18n="department">القسم</label>
+            <input type="text" id="emp-dept" />
+          </div>
+        </div>
+        <div class="form-row-2">
+          <div class="form-group">
+            <label data-i18n="email">البريد الإلكتروني</label>
+            <input type="email" id="emp-email" />
+          </div>
+          <div class="form-group">
+            <label data-i18n="phone">الهاتف</label>
+            <input type="text" id="emp-phone" />
+          </div>
+        </div>
+        <div class="form-row-2">
+          <div class="form-group">
+            <label data-i18n="salary">الراتب</label>
+            <input type="number" id="emp-salary" min="0" />
+          </div>
+          <div class="form-group">
+            <label data-i18n="hire_date">تاريخ التعيين</label>
+            <input type="date" id="emp-hire" />
+          </div>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-secondary" onclick="closeModal('employee-modal')" data-i18n="cancel">إلغاء</button>
+          <button type="submit" class="btn btn-primary" data-i18n="create_employee">إضافة موظف</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- نافذة: جامعة -->
+  <div id="university-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 data-i18n="add_university">جامعة جديدة</h3>
+        <button class="modal-close" onclick="closeModal('university-modal')">&times;</button>
+      </div>
+      <form onsubmit="event.preventDefault(); createUniversity();">
+        <div class="form-group"><label data-i18n="name_ar">الاسم (عربي)</label><input type="text" id="uni-ar" required></div>
+        <div class="form-row-2">
+          <div class="form-group"><label data-i18n="name_fr">الاسم (فرنسي)</label><input type="text" id="uni-fr"></div>
+          <div class="form-group"><label data-i18n="city">المدينة</label><input type="text" id="uni-city"></div>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-secondary" onclick="closeModal('university-modal')" data-i18n="cancel">إلغاء</button>
+          <button type="submit" class="btn btn-primary" data-i18n="save">حفظ</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- نافذة: قسم -->
+  <div id="department-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 data-i18n="add_department">قسم جديد</h3>
+        <button class="modal-close" onclick="closeModal('department-modal')">&times;</button>
+      </div>
+      <form onsubmit="event.preventDefault(); createDepartment();">
+        <div class="form-group"><label data-i18n="university">الجامعة</label><select id="dep-uni" required></select></div>
+        <div class="form-row-2">
+          <div class="form-group"><label data-i18n="name_ar">الاسم (عربي)</label><input type="text" id="dep-ar" required></div>
+          <div class="form-group"><label data-i18n="name_fr">الاسم (فرنسي)</label><input type="text" id="dep-fr"></div>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-secondary" onclick="closeModal('department-modal')" data-i18n="cancel">إلغاء</button>
+          <button type="submit" class="btn btn-primary" data-i18n="save">حفظ</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- نافذة: سداسي -->
+  <div id="semester-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 data-i18n="add_semester">سداسي جديد</h3>
+        <button class="modal-close" onclick="closeModal('semester-modal')">&times;</button>
+      </div>
+      <form onsubmit="event.preventDefault(); createSemester();">
+        <div class="form-row-2">
+          <div class="form-group"><label data-i18n="name_ar">الاسم (عربي)</label><input type="text" id="sem-ar" required></div>
+          <div class="form-group"><label data-i18n="name_fr">الاسم (فرنسي)</label><input type="text" id="sem-fr"></div>
+        </div>
+        <div class="form-group"><label data-i18n="sort_order">الترتيب</label><input type="number" id="sem-order" value="0"></div>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-secondary" onclick="closeModal('semester-modal')" data-i18n="cancel">إلغاء</button>
+          <button type="submit" class="btn btn-primary" data-i18n="save">حفظ</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- نافذة: مادة -->
+  <div id="subject-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 data-i18n="add_subject">مادة جديدة</h3>
+        <button class="modal-close" onclick="closeModal('subject-modal')">&times;</button>
+      </div>
+      <form onsubmit="event.preventDefault(); createSubject();">
+        <div class="form-row-2">
+          <div class="form-group"><label data-i18n="department">القسم</label><select id="subj-dep" required></select></div>
+          <div class="form-group"><label data-i18n="semester">السداسي</label><select id="subj-sem" required></select></div>
+        </div>
+        <div class="form-row-2">
+          <div class="form-group"><label data-i18n="name_ar">الاسم (عربي)</label><input type="text" id="subj-ar" required></div>
+          <div class="form-group"><label data-i18n="name_fr">الاسم (فرنسي)</label><input type="text" id="subj-fr"></div>
+        </div>
+        <div class="form-group"><label>Code</label><input type="text" id="subj-code"></div>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-secondary" onclick="closeModal('subject-modal')" data-i18n="cancel">إلغاء</button>
+          <button type="submit" class="btn btn-primary" data-i18n="save">حفظ</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- نافذة: رفع امتحان -->
+  <div id="eduexam-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 data-i18n="add_eduexam">رفع ملف امتحان</h3>
+        <button class="modal-close" onclick="closeModal('eduexam-modal')">&times;</button>
+      </div>
+      <form onsubmit="event.preventDefault(); createEduExam();">
+        <div class="form-group"><label data-i18n="subject">المادة</label><select id="ee-subject" required></select></div>
+        <div class="form-row-2">
+          <div class="form-group"><label data-i18n="ann_cat">النوع</label>
+            <select id="ee-type"><option value="exam" data-i18n="exam">امتحان</option><option value="assignment" data-i18n="assignment">فرض</option></select>
+          </div>
+          <div class="form-group"><label data-i18n="year">السنة</label><input type="number" id="ee-year" min="2000" max="2100"></div>
+        </div>
+        <div class="form-row-2">
+          <div class="form-group"><label data-i18n="file">الملف (PDF)</label><input type="file" id="ee-file" required></div>
+          <div class="form-group"><label data-i18n="file_corr">التصحيح (اختياري)</label><input type="file" id="ee-corr"></div>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-secondary" onclick="closeModal('eduexam-modal')" data-i18n="cancel">إلغاء</button>
+          <button type="submit" class="btn btn-primary" data-i18n="save">حفظ</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- نافذة: إعلان -->
+  <div id="announcement-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 data-i18n="add_announcement">إعلان جديد</h3>
+        <button class="modal-close" onclick="closeModal('announcement-modal')">&times;</button>
+      </div>
+      <form onsubmit="event.preventDefault(); createAnnouncement();">
+        <div class="form-group"><label data-i18n="title">العنوان</label><input type="text" id="ann-title" required></div>
+        <div class="form-group"><label data-i18n="body">النص</label><textarea id="ann-body" rows="3"></textarea></div>
+        <div class="form-row-2">
+          <div class="form-group"><label data-i18n="ann_cat">التصنيف</label>
+            <select id="ann-cat">
+              <option value="registration" data-i18n="registration">تسجيلات</option>
+              <option value="contest" data-i18n="contest">مسابقات</option>
+              <option value="scholarship" data-i18n="scholarship">منح</option>
+              <option value="deadline" data-i18n="deadline">آجال</option>
+              <option value="general" data-i18n="general">عام</option>
+            </select>
+          </div>
+          <div class="form-group"><label data-i18n="link">رابط</label><input type="url" id="ann-link"></div>
+        </div>
+        <div class="form-group">
+          <label><input type="checkbox" id="ann-published" checked> <span data-i18n="publish_now">نشر فوري</span></label>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-secondary" onclick="closeModal('announcement-modal')" data-i18n="cancel">إلغاء</button>
+          <button type="submit" class="btn btn-primary" data-i18n="save">حفظ</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+</head>
+<body>
+
+  <!-- شاشة التحميل -->
+  <div id="loading-screen" class="loading-screen">
+    <div class="spinner"></div>
+    <p data-i18n="loading">جارٍ التحميل...</p>
+  </div>
+
+  <div id="app" class="app" style="display:none">
+
+    <!-- الشريط الجانبي -->
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <span class="logo-icon">⚙️</span>
+        <h2 data-i18n="site_name">نظام الإدارة</h2>
+      </div>
+      <a class="preview-site-link" href="index.html" target="_blank">🌐 <span data-i18n="preview_site">معاينة الموقع العام</span></a>
+      <nav class="sidebar-nav">
+        <a href="#" data-page="dashboard" class="active">📊 <span data-i18n="dashboard">لوحة التحكم</span></a>
+        <a href="#" data-page="projects">📁 <span data-i18n="projects">المشاريع</span></a>
+        <a href="#" data-page="tasks">✅ <span data-i18n="tasks">المهام</span></a>
+        <a href="#" data-page="users">👥 <span data-i18n="users">المستخدمون</span></a>
+        <a href="#" data-page="documents">📂 <span data-i18n="documents">المستندات</span></a>
+        <a href="#" data-page="employees">🧑‍💼 <span data-i18n="employees">الموارد البشرية</span></a>
+        <a href="#" data-page="reports">📈 <span data-i18n="reports">التقارير</span></a>
+        <a href="#" data-page="activity">📋 <span data-i18n="activity_log">سجل النشاط</span></a>
+        <a href="#" data-page="settings">⚙️ <span data-i18n="settings">الإعدادات</span></a>
+        <div class="nav-divider">🎓 <span data-i18n="edu_section">التعليم</span></div>
+        <a href="#" data-page="universities">🏛️ <span data-i18n="universities">الجامعات</span></a>
+        <a href="#" data-page="subjects">📚 <span data-i18n="subjects">المواد</span></a>
+        <a href="#" data-page="eduexams">📝 <span data-i18n="edu_exams">الامتحانات</span></a>
+        <a href="#" data-page="announcements">📢 <span data-i18n="announcements">الإعلانات</span></a>
+        <a href="#" data-page="questions">❓ <span data-i18n="edu_questions">الأسئلة</span></a>
+        <a href="#" data-page="messages">📩 <span data-i18n="contact_messages">الرسائل</span></a>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="lang-switch-sidebar">
+          <button data-lang="ar" onclick="switchLang('ar')">عربي</button>
+          <button data-lang="en" onclick="switchLang('en')">EN</button>
+        </div>
+        <button class="btn btn-danger btn-block" onclick="signOut()" data-i18n="logout">تسجيل الخروج</button>
+      </div>
+    </aside>
+
+    <!-- المحتوى الرئيسي -->
+    <main class="main">
+
+      <!-- الشريط العلوي -->
+      <header class="topbar">
+        <div class="topbar-welcome">
+          <h3 id="welcome-msg">مرحباً بك</h3>
+          <small id="user-email"></small>
+        </div>
+        <div class="topbar-actions">
+          <div class="notif-wrap">
+            <button class="notif-bell" onclick="toggleNotifications()" title="الإشعارات">🔔<span id="notif-count" class="notif-badge" style="display:none">0</span></button>
+            <div id="notif-dropdown" class="notif-dropdown">
+              <div class="notif-header">
+                <span data-i18n="notifications">الإشعارات</span>
+                <button class="btn-link" onclick="markAllRead()" data-i18n="mark_all_read">تعليم الكل كمقروء</button>
+              </div>
+              <div id="notif-list" class="notif-list"></div>
+            </div>
+          </div>
+          <span class="today" id="today-date"></span>
+        </div>
+      </header>
+
+      <!-- صفحة: لوحة التحكم -->
+      <section id="page-dashboard" class="page" style="display:block">
+        <div class="stats-grid">
+          <div class="stat-card stat-blue">
+            <div class="stat-icon">📁</div>
+            <div class="stat-info">
+              <h3 id="stat-projects">0</h3>
+              <p data-i18n="total_projects">إجمالي المشاريع</p>
+            </div>
+          </div>
+          <div class="stat-card stat-purple">
+            <div class="stat-icon">✅</div>
+            <div class="stat-info">
+              <h3 id="stat-tasks">0</h3>
+              <p data-i18n="total_tasks">إجمالي المهام</p>
+            </div>
+          </div>
+          <div class="stat-card stat-green">
+            <div class="stat-icon">👥</div>
+            <div class="stat-info">
+              <h3 id="stat-users">0</h3>
+              <p data-i18n="total_users">إجمالي المستخدمين</p>
+            </div>
+          </div>
+          <div class="stat-card stat-orange">
+            <div class="stat-icon">🔄</div>
+            <div class="stat-info">
+              <h3 id="stat-active">0</h3>
+              <p data-i18n="active_tasks">المهام النشطة</p>
+            </div>
+          </div>
+          <div class="stat-card stat-teal">
+            <div class="stat-icon">✔️</div>
+            <div class="stat-info">
+              <h3 id="stat-done">0</h3>
+              <p data-i18n="completed_tasks">المهام المكتملة</p>
+            </div>
+          </div>
+          <div class="stat-card stat-red">
+            <div class="stat-icon">⏳</div>
+            <div class="stat-info">
+              <h3 id="stat-pending">0</h3>
+              <p data-i18n="pending_tasks">المهام المعلقة</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h4 data-i18n="activity_log">سجل النشاط</h4>
+          </div>
+          <div id="activity-list" class="activity-list"></div>
+        </div>
+      </section>
+
+      <!-- صفحة: المشاريع -->
+      <section id="page-projects" class="page">
+        <div class="card">
+          <div class="card-header">
+            <h4>📁 <span data-i18n="projects">المشاريع</span></h4>
+            <button class="btn btn-primary" onclick="openModal('project-modal')" data-i18n="new_project">+ مشروع جديد</button>
+          </div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th data-i18n="project_name">اسم المشروع</th>
+                <th data-i18n="project_description">الوصف</th>
+                <th data-i18n="status">الحالة</th>
+                <th data-i18n="created_at">تاريخ الإنشاء</th>
+                <th data-i18n="actions">إجراءات</th>
+              </tr>
+            </thead>
+            <tbody id="projects-table"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- صفحة: المهام -->
+      <section id="page-tasks" class="page">
+        <div class="card">
+          <div class="card-header">
+            <h4>✅ <span data-i18n="tasks">المهام</span></h4>
+            <button class="btn btn-primary" onclick="openModal('task-modal')" data-i18n="new_task">+ مهمة جديدة</button>
+          </div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th data-i18n="task_title">العنوان</th>
+                <th data-i18n="status">الحالة</th>
+                <th data-i18n="priority">الأولوية</th>
+                <th data-i18n="due_date">تاريخ الاستحقاق</th>
+                <th data-i18n="assigned_to">مسند إلى</th>
+                <th data-i18n="created_at">تاريخ الإنشاء</th>
+                <th data-i18n="actions">إجراءات</th>
+              </tr>
+            </thead>
+            <tbody id="tasks-table"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- صفحة: المستخدمون -->
+      <section id="page-users" class="page">
+        <div class="card">
+          <div class="card-header">
+            <h4>👥 <span data-i18n="users">المستخدمون</span></h4>
+          </div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th data-i18n="full_name">الاسم</th>
+                <th data-i18n="email">البريد الإلكتروني</th>
+                <th data-i18n="role">الدور</th>
+                <th data-i18n="status">الحالة</th>
+                <th data-i18n="last_login">آخر دخول</th>
+                <th data-i18n="created_at">تاريخ الإنشاء</th>
+              </tr>
+            </thead>
+            <tbody id="users-table"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- صفحة: المستندات -->
+      <section id="page-documents" class="page">
+        <div class="card">
+          <div class="card-header">
+            <h4>📂 <span data-i18n="documents">المستندات</span></h4>
+          </div>
+          <div class="upload-area">
+            <input type="file" id="doc-file" />
+            <select id="doc-category">
+              <option value="general" data-i18n="general">عام</option>
+              <option value="contracts" data-i18n="contracts">عقود</option>
+              <option value="reports" data-i18n="reports_docs">تقارير</option>
+              <option value="invoices" data-i18n="invoices">فواتير</option>
+              <option value="other" data-i18n="other">أخرى</option>
+            </select>
+            <button class="btn btn-primary" onclick="uploadDocument()" data-i18n="upload_document">رفع مستند</button>
+          </div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th data-i18n="task_title">الاسم</th>
+                <th data-i18n="category">التصنيف</th>
+                <th>Size</th>
+                <th data-i18n="created_at">تاريخ الإنشاء</th>
+                <th data-i18n="actions">إجراءات</th>
+              </tr>
+            </thead>
+            <tbody id="documents-table"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- صفحة: الموارد البشرية -->
+      <section id="page-employees" class="page">
+        <div class="card">
+          <div class="card-header">
+            <h4>🧑‍💼 <span data-i18n="employees">الموارد البشرية</span></h4>
+            <button class="btn btn-primary" onclick="openModal('employee-modal')" data-i18n="new_employee">+ موظف جديد</button>
+          </div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th data-i18n="employee_name">الاسم</th>
+                <th data-i18n="job_title">المسمى الوظيفي</th>
+                <th data-i18n="department">القسم</th>
+                <th data-i18n="phone">الهاتف</th>
+                <th data-i18n="salary">الراتب</th>
+                <th data-i18n="hire_date">تاريخ التعيين</th>
+                <th data-i18n="actions">إجراءات</th>
+              </tr>
+            </thead>
+            <tbody id="employees-table"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- صفحة: التقارير -->
+      <section id="page-reports" class="page">
+        <div class="stats-grid stats-grid-3">
+          <div class="card chart-card">
+            <h4 data-i18n="tasks_by_status">المهام حسب الحالة</h4>
+            <canvas id="chart-tasks-status"></canvas>
+          </div>
+          <div class="card chart-card">
+            <h4 data-i18n="tasks_by_priority">المهام حسب الأولوية</h4>
+            <canvas id="chart-tasks-priority"></canvas>
+          </div>
+          <div class="card chart-card">
+            <h4 data-i18n="projects_by_status">المشاريع حسب الحالة</h4>
+            <canvas id="chart-projects-status"></canvas>
+          </div>
+        </div>
+      </section>
+
+      <!-- صفحة: الجامعات والأقسام -->
+      <section id="page-universities" class="page">
+        <div class="card" style="margin-bottom:20px">
+          <div class="card-header">
+            <h4>🏛️ <span data-i18n="universities">الجامعات</span></h4>
+            <button class="btn btn-primary" onclick="openModal('university-modal')" data-i18n="add_university">+ جامعة</button>
+          </div>
+          <table class="table">
+            <thead><tr>
+              <th data-i18n="name_ar">الاسم (عربي)</th><th data-i18n="name_fr">الاسم (فرنسي)</th>
+              <th data-i18n="city">المدينة</th><th data-i18n="actions">إجراءات</th>
+            </tr></thead>
+            <tbody id="universities-table"></tbody>
+          </table>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <h4>📚 <span data-i18n="departments">الأقسام</span></h4>
+            <button class="btn btn-primary" onclick="openModal('department-modal')" data-i18n="add_department">+ قسم</button>
+          </div>
+          <table class="table">
+            <thead><tr>
+              <th data-i18n="university">الجامعة</th><th data-i18n="name_ar">الاسم (عربي)</th>
+              <th data-i18n="name_fr">الاسم (فرنسي)</th><th data-i18n="actions">إجراءات</th>
+            </tr></thead>
+            <tbody id="departments-table"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- صفحة: المواد والسداسيات -->
+      <section id="page-subjects" class="page">
+        <div class="card" style="margin-bottom:20px">
+          <div class="card-header">
+            <h4>🗓️ <span data-i18n="semesters">السداسيات</span></h4>
+            <button class="btn btn-primary" onclick="openModal('semester-modal')" data-i18n="add_semester">+ سداسي</button>
+          </div>
+          <table class="table">
+            <thead><tr><th data-i18n="name_ar">الاسم (عربي)</th><th data-i18n="name_fr">الاسم (فرنسي)</th><th data-i18n="actions">إجراءات</th></tr></thead>
+            <tbody id="semesters-table"></tbody>
+          </table>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <h4>📖 <span data-i18n="subjects">المواد</span></h4>
+            <button class="btn btn-primary" onclick="openModal('subject-modal')" data-i18n="add_subject">+ مادة</button>
+          </div>
+          <table class="table">
+            <thead><tr>
+              <th data-i18n="name_ar">الاسم (عربي)</th><th data-i18n="department">القسم</th>
+              <th data-i18n="semester">السداسي</th><th>Code</th><th data-i18n="actions">إجراءات</th>
+            </tr></thead>
+            <tbody id="subjects-table"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- صفحة: الامتحانات التعليمية -->
+      <section id="page-eduexams" class="page">
+        <div class="card">
+          <div class="card-header">
+            <h4>📝 <span data-i18n="edu_exams">الامتحانات</span></h4>
+            <button class="btn btn-primary" onclick="openModal('eduexam-modal')" data-i18n="add_eduexam">+ رفع ملف</button>
+          </div>
+          <div class="chips" style="margin-bottom:16px">
+            <button class="chip active" data-status="" onclick="filterEduExams('', this)" data-i18n="all">الكل</button>
+            <button class="chip" data-status="pending" onclick="filterEduExams('pending', this)" data-i18n="pending">قيد المراجعة</button>
+            <button class="chip" data-status="approved" onclick="filterEduExams('approved', this)" data-i18n="approved">منشور</button>
+            <button class="chip" data-status="rejected" onclick="filterEduExams('rejected', this)" data-i18n="rejected">مرفوض</button>
+          </div>
+          <table class="table">
+            <thead><tr>
+              <th data-i18n="subject">المادة</th><th data-i18n="ann_cat">النوع</th><th data-i18n="year">السنة</th>
+              <th data-i18n="status">الحالة</th><th data-i18n="actions">إجراءات</th>
+            </tr></thead>
+            <tbody id="eduexams-table"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- صفحة: الإعلانات -->
+      <section id="page-announcements" class="page">
+        <div class="card">
+          <div class="card-header">
+            <h4>📢 <span data-i18n="announcements">الإعلانات</span></h4>
+            <button class="btn btn-primary" onclick="openModal('announcement-modal')" data-i18n="add_announcement">+ إعلان</button>
+          </div>
+          <table class="table">
+            <thead><tr>
+              <th data-i18n="title">العنوان</th><th data-i18n="ann_cat">التصنيف</th>
+              <th data-i18n="status">الحالة</th><th data-i18n="actions">إجراءات</th>
+            </tr></thead>
+            <tbody id="announcements-table"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- صفحة: الأسئلة -->
+      <section id="page-questions" class="page">
+        <div class="card">
+          <div class="card-header"><h4>❓ <span data-i18n="edu_questions">الأسئلة</span></h4></div>
+          <table class="table">
+            <thead><tr>
+              <th data-i18n="question">السؤال</th><th data-i18n="asker">مقدم</th>
+              <th data-i18n="answer">الجواب</th><th data-i18n="status">الحالة</th><th data-i18n="actions">إجراءات</th>
+            </tr></thead>
+            <tbody id="questions-table"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- صفحة: رسائل التواصل -->
+      <section id="page-messages" class="page">
+        <div class="card">
+          <div class="card-header"><h4>📩 <span data-i18n="contact_messages">رسائل التواصل</span></h4></div>
+          <table class="table">
+            <thead><tr>
+              <th data-i18n="name">الاسم</th><th data-i18n="email">البريد</th>
+              <th data-i18n="message">الرسالة</th><th data-i18n="created_at">التاريخ</th>
+            </tr></thead>
+            <tbody id="messages-table"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- صفحة: سجل النشاط -->
+      <section id="page-activity" class="page">
+        <div class="card">
+          <div class="card-header">
+            <h4>📋 <span data-i18n="activity_log">سجل النشاط</span></h4>
+          </div>
+          <div id="activity-list-2" class="activity-list"></div>
+        </div>
+      </section>
+
+      <!-- صفحة: الإعدادات -->
+      <section id="page-settings" class="page">
+        <div class="card">
+          <div class="card-header">
+            <h4>⚙️ <span data-i18n="site_settings">إعدادات الموقع</span></h4>
+          </div>
+          <div class="settings-form">
+            <div class="form-group">
+              <label data-i18n="site_name">اسم الموقع</label>
+              <input type="text" id="setting-site-name" value="نظام الإدارة المتكامل" />
+            </div>
+            <div class="form-group">
+              <label data-i18n="language">اللغة</label>
+              <select id="setting-lang">
+                <option value="ar">العربية</option>
+                <option value="en">English</option>
+              </select>
+            </div>
+            <button class="btn btn-primary" onclick="saveSettings()" data-i18n="save_changes">حفظ التغييرات</button>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- نافذة: مشروع جديد -->
+  <div id="project-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 data-i18n="new_project">مشروع جديد</h3>
+        <button class="modal-close" onclick="closeModal('project-modal')">&times;</button>
+      </div>
+      <form id="proj-form" onsubmit="event.preventDefault(); createProject();">
+        <div class="form-group">
+          <label data-i18n="project_name">اسم المشروع (EN)</label>
+          <input type="text" id="proj-name" required />
+        </div>
+        <div class="form-group">
+          <label data-i18n="project_name">اسم المشروع (عربي)</label>
+          <input type="text" id="proj-name-ar" />
+        </div>
+        <div class="form-group">
+          <label data-i18n="project_description">الوصف</label>
+          <textarea id="proj-desc" rows="3"></textarea>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-secondary" onclick="closeModal('project-modal')" data-i18n="cancel">إلغاء</button>
+          <button type="submit" class="btn btn-primary" data-i18n="create_project">إنشاء مشروع</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- نافذة: مهمة جديدة -->
+  <div id="task-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 data-i18n="new_task">مهمة جديدة</h3>
+        <button class="modal-close" onclick="closeModal('task-modal')">&times;</button>
+      </div>
+      <form id="task-form" onsubmit="event.preventDefault(); createTask();">
+        <div class="form-group">
+          <label data-i18n="task_title">عنوان المهمة</label>
+          <input type="text" id="task-title" required />
+        </div>
+        <div class="form-group">
+          <label data-i18n="task_description">الوصف</label>
+          <textarea id="task-desc" rows="3"></textarea>
+        </div>
+        <div class="form-row-2">
+          <div class="form-group">
+            <label data-i18n="priority">الأولوية</label>
+            <select id="task-priority">
+              <option value="low" data-i18n="low">منخفضة</option>
+              <option value="medium" selected data-i18n="medium">متوسطة</option>
+              <option value="high" data-i18n="high">عالية</option>
+              <option value="urgent" data-i18n="urgent">عاجلة</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label data-i18n="due_date">تاريخ الاستحقاق</label>
+            <input type="date" id="task-due" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label data-i18n="projects">المشروع</label>
+          <select id="task-project"></select>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-secondary" onclick="closeModal('task-modal')" data-i18n="cancel">إلغاء</button>
+          <button type="submit" class="btn btn-primary" data-i18n="create_task">إنشاء مهمة</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    // تاريخ اليوم
+    document.getElementById("today-date").textContent = new Date().toLocaleDateString(
+      currentLang === "ar" ? "ar-EG" : "en-US",
+      { weekday: "long", year: "numeric", month: "long", day: "numeric" }
+    );
+  </script>
+</body>
+</html>

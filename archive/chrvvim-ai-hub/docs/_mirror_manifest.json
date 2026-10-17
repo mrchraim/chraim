@@ -1,0 +1,368 @@
+{
+  "base": "https://mr1mohamed1chraim.netlify.app",
+  "saved": [
+    {
+      "path": "/",
+      "bytes": 77949,
+      "ctype": "text/html; charset=UTF-8"
+    },
+    {
+      "path": "/admin.html",
+      "bytes": 17826,
+      "ctype": "text/html; charset=UTF-8"
+    },
+    {
+      "path": "/manifest.json",
+      "bytes": 294,
+      "ctype": "application/json"
+    },
+    {
+      "path": "/announcements.json",
+      "bytes": 1428,
+      "ctype": "application/json"
+    },
+    {
+      "path": "/robots.txt",
+      "bytes": 242,
+      "ctype": "text/plain; charset=UTF-8"
+    },
+    {
+      "path": "/sitemap.xml",
+      "bytes": 520,
+      "ctype": "application/xml"
+    },
+    {
+      "path": "/security.txt",
+      "bytes": 85,
+      "ctype": "text/plain; charset=UTF-8"
+    },
+    {
+      "path": "/supabase-config.js",
+      "bytes": 370,
+      "ctype": "application/javascript; charset=UTF-8"
+    },
+    {
+      "path": "/app.js",
+      "bytes": 97686,
+      "ctype": "application/javascript; charset=UTF-8"
+    },
+    {
+      "path": "/campus-data.js",
+      "bytes": 91298,
+      "ctype": "application/javascript; charset=UTF-8"
+    },
+    {
+      "path": "/legal.js",
+      "bytes": 26446,
+      "ctype": "application/javascript; charset=UTF-8"
+    },
+    {
+      "path": "/legal-data.js",
+      "bytes": 30268,
+      "ctype": "application/javascript; charset=UTF-8"
+    },
+    {
+      "path": "/subjects.js",
+      "bytes": 30985,
+      "ctype": "application/javascript; charset=UTF-8"
+    },
+    {
+      "path": "/subjects-data.js",
+      "bytes": 38413,
+      "ctype": "application/javascript; charset=UTF-8"
+    },
+    {
+      "path": "/university-data.js",
+      "bytes": 9458,
+      "ctype": "application/javascript; charset=UTF-8"
+    },
+    {
+      "path": "/university-formations.js",
+      "bytes": 55336,
+      "ctype": "application/javascript; charset=UTF-8"
+    },
+    {
+      "path": "/assets/fonts/fonts.css",
+      "bytes": 3913,
+      "ctype": "text/css; charset=UTF-8"
+    },
+    {
+      "path": "/assets/founder.jpg",
+      "bytes": 139024,
+      "ctype": "image/jpeg"
+    },
+    {
+      "path": "/assets/pat-about.svg",
+      "bytes": 475,
+      "ctype": "image/svg+xml"
+    },
+    {
+      "path": "/assets/pat-dist.svg",
+      "bytes": 668,
+      "ctype": "image/svg+xml"
+    },
+    {
+      "path": "/assets/pat-docs.svg",
+      "bytes": 466,
+      "ctype": "image/svg+xml"
+    },
+    {
+      "path": "/assets/pat-gpa.svg",
+      "bytes": 781,
+      "ctype": "image/svg+xml"
+    },
+    {
+      "path": "/assets/pat-prof.svg",
+      "bytes": 421,
+      "ctype": "image/svg+xml"
+    },
+    {
+      "path": "/assets/pat-rooms.svg",
+      "bytes": 569,
+      "ctype": "image/svg+xml"
+    },
+    {
+      "path": "/assets/pat-search.svg",
+      "bytes": 468,
+      "ctype": "image/svg+xml"
+    },
+    {
+      "path": "/assets/pat-tt.svg",
+      "bytes": 615,
+      "ctype": "image/svg+xml"
+    },
+    {
+      "path": "/public/academic-guide-2026-2027.json",
+      "bytes": 12769,
+      "ctype": "application/json"
+    },
+    {
+      "path": "/public/academic-guide-public.json",
+      "bytes": 3650,
+      "ctype": "application/json"
+    },
+    {
+      "path": "/public/timetable-s3-draft.json",
+      "bytes": 37324,
+      "ctype": "application/json"
+    },
+    {
+      "path": "/documents/learn-code-famille.pdf",
+      "bytes": 195597,
+      "ctype": "application/pdf"
+    },
+    {
+      "path": "/documents/learn-droit-penal-special.pdf",
+      "bytes": 934244,
+      "ctype": "application/pdf"
+    },
+    {
+      "path": "/documents/learn-gouvernance-judiciaire.pdf",
+      "bytes": 1532121,
+      "ctype": "application/pdf"
+    },
+    {
+      "path": "/documents/learn-justiciables-gouvernance.pdf",
+      "bytes": 1709572,
+      "ctype": "application/pdf"
+    },
+    {
+      "path": "/documents/learn-procedure-penale.pdf",
+      "bytes": 1676618,
+      "ctype": "application/pdf"
+    },
+    {
+      "path": "/documents/s1-fr-private.pdf",
+      "bytes": 156260,
+      "ctype": "application/pdf"
+    },
+    {
+      "path": "/documents/s1-fr-public.pdf",
+      "bytes": 180667,
+      "ctype": "application/pdf"
+    },
+    {
+      "path": "/documents/s1-private-groups.pdf",
+      "bytes": 180813,
+      "ctype": "application/pdf"
+    },
+    {
+      "path": "/documents/s1-private-timetable.pdf",
+      "bytes": 173500,
+      "ctype": "application/pdf"
+    },
+    {
+      "path": "/documents/s1-public-groups.pdf",
+      "bytes": 182909,
+      "ctype": "application/pdf"
+    },
+    {
+      "path": "/documents/s1-public-timetable.pdf",
+      "bytes": 101925,
+      "ctype": "application/pdf"
+    },
+    {
+      "path": "/documents/s3-fr-private.pdf",
+      "bytes": 178170,
+      "ctype": "application/pdf"
+    },
+    {
+      "path": "/documents/s3-fr-public.pdf",
+      "bytes": 152815,
+      "ctype": "application/pdf"
+    },
+    {
+      "path": "/documents/s3-private-groups.pdf",
+      "bytes": 189834,
+      "ctype": "application/pdf"
+    },
+    {
+      "path": "/documents/s3-private-timetable.pdf",
+      "bytes": 222106,
+      "ctype": "application/pdf"
+    },
+    {
+      "path": "/documents/s3-public-french-groups.pdf",
+      "bytes": 183944,
+      "ctype": "application/pdf"
+    },
+    {
+      "path": "/documents/s3-public-groups.pdf",
+      "bytes": 182682,
+      "ctype": "application/pdf"
+    },
+    {
+      "path": "/documents/s3-public-timetable.pdf",
+      "bytes": 104301,
+      "ctype": "application/pdf"
+    },
+    {
+      "path": "/documents/s5-admin-finance-timetable.pdf",
+      "bytes": 154829,
+      "ctype": "application/pdf"
+    },
+    {
+      "path": "/documents/s5-business-english-groups.pdf",
+      "bytes": 172604,
+      "ctype": "application/pdf"
+    },
+    {
+      "path": "/documents/s5-business-groups.pdf",
+      "bytes": 174550,
+      "ctype": "application/pdf"
+    },
+    {
+      "path": "/documents/s5-business-timetable.pdf",
+      "bytes": 77222,
+      "ctype": "application/pdf"
+    },
+    {
+      "path": "/documents/s5-civil-english-groups.pdf",
+      "bytes": 169075,
+      "ctype": "application/pdf"
+    },
+    {
+      "path": "/documents/s5-civil-groups.pdf",
+      "bytes": 170058,
+      "ctype": "application/pdf"
+    },
+    {
+      "path": "/documents/s5-civil-timetable.pdf",
+      "bytes": 82456,
+      "ctype": "application/pdf"
+    },
+    {
+      "path": "/documents/s5-criminal-timetable.pdf",
+      "bytes": 78739,
+      "ctype": "application/pdf"
+    },
+    {
+      "path": "/documents/s5-fr-affaires.pdf",
+      "bytes": 164906,
+      "ctype": "application/pdf"
+    },
+    {
+      "path": "/documents/s5-fr-contentieux.pdf",
+      "bytes": 168607,
+      "ctype": "application/pdf"
+    },
+    {
+      "path": "/documents/s5-fr-institutions.pdf",
+      "bytes": 180205,
+      "ctype": "application/pdf"
+    },
+    {
+      "path": "/documents/s5-political-intl-timetable.pdf",
+      "bytes": 150105,
+      "ctype": "application/pdf"
+    },
+    {
+      "path": "/documents/s5-professions-english-groups.pdf",
+      "bytes": 174716,
+      "ctype": "application/pdf"
+    },
+    {
+      "path": "/documents/s5-professions-groups.pdf",
+      "bytes": 178774,
+      "ctype": "application/pdf"
+    },
+    {
+      "path": "/documents/s5-professions-timetable.pdf",
+      "bytes": 104880,
+      "ctype": "application/pdf"
+    },
+    {
+      "path": "/assets/fonts/ibm-plex-sans-arabic-400-arabic.woff2",
+      "bytes": 42848,
+      "ctype": "font/woff2"
+    },
+    {
+      "path": "/assets/fonts/ibm-plex-sans-arabic-400-latin.woff2",
+      "bytes": 19164,
+      "ctype": "font/woff2"
+    },
+    {
+      "path": "/assets/fonts/ibm-plex-sans-arabic-600-arabic.woff2",
+      "bytes": 45688,
+      "ctype": "font/woff2"
+    },
+    {
+      "path": "/assets/fonts/ibm-plex-sans-arabic-600-latin.woff2",
+      "bytes": 20500,
+      "ctype": "font/woff2"
+    },
+    {
+      "path": "/assets/fonts/ibm-plex-sans-arabic-700-arabic.woff2",
+      "bytes": 44280,
+      "ctype": "font/woff2"
+    },
+    {
+      "path": "/assets/fonts/ibm-plex-sans-arabic-700-latin.woff2",
+      "bytes": 19504,
+      "ctype": "font/woff2"
+    },
+    {
+      "path": "/assets/fonts/inter-400-latin.woff2",
+      "bytes": 48256,
+      "ctype": "font/woff2"
+    }
+  ],
+  "fallback": [
+    {
+      "path": "/learn.pdf",
+      "status": 404,
+      "ctype": "text/html; charset=UTF-8"
+    },
+    {
+      "path": "/r.js",
+      "status": 404,
+      "ctype": "text/html; charset=UTF-8"
+    },
+    {
+      "path": "/announcements.js",
+      "status": 404,
+      "ctype": "text/html; charset=UTF-8"
+    }
+  ],
+  "error": []
+}
