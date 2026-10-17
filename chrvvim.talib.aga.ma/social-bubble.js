@@ -14,7 +14,7 @@
     'sb.chat':     { ar: 'تواصل مباشر', fr: 'Contact direct', en: 'Direct contact' }
   };
   function lang() { try { return (typeof UILANG !== 'undefined' && UILANG) ? UILANG : 'ar'; } catch (e) { return 'ar'; } }
-  function t(k) { var e = S[k]; return e ? (e[lang()] || e.ar) : k; }
+  function t(k) { var e = S[k]; var s = e ? (e[lang()] || e.ar) : k; return window.CHRVVIM_GENDER ? window.CHRVVIM_GENDER.apply(s) : s; }
 
   function build() {
     if (document.getElementById('ccSocialFab')) return;
