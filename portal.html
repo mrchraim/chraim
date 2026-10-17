@@ -1769,22 +1769,28 @@ main#main > .configbar{margin-block-end:10px!important}
   var RM = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
 
   /* مجموع ارتفاع العناصر الثابتة أعلى الشاشة (الشريط العلوي + شريط التبويبات) */
-  function offTop(){
-    var off = 0;
-    var els = [
-      document.querySelector('header.appbar'),
-      document.querySelector('.layout .tabs') || document.querySelector('.tabs')
-    ];
-    for(var i = 0; i < els.length; i++){
-      var el = els[i];
-      if(!el || !el.offsetHeight) continue;
-      var s = getComputedStyle(el);
-      if(s.position !== 'fixed' && s.position !== 'sticky') continue;
-      /* العمود الجانبي للتبويبات (على الشاشات العريضة) لا يحجب المحتوى رأسياً */
-      if(el.classList.contains('tabs') && el.getBoundingClientRect().width < window.innerWidth * 0.55) continue;
-      /* نستعمل قيمة top الثابتة + الارتفاع، لا الموضع الحالي (الذي يتغيّر أثناء التمرير) */
-      var top = parseFloat(s.top); if(isNaN(top)) top = 0;
-      off = Math.max(off, top + el.offsetHeight);
+  function offTop(target){
+    var off = 0, s, t;
+    /* الشريط العلوي الثابت — يحجب دائماً */
+    var bar = document.querySelector('header.appbar');
+    if(bar && bar.offsetHeight){
+      s = getComputedStyle(bar);
+      if(s.position === 'fixed' || s.position === 'sticky'){
+        t = parseFloat(s.top); if(isNaN(t)) t = 0;
+        off = Math.max(off, t + bar.offsetHeight);
+      }
+    }
+    /* شريط التبويبات اللاصق — يحجب المحتوى الواقع داخل نفس .layout فقط،
+       وفقط إن كان شريطاً عريضاً أعلى المحتوى (لا عموداً جانبياً) */
+    var tabs = document.querySelector('.layout .tabs') || document.querySelector('.tabs');
+    var layout = tabs ? tabs.closest('.layout') : null;
+    if(tabs && tabs.offsetHeight && layout && target && layout.contains(target)){
+      s = getComputedStyle(tabs);
+      if((s.position === 'sticky' || s.position === 'fixed') &&
+         tabs.getBoundingClientRect().width >= window.innerWidth * 0.55){
+        t = parseFloat(s.top); if(isNaN(t)) t = 0;
+        off = Math.max(off, t + tabs.offsetHeight);
+      }
     }
     return off;
   }
@@ -1797,7 +1803,7 @@ main#main > .configbar{margin-block-end:10px!important}
 
   function reveal(panel){
     if(!panel) return;
-    var y = panel.getBoundingClientRect().top + (window.pageYOffset || document.documentElement.scrollTop) - offTop() - 12;
+    var y = panel.getBoundingClientRect().top + (window.pageYOffset || document.documentElement.scrollTop) - offTop(panel) - 12;
     if(y < 0) y = 0;
     try{ window.scrollTo({top: y, behavior: RM ? 'auto' : 'smooth'}); }
     catch(e){ window.scrollTo(0, y); }
@@ -1811,18 +1817,35 @@ main#main > .configbar{margin-block-end:10px!important}
     }
   }
 
+  /* يبحث صعوداً عن أقرب عنصر يحقّق الشرط */
+  function upTo(node, test){
+    while(node && node !== document){ if(test(node)) return node; node = node.parentNode; }
+    return null;
+  }
+
   document.addEventListener('click', function(ev){
-    var el = ev.target;
-    while(el && el !== document && !(el.getAttribute && el.getAttribute('data-jump'))){ el = el.parentNode; }
-    if(!el || el === document) return;
-    var key = el.getAttribute('data-jump');
-    if(!key) return;
-    var panel = panelFor(key);
-    if(!panel) return;            /* لا توجد لوحة لهذا الخيار ⇒ اترك الرابط يعمل كعادته */
-    ev.preventDefault();          /* أوقف القفز إلى #top */
-    ev.stopPropagation();          /* أوقف معالج app.js القديم (تفادي النزول المزدوج) */
-    reveal(panel);
-    markActive(key);
+    /* 1) خيار يفتح لوحته الخاصة (بطاقة سريعة أو شريط تنقّل أو نسخته المتحرّكة) */
+    var jmp = upTo(ev.target, function(n){ return !!(n.getAttribute && n.getAttribute('data-jump')); });
+    if(jmp){
+      var key = jmp.getAttribute('data-jump');
+      var panel = panelFor(key);
+      if(panel){
+        ev.preventDefault();        /* أوقف القفز إلى #top */
+        ev.stopPropagation();       /* أوقف معالج app.js القديم (تفادي النزول المزدوج) */
+        reveal(panel);
+        markActive(key);
+        return;
+      }
+    }
+    /* 2) رابط مرساة داخل الصفحة (#id): انزل بنفس مراعاة الشريط الثابت */
+    var anc = upTo(ev.target, function(n){
+      var h = n.getAttribute ? n.getAttribute('href') : null;
+      return !!(n.tagName === 'A' && h && h.charAt(0) === '#' && h.length > 1);
+    });
+    if(anc){
+      var target = document.getElementById(anc.getAttribute('href').slice(1));
+      if(target){ ev.preventDefault(); ev.stopPropagation(); reveal(target); markActive(null); }
+    }
   }, true);                        /* طور الالتقاط: يسبق المعالجات المسجّلة على العنصر */
 })();
 </script>
