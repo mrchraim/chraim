@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0b1220">
+<meta name="robots" content="noindex">
+<title>لوحة تحكم CHRVVIM Campus</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+<script src="subjects-data.js"></script>
+<style>
+:root{--blue:#14243A;--gold:#C6A568;--bg:#F7F5F0;--ink:#1B2436;--card:#fff;--line:#D9DEE7;--muted:#667085;--red:#c1121f;--green:#1a7f4b}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;padding:20px}
+main{max-width:900px;margin:auto}.top{background:linear-gradient(120deg,#0B1220,#14243A);color:white;padding:22px;border-radius:18px;margin-bottom:18px;position:relative;overflow:hidden}
+.top:after{content:"";position:absolute;inset:auto 0 0 0;height:3px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+h1{margin:0 0 8px;font-size:24px}h2{font-size:18px}p{line-height:1.7}.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;margin:14px 0;box-shadow:0 5px 18px #12203f0b}
+label{display:block;font-weight:700;margin:12px 0 6px}input,textarea,select{width:100%;padding:12px;border:1px solid var(--line);border-radius:10px;font:inherit;background:white;color:#12203f}textarea{min-height:130px;resize:vertical}
+button{border:0;border-radius:10px;padding:11px 16px;font:inherit;font-weight:700;cursor:pointer;background:var(--blue);color:white;margin:8px 4px 0 0}button.secondary{background:#e9eefb;color:var(--blue)}button.danger{background:var(--red)}button.green{background:var(--green)}
+button:disabled{opacity:.55;cursor:not-allowed}
+.small{font-size:13px;color:var(--muted)}.status{padding:10px;border-radius:10px;background:#e9eefb;margin-top:12px;white-space:pre-wrap}.status.err{background:#fdecea;color:var(--red)}.status.ok{background:#e9f7ee;color:var(--green)}
+.hidden{display:none!important}.item{border:1px solid var(--line);border-radius:12px;padding:14px;margin:12px 0}.item h3{margin:0 0 8px}.item p{white-space:pre-wrap;line-height:1.75}.tag{font-size:12px;border-radius:99px;padding:4px 10px;background:#e9eefb;display:inline-block;margin-inline-end:6px}
+.tag.pub{background:#e9f7ee;color:var(--green)}.tag.draft{background:#eef1f7;color:var(--muted)}.tag.arch{background:#fdecea;color:var(--red)}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.row button{margin-top:6px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:0 14px}@media(max-width:640px){.grid{grid-template-columns:1fr}}
+a{color:var(--blue)}
+</style>
+</head>
+<body>
+<main>
+  <header class="top">
+    <h1>لوحة تحكم CHRVVIM Campus</h1>
+    <p>تدبير إعلانات الموقع: إضافة، نشر/إخفاء، تعديل وحذف.</p>
+    <div class="small" style="color:#e6ebff">خاصك تستعمل حساب المسؤول (Supabase Auth) المُسجَّل فجدول <b>admins</b>.</div>
+  </header>
+
+  <section id="config" class="card">
+    <h2>إعداد الاتصال (مرة واحدة)</h2>
+    <p>دخل رابط مشروع Supabase ومفتاح <b>publishable / anon</b> فقط. ما تدخلش service_role key.</p>
+    <label for="projectUrl">Project URL</label><input id="projectUrl" placeholder="https://xxxxxxxx.supabase.co" autocomplete="url">
+    <label for="publicKey">Publishable key</label><input id="publicKey" placeholder="sb_publishable_..." autocomplete="off">
+    <button id="saveConfig">حفظ الإعدادات والاتصال</button>
+    <p class="small">الإعدادات كتتحفظ غير فهاد المتصفح (sessionStorage). ما تشاركش المفتاح الخاص بالخادم.</p>
+  </section>
+
+  <section id="loginCard" class="card hidden">
+    <h2>تسجيل دخول المسؤول</h2>
+    <label for="email">البريد الإلكتروني</label><input id="email" type="email" autocomplete="username" placeholder="admin@example.com">
+    <label for="password">كلمة المرور</label><input id="password" type="password" autocomplete="current-password">
+    <button id="login">دخول</button>
+    <button id="logout" class="secondary hidden">خروج</button>
+  </section>
+
+  <section id="dashboard" class="hidden">
+    <section class="card">
+      <h2 id="formHeading">إضافة إعلان جديد</h2>
+      <input id="editId" type="hidden">
+      <label for="title">عنوان الإعلان</label><input id="title" maxlength="180" placeholder="مثال: تغيير استعمال الزمن">
+      <label for="body">تفاصيل الإعلان</label><textarea id="body" maxlength="4000" placeholder="كتب تفاصيل الإعلان هنا..."></textarea>
+      <div class="grid">
+        <div><label for="kind">النوع</label><select id="kind">
+          <option value="info">معلومة</option>
+          <option value="warning">تنبيه</option>
+          <option value="urgent">عاجل</option>
+          <option value="event">حدث / نشاط</option>
+        </select></div>
+        <div><label for="status">الحالة</label><select id="status">
+          <option value="published">منشور</option>
+          <option value="draft">مسودة (مخفي)</option>
+          <option value="archived">مؤرشف</option>
+        </select></div>
+        <div><label for="starts_at">يبدأ في (اختياري)</label><input id="starts_at" type="datetime-local"></div>
+        <div><label for="ends_at">ينتهي في (اختياري)</label><input id="ends_at" type="datetime-local"></div>
+      </div>
+      <button id="saveAnnouncement">حفظ الإعلان</button>
+      <button id="cancelEdit" class="secondary hidden">إلغاء التعديل</button>
+      <div id="formStatus" class="status hidden" role="status"></div>
+    </section>
+    <section class="card">
+      <div class="row"><h2 style="margin:0">الإعلانات</h2>
+        <select id="filter" aria-label="تصفية الإعلانات حسب الحالة" style="width:auto;min-width:150px">
+          <option value="all">الكل</option>
+          <option value="published">المنشورة</option>
+          <option value="draft">المسودّات</option>
+          <option value="archived">المؤرشفة</option>
+        </select>
+        <button id="reload" class="secondary">تحديث القائمة</button>
+      </div>
+      <div id="listStatus" class="status">سجّل الدخول لعرض الإعلانات.</div>
+      <div id="announcements"></div>
+    </section>
+    <section class="card" id="examsCard">
+      <h2>🗂️ أرشيف الامتحانات</h2>
+      <p class="small">رفع ملفات جديدة + مراجعة مساهمات الطلبة (قبول/رفض/حذف). الملفات كتظهر فتبويب "🗂️ أرشيف الامتحانات" فالموقع.</p>
+      <h3>📤 رفع ملف جديد (ينشر مباشرة)</h3>
+      <label for="exSubj">المادة</label><select id="exSubj"></select>
+      <div class="grid">
+        <div><label for="exType">النوع</label><select id="exType"><option value="exam">امتحان</option><option value="assignment">فرض</option></select></div>
+        <div><label for="exYear">السنة الجامعية</label><input id="exYear" type="number" min="2000" max="2035"></div>
+        <div><label for="exSess">الدورة</label><select id="exSess"><option value="normal">دورة عادية</option><option value="makeup">دورة مُداومة</option></select></div>
+        <div><label for="exCorr">مع تصحيح؟</label><select id="exCorr"><option value="0">لا</option><option value="1">نعم</option></select></div>
+      </div>
+      <label for="exFile">ملف الفرض/الامتحان (PDF — 15MB كحد أقصى)</label><input id="exFile" type="file" accept=".pdf,application/pdf">
+      <label for="exCorrFile">ملف التصحيح (اختياري)</label><input id="exCorrFile" type="file" accept=".pdf,application/pdf">
+      <button id="exUpload" class="green">📤 رفع ونشر</button>
+      <div id="exUpStatus" class="status hidden" role="status"></div>
+      <hr style="border:0;border-top:1px solid var(--line);margin:18px 0">
+      <div class="row"><h3 style="margin:0">الملفات والمساهمات</h3>
+        <select id="exFilter" aria-label="تصفية حسب الحالة" style="width:auto;min-width:150px">
+          <option value="all">الكل</option>
+          <option value="pending">في الانتظار</option>
+          <option value="approved">المقبولة</option>
+          <option value="rejected">المرفوضة</option>
+        </select>
+        <button id="exReload" class="secondary">تحديث القائمة</button>
+      </div>
+      <div id="exListStatus" class="status">سجّل الدخول لعرض الملفات.</div>
+      <div id="examsList"></div>
+    </section>
+  </section>
+  <div id="globalStatus" class="status" role="status">بدا بإعداد رابط Supabase والمفتاح العمومي.</div>
+  <p class="small">ملاحظة أمنية: الحماية الحقيقية كاتمنعها سياسات RLS فـ Supabase + جدول <b>admins</b>. هذا الملف كايخدم غير لو كانت Policies مركّبة (شوف <b>server/supabase-admin-setup.sql</b>).</p>
+</main>
+<script>
+(() => {
+  const $ = id => document.getElementById(id);
+  let client = null, currentUser = null, announcements = [];
+  // اسم عمود المفتاح الأساسي: 'id' في المخطط الصحيح، و'bigint' في جدول قديم غير مطابق (يُبدَّل تلقائياً).
+  let PK = 'id';
+  const say = (id, message, cls) => { const el = $(id); el.textContent = message; el.className = 'status' + (cls ? ' ' + cls : ''); };
+  const globalSay = (message, cls) => say('globalStatus', message, cls);
+  const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const toIso = v => { if(!v) return null; const d = new Date(v); return isNaN(d) ? null : d.toISOString(); };
+  const toLocalValue = iso => { if(!iso) return ''; const d = new Date(iso); if(isNaN(d)) return ''; const p = n => String(n).padStart(2,'0');
+    return d.getFullYear()+'-'+p(d.getMonth()+1)+'-'+p(d.getDate())+'T'+p(d.getHours())+':'+p(d.getMinutes()); };
+  const fmt = iso => { try { return new Date(iso).toLocaleString('ar-MA',{dateStyle:'medium',timeStyle:'short'}); } catch(e){ return esc(String(iso||'')); } };
+  const showLogin = signedIn => {
+    $('loginCard').classList.remove('hidden');
+    $('dashboard').classList.toggle('hidden', !signedIn);
+    $('logout').classList.toggle('hidden', !signedIn);
+    $('login').classList.toggle('hidden', signedIn);
+    $('email').disabled = signedIn; $('password').disabled = signedIn;
+  };
+  const statusLabel = s => s === 'published' ? 'منشور' : s === 'archived' ? 'مؤرشف' : 'مسودّة';
+  const statusClass = s => s === 'published' ? 'pub' : s === 'archived' ? 'arch' : 'draft';
+  const kindLabel = k => ({info:'معلومة',warning:'تنبيه',urgent:'عاجل',event:'حدث'}[k] || k);
+  async function connect(url, key) {
+    if (!/^https:\/\/[a-z0-9-]+\.supabase\.co\/?$/i.test(url)) throw new Error('رابط المشروع غير صحيح. خاصو يكون بحال https://xxxx.supabase.co');
+    if (!key.trim()) throw new Error('دخل المفتاح العمومي publishable / anon.');
+    client = window.supabase.createClient(url.replace(/\/$/,''), key.trim());
+    const {data, error} = await client.auth.getSession();
+    if (error) throw error;
+    $('config').classList.add('hidden');
+    showLogin(Boolean(data.session));
+    if (data.session) { currentUser = data.session.user; await loadAnnouncements(); }
+    globalSay('تم الاتصال بـ Supabase. دخل بحساب المسؤول.', 'ok');
+  }
+  $('saveConfig').addEventListener('click', async () => {
+    const url = $('projectUrl').value.trim(), key = $('publicKey').value.trim();
+    try { await connect(url, key); sessionStorage.setItem('campus_supabase_url',url); sessionStorage.setItem('campus_supabase_key',key); }
+    catch(e) { globalSay('تعذر الاتصال: ' + (e.message || 'خطأ غير معروف'), 'err'); }
+  });
+  // Prefill: هذا الجهاز يحفظ آخر إعداد، وإلا نستعمل الإعداد العمومي من supabase-config.js (مفتاح publishable فقط، آمن للنشر).
+  const pub = window.CHRVVIM_SUPABASE || {};
+  $('projectUrl').value = sessionStorage.getItem('campus_supabase_url') || pub.url || '';
+  $('publicKey').value = sessionStorage.getItem('campus_supabase_key') || pub.anonKey || '';
+  if ($('projectUrl').value && $('publicKey').value) connect($('projectUrl').value, $('publicKey').value).catch(e => globalSay('تعذر الاتصال: '+e.message, 'err'));
+
+  $('login').addEventListener('click', async () => {
+    if (!client) return globalSay('أولاً دخل رابط Supabase والمفتاح العمومي.', 'err');
+    const email = $('email').value.trim(), password = $('password').value;
+    if (!email || !password) return globalSay('دخل البريد الإلكتروني وكلمة المرور.', 'err');
+    $('login').disabled = true;
+    const {data,error} = await client.auth.signInWithPassword({email,password});
+    $('login').disabled = false;
+    if (error) return globalSay('فشل تسجيل الدخول: '+error.message, 'err');
+    currentUser = data.user; showLogin(true); $('password').value = '';
+    await loadAnnouncements();
+    globalSay('تم تسجيل الدخول.', 'ok');
+  });
+  $('logout').addEventListener('click', async () => {
+    if (client) await client.auth.signOut();
+    currentUser = null; announcements = []; $('announcements').innerHTML = '';
+    showLogin(false); globalSay('تم تسجيل الخروج.');
+  });
+  const ANN_COLS = 'title,body,kind,status,starts_at,ends_at,created_at,updated_at';
+  async function fetchAnnouncements(){
+    // يحاول المفتاح الأساسي الحالي؛ وإذا كان الجدول قديماً (عمود اسمه bigint) يبدّل تلقائياً.
+    let { data, error } = await client.from('announcements').select(PK+','+ANN_COLS).order('updated_at',{ascending:false});
+    if (error && /column .* does not exist/i.test(error.message || '')) {
+      const alt = PK === 'id' ? 'bigint' : 'id';
+      const r2 = await client.from('announcements').select(alt+','+ANN_COLS).order('updated_at',{ascending:false});
+      if (!r2.error) { PK = alt; data = r2.data; error = null; } else { error = r2.error; }
+    }
+    return { data, error };
+  }
+  async function loadAnnouncements() {
+    if (!client || !currentUser) return;
+    $('listStatus').textContent = 'كنحمّلو الإعلانات...';
+    const {data,error} = await fetchAnnouncements();
+    if (error) { $('announcements').innerHTML=''; const hint = /does not exist|column .* does not exist/i.test(error.message) ? '\n⚠️ بنية الجدول غير مطابقة: شغّل مرة واحدة ملف server/supabase-setup.sql في Supabase → SQL Editor.' : '\nتأكد من سياسات RLS لجدول announcements.'; return say('listStatus','تعذر تحميل الإعلانات: '+error.message+hint, 'err'); }
+    announcements = (data || []).map(a => ({ ...a, id: a[PK] }));
+    renderList();
+  }
+  function renderList() {
+    const f = $('filter').value;
+    const rows = f === 'all' ? announcements : announcements.filter(a => a.status === f);
+    $('listStatus').textContent = rows.length ? `عدد الإعلانات (${statusLabelForFilter(f)}): ${rows.length}` : 'ما كاين حتى إعلان هنا.';
+    $('announcements').innerHTML = rows.map(a => `<article class="item">
+      <div class="row"><h3 style="margin:0">${esc(a.title)}</h3>
+        <span class="tag ${statusClass(a.status)}">${statusLabel(a.status)}</span>
+        <span class="tag">${esc(kindLabel(a.kind))}</span></div>
+      <p>${esc(a.body)}</p>
+      <div class="small">${a.starts_at ? '⏳ من '+fmt(a.starts_at)+' ' : ''}${a.ends_at ? 'إلى '+fmt(a.ends_at)+' ' : ''}· تحديث: ${fmt(a.updated_at || a.created_at)}</div>
+      <div class="row"><button data-edit="${esc(a.id)}" class="secondary">تعديل</button>
+      <button data-toggle="${esc(a.id)}" class="green">${a.status === 'published' ? 'إخفاء (مسودّة)' : 'نشر'}</button>
+      <button data-delete="${esc(a.id)}" class="danger">حذف</button></div>
+    </article>`).join('');
+  }
+  function statusLabelForFilter(f){ return f==='published'?'المنشورة':f==='draft'?'المسودّات':f==='archived'?'المؤرشفة':'الكل'; }
+  $('filter').addEventListener('change', renderList);
+  $('reload').addEventListener('click', loadAnnouncements);
+  $('announcements').addEventListener('click', async e => {
+    const edit = e.target.closest('[data-edit]'), toggle = e.target.closest('[data-toggle]'), del = e.target.closest('[data-delete]');
+    if (edit) {
+      const a = announcements.find(x => String(x.id) === edit.dataset.edit); if (!a) return;
+      $('editId').value = a.id; $('title').value = a.title || ''; $('body').value = a.body || '';
+      $('kind').value = a.kind || 'info'; $('status').value = a.status || 'draft';
+      $('starts_at').value = toLocalValue(a.starts_at); $('ends_at').value = toLocalValue(a.ends_at);
+      $('formHeading').textContent = 'تعديل الإعلان'; $('saveAnnouncement').textContent = 'حفظ التعديلات'; $('cancelEdit').classList.remove('hidden');
+      $('title').focus(); window.scrollTo({top:0,behavior:'smooth'});
+    }
+    if (toggle) {
+      const a = announcements.find(x => String(x.id) === toggle.dataset.toggle); if (!a) return;
+      const next = a.status === 'published' ? 'draft' : 'published';
+      const {error} = await client.from('announcements').update({status:next}).eq(PK,a.id);
+      if (error) globalSay('تعذر تغيير الحالة: '+error.message, 'err'); else { globalSay('تم تحديث حالة الإعلان.', 'ok'); await loadAnnouncements(); }
+    }
+    if (del) {
+      const a = announcements.find(x => String(x.id) === del.dataset.delete); if (!a) return;
+      if (!confirm('واش متأكد بغيتي تحذف هاد الإعلان نهائياً؟')) return;
+      const {error} = await client.from('announcements').delete().eq(PK,a.id);
+      if (error) globalSay('تعذر الحذف: '+error.message, 'err'); else { globalSay('تم حذف الإعلان.', 'ok'); await loadAnnouncements(); }
+    }
+  });
+  $('saveAnnouncement').addEventListener('click', async () => {
+    if (!client || !currentUser) return say('formStatus','سجّل الدخول أولاً.', 'err');
+    const title = $('title').value.trim(), body = $('body').value.trim(), id = $('editId').value;
+    if (!title || !body) return say('formStatus','العنوان والتفاصيل ضروريين.', 'err');
+    const record = {
+      title, body,
+      kind: $('kind').value,
+      status: $('status').value,
+      starts_at: toIso($('starts_at').value),
+      ends_at: toIso($('ends_at').value),
+      updated_at: new Date().toISOString()
+    };
+    $('saveAnnouncement').disabled = true;
+    const result = id
+      ? await client.from('announcements').update(record).eq(PK,id)
+      : await client.from('announcements').insert(record);
+    $('saveAnnouncement').disabled = false;
+    if (result.error) return say('formStatus','ما قدرناش نحفظو الإعلان: '+result.error.message+'\nراجع سياسات RLS.', 'err');
+    resetForm(); say('formStatus','تحفظ الإعلان بنجاح.', 'ok'); await loadAnnouncements();
+  });
+  function resetForm() {
+    $('editId').value=''; $('title').value=''; $('body').value='';
+    $('kind').value='info'; $('status').value='published'; $('starts_at').value=''; $('ends_at').value='';
+    $('formHeading').textContent='إضافة إعلان جديد'; $('saveAnnouncement').textContent='حفظ الإعلان'; $('cancelEdit').classList.add('hidden');
+  }
+  $('cancelEdit').addEventListener('click', resetForm);
+})();
+</script>
+<script>
+/* ===== إدارة أرشيف الامتحانات (عميل مستقل — نفس جلسة Supabase Auth) ===== */
+(() => {
+  const $ = id => document.getElementById(id);
+  const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const fmt = iso => { try { return new Date(iso).toLocaleString('ar-MA',{dateStyle:'medium',timeStyle:'short'}); } catch(e){ return esc(String(iso||'')); } };
+  const pub = window.CHRVVIM_SUPABASE || {};
+  const url = sessionStorage.getItem('campus_supabase_url') || pub.url || '';
+  const key = sessionStorage.getItem('campus_supabase_key') || pub.anonKey || '';
+  if (!url || !key || !window.supabase) return;
+  const client = window.supabase.createClient(url.replace(/\/$/,''), key.trim());
+  let items = [];
+  const SMap = () => (window.CHRVVIM_SUBJECTS && window.CHRVVIM_SUBJECTS.subjects) ? Object.fromEntries(window.CHRVVIM_SUBJECTS.subjects.map(s => [s.id, s])) : {};
+  const subjName = s => s ? ((s.name && (s.name.ar || s.name.fr)) || s.id) : '';
+  function fillSubj(){
+    const sel = $('exSubj'); if (!sel) return;
+    const list = (window.CHRVVIM_SUBJECTS && window.CHRVVIM_SUBJECTS.subjects) || [];
+    const groups = {};
+    list.forEach(s => { const k = s.track + '|' + s.semester; (groups[k] = groups[k] || []).push(s); });
+    let o = '';
+    Object.keys(groups).sort().forEach(k => {
+      const [tr, sem] = k.split('|');
+      o += '<optgroup label="' + esc(tr + ' — ' + sem) + '">';
+      groups[k].sort((a,b) => subjName(a).localeCompare(subjName(b),'ar')).forEach(s => { o += '<option value="' + esc(s.id) + '">' + esc(subjName(s)) + '</option>'; });
+      o += '</optgroup>';
+    });
+    sel.innerHTML = o;
+  }
+  if ($('exSubj')) { fillSubj(); $('exYear').value = new Date().getFullYear(); }
+  const ST = { pending:['في الانتظار',''], approved:['مقبولة','pub'], rejected:['مرفوضة','arch'] };
+  async function loadExams(){
+    if (!$('exListStatus')) return;
+    $('exListStatus').textContent = 'كنحمّلو الملفات...';
+    const { data, error } = await client.from('exam_files').select('*').order('created_at', { ascending:false });
+    if (error) { $('examsList').innerHTML = ''; return $('exListStatus').textContent = 'تعذر التحميل: ' + error.message + ' — تأكد من تسجيل الدخول بحساب admins.'; }
+    items = data || []; render();
+  }
+  function render(){
+    const f = $('exFilter').value;
+    const rows = f === 'all' ? items : items.filter(x => x.status === f);
+    $('exListStatus').textContent = rows.length ? 'عدد الملفات: ' + rows.length : 'ما كاين حتى ملف هنا.';
+    const SM = SMap();
+    $('examsList').innerHTML = rows.map(x => {
+      const s = SM[x.subject_id];
+      const st = ST[x.status] || [x.status || '؟', 'draft'];
+      return '<article class="item"><div class="row"><h3 style="margin:0">' + esc(subjName(s) || x.subject_id) + '</h3>'
+        + '<span class="tag ' + st[1] + '">' + esc(st[0]) + '</span>'
+        + '<span class="tag">' + (x.exam_type === 'assignment' ? 'فرض' : 'امتحان') + '</span>'
+        + (x.year ? '<span class="tag">' + esc(x.year) + '</span>' : '')
+        + (x.session === 'makeup' ? '<span class="tag">مُداومة</span>' : '')
+        + (x.has_correction ? '<span class="tag pub">مع تصحيح</span>' : '')
+        + '</div>'
+        + '<div class="small">⬇️ ' + (x.downloads || 0) + ' تحميل · مساهم: ' + esc(x.contributor_name || '—') + ' · ' + fmt(x.created_at) + '</div>'
+        + '<div class="small" style="word-break:break-all">' + esc(x.file_path) + (x.correction_path ? ' + تصحيح: ' + esc(x.correction_path) : '') + '</div>'
+        + '<div class="row">'
+        + (x.status !== 'approved' ? '<button data-ok="' + esc(x.id) + '" class="green">✅ قبول ونشر</button>' : '')
+        + (x.status !== 'rejected' ? '<button data-no="' + esc(x.id) + '" class="secondary">❌ رفض</button>' : '')
+        + '<button data-xdel="' + esc(x.id) + '" class="danger">🗑️ حذف نهائي</button>'
+        + '<button data-xdl="' + esc(x.id) + '" class="secondary">⬇️ تحميل</button>'
+        + '</div></article>';
+    }).join('');
+  }
+  if ($('exFilter')) { $('exFilter').addEventListener('change', render); $('exReload').addEventListener('click', loadExams); }
+  if ($('examsList')) $('examsList').addEventListener('click', async e => {
+    const ok = e.target.closest('[data-ok]'), no = e.target.closest('[data-no]'), del = e.target.closest('[data-xdel]'), dl = e.target.closest('[data-xdl]');
+    if (ok) { const r = await client.from('exam_files').update({ status:'approved' }).eq('id', ok.dataset.ok); if (r.error) alert(r.error.message); else await loadExams(); }
+    if (no) { const r = await client.from('exam_files').update({ status:'rejected' }).eq('id', no.dataset.no); if (r.error) alert(r.error.message); else await loadExams(); }
+    if (del) {
+      const x = items.find(i => String(i.id) === del.dataset.xdel); if (!x) return;
+      if (!confirm('واش متأكد بغيتي تحذف هاد الملف نهائياً (الصف + الملفات)؟')) return;
+      const r = await client.from('exam_files').delete().eq('id', x.id);
+      if (r.error) return alert(r.error.message);
+      const paths = [x.file_path, x.correction_path].filter(Boolean);
+      if (paths.length) { try { await client.storage.from('edu-files').remove(paths); } catch(err){} }
+      await loadExams();
+    }
+    if (dl) {
+      const x = items.find(i => String(i.id) === dl.dataset.xdl); if (!x) return;
+      const { data, error } = await client.storage.from('edu-files').createSignedUrl(x.file_path, 3600);
+      if (error) return alert('تعذر التحميل: ' + error.message);
+      if (data && data.signedUrl) window.open(data.signedUrl, '_blank', 'noopener');
+    }
+  });
+  if ($('exUpload')) $('exUpload').addEventListener('click', async () => {
+    const sayUp = (m, ok) => { const el = $('exUpStatus'); el.textContent = m; el.className = 'status' + (ok ? ' ok' : ' err'); };
+    const subj = $('exSubj').value, file = $('exFile').files[0];
+    if (!subj) return sayUp('⚠️ اختر المادة.', false);
+    if (!file) return sayUp('⚠️ اختر ملف PDF.', false);
+    if (file.size > 15*1024*1024) return sayUp('⚠️ حجم الملف يتجاوز 15MB.', false);
+    $('exUpload').disabled = true;
+    try {
+      const up = async (f, sub) => {
+        const path = 'admin/' + Date.now() + '_' + sub;
+        const { error } = await client.storage.from('edu-files').upload(path, f, { contentType: f.type || 'application/pdf' });
+        if (error) throw error;
+        return path;
+      };
+      const pMain = await up(file, 'main.pdf');
+      let pCorr = null;
+      const cf = $('exCorrFile').files[0];
+      if (cf) { if (cf.size > 15*1024*1024) throw new Error('حجم التصحيح يتجاوز 15MB'); pCorr = await up(cf, 'corr.pdf'); }
+      const withCorr = $('exCorr').value === '1' || !!pCorr;
+      const { error } = await client.from('exam_files').insert({
+        subject_id: subj, exam_type: $('exType').value,
+        year: parseInt($('exYear').value, 10) || null,
+        session: $('exSess').value, has_correction: !!withCorr,
+        file_path: pMain, correction_path: pCorr,
+        status: 'approved', contributor_name: 'الإدارة'
+      });
+      if (error) throw error;
+      sayUp('✅ تم النشر مباشرة في أرشيف الامتحانات.', true);
+      $('exFile').value = ''; $('exCorrFile').value = '';
+      await loadExams();
+    } catch (e) { sayUp('❌ فشل الرفع: ' + (e.message || e), false); }
+    $('exUpload').disabled = false;
+  });
+  client.auth.onAuthStateChange((_e, session) => { if (session) loadExams(); else if ($('exListStatus')) { $('exListStatus').textContent = 'سجّل الدخول لعرض الملفات.'; if ($('examsList')) $('examsList').innerHTML = ''; } });
+  client.auth.getSession().then(({ data }) => { if (data && data.session) loadExams(); });
+})();
+</script>
+</body>
+</html>
