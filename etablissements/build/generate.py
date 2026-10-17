@@ -34,6 +34,17 @@ def esc(s):
             .replace(">", "&gt;").replace('"', "&quot;"))
 
 
+def link_url(u):
+    """يعيد رابطاً صالحاً للاستعمال في href: يضيف https:// عند غياب المخطّط."""
+    u = (u or "").strip()
+    if not u or u == "#":
+        return "#"
+    low = u.lower()
+    if low.startswith(("http://", "https://", "mailto:", "tel:", "//")):
+        return u
+    return "https://" + u.lstrip("/")
+
+
 def tag_ar(tag):
     parts = [t.strip() for t in str(tag).split(",") if t.strip()]
     lbl = []
@@ -87,7 +98,7 @@ def detail(e):
     city = e.get("city_ar", "")
     parts = [HEAD.format(title=esc(name), desc=esc(
         (e.get("presentation_ar") or name)[:150]), slug=slug,
-        canonical="/etablissements/" + slug)]
+        canonical="/etablissements/" + slug + ".html")]
 
     parts.append('<section class="hero"><div class="wrap">')
     parts.append('<p class="crumb"><a href="/etablissements/">المؤسسات</a> / %s</p>' % esc(name))
@@ -134,11 +145,12 @@ def detail(e):
     if e.get("fax"):
         parts.append('<li><span>الفاكس</span><b dir="ltr">%s</b></li>' % esc(e["fax"]))
     if e.get("website"):
+        w = link_url(e["website"])
         parts.append('<li><span>الموقع الرسمي</span><a href="%s" target="_blank" rel="noopener">%s</a></li>'
-                     % (esc(e["website"]), esc(e["website"])))
+                     % (esc(w), esc(w)))
     if e.get("uiz_url"):
         parts.append('<li><span>الصفحة بجامعة ابن زهر</span><a href="%s" target="_blank" rel="noopener">uiz.ac.ma ↗</a></li>'
-                     % esc(e["uiz_url"]))
+                     % esc(link_url(e["uiz_url"])))
     parts.append('</ul>')
 
     res = e.get("resources") or []
@@ -149,7 +161,7 @@ def detail(e):
             cls = "off" if "off" in tags else ("exp" if "exp" in tags else "un")
             parts.append('<li><a href="%s" target="_blank" rel="noopener">%s <i>↗</i></a>'
                          '<span class="rt %s">%s</span></li>'
-                         % (esc(r["url"]), esc(r["label"]), cls, esc(lbl)))
+                         % (esc(link_url(r["url"])), esc(r["label"]), cls, esc(lbl)))
         parts.append('</ul>')
     parts.append('</section>')
 
@@ -181,7 +193,7 @@ def directory_block():
     if OUTSIDE:
         parts.append('<section class="box"><h2>مؤسسات خارج القائمة الرسمية</h2><ul class="res">')
         for o in OUTSIDE:
-            url = o.get("website") or o.get("url") or "#"
+            url = link_url(o.get("website") or o.get("url") or "#")
             parts.append('<li><a href="%s" target="_blank" rel="noopener">%s <i>↗</i></a></li>'
                          % (esc(url), esc(o.get("name_ar", ""))))
             if o.get("note_ar"):
