@@ -1,5 +1,29 @@
 # دليل النشر — CHRAIM / CHRVVIM Campus
 
+> ## ✅ الحالة الحقيقية (18 أكتوبر 2026)
+>
+> | المرحلة | الحالة | التفاصيل |
+> |---|---|---|
+> | GitHub | ✅ منشور | `mrchraim/chraim` خاص — `main` محدّث |
+> | Cloudflare Pages | ✅ **حيّ** | <https://chraim.pages.dev> (مشروع `chraim`) |
+> | Supabase (بوابة الطلبة) | ✅ الجداول كاينة | `announcements` · `exam_files` · `admins` |
+> | Supabase (نظام الإدارة) | ✅ الجداول كاينة | 18 جدول + بيانات حقيقية |
+> | الأمان | ✅ | CSP بلا أخطاء · كل الملفات الداخلية 404 |
+> | Google Search Console | ⏳ باقي | خاص حسابك فـGoogle (القسم 4) |
+>
+> للتحقّق من أي وقت (بلا حساب):
+> ```powershell
+> curl.exe -I https://chraim.pages.dev/          # الرؤوس الأمنية
+> curl.exe -o NUL -w "%{http_code}" https://chraim.pages.dev/tools/build-dist.py   # → 404
+> ```
+>
+> **للنشر مرة أخرى** (بعد أي تعديل):
+> ```powershell
+> powershell -ExecutionPolicy Bypass -File tools\deploy-cloudflare.ps1
+> ```
+
+---
+
 هاد الدليل كيشرح كيفاش تنشر الموقع الموحّد على **GitHub** و**Cloudflare Pages**
 و**Supabase** و**Google Search Console**، مع الأمان.
 
