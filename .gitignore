@@ -1,0 +1,12 @@
+# أسرار وملفات محلية — لا تُرفع أبداً
+.env
+.env.*
+*.local
+*.log
+_scratch/
+dist/
+__pycache__/
+*.pyc
+node_modules/
+.DS_Store
+Thumbs.db

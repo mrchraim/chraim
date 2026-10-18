@@ -20,7 +20,7 @@ import sys
 import io
 import argparse
 
-EXCLUDE_DIRS = {"archive", "vendor", "_dev", "__pycache__", "node_modules", ".git", "tools"}
+EXCLUDE_DIRS = {"archive", "vendor", "_dev", "dist", "supabase", "__pycache__", "node_modules", ".git", "tools"}
 SKIP_PREFIXES = ("http://", "https://", "mailto:", "tel:", "data:", "javascript:", "#", "//")
 
 HTML_ATTR = re.compile(r'(?:href|src)\s*=\s*["\']([^"\']+)["\']', re.I)

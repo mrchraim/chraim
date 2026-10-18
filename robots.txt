@@ -1,0 +1,13 @@
+# CHRAIM / CHRVVIM Campus — robots.txt
+User-agent: *
+Allow: /
+Disallow: /admin.html
+Disallow: /archive/
+Disallow: /vendor/
+Disallow: /_dev/
+Disallow: /tools/
+Disallow: /platform/dashboard.html
+Disallow: /platform/account.html
+Disallow: /documents/
+
+Sitemap: https://chraim.pages.dev/sitemap.xml
