@@ -56,6 +56,20 @@ git push origin main
 
 ### الطريقة ب — من الطرفية (wrangler)
 
+> **مستحسن (Windows)**: سكريبت جاهز كيدير كلشي بوحدو — بناء `dist` على نظيف،
+> فحص الروابط، ثم النشر (كيستعمل `npx wrangler`، ما محتاجش installation global):
+>
+> ```powershell
+> powershell -ExecutionPolicy Bypass -File tools\deploy-cloudflare.ps1
+> ```
+>
+> أول مرة غير، سجّل الدخول:
+> ```powershell
+> npx.cmd --yes wrangler@latest login
+> ```
+
+أو يدوياً:
+
 ```bash
 npm i -g wrangler
 wrangler login
@@ -66,15 +80,8 @@ wrangler pages deploy dist --project-name=chraim
 
 ### الطريقة ج — GitHub Actions (تلقائي)
 
-الملف الجاهز: `docs/ci/deploy-cloudflare-pages.yml`.
-
-GitHub كيرفض أي ملف داخل `.github/workflows/` إذا كان التوكن بلا صلاحية `workflow`.
-عندك جوج حلول:
-
-- **bash/gh**: `gh auth refresh -s workflow` ثم نقله:
-  `mkdir -p .github/workflows && cp docs/ci/deploy-cloudflare-pages.yml .github/workflows/`
-- **من الويب**: GitHub → Add file → Create new file → المسار
-  `.github/workflows/deploy-cloudflare-pages.yml` → الصق المحتوى → Commit.
+الملف موجود ديجا فالمستودع: `.github/workflows/deploy-cloudflare-pages.yml`.
+فكل `git push origin main` كيبني `dist`، كيدير فحص الروابط، ثم كينشر — كامل مجاناً.
 
 زيد **Secrets** فالمستودع (Settings → Secrets and variables → Actions):
 

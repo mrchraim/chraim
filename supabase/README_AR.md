@@ -5,7 +5,7 @@
 | التطبيق | المجلّد | مشروع Supabase | الملف المطلوب |
 |---|---|---|---|
 | البوابة + لوحة التحكم | `/` و `/portal.html` | `https://idpafbyefrywjixskvvu.supabase.co` | `supabase/01_portal_schema.sql` |
-| نظام الإدارة | `/platform/` | `https://uftqrgpzllvqlaztcjbq.supabase.co` | مخطط خاص بالمشروع (كاين من قبل) |
+| نظام الإدارة | `/platform/` | `https://uftqrgpzllvqlaztcjbq.supabase.co` | `supabase/02_platform_schema.sql` |
 
 > ملاحظة أمنية: المفاتيح المكتوبة فالموقع هي `publishable / anon` — **عامة بطبيعتها**.
 > الأمان الحقيقي هو **Auth + RLS**. عمّر ما تدخل `service_role` فكود الواجهة.
@@ -64,10 +64,26 @@ where relname in ('admins','announcements','exam_files');
 
 ## 4) مخطط نظام الإدارة (`/platform/`)
 
-مشروع `uftqrgpzllvqlaztcjbq` كايخدم من قبل بجداوله الخاصة
-(`profiles, roles, projects, tasks, universities, departments, semesters,
-subjects, exams, announcements, contact_messages, edu_questions,
-notifications, favorites, activity_log, settings, documents`).
+الملف: **`supabase/02_platform_schema.sql`** — جداول + RLS + حاويات تخزين،
+مستخرج مباشرة من كود `platform/js/*.js` (ماشي تخمين).
 
-إذا بغيتي نولّد ملف SQL كامل لهاد المشروع (نفس المنهج: جداول + RLS + Storage)،
-دوّز ليا تأكيد ونولّدو من الكود مباشرة.
+الجداول: `profiles, roles, projects, tasks, universities, departments, semesters,
+subjects, exams, announcements, contact_messages, edu_questions,
+notifications, favorites, activity_log, settings, documents`
++ حاويتين: `documents` (داخلية) و `edu-files` (ملفات الامتحانات).
+
+⚠️ **راجع قبل ما تشغّل**: المشروع `uftqrgpzllvqlaztcjbq` كاين من قبل بجداوله.
+الملف كيستعمل `create table if not exists` (إذن ما كيمسّش البيانات)، ولكن سياسات
+RLS كتُحذف وكُتعاود تُنشأ. إلا كان المشروع خدّام من قبل، شوف السياسات القديمة قبل،
+ولا شغّل غير الأجزاء الناقصة.
+
+من بعد ما تشغّل، عيّن أول مسؤول:
+
+```sql
+update public.profiles p
+   set role_id = (select id from public.roles where name = 'admin')
+ where p.id = (select id from auth.users where email = 'YOUR_EMAIL@example.com');
+```
+
+(بدّل `YOUR_EMAIL@example.com` بالبريد الحقيقي. غير `admin` هو اللي كيقدر يبدّل
+`role_id` — كاين trigger كيمنع تصعيد الصلاحيات.)

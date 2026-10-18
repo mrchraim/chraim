@@ -151,9 +151,11 @@ wrangler pages deploy dist --project-name=chraim
 
 - **GitHub**: `mrchraim/chraim` (خاص — private)، الـpush كيخدم عادي.
 - **Cloudflare Pages**: مجلّد الإخراج = `dist` (كيقرا `_headers` + `_redirects` تلقائياً).
-- **CI**: `docs/ci/deploy-cloudflare-pages.yml` (انسخو لـ`.github/workflows/`) كينشر أوتوماتيكياً عند كل push لـ`main`
-  (خاص `CLOUDFLARE_API_TOKEN` + `CLOUDFLARE_ACCOUNT_ID` كـSecrets).
-- **Supabase**: شغّل `supabase/01_portal_schema.sql` (جداول + RLS + حاوية `edu-files` خاصة).
+- **CI**: `.github/workflows/deploy-cloudflare-pages.yml` كينشر أوتوماتيكياً عند كل push لـ`main`
+  (خاص `CLOUDFLARE_API_TOKEN` + `CLOUDFLARE_ACCOUNT_ID` كـSecrets؛ بلايهم كيتخطى النشر بتحذير بلا ما يفشل).
+- **سكريبت النشر (Windows)**: `powershell -ExecutionPolicy Bypass -File tools\deploy-cloudflare.ps1`.
+- **Supabase**: شغّل `supabase/01_portal_schema.sql` (بوابة الطلبة) و `supabase/02_platform_schema.sql`
+  (نظام الإدارة) — جداول + RLS + حاويات خاصة.
 - **Google Search Console**: قدّم `sitemap.xml` (يتولّد بـ `tools/make-seo.py --base https://…`).
 - **`platform/`**: كيستعمل مشروع Supabase الخاص به (المفتاح العام في `platform/js/config.js`).
 
