@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """يبني مجلّد نشر نظيف (dist/) يحتوي فقط الملفات التي يحتاجها الموقع فعلاً.
 
@@ -28,7 +28,7 @@ EXCLUDE_EXT = {
 }
 
 # ملفات مسموح بها رغم استثناء امتدادها
-ALLOW_FILES = {"robots.txt", "security.txt", "humans.txt", "ai.txt"}
+ALLOW_FILES = {"robots.txt", "security.txt", "humans.txt", "ai.txt", "ads.txt"}
 
 # ملفات مسموح بها بأسمائها (إعدادات Cloudflare)
 ALLOW_NAMES = {"_headers", "_redirects"}
@@ -100,3 +100,4 @@ def main():
 
 if __name__ == "__main__":
     sys.exit(main())
+
