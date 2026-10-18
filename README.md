@@ -38,8 +38,17 @@ chraim/
 │
 ├── vendor/OpenMausBot/ ……… 🧰 تطبيق خارجي (مِلكية Milind Soni — AI agents)
 │
-└── docs/ …………………………… التوثيق
+├── docs/ …………………………… التوثيق + `ci/deploy-cloudflare-pages.yml`
+├── supabase/ …………………… مخطط قاعدة البيانات + سياسات RLS (`01_portal_schema.sql`)
+├── tools/ …………………………… أدوات: audit-links · audit-security · add-back-home · make-seo · build-dist
+├── _headers · _redirects …… رؤوس الأمان وإعادة التوجيه
+├── robots.txt · sitemap.xml  الفهرسة (تُولَّد بـ `tools/make-seo.py`)
+├── 404.html ………………………… صفحة خطأ عربية
+└── DEPLOY_AR.md ……………… دليل النشر (GitHub · Cloudflare · Supabase · Google)
 ```
+
+> `archive/` و`vendor/` و`_dev/` و`tools/` و`supabase/` والوثائق والسكربتات **لا تُنشر علناً** —
+> يُستثنيها `tools/build-dist.py` و`.assetsignore`.
 
 ---
 
@@ -133,8 +142,36 @@ python tools/add-back-home.py
 
 ## ☁️ النشر
 
-- **الموقع الرئيسي**: Cloudflare Pages (من جذر المستودع).
-- **`platform/`**: يستخدم Supabase (المفتاح العام في `platform/js/config.js`).
+الدليل الكامل خطوة بخطوة: [`DEPLOY_AR.md`](DEPLOY_AR.md). باختصار:
+
+```bash
+python tools/build-dist.py --out dist --clean   # مجلّد نشر نظيف (بدون archive/vendor/_dev)
+wrangler pages deploy dist --project-name=chraim
+```
+
+- **GitHub**: `mrchraim/chraim` (خاص — private)، الـpush كيخدم عادي.
+- **Cloudflare Pages**: مجلّد الإخراج = `dist` (كيقرا `_headers` + `_redirects` تلقائياً).
+- **CI**: `docs/ci/deploy-cloudflare-pages.yml` (انسخو لـ`.github/workflows/`) كينشر أوتوماتيكياً عند كل push لـ`main`
+  (خاص `CLOUDFLARE_API_TOKEN` + `CLOUDFLARE_ACCOUNT_ID` كـSecrets).
+- **Supabase**: شغّل `supabase/01_portal_schema.sql` (جداول + RLS + حاوية `edu-files` خاصة).
+- **Google Search Console**: قدّم `sitemap.xml` (يتولّد بـ `tools/make-seo.py --base https://…`).
+- **`platform/`**: كيستعمل مشروع Supabase الخاص به (المفتاح العام في `platform/js/config.js`).
+
+---
+
+## 🔐 الأمان
+
+- **بلا أسرار في الكود**: المفاتيح الموجودة `publishable/anon` عامة بطبيعتها؛ الأمان الحقيقي
+  هو **Supabase Auth + RLS** (انظر `supabase/01_portal_schema.sql`). عمّر ما تدخل `service_role`.
+- **رؤوس أمان** (`_headers`): `Content-Security-Policy`، `HSTS`، `X-Frame-Options: DENY`،
+  `nosniff`، `Referrer-Policy`، `COOP`، `CORP`، `Permissions-Policy`، `X-Permitted-Cross-Domain-Policies`.
+- **لا تسريب ملفات داخلية**: `tools/build-dist.py` + `.assetsignore` كيستثنيو
+  `archive/`, `vendor/`, `_dev/`, `tools/`, `supabase/`، الوثائق والسكربتات، و`BUILD_MANIFEST.sha256`
+  من النشر العام — مع الحفاظ عليها كاملة في Git.
+- **`/admin.html`** محمي بـAuth + RLS + `noindex` (وممنوع فـ`robots.txt` + رأس `X-Robots-Tag`).
+- **`documents/`** (PDF ديال الطلبة) متاح للتحميل ولكن **ماشي مفهرس** (`robots.txt`).
+- **بلا روابط خطيرة**: لا iframes؛ لا `document.write`؛ لا `eval`؛ لا `fetch` خارجي؛
+  كل روابط `target="_blank"` فيها `rel="noopener noreferrer"`.
 
 ---
 

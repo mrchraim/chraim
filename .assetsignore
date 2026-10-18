@@ -1,0 +1,15 @@
+# Cloudflare Pages — عناصر تُستبعد من النشر العام (تبقى محفوظة كاملة في Git).
+# لا يُحذف أي شيء من المستودع؛ فقط لا يُنشر على الويب.
+archive/
+vendor/
+_dev/
+tools/
+*.md
+*.py
+_disc.txt
+_str_block.txt
+BUILD_MANIFEST.sha256
+.github/
+.git/
+.gitignore
+.assetsignore
