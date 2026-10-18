@@ -1,12 +1,16 @@
 # CHRAIM / CHRVVIM Campus — robots.txt
 User-agent: *
 Allow: /
+Disallow: /admin
 Disallow: /admin.html
 Disallow: /archive/
 Disallow: /vendor/
 Disallow: /_dev/
 Disallow: /tools/
+Disallow: /supabase/
+Disallow: /platform/dashboard
 Disallow: /platform/dashboard.html
+Disallow: /platform/account
 Disallow: /platform/account.html
 Disallow: /documents/
 

@@ -2,12 +2,16 @@
 --  CHRVVIM Campus — مخطط مشروع نظام الإدارة (/platform/)
 --  المشروع:  https://uftqrgpzllvqlaztcjbq.supabase.co
 --
---  ⚠️  مهم قبل التشغيل:
---    * هذا مخطط "تركيب جديد" (fresh install). كل الجداول بـ`if not exists`
---      إذن ما غاديش تمس أي بيانات موجودة.
---    * ولكن سياسات RLS كتُحذف وتُعاد إنشاؤها. إلا كان المشروع خدّام من قبل،
---      راجع السياسات قبل ما تشغّل، ولا شغّل غير الأجزاء الناقصة.
---    * الأعمدة مستخرجة من كود platform/js/*.js فهاد المستودع.
+--  ✅ حالة حقيقية (فحص مباشر، 18 أكتوبر 2026):
+--     الجداول الـ18 كاملين موجودين فعلاً فالمشروع، وفيهم بيانات
+--     (جامعات، أقسام، سداسيات، مواد، امتحانات، إعلانات).
+--     إذن **ما كاينش حاجة تشغّل هاد الملف** إلا إذا بغيتي مشروع جديد.
+--     كل عمود هنا متحقّق منو مقابل قاعدة البيانات الحيّة.
+--
+--  ⚠️  ملاحظات على السياسات:
+--    * كل الجداول بـ`create table if not exists` → ما كيمسّش البيانات.
+--    * لكن سياسات RLS كتُحذف وتُعاد إنشاؤها. راجع قبل ما تشغّل.
+--    * الأعمدة مستخرجة من كود platform/js/*.js ومن قاعدة البيانات الحيّة.
 --
 --  التشغيل: Supabase → SQL Editor → New query → الصق → Run
 -- ============================================================================
@@ -36,7 +40,6 @@ create table if not exists public.profiles (
   id           uuid primary key references auth.users(id) on delete cascade,
   full_name    text,
   full_name_ar text,
-  name_ar      text,
   email        text,
   avatar_url   text,
   role_id      uuid references public.roles(id) on delete set null,
@@ -275,7 +278,6 @@ create table if not exists public.announcements (
   id            uuid primary key default gen_random_uuid(),
   university_id uuid references public.universities(id) on delete set null,
   title_ar      text not null,
-  title_fr      text,
   body          text,
   category      text default 'info',
   link          text,

@@ -1,4 +1,5 @@
-# Cloudflare Pages redirects (not Netlify-specific syntax)
-/admin /admin.html 301
+# Cloudflare Pages redirects
+# ملاحظة: Cloudflare كيدير "clean URLs" بوحدو: /admin.html → /admin (308).
+# إذن ما نزيدوش قاعدة /admin → /admin.html حيت كتخلق حلقة لا نهائية.
 /public/documents/* /documents/:splat 200
 /public/assets/* /assets/:splat 200

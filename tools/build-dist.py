@@ -18,7 +18,7 @@ import argparse
 # مجلّدات تُستثنى كلياً (بأي مستوى)
 EXCLUDE_DIRS = {
     "archive", "vendor", "_dev", "tools", "supabase", "docs",
-    ".git", ".github", "node_modules", "__pycache__",
+    ".git", ".github", ".wrangler", "node_modules", "__pycache__",
 }
 
 # امتدادات تُستثنى (ملفات داخلية/وثائق/سكربتات)

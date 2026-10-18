@@ -63,12 +63,16 @@ def write_robots(root, base):
         "# CHRAIM / CHRVVIM Campus — robots.txt",
         "User-agent: *",
         "Allow: /",
+        "Disallow: /admin",
         "Disallow: /admin.html",
         "Disallow: /archive/",
         "Disallow: /vendor/",
         "Disallow: /_dev/",
         "Disallow: /tools/",
+        "Disallow: /supabase/",
+        "Disallow: /platform/dashboard",
         "Disallow: /platform/dashboard.html",
+        "Disallow: /platform/account",
         "Disallow: /platform/account.html",
         "Disallow: /documents/",          # ملفات PDF للطلبة: متاحة لكن غير مفهرسة
         "",
@@ -78,13 +82,25 @@ def write_robots(root, base):
     io.open(os.path.join(root, "robots.txt"), "w", encoding="utf-8", newline="\n").write("\n".join(lines))
 
 
+def clean_loc(base, p):
+    """Cloudflare Pages كيخدم clean URLs: /portal.html → 308 → /portal.
+    خريطة الموقع خاصها تشير للرابط النهائي (بلا إعادة توجيه)."""
+    if p in ("", "index.html"):
+        return base + "/"
+    if p.endswith("/"):
+        return base + "/" + p
+    if p.endswith(".html"):
+        p = p[:-5]
+    return base + "/" + p
+
+
 def write_sitemap(root, base, pages):
     today = datetime.date.today().isoformat()
     base = base.rstrip("/")
     rows = ['<?xml version="1.0" encoding="UTF-8"?>',
             '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     for p in pages:
-        loc = "%s/%s" % (base, p) if p else base + "/"
+        loc = clean_loc(base, p)
         pri = "1.0" if p == "" else ("0.9" if p in ("portal.html", "etablissements/") else "0.7")
         rows.append("  <url>")
         rows.append("    <loc>%s</loc>" % loc)
