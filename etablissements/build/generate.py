@@ -86,6 +86,7 @@ FOOT = """
   <p class="muted">صُنع بـ CHRAIM · <a href="/">الصفحة الرئيسية</a></p>
 </footer>
 <script src="/etablissements/app.js" defer></script>
+<script src="/assets/back-home.js" defer></script>
 </body>
 </html>
 """
