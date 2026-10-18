@@ -17,11 +17,27 @@
 | `404.html` | صفحة خطأ عربية |
 | `.assetsignore` | استثناء الملفات الداخلية من نشر Cloudflare Pages |
 | `tools/build-dist.py` | كيبني `dist/` نظيف (بدون `archive/`, `vendor/`, `_dev/`, سكربتات) |
+| `tools/deploy-cloudflare.ps1` | سكريبت نشر جاهز (Windows): بناء + فحص + نشر |
 | `.github/workflows/deploy-cloudflare-pages.yml` | نشر تلقائي عند كل push |
 | `supabase/01_portal_schema.sql` | جداول + RLS + Storage ديال البوابة |
+| `supabase/02_platform_schema.sql` | جداول + RLS + Storage ديال `/platform/` |
 
 ⚠️ **مهم:** ما تنشرش المستودع كامل مباشرة — فيه `archive/` و`vendor/` و`_dev/`
 وسكربتات. استعمل `dist/` (`python tools/build-dist.py`).
+
+---
+
+## 0.1) المجاني — شنو كنستعملو
+
+| الخدمة | الخطة | الحدود المجانية | كافي؟ |
+|---|---|---|---|
+| Cloudflare Pages | Free | 500 build/شهر، bandwidth بلا حدود | ✅ |
+| Cloudflare DNS | Free | سجلات بلا حدود | ✅ |
+| Supabase | Free | مشروعين نشيطين | ✅ (عندك بالضبط 2) |
+| GitHub (مستودع خاص) | Free | Actions: 2000 دقيقة/شهر | ✅ (البناء ~10 ثواني) |
+| Google Search Console | Free | بلا حدود | ✅ |
+
+> 💡 ما كاين حتى حاجة مدفوعة فهاد الدليل. العمر ما كتحتاج بطاقة بنكية.
 
 ---
 
@@ -49,8 +65,10 @@ git push origin main
 2. **Connect to Git** → اختار `mrchraim/chraim`
 3. الإعدادات:
    - **Framework preset**: `None`
-   - **Build command**: `python tools/build-dist.py --out dist --clean`
+   - **Build command**: `python tools/build-dist.py --out dist --clean || python3 tools/build-dist.py --out dist --clean`
    - **Build output directory**: `dist`
+   - (اختياري) **Environment variable**: `PYTHON_VERSION = 3.13`
+     (صورة البناء v3 فيها Python 3.13.3 افتراضياً — كافي.)
 4. **Save and Deploy**
 5. زيد الدومين: **Custom domains** → `your-domain.ma`
 
@@ -115,17 +133,35 @@ select id, email from auth.users where email = 'YOUR_EMAIL@example.com'
 on conflict (user_id) do nothing;
 ```
 
-النتيجة: `/admin.html` كيخدم بـAuth + RLS، وأرشيف الامتحانات بحاوية `edu-files` خاصة.
+الناتج: `/admin.html` كيخدم بـAuth + RLS، وأرشيف الامتحانات بحاوية `edu-files` خاصة.
+
+### نظام الإدارة كمان (`/platform/`)
+
+نفس المنهج، ولكن على المشروع `uftqrgpzllvqlaztcjbq`:
+
+1. Supabase → المشروع `uftqrgpzllvqlaztcjbq` → **SQL Editor**
+2. الصق `supabase/02_platform_schema.sql` → **Run**
+
+> ⚠️ هاد المشروع **كاين من قبل** بجداوله. الملف كيستعمل `create table if not exists`
+> (ما كيمسّش البيانات)، ولكن سياسات RLS كتُحذف وكُتعاد. راجع قبل ما تشغّل.
+
+3. عيّن أول مسؤول:
+
+```sql
+update public.profiles p
+   set role_id = (select id from public.roles where name = 'admin')
+ where p.id = (select id from auth.users where email = 'YOUR_EMAIL@example.com');
+```
 
 ---
 
 ## 4) Google Search Console
 
 1. <https://search.google.com/search-console> → **Add property**
-2. اختار **URL prefix** وحط الدومين بعد النشر (مثلاً `https://your-domain.example/`)
+2. اختار **URL prefix** وحط الدومين بعد النشر (مثلاً `https://chraim.pages.dev/`)
 3. تحقّق:
-   - **HTML tag**: زيد `<meta name="google-site-verification" content="...">` فـ`<head>` ديال `index.html`، ولا
-   - **DNS**: زيد سجل TXT فـCloudflare DNS (أسهل بزاف وكيدوم)
+   - **HTML tag**: زيد `<meta name="google-site-verification" content="...">` فـ`<head>` ديال `index.html` (كيخدم مع كل الدومينات، حتى `*.pages.dev`)، ولا
+   - **DNS (TXT)**: غير إلا ربطتي دومين خاص ديالك (ماشي `pages.dev` — ما عندكش كنترول على DNS ديالو)، وهاد الحل هو اللي كيدوم.
 4. من بعد التحقّق → **Sitemaps** → زيد `sitemap.xml` → **Submit**
 5. استعمل **URL Inspection** → `Request indexing` للصفحات الأساسية (`/`, `/portal.html`, `/etablissements/`)
 
@@ -142,7 +178,7 @@ on conflict (user_id) do nothing;
 |---|---|
 | نشر Cloudflare من الطرفية | `CLOUDFLARE_API_TOKEN` + `CLOUDFLARE_ACCOUNT_ID` (ولا ربط المستودع من اللوحة) |
 | GitHub Actions | نفس الـsecrets فوق (كتزاد فإعدادات المستودع، ماشي فالكود) |
-| Supabase | تنفيذ `01_portal_schema.sql` من حسابك (ولا `SUPABASE_ACCESS_TOKEN` + `supabase link`) |
+| Supabase | تنفيذ `01_portal_schema.sql` و `02_platform_schema.sql` من حسابك (ولا `SUPABASE_ACCESS_TOKEN` + `supabase link`) |
 | Google Search Console | حساب Google ديالك + ملكية الدومين |
 
 > 🔐 **عمّر ما تصيفط ليا `service_role` ولا `SUPABASE_ACCESS_TOKEN` فالرسائل.** إلا بغيتي ننشر
