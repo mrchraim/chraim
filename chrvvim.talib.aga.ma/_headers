@@ -128,6 +128,28 @@
   X-Robots-Tag: noindex, nofollow, noarchive
   Cache-Control: no-store, max-age=0
 
+/_deploy_kit/*
+  X-Robots-Tag: noindex, nofollow, noarchive
+  Cache-Control: no-store, max-age=0
+
+/_integration_preview/*
+  X-Robots-Tag: noindex, nofollow, noarchive
+  Cache-Control: no-store, max-age=0
+
+/admin-separate/*
+  X-Robots-Tag: noindex, nofollow, noarchive
+  Cache-Control: no-store, max-age=0
+
+/_headers
+  X-Robots-Tag: noindex, nofollow, noarchive
+  Cache-Control: no-store, max-age=0
+  Content-Type: text/plain
+
+/_redirects
+  X-Robots-Tag: noindex, nofollow, noarchive
+  Cache-Control: no-store, max-age=0
+  Content-Type: text/plain
+
 /site_doctor_report/*
   X-Robots-Tag: noindex, nofollow, noarchive
   Cache-Control: no-store, max-age=0

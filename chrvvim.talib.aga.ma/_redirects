@@ -30,6 +30,11 @@ supabase/*       /404.html 404
 tools/*          /404.html 404
 site_doctor_report/*  /404.html 404
 docs/*           /404.html 404
+_deploy_kit/*    /404.html 404
+_integration_preview/*  /404.html 404
+admin-separate/*   /404.html 404
+_headers         /404.html 404
+_redirects       /404.html 404
 .gitignore       /404.html 404
 .gitattributes   /404.html 404
 Dockerfile       /404.html 404
