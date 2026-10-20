@@ -15,6 +15,9 @@
   };
   function lang() { try { return (typeof UILANG !== 'undefined' && UILANG) ? UILANG : 'ar'; } catch (e) { return 'ar'; } }
   function t(k) { var e = S[k]; var s = e ? (e[lang()] || e.ar) : k; return window.CHRVVIM_GENDER ? window.CHRVVIM_GENDER.apply(s) : s; }
+  /* تعقيم دفاعي: escape للنص + حاجز عناوين يمنع javascript:/data:. */
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+  function safeUrl(u) { try { return (typeof window.CHRVVIM_SAFE_URL === 'function') ? window.CHRVVIM_SAFE_URL(u) : u; } catch (e) { return ''; } }
 
   function build() {
     if (document.getElementById('ccSocialFab')) return;
@@ -67,9 +70,9 @@
     panel.hidden = true;
     panel.innerHTML = '<h3></h3><p class="ccs-sub"></p><div class="ccs-list">' +
       accounts.map(function (a) {
-        return '<a class="ccs-acc" href="' + String(a.u || '#') + '" target="_blank" rel="noopener noreferrer">' +
-          '<i aria-hidden="true">' + String(a.i || '🔗') + '</i>' +
-          '<span><b>' + String(a.n || '') + '</b><small>' + String(a.l || '') + '</small></span></a>';
+        return '<a class="ccs-acc" href="' + esc(safeUrl(a.u || '#')) + '" target="_blank" rel="noopener noreferrer">' +
+          '<i aria-hidden="true">' + esc(a.i || '🔗') + '</i>' +
+          '<span><b>' + esc(a.n || '') + '</b><small>' + esc(a.l || '') + '</small></span></a>';
       }).join('') +
       '</div><div class="ccs-foot"><button type="button" class="ccs-close"></button></div>';
 

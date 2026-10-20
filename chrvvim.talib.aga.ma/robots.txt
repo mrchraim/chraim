@@ -1,0 +1,16 @@
+User-agent: *
+Allow: /
+
+# لا نُعرّف مسارات الإدارة هنا عمدًا (تجنّب كشفها)،
+# فهي محجوبة بـ 404 من _redirects ومحمية بـ noindex من _headers.
+
+Disallow: /_dev/
+Disallow: /_reports/
+Disallow: /_archive/
+Disallow: /_backups/
+Disallow: /backup/
+Disallow: /supabase/
+Disallow: /tools/
+Disallow: /site_doctor_report/
+
+Sitemap: https://chraim.pages.dev/sitemap.xml

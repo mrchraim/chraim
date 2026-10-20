@@ -3,7 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>CHRVVIM Campus — بوابة جامعة ابن زهر</title>
+<title>CHRVVIM Campus — بوابة جامعة ابن زهر</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/assets/chrvvim-icon.svg"><script src="/security-hardening.js"></script>
+<meta name="description" content="بوابة جامعة ابن زهر بأكادير: دليل المؤسسات والكليات والمدارس والمعاهد، الأفواج، استعمالات الزمن، الوثائق، والمصادر الرسمية في واجهة واحدة.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta property="og:type" content="website">
+<meta property="og:title" content="CHRVVIM Campus — بوابة جامعة ابن زهر">
+<meta property="og:description" content="دليل مؤسسات جامعة ابن زهر بأكادير: الكليات، المدارس، المعاهد، والروابط الرسمية.">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -308,7 +314,6 @@ stats();render();
 </style>
 <div class="social-strip" id="socialStrip" role="complementary" aria-label="حسابات المؤسس">
   <span>تواصل:</span>
-  <a href="https://github.com/mr1mohamed1chraim" target="_blank" rel="noopener" aria-label="GitHub">GitHub</a>
   <a href="https://www.instagram.com/mr1mohamed1chraim" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a>
   <a href="https://www.linkedin.com/in/mr1mohamed1chraim" target="_blank" rel="noopener" aria-label="LinkedIn">LinkedIn</a>
   <a href="mailto:mr1mohamed1chraim@gmail.com" aria-label="Email">Email</a>
@@ -333,24 +338,24 @@ stats();render();
 .social-strip .ss-close{margin-inline-start:auto;background:none;border:0;color:var(--muted,#666);cursor:pointer;font-size:18px;line-height:1}
 .social-strip.hidden{display:none}
 @media(max-width:600px){.social-strip{gap:8px;padding:6px 12px;font-size:12px}}
+
+.nav-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  flex-direction: row;
+  border-radius: 0;
+  z-index: 1000;
+}
+
+body {
+  padding-bottom: 70px;
+}
 </style>
-<div class="social-strip" id="socialStrip" role="complementary" aria-label="حسابات المؤسس">
-  <span>تواصل:</span>
-  <a href="https://github.com/mr1mohamed1chraim" target="_blank" rel="noopener" aria-label="GitHub">GitHub</a>
-  <a href="https://www.instagram.com/mr1mohamed1chraim" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a>
-  <a href="https://www.linkedin.com/in/mr1mohamed1chraim" target="_blank" rel="noopener" aria-label="LinkedIn">LinkedIn</a>
-  <a href="mailto:mr1mohamed1chraim@gmail.com" aria-label="Email">Email</a>
-  <button class="ss-close" id="ssClose" type="button" aria-label="إغلاق">×</button>
-</div>
-<script>
-(function(){
-  var s=document.getElementById('socialStrip');
-  if(!s) return;
-  var close=document.getElementById('ssClose');
-  try{ if(localStorage.getItem('cc_ss_closed')==='1') s.classList.add('hidden'); }catch(e){}
-  if(close) close.addEventListener('click',function(){ s.classList.add('hidden'); try{ localStorage.setItem('cc_ss_closed','1'); }catch(e){} });
-})();
-</script>
 <script src="gender.js" defer></script>
 <script src="social-bubble.js" defer></script>
 </body>

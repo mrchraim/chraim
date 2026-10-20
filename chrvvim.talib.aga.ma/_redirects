@@ -1,4 +1,78 @@
-# Cloudflare Pages redirects (not Netlify-specific syntax)
-/admin /admin.html 301
-/public/documents/* /documents/:splat 200
-/public/assets/* /assets/:splat 200
+# CHRVVIM Security Redirects
+# Force HTTPS
+http://chraim.pages.dev/* https://chraim.pages.dev/:splat 301!
+http://* https://:splat 301!
+
+# Block sensitive paths (return 404 — no information disclosure)
+/.env            /404.html 404
+/.env.*          /404.html 404
+/.git            /404.html 404
+/.git/*          /404.html 404
+/.svn/*          /404.html 404
+/.hg/*           /404.html 404
+/*.sql           /404.html 404
+/*.bak           /404.html 404
+/*.log           /404.html 404
+/*.map           /404.html 404
+/*.old           /404.html 404
+/*.orig          /404.html 404
+/*.swp           /404.html 404
+/*.zip           /404.html 404
+/*.tar.gz        /404.html 404
+backup/*         /404.html 404
+backups/*        /404.html 404
+_backups/*       /404.html 404
+_dev/*           /404.html 404
+_reports/*       /404.html 404
+_archive/*       /404.html 404
+_phase1_audit/*  /404.html 404
+supabase/*       /404.html 404
+tools/*          /404.html 404
+site_doctor_report/*  /404.html 404
+docs/*           /404.html 404
+.gitignore       /404.html 404
+.gitattributes   /404.html 404
+Dockerfile       /404.html 404
+docker-compose.yml  /404.html 404
+package.json     /404.html 404
+package-lock.json /404.html 404
+wrangler.jsonc   /404.html 404
+wrangler.toml    /404.html 404
+netlify.toml     /404.html 404
+robots.txt.md    /404.html 404
+BUILD_MANIFEST.sha256  /404.html 404
+
+# Block guessable admin / CMS / management paths
+/admin           /404.html 404
+/admin/*         /404.html 404
+/administrator   /404.html 404
+/administrator/* /404.html 404
+/dashboard       /404.html 404
+/dashboard/*     /404.html 404
+/login           /404.html 404
+/signin          /404.html 404
+/wp-admin        /404.html 404
+/wp-admin/*      /404.html 404
+/wp-login.php    /404.html 404
+/wp-content/*    /404.html 404
+/wp-includes/*   /404.html 404
+/wp-json/*       /404.html 404
+/xmlrpc.php      /404.html 404
+/phpmyadmin      /404.html 404
+/phpmyadmin/*    /404.html 404
+/pma             /404.html 404
+/mysql           /404.html 404
+/adminer.php     /404.html 404
+/server-status   /404.html 404
+/.well-known/change-password  /404.html 404
+
+# Block common recon / scanner probes
+/actuator/*      /404.html 404
+/console         /404.html 404
+/manager/*       /404.html 404
+/config.json     /404.html 404
+/config.php      /404.html 404
+/web.config      /404.html 404
+/.DS_Store       /404.html 404
+/.htaccess       /404.html 404
+/.htpasswd       /404.html 404

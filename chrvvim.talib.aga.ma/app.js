@@ -17,6 +17,7 @@ const DATA=window.CHRVVIM.DATA;
 /* ===================== أدوات ===================== */
 const $=id=>document.getElementById(id);
 const esc=t=>String(t==null?'':t).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const surl=u=>esc(typeof CHRVVIM_SAFE_URL==='function'?CHRVVIM_SAFE_URL(u):u);
 const mem={};
 const store={get(k){try{return localStorage.getItem(k)}catch(e){return mem[k]||null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){mem[k]=v}}};
 const DAYS=['الإثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'];
@@ -625,7 +626,7 @@ function renderDocs(){
     const libNote = (k === 'lib') ? '<p class="note" style="margin:0 0 12px">'+t('docs.libNote')+'</p>' : '';
     const kindChip = d => d.k === 'tt' ? t('docs.kindTT') : d.k === 'dist' ? t('docs.kindDist') : d.k === 'ext' ? t('docs.kindExt') : t('docs.kindLib');
     $('dlist').innerHTML = libNote + (l.map(d =>
-      '<a class="doc" target="_blank" rel="noopener" href="' + esc(d.f) + '">' +
+      '<a class="doc" target="_blank" rel="noopener" href="' + surl(d.f) + '">' +
       '<b' + (d.l === 'fr' ? ' dir="ltr" style="text-align:left"' : '') + '>' + esc(d.t) + '</b>' +
       '<div class="mt">' + (d.s ? '<span class="chip">' + d.s + '</span>' : '') + '<span class="chip g">' + kindChip(d) + '</span>' +
       (d.u ? '<span class="chip" style="background:#e6f6ec;color:#0f6b39">'+t('docs.updated')+'</span>' : '') +
@@ -653,7 +654,7 @@ function renderAbout(){
   +'<div class="cv-sec"><h3>'+t('about.sec.proj')+'</h3><div class="proj"><div><h4>🎓 CHRVVIM Campus</h4><p>'+t('about.proj1')+'</p></div><div><h4>✦ RIQQA</h4><p>'+t('about.proj2')+'</p></div><div><h4>✍️ '+t('about.sec.proj')+'</h4><p>'+t('about.proj3')+'</p></div></div></div>'
   +'<div class="cv-sec"><h3>'+t('about.sec.interests')+'</h3><div class="tags"><span>القانون المغربي</span><span>القانون الجنائي</span><span>العلوم الجنائية</span><span>علم الإجرام</span><span>الوعي القانوني</span><span>الأدب والفلسفة</span><span>التقنية التعليمية</span></div></div>'
   +'<div class="mission"><h4>'+t('about.mission')+'</h4><p>'+t('about.mission2')+'</p></div>'
-  +'<div class="cv-sec"><h3>'+t('about.sec.contact')+'</h3><div class="soc">'+SOCIALS.map(x=>'<a target="_blank" rel="noopener" href="'+esc(x.u)+'"><i>'+x.i+'</i><span><b>'+esc(x.n)+'</b><br><span dir="ltr">'+esc(x.l)+'</span></span></a>').join('')+'</div><div class="actions cta"><a class="btn" target="_blank" rel="noopener" href="https://wa.me/212665366326?text='+encodeURIComponent('CHRVVIM Campus')+'">'+t('btn.contact')+'</a><button class="btn sec" id="cvPrint">'+t('btn.print')+'</button></div></div>'
+  +'<div class="cv-sec"><h3>'+t('about.sec.contact')+'</h3><div class="soc">'+SOCIALS.map(x=>'<a target="_blank" rel="noopener" href="'+surl(x.u)+'"><i>'+x.i+'</i><span><b>'+esc(x.n)+'</b><br><span dir="ltr">'+esc(x.l)+'</span></span></a>').join('')+'</div><div class="actions cta"><a class="btn" target="_blank" rel="noopener" href="https://wa.me/212665366326?text='+encodeURIComponent('CHRVVIM Campus')+'">'+t('btn.contact')+'</a><button class="btn sec" id="cvPrint">'+t('btn.print')+'</button></div></div>'
   +'<div class="muted">'+t('about.disclaimer')+'</div></div></div>';
 }
 
@@ -686,7 +687,7 @@ function renderLearn(){
   let h='<div class="note" style="margin-top:0">'+t('learn.lead')+'</div>';
   h+='<h4 style="margin:14px 0 8px">'+t('learn.materials')+' ('+mats.length+')</h4>';
   h+= mats.length
-    ? '<div class="dgrid">'+mats.map(d=>'<a class="doc" target="_blank" rel="noopener" href="'+esc(d.f)+'"><b>'+esc(d.t)+'</b><div class="mt"><span class="chip">'+esc(d.s)+'</span><span class="chip g">'+t('learn.pdf')+'</span><span class="muted">PDF · '+d.kb+' KB</span></div></a>').join('')+'</div>'
+    ? '<div class="dgrid">'+mats.map(d=>'<a class="doc" target="_blank" rel="noopener" href="'+surl(d.f)+'"><b>'+esc(d.t)+'</b><div class="mt"><span class="chip">'+esc(d.s)+'</span><span class="chip g">'+t('learn.pdf')+'</span><span class="muted">PDF · '+d.kb+' KB</span></div></a>').join('')+'</div>'
     : '<p class="empty">'+t('docs.none')+'</p>';
   h+='<div class="note">'+t('learn.tips')+'</div>';
   el.innerHTML=h;
@@ -765,7 +766,7 @@ document.querySelectorAll('.quick-card[data-jump]').forEach(b=>b.addEventListene
 function renderOfficialLinks(){
   const box=document.getElementById('officialLinks'); if(!box) return;
   const items=(window.CHRVVIM&&window.CHRVVIM.OFFICIAL)||[];
-  box.innerHTML=items.map(o=>'<a href="'+esc(o.u)+'" target="_blank" rel="noopener"><span class="os">'+esc(o.s)+'</span><span>'+esc(o.t)+'</span></a>').join('')
+  box.innerHTML=items.map(o=>'<a href="'+surl(o.u)+'" target="_blank" rel="noopener"><span class="os">'+esc(o.s)+'</span><span>'+esc(o.t)+'</span></a>').join('')
     +'<a href="https://fsjpa.uiz.ac.ma/" target="_blank" rel="noopener"><span class="os">🌐</span><span>الصفحة الرسمية لكلية العلوم القانونية والسياسية — أكادير</span></a>';
 }
 
@@ -780,7 +781,7 @@ function renderUniversity(){
   const row=(it,gk)=>{
     const internal=/^(fac|schools|cities)$/.test(gk||'');
     const idx=internal?(_uniRows.push(it)-1):-1;
-    return '<a href="'+esc(it.u)+'"'+(internal?' data-uni="'+idx+'"':'')+' target="_blank" rel="noopener"><span class="os">'+esc(it.s||'')+'</span><span><b>'+esc(mainOf(it))+'</b>'+(subOf(it)?'<small>'+esc(subOf(it))+'</small>':'')+'</span></a>';
+    return '<a href="'+surl(it.u)+'"'+(internal?' data-uni="'+idx+'"':'')+' target="_blank" rel="noopener"><span class="os">'+esc(it.s||'')+'</span><span><b>'+esc(mainOf(it))+'</b>'+(subOf(it)?'<small>'+esc(subOf(it))+'</small>':'')+'</span></a>';
   };
   let html='<div class="official-banner">'+t('uni.banner')+'</div>';
   html+='<h2 class="uni-h">🎓 '+esc(t('uni.h'))+'</h2>';
@@ -953,13 +954,13 @@ function showUniDetail(it){
     const res=(P.resources||[]).filter(x=>x&&x.url);
     if(res.length){
       b+='<div class="ud-sec"><h4>'+esc(t('uni.detail.useful'))+'</h4><div class="ud-res">'
-        +res.slice(0,14).map(x=>'<a href="'+esc(portalFixUrl(x.url))+'" target="_blank" rel="noopener">🔗 '+esc(x.label||x.url)+'</a>').join('')
+        +res.slice(0,14).map(x=>'<a href="'+surl(portalFixUrl(x.url))+'" target="_blank" rel="noopener">🔗 '+esc(x.label||x.url)+'</a>').join('')
         +'</div></div>';
     }
   }
   b+='<div class="ud-actions">'
-    +'<a class="pri" href="'+esc(portalFixUrl(it.u||(inst&&inst.website_url)||'#'))+'" target="_blank" rel="noopener">'+esc(t('uni.detail.open'))+'</a>'
-    +((P&&P.uiz_url)?'<a class="sec" href="'+esc(portalFixUrl(P.uiz_url))+'" target="_blank" rel="noopener">'+esc(t('uni.detail.uiz'))+'</a>':'')
+    +'<a class="pri" href="'+surl(portalFixUrl(it.u||(inst&&inst.website_url)||'#'))+'" target="_blank" rel="noopener">'+esc(t('uni.detail.open'))+'</a>'
+    +((P&&P.uiz_url)?'<a class="sec" href="'+surl(portalFixUrl(P.uiz_url))+'" target="_blank" rel="noopener">'+esc(t('uni.detail.uiz'))+'</a>':'')
     +((inst||it.s)?'<a class="sec" href="#p-university" data-ud-find="'+esc((inst&&inst.abbreviation)||it.s||'')+'">'+esc(t('uni.detail.find'))+'</a>':'')
     +'</div>';
   ov.querySelector('.uni-dbody').innerHTML=b;
@@ -1042,7 +1043,7 @@ function renderFormations(){
   box.innerHTML=shown.map(it=>{
     const et=etabs[it.x]||{};
     const meta=[it.d,(it.l?it.l:'')].filter(Boolean).join(' · ');
-    return '<a class="uni-res" href="'+esc(it.u)+'" target="_blank" rel="noopener">'
+    return '<a class="uni-res" href="'+surl(it.u)+'" target="_blank" rel="noopener">'
       +'<span class="uni-res-n">'+esc(it.n)+'</span>'
       +'<span class="uni-res-m">'+esc(meta)+' — '+esc(et.a||et.e||'')+(et.c?' ('+esc(et.c)+')':'')+'</span></a>';
   }).join('')+(list.length>CAP?'<p class="uni-hint">'+esc(t('uni.form.more'))+'</p>':'');
@@ -1075,7 +1076,8 @@ async function loadCampusAnnouncements(){
     list.innerHTML=shown.map(a=>{
       const meta=[a.etablissement,a.updated_at||a.date].filter(Boolean).map(esc).join(' · ');
       const body=a.body?'<p style="white-space:pre-wrap;line-height:1.8;margin:0 0 8px">'+esc(a.body)+'</p>':'';
-      const link=a.url?'<a href="'+esc(a.url)+'" target="_blank" rel="noopener noreferrer" style="font-weight:700;white-space:nowrap">'+t('ann.source')+'</a>':'';
+      const _u=typeof CHRVVIM_SAFE_URL==='function'?CHRVVIM_SAFE_URL(a.url):a.url;
+      const link=_u?'<a href="'+esc(_u)+'" target="_blank" rel="noopener noreferrer" style="font-weight:700;white-space:nowrap">'+t('ann.source')+'</a>':'';
       return '<article style="padding:14px;margin:12px 0;border:1px solid var(--line);border-radius:12px;background:var(--soft)"><h3 style="margin:0 0 8px">'+esc(a.title)+'</h3>'+body+'<div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;justify-content:space-between">'+(meta?'<small class="muted">'+meta+'</small>':'<span></span>')+link+'</div></article>';
     }).join('')+more;
   };
@@ -1295,18 +1297,6 @@ function initScrollUI(){
   const cv=document.getElementById('cvPrint');
   if(cv) cv.addEventListener('click',()=>window.print());
   loadCampusAnnouncements();
-
-  // ===== دخول المسؤول المخفي (خاص بالمالك فقط) =====
-  // لا يوجد أي رابط ظاهر للوحة. ثلاث طرق: اختصار Ctrl/Cmd+Shift+A، أو 3 نقرات على التذييل، أو فتح #admin.
-  // الأمان الحقيقي هو تسجيل الدخول إلى Supabase Auth؛ هذا إخفاء فقط.
-  (function ownerAccess(){
-    const go=()=>{ location.href='admin.html'; };
-    let n=0,timer=null;
-    const foot=document.getElementById('siteFooter');
-    if(foot) foot.addEventListener('click',()=>{ n++; clearTimeout(timer); timer=setTimeout(()=>{n=0},700); if(n>=3){ n=0; go(); } });
-    window.addEventListener('keydown',e=>{ if((e.ctrlKey||e.metaKey)&&e.shiftKey&&(e.key==='A'||e.key==='a')){ e.preventDefault(); go(); } });
-    if(location.hash==='#admin') go();
-  })();
 
 /* ===================== تحسين التركيز بلوحة المفاتيح ===================== */
 document.addEventListener('DOMContentLoaded',()=>{

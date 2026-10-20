@@ -324,6 +324,8 @@
   function tt(k) { var l = curLang(); return (TXT[l] && TXT[l][k]) || TXT.ar[k] || k; }
   function nm(o) { return textOf(o, curLang()); }
   function E(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]); }); }
+  /* حاجز عناوين: يمنع javascript:/data:/vbscript: في الروابط المستمدّة من البيانات. */
+  function SU(u) { try { return (typeof window.CHRVVIM_SAFE_URL === 'function') ? window.CHRVVIM_SAFE_URL(u) : u; } catch (e) { return ''; } }
   function labelOf(list, id) { var a = asArray(list); for (var i = 0; i < a.length; i++) { if (a[i].id === id) return nm(a[i].label) || id; } return id || ''; }
 
   var data = window.CHRVVIM_LEGAL || null;
@@ -359,7 +361,7 @@
     var ver = effectiveVerification(doc, src);
     var tags = asArray(doc.tags).map(function (t) { return '<span class="chip g">' + E(t) + '</span>'; }).join(' ');
     var srcLink = src && src.url
-      ? '<a class="btn sec small" href="' + E(src.url) + '" target="_blank" rel="noopener noreferrer">🔗 ' + E(tt('sourceLink')) + '</a>'
+      ? '<a class="btn sec small" href="' + SU(E(src.url)) + '" target="_blank" rel="noopener noreferrer">🔗 ' + E(tt('sourceLink')) + '</a>'
       : '<span class="chip warn">' + E(tt('noSource')) + '</span>';
     return '<article class="card mini legal-card">' +
       '<div class="legal-card__head"><h4>' + E(nm(doc.title)) + '</h4>' + verificationChip(ver) + '</div>' +
@@ -384,7 +386,7 @@
     var list = asArray(data && data.sources);
     if (!list.length) return '';
     var rows = list.map(function (s) {
-      var link = s.url ? '<a href="' + E(s.url) + '" target="_blank" rel="noopener noreferrer">' + E(tt('sourceLink')) + '</a>' : '';
+      var link = s.url ? '<a href="' + SU(E(s.url)) + '" target="_blank" rel="noopener noreferrer">' + E(tt('sourceLink')) + '</a>' : '';
       var note = nm(s.note);
       return '<li class="legal-source">' + verificationChip(s.verification || 'pending') +
         '<div><b>' + E(nm(s.name)) + '</b>' + (nm(s.authority) && nm(s.authority) !== nm(s.name) ? ' <span class="muted">· ' + E(nm(s.authority)) + '</span>' : '') +

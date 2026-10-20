@@ -11,6 +11,9 @@
 
   function T(k, fb) { try { if (window.CHRVVIM_PAGE) return window.CHRVVIM_PAGE.t(k); } catch (e) {} return fb; }
 
+  /* حاجز عناوين: يمنع javascript:/data:/vbscript: في الروابط المستمدّة من البيانات. */
+  function safeUrl(u) { try { return (typeof window.CHRVVIM_SAFE_URL === 'function') ? window.CHRVVIM_SAFE_URL(u) : u; } catch (e) { return ''; } }
+
   var FALLBACK = {
     all: 'الكل', typeFac: 'كليات', typeSchool: 'مدارس', typeInst: 'معاهد',
     oneFac: 'كلية', oneSchool: 'مدرسة', oneInst: 'معهد',
@@ -111,6 +114,8 @@
         // so a faculty with a known official site never appears "unavailable".
         var url = firstOf(res, kind) || (kind === 'site' ? r.website_url : null);
         if (!url) return;
+        url = safeUrl(url);
+        if (!url) return;
         has = true;
         var a = document.createElement('a');
         a.href = url; a.target = '_blank'; a.rel = 'noopener noreferrer';
@@ -132,8 +137,9 @@
         u.textContent = T('ig.unavailable', FALLBACK.unavailable);
         links.appendChild(u);
         if (r.official_source_url) {
+          var _su = safeUrl(r.official_source_url);
           var sp2 = document.createElement('a');
-          sp2.href = r.official_source_url; sp2.target = '_blank'; sp2.rel = 'noopener noreferrer';
+          if (_su) { sp2.href = _su; sp2.target = '_blank'; sp2.rel = 'noopener noreferrer'; }
           sp2.textContent = T('ig.sourcePage', FALLBACK.sourcePage);
           sp2.setAttribute('aria-label', T('ig.sourcePage', FALLBACK.sourcePage) + ' — ' + nameOf(r));
           links.appendChild(sp2);

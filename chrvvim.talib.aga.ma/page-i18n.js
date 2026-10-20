@@ -1669,6 +1669,46 @@ window.CHRVVIM_PAGE=(function(){
 
   var LANGS=["ar","fr","en","zgh","zgh-latn"];
   var SPEC={"\u0627\u0644\u0645\u0647\u0646 \u0627\u0644\u0642\u0627\u0646\u0648\u0646\u064a\u0629 \u0648\u0627\u0644\u0642\u0636\u0627\u0626\u064a\u0629":"wa.spec.legal","\u0642\u0627\u0646\u0648\u0646 \u0627\u0644\u0645\u0627\u0644 \u0648\u0627\u0644\u0623\u0639\u0645\u0627\u0644":"wa.spec.business","\u0627\u0644\u0642\u0627\u0646\u0648\u0646 \u0627\u0644\u0645\u062f\u0646\u064a \u0648\u0627\u0644\u0639\u0642\u0627\u0631\u064a":"wa.spec.civil","\u0627\u0644\u0642\u0627\u0646\u0648\u0646 \u0627\u0644\u062c\u0646\u0627\u0626\u064a \u0648\u0627\u0644\u0639\u0644\u0648\u0645 \u0627\u0644\u0623\u0645\u0646\u064a\u0629":"wa.spec.criminal"};
+  /* مُطهِّر صارم للـ HTML المضمّن (allowlist): يسمح فقط بعناصر التنسيق الآمنة.
+     الحماية دفاعية (defense-in-depth): نصوص الترجمة ثابتة، لكن أي تمرير مستقبلي
+     لبيانات غير موثوقة لن يستطيع حقن <script> أو on*= أو javascript:. */
+  function sanitizeHtml(dirty){
+    var tpl=document.createElement("template");
+    tpl.innerHTML=String(dirty==null?"":dirty);
+    var ALLOWED={B:1,STRONG:1,I:1,EM:1,U:1,BR:1,SPAN:1,A:1,SMALL:1,SUP:1,SUB:1};
+    var SAFE_ATTR={A:{"href":1,"target":1,"rel":1,"title":1},SPAN:{"title":1}};
+    (function walk(node){
+      var kids=Array.prototype.slice.call(node.childNodes);
+      for(var i=0;i<kids.length;i++){
+        var n=kids[i];
+        if(n.nodeType===1){
+          if(!ALLOWED[n.tagName]){
+            /* عنصر غير مسموح: استبدله بنصّه فقط */
+            node.replaceChild(document.createTextNode(n.textContent||""),n);
+            continue;
+          }
+          var allowed=SAFE_ATTR[n.tagName]||{};
+          Array.prototype.slice.call(n.attributes).forEach(function(a){
+            var name=a.name.toLowerCase();
+            if(!allowed[name]){ n.removeAttribute(a.name); return; }
+            if(name==="href"){
+              var v=(a.value||"").replace(/[\u0000-\u0020]/g,"").toLowerCase();
+              if(v.indexOf("javascript:")===0||v.indexOf("data:")===0||v.indexOf("vbscript:")===0){
+                n.removeAttribute(a.name);
+              }
+            }
+          });
+          if(n.tagName==="A"&&n.getAttribute("target")==="_blank"){
+            n.setAttribute("rel","noopener noreferrer");
+          }
+          walk(n);
+        }
+      }
+    })(tpl.content);
+    return tpl.innerHTML;
+  }
+  try{ window.CHRVVIM_SANITIZE_HTML=sanitizeHtml; }catch(e){}
+
   function lang(){
     try{ var l=localStorage.getItem("cc_uilang")||"ar"; return LANGS.indexOf(l)<0?"ar":l; }catch(e){ return "ar"; }
   }
@@ -1680,7 +1720,7 @@ window.CHRVVIM_PAGE=(function(){
     document.querySelectorAll("[data-i18n],[data-i18n-html]").forEach(function(el){
       var k=el.getAttribute("data-i18n")||el.getAttribute("data-i18n-html");
       var v=t(k,l);
-      if(el.hasAttribute("data-i18n-html")) el.innerHTML=v; else el.textContent=v;
+      if(el.hasAttribute("data-i18n-html")) el.innerHTML=sanitizeHtml(v); else el.textContent=v;
     });
     document.querySelectorAll("[data-i18n-ph]").forEach(function(el){ el.setAttribute("placeholder",t(el.getAttribute("data-i18n-ph"),l)); });
     document.querySelectorAll("[data-i18n-aria]").forEach(function(el){ el.setAttribute("aria-label",t(el.getAttribute("data-i18n-aria"),l)); });

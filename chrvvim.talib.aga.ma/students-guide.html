@@ -3,7 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>دليل طلبة جامعة ابن زهر - أكادير</title>
+<title>دليل طلبة جامعة ابن زهر - أكادير</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/assets/chrvvim-icon.svg"><script src="/security-hardening.js"></script>
+<meta name="description" content="دليل طلبة جامعة ابن زهر بأكادير: الكليات والمدارس والمعاهد وروابطها الرسمية، خدمات الطلبة، والمعلومات الأكاديمية في صفحة واحدة سريعة.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta property="og:type" content="website">
+<meta property="og:title" content="دليل طلبة جامعة ابن زهر - أكادير">
+<meta property="og:description" content="دليل طلبة جامعة ابن زهر بأكادير: الكليات والمدارس والمعاهد وروابطها الرسمية وخدمات الطلبة.">
+<meta name="twitter:card" content="summary_large_image">
 <style>
   :root { --bg:#f6f7f9; --card:#fff; --text:#1a1d21; --muted:#5f6b76; --accent:#0b6e4f; --border:#e1e5ea; }
   @media (prefers-color-scheme: dark) {
@@ -163,10 +169,38 @@ renderChips(); renderGrid(); loadAnnouncements();
 .social-strip .ss-close{margin-inline-start:auto;background:none;border:0;color:var(--muted,#666);cursor:pointer;font-size:18px;line-height:1}
 .social-strip.hidden{display:none}
 @media(max-width:600px){.social-strip{gap:8px;padding:6px 12px;font-size:12px}}
+
+.nav-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  flex-direction: row;
+  border-radius: 0;
+  z-index: 1000;
+}
+
+body {
+  padding-bottom: 70px;
+}
+
+/* Touch targets (WCAG 2.2 — Target Size): enlarge standalone controls on
+   coarse pointers; inline links inside running text stay untouched. */
+@media (pointer: coarse) {
+  button,[role="button"],summary,input[type="checkbox"],input[type="radio"],
+  input[type="submit"],input[type="button"],input[type="reset"],
+  .chip,.pill,.badge,.btn,.card a,a.btn,
+  nav a,.social-strip a,.quick-foot a,header a,.top a,.chrvvim-topbar a { min-height:24px; min-width:24px; }
+  nav a,footer a,.social-strip a,.quick-foot a,header a,.top a,.chrvvim-topbar a {
+    display:inline-flex; align-items:center; padding-block:max(6px,.35em);
+  }
+}
 </style>
 <div class="social-strip" id="socialStrip" role="complementary" aria-label="حسابات المؤسس">
   <span>تواصل:</span>
-  <a href="https://github.com/mr1mohamed1chraim" target="_blank" rel="noopener" aria-label="GitHub">GitHub</a>
   <a href="https://www.instagram.com/mr1mohamed1chraim" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a>
   <a href="https://www.linkedin.com/in/mr1mohamed1chraim" target="_blank" rel="noopener" aria-label="LinkedIn">LinkedIn</a>
   <a href="mailto:mr1mohamed1chraim@gmail.com" aria-label="Email">Email</a>

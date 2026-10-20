@@ -1,0 +1,9 @@
+# Admin project is deny-by-default: only the panel and its assets are reachable.
+# Everything else → 404 (no information disclosure).
+
+/admin.html     /admin.html 200
+/admin.js       /admin.js 200
+/               /admin.html 200
+/index.html     /admin.html 200
+
+/*  /404.html 404

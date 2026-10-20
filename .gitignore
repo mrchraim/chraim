@@ -1,0 +1,36 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.venv/
+venv/
+env/
+
+# --- Node ---
+node_modules/
+npm-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# --- Secrets / local env (NEVER commit) ---
+.env
+.env.*
+!.env.example
+*.secrets
+.secrets/
+wrangler.toml.local
+
+# --- Generated / reports (rebuildable) ---
+site_doctor_report/
+_dev/_reports/
+*.log
+
+# --- OS / editor ---
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/
+*.swp
+*~

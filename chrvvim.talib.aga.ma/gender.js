@@ -72,7 +72,9 @@
       el.textContent = apply(el.textContent);
     });
     document.querySelectorAll('[data-i18n-html]').forEach(function (el) {
-      el.innerHTML = apply(el.innerHTML);
+      var s = apply(el.innerHTML);
+      el.innerHTML = (typeof window.CHRVVIM_SANITIZE_HTML === 'function')
+        ? window.CHRVVIM_SANITIZE_HTML(s) : s;
     });
     document.querySelectorAll('[data-i18n-aria]').forEach(function (el) {
       el.setAttribute('aria-label', apply(el.getAttribute('aria-label') || ''));

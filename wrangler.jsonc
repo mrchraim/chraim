@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "efault -roject",
+  "name": "chrvvim-campus",
   "compatibility_date": "2026-10-12",
   "observability": {
     "enabled": true

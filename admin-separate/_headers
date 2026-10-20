@@ -1,0 +1,36 @@
+/*
+  # Admin Panel Security Headers — Enterprise Grade
+  # CSP hash-based (no unsafe-inline). Re-run tools/build_csp.py --admin after ANY inline change.
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: no-referrer
+  Permissions-Policy: accelerometer=(), autoplay=(), camera=(), display-capture=(), encrypted-media=(), fullscreen=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), screen-wake-lock=(), usb=()
+  Cross-Origin-Opener-Policy: same-origin
+  Cross-Origin-Resource-Policy: same-origin
+  Cross-Origin-Embedder-Policy: require-corp
+  X-Permitted-Cross-Domain-Policies: none
+  X-DNS-Prefetch-Control: off
+  Content-Security-Policy: default-src 'self'; script-src 'self' https://cdn.jsdelivr.net 'sha256-JT8j+Yj5yjteifn2hIdAxd0TC5oQQOQnOXON9x7Xf+M=' 'sha256-UBkgYIttyyhKQSL1RihSm6YuO6NLKE4Mn8501OVbeSk='; style-src 'self' 'sha256-83KmBRa7EOsH0w24SIrIYtqRTAahWTMgUn9FrWSc5AE='; font-src 'self' data:; img-src 'self' data:; connect-src 'self' https://idpafbyefrywjixskvvu.supabase.co wss://idpafbyefrywjixskvvu.supabase.co; media-src 'none'; worker-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests; block-all-mixed-content; report-uri /cdn-cgi/csp-report
+  X-Robots-Tag: noindex, nofollow, noarchive, nosnippet, noimageindex
+  Cache-Control: no-store, no-cache, must-revalidate, max-age=0
+  Pragma: no-cache
+  Clear-Site-Data: "cache"
+
+# Admin app must never be cached or indexed
+/admin.html
+  Cache-Control: no-store, no-cache, must-revalidate, max-age=0
+  X-Robots-Tag: noindex, nofollow, noarchive, nosnippet, noimageindex
+
+/admin.js
+  Cache-Control: no-store, no-cache, must-revalidate, max-age=0
+  X-Robots-Tag: noindex, nofollow, noarchive
+
+/security-hardening.js
+  Cache-Control: no-store, no-cache, must-revalidate, max-age=0
+  X-Robots-Tag: noindex, nofollow, noarchive
+
+# Block source maps
+/*.map
+  X-Robots-Tag: noindex, nofollow, noarchive
+  Cache-Control: no-store, max-age=0

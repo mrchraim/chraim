@@ -1,20 +1,160 @@
-# CHRVVIM Campus — primary site response headers
+# CHRVVIM Campus — primary site response headers (Hardened)
 
 /*
-  X-Frame-Options: DENY
+  # Security Headers - Enterprise Grade
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
   X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
   Referrer-Policy: strict-origin-when-cross-origin
-  X-XSS-Protection: 1; mode=block
-  Permissions-Policy: camera=(), microphone=(), geolocation=()
-  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  Permissions-Policy: accelerometer=(), autoplay=(), camera=(), display-capture=(), encrypted-media=(), fullscreen=(self), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), screen-wake-lock=(), sync-xhr=(), usb=(), xr-spatial-tracking=()
   Cross-Origin-Opener-Policy: same-origin
-  Content-Security-Policy: frame-ancestors 'none'; base-uri 'self'; object-src 'none'; form-action 'self'
+  Cross-Origin-Resource-Policy: same-origin
+  Cross-Origin-Embedder-Policy: require-corp
+  X-Permitted-Cross-Domain-Policies: none
+  X-DNS-Prefetch-Control: off
+  # Trusted Types: تقليل خطر XSS من الأصل — المتصفح يمنع أي innerHTML
+  # بمحتوى غير موثوق، ويلزم تمريره عبر policy معرّفة. أي محاولة حقن تبلغ فورًا.
+  # نبدأ بـ Report-Only لتفادي كسر app.js (اللي كيستعمل innerHTML بشكل مقصود)،
+  # ومنراقبوا قبل التحويل لـ enforce. بعد التأكد: بدّل Report-Only → enforcing.
+  # report-uri: يوجَّه إلى /cdn-cgi/csp-report. إن لم يُفعَّل CSP Reporting في لوحة
+  # Cloudflare، تُهمَل التقارير بصمت (لا ضرر أمني — لا تُخزَّن ولا تُرسَل لجهة خارجية).
+  Content-Security-Policy-Report-Only: require-trusted-types-for 'script'; trusted-types default; report-uri /cdn-cgi/csp-report
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'sha256-2ctbFxMFmOmfWyhrLAFb3wJuwQbmBJP1CFFGTtm8JK4=' 'sha256-6NgQwDcLxIpDoBwX+G8Bh27RJPx24yNhpvaDmAAFB4Y=' 'sha256-AZfM6pxnImqHtFh+0SN80MRGkAZx/IqS6WY52DpuMFQ=' 'sha256-AkF21c3cELy9q8PkUaRdkK9UpjhkbN8ioRZ8yA07cmw=' 'sha256-DNme2Sog5JQjtyuxw12CPWoPX67im1gkAXvmf8KTv2g=' 'sha256-JcDccs05aYCrZn744vP7k/0cldeDNr9q1XK3JduHdXI=' 'sha256-LOdFTNIW1oWM0gWCDlmHlrsJZME0R4oCWuRNObbyXOQ=' 'sha256-Pf2XSSNi1MgvO+px5Hbdk1m9vZVtiIhhoR2OdQJ3qDU=' 'sha256-SVxscmrfv8N34esV2gMVMVu0aNRoodrPFhi8c0d1wmk=' 'sha256-bHJ9LQikhTKsAdQhCEx1rwADYYwxx5utvG4mWDjzLhk=' 'sha256-bvX6/dKkGLQgdPWbKSEuyPh9U8BB/WgWtS4rNUh5dIg=' 'sha256-sUqHbNlm6Xv2LZoStH8PIgfJ5dNfxiQw6BxTwUw1ITA='; style-src 'self' https://fonts.googleapis.com 'sha256-+bKvIVA4YVNGZ5YKrw/3u3CF0CmtCZs7HGZlmNHWetk=' 'sha256-6/JImBeISTLwOpE/jaRmKuoRnl150zuWq0mp2VZLFyc=' 'sha256-6rvC6hbxXbfj8rty76SdUsBb4O/I/VjPOMeOiMC2IJ4=' 'sha256-74tLymIZpa1gadhq+7S/aEYv1uOuJFDAMqybc2Mcbt4=' 'sha256-KNAWWRP/9WAxo4pxhUZnQyMiYufqY0Vl1FHm7mQvGnM=' 'sha256-M3aNgcIc8WpZ6tCak8ia+ohW8aZKHLB0Ff2ISymL0Dg=' 'sha256-PT67nSKixc4W/5ndUWyzL809bK6j2evzURYMi7WWjbY=' 'sha256-SpRn8r4Ss04Qu2BIHSCwjfAWvGhuMtIIQprw1/ugJUM=' 'sha256-b3Fb8+6AcddjqpuvXqehSC+8UVquIYchU+3t8BQ0dxs=' 'sha256-cYvNGyy/ODqsWjBw0YumaNnLuyeGan9w93ryuyRWpd8=' 'sha256-f0E3NvZxpXPsYdZ90giv4967FpEe44/mbcbvmMX0e+o=' 'sha256-u1lU4U/ET9jvb+XtaCjWFuYyuBZW6/Ef/qbcbJGarZ8=' 'sha256-voOqPcYbV/aQiPBLFR0BqgdV2Qf0ASNmqBGQAzjoiN8=' 'sha256-x2GbWZ4zlpdoE8+HdbnZYKc6zYb16gO/S6eNKN6QaJQ='; font-src 'self' data: https://fonts.gstatic.com https://fonts.googleapis.com; img-src 'self' data: blob:; connect-src 'self' https://idpafbyefrywjixskvvu.supabase.co wss://idpafbyefrywjixskvvu.supabase.co; media-src 'self'; worker-src 'self'; manifest-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests; block-all-mixed-content; report-uri /cdn-cgi/csp-report
 
+# Block access to sensitive paths (404 + noindex + no-store)
+/.env
+  X-Robots-Tag: noindex, nofollow, noarchive
+  Cache-Control: no-store, max-age=0
+  Content-Type: text/plain
+
+/.env.*
+  X-Robots-Tag: noindex, nofollow, noarchive
+  Cache-Control: no-store, max-age=0
+  Content-Type: text/plain
+
+/.git/*
+  X-Robots-Tag: noindex, nofollow, noarchive
+  Cache-Control: no-store, max-age=0
+  X-Content-Type-Options: nosniff
+
+/*.map
+  X-Robots-Tag: noindex, nofollow, noarchive
+  Cache-Control: no-store, max-age=0
+
+/*.sql
+  X-Robots-Tag: noindex, nofollow, noarchive
+  Cache-Control: no-store, max-age=0
+  Content-Type: text/plain
+
+/*.bak
+  X-Robots-Tag: noindex, nofollow, noarchive
+  Cache-Control: no-store, max-age=0
+
+/*.log
+  X-Robots-Tag: noindex, nofollow, noarchive
+  Cache-Control: no-store, max-age=0
+
+# Block admin / management paths with noindex
+/admin
+  X-Robots-Tag: noindex, nofollow, noarchive
+  Cache-Control: no-store, max-age=0
+
+/admin/*
+  X-Robots-Tag: noindex, nofollow, noarchive
+  Cache-Control: no-store, max-age=0
+
+/dashboard
+  X-Robots-Tag: noindex, nofollow, noarchive
+  Cache-Control: no-store, max-age=0
+
+/dashboard/*
+  X-Robots-Tag: noindex, nofollow, noarchive
+  Cache-Control: no-store, max-age=0
+
+/wp-admin
+  X-Robots-Tag: noindex, nofollow, noarchive
+  Cache-Control: no-store, max-age=0
+
+/wp-admin/*
+  X-Robots-Tag: noindex, nofollow, noarchive
+  Cache-Control: no-store, max-age=0
+
+/wp-login.php
+  X-Robots-Tag: noindex, nofollow, noarchive
+  Cache-Control: no-store, max-age=0
+
+/wp-content/*
+  X-Robots-Tag: noindex, nofollow, noarchive
+  Cache-Control: no-store, max-age=0
+
+/xmlrpc.php
+  X-Robots-Tag: noindex, nofollow, noarchive
+  Cache-Control: no-store, max-age=0
+
+/phpmyadmin
+  X-Robots-Tag: noindex, nofollow, noarchive
+  Cache-Control: no-store, max-age=0
+
+/phpmyadmin/*
+  X-Robots-Tag: noindex, nofollow, noarchive
+  Cache-Control: no-store, max-age=0
+
+# Internal / non-public directories
+/_dev/*
+  X-Robots-Tag: noindex, nofollow, noarchive
+  Cache-Control: no-store, max-age=0
+
+/_reports/*
+  X-Robots-Tag: noindex, nofollow, noarchive
+  Cache-Control: no-store, max-age=0
+
+/_archive/*
+  X-Robots-Tag: noindex, nofollow, noarchive
+  Cache-Control: no-store, max-age=0
+
+/_backups/*
+  X-Robots-Tag: noindex, nofollow, noarchive
+  Cache-Control: no-store, max-age=0
+
+/backup/*
+  X-Robots-Tag: noindex, nofollow, noarchive
+  Cache-Control: no-store, max-age=0
+
+/supabase/*
+  X-Robots-Tag: noindex, nofollow, noarchive
+  Cache-Control: no-store, max-age=0
+
+/tools/*
+  X-Robots-Tag: noindex, nofollow, noarchive
+  Cache-Control: no-store, max-age=0
+
+/site_doctor_report/*
+  X-Robots-Tag: noindex, nofollow, noarchive
+  Cache-Control: no-store, max-age=0
+
+# Security.txt
+/.well-known/security.txt
+  Content-Type: text/plain; charset=utf-8
+  Cache-Control: public, max-age=86400
+
+# Long-term caching for static assets
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
 
+# Documents
 /documents/*
   Cache-Control: public, max-age=86400
 
+# Service worker must never be cached
+/sw.js
+  Cache-Control: no-store, max-age=0
+  X-Robots-Tag: noindex, nofollow
+
+# HTML must revalidate
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+  X-Robots-Tag: index, follow
+
 /index.html
   Cache-Control: public, max-age=0, must-revalidate
+  X-Robots-Tag: index, follow

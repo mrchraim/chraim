@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>رفيق الطالب - جامعة ابن زهر أكادير</title>
+<title>رفيق الطالب - جامعة ابن زهر أكادير</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/assets/chrvvim-icon.svg"><script src="/security-hardening.js"></script>
 <meta name="description" content="دليل الطالب بجامعة ابن زهر أكادير: الإعلانات، استعمالات الزمن، حاسبة المعدل، ومواعيد الامتحانات.">
 <style>
   :root{--bg:#f5f7f6;--card:#fff;--text:#16201c;--muted:#5d6b64;--accent:#0b6e4f;--accent-2:#e8f4ef;--border:#dfe6e2;--danger:#c0392b;--warn:#b7791f}
@@ -91,15 +91,15 @@
   <h2>جدولي الأسبوعي</h2>
   <div class="note">كتب هنا الحصص ديالك (الفوج، القسم/السكسيون، الأستاذ، القاعة). كيتحفظو فـ هاد الجهاز غير، وماكيتصيفطو لحتى شي سيرفر.</div>
   <form id="ttForm" class="form">
-    <div><label>اليوم</label><select id="ttDay"></select></div>
-    <div><label>من</label><input id="ttFrom" type="time" required></div>
-    <div><label>إلى</label><input id="ttTo" type="time" required></div>
-    <div><label>المادة</label><input id="ttSubj" required maxlength="60"></div>
-    <div><label>النوع</label><select id="ttKind"><option>CM</option><option>TD</option><option>TP</option><option>أخرى</option></select></div>
-    <div><label>الفوج</label><input id="ttGroup" maxlength="20" placeholder="G1"></div>
-    <div><label>القسم</label><input id="ttSect" maxlength="20" placeholder="A"></div>
-    <div><label>الأستاذ</label><input id="ttProf" maxlength="60"></div>
-    <div><label>القاعة / المدرج</label><input id="ttRoom" maxlength="30"></div>
+    <div><label for="ttDay">اليوم</label><select id="ttDay"></select></div>
+    <div><label for="ttFrom">من</label><input id="ttFrom" type="time" required></div>
+    <div><label for="ttTo">إلى</label><input id="ttTo" type="time" required></div>
+    <div><label for="ttSubj">المادة</label><input id="ttSubj" required maxlength="60"></div>
+    <div><label for="ttKind">النوع</label><select id="ttKind"><option>CM</option><option>TD</option><option>TP</option><option>أخرى</option></select></div>
+    <div><label for="ttGroup">الفوج</label><input id="ttGroup" maxlength="20" placeholder="G1"></div>
+    <div><label for="ttSect">القسم</label><input id="ttSect" maxlength="20" placeholder="A"></div>
+    <div><label for="ttProf">الأستاذ</label><input id="ttProf" maxlength="60"></div>
+    <div><label for="ttRoom">القاعة / المدرج</label><input id="ttRoom" maxlength="30"></div>
     <div><button class="btn" type="submit">زيد الحصة</button></div>
   </form>
   <div class="actions">
@@ -124,9 +124,9 @@
 <section id="todo">
   <h2>الامتحانات والمواعيد</h2>
   <form id="tdForm" class="form">
-    <div style="grid-column:span 2"><label>شنو؟</label><input id="tdTitle" required maxlength="80" placeholder="امتحان الجبر 1"></div>
-    <div><label>النوع</label><select id="tdKind"><option>امتحان</option><option>فرض / TP</option><option>تسليم مشروع</option><option>أخرى</option></select></div>
-    <div><label>التاريخ</label><input id="tdDate" type="date" required></div>
+    <div style="grid-column:span 2"><label for="tdTitle">شنو؟</label><input id="tdTitle" required maxlength="80" placeholder="امتحان الجبر 1"></div>
+    <div><label for="tdKind">النوع</label><select id="tdKind"><option>امتحان</option><option>فرض / TP</option><option>تسليم مشروع</option><option>أخرى</option></select></div>
+    <div><label for="tdDate">التاريخ</label><input id="tdDate" type="date" required></div>
     <div><button class="btn" type="submit">زيد</button></div>
   </form>
   <ul id="tdList" class="list"></ul>
@@ -318,10 +318,42 @@ window.addEventListener("hashchange", () => showTab(location.hash.slice(1)));
 .social-strip .ss-close{margin-inline-start:auto;background:none;border:0;color:var(--muted,#666);cursor:pointer;font-size:18px;line-height:1}
 .social-strip.hidden{display:none}
 @media(max-width:600px){.social-strip{gap:8px;padding:6px 12px;font-size:12px}}
+
+.nav-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  flex-direction: row;
+  border-radius: 0;
+  z-index: 1000;
+}
+
+body {
+  padding-bottom: 70px;
+}
+
+/* Touch targets (WCAG 2.2 — Target Size): enlarge standalone controls on
+   coarse pointers; inline links inside running text stay untouched. */
+@media (pointer: coarse) {
+  button,[role="button"],summary,input[type="checkbox"],input[type="radio"],
+  input[type="submit"],input[type="button"],input[type="reset"],
+  .chip,.pill,.badge,.btn,.card a,a.btn,
+  nav a,.social-strip a,.quick-foot a,header a,.top a { min-height:24px; min-width:24px; }
+  nav a,footer a,.social-strip a,.quick-foot a,header a,.top a,.chrvvim-topbar a {
+    display:inline-flex; align-items:center; padding-block:max(6px,.35em);
+  }
+  /* .links a مضبوطة أصلًا بـ inline-block — نضيف حشوًا رأسيًا فقط لبلوغ 24px */
+  .links a { display:inline-flex; align-items:center; min-height:24px; padding-block:5px; }
+  /* روابط مستقلة داخل البطاقات (قائمة خدمات الطالب) */
+  .card > a, .card > div > a { display:inline-flex; align-items:center; min-height:24px; padding-block:5px; }
+}
 </style>
 <div class="social-strip" id="socialStrip" role="complementary" aria-label="حسابات المؤسس">
   <span>تواصل:</span>
-  <a href="https://github.com/mr1mohamed1chraim" target="_blank" rel="noopener" aria-label="GitHub">GitHub</a>
   <a href="https://www.instagram.com/mr1mohamed1chraim" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a>
   <a href="https://www.linkedin.com/in/mr1mohamed1chraim" target="_blank" rel="noopener" aria-label="LinkedIn">LinkedIn</a>
   <a href="mailto:mr1mohamed1chraim@gmail.com" aria-label="Email">Email</a>

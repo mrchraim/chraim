@@ -95,28 +95,6 @@ function tabsA11y() {
   });
 }
 
-// --- دخول المسؤول المخفي (خاص بالمالك فقط) ------------------------------
-// لا يوجد أي رابط ظاهر للوحة. ثلاث طرق: Ctrl/Cmd+Shift+A، أو 3 نقرات على
-// التذييل، أو فتح #admin. الأمان الحقيقي هو المصادقة على الخادم؛ هذا إخفاء فقط.
-function ownerAccess() {
-  const go = () => { location.href = 'admin/'; };
-  let n = 0;
-  let timer = null;
-  const foot = $('#siteFooter');
-  if (foot) {
-    foot.addEventListener('click', () => {
-      n += 1;
-      clearTimeout(timer);
-      timer = setTimeout(() => { n = 0; }, 700);
-      if (n >= 3) { n = 0; go(); }
-    });
-  }
-  window.addEventListener('keydown', (e) => {
-    if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'A' || e.key === 'a')) { e.preventDefault(); go(); }
-  });
-  if (location.hash === '#admin') go();
-}
-
 // --- تحميل البيانات ----------------------------------------------------
 let failed = false;
 async function boot() {
@@ -296,7 +274,6 @@ fillLangSelect();
 applyI18n();
 tabsA11y();
 wire();
-ownerAccess();
 wireInstall();
 wireServiceWorker();
 $('#footerYear').textContent = new Date().getFullYear();

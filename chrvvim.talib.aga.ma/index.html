@@ -4,8 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#0b1220">
+<script src="/security-hardening.js"></script>
   <link rel="manifest" href="manifest.json">
-<title>دليل الطلبة أكادير — مؤسسات جامعة ابن زهر وأدوات كلية الحقوق | CHRVVIM Campus</title>
+<title>دليل الطلبة أكادير — جامعة ابن زهر | CHRVVIM Campus</title>
 <meta name="description" content="دليل الطلبة أكادير: بوابة شاملة لمؤسسات جامعة ابن زهر (الكليات والمدارس والمعاهد وروابطها الرسمية) مع أدوات كلية العلوم القانونية والسياسية بأكادير — الأفواج، استعمالات الزمن، الوثائق، المكتبة القانونية وحاسبة المعدل. موقع طلابي مستقل غير رسمي من تطوير محمد شرايم.">
 <meta name="keywords" content="دليل الطلبة أكادير, دليل الطالب أكادير, دليل طلبة الحقوق أكادير, كلية العلوم القانونية والسياسية أكادير, جامعة ابن زهر, الأفواج, استعمالات الزمن, CHRVVIM">
 <meta name="geo.region" content="MA-09">
@@ -30,6 +31,8 @@
 <meta name="twitter:description" content="دليل الطلبة أكادير: بوابة شاملة لمؤسسات جامعة ابن زهر (الكليات والمدارس والمعاهد وروابطها الرسمية) مع أدوات كلية العلوم القانونية والسياسية بأكادير: الأفواج، استعمالات الزمن، الوثائق وحاسبة المعدل. موقع طلابي مستقل غير رسمي.">
 <meta name="twitter:image" content="/assets/founder.jpg">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b2a6f'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' fill='%23f6dd8e'%3E%E2%9A%96%3C/text%3E%3C/svg%3E">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/assets/chrvvim-icon.svg">
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/ibm-plex-sans-arabic-400-arabic.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/ibm-plex-sans-arabic-400-latin.woff2" crossorigin>
 <link rel="stylesheet" href="/assets/fonts/fonts.css">
@@ -1334,7 +1337,7 @@ main#main > .configbar{margin-block-end:10px!important}
   <div class="hero-actions" aria-label="روابط رئيسية" data-i18n-aria="aria.heroActions">
     <a class="hero-action primary" href="#homeQuick"><span data-i18n="hero.cta">ابدأ من هنا — كل خدمات المنصة</span> <span aria-hidden="true">↓</span></a>
   </div>
-  <a class="hfound" id="hf"><img id="hfi" alt="محمد شرايم" width="42" height="42" decoding="async"><span>من تطوير <b>محمد شرايم</b> · مؤسس CHRVVIM</span></a>
+  <a class="hfound" id="hf"><img id="hfi" src="/assets/founder.jpg" alt="محمد شرايم" width="42" height="42" decoding="async"><span>من تطوير <b>محمد شرايم</b> · مؤسس CHRVVIM</span></a>
   <div class="stats">
     <div class="stat"><b id="sTracks">0</b><span>مسلك ومسار</span></div>
     <div class="stat"><b id="sSess">0</b><span>حصة</span></div>
@@ -1858,6 +1861,23 @@ main#main > .configbar{margin-block-end:10px!important}
 .social-strip .ss-close{margin-inline-start:auto;background:none;border:0;color:var(--muted);cursor:pointer;font-size:18px;line-height:1}
 .social-strip.hidden{display:none}
 @media(max-width:600px){.social-strip{gap:8px;padding:6px 12px;font-size:12px}}
+
+.nav-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  flex-direction: row;      /* بدل column */
+  border-radius: 0;         /* إزالة الشكل البيضاوي */
+  z-index: 1000;
+}
+
+body {
+  padding-bottom: 70px;     /* حتى لا يغطي المحتوى */
+}
 .comments-scaffold{margin-top:14px}
 .comments-scaffold .c-form{display:grid;gap:8px;margin-bottom:12px}
 .comments-scaffold textarea{min-height:80px}
@@ -1868,7 +1888,6 @@ main#main > .configbar{margin-block-end:10px!important}
 </style>
 <div class="social-strip" id="socialStrip" role="complementary" aria-label="حسابات المؤسس">
   <span>تواصل:</span>
-  <a href="https://github.com/mr1mohamed1chraim" target="_blank" rel="noopener" aria-label="GitHub">GitHub</a>
   <a href="https://www.instagram.com/mr1mohamed1chraim" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a>
   <a href="https://www.linkedin.com/in/mr1mohamed1chraim" target="_blank" rel="noopener" aria-label="LinkedIn">LinkedIn</a>
   <a href="mailto:mr1mohamed1chraim@gmail.com" aria-label="Email">Email</a>

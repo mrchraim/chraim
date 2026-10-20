@@ -61,3 +61,24 @@ img, svg, video, canvas { max-width: 100%; }
   }
   .ticker-scrolling .ticker-text { animation: none !important; transform: none !important; }
 }
+
+/* Touch targets: on coarse pointers, ensure standalone controls meet the 24px
+   minimum (WCAG 2.2 — Target Size). Inline links inside running text are left
+   untouched so line height and reflow stay correct. */
+@media (pointer: coarse) {
+  :where(button, [role="button"], summary, input[type="checkbox"], input[type="radio"],
+         input[type="submit"], input[type="button"], input[type="reset"],
+         nav a, .tabs .tab, .tab, .chip, .pill, .badge, .doc, .soc a, .wa-join,
+         .hero-action, .quick-card, .card a, .btn, .links a, .social-strip a,
+         .quick-foot a, header a, .top a, [class*="close"], [id*="Close"]) {
+    min-height: 24px;
+    min-width: 24px;
+  }
+  /* Icon-only or standalone anchors that are not inside a paragraph get room. */
+  :where(nav a, .tabs .tab, .chip, .pill, .badge, .soc a, .wa-join, footer a,
+         .links a, .social-strip a, .quick-foot a, header a, .top a) {
+    display: inline-flex;
+    align-items: center;
+    padding-block: max(6px, .35em);
+  }
+}

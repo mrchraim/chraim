@@ -1,4 +1,29 @@
-# مجلد الإدارة: إعادة توجيه لضمان الشرطة المائلة حتى تعمل المسارات النسبية للأصول.
-/admin          /admin/            301
-/admin/         /admin/index.html  200
-/admin/*        /admin/index.html  200
+# CHRVVIM security redirects — integration preview (hardened)
+# ملاحظة: كود الإدارة أُزيل نهائيًا من هذه الحزمة (لوحة مستقلة على مشروع منفصل).
+
+# Block guessable admin / CMS / management paths (404 — no info disclosure)
+/admin           /404.html 404
+/admin/*         /404.html 404
+/administrator   /404.html 404
+/administrator/* /404.html 404
+/dashboard       /404.html 404
+/login           /404.html 404
+/signin          /404.html 404
+/wp-admin        /404.html 404
+/wp-login.php    /404.html 404
+/xmlrpc.php      /404.html 404
+/phpmyadmin      /404.html 404
+
+# Block sensitive files / secrets
+/.env            /404.html 404
+/.env.*          /404.html 404
+/.git            /404.html 404
+/.git/*          /404.html 404
+/*.sql           /404.html 404
+/*.bak           /404.html 404
+/*.log           /404.html 404
+/*.map           /404.html 404
+
+# Block internal / recon
+/.htaccess       /404.html 404
+/.DS_Store       /404.html 404
