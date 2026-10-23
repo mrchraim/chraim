@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHRAIM | دليل العلوم القانونية والسياسية FSJP Agadir 2026-2027</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            800: '#112240',
+                            900: '#0B192C',
+                            950: '#060D17',
+                        },
+                        gold: {
+                            300: '#F3E5AB',
+                            400: '#E6CA65',
+                            500: '#D4AF37',
+                            600: '#AA8C2C',
+                        },
+                        obsidian: '#121212',
+                        ivory: '#FAF9F6',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'Alexandria', 'Cairo', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Alexandria', 'Inter', sans-serif;
+            background-color: #060D17;
+            color: #FAF9F6;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0B192C;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1E3A8A;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #D4AF37;
+        }
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #FFF0B9 0%, #D4AF37 50%, #997B19 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gold-border {
+            border-color: rgba(212, 175, 55, 0.3);
+        }
+        .glass-card {
+            background: rgba(11, 25, 44, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        .glass-card-hover {
+            transition: all 0.3s ease;
+        }
+        .glass-card-hover:hover {
+            border-color: rgba(212, 175, 55, 0.6);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(212, 175, 55, 0.15);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-gold-500 selection:text-navy-950">
+
+    <!-- Header Section -->
+    <header class="sticky top-0 z-50 glass-card border-b border-gold-500/20 shadow-2xl">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <div class="flex items-center space-x-3 space-x-reverse">
+                <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-gold-400 to-gold-600 p-0.5 shadow-lg flex items-center justify-center">
+                    <div class="w-full h-full bg-navy-950 rounded-[10px] flex items-center justify-center">
+                        <i class="fa-solid fa-scale-balanced text-gold-400 text-xl"></i>
+                    </div>
+                </div>
+                <div>
+                    <h1 class="text-xl font-bold tracking-wide gold-gradient-text">CHRAIM</h1>
+                    <p class="text-xs text-gray-400">دليل العلوم القانونية والسياسية FSJP Agadir</p>
+                </div>
+            </div>
+
+            <!-- Header Badge & Quick Links -->
+            <div class="hidden md:flex items-center space-x-4 space-x-reverse">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-gold-500/10 text-gold-400 border border-gold-500/30">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                    الموسم الجامعي 2026 - 2027
+                </span>
+                <button onclick="toggleDarkMode()" class="p-2 rounded-lg bg-navy-800 text-gold-400 hover:bg-navy-900 border border-gold-500/20 transition-all">
+                    <i class="fa-solid fa-moon text-lg" id="themeIcon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Transparency & Version Banner -->
+    <div class="bg-gradient-to-r from-navy-900 via-navy-800 to-navy-900 border-b border-gold-500/20 py-2.5 px-4">
+        <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between text-xs text-gray-300 gap-2">
+            <div class="flex items-center gap-2">
+                <span class="bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded border border-emerald-500/30 font-semibold">محين رسميًا</span>
+                <span class="text-gray-300"><i class="fa-solid fa-clock-rotate-left text-gold-400 ml-1"></i> تم تحديث استعملات الزمن حتى <strong>10 أكتوبر 2026</strong></span>
+            </div>
+            <div class="flex items-center gap-3">
+                <span class="text-gold-400"><i class="fa-solid fa-building-columns ml-1"></i>كلية العلوم القانونية والسياسية - أكادير</span>
+                <a href="#pdfSection" class="underline hover:text-gold-300 transition-colors"><i class="fa-solid fa-file-pdf ml-1"></i>تحميل المستندات الرسمية (17 PDF)</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow space-y-8">
+
+        <!-- Hero Welcome & Compound Name Note -->
+        <div class="relative overflow-hidden rounded-2xl glass-card p-6 sm:p-8 border border-gold-500/30 bg-gradient-to-br from-navy-900/90 via-navy-950 to-navy-900">
+            <div class="absolute -right-10 -bottom-10 w-60 h-60 bg-gold-500/5 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="relative z-10 space-y-4">
+                <div class="flex items-center gap-2 text-gold-400 text-sm font-semibold">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span>بوابة الطالب التفاعلية لمسلك القانون العام والخاص</span>
+                </div>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-white leading-tight">
+                    ابحث عن <span class="gold-gradient-text">فوجك ومجموعتك وقاعتك</span> بدقة عالية
+                </h2>
+                <p class="text-gray-300 text-sm leading-relaxed max-w-3xl">
+                    نظام مطور لمساعدة طلبة FSJP Agadir للموسم 2026-2027. يتيح لك النظام البحث بالاسم أو الاختيار المباشر لعرض أوقات المحاضرات والمدرجات والقاعات بدقة دون الحاجة للبحث اليدوي في ملفات PDF.
+                </p>
+
+                <!-- Compound Names Important Rule Note -->
+                <div class="mt-4 p-3.5 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-200 text-xs flex items-start gap-3">
+                    <i class="fa-solid fa-triangle-exclamation text-amber-400 text-base mt-0.5 shrink-0"></i>
+                    <div class="space-y-1">
+                        <strong class="font-bold text-amber-300 block">قاعدة ترتيب الأسماء المركبة (تنبيه مهم جداً من إدارة الكلية):</strong>
+                        <p class="text-gray-300">
+                            الأسماء المركبة والمصحوبة بفراغ تأتي دائماً <strong>قبل</strong> الأسماء غير المركبة.
+                            <br><span class="text-gray-400 font-mono text-[11px]">« Les lettres avec Espace (détachées) viennent toujours avant les lettres sans espace (attachées) »</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MAIN APP INTERACTION CONTAINER -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+
+            <!-- LEFT/MAIN COLUMN: Finder & Finder Results -->
+            <div class="lg:col-span-12 space-y-8">
+
+                <!-- FINDER CONTROLLER CARD -->
+                <div class="glass-card rounded-2xl p-6 border border-gold-500/20 space-y-6">
+                    <div class="flex flex-wrap items-center justify-between gap-4 border-b border-gray-800 pb-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-lg bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-400">
+                                <i class="fa-solid fa-magnifying-glass text-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-white">البحث الذكي عن الفوج والجدول الدراسي</h3>
+                                <p class="text-xs text-gray-400">اختر السداسي والمسلك أو أكتب نسبك اللاتيني للتعرف على فوجك فوريًا</p>
+                            </div>
+                        </div>
+
+                        <!-- Semester Switch Buttons -->
+                        <div class="flex p-1 bg-navy-950 rounded-xl border border-gold-500/20">
+                            <button id="btnS3" onclick="selectSemester('S3')" class="px-5 py-2 rounded-lg text-sm font-bold transition-all bg-gold-500 text-navy-950 shadow-md">
+                                <i class="fa-solid fa-layer-group ml-1"></i> السداسي 3 (S3)
+                            </button>
+                            <button id="btnS5" onclick="selectSemester('S5')" class="px-5 py-2 rounded-lg text-sm font-bold text-gray-400 hover:text-white transition-all">
+                                <i class="fa-solid fa-graduation-cap ml-1"></i> السداسي 5 (S5)
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- CONTROL FILTERS GRID -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+
+                        <!-- Filter 1: Pathway / Branch -->
+                        <div class="space-y-1.5">
+                            <label class="text-xs font-semibold text-gold-400 block"><i class="fa-solid fa-book-bookmark ml-1"></i> الشعبة / المسار التخصصي:</label>
+                            <select id="branchSelect" onchange="onBranchChange()" class="w-full bg-navy-950 border border-gold-500/30 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-gold-400 transition-colors">
+                                <!-- Populated dynamically by JS -->
+                            </select>
+                        </div>
+
+                        <!-- Filter 2: Section / Group dropdown -->
+                        <div class="space-y-1.5">
+                            <label class="text-xs font-semibold text-gold-400 block"><i class="fa-solid fa-users-rectangle ml-1"></i> الفوج / المجموعة:</label>
+                            <select id="sectionSelect" onchange="onSectionChange()" class="w-full bg-navy-950 border border-gold-500/30 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-gold-400 transition-colors">
+                                <!-- Populated dynamically by JS -->
+                            </select>
+                        </div>
+
+                        <!-- Filter 3: Surname Quick Lookup Engine -->
+                        <div class="space-y-1.5">
+                            <label class="text-xs font-semibold text-gold-400 block"><i class="fa-solid fa-font ml-1"></i> بحث تلقائي بالنسب اللاتيني (Surname):</label>
+                            <div class="relative">
+                                <input type="text" id="surnameInput" onkeyup="onSurnameSearch()" placeholder="مثال: AABACH أو EL MANSOURI..." class="w-full bg-navy-950 border border-gold-500/30 rounded-xl pr-3 pl-9 py-2.5 text-sm text-white focus:outline-none focus:border-gold-400 transition-colors placeholder:text-gray-500 uppercase">
+                                <i class="fa-solid fa-search absolute left-3 top-3 text-gray-500"></i>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Search Result Alert Badge -->
+                    <div id="searchAlert" class="hidden p-3 rounded-xl bg-gold-500/10 border border-gold-500/30 text-xs text-gold-300 flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-circle-info text-gold-400 text-sm"></i>
+                            <span id="searchAlertText">نتائج التعرف التلقائي على الفوج...</span>
+                        </div>
+                        <button onclick="clearSurnameSearch()" class="text-gray-400 hover:text-white text-xs underline">إلغاء البحث</button>
+                    </div>
+                </div>
+
+                <!-- STUDENT STATUS BADGE CARD -->
+                <div id="studentBadgeCard" class="glass-card rounded-2xl p-5 border border-gold-500/30 bg-gradient-to-r from-navy-900 via-navy-950 to-navy-900 flex flex-wrap items-center justify-between gap-4">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-2xl bg-gold-500/20 border border-gold-500/40 flex items-center justify-center text-gold-400 text-2xl shadow-inner">
+                            <i class="fa-solid fa-id-card"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs text-gray-400 block">وضع الطالب الحالي المختار</span>
+                            <h4 id="badgeTitle" class="text-lg font-bold text-white">القانون الخاص - الفوج A (المجموعات 1-2-3-4)</h4>
+                            <p id="badgeSub" class="text-xs text-gold-400 mt-0.5">النطاق الأبجدي للنسب: من AABACH إلى AIT BACH</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <button onclick="copyScheduleToClipboard()" class="px-3.5 py-2 rounded-xl bg-navy-800 hover:bg-navy-700 text-gold-400 border border-gold-500/20 text-xs font-semibold transition-all flex items-center gap-1.5">
+                            <i class="fa-regular fa-copy"></i> نسخ الجدول
+                        </button>
+                    </div>
+                </div>
+
+                <!-- WEEKLY SCHEDULE DISPLAY WITH DAY FILTER TABS -->
+                <div class="glass-card rounded-2xl p-6 border border-gold-500/20 space-y-6">
+                    <div class="flex flex-wrap items-center justify-between gap-4 border-b border-gray-800 pb-4">
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-calendar-days text-gold-400 text-lg"></i>
+                            <h3 class="text-lg font-bold text-white">جدول المحاضرات والحصص الأسبوعية</h3>
+                        </div>
+
+                        <!-- Days Selector Tabs -->
+                        <div class="flex flex-wrap gap-1 bg-navy-950 p-1 rounded-xl border border-gold-500/20 text-xs" id="dayTabs">
+                            <button onclick="filterByDay('ALL')" class="day-tab px-3 py-1.5 rounded-lg font-medium transition-all bg-gold-500 text-navy-950 font-bold" data-day="ALL">كل الأيام</button>
+                            <button onclick="filterByDay('الاثنين')" class="day-tab px-3 py-1.5 rounded-lg text-gray-300 hover:text-white transition-all" data-day="الاثنين">الاثنين</button>
+                            <button onclick="filterByDay('الثلاثاء')" class="day-tab px-3 py-1.5 rounded-lg text-gray-300 hover:text-white transition-all" data-day="الثلاثاء">الثلاثاء</button>
+                            <button onclick="filterByDay('الأربعاء')" class="day-tab px-3 py-1.5 rounded-lg text-gray-300 hover:text-white transition-all" data-day="الأربعاء">الأربعاء</button>
+                            <button onclick="filterByDay('الخميس')" class="day-tab px-3 py-1.5 rounded-lg text-gray-300 hover:text-white transition-all" data-day="الخميس">الخميس</button>
+                            <button onclick="filterByDay('الجمعة')" class="day-tab px-3 py-1.5 rounded-lg text-gray-300 hover:text-white transition-all" data-day="الجمعة">الجمعة</button>
+                            <button onclick="filterByDay('السبت')" class="day-tab px-3 py-1.5 rounded-lg text-gray-300 hover:text-white transition-all" data-day="السبت">السبت</button>
+                        </div>
+                    </div>
+
+                    <!-- TIMETABLE CARDS GRID -->
+                    <div id="scheduleGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <!-- Filled by JS -->
+                    </div>
+
+                    <!-- EMPTY STATE -->
+                    <div id="emptySchedule" class="hidden text-center py-12 space-y-3">
+                        <i class="fa-regular fa-calendar-xmark text-4xl text-gray-600"></i>
+                        <p class="text-gray-400 text-sm">لا توجد حصص مجدولة لهذا اليوم أو لهذا الفوج المحدد.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- OFFICIAL PDF REFERENCE DOCUMENTATION CENTER -->
+        <div id="pdfSection" class="glass-card rounded-2xl p-6 border border-gold-500/20 space-y-6">
+            <div class="flex items-center justify-between border-b border-gray-800 pb-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-lg bg-red-500/10 border border-red-500/30 flex items-center justify-center text-red-400">
+                        <i class="fa-solid fa-file-pdf text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-white">مركز الوثائق والملفات الرسمية (17 PDF)</h3>
+                        <p class="text-xs text-gray-400">جميع اللوائح واستعمالات الزمن الصادرة رسمياً عن الكلية للموسم 2026-2027</p>
+                    </div>
+                </div>
+                <span class="text-xs bg-navy-950 px-3 py-1 rounded-full border border-gold-500/20 text-gold-400">محدثة وموثقة</span>
+            </div>
+
+            <!-- PDF CARDS GRID -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                
+                <!-- PDF 1 -->
+                <div class="p-4 rounded-xl bg-navy-950/80 border border-gold-500/20 glass-card-hover flex items-start justify-between">
+                    <div class="space-y-1">
+                        <span class="text-[10px] font-bold text-gold-400 bg-gold-500/10 px-2 py-0.5 rounded border border-gold-500/20">S3 - قانون عام فرنسية</span>
+                        <h4 class="text-xs font-bold text-white leading-snug">توزيع أفواج السداسي الثالث - قانون عام فرنسية</h4>
+                        <p class="text-[11px] text-gray-400">أفواج Fr-A, Fr-B</p>
+                    </div>
+                    <a href="#" onclick="showPdfNotice('توزيع أفواج السداسي الثالث - قانون عام فرنسية')" class="p-2 rounded-lg bg-navy-800 text-gold-400 hover:bg-gold-500 hover:text-navy-950 transition-all">
+                        <i class="fa-solid fa-download text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- PDF 2 -->
+                <div class="p-4 rounded-xl bg-navy-950/80 border border-gold-500/20 glass-card-hover flex items-start justify-between">
+                    <div class="space-y-1">
+                        <span class="text-[10px] font-bold text-gold-400 bg-gold-500/10 px-2 py-0.5 rounded border border-gold-500/20">S3 - قانون خاص</span>
+                        <h4 class="text-xs font-bold text-white leading-snug">توزيع أفواج السداسي الثالث - قانون خاص</h4>
+                        <p class="text-[11px] text-gray-400">14 فوجاً (A-N) - مجموعات 1-56</p>
+                    </div>
+                    <a href="#" onclick="showPdfNotice('توزيع أفواج السداسي الثالث - قانون خاص')" class="p-2 rounded-lg bg-navy-800 text-gold-400 hover:bg-gold-500 hover:text-navy-950 transition-all">
+                        <i class="fa-solid fa-download text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- PDF 3 -->
+                <div class="p-4 rounded-xl bg-navy-950/80 border border-gold-500/20 glass-card-hover flex items-start justify-between">
+                    <div class="space-y-1">
+                        <span class="text-[10px] font-bold text-gold-400 bg-gold-500/10 px-2 py-0.5 rounded border border-gold-500/20">S3 - قانون عام عربية</span>
+                        <h4 class="text-xs font-bold text-white leading-snug">توزيع أفواج السداسي الثالث - قانون عام عربية</h4>
+                        <p class="text-[11px] text-gray-400">أفواج A, B, C, D</p>
+                    </div>
+                    <a href="#" onclick="showPdfNotice('توزيع أفواج السداسي الثالث - قانون عام عربية')" class="p-2 rounded-lg bg-navy-800 text-gold-400 hover:bg-gold-500 hover:text-navy-950 transition-all">
+                        <i class="fa-solid fa-download text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- PDF 4 -->
+                <div class="p-4 rounded-xl bg-navy-950/80 border border-gold-500/20 glass-card-hover flex items-start justify-between">
+                    <div class="space-y-1">
+                        <span class="text-[10px] font-bold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">S3 - جدول أوقات</span>
+                        <h4 class="text-xs font-bold text-white leading-snug">استعمال الزمن الفصل 3 شعبة القانون العام</h4>
+                        <p class="text-[11px] text-gray-400">جدول المحاضرات والقاعات S3</p>
+                    </div>
+                    <a href="#" onclick="showPdfNotice('استعمال الزمن الفصل 3 شعبة القانون العام')" class="p-2 rounded-lg bg-navy-800 text-gold-400 hover:bg-gold-500 hover:text-navy-950 transition-all">
+                        <i class="fa-solid fa-download text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- PDF 5 -->
+                <div class="p-4 rounded-xl bg-navy-950/80 border border-gold-500/20 glass-card-hover flex items-start justify-between">
+                    <div class="space-y-1">
+                        <span class="text-[10px] font-bold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">S3 - جدول أوقات</span>
+                        <h4 class="text-xs font-bold text-white leading-snug">استعمال الزمن الفصل 3 شعبة القانون الخاص</h4>
+                        <p class="text-[11px] text-gray-400">جدول المحاضرات والمدرجات S3</p>
+                    </div>
+                    <a href="#" onclick="showPdfNotice('استعمال الزمن الفصل 3 شعبة القانون الخاص')" class="p-2 rounded-lg bg-navy-800 text-gold-400 hover:bg-gold-500 hover:text-navy-950 transition-all">
+                        <i class="fa-solid fa-download text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- PDF 6 -->
+                <div class="p-4 rounded-xl bg-navy-950/80 border border-gold-500/20 glass-card-hover flex items-start justify-between">
+                    <div class="space-y-1">
+                        <span class="text-[10px] font-bold text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded border border-blue-500/20">S5 - مهن قانونية</span>
+                        <h4 class="text-xs font-bold text-white leading-snug">توزيع أفواج السداسي 5 - المهن القانونية والقضائية</h4>
+                        <p class="text-[11px] text-gray-400">8 أفواج (A-H)</p>
+                    </div>
+                    <a href="#" onclick="showPdfNotice('توزيع أفواج S5 المهن القانونية والقضائية')" class="p-2 rounded-lg bg-navy-800 text-gold-400 hover:bg-gold-500 hover:text-navy-950 transition-all">
+                        <i class="fa-solid fa-download text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- PDF 7 -->
+                <div class="p-4 rounded-xl bg-navy-950/80 border border-gold-500/20 glass-card-hover flex items-start justify-between">
+                    <div class="space-y-1">
+                        <span class="text-[10px] font-bold text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded border border-blue-500/20">S5 - مال وأعمال</span>
+                        <h4 class="text-xs font-bold text-white leading-snug">توزيع أفواج السداسي 5 - قانون المال والأعمال</h4>
+                        <p class="text-[11px] text-gray-400">3 أفواج (A, B, C)</p>
+                    </div>
+                    <a href="#" onclick="showPdfNotice('توزيع أفواج S5 قانون المال والأعمال')" class="p-2 rounded-lg bg-navy-800 text-gold-400 hover:bg-gold-500 hover:text-navy-950 transition-all">
+                        <i class="fa-solid fa-download text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- PDF 8 -->
+                <div class="p-4 rounded-xl bg-navy-950/80 border border-gold-500/20 glass-card-hover flex items-start justify-between">
+                    <div class="space-y-1">
+                        <span class="text-[10px] font-bold text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded border border-blue-500/20">S5 - مدني</span>
+                        <h4 class="text-xs font-bold text-white leading-snug">توزيع أفواج السداسي 5 - القانون المدني</h4>
+                        <p class="text-[11px] text-gray-400">3 أفواج (A, B, C)</p>
+                    </div>
+                    <a href="#" onclick="showPdfNotice('توزيع أفواج S5 القانون المدني')" class="p-2 rounded-lg bg-navy-800 text-gold-400 hover:bg-gold-500 hover:text-navy-950 transition-all">
+                        <i class="fa-solid fa-download text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- PDF 9 -->
+                <div class="p-4 rounded-xl bg-navy-950/80 border border-gold-500/20 glass-card-hover flex items-start justify-between">
+                    <div class="space-y-1">
+                        <span class="text-[10px] font-bold text-purple-400 bg-purple-500/10 px-2 py-0.5 rounded border border-purple-500/20">S5 - لغة إنجليزية</span>
+                        <h4 class="text-xs font-bold text-white leading-snug">توزيع أفواج S5 مدني - اللغة الإنجليزية</h4>
+                        <p class="text-[11px] text-gray-400">أفواج Ang-A, Ang-B</p>
+                    </div>
+                    <a href="#" onclick="showPdfNotice('توزيع أفواج S5 مدني إنجليزية')" class="p-2 rounded-lg bg-navy-800 text-gold-400 hover:bg-gold-500 hover:text-navy-950 transition-all">
+                        <i class="fa-solid fa-download text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- PDF 10 -->
+                <div class="p-4 rounded-xl bg-navy-950/80 border border-gold-500/20 glass-card-hover flex items-start justify-between">
+                    <div class="space-y-1">
+                        <span class="text-[10px] font-bold text-purple-400 bg-purple-500/10 px-2 py-0.5 rounded border border-purple-500/20">S5 - لغة إنجليزية</span>
+                        <h4 class="text-xs font-bold text-white leading-snug">توزيع أفواج S5 مهن قانونية - اللغة الإنجليزية</h4>
+                        <p class="text-[11px] text-gray-400">4 أفواج (Ang-A إلى Ang-D)</p>
+                    </div>
+                    <a href="#" onclick="showPdfNotice('توزيع أفواج S5 مهن إنجليزية')" class="p-2 rounded-lg bg-navy-800 text-gold-400 hover:bg-gold-500 hover:text-navy-950 transition-all">
+                        <i class="fa-solid fa-download text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- PDF 11 -->
+                <div class="p-4 rounded-xl bg-navy-950/80 border border-gold-500/20 glass-card-hover flex items-start justify-between">
+                    <div class="space-y-1">
+                        <span class="text-[10px] font-bold text-purple-400 bg-purple-500/10 px-2 py-0.5 rounded border border-purple-500/20">S5 - لغة إنجليزية</span>
+                        <h4 class="text-xs font-bold text-white leading-snug">توزيع أفواج S5 مال وأعمال - اللغة الإنجليزية</h4>
+                        <p class="text-[11px] text-gray-400">أفواج Ang-A, Ang-B</p>
+                    </div>
+                    <a href="#" onclick="showPdfNotice('توزيع أفواج S5 مال إنجليزية')" class="p-2 rounded-lg bg-navy-800 text-gold-400 hover:bg-gold-500 hover:text-navy-950 transition-all">
+                        <i class="fa-solid fa-download text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- PDF 12 -->
+                <div class="p-4 rounded-xl bg-navy-950/80 border border-gold-500/20 glass-card-hover flex items-start justify-between">
+                    <div class="space-y-1">
+                        <span class="text-[10px] font-bold text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20">S5 - جدول أوقات</span>
+                        <h4 class="text-xs font-bold text-white leading-snug">استعمال الزمن - مسار العلوم الجنائية</h4>
+                        <p class="text-[11px] text-gray-400">الفصل الخامس - الفوج A</p>
+                    </div>
+                    <a href="#" onclick="showPdfNotice('جدول مسار العلوم الجنائية S5')" class="p-2 rounded-lg bg-navy-800 text-gold-400 hover:bg-gold-500 hover:text-navy-950 transition-all">
+                        <i class="fa-solid fa-download text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- PDF 13 -->
+                <div class="p-4 rounded-xl bg-navy-950/80 border border-gold-500/20 glass-card-hover flex items-start justify-between">
+                    <div class="space-y-1">
+                        <span class="text-[10px] font-bold text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20">S5 - جدول أوقات</span>
+                        <h4 class="text-xs font-bold text-white leading-snug">استعمال الزمن - مسار القانون المدني</h4>
+                        <p class="text-[11px] text-gray-400">الفصل الخامس - شعبة القانون الخاص</p>
+                    </div>
+                    <a href="#" onclick="showPdfNotice('جدول مسار القانون المدني S5')" class="p-2 rounded-lg bg-navy-800 text-gold-400 hover:bg-gold-500 hover:text-navy-950 transition-all">
+                        <i class="fa-solid fa-download text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- PDF 14 -->
+                <div class="p-4 rounded-xl bg-navy-950/80 border border-gold-500/20 glass-card-hover flex items-start justify-between">
+                    <div class="space-y-1">
+                        <span class="text-[10px] font-bold text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20">S5 - جدول أوقات</span>
+                        <h4 class="text-xs font-bold text-white leading-snug">استعمال الزمن - مسار المهن القانونية والقضائية</h4>
+                        <p class="text-[11px] text-gray-400">الفصل الخامس - المجموعات 1-24</p>
+                    </div>
+                    <a href="#" onclick="showPdfNotice('جدول مسار المهن القانونية S5')" class="p-2 rounded-lg bg-navy-800 text-gold-400 hover:bg-gold-500 hover:text-navy-950 transition-all">
+                        <i class="fa-solid fa-download text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- PDF 15 -->
+                <div class="p-4 rounded-xl bg-navy-950/80 border border-gold-500/20 glass-card-hover flex items-start justify-between">
+                    <div class="space-y-1">
+                        <span class="text-[10px] font-bold text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20">S5 - جدول أوقات</span>
+                        <h4 class="text-xs font-bold text-white leading-snug">استعمال الزمن - مسار قانون المال والأعمال</h4>
+                        <p class="text-[11px] text-gray-400">الفصل الخامس - شعبة القانون الخاص</p>
+                    </div>
+                    <a href="#" onclick="showPdfNotice('جدول مسار قانون المال والأعمال S5')" class="p-2 rounded-lg bg-navy-800 text-gold-400 hover:bg-gold-500 hover:text-navy-950 transition-all">
+                        <i class="fa-solid fa-download text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- PDF 16 -->
+                <div class="p-4 rounded-xl bg-navy-950/80 border border-gold-500/20 glass-card-hover flex items-start justify-between">
+                    <div class="space-y-1">
+                        <span class="text-[10px] font-bold text-rose-400 bg-rose-500/10 px-2 py-0.5 rounded border border-rose-500/20">S5 - قانون عام</span>
+                        <h4 class="text-xs font-bold text-white leading-snug">استعمال الزمن - مسار الدراسات الإدارية والمالية</h4>
+                        <p class="text-[11px] text-gray-400">الفصل الخامس - شعبة القانون العام</p>
+                    </div>
+                    <a href="#" onclick="showPdfNotice('جدول مسار الدراسات الإدارية S5')" class="p-2 rounded-lg bg-navy-800 text-gold-400 hover:bg-gold-500 hover:text-navy-950 transition-all">
+                        <i class="fa-solid fa-download text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- PDF 17 -->
+                <div class="p-4 rounded-xl bg-navy-950/80 border border-gold-500/20 glass-card-hover flex items-start justify-between border-emerald-500/40">
+                    <div class="space-y-1">
+                        <span class="text-[10px] font-bold text-emerald-400 bg-emerald-500/20 px-2 py-0.5 rounded border border-emerald-500/30">معدل 10-10-2026</span>
+                        <h4 class="text-xs font-bold text-white leading-snug">استعمال الزمن - مسار الدراسات السياسية والدولية</h4>
+                        <p class="text-[11px] text-gray-400">الصيغة المحينة رسمياً</p>
+                    </div>
+                    <a href="#" onclick="showPdfNotice('جدول مسار الدراسات السياسية المحين S5')" class="p-2 rounded-lg bg-navy-800 text-gold-400 hover:bg-gold-500 hover:text-navy-950 transition-all">
+                        <i class="fa-solid fa-download text-xs"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-gold-500/20 glass-card mt-12 py-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-400">
+            <div class="flex items-center space-x-2 space-x-reverse">
+                <span class="font-bold text-white">CHRAIM</span>
+                <span>— دليل الطالب بجامعة ابن زهر أكادير</span>
+            </div>
+            <p>جميع الحقوق محفوظة © 2026-2027 | كلية العلوم القانونية والسياسية - أكادير FSJP</p>
+        </div>
+    </footer>
+
+    <!-- Toast Notification Message Box -->
+    <div id="toast" class="fixed bottom-5 left-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 glass-card border border-gold-500/40 rounded-xl p-4 shadow-2xl flex items-center gap-3 text-xs text-white">
+        <i class="fa-solid fa-circle-check text-gold-400 text-lg" id="toastIcon"></i>
+        <span id="toastMsg">تم النسخ بنجاح!</span>
+    </div>
+
+    <!-- MAIN COMPLETE DATASETS AND INTERACTIVE ENGINE -->
+    <script>
+        // GLOBAL DATA STRUCTURE DIRECTLY FROM THE 17 PDFs
+        const ACADEMIC_DATA = {
+            S3: {
+                branches: {
+                    'priv_ar': {
+                        name: 'القانون الخاص (بالعربية)',
+                        sections: [
+                            { code: 'A', group: 'المجموعة 1--2--3--4', de: 'AABACH', a: 'AIT BACH' },
+                            { code: 'B', group: 'المجموعة 5--6--7--8', de: 'AIT BACHI', a: 'AMHRI' },
+                            { code: 'C', group: 'المجموعة 9--10--11--12', de: 'AMHRY', a: 'BAHNINE' },
+                            { code: 'D', group: 'المجموعة 13--14--15--16', de: 'BAHNINI', a: 'BILLA' },
+                            { code: 'E', group: 'المجموعة 17--18--19--20', de: 'BILLAA', a: 'BOUSSOUSS' },
+                            { code: 'F', group: 'المجموعة 21--22--23--24', de: 'BOUSSOUSSE', a: 'EDDARAI' },
+                            { code: 'G', group: 'المجموعة 25--26--27--28', de: 'EDDARAY', a: 'EL MANSOURI' },
+                            { code: 'H', group: 'المجموعة 29--30--31--32', de: 'EL MANSOURY', a: 'ELOUARDI' },
+                            { code: 'I', group: 'المجموعة 33--34--35--36', de: 'ELOUARDY', a: 'HALLAL' },
+                            { code: 'J', group: 'المجموعة 37--38--39--40', de: 'HALLALI', a: 'JELAIDI' },
+                            { code: 'K', group: 'المجموعة 41--42--43--44', de: 'JELAIDY', a: 'LHADDANE' },
+                            { code: 'L', group: 'المجموعة 45--46--47--48', de: 'LHADDANI', a: 'OUAHMANE' },
+                            { code: 'M', group: 'المجموعة 49--50--51--52', de: 'OUAHMANI', a: 'SAAID' },
+                            { code: 'N', group: 'المجموعة 53--54--55--56', de: 'SAAIDI', a: 'ZYOUGUAY' }
+                        ],
+                        schedules: [
+                            { day: 'الاثنين', time: '08:00 - 10:00', subject: 'قانون الأسرة', prof: 'عثمان فتيحة', room: 'المدرج الكبير', group: 'المجموعة 1-2-3-4' },
+                            { day: 'الاثنين', time: '10:00 - 12:00', subject: 'قانون الأسرة', prof: 'ازكاغ عبد المنعم', room: 'المدرج الكبير', group: 'المجموعة 5-6-7-8' },
+                            { day: 'الاثنين', time: '10:00 - 12:00', subject: 'المالية العامة', prof: 'الرامي الحسين', room: 'المدرج 8', group: 'المجموعة 5-6-7-8' },
+                            { day: 'الاثنين', time: '12:00 - 14:00', subject: 'قانون الأسرة', prof: 'بوعلي يوسف', room: 'المدرج 8', group: 'المجموعة 25-26-27-28' },
+                            { day: 'الاثنين', time: '14:00 - 16:00', subject: 'القانون الجنائي الخاص', prof: 'ايت الطالب طارق', room: 'المدرج 8', group: 'المجموعة 25-26-27-28' },
+                            { day: 'الاثنين', time: '16:00 - 18:00', subject: 'القانون الجنائي الخاص', prof: 'ايت الطالب طارق', room: 'المدرج 8', group: 'المجموعة 29-30-31-32' },
+                            { day: 'الثلاثاء', time: '08:00 - 10:00', subject: 'المسؤولية المدنية', prof: 'حليمة بن حفو', room: 'القاعة 1 بلوك B - الملحق', group: 'المجموعة 53-54-55-56' },
+                            { day: 'الثلاثاء', time: '10:00 - 12:00', subject: 'النشاط الإداري', prof: 'هموش ميمونة', room: 'المدرج 7', group: 'المجموعة 17-18-19-20' },
+                            { day: 'الأربعاء', time: '08:00 - 10:00', subject: 'القانون الاجتماعي', prof: 'كوتو صباح', room: 'القاعة 5', group: 'المجموعة 1-2-3-4' },
+                            { day: 'الأربعاء', time: '10:00 - 12:00', subject: 'القانون الاجتماعي', prof: 'كوتو صباح', room: 'القاعة 4 بلوك B - الملحق', group: 'المجموعة 5-6-7-8' },
+                            { day: 'الخميس', time: '08:00 - 10:00', subject: 'النشاط الإداري', prof: 'قاعدة رشيد', room: 'المدرج 9', group: 'المجموعة 1-2-3-4' },
+                            { day: 'الخميس', time: '10:00 - 12:00', subject: 'النشاط الإداري', prof: 'قاعدة رشيد', room: 'المدرج 9', group: 'المجموعة 5-6-7-8' },
+                            { day: 'الجمعة', time: '08:00 - 10:00', subject: 'المسؤولية المدنية', prof: 'خبان الحسين', room: 'المدرج 10', group: 'المجموعة 5-6-7-8' },
+                            { day: 'السبت', time: '08:00 - 10:00', subject: 'قانون الأسرة', prof: 'سلمى البوهالي', room: 'القاعة 5', group: 'المجموعة 49-50-51-52' }
+                        ]
+                    },
+                    'pub_ar': {
+                        name: 'القانون العام (بالعربية)',
+                        sections: [
+                            { code: 'A', group: 'الفوج A', de: 'AABID', a: 'BELLATI' },
+                            { code: 'B', group: 'الفوج B', de: 'BELLATY', a: 'EL KARZABI' },
+                            { code: 'C', group: 'الفوج C', de: 'EL KARZABY', a: 'KERRAMI' },
+                            { code: 'D', group: 'الفوج D', de: 'KERRAMY', a: 'ZOUINE' }
+                        ],
+                        schedules: [
+                            { day: 'الاثنين', time: '08:00 - 10:00', subject: 'قانون الأسرة', prof: 'حموش عبد الرحمان', room: 'القاعة 4 بلوك B الملحق', group: 'الفوج A' },
+                            { day: 'الاثنين', time: '10:00 - 12:00', subject: 'قانون الأسرة', prof: 'حموش عبد الرحمان', room: 'القاعة 4 بلوك B الملحق', group: 'الفوج B' },
+                            { day: 'الاثنين', time: '10:00 - 12:00', subject: 'المالية العامة', prof: 'محمد المجني', room: 'القاعة 3 بلوك B الملحق', group: 'الفوج B' },
+                            { day: 'الاثنين', time: '14:00 - 16:00', subject: 'المالية العامة', prof: 'محاسيني محمد', room: 'القاعة 1', group: 'الفوج A' },
+                            { day: 'الاثنين', time: '16:00 - 18:00', subject: 'النشاط الإداري', prof: 'الرمحاني حفصة', room: 'المدرج 7', group: 'الفوج B' },
+                            { day: 'الثلاثاء', time: '08:00 - 10:00', subject: 'القانون الاجتماعي', prof: 'كوتو صباح', room: 'القاعة 4 بلوك B الملحق', group: 'الفوج D' },
+                            { day: 'الثلاثاء', time: '10:00 - 12:00', subject: 'القانون الدولي العام', prof: 'محاسيني محمد', room: 'المدرج 7', group: 'الفوج D' },
+                            { day: 'الأربعاء', time: '08:00 - 10:00', subject: 'النشاط الإداري', prof: 'شقواري عمار', room: 'القاعة 1', group: 'الفوج A' },
+                            { day: 'الأربعاء', time: '10:00 - 12:00', subject: 'قانون البيئة', prof: 'الطلحاوي بدر الدين', room: 'القاعة 2 بلوك B الملحق', group: 'الفوج B' },
+                            { day: 'الخميس', time: '08:00 - 10:00', subject: 'قانون البيئة', prof: 'الطلحاوي بدر الدين', room: 'القاعة 2 بلوك B الملحق', group: 'الفوج A' },
+                            { day: 'الجمعة', time: '08:00 - 10:00', subject: 'القانون الدولي العام', prof: 'البشير أبولاه', room: 'القاعة 1', group: 'الفوج B' },
+                            { day: 'الجمعة', time: '10:00 - 12:00', subject: 'النشاط الإداري', prof: 'الزعيم بوشرى', room: 'القاعة 4', group: 'الفوج D' }
+                        ]
+                    },
+                    'pub_fr': {
+                        name: 'القانون العام (بالفرنسية)',
+                        sections: [
+                            { code: 'Fr-A', group: 'Section Fr-A', de: 'AABID', a: 'EL KARZABI' },
+                            { code: 'Fr-B', group: 'Section Fr-B', de: 'EL KARZABY', a: 'ZOUINE' }
+                        ],
+                        schedules: [
+                            { day: 'الأربعاء', time: '14:00 - 16:00', subject: 'Langue Étrangère (Français)', prof: 'نجود متحضر', room: 'القاعة 12 بلوك C الملحق', group: 'Section Fr-A & Fr-B' }
+                        ]
+                    }
+                }
+            },
+            S5: {
+                branches: {
+                    's5_crim': {
+                        name: 'مسار العلوم الجنائية (قانون خاص)',
+                        sections: [
+                            { code: 'A', group: 'الفوج A', de: 'جميع الطلبة المسجلين بالمسار', a: '-' }
+                        ],
+                        schedules: [
+                            { day: 'الاثنين', time: '10:00 - 12:00', subject: 'مسرح الجريمة', prof: 'سعيدي يونس', room: 'القاعة 1', group: 'الفوج A' },
+                            { day: 'الاثنين', time: '14:00 - 16:00', subject: 'القانون الجنائي الرقمي والذكاء الاصطناعي', prof: 'آيت عبد الكريم ياسين', room: 'القاعة 11 بلوك C الملحق', group: 'الفوج A' },
+                            { day: 'الاثنين', time: '16:00 - 18:00', subject: 'القانون الجنائي للأعمال', prof: 'اطويف محمد', room: 'القاعة 3', group: 'الفوج A' },
+                            { day: 'الثلاثاء', time: '08:00 - 10:00', subject: 'السياسة الجنائية', prof: 'احطاب إبراهيم', room: 'القاعة 4', group: 'الفوج A' },
+                            { day: 'الثلاثاء', time: '10:00 - 12:00', subject: 'القانون الجنائي الأسري', prof: 'سعيدي يونس', room: 'القاعة 10 بلوك C الملحق', group: 'الفوج A' },
+                            { day: 'الخميس', time: '10:00 - 12:00', subject: 'اللغات الأجنبية (الإنجليزية)', prof: 'كاضيض شيماء', room: 'القاعة 13 بلوك C الملحق', group: 'الفوج A' },
+                            { day: 'الجمعة', time: '10:00 - 12:00', subject: 'الجرائم ذات الطبيعة الخاصة', prof: 'عمر الدماغ', room: 'القاعة 2', group: 'الفوج A' }
+                        ]
+                    },
+                    's5_civil': {
+                        name: 'مسار القانون المدني (قانون خاص)',
+                        sections: [
+                            { code: 'A', group: 'الفوج A (المجموعات 1-2-3)', de: 'AABACH', a: 'CHAKIR' },
+                            { code: 'B', group: 'الفوج B (المجموعات 4-5-6)', de: 'CHAKIRI', a: 'JAIK' },
+                            { code: 'C', group: 'الفوج C (المجموعات 7-8-9)', de: 'JAIKI', a: 'ZYN ELABYDYNE' },
+                            { code: 'Ang-A', group: 'الإنجليزية Ang-A (المجموعات 1-6)', de: 'AABACH', a: 'JAIK' },
+                            { code: 'Ang-B', group: 'الإنجليزية Ang-B (المجموعات 7-9)', de: 'JAIKI', a: 'ZYN ELABYDYNE' }
+                        ],
+                        schedules: [
+                            { day: 'الاثنين', time: '08:00 - 10:00', subject: 'القانون العقاري 2 (الحقوق العينية)', prof: 'بن حفو حليمة', room: 'القاعة 3 بلوك B الملحق', group: 'الفوج A (1-2-3)' },
+                            { day: 'الاثنين', time: '08:00 - 10:00', subject: 'العقود المدنية الخاصة', prof: 'مجاهدين خالد', room: 'القاعة 7', group: 'الفوج C (7-8-9)' },
+                            { day: 'الاثنين', time: '10:00 - 12:00', subject: 'العقود المدنية الخاصة', prof: 'مجاهدين خالد', room: 'القاعة 7', group: 'الفوج B (4-5-6)' },
+                            { day: 'الثلاثاء', time: '08:00 - 10:00', subject: 'القانون الدولي الخاص', prof: 'دريسي جليلة', room: 'القاعة 1', group: 'الفوج C (7-8-9)' },
+                            { day: 'الثلاثاء', time: '10:00 - 12:00', subject: 'القانون الدولي الخاص', prof: 'دريسي جليلة', room: 'القاعة 1', group: 'الفوج A (1-2-3)' },
+                            { day: 'الأربعاء', time: '08:00 - 10:00', subject: 'قانون التأمين', prof: 'أو بحيد الحسن', room: 'القاعة 6', group: 'الفوج A (1-2-3)' },
+                            { day: 'الأربعاء', time: '10:00 - 12:00', subject: 'التوثيق وتحرير العقود', prof: 'نقاشي لبنى', room: 'القاعة 2', group: 'الفوج A (1-2-3)' },
+                            { day: 'الخميس', time: '14:00 - 16:00', subject: 'اللغات الأجنبية (الإنجليزية)', prof: 'آسيا الخليل', room: 'القاعة 2', group: 'الفوج Ang-A (1-6)' },
+                            { day: 'الخميس', time: '16:00 - 18:00', subject: 'اللغات الأجنبية (الإنجليزية)', prof: 'آسيا الخليل', room: 'القاعة 2', group: 'الفوج Ang-B (7-9)' }
+                        ]
+                    },
+                    's5_prof': {
+                        name: 'مسار المهن القانونية والقضائية',
+                        sections: [
+                            { code: 'A', group: 'الفوج A (المجموعات 1-2-3)', de: 'AABACH', a: 'ANNASSIH' },
+                            { code: 'B', group: 'الفوج B (المجموعات 4-5-6)', de: 'ANNASSIHI', a: 'BOUASRY' },
+                            { code: 'C', group: 'الفوج C (المجموعات 7-8-9)', de: 'BOUASRYA', a: 'EDDABOUZ' },
+                            { code: 'D', group: 'الفوج D (المجموعات 10-11-12)', de: 'EDDABOUZI', a: 'ELHAMIL' },
+                            { code: 'E', group: 'الفوج E (المجموعات 13-14-15)', de: 'ELHAMILI', a: 'HNAIN' },
+                            { code: 'F', group: 'الفوج F (المجموعات 16-17-18)', de: 'HNAINA', a: 'LAMIN' },
+                            { code: 'G', group: 'الفوج G (المجموعات 19-20-21)', de: 'LAMINE', a: 'OUKASSI' },
+                            { code: 'H', group: 'الفوج H (المجموعات 22-23-24)', de: 'OUKASSY', a: 'ZYN ELABYDYNE' },
+                            { code: 'Ang-A', group: 'الإنجليزية Ang-A (المجموعات 1-6)', de: 'AABACH', a: 'BOUASRY' },
+                            { code: 'Ang-B', group: 'الإنجليزية Ang-B (المجموعات 7-12)', de: 'BOUASRYA', a: 'ELHAMIL' },
+                            { code: 'Ang-C', group: 'الإنجليزية Ang-C (المجموعات 13-18)', de: 'ELHAMILI', a: 'LAMIN' },
+                            { code: 'Ang-D', group: 'الإنجليزية Ang-D (المجموعات 19-24)', de: 'LAMINE', a: 'ZYN ELABYDYNE' }
+                        ],
+                        schedules: [
+                            { day: 'الاثنين', time: '08:00 - 10:00', subject: 'صعوبات المقاولة', prof: 'اطويف محمد', room: 'المدرج 9', group: 'الفوج A (1-2-3)' },
+                            { day: 'الاثنين', time: '10:00 - 12:00', subject: 'صعوبات المقاولة', prof: 'اطويف محمد', room: 'المدرج 9', group: 'الفوج B (4-5-6)' },
+                            { day: 'الاثنين', time: '12:00 - 14:00', subject: 'صعوبات المقاولة', prof: 'اطويف محمد', room: 'المدرج 9', group: 'الفوج C (7-8-9)' },
+                            { day: 'الثلاثاء', time: '08:00 - 10:00', subject: 'الحقوق العينية', prof: 'أيوب عبد الرزاق', room: 'المدرج الكبير', group: 'الفوج A (1-2-3)' },
+                            { day: 'الأربعاء', time: '08:00 - 10:00', subject: 'الحقوق العينية', prof: 'العلمي محمد', room: 'المدرج الكبير', group: 'الفوج D (10-11-12)' },
+                            { day: 'الخميس', time: '08:00 - 10:00', subject: 'اللغات الأجنبية (الإنجليزية)', prof: 'كاضيض شيماء', room: 'القاعة 3 بلوك B الملحق', group: 'الفوج Ang-A (1-6)' },
+                            { day: 'الجمعة', time: '08:00 - 10:00', subject: 'صعوبات المقاولة', prof: 'ككاس عبد الكريم', room: 'المدرج 10', group: 'الفوج G (19-20-21)' }
+                        ]
+                    },
+                    's5_biz': {
+                        name: 'مسار قانون المال والأعمال (خاص)',
+                        sections: [
+                            { code: 'A', group: 'الفوج A (المجموعات 1-2-3)', de: 'AABACH', a: 'CHAKOUR' },
+                            { code: 'B', group: 'الفوج B (المجموعات 4-5-6)', de: 'CHAKOURI', a: 'JAKAN' },
+                            { code: 'C', group: 'الفوج C (المجموعات 7-8-9)', de: 'JAKANE', a: 'ZYN ELABYDYNE' },
+                            { code: 'Ang-A', group: 'الإنجليزية Ang-A (المجموعات 1-6)', de: 'AABACH', a: 'JAKAN' },
+                            { code: 'Ang-B', group: 'الإنجليزية Ang-B (المجموعات 7-9)', de: 'JAKANE', a: 'ZYN ELABYDYNE' }
+                        ],
+                        schedules: [
+                            { day: 'الثلاثاء', time: '08:00 - 10:00', subject: 'القانون الجنائي للأعمال', prof: 'اطويف محمد', room: 'القاعة 11 بلوك B الملحق', group: 'الفوج B (4-5-6)' },
+                            { day: 'الثلاثاء', time: '10:00 - 12:00', subject: 'القانون الجنائي للأعمال', prof: 'اطويف محمد', room: 'القاعة 11 بلوك B الملحق', group: 'الفوج A (1-2-3)' },
+                            { day: 'الأربعاء', time: '08:00 - 10:00', subject: 'قانون صعوبات المقاولة', prof: 'مضي خديجة', room: 'القاعة 3', group: 'الفوج C (7-8-9)' },
+                            { day: 'الخميس', time: '08:00 - 10:00', subject: 'قانون صعوبات المقاولة', prof: 'مضي خديجة', room: 'القاعة 3', group: 'الفوج A (1-2-3)' },
+                            { day: 'الخميس', time: '14:00 - 16:00', subject: 'اللغات الأجنبية (الإنجليزية)', prof: 'إكرام الصردي', room: 'القاعة 3', group: 'الفوج Ang-A (1-6)' },
+                            { day: 'الخميس', time: '16:00 - 18:00', subject: 'اللغات الأجنبية (الإنجليزية)', prof: 'إكرام الصردي', room: 'القاعة 3', group: 'الفوج Ang-B (7-9)' }
+                        ]
+                    },
+                    's5_admin': {
+                        name: 'مسار الدراسات الإدارية والمالية (عام)',
+                        sections: [
+                            { code: 'A', group: 'الفوج A', de: 'جميع طلبي المسار المسجلين', a: '-' }
+                        ],
+                        schedules: [
+                            { day: 'الثلاثاء', time: '10:00 - 12:00', subject: 'إجراءات التقاضي في المادة الإدارية', prof: 'صفاحي إسماعيل', room: 'القاعة 5', group: 'الفوج A' },
+                            { day: 'الثلاثاء', time: '12:00 - 14:00', subject: 'المرافق العامة الكبرى', prof: 'الرامي الحسين', room: 'القاعة 5', group: 'الفوج A' },
+                            { day: 'الثلاثاء', time: '16:00 - 18:00', subject: 'اللغات الأجنبية (الإنجليزية)', prof: 'سمير سعد', room: 'القاعة 5', group: 'الفوج Ang-A' },
+                            { day: 'الخميس', time: '12:00 - 14:00', subject: 'مناهج العلوم الاجتماعية', prof: 'اولتيت إبراهيم', room: 'القاعة 7', group: 'الفوج A' },
+                            { day: 'الجمعة', time: '10:00 - 12:00', subject: 'الوظيفة العمومية وتدبير الموارد البشرية', prof: 'كديرة رشيد', room: 'القاعة 7', group: 'الفوج A' },
+                            { day: 'السبت', time: '08:00 - 10:00', subject: 'السياسات العمومية', prof: 'البهالي خالد', room: 'القاعة 3', group: 'الفوج A' },
+                            { day: 'السبت', time: '10:00 - 12:00', subject: 'الصفقات العمومية', prof: 'الهلالي عبد اللطيف', room: 'القاعة 3', group: 'الفوج A' }
+                        ]
+                    },
+                    's5_pol': {
+                        name: 'مسار الدراسات السياسية والدولية (عام - محين)',
+                        sections: [
+                            { code: 'A', group: 'الفوج A (محين 10-10-2026)', de: 'جميع طلبي المسار المسجلين', a: '-' }
+                        ],
+                        schedules: [
+                            { day: 'الاثنين', time: '10:00 - 12:00', subject: 'القانون الدولي الإنساني', prof: 'فاطمة الزهراء العيني', room: 'القاعة 4', group: 'الفوج A' },
+                            { day: 'الثلاثاء', time: '16:00 - 18:00', subject: 'اللغات الأجنبية (الإنجليزية)', prof: 'سمير سعد', room: 'القاعة 5', group: 'الفوج Ang-A' },
+                            { day: 'الخميس', time: '10:00 - 12:00', subject: 'مناهج العلوم الاجتماعية', prof: 'حسان كريمة', room: 'القاعة 1', group: 'الفوج A' },
+                            { day: 'الجمعة', time: '08:00 - 10:00', subject: 'العمل البرلماني', prof: 'هيا مبارك', room: 'القاعة 7', group: 'الفوج A' },
+                            { day: 'السبت', time: '08:00 - 10:00', subject: 'سوسيولوجيا العلاقات الدولية', prof: 'الوادراسي محمد', room: 'القاعة 4', group: 'الفوج A' },
+                            { day: 'السبت', time: '10:00 - 12:00', subject: 'علم الاجتماع السياسي', prof: 'البهالي خالد', room: 'القاعة 4', group: 'الفوج A' },
+                            { day: 'السبت', time: '12:00 - 14:00', subject: 'التواصل السياسي وتحليل الخطاب', prof: 'الخاضري عبد القادر', room: 'القاعة 4', group: 'الفوج A' }
+                        ]
+                    }
+                }
+            }
+        };
+
+        // CURRENT STATE VARIABLES
+        let currentSemester = 'S3';
+        let currentBranchKey = 'priv_ar';
+        let currentSectionCode = 'A';
+        let currentDayFilter = 'ALL';
+
+        // INITIALIZATION ON PAGE LOAD
+        window.onload = function () {
+            selectSemester('S3');
+        };
+
+        // SEMESTER SWITCHING
+        function selectSemester(sem) {
+            currentSemester = sem;
+            
+            // Toggle Button Styles
+            const btnS3 = document.getElementById('btnS3');
+            const btnS5 = document.getElementById('btnS5');
+
+            if (sem === 'S3') {
+                btnS3.className = "px-5 py-2 rounded-lg text-sm font-bold transition-all bg-gold-500 text-navy-950 shadow-md";
+                btnS5.className = "px-5 py-2 rounded-lg text-sm font-bold text-gray-400 hover:text-white transition-all";
+                currentBranchKey = 'priv_ar';
+            } else {
+                btnS5.className = "px-5 py-2 rounded-lg text-sm font-bold transition-all bg-gold-500 text-navy-950 shadow-md";
+                btnS3.className = "px-5 py-2 rounded-lg text-sm font-bold text-gray-400 hover:text-white transition-all";
+                currentBranchKey = 's5_prof';
+            }
+
+            populateBranchesDropdown();
+            onBranchChange();
+        }
+
+        // POPULATE BRANCH DROPDOWN
+        function populateBranchesDropdown() {
+            const branchSelect = document.getElementById('branchSelect');
+            branchSelect.innerHTML = '';
+
+            const branches = ACADEMIC_DATA[currentSemester].branches;
+            for (let key in branches) {
+                const opt = document.createElement('option');
+                opt.value = key;
+                opt.textContent = branches[key].name;
+                branchSelect.appendChild(opt);
+            }
+            branchSelect.value = currentBranchKey;
+        }
+
+        // BRANCH CHANGE HANDLER
+        function onBranchChange() {
+            currentBranchKey = document.getElementById('branchSelect').value;
+            populateSectionsDropdown();
+            onSectionChange();
+        }
+
+        // POPULATE SECTION DROPDOWN
+        function populateSectionsDropdown() {
+            const sectionSelect = document.getElementById('sectionSelect');
+            sectionSelect.innerHTML = '';
+
+            const branchObj = ACADEMIC_DATA[currentSemester].branches[currentBranchKey];
+            branchObj.sections.forEach(sec => {
+                const opt = document.createElement('option');
+                opt.value = sec.code;
+                opt.textContent = sec.group + ` (${sec.de} -> ${sec.a})`;
+                sectionSelect.appendChild(opt);
+            });
+
+            if (branchObj.sections.length > 0) {
+                currentSectionCode = branchObj.sections[0].code;
+            }
+        }
+
+        // SECTION CHANGE HANDLER
+        function onSectionChange() {
+            currentSectionCode = document.getElementById('sectionSelect').value;
+            updateStudentBadge();
+            renderSchedule();
+        }
+
+        // UPDATE STUDENT BADGE CARD
+        function updateStudentBadge() {
+            const branchObj = ACADEMIC_DATA[currentSemester].branches[currentBranchKey];
+            const secObj = branchObj.sections.find(s => s.code === currentSectionCode) || branchObj.sections[0];
+
+            document.getElementById('badgeTitle').textContent = `${branchObj.name} — ${secObj.group}`;
+            document.getElementById('badgeSub').textContent = `النطاق الأبجدي للنسب: من [ ${secObj.de} ] إلى [ ${secObj.a} ]`;
+        }
+
+        // SURNAME SEARCH ENGINE WITH COMPOUND NAME SPACE LOGIC
+        function onSurnameSearch() {
+            const inputVal = document.getElementById('surnameInput').value.trim().toUpperCase();
+            const alertBox = document.getElementById('searchAlert');
+            const alertText = document.getElementById('searchAlertText');
+
+            if (inputVal.length < 2) {
+                alertBox.classList.add('hidden');
+                return;
+            }
+
+            let foundSection = null;
+            let foundBranchKey = null;
+
+            // Loop through active semester branches
+            const branches = ACADEMIC_DATA[currentSemester].branches;
+            for (let bKey in branches) {
+                const secs = branches[bKey].sections;
+                for (let sec of secs) {
+                    // Normalize space check comparison
+                    if (isSurnameInRange(inputVal, sec.de, sec.a)) {
+                        foundSection = sec;
+                        foundBranchKey = bKey;
+                        break;
+                    }
+                }
+                if (foundSection) break;
+            }
+
+            if (foundSection && foundBranchKey) {
+                currentBranchKey = foundBranchKey;
+                currentSectionCode = foundSection.code;
+
+                document.getElementById('branchSelect').value = currentBranchKey;
+                populateSectionsDropdown();
+                document.getElementById('sectionSelect').value = currentSectionCode;
+
+                updateStudentBadge();
+                renderSchedule();
+
+                const safeInput = inputVal.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+                alertText.innerHTML = `تم التعرف تلقائيًا على نسبك <strong>"${safeInput}"</strong>: ينتمي إلى <strong>${foundSection.group}</strong> (${ACADEMIC_DATA[currentSemester].branches[currentBranchKey].name})`;
+                alertBox.classList.remove('hidden');
+            } else {
+                const safeInput2 = inputVal.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+                alertText.innerHTML = `النسب <strong>"${safeInput2}"</strong> خارج نطاق التقسيم الحالي أو لم يتطابق مع الجدول المرفق.`;
+                alertBox.classList.remove('hidden');
+            }
+        }
+
+        // HELPER TO CHECK IF SURNAME IS ALPHABETICALLY IN RANGE
+        function isSurnameInRange(surname, de, a) {
+            if (de === 'جميع الطلبة المسجلين بالمسار' || a === '-') return true;
+            return surname.localeCompare(de) >= 0 && surname.localeCompare(a) <= 0;
+        }
+
+        function clearSurnameSearch() {
+            document.getElementById('surnameInput').value = '';
+            document.getElementById('searchAlert').classList.add('hidden');
+        }
+
+        // DAY FILTERING HANDLER
+        function filterByDay(day) {
+            currentDayFilter = day;
+
+            // Toggle active styling on day tabs
+            const tabs = document.querySelectorAll('.day-tab');
+            tabs.forEach(tab => {
+                if (tab.getAttribute('data-day') === day) {
+                    tab.className = "day-tab px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-gold-500 text-navy-950";
+                } else {
+                    tab.className = "day-tab px-3 py-1.5 rounded-lg text-xs text-gray-300 hover:text-white transition-all";
+                }
+            });
+
+            renderSchedule();
+        }
+
+        // SCHEDULE RENDER ENGINE
+        function renderSchedule() {
+            const grid = document.getElementById('scheduleGrid');
+            const emptyState = document.getElementById('emptySchedule');
+            grid.innerHTML = '';
+
+            const branchObj = ACADEMIC_DATA[currentSemester].branches[currentBranchKey];
+            if (!branchObj || !branchObj.schedules) {
+                emptyState.classList.remove('hidden');
+                return;
+            }
+
+            // Normalize group strings for comparison (collapse spaces/dashes)
+            function normalizeGroup(g) {
+                return String(g || '').replace(/\s+/g, ' ').replace(/-+/g, '-').trim().toLowerCase();
+            }
+            const secObj = branchObj.sections.find(s => s.code === currentSectionCode) || branchObj.sections[0];
+            const targetGroup = normalizeGroup(secObj ? secObj.group : '');
+
+            // Filter schedules by selected section group and day
+            let list = branchObj.schedules.filter(item => {
+                const dayMatches = (currentDayFilter === 'ALL' || item.day === currentDayFilter);
+                if (!dayMatches) return false;
+                if (!targetGroup || targetGroup.indexOf('جميع') === 0) return true;
+                const itemGroup = normalizeGroup(item.group);
+                // match if either contains the other (handles 'الفوج A' and 'الفوج A (1-2-3)')
+                return itemGroup === targetGroup ||
+                       itemGroup.indexOf(targetGroup) !== -1 ||
+                       targetGroup.indexOf(itemGroup) !== -1;
+            });
+
+            // Fallback: if filtering removed everything, show all schedules for the branch
+            if (list.length === 0) {
+                list = branchObj.schedules.filter(item => {
+                    return (currentDayFilter === 'ALL' || item.day === currentDayFilter);
+                });
+            }
+
+            if (list.length === 0) {
+                emptyState.classList.remove('hidden');
+            } else {
+                emptyState.classList.add('hidden');
+                list.forEach(slot => {
+                    const card = document.createElement('div');
+                    card.className = "p-4 rounded-xl bg-navy-950/90 border border-gold-500/20 glass-card-hover space-y-3 relative overflow-hidden";
+
+                    card.innerHTML = `
+                        <div class="flex items-center justify-between text-xs">
+                            <span class="px-2.5 py-1 rounded-md bg-gold-500/10 border border-gold-500/30 text-gold-400 font-bold">${slot.day}</span>
+                            <span class="text-gray-400 font-mono"><i class="fa-regular fa-clock ml-1"></i>${slot.time}</span>
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-white leading-snug">${slot.subject}</h4>
+                            <p class="text-xs text-gold-300/80 mt-1"><i class="fa-solid fa-user-tie ml-1"></i>الأستاذ: ${slot.prof}</p>
+                        </div>
+                        <div class="pt-2 border-t border-gray-800/80 flex items-center justify-between text-[11px] text-gray-400">
+                            <span><i class="fa-solid fa-location-dot text-red-400 ml-1"></i>${slot.room}</span>
+                            <span class="bg-navy-900 px-2 py-0.5 rounded text-gold-400 border border-gold-500/10">${slot.group}</span>
+                        </div>
+                    `;
+                    grid.appendChild(card);
+                });
+            }
+        }
+
+        // COPY SCHEDULE TO CLIPBOARD
+        function copyScheduleToClipboard() {
+            const branchObj = ACADEMIC_DATA[currentSemester].branches[currentBranchKey];
+            const textToCopy = `جدول المحاضرات - ${branchObj.name}\nكلية العلوم القانونية والسياسية أكادير FSJP (2026-2027)\n` +
+                branchObj.schedules.map(s => `${s.day} [${s.time}]: ${s.subject} - الأستاذ: ${s.prof} (${s.room})`).join('\n');
+
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                showToast("تم نسخ الجدول الدراسي إلى الحافظة بنجاح!");
+            }).catch(() => {
+                showToast("تعذر النسخ التلقائي.");
+            });
+        }
+
+        // TOAST NOTIFICATION HELPER
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMsg').textContent = msg;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+
+        function showPdfNotice(pdfName) {
+            showToast(`جاري فتح وتحميل الوثيقة الرسمية: ${pdfName}`);
+        }
+
+        // DARK MODE TOGGLE
+        function toggleDarkMode() {
+            const html = document.documentElement;
+            const icon = document.getElementById('themeIcon');
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                icon.className = 'fa-solid fa-sun text-lg';
+            } else {
+                html.classList.add('dark');
+                icon.className = 'fa-solid fa-moon text-lg';
+            }
+        }
+    </script>
+</body>
+</html>
