@@ -54,12 +54,62 @@
     }
   },
   "pending_verification": [
-    "encg-agadir", "encg-dakhla", "ensiasd-taroudant", "esef-agadir",
-    "est-dakhla", "est-guelmim", "est-laayoune", "est-ouarzazate",
+    "esef-agadir", "est-guelmim", "est-laayoune", "est-ouarzazate",
     "feg-guelmim", "flash-ait-melloul", "fmp-guelmim",
     "fmp-laayoune", "fp-smara", "fpo-ouarzazate", "fpt-taroudant", "fsa-agadir",
     "fsa-ait-melloul", "fsjes-ait-melloul", "chariaa-ait-melloul"
   ],
+  "institutions_verified_batch2": {
+    "encg-agadir": {
+      "name_ar": "المدرسة الوطنية للتجارة والتسيير - أكادير",
+      "name_fr": "Ecole Nationale de Commerce et de Gestion - Agadir",
+      "official_site": "https://encga.uiz.ac.ma/",
+      "uiz_page": "https://www.uiz.ac.ma/ecole-nationale-de-commerce-et-de-gestion-agadir",
+      "director": "MOHAMED HICHAM HAMRI",
+      "vice_director": "Abdelhamid AIT BIHI",
+      "secretary_general": "GUINTAOUI MOHAMED",
+      "address": "B.P 37/S Hay Salam Agadir",
+      "phone": "0528225748 / 0528225749",
+      "fax": "0528225741",
+      "programs": "DENCG (4 spécialités Bac+5: Management Financier et Comptable, Audit et Contrôle de Gestion, Marketing, Commerce international) + 6 Masters spécialisés + Doctorat (Sciences et Techniques de Gestion)",
+      "verified_on": "2026-10-23",
+      "status": "verified"
+    },
+    "encg-dakhla": {
+      "name_ar": "المدرسة الوطنية للتجارة والتسيير - الداخلة",
+      "name_fr": "Ecole Nationale de Commerce et de Gestion - Dakhla",
+      "official_site": "http://www.encg-dakhla.ac.ma/",
+      "uiz_page": "https://www.uiz.ac.ma/ecole-nationale-de-commerce-et-de-gestion-dakhla",
+      "director": "AZIZ SAIR",
+      "vice_director": "LAHOUCINE ASSELLAM",
+      "secretary_general": "ABOUABDELLAH AHMED",
+      "address": "BP 386, Dakhla",
+      "phone": "+212528935853",
+      "fax": "+212528930658",
+      "verified_on": "2026-10-23",
+      "status": "verified"
+    },
+    "ensiasd-taroudant": {
+      "name_ar": "المدرسة الوطنية العليا للذكاء الاصطناعي وعلوم البيانات - تارودانت",
+      "name_fr": "Ecole Nationale Supérieure de l'Intelligence Artificielle et Sciences des Données - Taroudant",
+      "official_site": "http://www.ensiasdt.ac.ma/",
+      "uiz_page": "https://www.uiz.ac.ma/ecole-nationale-superieure-de-lintelligence-artificielle-et-sciences-des-donnees-de-taroudant-0",
+      "director": "PI ANTARI JILALI",
+      "secretary_general": "Abderahim AHMEDOUNACER",
+      "verified_on": "2026-10-23",
+      "status": "verified"
+    },
+    "est-dakhla": {
+      "name_ar": "المدرسة العليا للتكنولوجيا - الداخلة",
+      "name_fr": "Ecole Supérieure de Technologie - Dakhla",
+      "official_site": "n/a",
+      "uiz_page": "https://www.uiz.ac.ma/ecole-superieure-de-technologie-dakhla",
+      "director": "MAHANI ZOUHIR",
+      "secretary_general": "Naoual NASSIRI",
+      "verified_on": "2026-10-23",
+      "status": "verified"
+    }
+  }
   "institutions_verified_batch1": {
     "ensa-agadir": {
       "name_ar": "المدرسة الوطنية للعلوم التطبيقية - أكادير",
