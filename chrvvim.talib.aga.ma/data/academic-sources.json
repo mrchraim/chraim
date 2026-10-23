@@ -54,11 +54,31 @@
     }
   },
   "pending_verification": [
-    "est-ouarzazate",
-    "flash-ait-melloul", "fmp-guelmim",
-    "fmp-laayoune", "fsa-agadir",
-    "fsjes-ait-melloul", "chariaa-ait-melloul"
+    "flash-ait-melloul", "fmp-laayoune",
+    "fsa-agadir", "fsjes-ait-melloul", "chariaa-ait-melloul"
   ],
+  "institutions_verified_batch7": {
+    "est-ouarzazate": {
+      "name_ar": "المدرسة العليا للتكنولوجيا - ورزازات",
+      "name_fr": "Ecole Supérieure de Technologie - Ouarzazate",
+      "official_site": "n/a",
+      "uiz_page": "https://www.uiz.ac.ma/ecole-superieure-de-technologie-ouarzazate",
+      "director": "Lahcen BAMMOU",
+      "opened": "2020-10-08",
+      "verified_on": "2026-10-23",
+      "status": "verified"
+    },
+    "fmp-guelmim": {
+      "name_ar": "كلية الطب والصيدلة - كلميم",
+      "name_fr": "Faculté de Médecine et de Pharmacie - Guelmim",
+      "official_site": "http://fmpg.uiz.ac.ma/",
+      "uiz_page": "https://www.uiz.ac.ma/faculte-de-medecine-et-de-pharmacie-guelmim",
+      "dean": "Imane AZZAM",
+      "secretary_general": "MOHAMED AIT AHMED",
+      "verified_on": "2026-10-23",
+      "status": "verified"
+    }
+  }
   "institutions_verified_batch6": {
     "esef-agadir": {
       "name_ar": "المدرسة العليا لل教育 والتكوين - أكادير",
