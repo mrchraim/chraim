@@ -54,8 +54,26 @@
     }
   },
   "pending_verification": [
-    "fsa-agadir", "fsjes-ait-melloul", "chariaa-ait-melloul"
+    "fsjes-ait-melloul", "chariaa-ait-melloul"
   ],
+  "institutions_verified_batch9": {
+    "fsa-agadir": {
+      "name_ar": "كلية العلوم - أكادير",
+      "name_fr": "Faculté des Sciences - Agadir",
+      "official_site": "http://www.fsa.ac.ma/",
+      "uiz_page": "https://www.uiz.ac.ma/faculte-des-sciences-agadir",
+      "dean": "AHMED ELMOUDEN",
+      "vice_dean": "SAHSAH HASSAN, EL GRIDANI ABDERRAHMAN",
+      "secretary_general": "MOHIB ABDELGHAFOUR",
+      "address": "B.P 8106 Cité Dakhla Agadir",
+      "phone": "0528220957",
+      "fax": "0528220100",
+      "opened": "1984",
+      "programs": "LMD (Licence, Master, Doctorat) — Physique, Mathématiques, Chimie, Biologie, Informatique, Sciences de la Terre",
+      "verified_on": "2026-10-23",
+      "status": "verified"
+    }
+  }
   "institutions_verified_batch8": {
     "flash-ait-melloul": {
       "name_ar": "كلية اللغات والآداب والعلوم الإنسانية - أيت ملول",
