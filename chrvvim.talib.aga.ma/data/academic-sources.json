@@ -55,10 +55,53 @@
   },
   "pending_verification": [
     "esef-agadir", "est-ouarzazate",
-    "feg-guelmim", "flash-ait-melloul", "fmp-guelmim",
-    "fmp-laayoune", "fp-smara", "fpo-ouarzazate", "fpt-taroudant", "fsa-agadir",
+    "flash-ait-melloul", "fmp-guelmim",
+    "fmp-laayoune", "fp-smara", "fsa-agadir",
     "fsa-ait-melloul", "fsjes-ait-melloul", "chariaa-ait-melloul"
   ],
+  "institutions_verified_batch4": {
+    "feg-guelmim": {
+      "name_ar": "كلية الاقتصاد والتدبير - كلميم",
+      "name_fr": "Faculté d'Economie et de Gestion - Guelmim",
+      "official_site": "n/a",
+      "uiz_page": "https://www.uiz.ac.ma/faculte-deconomie-et-de-gestion-guelmim",
+      "dean": "YOUSSEF EL WAZANI",
+      "vice_dean": "EL KHOURCHI BABA",
+      "secretary_general": "KHARBOUCH MOHAMED",
+      "verified_on": "2026-10-23",
+      "status": "verified"
+    },
+    "fpo-ouarzazate": {
+      "name_ar": "الكلية متعددة التخصصات - ورزازات",
+      "name_fr": "Faculté Polydisciplinaire - Ouarzazate",
+      "official_site": "https://fpo.uiz.ac.ma/",
+      "uiz_page": "https://www.uiz.ac.ma/faculte-polydisciplinaire-ouarzazate",
+      "dean": "Nabil SAFFAJ",
+      "vice_dean": "Mohamed BENADDY, Driss BOUTAAYAMOU",
+      "secretary_general": "AZIZ OUHEDDA",
+      "address": "Avenue Moulay Ettahar Ben Abdulkarim Ouarzazate",
+      "phone": "0524885798",
+      "fax": "0524885801",
+      "verified_on": "2026-10-23",
+      "status": "verified"
+    },
+    "fpt-taroudant": {
+      "name_ar": "الكلية متعددة التخصصات - تارودانت",
+      "name_fr": "Faculté Polydisciplinaire - Taroudant",
+      "official_site": "http://www.fpt.ac.ma/",
+      "uiz_page": "https://www.uiz.ac.ma/faculte-polydisciplinaire-taroudant",
+      "dean": "HASSAN HMAYZ",
+      "vice_dean": "ELMORJANI ZINE ELAABIDINE, HAMADI ABDELLATIF",
+      "secretary_general": "AIT TALEB ABDELAZIZ",
+      "address": "Hay El Mohammadi (Lastah) B.P 271 Taroudant",
+      "phone": "0528551010",
+      "fax": "0528551020",
+      "faculty": "30 enseignants + 14 cadres administratifs/techniques",
+      "opened": "2010",
+      "verified_on": "2026-10-23",
+      "status": "verified"
+    }
+  }
   "institutions_verified_batch3": {
     "est-guelmim": {
       "name_ar": "المدرسة العليا للتكنولوجيا - كلميم",
