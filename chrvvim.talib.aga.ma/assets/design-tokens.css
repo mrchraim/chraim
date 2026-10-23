@@ -1,0 +1,115 @@
+/* ==========================================================================
+   CHRAIM Campus — Design Tokens (CSS Custom Properties)
+   Source of truth for colors, spacing, typography, radius, shadows.
+   Use: <link rel="stylesheet" href="/assets/design-tokens.css">
+   ========================================================================== */
+
+:root {
+  /* ---------- Colors ---------- */
+  --color-royal: #0B1220;
+  --color-royal-2: #14243A;
+  --color-gold: #B89B5E;
+  --color-gold-2: #F1DC9B;
+  --color-marble: #F7F5F0;
+  --color-marble-2: #EFEAE0;
+  --color-ink: #1F2937;
+  --color-muted: #6B7280;
+  --color-line: #E5E1D8;
+  --color-soft: #F2EFE8;
+  --color-ok: #2D7A5F;
+  --color-warn: #A4620A;
+  --color-warn-bg: #FBF3E3;
+  --color-error: #C1121F;
+
+  /* ---------- Typography ---------- */
+  --font-ui: 'IBM Plex Sans Arabic', 'Inter', system-ui, -apple-system, "Segoe UI", Tahoma, "Noto Naskh Arabic", Arial, sans-serif;
+  --font-serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Noto Naskh Arabic", "Times New Roman", serif;
+  --font-size-base: 16.5px;
+  --font-size-sm: 0.88rem;
+  --font-size-lg: 1.05rem;
+  --font-size-xl: 1.3rem;
+  --font-size-2xl: 1.6rem;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+  --line-height-base: 1.65;
+  --line-height-relaxed: 1.85;
+
+  /* ---------- Spacing (8px grid) ---------- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+
+  /* ---------- Radius ---------- */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 18px;
+  --radius-2xl: 22px;
+  --radius-full: 999px;
+
+  /* ---------- Shadows ---------- */
+  --shadow-sm: 0 2px 8px rgba(11, 42, 111, 0.08);
+  --shadow-md: 0 10px 30px rgba(11, 42, 111, 0.10);
+  --shadow-lg: 0 18px 46px rgba(11, 42, 111, 0.13);
+  --shadow-card: 0 12px 34px rgba(11, 42, 111, 0.09);
+
+  /* ---------- Transitions ---------- */
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.25s ease;
+  --transition-slow: 0.45s ease;
+
+  /* ---------- Dark mode overrides ---------- */
+  --color-bg: var(--color-marble);
+  --color-card: #FFFFFF;
+}
+
+:root[data-theme="dark"] {
+  --color-bg: #080d18;
+  --color-card: #0F1626;
+  --color-ink: #F7F5F0;
+  --color-muted: #9aa3b5;
+  --color-line: #26304e;
+  --color-soft: #12192b;
+  --color-gold: #C6A568;
+  --color-gold-2: #EAD9A8;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-bg: #080d18;
+    --color-card: #0F1626;
+    --color-ink: #F7F5F0;
+    --color-muted: #9aa3b5;
+    --color-line: #26304e;
+    --color-soft: #12192b;
+    --color-gold: #C6A568;
+    --color-gold-2: #EAD9A8;
+  }
+}
+
+/* Comfort mode (reading) */
+:root[data-comfort="on"] {
+  --color-bg: #efe6d2;
+  --color-card: #fbf6ea;
+  --color-line: #e1d6bc;
+  --color-ink: #2a2620;
+  --color-soft: #e8ddc6;
+  --color-muted: #6b6250;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --transition-fast: 0s;
+    --transition-base: 0s;
+    --transition-slow: 0s;
+  }
+}
