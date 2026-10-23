@@ -54,8 +54,25 @@
     }
   },
   "pending_verification": [
-    "fsjes-ait-melloul", "chariaa-ait-melloul"
+    "fsjes-ait-melloul"
   ],
+  "institutions_verified_batch10": {
+    "chariaa-ait-melloul": {
+      "name_ar": "كلية الشريعة - أيت ملول",
+      "name_fr": "Faculté Chariaa - Ait Melloul",
+      "official_site": "http://www.chariaa-agadir.ac.ma/",
+      "uiz_page": "https://www.uiz.ac.ma/faculte-chariaa-ait-melloul",
+      "dean": "AIT EL MAKI ABDELAZIZ",
+      "vice_dean": "Sidi Mohamed EL OUARDI",
+      "secretary_general": "OUBAHMAN ALI",
+      "address": "B.P 52 Almazar Ait Melloul",
+      "phone": "0528241868 / 0528241869",
+      "fax": "0528241228",
+      "opened": "1978-1979",
+      "verified_on": "2026-10-23",
+      "status": "verified"
+    }
+  }
   "institutions_verified_batch9": {
     "fsa-agadir": {
       "name_ar": "كلية العلوم - أكادير",
