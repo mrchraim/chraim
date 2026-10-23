@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>دليل الطالب أكادير | CHRAIM - المنصة الجامعية المتكاملة</title>
+    <title>دليل الطالب أكادير | CHRAIM — المنصة الجامعية المتكاملة</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts: Cairo -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <!-- Lucide Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Lucide Icons CDN -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        navy: { 900: '#0B132B', 800: '#1C2541', 700: '#3A506B' },
-                        gold: { 500: '#D4AF37', 400: '#F3E5AB' }
+                        navy: { 950: '#060B19', 900: '#0B132B', 800: '#1C2541', 700: '#3A506B' },
+                        gold: { 600: '#B8860B', 500: '#D4AF37', 400: '#F3E5AB', 300: '#FFF8DC' }
                     },
                     fontFamily: { cairo: ['Cairo', 'sans-serif'] }
                 }
@@ -24,114 +24,148 @@
         }
     </script>
     <style>
-        body { font-family: 'Cairo', sans-serif; background-color: #0B132B; color: #F3E5AB; }
+        body { font-family: 'Cairo', sans-serif; background-color: #060B19; color: #F3E5AB; }
+        .glass-card { background: rgba(28, 37, 65, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(212, 175, 55, 0.2); }
+        .gold-gradient-text { background: linear-gradient(135deg, #FFF8DC 0%, #D4AF37 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     </style>
 </head>
-<body class="min-h-screen flex flex-col">
+<body class="min-h-screen flex flex-col justify-between">
 
     <!-- Header Navigation -->
-    <header class="bg-navy-800 border-b border-gold-500/20 sticky top-0 z-50 backdrop-blur-md">
+    <header class="bg-navy-900/90 border-b border-gold-500/30 sticky top-0 z-50 backdrop-blur-md">
         <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center space-x-3 space-x-reverse">
-                <div class="w-10 h-10 rounded-xl bg-gold-500 text-navy-900 font-bold flex items-center justify-center text-xl shadow-lg">CH</div>
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-gold-400 to-gold-600 text-navy-950 font-black flex items-center justify-center text-xl shadow-lg shadow-gold-500/20">CH</div>
                 <div>
-                    <h1 class="font-bold text-lg text-white leading-tight">CHRAIM</h1>
-                    <p class="text-xs text-gold-400 opacity-80">دليل الطالب أكادير — جامعة ابن زهر</p>
+                    <h1 class="font-extrabold text-lg text-white leading-tight tracking-wide">CHRAIM</h1>
+                    <p class="text-[11px] text-gold-400 opacity-90">دليل الطالب أكادير — جامعة ابن زهر</p>
                 </div>
             </div>
-            <div class="flex items-center gap-3">
-                <span class="text-xs bg-gold-500/10 text-gold-400 border border-gold-500/30 px-3 py-1 rounded-full flex items-center gap-1">
-                    <i data-lucide="check-circle" class="w-3.5 h-3.5"></i> تحيين: 2026-10-23
+            <div class="flex items-center gap-2">
+                <span class="text-xs bg-gold-500/10 text-gold-400 border border-gold-500/30 px-3 py-1 rounded-full flex items-center gap-1.5 font-bold">
+                    <i data-lucide="shield-check" class="w-4 h-4 text-gold-500"></i> بيانات رسمية 2026–2027
                 </span>
             </div>
         </div>
     </header>
 
     <!-- Main Content Container -->
-    <main class="flex-1 max-w-7xl w-full mx-auto px-4 py-8 space-y-10">
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 py-8 space-y-8">
 
         <!-- Hero Status Banner -->
-        <section class="bg-gradient-to-r from-navy-800 to-navy-700 border border-gold-500/30 rounded-2xl p-6 shadow-xl relative overflow-hidden">
-            <div class="relative z-10 max-w-3xl">
-                <span class="inline-block bg-gold-500 text-navy-900 font-bold text-xs px-3 py-1 rounded-md mb-3">مُحدّث للموسم الجامعي 2026–2027</span>
-                <h2 class="text-2xl md:text-3xl font-extrabold text-white mb-2">منصة أستاذ وطالب كلية العلوم القانونية والسياسية (FSJP)</h2>
-                <p class="text-gray-300 text-sm leading-relaxed mb-4">
-                    تم تحديث اسم وهيكلة الكلية رسمياً إلى <strong class="text-gold-400">كلية العلوم القانونية والسياسية (FSJP Agadir)</strong> مع دمج محرك البحث التفاعلي للأفواج والمجموعات والجدول الأسبوعي لكافة المسالك.
+        <section class="glass-card rounded-2xl p-6 md:p-8 shadow-2xl relative overflow-hidden">
+            <div class="absolute -left-10 -bottom-10 w-48 h-48 bg-gold-500/10 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="relative z-10 max-w-4xl space-y-3">
+                <div class="flex flex-wrap items-center gap-2">
+                    <span class="bg-gold-500 text-navy-950 font-bold text-xs px-3 py-1 rounded-md">تحديث الكلية الرسمي</span>
+                    <span class="text-xs text-gray-300 bg-navy-900 px-2.5 py-0.5 rounded border border-navy-700">آخر تحيين: 2026-10-23</span>
+                </div>
+                <h2 class="text-2xl md:text-4xl font-black text-white leading-tight">
+                    بوابة طالب <span class="gold-gradient-text">كلية العلوم القانونية والسياسية (FSJP Agadir)</span>
+                </h2>
+                <p class="text-gray-300 text-xs md:text-sm leading-relaxed">
+                    تم تحيين بيانات البوابة وفق التسمية والمسارات الرسمية الجديدة للكلية للموسم الجامعي 2026–2027[cite: 1, 4]. يمكنك الآن البحث الفوري عن الفوج، المجموعات، وأوقات المحاضرات لجميع مسارات السداسي الثالث والپنفس الخامس[cite: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17].
                 </p>
             </div>
         </section>
 
         <!-- Interactive Schedule & Group Finder Widget -->
-        <section class="bg-navy-800 border border-gold-500/30 rounded-2xl p-6 shadow-2xl">
-            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6 border-b border-navy-700 pb-4">
+        <section class="glass-card rounded-2xl p-6 shadow-2xl space-y-6">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-navy-700/80 pb-4">
                 <div>
-                    <h3 class="text-xl font-bold text-white flex items-center gap-2">
-                        <i data-lucide="search" class="text-gold-500"></i> محرك البحث التفاعلي عن الأفواج والجدول الأسبوعي
+                    <h3 class="text-xl font-bold text-white flex items-center gap-2.5">
+                        <i data-lucide="search-code" class="text-gold-500 w-6 h-6"></i> محرك البحث التفاعلي للأفواج واستعمالات الزمن
                     </h3>
-                    <p class="text-xs text-gray-400 mt-1">ابحث عن فوجك وقاعتك بناءً على الاسم أو المسلك (S3 / S5)</p>
+                    <p class="text-xs text-gray-400 mt-1">أدخل أول حروف النسب باللاتينية واختر المسار للحصول على معلومات الفوج والقاعات مباشرة[cite: 1, 2, 3, 4, 5].</p>
                 </div>
             </div>
 
             <!-- Filters Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div>
-                    <label class="block text-xs text-gold-400 mb-1">الفصل الدراسي</label>
-                    <select id="semesterSelect" onchange="updatePathways()" class="w-full bg-navy-900 border border-navy-700 text-white rounded-lg p-2.5 text-sm focus:border-gold-500 outline-none">
+                    <label class="block text-xs font-bold text-gold-400 mb-1.5">1. الفصل الدراسي</label>
+                    <select id="semesterSelect" onchange="updatePathways()" class="w-full bg-navy-950 border border-navy-700 text-white rounded-xl p-3 text-sm focus:border-gold-500 outline-none transition-all">
                         <option value="S3">السداسي الثالث (S3)</option>
                         <option value="S5">السداسي الخامس (S5)</option>
                     </select>
                 </div>
                 <div>
-                    <label class="block text-xs text-gold-400 mb-1">الشعبة / المسار التخصصي</label>
-                    <select id="pathwaySelect" class="w-full bg-navy-900 border border-navy-700 text-white rounded-lg p-2.5 text-sm focus:border-gold-500 outline-none">
-                        <!-- Populated dynamically via JavaScript -->
+                    <label class="block text-xs font-bold text-gold-400 mb-1.5">2. الشعبة / المسار التخصصي</label>
+                    <select id="pathwaySelect" class="w-full bg-navy-950 border border-navy-700 text-white rounded-lg p-3 text-sm focus:border-gold-500 outline-none transition-all">
+                        <!-- Populated dynamically via JS -->
                     </select>
                 </div>
                 <div>
-                    <label class="block text-xs text-gold-400 mb-1">الاسم اللاتيني (أول حروف النسب)</label>
-                    <input type="text" id="nameInput" placeholder="مثال: AABACH أو AIT BACH" class="w-full bg-navy-900 border border-navy-700 text-white rounded-lg p-2.5 text-sm focus:border-gold-500 outline-none placeholder-gray-500">
+                    <label class="block text-xs font-bold text-gold-400 mb-1.5">3. النسب باللاتينية (اللقب)</label>
+                    <input type="text" id="nameInput" placeholder="مثال: AABACH, AIT BACH, ZOUINE..." class="w-full bg-navy-950 border border-navy-700 text-white rounded-xl p-3 text-sm focus:border-gold-500 outline-none placeholder-gray-500 transition-all uppercase">
                 </div>
             </div>
 
-            <button onclick="searchGroup()" class="w-full bg-gold-500 hover:bg-gold-400 text-navy-900 font-bold py-3 rounded-lg text-sm transition-all flex items-center justify-center gap-2 shadow-lg">
-                <i data-lucide="filter"></i> إظهار الفوج والقاعة والجدول الأسبوعي
+            <button onclick="searchGroup()" class="w-full bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-400 hover:to-gold-500 text-navy-950 font-extrabold py-3.5 rounded-xl text-sm transition-all flex items-center justify-center gap-2 shadow-xl shadow-gold-500/10 cursor-pointer">
+                <i data-lucide="sparkles" class="w-4 h-4"></i> إظهار الفوج وتفاصيل الجدول الأسبوعي
             </button>
 
             <!-- Results Output Container -->
-            <div id="resultsContainer" class="mt-6 hidden bg-navy-900/80 border border-gold-500/20 rounded-xl p-5 space-y-4">
-                <!-- JS will inject search results here -->
+            <div id="resultsContainer" class="hidden space-y-6 pt-2">
+                <!-- Group Info Card -->
+                <div id="groupInfoOutput" class="bg-navy-950/90 border border-gold-500/30 rounded-xl p-5 space-y-4 shadow-inner">
+                    <!-- Injected by JS -->
+                </div>
+
+                <!-- Schedule Table -->
+                <div class="space-y-3">
+                    <h4 class="text-sm font-bold text-white flex items-center gap-2">
+                        <i data-lucide="calendar" class="text-gold-500 w-4 h-4"></i> استعمال الزمن الخاص بهذا المسار (الموسم 2026–2027)[cite: 4, 5, 12, 13, 14, 15, 16, 17]
+                    </h4>
+                    <div class="overflow-x-auto rounded-xl border border-navy-700">
+                        <table class="w-full text-xs text-right text-gray-300">
+                            <thead class="bg-navy-800 text-gold-400 border-b border-navy-700">
+                                <tr>
+                                    <th class="p-3">اليوم</th>
+                                    <th class="p-3">التوقيت</th>
+                                    <th class="p-3">المادة / وحدة التكوين</th>
+                                    <th class="p-3">الأستاذ(ة)</th>
+                                    <th class="p-3">القاعة / المدرج</th>
+                                </tr>
+                            </thead>
+                            <tbody id="scheduleTableBody" class="divide-y divide-navy-800 bg-navy-900/50">
+                                <!-- Injected by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </section>
 
         <!-- Corrected Institutions Grid -->
         <section class="space-y-4">
             <h3 class="text-lg font-bold text-white flex items-center gap-2">
-                <i data-lucide="building-2" class="text-gold-500"></i> المؤسسات الجامعية بأكادير (مُحدثة 2026)
+                <i data-lucide="building" class="text-gold-500"></i> دليل المؤسسات الجامعية بأكادير (مُحدث 2026)
             </h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                <div class="bg-navy-800 border border-gold-500/40 p-4 rounded-xl flex justify-between items-start">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="glass-card p-4 rounded-xl flex justify-between items-start border-gold-500/40">
                     <div>
-                        <span class="text-[10px] bg-gold-500/20 text-gold-400 px-2 py-0.5 rounded">مُحدثة</span>
-                        <h4 class="font-bold text-white mt-1">كلية العلوم القانونية والسياسية (FSJP)</h4>
-                        <p class="text-xs text-gray-400">Faculté des Sciences Juridiques et Politiques - Agadir</p>
+                        <span class="text-[10px] bg-gold-500/20 text-gold-400 font-bold px-2 py-0.5 rounded">الاسم الرسمي الجديد</span>
+                        <h4 class="font-bold text-white mt-1 text-sm">كلية العلوم القانونية والسياسية (FSJP)[cite: 1, 4]</h4>
+                        <p class="text-xs text-gray-400 mt-0.5">Faculté des Sciences Juridiques et Politiques - Agadir[cite: 1, 4]</p>
                     </div>
-                    <i data-lucide="map-pin" class="text-gold-500 w-5 h-5"></i>
+                    <i data-lucide="check-circle-2" class="text-gold-500 w-5 h-5 flex-shrink-0"></i>
                 </div>
-                <div class="bg-navy-800 border border-navy-700 p-4 rounded-xl flex justify-between items-start">
+                <div class="glass-card p-4 rounded-xl flex justify-between items-start">
                     <div>
                         <span class="text-[10px] bg-navy-700 text-gray-300 px-2 py-0.5 rounded">كلية</span>
-                        <h4 class="font-bold text-white mt-1">كلية العلوم (FSA)</h4>
-                        <p class="text-xs text-gray-400">Faculté des Sciences - Agadir</p>
+                        <h4 class="font-bold text-white mt-1 text-sm">كلية العلوم (FSA)</h4>
+                        <p class="text-xs text-gray-400 mt-0.5">Faculté des Sciences - Agadir</p>
                     </div>
-                    <i data-lucide="map-pin" class="text-gray-500 w-5 h-5"></i>
+                    <i data-lucide="map-pin" class="text-gray-500 w-5 h-5 flex-shrink-0"></i>
                 </div>
-                <div class="bg-navy-800 border border-navy-700 p-4 rounded-xl flex justify-between items-start">
+                <div class="glass-card p-4 rounded-xl flex justify-between items-start">
                     <div>
                         <span class="text-[10px] bg-navy-700 text-gray-300 px-2 py-0.5 rounded">كلية</span>
-                        <h4 class="font-bold text-white mt-1">كلية الآداب والعلوم الإنسانية (FLSH)</h4>
-                        <p class="text-xs text-gray-400">Faculté des Lettres et des Sciences Humaines - Agadir</p>
+                        <h4 class="font-bold text-white mt-1 text-sm">كلية الآداب والعلوم الإنسانية (FLSH)</h4>
+                        <p class="text-xs text-gray-400 mt-0.5">Faculté des Lettres et des Sciences Humaines - Agadir</p>
                     </div>
-                    <i data-lucide="map-pin" class="text-gray-500 w-5 h-5"></i>
+                    <i data-lucide="map-pin" class="text-gray-500 w-5 h-5 flex-shrink-0"></i>
                 </div>
             </div>
         </section>
@@ -139,14 +173,15 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-navy-800 border-t border-navy-700 py-6 text-center text-xs text-gray-400">
-        <p>صُنع بـ <strong class="text-gold-400">CHRAIM</strong> · جميع الحقوق محفوظة لموقع دليل الطالب أكادير © 2026</p>
+    <footer class="bg-navy-900 border-t border-navy-800 py-6 text-center text-xs text-gray-400">
+        <p>صُنع بـ <strong class="text-gold-400">CHRAIM</strong> · منصة دليل الطالب أكادير © 2026</p>
     </footer>
 
-    <!-- Client-side Logic Script -->
+    <!-- Comprehensive JavaScript Logic -->
     <script>
         lucide.createIcons();
 
+        // Database Definition for FSJP Agadir 2026-2027
         const pathwaysData = {
             S3: [
                 { id: "priv_s3", name: "القانون الخاص — جذع مشترك" },
@@ -159,6 +194,58 @@
                 { id: "priv_jud_s5", name: "القانون الخاص — مسار المهن القانونية والقضائية" },
                 { id: "pub_admin_s5", name: "القانون العام — مسار الدراسات الإدارية والمالية" },
                 { id: "pub_pol_s5", name: "القانون العام — مسار الدراسات السياسية والدولية (مُحدث 10-10-2026)" }
+            ]
+        };
+
+        const scheduleDatabase = {
+            priv_s3: [
+                { day: "الإثنين", time: "08:00 - 10:00", subject: "قانون الأسرة", professor: "أيوب عبد الرزاق", room: "المدرج الكبير" },
+                { day: "الإثنين", time: "10:00 - 12:00", subject: "القانون الجنائي الخاص", professor: "ازراف أحمد", room: "المدرج 10" },
+                { day: "الثلاثاء", time: "08:00 - 10:00", subject: "المسؤولية المدنية", professor: "العلمي محمد", room: "القاعة 1" },
+                { day: "الأربعاء", time: "10:00 - 12:00", subject: "اللغة الأجنبية (الفرنسية)", professor: "غوثة سميرة", room: "القاعة 10 بلوك C" }
+            ],
+            pub_s3: [
+                { day: "الإثنين", time: "08:00 - 10:00", subject: "قانون الأسرة", professor: "حموش عبد الرحمان", room: "القاعة 4 بلوك B" },
+                { day: "الإثنين", time: "10:00 - 12:00", subject: "المالية العامة", professor: "محاسيني محمد", room: "القاعة 1" },
+                { day: "الثلاثاء", time: "14:00 - 16:00", subject: "القانون الدولي العام", professor: "محاسيني محمد", room: "المدرج 7" },
+                { day: "الخميس", time: "16:00 - 18:00", subject: "اللغة الأجنبية (الفرنسية)", professor: "نجود متحضر", room: "القاعة 12 بلوك C" }
+            ],
+            priv_crim_s5: [
+                { day: "الإثنين", time: "10:00 - 12:00", subject: "مسرح الجريمة", professor: "سعيدي يونس", room: "القاعة 1" },
+                { day: "الإثنين", time: "14:00 - 16:00", subject: "القانون الجنائي الرقمي والذكاء الاصطناعي", professor: "أيت عبد الكريم ياسين", room: "القاعة 11 بلوك C" },
+                { day: "الإثنين", time: "16:00 - 18:00", subject: "القانون الجنائي للأعمال", professor: "اطويف محمد", room: "القاعة 3" },
+                { day: "الثلاثاء", time: "14:00 - 16:00", subject: "السياسة الجنائية", professor: "احطاب إبراهيم", room: "القاعة 4" },
+                { day: "الخميس", time: "16:00 - 18:00", subject: "اللغات الأجنبية (الانكليزية)", professor: "كاضيض شيماء", room: "القاعة 13 بلوك C" }
+            ],
+            priv_civ_s5: [
+                { day: "الإثنين", time: "08:00 - 10:00", subject: "القانون العقاري 2 الحقوق العينية", professor: "بن حفو حليمة", room: "القاعة 3 بلوك B" },
+                { day: "الإثنين", time: "14:00 - 16:00", subject: "العقود المدنية الخاصة", professor: "مجاهدين خالد", room: "القاعة 7" },
+                { day: "الثلاثاء", time: "08:00 - 10:00", subject: "القانون الدولي الخاص", professor: "دريسي جليلة", room: "القاعة 1" },
+                { day: "الخميس", time: "16:00 - 18:00", subject: "اللغات الأجنبية (الانكليزية)", professor: "آسيا الخليل", room: "القاعة 2" }
+            ],
+            priv_biz_s5: [
+                { day: "الثلاثاء", time: "10:00 - 12:00", subject: "القانون الجنائي للأعمال", professor: "اطويف محمد", room: "القاعة 11 بلوك B" },
+                { day: "الأربعاء", time: "14:00 - 16:00", subject: "قانون صعوبات المقاولة", professor: "مضي خديجة", room: "القاعة 3" },
+                { day: "الخميس", time: "08:00 - 10:00", subject: "وسائل الأداء والائتمان", professor: "الحرفاوي عبد الهادي", room: "القاعة 3" },
+                { day: "الخميس", time: "16:00 - 18:00", subject: "اللغات الأجنبية (الانكليزية)", professor: "إكرام الصردي", room: "القاعة 3" }
+            ],
+            priv_jud_s5: [
+                { day: "الإثنين", time: "08:00 - 10:00", subject: "صعوبات المقاولة", professor: "اطويف محمد", room: "المدرج 9" },
+                { day: "الإثنين", time: "14:00 - 16:00", subject: "العقود الخاصة", professor: "المالوكي فاطمة", room: "القاعة 1" },
+                { day: "الأربعاء", time: "08:00 - 10:00", subject: "الحقوق العينية", professor: "العلمي محمد", room: "المدرج الكبير" },
+                { day: "الخميس", time: "16:00 - 18:00", subject: "اللغات الأجنبية (الانكليزية)", professor: "كاضيض شيماء / دلال أرسلان", room: "القاعة 3 / القاعة 1" }
+            ],
+            pub_admin_s5: [
+                { day: "الثلاثاء", time: "08:00 - 10:00", subject: "إجراءات التقاضي في المادة الإدارية", professor: "صفاحي إسماعيل", room: "القاعة 5" },
+                { day: "الثلاثاء", time: "10:00 - 12:00", subject: "المرافق العامة الكبرى", professor: "الرامي الحسين", room: "القاعة 5" },
+                { day: "الخميس", time: "16:00 - 18:00", subject: "مناهج العلوم الاجتماعية", professor: "اولتيت إبراهيم", room: "القاعة 7" },
+                { day: "الجمعة", time: "16:00 - 18:00", subject: "الوظيفة العمومية وتدبير الموارد البشرية", professor: "كديرة رشيد", room: "القاعة 7" }
+            ],
+            pub_pol_s5: [
+                { day: "الإثنين", time: "16:00 - 18:00", subject: "القانون الدولي الإنساني", professor: "فاطمة الزهراء العيني", room: "القاعة 4" },
+                { day: "الثلاثاء", time: "16:00 - 18:00", subject: "اللغات الأجنبية (الانكليزية)", professor: "سمير سعد", room: "القاعة 5" },
+                { day: "الجمعة", time: "16:00 - 18:00", subject: "العمل البرلماني", professor: "هيا مبارك", room: "القاعة 7" },
+                { day: "السبت", time: "08:00 - 10:00", subject: "سوسيولوجيا العلاقات الدولية", professor: "الوادراسي محمد", room: "القاعة 4" }
             ]
         };
 
@@ -177,34 +264,73 @@
         function searchGroup() {
             const sem = document.getElementById('semesterSelect').value;
             const pathwaySelect = document.getElementById('pathwaySelect');
+            const pathwayId = pathwaySelect.value;
             const selectedPathwayName = pathwaySelect.options[pathwaySelect.selectedIndex].text;
             const name = document.getElementById('nameInput').value.trim().toUpperCase();
+            
             const container = document.getElementById('resultsContainer');
+            const groupInfoOutput = document.getElementById('groupInfoOutput');
+            const scheduleTableBody = document.getElementById('scheduleTableBody');
 
             container.classList.remove('hidden');
-            
-            const isS3 = sem === 'S3';
-            const langGroup = isS3 ? 'Fr-A / Fr-B (حسب النسب)' : 'Ang-A (المجموعات 1-6) / Ang-B (المجموعات 7-9)';
 
-            container.innerHTML = `
-                <div class="border-r-4 border-gold-500 pr-4 py-1">
-                    <h4 class="text-white font-bold text-base">نتيجة توزيع الفوج لـ: <span class="text-gold-400">${name || 'كافة الطلبة'}</span></h4>
-                    <p class="text-xs text-gray-300 mt-1">التخصص: <strong>${selectedPathwayName}</strong> | الموسم: <strong>2026–2027</strong></p>
+            // Dynamic logic for foreign language sections
+            let langGroup = 'غير محدد';
+            if (sem === 'S3') {
+                langGroup = (name.localeCompare('EL KARZABI') <= 0) ? 'Fr-A' : 'Fr-B';
+            } else {
+                if (name.localeCompare('BOUASRY') <= 0) langGroup = 'Ang-A (المجموعات 1-6)';
+                else if (name.localeCompare('ELHAMIL') <= 0) langGroup = 'Ang-B (المجموعات 7-12)';
+                else if (name.localeCompare('LAMIN') <= 0) langGroup = 'Ang-C (المجموعات 13-18)';
+                else langGroup = 'Ang-D (المجموعات 19-24)';
+            }
+
+            groupInfoOutput.innerHTML = `
+                <div class="border-r-4 border-gold-500 pr-4 py-1 flex flex-col md:flex-row md:items-center justify-between gap-2">
+                    <div>
+                        <h4 class="text-white font-bold text-base">نتيجة توزيع الفوج لـ: <span class="text-gold-400">${name || 'كافة المسجلين'}</span></h4>
+                        <p class="text-xs text-gray-300 mt-0.5">المسار التخصصي: <strong>${selectedPathwayName}</strong></p>
+                    </div>
+                    <span class="text-[11px] bg-gold-500/10 text-gold-400 border border-gold-500/30 px-3 py-1 rounded-full w-fit">
+                        كلية العلوم القانونية والسياسية بأكادير
+                    </span>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-3 bg-navy-800 p-4 rounded-lg text-xs">
-                    <div><span class="text-gray-400">الفوج العام / المجموعات:</span> <strong class="text-white block text-sm">الفوج A (المجموعات 1 - 4)</strong></div>
-                    <div><span class="text-gray-400">فوج اللغة الأجنبية:</span> <strong class="text-gold-400 block text-sm">${langGroup}</strong></div>
-                    <div><span class="text-gray-400">القاعة / المدرج:</span> <strong class="text-white block text-sm">المدرج 3 / القاعات 1-4 بالملحق</strong></div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-3 bg-navy-900 p-4 rounded-xl border border-navy-800 text-xs">
+                    <div><span class="text-gray-400 block mb-1">الفوج والمجموعات العادية:</span> <strong class="text-white text-sm">الفوج A (المجموعات 1 - 4)</strong></div>
+                    <div><span class="text-gray-400 block mb-1">فوج اللغة الأجنبية المخصص:</span> <strong class="text-gold-400 text-sm">${langGroup}</strong></div>
+                    <div><span class="text-gray-400 block mb-1">المقر الجامعي:</span> <strong class="text-white text-sm">الملحق الجامعي / القاعات والمدرجات</strong></div>
                 </div>
-                <div class="p-3 bg-gold-500/10 border border-gold-500/30 rounded-lg text-xs text-gold-400 flex items-center gap-2">
-                    <i data-lucide="info" class="w-4 h-4 flex-shrink-0"></i>
-                    <span>تنبيه هام: الأسماء المركبة والمصحوبة بفراغ (مثل: EL MANSOURI) تأتي دائماً في القوائم قبل الأسماء غير المركبة (مثل: ELMANSOURI).</span>
+                <div class="p-3 bg-gold-500/10 border border-gold-500/30 rounded-lg text-xs text-gold-400 flex items-start gap-2">
+                    <i data-lucide="alert-circle" class="w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5"></i>
+                    <span>ملاحظة تنظيمية هامة: الترتيب الأبجدي يعتمد قاعدة: الأسماء المركبة والمصحوبة بفراغ (مثل: <code>EL MANSOURI</code>) تأتي دائماً قبل الأسماء غير المركبة (مثل: <code>ELMANSOURI</code>)[cite: 1, 2, 3, 6, 7, 8, 9, 10, 11].</span>
                 </div>
             `;
+
+            // Populate Timetable
+            scheduleTableBody.innerHTML = '';
+            const scheduleList = scheduleDatabase[pathwayId] || [];
+            
+            if (scheduleList.length > 0) {
+                scheduleList.forEach(item => {
+                    const tr = document.createElement('tr');
+                    tr.className = "hover:bg-navy-800/60 transition-colors";
+                    tr.innerHTML = `
+                        <td class="p-3 font-bold text-white">${item.day}</td>
+                        <td class="p-3 text-gold-400">${item.time}</td>
+                        <td class="p-3 font-semibold text-white">${item.subject}</td>
+                        <td class="p-3 text-gray-300">${item.professor}</td>
+                        <td class="p-3"><span class="bg-navy-950 px-2.5 py-1 rounded border border-navy-700 text-gold-300">${item.room}</span></td>
+                    `;
+                    scheduleTableBody.appendChild(tr);
+                });
+            } else {
+                scheduleTableBody.innerHTML = `<tr><td colspan="5" class="p-4 text-center text-gray-400">لا توجد بيانات جدول أسبوعي متاحة حالياً لهذا المسار.</td></tr>`;
+            }
+
             lucide.createIcons();
         }
 
-        // Initialize pathways on page load
+        // Initialize on load
         document.addEventListener('DOMContentLoaded', updatePathways);
     </script>
 </body>
