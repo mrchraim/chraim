@@ -54,9 +54,32 @@
     }
   },
   "pending_verification": [
-    "flash-ait-melloul", "fmp-laayoune",
     "fsa-agadir", "fsjes-ait-melloul", "chariaa-ait-melloul"
   ],
+  "institutions_verified_batch8": {
+    "flash-ait-melloul": {
+      "name_ar": "كلية اللغات والآداب والعلوم الإنسانية - أيت ملول",
+      "name_fr": "Faculté des Langues, Arts et Sciences Humaines - Ait Melloul",
+      "official_site": "http://www.flash.uiz.ac.ma/",
+      "uiz_page": "https://www.uiz.ac.ma/faculte-des-langues-arts-et-sciences-humaines-ait-melloul",
+      "dean": "ABDELKHALEQ JAYED",
+      "vice_dean": "ABDELKADER MELLOUK, MOHAMED OUDADA",
+      "secretary_general": "LHOU BENHICH",
+      "address": "Route Nationale N°10 cite d’Azrou à côté de l'institut Agronomique et Vétérinaire Hassan II Ait Melloul",
+      "verified_on": "2026-10-23",
+      "status": "verified"
+    },
+    "fmp-laayoune": {
+      "name_ar": "كلية الطب والصيدلة - العيون",
+      "name_fr": "Faculté de Médecine et de Pharmacie - Laâyoune",
+      "official_site": "n/a",
+      "uiz_page": "https://www.uiz.ac.ma/faculte-de-medecine-et-de-pharmacie-laayoune",
+      "dean": "FATIMA ZAHRA ELHAFIDI ELALAOUI",
+      "secretary_general": "ABDELLAH ELHOURRE",
+      "verified_on": "2026-10-23",
+      "status": "verified"
+    }
+  }
   "institutions_verified_batch7": {
     "est-ouarzazate": {
       "name_ar": "المدرسة العليا للتكنولوجيا - ورزازات",
