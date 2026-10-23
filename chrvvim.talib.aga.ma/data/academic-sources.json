@@ -54,11 +54,42 @@
     }
   },
   "pending_verification": [
-    "esef-agadir", "est-ouarzazate",
+    "est-ouarzazate",
     "flash-ait-melloul", "fmp-guelmim",
     "fmp-laayoune", "fsa-agadir",
-    "fsa-ait-melloul", "fsjes-ait-melloul", "chariaa-ait-melloul"
+    "fsjes-ait-melloul", "chariaa-ait-melloul"
   ],
+  "institutions_verified_batch6": {
+    "esef-agadir": {
+      "name_ar": "المدرسة العليا لل教育 والتكوين - أكادير",
+      "name_fr": "Ecole Supérieure de l'Education et de la Formation - Agadir",
+      "official_site": "http://esefa.uiz.ac.ma/",
+      "uiz_page": "https://www.uiz.ac.ma/ecole-superieure-de-leducation-et-de-la-formation-agadir",
+      "director": "AMSIDDER ABDERRAHMANE",
+      "vice_director": "HILAL ELMOKHTAR",
+      "secretary_general": "WAHMANE RACHID",
+      "address": "Nouveau Complexe Universitaire d'Agadir",
+      "phone": "+212528227125",
+      "fax": "+212528227260",
+      "email": "esefa@uiz.ac.ma",
+      "opened": "2019",
+      "programs": "Licence d'Education (Secondaire: Français, Anglais, Mathématiques, Informatique, SVT, Physique-Chimie, Economie et Gestion) + Licence d'Education Primaire",
+      "verified_on": "2026-10-23",
+      "status": "verified"
+    },
+    "fsa-ait-melloul": {
+      "name_ar": "كلية العلوم التطبيقية - أيت ملول",
+      "name_fr": "Faculté des Sciences Appliquées - Ait Melloul",
+      "official_site": "http://fsa-am.uiz.ac.ma/",
+      "uiz_page": "https://www.uiz.ac.ma/faculte-des-sciences-appliquees-ait-melloul",
+      "dean": "RACHIDI ALI",
+      "vice_dean": "TAHER ZAKI, TIRBIYINE AHMED",
+      "secretary_general": "AHMED NAAIM",
+      "address": "Route Nationale N°10 cite d’Azrou à côté de l'institut Agronomique et Vétérinaire Hassan II Ait Melloul",
+      "verified_on": "2026-10-23",
+      "status": "verified"
+    }
+  }
   "institutions_verified_batch5": {
     "fp-smara": {
       "name_ar": "الكلية متعددة التخصصات - سمارة",
