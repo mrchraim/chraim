@@ -56,9 +56,41 @@
   "pending_verification": [
     "esef-agadir", "est-ouarzazate",
     "flash-ait-melloul", "fmp-guelmim",
-    "fmp-laayoune", "fp-smara", "fsa-agadir",
+    "fmp-laayoune", "fsa-agadir",
     "fsa-ait-melloul", "fsjes-ait-melloul", "chariaa-ait-melloul"
   ],
+  "institutions_verified_batch5": {
+    "fp-smara": {
+      "name_ar": "الكلية متعددة التخصصات - سمارة",
+      "name_fr": "Faculté Polydisciplinaire - Smara",
+      "official_site": "https://www.chariaasmara.com/fr/",
+      "uiz_page": "https://www.uiz.ac.ma/faculte-polydisciplinaire-smara",
+      "dean": "P.I M’HAMED MAHDANE",
+      "secretary_general": "Abdelfattah EL MESSOUDI",
+      "address": "B.P 195 Smara",
+      "phone": "0528888936",
+      "fax": "0528888937",
+      "verified_on": "2026-10-23",
+      "status": "verified"
+    },
+    "fsjes-ait-melloul": {
+      "name_ar": "كلية العلوم القانونية والاقتصادية والاجتماعية - أيت ملول",
+      "name_fr": "Faculté des Sciences Juridiques, Economiques et Sociales - Ait Melloul",
+      "official_site": "http://fsjes-cuam.uiz.ac.ma/",
+      "uiz_page": "https://www.uiz.ac.ma/faculte-des-sciences-juridiques-economiques-et-sociales-ait-melloul",
+      "dean": "RAHIM ETTOR",
+      "vice_dean": "HASSAN LILI, BRAHIM MOULAY GOUMGHAR",
+      "secretary_general": "AKHARAZ AHEMD",
+      "address": "Route Nationale N°10 cite d’Azrou, Ait Melloul",
+      "phone": "+212528242423",
+      "students": "6000+",
+      "faculty": "30+ professeurs + 5 administratifs",
+      "opened": "2015",
+      "programs": "Sciences Economiques et Gestion, Droit en langue Arabe",
+      "verified_on": "2026-10-23",
+      "status": "verified"
+    }
+  }
   "institutions_verified_batch4": {
     "feg-guelmim": {
       "name_ar": "كلية الاقتصاد والتدبير - كلميم",
