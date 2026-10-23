@@ -1,0 +1,54 @@
+{
+  "version": "1.0",
+  "verified_on": "2026-10-23",
+  "note": "Metadata for official university documents. Each entry: source (official body), published_date, verified_on, version. If no reliable newer version found, status='pending_verification' (do not guess).",
+  "institutions": {
+    "fsjp-agadir": {
+      "name_ar": "كلية العلوم القانونية والاقتصادية والاجتماعية - أكادير",
+      "name_fr": "Faculté des Sciences Juridiques, Économiques et Sociales - Agadir",
+      "official_site": "https://fsjpa.uiz.ac.ma/",
+      "uiz_page": "https://www.uiz.ac.ma/faculte-des-sciences-juridiques-economiques-et-sociales-agadir",
+      "verified_on": "2026-10-23",
+      "documents": [
+        {
+          "id": "s3-private-groups",
+          "title": "توزيع أفواج السداسي الثالث - قانون خاص",
+          "source": "كلية العلوم القانونية والاقتصادية والاجتماعية - أكادير (FSJP Agadir)",
+          "published_date": "2026-10-10",
+          "verified_on": "2026-10-23",
+          "version": "صيغة محينة 10-10-2026",
+          "local_pdf": "/documents/s3-private-groups.pdf",
+          "status": "verified"
+        },
+        {
+          "id": "s3-private-timetable",
+          "title": "استعمال الزمن الفصل 3 شعبة القانون الخاص",
+          "source": "كلية العلوم القانونية والاقتصادية والاجتماعية - أكادير (FSJP Agadir)",
+          "published_date": "2026-10-10",
+          "verified_on": "2026-10-23",
+          "version": "صيغة محينة 10-10-2026",
+          "local_pdf": "/documents/s3-private-timetable.pdf",
+          "status": "verified"
+        },
+        {
+          "id": "s5-civil-timetable",
+          "title": "استعمال الزمن - مسار القانون المدني (S5)",
+          "source": "كلية العلوم القانونية والاقتصادية والاجتماعية - أكادير (FSJP Agadir)",
+          "published_date": "2026-10-10",
+          "verified_on": "2026-10-23",
+          "version": "صيغة محينة 10-10-2026",
+          "local_pdf": "/documents/s5-civil-timetable.pdf",
+          "status": "verified"
+        }
+      ],
+      "note": "17 PDFs listed in fsjp-portal.html. Full metadata to be completed per document."
+    }
+  },
+  "pending_verification": [
+    "encg-agadir", "encg-dakhla", "ensa-agadir", "ensiasd-taroudant", "esef-agadir",
+    "est-dakhla", "est-guelmim", "est-laayoune", "est-ouarzazate", "esta-agadir",
+    "feg-guelmim", "flash-ait-melloul", "flsh-agadir", "fmp-agadir", "fmp-guelmim",
+    "fmp-laayoune", "fp-smara", "fpo-ouarzazate", "fpt-taroudant", "fsa-agadir",
+    "fsa-ait-melloul", "fsjes-agadir", "fsjes-ait-melloul", "chariaa-ait-melloul"
+  ]
+}
