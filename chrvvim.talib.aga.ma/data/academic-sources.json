@@ -54,11 +54,42 @@
     }
   },
   "pending_verification": [
-    "esef-agadir", "est-guelmim", "est-laayoune", "est-ouarzazate",
+    "esef-agadir", "est-ouarzazate",
     "feg-guelmim", "flash-ait-melloul", "fmp-guelmim",
     "fmp-laayoune", "fp-smara", "fpo-ouarzazate", "fpt-taroudant", "fsa-agadir",
     "fsa-ait-melloul", "fsjes-ait-melloul", "chariaa-ait-melloul"
   ],
+  "institutions_verified_batch3": {
+    "est-guelmim": {
+      "name_ar": "المدرسة العليا للتكنولوجيا - كلميم",
+      "name_fr": "Ecole Supérieure de Technologie - Guelmim",
+      "official_site": "http://www.estg.ac.ma/",
+      "uiz_page": "https://www.uiz.ac.ma/ecole-superieure-de-technologie-guelmim",
+      "director": "RACHID MARKAZI",
+      "secretary_general": "ALAOUI MOULAY YOUSSEF",
+      "address": "Avenue Abou Maachar Al Balkhi B.P 1317 Guelmim",
+      "phone": "0528770273",
+      "fax": "0528772746",
+      "programs": "DUT + DU (Bac+3) + formation continue",
+      "verified_on": "2026-10-23",
+      "status": "verified"
+    },
+    "est-laayoune": {
+      "name_ar": "المدرسة العليا للتكنولوجيا - العيون",
+      "name_fr": "Ecole Supérieure de Technologie - Laâyoune",
+      "official_site": "http://w2.estl.ac.ma/",
+      "uiz_page": "https://www.uiz.ac.ma/ecole-superieure-de-technologie-laayoune",
+      "director": "HAMID RGUIBI IDRISSI",
+      "vice_director": "SIDATI KHABID",
+      "secretary_general": "MAHMOUD EL BALLAOUI",
+      "address": "Quartier 25 Mars BP 3007 Laâyoune",
+      "phone": "+212(0)658566033",
+      "opened": "2014",
+      "programs": "DUT (Génie Informatique, Techniques de Management, Techniques de Commercialisation et de Communication)",
+      "verified_on": "2026-10-23",
+      "status": "verified"
+    }
+  }
   "institutions_verified_batch2": {
     "encg-agadir": {
       "name_ar": "المدرسة الوطنية للتجارة والتسيير - أكادير",
