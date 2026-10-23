@@ -54,10 +54,84 @@
     }
   },
   "pending_verification": [
-    "encg-agadir", "encg-dakhla", "ensa-agadir", "ensiasd-taroudant", "esef-agadir",
-    "est-dakhla", "est-guelmim", "est-laayoune", "est-ouarzazate", "esta-agadir",
-    "feg-guelmim", "flash-ait-melloul", "flsh-agadir", "fmp-agadir", "fmp-guelmim",
+    "encg-agadir", "encg-dakhla", "ensiasd-taroudant", "esef-agadir",
+    "est-dakhla", "est-guelmim", "est-laayoune", "est-ouarzazate",
+    "feg-guelmim", "flash-ait-melloul", "fmp-guelmim",
     "fmp-laayoune", "fp-smara", "fpo-ouarzazate", "fpt-taroudant", "fsa-agadir",
-    "fsa-ait-melloul", "fsjes-agadir", "fsjes-ait-melloul", "chariaa-ait-melloul"
-  ]
+    "fsa-ait-melloul", "fsjes-ait-melloul", "chariaa-ait-melloul"
+  ],
+  "institutions_verified_batch1": {
+    "ensa-agadir": {
+      "name_ar": "المدرسة الوطنية للعلوم التطبيقية - أكادير",
+      "name_fr": "Ecole Nationale des Sciences Appliquées - Agadir",
+      "official_site": "http://www.ensa-agadir.ac.ma/",
+      "uiz_page": "https://www.uiz.ac.ma/ecole-nationale-des-sciences-appliquees-agadir",
+      "director": "PI Hicham JAMOULI",
+      "secretary_general": "MAHA EL GHILALI",
+      "address": "BP 1136 Agadir",
+      "phone": "0528228313",
+      "fax": "0528232007",
+      "opened": "1999",
+      "students": "1100+",
+      "graduates_per_year": "200",
+      "faculty": "56 enseignants (15 prof, 18 HDR, 21 assistants, 02 secondary)",
+      "programs": "Cycle préparatoire 2 ans + cycle ingénieur (6 spécialités) + 2 masters (EECB, IF)",
+      "capacity": "180 bacheliers/an (marocains) + ~10 étrangers",
+      "verified_on": "2026-10-23",
+      "status": "verified"
+    },
+    "esta-agadir": {
+      "name_ar": "المدرسة العليا للتكنولوجيا - أكادير",
+      "name_fr": "Ecole Supérieure de Technologie - Agadir",
+      "official_site": "http://www.esta.ac.ma/",
+      "uiz_page": "https://www.uiz.ac.ma/ecole-superieure-de-technologie-agadir",
+      "director": "MEDIOUNI MOHAMED",
+      "vice_director": "EL IHSSINI HOSSINE",
+      "secretary_general": "AZEDINE MAAZOUZ",
+      "address": "B.P 33/S Agadir",
+      "phone": "0528232583 / 0661686316",
+      "fax": "0528227824",
+      "programs": "DUT + 4 licences professionnelles (depuis 2014/2015)",
+      "verified_on": "2026-10-23",
+      "status": "verified"
+    },
+    "flsh-agadir": {
+      "name_ar": "كلية الآداب والعلوم الإنسانية - أكادير",
+      "name_fr": "Faculté des Lettres et des Sciences Humaines - Agadir",
+      "official_site": "http://www.flsh-agadir.ac.ma/",
+      "uiz_page": "https://www.uiz.ac.ma/faculte-des-lettres-et-des-sciences-humaines-agadir",
+      "dean": "NAJI MOHAMED",
+      "vice_dean": "Mustafa MAMOUNI ALAOUI",
+      "secretary_general": "EDDAOUDI RACHID",
+      "address": "B.P 29/S Agadir 80000",
+      "phone": "0528220878 / 0528220558",
+      "fax": "0528221620",
+      "students": "28000+",
+      "regions": "5 régions (52% territoire national)",
+      "programs": "LMD (Licence, Master, Doctorat)",
+      "departments": "Langues et Littérature Arabes, Françaises, Anglaises, Hispaniques, Histoire et Géographie, Études Islamiques, Sociologie, Études Amazighes",
+      "verified_on": "2026-10-23",
+      "status": "verified"
+    },
+    "fmp-agadir": {
+      "name_ar": "كلية الطب والصيدلة - أكادير",
+      "name_fr": "Faculté de Médecine et de Pharmacie - Agadir",
+      "official_site": "http://fmpa.uiz.ac.ma/",
+      "uiz_page": "https://www.uiz.ac.ma/faculte-de-medecine-et-de-pharmacie-agadir",
+      "dean": "SOUFI MEHDI",
+      "vice_dean": "ZOHRA LEMKHENETE, YOUSSEF KHABBAL",
+      "secretary_general": "BOUGDAL AHMED",
+      "address": "BP 7519, Quartier Tilila CP80060 Agadir",
+      "phone": "+212(0)528234042",
+      "fax": "+212(0)528234041",
+      "capacity": "4500 étudiants",
+      "first_promotion": "2016-2017",
+      "faculty": "15 Enseignants-Chercheurs",
+      "specialties": "Endocrinologie, Pharmacologie, Néphrologie, Anesthésie, Cardiologie, Médecine Interne, Microbiologie, Anatomie, Maladies infectieuses, Parasitologie, Biochimie, Histo-Embryologie, Pneumologie, Biophysique",
+      "partnerships": "Universités marocaines + Bretagne Occidentale (France), Porto (Portugal), Las Palmas Gran Canaria (Espagne), Claude Bernard Lyon I (France)",
+      "cost": "315 millions Dhs (Fonds saoudien de Développement)",
+      "verified_on": "2026-10-23",
+      "status": "verified"
+    }
+  }
 }
