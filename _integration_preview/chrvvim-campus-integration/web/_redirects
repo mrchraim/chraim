@@ -1,4 +1,0 @@
-# مجلد الإدارة: إعادة توجيه لضمان الشرطة المائلة حتى تعمل المسارات النسبية للأصول.
-/admin          /admin/            301
-/admin/         /admin/index.html  200
-/admin/*        /admin/index.html  200

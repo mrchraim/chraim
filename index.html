@@ -4,27 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>دليل الطالب أكادير | CHRAIM — المنصة الجامعية المتكاملة</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Cairo -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-    <!-- Lucide Icons CDN -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        navy: { 950: '#060B19', 900: '#0B132B', 800: '#1C2541', 700: '#3A506B' },
-                        gold: { 600: '#B8860B', 500: '#D4AF37', 400: '#F3E5AB', 300: '#FFF8DC' }
-                    },
-                    fontFamily: { cairo: ['Cairo', 'sans-serif'] }
-                }
-            }
-        }
-    </script>
+    <!-- CSS مبني محلياً (Tailwind 3.4.17) + خط Cairo محلي: متوافق مع CSP ويعمل دون إنترنت -->
+    <link rel="stylesheet" href="/assets/fonts/cairo.css">
+    <link rel="stylesheet" href="/assets/tailwind-home.css">
+    <script src="/assets/lib/lucide-0.454.0.min.js" defer></script>
     <style>
-        body { font-family: 'Cairo', sans-serif; background-color: #060B19; color: #F3E5AB; }
+        body { font-family: 'Cairo', system-ui, -apple-system, 'Segoe UI', Tahoma, sans-serif; background-color: #060B19; color: #F3E5AB; }
         .glass-card { background: rgba(28, 37, 65, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(212, 175, 55, 0.2); }
         .gold-gradient-text { background: linear-gradient(135deg, #FFF8DC 0%, #D4AF37 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     </style>
@@ -179,7 +164,7 @@
 
     <!-- Comprehensive JavaScript Logic -->
     <script>
-        lucide.createIcons();
+        document.addEventListener('DOMContentLoaded', () => window.lucide && lucide.createIcons());
 
         // Database Definition for FSJP Agadir 2026-2027
         const pathwaysData = {
@@ -327,11 +312,13 @@
                 scheduleTableBody.innerHTML = `<tr><td colspan="5" class="p-4 text-center text-gray-400">لا توجد بيانات جدول أسبوعي متاحة حالياً لهذا المسار.</td></tr>`;
             }
 
-            lucide.createIcons();
+            window.lucide && lucide.createIcons();
         }
 
         // Initialize on load
         document.addEventListener('DOMContentLoaded', updatePathways);
     </script>
+<script src="/assets/back-home.js" defer></script>
+<script src="/assets/cmdk.js" defer></script>
 </body>
 </html>

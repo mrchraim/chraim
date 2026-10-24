@@ -1,0 +1,4 @@
+/* Cairo (محلي) — الحروف العربية. تعويض الخط الاحتياطي: system-ui */
+@font-face{font-family:'Cairo';font-style:normal;font-weight:200 900;font-display:swap;
+  src:url('./cairo-arabic.woff2') format('woff2');
+  unicode-range:U+0600-06FF,U+0750-077F,U+200C-200E,U+2010-2011,U+204F,U+FB50-FDFF,U+FE70-FEFC}

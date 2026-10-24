@@ -26,6 +26,14 @@ jobs:
         with:
           python-version: "3.x"
 
+      - name: Search index must be up to date
+        run: |
+          python tools/make-search-index.py
+          git diff --exit-code assets/search-index.json || (echo "::error::شغّل python tools/make-search-index.py وارفع assets/search-index.json" && exit 1)
+
+      - name: Security audit (CSP / secrets)
+        run: python tools/audit-security.py
+
       - name: Build clean dist/ (no internal files)
         run: python tools/build-dist.py --out dist --clean
 

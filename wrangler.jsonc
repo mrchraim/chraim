@@ -1,11 +1,8 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "efault -roject",
+  "name": "chraim",
   "compatibility_date": "2026-10-12",
-  "observability": {
-    "enabled": true
-  },
-  "assets": {
-    "directory": "chrvvim.talib.aga.ma"
-  }
+  "observability": { "enabled": true },
+  // النشر من مجلد dist الناتج عن:  python3 tools/build-dist.py --out dist --clean
+  "assets": { "directory": "./dist" }
 }

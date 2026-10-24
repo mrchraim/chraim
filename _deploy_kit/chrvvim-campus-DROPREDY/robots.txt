@@ -1,6 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /admin
-Disallow: /admin/
-
-Sitemap: https://chrvvim0k0l0a0k0.netlify.app/sitemap.xml

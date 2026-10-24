@@ -83,6 +83,17 @@ const STR={
   'uni.detail.open':{ar:'الموقع الرسمي ↗',fr:'Site officiel ↗',en:'Official site ↗'},
   'uni.detail.close':{ar:'إغلاق',fr:'Fermer',en:'Close'},
   'uni.detail.find':{ar:'🔍 ابحث في التكوينات',fr:'🔍 Chercher les formations',en:'🔍 Search programmes'},
+  'uni.detail.about':{ar:'📖 عن المؤسسة',fr:'📖 Présentation',en:'📖 About'},
+  'uni.detail.lead':{ar:'👤 القيادة والمسؤولون',fr:'👤 Direction',en:'👤 Leadership'},
+  'uni.detail.contact':{ar:'📍 العنوان والاتصال',fr:'📍 Adresse & contact',en:'📍 Address & contact'},
+  'uni.detail.address':{ar:'العنوان',fr:'Adresse',en:'Address'},
+  'uni.detail.tel':{ar:'الهاتف',fr:'Téléphone',en:'Phone'},
+  'uni.detail.fax':{ar:'الفاكس',fr:'Fax',en:'Fax'},
+  'uni.detail.programs':{ar:'🎓 البرامج والتكوينات',fr:'🎓 Filières & formations',en:'🎓 Programmes'},
+  'uni.detail.useful':{ar:'🔗 روابط رسمية إضافية (اختيارية)',fr:'🔗 Ressources officielles',en:'🔗 Extra official resources'},
+  'uni.detail.uiz':{ar:'صفحة المؤسسة في الجامعة ↗',fr:'Page UIZ ↗',en:'UIZ page ↗'},
+  'uni.detail.more':{ar:'اقرأ التعريف كاملاً',fr:'Lire la présentation',en:'Read the full presentation'},
+  'uni.stats':{ar:'أرقام جامعة ابن زهر',fr:"Chiffres de l'UIZ",en:'UIZ in numbers'},
   'nav.title':{ar:'أقسام المنصة',fr:'Sections de la plateforme',en:'Platform sections','zgh':'ⵜⵉⴱⴹⵉⵡⵉⵏ ⵏ ⵓⵙⵎⴻⵍ','zgh-latn':'Tibḍiwin n usmel'},
   'tab.learn':{ar:'ورشة التعلّم',fr:'Espace d\'apprentissage',en:'Learning Workspace','zgh':'ⴰⴷⵖⴰⵔ ⵏ ⵜⵖⵓⵔⵉ','zgh-latn':'Adɣar n tɣuri'},
   'tab.stats':{ar:'إحصائيات',fr:'Statistiques',en:'Statistics','zgh':'ⵜⵉⵙⵜⴰⵜⵉⵙⵜⵉⴽⵜ','zgh-latn':'Tistatistikt'},
@@ -774,6 +785,13 @@ function renderUniversity(){
   let html='<div class="official-banner">'+t('uni.banner')+'</div>';
   html+='<h2 class="uni-h">🎓 '+esc(t('uni.h'))+'</h2>';
   html+='<p class="muted">'+esc(t('uni.intro'))+'</p>';
+  const PSTAT=(window.CHRVVIM_PORTAL&&window.CHRVVIM_PORTAL.university&&window.CHRVVIM_PORTAL.university.stats)||[];
+  if(PSTAT.length){
+    ensureUniCss();
+    html+='<div class="uni-stats" title="'+esc(t('uni.stats'))+'">'
+      +PSTAT.map(s=>'<span class="uni-stat"><b>'+esc(s.value)+'</b><i>'+esc(s.label)+'</i></span>').join('')
+      +'</div>';
+  }
   html+='<div class="officiallinks">'
     +'<a href="https://www.uiz.ac.ma" target="_blank" rel="noopener"><span class="os">UIZ</span><span><b>'+esc(t('uni.main'))+'</b><small>uiz.ac.ma</small></span></a>'
     +'<a href="https://www.uiz.ac.ma/nos-etablissements" target="_blank" rel="noopener"><span class="os">24</span><span><b>'+esc(t('uni.etab'))+'</b><small>uiz.ac.ma/nos-etablissements</small></span></a>'
@@ -819,28 +837,59 @@ function bindUniDetail(rows){
     });
   });
 }
+/* ===== ربط صف المؤسسة ببيانات بوابة المؤسسات الرسمية (portal-preview) ===== */
+function portalFixUrl(u){ return String(u||'').replace(/\\/g,'/'); }
+function portalHost(u){ try{ return portalFixUrl(u).replace(/^https?:\/\//i,'').replace(/^www\./i,'').replace(/\/+$/,'').toLowerCase(); }catch(e){ return ''; } }
+function findPortalIt(it){
+  const P=window.CHRVVIM_PORTAL; if(!P||!P.establishments||!it) return null;
+  const u=portalHost(it.u);
+  const sim=(a,b)=>{ a=String(a||'').split(/[—–-]/)[0].trim().toLowerCase(); b=String(b||'').split(/[—–-]/)[0].trim().toLowerCase(); return !!(a&&b&&(a===b||a.indexOf(b)===0||b.indexOf(a)===0)); };
+  return P.establishments.find(x=>portalHost(x.uiz_url)&&portalHost(x.uiz_url)===u)
+    ||P.establishments.find(x=>(x.website&&portalHost(x.website)===u)||(x.website_alt&&portalHost(x.website_alt)===u))
+    ||P.establishments.find(x=>sim(x.name_fr,it.fr)&&String(it.ar||'').indexOf(String(x.city_ar||''))>=0)
+    ||null;
+}
+function ensureUniCss(){
+  if(document.getElementById('uniDetailCss')) return;
+  const st=document.createElement('style');st.id='uniDetailCss';
+  st.textContent='#uniDetailOv{position:fixed;inset:0;z-index:980;background:rgba(8,13,24,.55);display:flex;align-items:center;justify-content:center;padding:16px}'
+    +'#uniDetailOv[hidden]{display:none}'
+    +'.uni-detail{background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:18px;max-width:560px;width:100%;max-height:82vh;overflow:auto;padding:20px;position:relative;box-shadow:0 24px 70px rgba(0,0,0,.35)}'
+    +'.uni-dx{position:absolute;top:10px;inset-inline-end:12px;border:0;background:var(--soft);color:inherit;width:34px;height:34px;border-radius:50%;font-size:1.1rem;cursor:pointer}'
+    +'.uni-dbody h3{margin:0 0 2px}.uni-dbody .ud-fr{color:var(--muted);font-size:.85rem;margin:0 0 12px;line-height:1.6}'
+    +'.uni-dbody .ud-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}'
+    +'.uni-dbody .ud-tag{font-size:.72rem;font-weight:800;padding:4px 10px;border-radius:99px;background:var(--soft);border:1px solid var(--line)}'
+    +'.uni-dbody dl{margin:0 0 12px;display:grid;grid-template-columns:auto 1fr;gap:6px 12px;font-size:.85rem}'
+    +'.uni-dbody dt{color:var(--muted);font-weight:700}.uni-dbody dd{margin:0;line-height:1.7}'
+    +'.uni-dbody .ud-forms{margin:6px 0 0;padding:0;list-style:none;font-size:.8rem;line-height:1.9}'
+    +'.uni-dbody .ud-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}'
+    +'.uni-dbody .ud-actions a{font-weight:800;font-size:.82rem;padding:10px 16px;border-radius:12px;text-decoration:none;border:1px solid var(--line)}'
+    +'.uni-dbody .ud-actions a.pri{background:var(--gold);color:#0b2a6f;border-color:transparent}'
+    +'.uni-dbody .ud-actions a.sec{background:var(--soft);color:var(--ink)}'
+    +'.uni-dbody .ud-sec{margin:14px 0 0;border-top:1px solid var(--line);padding-top:12px}'
+    +'.uni-dbody .ud-sec h4{margin:0 0 8px;font-size:.86rem}'
+    +'.uni-dbody .ud-pres{font-size:.82rem;line-height:1.95;color:var(--ink);opacity:.92;margin-top:8px;text-align:justify}'
+    +'.uni-dbody details.ud-det summary{cursor:pointer;font-weight:800;font-size:.82rem;color:var(--gold2);list-style:none}'
+    +'.uni-dbody details.ud-det summary::-webkit-details-marker{display:none}'
+    +'.uni-dbody details.ud-det summary:before{content:"▸ ";font-weight:700}'
+    +'.uni-dbody details.ud-det[open] summary:before{content:"▾ "}'
+    +'.uni-dbody .ud-lead{margin:0;padding:0;list-style:none;font-size:.82rem;line-height:1.95}'
+    +'.uni-dbody .ud-lead b{font-weight:800;color:var(--gold2)}'
+    +'.uni-dbody .ud-res{display:flex;flex-direction:column;gap:2px}'
+    +'.uni-dbody .ud-res a{font-size:.8rem;line-height:1.9;text-decoration:none;color:var(--ink);opacity:.9;border-bottom:1px dashed var(--line)}'
+    +'.uni-dbody .ud-res a:hover{opacity:1;color:var(--gold2)}'
+    +'.uni-stats{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 16px}'
+    +'.uni-stat{display:flex;flex-direction:column;align-items:center;gap:1px;padding:8px 14px;border-radius:12px;background:var(--soft);border:1px solid var(--line);min-width:74px}'
+    +'.uni-stat b{font-size:1rem;color:var(--gold2)}.uni-stat i{font-style:normal;font-size:.68rem;color:var(--muted)}';
+  document.head.appendChild(st);
+}
 function showUniDetail(it){
   let ov=document.getElementById('uniDetailOv');
   if(!ov){
     ov=document.createElement('div');ov.id='uniDetailOv';ov.hidden=true;
     ov.innerHTML='<div class="uni-detail" role="dialog" aria-modal="true" aria-labelledby="uniDetailT"><button type="button" class="uni-dx" aria-label="إغلاق">×</button><div class="uni-dbody"></div></div>';
     document.body.appendChild(ov);
-    const st=document.createElement('style');st.id='uniDetailCss';
-    st.textContent='#uniDetailOv{position:fixed;inset:0;z-index:980;background:rgba(8,13,24,.55);display:flex;align-items:center;justify-content:center;padding:16px}'
-      +'#uniDetailOv[hidden]{display:none}'
-      +'.uni-detail{background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:18px;max-width:560px;width:100%;max-height:82vh;overflow:auto;padding:20px;position:relative;box-shadow:0 24px 70px rgba(0,0,0,.35)}'
-      +'.uni-dx{position:absolute;top:10px;inset-inline-end:12px;border:0;background:var(--soft);color:inherit;width:34px;height:34px;border-radius:50%;font-size:1.1rem;cursor:pointer}'
-      +'.uni-dbody h3{margin:0 0 2px}.uni-dbody .ud-fr{color:var(--muted);font-size:.85rem;margin:0 0 12px;line-height:1.6}'
-      +'.uni-dbody .ud-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}'
-      +'.uni-dbody .ud-tag{font-size:.72rem;font-weight:800;padding:4px 10px;border-radius:99px;background:var(--soft);border:1px solid var(--line)}'
-      +'.uni-dbody dl{margin:0 0 12px;display:grid;grid-template-columns:auto 1fr;gap:6px 12px;font-size:.85rem}'
-      +'.uni-dbody dt{color:var(--muted);font-weight:700}.uni-dbody dd{margin:0;line-height:1.7}'
-      +'.uni-dbody .ud-forms{margin:6px 0 0;padding:0;list-style:none;font-size:.8rem;line-height:1.9}'
-      +'.uni-dbody .ud-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}'
-      +'.uni-dbody .ud-actions a{font-weight:800;font-size:.82rem;padding:10px 16px;border-radius:12px;text-decoration:none;border:1px solid var(--line)}'
-      +'.uni-dbody .ud-actions a.pri{background:var(--gold);color:#0b2a6f;border-color:transparent}'
-      +'.uni-dbody .ud-actions a.sec{background:var(--soft);color:var(--ink)}';
-    document.head.appendChild(st);
+    ensureUniCss();
     ov.addEventListener('click',e=>{if(e.target===ov)ov.hidden=true;});
     document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!ov.hidden)ov.hidden=true;});
   }
@@ -875,8 +924,42 @@ function showUniDetail(it){
       +(forms.length>12?'<li>…</li>':'')
       +'</ul></div>';
   }
+  const P=findPortalIt(it);
+  if(P){
+    if(P.presentation_ar){
+      b+='<div class="ud-sec"><h4>'+esc(t('uni.detail.about'))+'</h4>'
+        +'<details class="ud-det"><summary>'+esc(t('uni.detail.more'))+'</summary><div class="ud-pres">'+esc(P.presentation_ar)+'</div></details></div>';
+    }
+    if(P.leadership&&P.leadership.length){
+      b+='<div class="ud-sec"><h4>'+esc(t('uni.detail.lead'))+'</h4><ul class="ud-lead">'
+        +P.leadership.map(x=>'<li><b>'+esc(x.role_ar||x.role_fr||'')+'</b> — '+esc(x.name||'')+'</li>').join('')
+        +'</ul></div>';
+    }
+    const cRows=[];
+    if(P.address)cRows.push([t('uni.detail.address'),P.address]);
+    if(P.phone)cRows.push([t('uni.detail.tel'),P.phone]);
+    if(P.fax)cRows.push([t('uni.detail.fax'),P.fax]);
+    if(P.city_ar&&!(inst&&inst.city_ar))cRows.push([t('uni.detail.city'),P.city_ar]);
+    if(cRows.length){
+      b+='<div class="ud-sec"><h4>'+esc(t('uni.detail.contact'))+'</h4><dl>'
+        +cRows.map(r=>'<dt>'+esc(r[0])+'</dt><dd dir="ltr" style="text-align:start">'+esc(r[1])+'</dd>').join('')
+        +'</dl></div>';
+    }
+    if(P.programs_ar&&P.programs_ar.length){
+      b+='<div class="ud-sec"><h4>'+esc(t('uni.detail.programs'))+' ('+P.programs_ar.length+')</h4><ul class="ud-forms">'
+        +P.programs_ar.map(x=>'<li>• '+esc(x)+'</li>').join('')
+        +'</ul></div>';
+    }
+    const res=(P.resources||[]).filter(x=>x&&x.url);
+    if(res.length){
+      b+='<div class="ud-sec"><h4>'+esc(t('uni.detail.useful'))+'</h4><div class="ud-res">'
+        +res.slice(0,14).map(x=>'<a href="'+esc(portalFixUrl(x.url))+'" target="_blank" rel="noopener">🔗 '+esc(x.label||x.url)+'</a>').join('')
+        +'</div></div>';
+    }
+  }
   b+='<div class="ud-actions">'
-    +'<a class="pri" href="'+esc(it.u||(inst&&inst.website_url)||'#')+'" target="_blank" rel="noopener">'+esc(t('uni.detail.open'))+'</a>'
+    +'<a class="pri" href="'+esc(portalFixUrl(it.u||(inst&&inst.website_url)||'#'))+'" target="_blank" rel="noopener">'+esc(t('uni.detail.open'))+'</a>'
+    +((P&&P.uiz_url)?'<a class="sec" href="'+esc(portalFixUrl(P.uiz_url))+'" target="_blank" rel="noopener">'+esc(t('uni.detail.uiz'))+'</a>':'')
     +((inst||it.s)?'<a class="sec" href="#p-university" data-ud-find="'+esc((inst&&inst.abbreviation)||it.s||'')+'">'+esc(t('uni.detail.find'))+'</a>':'')
     +'</div>';
   ov.querySelector('.uni-dbody').innerHTML=b;
