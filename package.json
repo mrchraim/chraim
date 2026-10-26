@@ -1,0 +1,22 @@
+{
+  "name": "chraim",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "CHRAIM — منصة الطالب الموحّدة (جامعة ابن زهر أكادير)",
+  "scripts": {
+    "lint": "eslint assets platform tests --ext .js,.mjs",
+    "format": "prettier --write \"assets/**/*.{js,css}\" \"platform/**/*.{js,css,html}\" \"tests/**/*.{js,mjs}\" \"docs/AUDIT.md\" \"docs/DESIGN_SYSTEM.md\"",
+    "format:check": "prettier --check \"tests/**/*.{js,mjs}\" \"docs/AUDIT.md\" \"docs/DESIGN_SYSTEM.md\"",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "build": "python tools/build-dist.py --out dist --clean",
+    "audit:links": "python tools/audit-links.py --root dist",
+    "audit:security": "python tools/audit-security.py"
+  },
+  "devDependencies": {
+    "eslint": "^9.0.0",
+    "prettier": "^3.0.0",
+    "vitest": "^2.0.0"
+  }
+}
