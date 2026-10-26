@@ -166,10 +166,20 @@
     </footer>
 
     <!-- Comprehensive JavaScript Logic -->
-    <script>
+<script>
         document.addEventListener('DOMContentLoaded', () => window.lucide && lucide.createIcons());
 
-        // Database Definition for FSJP Agadir 2026-2027
+        // ---- Utilities ----
+        function esc(v){ return String(v==null?'':v).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
+        function compareNames(a,b){
+            // Names with a space (composite) come before names without a space.
+            const ca = String(a||'').trim(), cb = String(b||'').trim();
+            const sa = ca.includes(' '), sb = cb.includes(' ');
+            if (sa !== sb) return sa ? -1 : 1;
+            return ca.localeCompare(cb, 'fr', { sensitivity: 'base' });
+        }
+
+        // ---- Database Definition for FSJP Agadir 2026-2027 ----
         const pathwaysData = {
             S3: [
                 { id: "priv_s3", name: "القانون الخاص — جذع مشترك" },
@@ -237,11 +247,49 @@
             ]
         };
 
+        // ---- Groups data (loaded from data/groups.json, fallback inline) ----
+        let groupsData = null;
+        const groupsFallback = {
+            "S3": {
+                "priv_s3": {"mainGroup": null, "language": [{"name":"Fr-A","maxName":"EL KARZABI"},{"name":"Fr-B","maxName":null}]},
+                "pub_s3": {"mainGroup": null, "language": [{"name":"Fr-A","maxName":"EL KARZABI"},{"name":"Fr-B","maxName":null}]}
+            },
+            "S5": {}
+        };
+
+        async function loadGroups(){
+            try {
+                const res = await fetch('./data/groups.json', { cache: 'no-cache' });
+                if (res && res.ok) { groupsData = await res.json(); return; }
+            } catch(e) { /* offline or missing */ }
+            groupsData = { semesters: groupsFallback };
+        }
+
+        function getPathwayGroupConfig(sem, pathwayId){
+            if (groupsData && groupsData.semesters && groupsData.semesters[sem] && groupsData.semesters[sem][pathwayId]) {
+                return groupsData.semesters[sem][pathwayId];
+            }
+            if (groupsFallback[sem] && groupsFallback[sem][pathwayId]) return groupsFallback[sem][pathwayId];
+            return null;
+        }
+
+        function computeLanguageGroup(sem, name, pathwayId){
+            const cfg = getPathwayGroupConfig(sem, pathwayId);
+            if (!cfg || !cfg.language) return 'غير محدد';
+            const list = cfg.language;
+            for (let i = 0; i < list.length; i++){
+                const item = list[i];
+                if (item.maxName === null) return item.name;
+                if (compareNames(name, item.maxName) <= 0) return item.name;
+            }
+            return list[list.length-1].name;
+        }
+
         function updatePathways() {
             const sem = document.getElementById('semesterSelect').value;
             const pathwaySelect = document.getElementById('pathwaySelect');
             pathwaySelect.innerHTML = '';
-            pathwaysData[sem].forEach(p => {
+            (pathwaysData[sem] || []).forEach(p => {
                 const opt = document.createElement('option');
                 opt.value = p.id;
                 opt.textContent = p.name;
@@ -253,73 +301,108 @@
             const sem = document.getElementById('semesterSelect').value;
             const pathwaySelect = document.getElementById('pathwaySelect');
             const pathwayId = pathwaySelect.value;
-            const selectedPathwayName = pathwaySelect.options[pathwaySelect.selectedIndex].text;
+            const selectedPathwayName = pathwaySelect.options[pathwaySelect.selectedIndex] ? pathwaySelect.options[pathwaySelect.selectedIndex].text : '';
             const name = document.getElementById('nameInput').value.trim().toUpperCase();
-            
+
             const container = document.getElementById('resultsContainer');
             const groupInfoOutput = document.getElementById('groupInfoOutput');
             const scheduleTableBody = document.getElementById('scheduleTableBody');
 
-            container.classList.remove('hidden');
-
-            // Dynamic logic for foreign language sections
-            let langGroup = 'غير محدد';
-            if (sem === 'S3') {
-                langGroup = (name.localeCompare('EL KARZABI') <= 0) ? 'Fr-A' : 'Fr-B';
-            } else {
-                if (name.localeCompare('BOUASRY') <= 0) langGroup = 'Ang-A (المجموعات 1-6)';
-                else if (name.localeCompare('ELHAMIL') <= 0) langGroup = 'Ang-B (المجموعات 7-12)';
-                else if (name.localeCompare('LAMIN') <= 0) langGroup = 'Ang-C (المجموعات 13-18)';
-                else langGroup = 'Ang-D (المجموعات 19-24)';
+            if (!name) {
+                container.classList.remove('hidden');
+                groupInfoOutput.innerHTML = '<div class="p-3 bg-gold-500/10 border border-gold-500/30 rounded-lg text-xs text-gold-400">الرجاء إدخال النسب (اللقب) لحساب الفوج.</div>';
+                scheduleTableBody.innerHTML = '';
+                return;
             }
 
-            groupInfoOutput.innerHTML = `
-                <div class="border-r-4 border-gold-500 pr-4 py-1 flex flex-col md:flex-row md:items-center justify-between gap-2">
-                    <div>
-                        <h4 class="text-white font-bold text-base">نتيجة توزيع الفوج لـ: <span class="text-gold-400">${name || 'كافة المسجلين'}</span></h4>
-                        <p class="text-xs text-gray-300 mt-0.5">المسار التخصصي: <strong>${selectedPathwayName}</strong></p>
-                    </div>
-                    <span class="text-[11px] bg-gold-500/10 text-gold-400 border border-gold-500/30 px-3 py-1 rounded-full w-fit">
-                        كلية العلوم القانونية والسياسية بأكادير
-                    </span>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-3 bg-navy-900 p-4 rounded-xl border border-navy-800 text-xs">
-                    <div><span class="text-gray-400 block mb-1">الفوج والمجموعات العادية:</span> <strong class="text-white text-sm">الفوج A (المجموعات 1 - 4)</strong></div>
-                    <div><span class="text-gray-400 block mb-1">فوج اللغة الأجنبية المخصص:</span> <strong class="text-gold-400 text-sm">${langGroup}</strong></div>
-                    <div><span class="text-gray-400 block mb-1">المقر الجامعي:</span> <strong class="text-white text-sm">الملحق الجامعي / القاعات والمدرجات</strong></div>
-                </div>
-                <div class="p-3 bg-gold-500/10 border border-gold-500/30 rounded-lg text-xs text-gold-400 flex items-start gap-2">
-                    <i data-lucide="alert-circle" class="w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5"></i>
-                    <span>ملاحظة تنظيمية هامة: الترتيب الأبجدي يعتمد قاعدة: الأسماء المركبة والمصحوبة بفراغ (مثل: <code>EL MANSOURI</code>) تأتي دائماً قبل الأسماء غير المركبة (مثل: <code>ELMANSOURI</code>).</span>
-                </div>
-            `;
+            container.classList.remove('hidden');
+
+            const cfg = getPathwayGroupConfig(sem, pathwayId);
+            const langGroup = computeLanguageGroup(sem, name, pathwayId);
+            const mainGroup = (cfg && cfg.mainGroup) ? cfg.mainGroup : 'غير متوفر بعد (بيانات غير متوفرة)';
+
+            // Build result safely (no innerHTML with user values)
+            groupInfoOutput.innerHTML = '';
+            const wrap = document.createElement('div');
+            wrap.className = 'border-r-4 border-gold-500 pr-4 py-1 flex flex-col md:flex-row md:items-center justify-between gap-2';
+            const left = document.createElement('div');
+            const h4 = document.createElement('h4');
+            h4.className = 'text-white font-bold text-base';
+            h4.innerHTML = 'نتيجة توزيع الفوج لـ: <span class="text-gold-400"></span>';
+            h4.querySelector('span').textContent = name || 'كافة المسجلين';
+            const p = document.createElement('p');
+            p.className = 'text-xs text-gray-300 mt-0.5';
+            p.innerHTML = 'المسار التخصصي: <strong></strong>';
+            p.querySelector('strong').textContent = selectedPathwayName;
+            left.appendChild(h4); left.appendChild(p);
+            const badge = document.createElement('span');
+            badge.className = 'text-[11px] bg-gold-500/10 text-gold-400 border border-gold-500/30 px-3 py-1 rounded-full w-fit';
+            badge.textContent = 'كلية العلوم القانونية والسياسية بأكادير';
+            wrap.appendChild(left); wrap.appendChild(badge);
+
+            const grid = document.createElement('div');
+            grid.className = 'grid grid-cols-1 md:grid-cols-3 gap-3 bg-navy-950 p-4 rounded-xl border border-navy-800 text-xs';
+            const c1 = document.createElement('div');
+            c1.innerHTML = '<span class="text-gray-400 block mb-1">الفوج والمجموعات العادية:</span> <strong class="text-white text-sm"></strong>';
+            c1.querySelector('strong').textContent = mainGroup;
+            const c2 = document.createElement('div');
+            c2.innerHTML = '<span class="text-gray-400 block mb-1">فوج اللغة外国 المخصص:</span> <strong class="text-gold-400 text-sm"></strong>';
+            c2.querySelector('strong').textContent = langGroup;
+            const c3 = document.createElement('div');
+            c3.innerHTML = '<span class="text-gray-400 block mb-1">المقر الجامعي:</span> <strong class="text-white text-sm">الملحق الجامعي / القاعات والمدرجات</strong>';
+            grid.appendChild(c1); grid.appendChild(c2); grid.appendChild(c3);
+
+            const note = document.createElement('div');
+            note.className = 'p-3 bg-gold-500/10 border border-gold-500/30 rounded-lg text-xs text-gold-400 flex items-start gap-2';
+            const ic = document.createElement('i');
+            ic.setAttribute('data-lucide','alert-circle');
+            ic.className = 'w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5';
+            const span = document.createElement('span');
+            span.textContent = 'ملاحظة تنظيمية هامة: الترتيب الأبجدي يعتمد قاعدة: الأسماء المركبة والمصحوبة بفراغ (مثل: EL MANSOURI) تأتي دائماً قبل الأسماء غير المركبة (مثل: ELMANSOURI).';
+            note.appendChild(ic); note.appendChild(span);
+
+            groupInfoOutput.appendChild(wrap);
+            groupInfoOutput.appendChild(grid);
+            groupInfoOutput.appendChild(note);
 
             // Populate Timetable
             scheduleTableBody.innerHTML = '';
             const scheduleList = scheduleDatabase[pathwayId] || [];
-            
             if (scheduleList.length > 0) {
                 scheduleList.forEach(item => {
                     const tr = document.createElement('tr');
                     tr.className = "hover:bg-navy-800/60 transition-colors";
-                    tr.innerHTML = `
-                        <td class="p-3 font-bold text-white">${item.day}</td>
-                        <td class="p-3 text-gold-400">${item.time}</td>
-                        <td class="p-3 font-semibold text-white">${item.subject}</td>
-                        <td class="p-3 text-gray-300">${item.professor}</td>
-                        <td class="p-3"><span class="bg-navy-950 px-2.5 py-1 rounded border border-navy-700 text-gold-300">${item.room}</span></td>
-                    `;
+                    const cells = [item.day, item.time, item.subject, item.professor, item.room];
+                    cells.forEach((val, idx) => {
+                        const td = document.createElement('td');
+                        td.className = idx===0 ? 'p-3 font-bold text-white' : (idx===1 ? 'p-3 text-gold-400' : (idx===2 ? 'p-3 font-semibold text-white' : (idx===3 ? 'p-3 text-gray-300' : 'p-3')));
+                        if (idx===4) {
+                            const span = document.createElement('span');
+                            span.className = 'bg-navy-950 px-2.5 py-1 rounded border border-navy-700 text-gold-300';
+                            span.textContent = val;
+                            td.appendChild(span);
+                        } else {
+                            td.textContent = val;
+                        }
+                        tr.appendChild(td);
+                    });
                     scheduleTableBody.appendChild(tr);
                 });
             } else {
-                scheduleTableBody.innerHTML = `<tr><td colspan="5" class="p-4 text-center text-gray-400">لا توجد بيانات جدول أسبوعي متاحة حالياً لهذا المسار.</td></tr>`;
+                const tr = document.createElement('tr');
+                const td = document.createElement('td');
+                td.colSpan = 5;
+                td.className = 'p-4 text-center text-gray-400';
+                td.textContent = 'لا توجد بيانات جدول أسبوعي متاحة حالياً لهذا المسار.';
+                tr.appendChild(td);
+                scheduleTableBody.appendChild(tr);
             }
 
             window.lucide && lucide.createIcons();
         }
 
         // Initialize on load
-        document.addEventListener('DOMContentLoaded', updatePathways);
+        document.addEventListener('DOMContentLoaded', () => { updatePathways(); loadGroups(); });
     </script>
 <script src="/assets/back-home.js" defer></script>
 <script src="/assets/cmdk.js" defer></script>
