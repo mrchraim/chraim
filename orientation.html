@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>مرشد التوجيه | CHRAIM — اكتشف التكوين المناسب لك في جامعة ابن زهر</title>
+<meta name="description" content="اختر مستواك واهتماماتك ومدينتك، واكتشف تكوينات جامعة ابن زهر المناسبة من بين 382 تكويناً رسمياً.">
+<link rel="stylesheet" href="/assets/fonts/cairo.css">
+<style>
+:root{--bg:#060B19;--panel:#0B132B;--panel2:#1C2541;--gold:#D4AF37;--gold2:#F3E5AB;--ink:#F3E5AB;--mut:#9fb0cf;--ring:#e0c078}
+@media(prefers-color-scheme:light){:root:not([data-theme=dark]){--bg:#f6f3ea;--panel:#fff;--panel2:#efe9d6;--gold:#9a7418;--gold2:#4a3a0c;--ink:#1d2433;--mut:#5b6577;--ring:#9a7418}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Cairo',system-ui,-apple-system,'Segoe UI',Tahoma,sans-serif;line-height:1.7;
+  padding:calc(56px + env(safe-area-inset-top,0px)) 16px calc(96px + env(safe-area-inset-bottom,0px))}
+main{max-width:980px;margin:0 auto}
+h1{font-size:clamp(1.6rem,4vw,2.4rem);margin:.2em 0;background:linear-gradient(135deg,var(--gold2),var(--gold));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;font-weight:900}
+.lead{color:var(--mut);margin:0 0 1.4rem}
+.card{background:var(--panel);border:1px solid rgba(212,175,55,.25);border-radius:18px;padding:18px;margin-bottom:14px}
+h2{font-size:1rem;margin:0 0 10px;color:var(--gold)}
+.row{display:flex;flex-wrap:wrap;gap:8px}
+.chip{appearance:none;font:inherit;font-weight:700;font-size:.9rem;cursor:pointer;color:var(--ink);background:var(--panel2);border:1px solid transparent;border-radius:999px;padding:8px 14px;display:inline-flex;gap:6px;align-items:center}
+.chip[aria-pressed=true]{background:linear-gradient(135deg,#e0c078,#c79a3a);color:#0b1220;border-color:#fff3}
+.chip small{opacity:.75;font-weight:600}
+.chip:focus-visible,select:focus-visible,input:focus-visible,.more:focus-visible{outline:2px solid var(--ring);outline-offset:2px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:620px){.grid2{grid-template-columns:1fr}}
+select,input[type=search]{width:100%;font:inherit;padding:10px 12px;border-radius:12px;background:var(--panel2);color:var(--ink);border:1px solid rgba(212,175,55,.25)}
+.bar{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:18px 2px 10px;flex-wrap:wrap}
+.bar b{color:var(--gold)}
+.link{background:none;border:0;color:var(--gold);font:inherit;font-weight:700;cursor:pointer;text-decoration:underline;padding:0}
+ul.res{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.item{background:var(--panel);border:1px solid rgba(212,175,55,.22);border-radius:16px;padding:14px 16px;display:grid;gap:4px}
+.item h3{margin:0;font-size:1rem;color:var(--ink)}
+.meta{color:var(--mut);font-size:.88rem}
+.badges{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}
+.badge{font-size:.75rem;font-weight:800;padding:2px 10px;border-radius:999px;background:var(--panel2);color:var(--gold)}
+.badge.lv{background:rgba(212,175,55,.18)}
+.item a{justify-self:start;margin-top:6px;color:var(--gold);font-weight:800;text-decoration:none}
+.item a:hover{text-decoration:underline}
+.more{display:block;margin:14px auto 0;font:inherit;font-weight:800;cursor:pointer;padding:10px 22px;border-radius:999px;border:1px solid var(--gold);background:none;color:var(--gold)}
+.note{margin-top:22px;padding:14px 16px;border-radius:14px;border:1px dashed rgba(212,175,55,.45);color:var(--mut);font-size:.88rem}
+.empty{text-align:center;color:var(--mut);padding:26px}
+.toast{position:fixed;inset-inline:0;bottom:calc(70px + env(safe-area-inset-bottom,0px));margin:auto;width:max-content;max-width:90%;background:#0b1220;color:#fff;border:1px solid var(--gold);padding:8px 16px;border-radius:999px;font-weight:700;opacity:0;pointer-events:none;transition:opacity .2s}
+.toast.on{opacity:1}
+@media(prefers-reduced-motion:reduce){.toast{transition:none}}
+</style>
+</head>
+<body>
+<main>
+  <h1>🧭 مرشد التوجيه</h1>
+  <p class="lead">أجب عن ثلاثة أسئلة سريعة، وسنعرض لك التكوينات المطابقة من العرض الرسمي لجامعة ابن زهر. تُحفظ اختياراتك في رابط الصفحة فتستطيع مشاركتها.</p>
+
+  <section class="card" aria-labelledby="h-level">
+    <h2 id="h-level">1) ما مستوى الدراسة الذي تبحث عنه؟</h2>
+    <div class="row" id="levels" role="group" aria-labelledby="h-level"></div>
+  </section>
+
+  <section class="card" aria-labelledby="h-int">
+    <h2 id="h-int">2) ما الذي يجذبك؟ <small style="color:var(--mut);font-weight:600">(اختر واحداً أو أكثر — الرقم عدد التكوينات المتاحة)</small></h2>
+    <div class="row" id="tags" role="group" aria-labelledby="h-int"></div>
+  </section>
+
+  <section class="card">
+    <div class="grid2">
+      <div><h2 id="h-city"><label for="city">3) في أي مدينة؟</label></h2><select id="city"><option value="">كل المدن</option></select></div>
+      <div><h2><label for="q">كلمة محددة (اختياري)</label></h2><input id="q" type="search" placeholder="مثال: ذكاء، محاسبة، Finance…" autocomplete="off"></div>
+    </div>
+  </section>
+
+  <div class="bar">
+    <div aria-live="polite"><b id="count">…</b> <span id="countTxt"></span></div>
+    <div><button class="link" id="share" type="button">🔗 انسخ رابط اختياراتي</button> · <button class="link" id="reset" type="button">إعادة ضبط</button></div>
+  </div>
+
+  <ul class="res" id="res"></ul>
+  <button class="more" id="more" type="button" hidden>عرض المزيد</button>
+
+  <p class="note" id="note"></p>
+</main>
+<div class="toast" id="toast" role="status"></div>
+
+<script src="/assets/orientation.js"></script>
+<script>
+(function () {
+  var O = window.ChraimOrientation, PAGE = 24;
+  var st = { level: '', tags: [], city: '', q: '' }, items = [], shown = PAGE;
+  var $ = function (id) { return document.getElementById(id); };
+
+  function readHash() {
+    var p = new URLSearchParams(location.hash.slice(1));
+    st.level = p.get('lv') || ''; st.city = p.get('c') || ''; st.q = p.get('q') || '';
+    st.tags = (p.get('i') || '').split(',').filter(function (t) { return O.TAGS.some(function (x) { return x.id === t; }); });
+  }
+  function writeHash() {
+    var p = new URLSearchParams();
+    if (st.level) p.set('lv', st.level); if (st.tags.length) p.set('i', st.tags.join(','));
+    if (st.city) p.set('c', st.city); if (st.q) p.set('q', st.q);
+    var h = p.toString();
+    try { history.replaceState(null, '', location.pathname + (h ? '#' + h : '')); } catch (e) {}
+  }
+  function chip(label, pressed, on, extra) {
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'chip'; b.setAttribute('aria-pressed', pressed ? 'true' : 'false');
+    b.appendChild(document.createTextNode(label));
+    if (extra != null) { var s = document.createElement('small'); s.textContent = extra; b.appendChild(s); }
+    b.addEventListener('click', on); return b;
+  }
+  function drawControls() {
+    var L = $('levels'); L.textContent = '';
+    L.appendChild(chip('أي مستوى', !st.level, function () { st.level = ''; update(); }));
+    O.LEVELS.forEach(function (l) { L.appendChild(chip(l.ar, st.level === l.id, function () { st.level = st.level === l.id ? '' : l.id; update(); })); });
+    var c = O.counts(items, st), T = $('tags'); T.textContent = '';
+    O.TAGS.forEach(function (t) {
+      var on = st.tags.indexOf(t.id) >= 0;
+      T.appendChild(chip(t.ico + ' ' + t.ar, on, function () {
+        st.tags = on ? st.tags.filter(function (x) { return x !== t.id; }) : st.tags.concat(t.id); update();
+      }, c[t.id]));
+    });
+  }
+  function drawResults() {
+    var r = O.query(items, st), ul = $('res'); ul.textContent = '';
+    $('count').textContent = r.length;
+    $('countTxt').textContent = r.length === 1 ? 'تكوين مطابق' : 'تكوين مطابق';
+    if (!r.length) { var li = document.createElement('li'); li.className = 'empty'; li.textContent = 'لا توجد نتائج بهذه المعايير — جرّب تخفيف بعض الاختيارات.'; ul.appendChild(li); }
+    r.slice(0, shown).forEach(function (o) {
+      var it = o.it, li = document.createElement('li'); li.className = 'item';
+      var h = document.createElement('h3'); h.textContent = it.n; h.dir = 'auto';
+      var m = document.createElement('div'); m.className = 'meta'; m.textContent = it.a + (it.c && it.a.indexOf(it.c) < 0 ? ' · ' + it.c : '');
+      var bd = document.createElement('div'); bd.className = 'badges';
+      [[it.l, 'badge lv'], [it.d, 'badge']].forEach(function (b) { if (!b[0]) return; var s = document.createElement('span'); s.className = b[1]; s.textContent = b[0]; bd.appendChild(s); });
+      o.it.tags.forEach(function (id) { var t = O.TAGS.filter(function (x) { return x.id === id; })[0]; if (!t) return; var s = document.createElement('span'); s.className = 'badge'; s.textContent = t.ico + ' ' + t.ar; bd.appendChild(s); });
+      li.appendChild(h); li.appendChild(m); li.appendChild(bd);
+      if (/^https:\/\/www\.uiz\.ac\.ma\//.test(it.u)) {
+        var a = document.createElement('a'); a.href = it.u; a.target = '_blank'; a.rel = 'noopener noreferrer'; a.textContent = 'الصفحة الرسمية للتكوين ↗'; li.appendChild(a);
+      }
+      ul.appendChild(li);
+    });
+    $('more').hidden = r.length <= shown;
+  }
+  function update(keepPage) {
+    if (!keepPage) shown = PAGE;
+    writeHash(); drawControls(); drawResults();
+  }
+  function toast(t) { var e = $('toast'); e.textContent = t; e.classList.add('on'); setTimeout(function () { e.classList.remove('on'); }, 1800); }
+
+  fetch('/university-formations.json').then(function (r) { return r.json(); }).then(function (data) {
+    items = O.prepare(data);
+    var cities = []; items.forEach(function (i) { if (i.c && cities.indexOf(i.c) < 0) cities.push(i.c); });
+    cities.sort(function (a, b) { return a.localeCompare(b, 'ar'); }).forEach(function (c) { var o = document.createElement('option'); o.value = c; o.textContent = c; $('city').appendChild(o); });
+    $('note').textContent = data.note + ' — المصدر: ' + data.source + ' (آخر تحديث ' + data.updated + ').';
+    readHash(); $('city').value = st.city; $('q').value = st.q; update();
+  }).catch(function () { $('count').textContent = '—'; $('countTxt').textContent = 'تعذّر تحميل البيانات، حاول لاحقاً.'; });
+
+  $('city').addEventListener('change', function () { st.city = this.value; update(); });
+  $('q').addEventListener('input', function () { st.q = this.value; update(); });
+  $('more').addEventListener('click', function () { shown += PAGE; update(true); });
+  $('reset').addEventListener('click', function () { st = { level: '', tags: [], city: '', q: '' }; $('city').value = ''; $('q').value = ''; update(); });
+  $('share').addEventListener('click', function () {
+    var u = location.href;
+    (navigator.clipboard && navigator.clipboard.writeText ? navigator.clipboard.writeText(u) : Promise.reject()).then(function () { toast('تم نسخ الرابط ✓'); }, function () { window.prompt('انسخ الرابط:', u); });
+  });
+  window.addEventListener('hashchange', function () { readHash(); $('city').value = st.city; $('q').value = st.q; update(); });
+})();
+</script>
+<script src="/assets/back-home.js" defer></script>
+<script src="/assets/cmdk.js" defer></script>
+</body>
+</html>

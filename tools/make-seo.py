@@ -24,6 +24,7 @@ FIXED = [
     "academic-offer.html",
     "academic-updates.html",
     "rafiq-altalib.html",
+    "orientation.html",
     "students-guide.html",
 ]
 
