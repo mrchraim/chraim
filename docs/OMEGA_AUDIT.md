@@ -16,7 +16,7 @@
 ## Changes implemented (this session)
 - Phases 0-16 (scaffold, security, design, content, testing, external, final report).
 - Legal library (24 PDFs).
-- Knowledge Atlas (scaffold + crawl runner + small crawl).
+- Knowledge Atlas (scaffold + crawl runner + small crawl 100 links).
 - Directory + resources (links only).
 - Faculties (FSJP + 4 placeholders + template).
 - AI assistant placeholder + design doc.
@@ -26,10 +26,11 @@
 - No real lessons content (no fabrication).
 - No timetables for levels.
 - No multi-faculty portals beyond placeholders.
-- i18n partial (switcher wired, data-i18n pending).
-- Dark mode partial (CSS overrides).
-- axe-core/Lighthouse not run (no browser env).
+- Full i18n (data-i18n on all elements).
+- Dark mode full (Tailwind rebuild needed).
+- axe-core/Lighthouse (no browser env).
 - Cross-domain redirects (external config).
+- RLS tests (Supabase env).
 
 ## Security risks open
 - CSP unsafe-inline (needed for inline scripts).
