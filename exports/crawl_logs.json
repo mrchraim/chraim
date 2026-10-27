@@ -1,0 +1,17 @@
+[
+  {
+    "source_id": "src-men-gov",
+    "status": "ok",
+    "discovered_count": 50
+  },
+  {
+    "source_id": "src-men-docs",
+    "status": "fetch_failed",
+    "discovered_count": 0
+  },
+  {
+    "source_id": "src-sgg-gov",
+    "status": "ok",
+    "discovered_count": 50
+  }
+]
