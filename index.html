@@ -37,6 +37,12 @@
         function toggleTheme(){ const h=document.documentElement; if(h.classList.contains('light')){ h.classList.remove('light'); localStorage.setItem('chraim_theme','dark'); document.getElementById('themeToggle').textContent='🌙'; } else { h.classList.add('light'); localStorage.setItem('chraim_theme','light'); document.getElementById('themeToggle').textContent='☀️'; } }
         document.addEventListener('DOMContentLoaded', ()=>{ try{ if(localStorage.getItem('chraim_theme')==='light'){ document.documentElement.classList.add('light'); const b=document.getElementById('themeToggle'); if(b) b.textContent='☀️'; } }catch(e){} });
     </script>
+<style>
+        html.dark body { background:#060B19; color:#F3E5AB; }
+        html.dark .glass-card { background:rgba(28,37,65,.7); color:#F3E5AB; border-color:rgba(212,175,55,.2); }
+        html.dark .text-white { color:#F3E5AB; }
+        html.dark .text-gray-300, html.dark .text-gray-400 { color:#9aa3b5; }
+    </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between">
     <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-gold-500 text-navy-950 px-3 py-1 rounded">انتقل إلى المحتوى</a>
@@ -243,7 +249,7 @@
 
     <!-- Footer -->
     <footer class="bg-navy-900 border-t border-navy-800 py-6 text-center text-xs text-gray-400">
-        <p>صُنع بـ <strong class="text-gold-400">CHRAIM</strong> · منصة دليل الطالب أكادير © 2026</p>
+        <p data-i18n="hub.foot">صُنع بـ <strong class="text-gold-400">CHRAIM</strong> · منصة دليل الطالب أكادير © 2026</p>
     </footer>
 
     <!-- Comprehensive JavaScript Logic -->
