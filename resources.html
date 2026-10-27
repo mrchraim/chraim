@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>الموارد — CHRAIM</title>
+<style>body{font-family:system-ui,Segoe UI,Tahoma,sans-serif;background:#060B19;color:#F3E5AB;padding:24px;max-width:960px;margin:0 auto}
+.card{background:rgba(28,37,65,.7);border:1px solid rgba(212,175,55,.2);border-radius:12px;padding:16px;margin:12px 0}
+a{color:#D4AF37}
+</style>
+</head>
+<body>
+<h1>الموارد (روابط رسمية)</h1>
+<p>روابط فقط — لا إعادة استضافة. تحقق من المصدر قبل الاعتماد.</p>
+<div id="root"></div>
+<p><a href="/" style="color:#D4AF37">← العودة للرئيسية</a></p>
+<script>
+async function load(){
+  try {
+    const r = await fetch('/data/resources.json');
+    const d = await r.json();
+    const root = document.getElementById('root');
+    (d.sources||[]).forEach(s => {
+      const card = document.createElement('div'); card.className='card';
+      const a = document.createElement('a'); a.href=s.url; a.target='_blank'; a.rel='noopener noreferrer'; a.textContent=s.title; a.style.fontWeight='bold';
+      const meta = document.createElement('div'); meta.style.fontSize='.85rem'; meta.style.color='#9aa3b5'; meta.textContent = (s.type||'') + ' · ' + (s.level||'');
+      card.appendChild(a); card.appendChild(meta);
+      root.appendChild(card);
+    });
+  } catch(e){ document.getElementById('root').textContent='تعذر تحميل البيانات'; }
+}
+load();
+</script>
+</body>
+</html>
