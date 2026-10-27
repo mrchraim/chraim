@@ -85,3 +85,16 @@
 ---
 
 **لا تدّعِ إنجاز شيء لم يُتحقق منه.** All claims above are backed by commands run in this session.
+
+## Update 2026-10-27 (post-Phase 8)
+- Added legal library (24 PDFs + index).
+- Added Knowledge Atlas (scaffold + crawl runner + small crawl 100 links).
+- Added atlas.html (search/export).
+- Added source-registry (9 sources).
+- Added DB schema (design only).
+- Added assets/config.js shim (console error fix).
+- Added AI assistant placeholder.
+- Added creative greeting + legal term of the day.
+- Added levels/lessons/support scaffold + integration plan.
+- Added directory + resources (links only).
+- CI: gitleaks + Lighthouse + axe (non-blocking).
