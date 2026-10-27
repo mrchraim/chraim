@@ -1,0 +1,9 @@
+/* CHRAIM shared components (design tokens) */
+:root { --ch-navy: #0B132B; --ch-gold: #D4AF37; --ch-ivory: #F3E5AB; }
+.btn { display:inline-flex; align-items:center; gap:.5rem; padding:.5rem 1rem; border-radius:.75rem; font-weight:700; cursor:pointer; border:1px solid rgba(212,175,55,.3); background:rgba(28,37,65,.7); color:#F3E5AB; transition:.15s; }
+.btn:hover { border-color:#D4AF37; }
+.btn-primary { background:#D4AF37; color:#0B132B; border-color:#D4AF37; }
+.card { background:rgba(28,37,65,.7); border:1px solid rgba(212,175,55,.2); border-radius:1rem; padding:1rem; }
+.input { background:#0B132B; color:#F3E5AB; border:1px solid rgba(212,175,55,.3); border-radius:.75rem; padding:.6rem .8rem; }
+*:focus-visible { outline:2px solid #D4AF37; outline-offset:2px; border-radius:.5rem; }
+@media (prefers-reduced-motion: reduce) { * { animation:none !important; transition:none !important; } }
