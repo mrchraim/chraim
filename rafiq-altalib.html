@@ -326,9 +326,9 @@ window.addEventListener("hashchange", () => showTab(location.hash.slice(1)));
 </script>
 <a class="back-float" href="index.html" aria-label="العودة إلى الصفحة الأولى">← الصفحة الأولى</a>
 <style>
-.back-float{position:fixed;top:12px;inset-inline-start:12px;z-index:998;background:var(--card,#fff);border:1px solid var(--line,#ddd);border-radius:12px;padding:8px 12px;font-size:14px;text-decoration:none;color:var(--ink,#222);box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.back-float{position:fixed;top:12px;inset-inline-start:12px;z-index:998;width:auto;max-width:calc(100vw - 24px);background:var(--card,#fff);border:1px solid var(--line,#ddd);border-radius:12px;padding:8px 12px;font-size:14px;text-decoration:none;color:var(--ink,#222);box-shadow:0 2px 8px rgba(0,0,0,.08)}
 .back-float:hover{background:var(--soft,#eee)}
-.social-strip{position:fixed;bottom:0;inset-inline:0;z-index:999;background:var(--card,#fff);border-top:1px solid var(--line,#ddd);padding:8px 16px;display:flex;align-items:center;gap:12px;font-size:13px;color:var(--muted,#666);backdrop-filter:blur(8px);flex-wrap:wrap;box-shadow:0 -2px 12px rgba(0,0,0,.06)}
+.social-strip{position:fixed;bottom:12px;inset-inline-start:12px;inset-inline-end:12px;z-index:999;background:var(--card,#fff);border:1px solid var(--line,#ddd);border-radius:12px;padding:8px 16px;display:flex;align-items:center;gap:12px;font-size:13px;color:var(--muted,#666);backdrop-filter:blur(8px);flex-wrap:wrap;box-shadow:0 -2px 12px rgba(0,0,0,.06);max-width:calc(100vw - 24px)}
 .social-strip a{color:var(--blue2,#374151);text-decoration:none;font-weight:700}
 .social-strip a:hover{text-decoration:underline}
 .social-strip .ss-close{margin-inline-start:auto;background:none;border:0;color:var(--muted,#666);cursor:pointer;font-size:18px;line-height:1}
