@@ -1,1 +1,842 @@
-[]
+[
+  {
+    "title": "",
+    "url": "https://fsjpa.uiz.ac.ma/assets/img/logo/favicon.png",
+    "source": "https://fsjpa.uiz.ac.ma/",
+    "discovered_at": "2026-10-27T01:04:11.640Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://fsjpa.uiz.ac.ma/assets/img/logo/logo_uiz.png?v=2",
+    "source": "https://fsjpa.uiz.ac.ma/",
+    "discovered_at": "2026-10-27T01:04:11.642Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://fsjpa.uiz.ac.ma/assets/css/bootstrap.min.css",
+    "source": "https://fsjpa.uiz.ac.ma/",
+    "discovered_at": "2026-10-27T01:04:11.642Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://fsjpa.uiz.ac.ma/assets/css/font-awesome-pro.css",
+    "source": "https://fsjpa.uiz.ac.ma/",
+    "discovered_at": "2026-10-27T01:04:11.642Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://fsjpa.uiz.ac.ma/assets/css/swiper-bundle.min.css",
+    "source": "https://fsjpa.uiz.ac.ma/",
+    "discovered_at": "2026-10-27T01:04:11.642Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://fsjpa.uiz.ac.ma/assets/css/slick.css",
+    "source": "https://fsjpa.uiz.ac.ma/",
+    "discovered_at": "2026-10-27T01:04:11.642Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://fsjpa.uiz.ac.ma/assets/css/magnific-popup.css",
+    "source": "https://fsjpa.uiz.ac.ma/",
+    "discovered_at": "2026-10-27T01:04:11.642Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://fsjpa.uiz.ac.ma/assets/css/nice-select.css",
+    "source": "https://fsjpa.uiz.ac.ma/",
+    "discovered_at": "2026-10-27T01:04:11.643Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://fsjpa.uiz.ac.ma/assets/css/custom-animation.css",
+    "source": "https://fsjpa.uiz.ac.ma/",
+    "discovered_at": "2026-10-27T01:04:11.643Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://fsjpa.uiz.ac.ma/assets/css/spacing.css",
+    "source": "https://fsjpa.uiz.ac.ma/",
+    "discovered_at": "2026-10-27T01:04:11.643Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://fsjpa.uiz.ac.ma/assets/css/main.css",
+    "source": "https://fsjpa.uiz.ac.ma/",
+    "discovered_at": "2026-10-27T01:04:11.643Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://fsjpa.uiz.ac.ma/index.html",
+    "source": "https://fsjpa.uiz.ac.ma/",
+    "discovered_at": "2026-10-27T01:04:11.643Z",
+    "status": "broken"
+  },
+  {
+    "title": "",
+    "url": "https://fsjpa.uiz.ac.ma/#",
+    "source": "https://fsjpa.uiz.ac.ma/",
+    "discovered_at": "2026-10-27T01:04:11.643Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://fsjpa.uiz.ac.ma/lang/en",
+    "source": "https://fsjpa.uiz.ac.ma/",
+    "discovered_at": "2026-10-27T01:04:11.643Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://fsjpa.uiz.ac.ma/lang/fr",
+    "source": "https://fsjpa.uiz.ac.ma/",
+    "discovered_at": "2026-10-27T01:04:11.643Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://fsjpa.uiz.ac.ma/lang/ar",
+    "source": "https://fsjpa.uiz.ac.ma/",
+    "discovered_at": "2026-10-27T01:04:11.643Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://fsjpa.uiz.ac.ma/",
+    "source": "https://fsjpa.uiz.ac.ma/",
+    "discovered_at": "2026-10-27T01:04:11.643Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://fsjpa.uiz.ac.ma/#faculte",
+    "source": "https://fsjpa.uiz.ac.ma/",
+    "discovered_at": "2026-10-27T01:04:11.643Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://fsjpa.uiz.ac.ma/#formation",
+    "source": "https://fsjpa.uiz.ac.ma/",
+    "discovered_at": "2026-10-27T01:04:11.643Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://fsjpa.uiz.ac.ma/#recherche",
+    "source": "https://fsjpa.uiz.ac.ma/",
+    "discovered_at": "2026-10-27T01:04:11.643Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://fsjpa.uiz.ac.ma/announcements/7",
+    "source": "https://fsjpa.uiz.ac.ma/",
+    "discovered_at": "2026-10-27T01:04:11.643Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://fsjpa.uiz.ac.ma/article/4",
+    "source": "https://fsjpa.uiz.ac.ma/",
+    "discovered_at": "2026-10-27T01:04:11.643Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://fsjpa.uiz.ac.ma/announcements/8",
+    "source": "https://fsjpa.uiz.ac.ma/",
+    "discovered_at": "2026-10-27T01:04:11.643Z",
+    "status": "broken"
+  },
+  {
+    "title": "",
+    "url": "https://fsjpa.uiz.ac.ma/article/5",
+    "source": "https://fsjpa.uiz.ac.ma/",
+    "discovered_at": "2026-10-27T01:04:11.643Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://fsjpa.uiz.ac.ma/article/1",
+    "source": "https://fsjpa.uiz.ac.ma/",
+    "discovered_at": "2026-10-27T01:04:11.643Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://fsjpa.uiz.ac.ma/announcements/1",
+    "source": "https://fsjpa.uiz.ac.ma/",
+    "discovered_at": "2026-10-27T01:04:11.643Z",
+    "status": "broken"
+  },
+  {
+    "title": "",
+    "url": "https://fsjpa.uiz.ac.ma/article/2",
+    "source": "https://fsjpa.uiz.ac.ma/",
+    "discovered_at": "2026-10-27T01:04:11.643Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://fsjpa.uiz.ac.ma/announcements/3",
+    "source": "https://fsjpa.uiz.ac.ma/",
+    "discovered_at": "2026-10-27T01:04:11.643Z",
+    "status": "broken"
+  },
+  {
+    "title": "",
+    "url": "https://fsjpa.uiz.ac.ma/article/3",
+    "source": "https://fsjpa.uiz.ac.ma/",
+    "discovered_at": "2026-10-27T01:04:11.643Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://fsjpa.uiz.ac.ma/announcements/20",
+    "source": "https://fsjpa.uiz.ac.ma/",
+    "discovered_at": "2026-10-27T01:04:11.644Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://fsjpa.uiz.ac.ma/announcements/19",
+    "source": "https://fsjpa.uiz.ac.ma/",
+    "discovered_at": "2026-10-27T01:04:11.644Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://fsjpa.uiz.ac.ma/announcements/18",
+    "source": "https://fsjpa.uiz.ac.ma/",
+    "discovered_at": "2026-10-27T01:04:11.644Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://fsjpa.uiz.ac.ma/announcements/17",
+    "source": "https://fsjpa.uiz.ac.ma/",
+    "discovered_at": "2026-10-27T01:04:11.644Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://fsjpa.uiz.ac.ma/announcements/16",
+    "source": "https://fsjpa.uiz.ac.ma/",
+    "discovered_at": "2026-10-27T01:04:11.644Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://fsjpa.uiz.ac.ma/announcements/15",
+    "source": "https://fsjpa.uiz.ac.ma/",
+    "discovered_at": "2026-10-27T01:04:11.644Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://fsjpa.uiz.ac.ma/mot-du-president",
+    "source": "https://fsjpa.uiz.ac.ma/",
+    "discovered_at": "2026-10-27T01:04:11.644Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://fsjpa.uiz.ac.ma/pole/3",
+    "source": "https://fsjpa.uiz.ac.ma/",
+    "discovered_at": "2026-10-27T01:04:11.644Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://fsjpa.uiz.ac.ma/pole/4",
+    "source": "https://fsjpa.uiz.ac.ma/",
+    "discovered_at": "2026-10-27T01:04:11.644Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://fsjpa.uiz.ac.ma/pole/5",
+    "source": "https://fsjpa.uiz.ac.ma/",
+    "discovered_at": "2026-10-27T01:04:11.644Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://fsjpa.uiz.ac.ma/pole/6",
+    "source": "https://fsjpa.uiz.ac.ma/",
+    "discovered_at": "2026-10-27T01:04:11.644Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.men.gov.ma/themes/custom/men/favicon.ico",
+    "source": "https://www.men.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:12.610Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.men.gov.ma/sites/default/files/css/css_X5xCdNU9qMJXMbUZwk1y8DY28f3VAZdobNEOLB4Ev9s.css?delta=0&amp;language=ar&amp;theme=men&amp;include=eJxtzlFuAyEMBNALscuRIgPuBsUwyDbZcvuq20qpov6MZt7XJMDNlcYtkWpFzBCohfTuhyCRbOZLaj_CQ0gRr_zbNzxZtRYOQgvTb6Va_rYV0TlDQuMe8zRH24piFJz9sg_qeSV8_gx0p5MNjcMgpUNp3C0WnYNkf8k--5hJqt25BHPKj_g6nkv_tbfv_-GmLsGWObeYyDg8K58Wr9wbyhT-AidRdWo",
+    "source": "https://www.men.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:12.610Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.men.gov.ma/sites/default/files/css/css_OTjIhM0Kf0etWiseyJEmJhTQ3umA5sVl6jfo_vf8JYM.css?delta=1&amp;language=ar&amp;theme=men&amp;include=eJxtzlFuAyEMBNALscuRIgPuBsUwyDbZcvuq20qpov6MZt7XJMDNlcYtkWpFzBCohfTuhyCRbOZLaj_CQ0gRr_zbNzxZtRYOQgvTb6Va_rYV0TlDQuMe8zRH24piFJz9sg_qeSV8_gx0p5MNjcMgpUNp3C0WnYNkf8k--5hJqt25BHPKj_g6nkv_tbfv_-GmLsGWObeYyDg8K58Wr9wbyhT-AidRdWo",
+    "source": "https://www.men.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:12.610Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.men.gov.ma/sites/default/files/css/css_9GD4p3U69seU8SSVF2CAvVW5tG2EBi9Vq3kH-ZB0ZUk.css?delta=3&amp;language=ar&amp;theme=men&amp;include=eJxtzlFuAyEMBNALscuRIgPuBsUwyDbZcvuq20qpov6MZt7XJMDNlcYtkWpFzBCohfTuhyCRbOZLaj_CQ0gRr_zbNzxZtRYOQgvTb6Va_rYV0TlDQuMe8zRH24piFJz9sg_qeSV8_gx0p5MNjcMgpUNp3C0WnYNkf8k--5hJqt25BHPKj_g6nkv_tbfv_-GmLsGWObeYyDg8K58Wr9wbyhT-AidRdWo",
+    "source": "https://www.men.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:12.610Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.men.gov.ma/sites/default/files/css/css_6g9QTfU6J4DFx3TTULjn5-FsDnOWzUdywc-SG_iD2S4.css?delta=4&amp;language=ar&amp;theme=men&amp;include=eJxtzlFuAyEMBNALscuRIgPuBsUwyDbZcvuq20qpov6MZt7XJMDNlcYtkWpFzBCohfTuhyCRbOZLaj_CQ0gRr_zbNzxZtRYOQgvTb6Va_rYV0TlDQuMe8zRH24piFJz9sg_qeSV8_gx0p5MNjcMgpUNp3C0WnYNkf8k--5hJqt25BHPKj_g6nkv_tbfv_-GmLsGWObeYyDg8K58Wr9wbyhT-AidRdWo",
+    "source": "https://www.men.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:12.610Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.men.gov.ma/sites/default/files/css/css_hJ5gHRYGKuQGy43EFhwC3WtwUBCxNcHAjijCzOOnA9w.css?delta=5&amp;language=ar&amp;theme=men&amp;include=eJxtzlFuAyEMBNALscuRIgPuBsUwyDbZcvuq20qpov6MZt7XJMDNlcYtkWpFzBCohfTuhyCRbOZLaj_CQ0gRr_zbNzxZtRYOQgvTb6Va_rYV0TlDQuMe8zRH24piFJz9sg_qeSV8_gx0p5MNjcMgpUNp3C0WnYNkf8k--5hJqt25BHPKj_g6nkv_tbfv_-GmLsGWObeYyDg8K58Wr9wbyhT-AidRdWo",
+    "source": "https://www.men.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:12.610Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.men.gov.ma/sites/default/files/css/css_t9g_pAxd9NgtaO7DG7HISKx-Ez6XeuseB5SMXyDa1Rg.css?delta=9&amp;language=ar&amp;theme=men&amp;include=eJxtzlFuAyEMBNALscuRIgPuBsUwyDbZcvuq20qpov6MZt7XJMDNlcYtkWpFzBCohfTuhyCRbOZLaj_CQ0gRr_zbNzxZtRYOQgvTb6Va_rYV0TlDQuMe8zRH24piFJz9sg_qeSV8_gx0p5MNjcMgpUNp3C0WnYNkf8k--5hJqt25BHPKj_g6nkv_tbfv_-GmLsGWObeYyDg8K58Wr9wbyhT-AidRdWo",
+    "source": "https://www.men.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:12.610Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.men.gov.ma/sites/default/files/css/css_KuuWU5ejbEhRdWHeLHr2k7mWAknF-JQZJQrGPZGcKxM.css?delta=11&amp;language=ar&amp;theme=men&amp;include=eJxtzlFuAyEMBNALscuRIgPuBsUwyDbZcvuq20qpov6MZt7XJMDNlcYtkWpFzBCohfTuhyCRbOZLaj_CQ0gRr_zbNzxZtRYOQgvTb6Va_rYV0TlDQuMe8zRH24piFJz9sg_qeSV8_gx0p5MNjcMgpUNp3C0WnYNkf8k--5hJqt25BHPKj_g6nkv_tbfv_-GmLsGWObeYyDg8K58Wr9wbyhT-AidRdWo",
+    "source": "https://www.men.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:12.610Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.men.gov.ma/%D8%A7%D9%84%D9%85%D9%85%D9%84%D9%83%D8%A9-%D8%A7%D9%84%D9%85%D8%BA%D8%B1%D8%A8%D9%8A%D8%A9-%D8%AA%D8%B4%D8%A7%D8%B1%D9%83-%D9%81%D9%8A-%D8%A8%D8%B7%D9%88%D9%84%D8%A9-%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85-%D8%A7%D9%84%D9%85%D8%AF%D8%B1%D8%B3%D9%8A%D8%A9-%D9%84%D9%83%D8%B1%D8%A9-%D8%A7%D9%84%D9%82%D8%AF%D9%85-%D8%A8%D8%AC%D9%85%D9%87%D9%88%D8%B1%D9%8A%D8%A9-%D8%A7%D9%84%D8%B5%D9%8A%D9%86-%D8%A7%D9%84%D8%B4%D8%B9%D8%A8%D9%8A%D8%A9/%D8%A7%D9%84%D9%85%D8%B3%D8%AA%D8%AC%D8%AF%D8%A7%D8%AA",
+    "source": "https://www.men.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:12.610Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.men.gov.ma/%D8%A7%D9%84%D9%85%D9%85%D9%84%D9%83%D8%A9-%D8%A7%D9%84%D9%85%D8%BA%D8%B1%D8%A8%D9%8A%D8%A9-%D8%AA%D8%AD%D8%AA%D8%B6%D9%86-%D8%A8%D8%A7%D9%84%D8%B1%D8%A8%D8%A7%D8%B7-%D8%A7%D9%84%D9%85%D9%86%D8%AA%D8%AF%D9%89-%D8%A7%D9%84%D8%AF%D9%88%D9%84%D9%8A-%D9%84%D8%A8%D8%B1%D9%86%D8%A7%D9%85%D8%AC-leap-%D8%AD%D9%88%D9%84-%D8%A7%D9%84%D9%82%D9%8A%D8%A7%D8%AF%D8%A9-%D9%85%D9%86-%D8%A3%D8%AC%D9%84-%D8%AA%D8%AD%D8%B3%D9%8A%D9%86-%D8%A7%D9%84%D8%AA%D8%B9%D9%84%D9%85%D8%A7%D8%AA/%D8%A7%D9%84%D9%85%D8%B3%D8%AA%D8%AC%D8%AF%D8%A7%D8%AA",
+    "source": "https://www.men.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:12.610Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.men.gov.ma/%D8%A8%D9%84%D8%A7%D8%BA%D8%A7%D8%AA-%D8%B5%D8%AD%D9%81%D9%8A%D8%A9/Annonces01-070926",
+    "source": "https://www.men.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:12.610Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.men.gov.ma/%D9%85%D9%84%D8%AA%D9%82%D9%89-%D8%A7%D9%84%D9%81%D8%A7%D8%A6%D8%B2%D9%8A%D9%86-%D9%81%D9%8A-%D8%A7%D9%84%D9%85%D8%A8%D8%A7%D8%B1%D8%A7%D8%A9-%D8%A7%D9%84%D8%B9%D8%A7%D9%85%D8%A9-%D9%84%D9%84%D8%B9%D9%84%D9%88%D9%85-%D9%88%D8%A7%D9%84%D8%AA%D9%82%D9%86%D9%8A%D8%A7%D8%AA-%E2%80%93-%D8%AF%D9%88%D8%B1%D8%A9-2026/%D8%A7%D9%84%D9%85%D8%B3%D8%AA%D8%AC%D8%AF%D8%A7%D8%AA",
+    "source": "https://www.men.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:12.610Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.men.gov.ma/%D8%A7%D9%84%D9%88%D8%B2%D8%A7%D8%B1%D8%A9-%D8%AA%D8%AD%D8%AA%D9%81%D9%8A-%D8%A8%D8%A7%D9%84%D9%85%D8%AA%D9%81%D9%88%D9%82%D8%A7%D8%AA-%D9%88%D8%A7%D9%84%D9%85%D8%AA%D9%81%D9%88%D9%82%D9%8A%D9%86-%D8%A7%D9%84%D8%AD%D8%A7%D8%B5%D9%84%D9%8A%D9%86-%D8%B9%D9%84%D9%89-%D8%A3%D8%B9%D9%84%D9%89-%D8%A7%D9%84%D9%85%D8%B9%D8%AF%D9%84%D8%A7%D8%AA-%D9%81%D9%8A-%D8%A7%D9%85%D8%AA%D8%AD%D8%A7%D9%86%D8%A7%D8%AA-%D8%A7%D9%84%D8%A8%D9%83%D8%A7%D9%84%D9%88%D8%B1%D9%8A%D8%A7-%E2%80%93-%D8%AF%D9%88%D8%B1%D8%A9-%D9%8A%D9%88%D9%86%D9%8A%D9%88-2026/%D8%A7%D9%84%D9%85%D8%B3%D8%AA%D8%AC%D8%AF%D8%A7%D8%AA",
+    "source": "https://www.men.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:12.610Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.men.gov.ma/%D8%A7%D9%84%D8%B3%D9%8A%D8%AF-%D8%A7%D9%84%D9%88%D8%B2%D9%8A%D8%B1-%D9%8A%D8%B4%D8%A7%D8%B1%D9%83-%D9%81%D9%8A-%D8%A7%D8%AC%D8%AA%D9%85%D8%A7%D8%B9-%D8%A7%D9%84%D9%84%D8%AC%D9%86%D8%A9-%D8%A7%D9%84%D8%AF%D8%A7%D8%A6%D9%85%D8%A9-%D9%84%D8%AA%D8%AC%D8%AF%D9%8A%D8%AF-%D9%88%D9%85%D9%84%D8%A7%D8%A1%D9%85%D8%A9-%D8%A7%D9%84%D9%85%D9%86%D8%A7%D9%87%D8%AC-%D9%88%D8%A7%D9%84%D8%A8%D8%B1%D8%A7%D9%85%D8%AC/%D8%A7%D9%84%D9%85%D8%B3%D8%AA%D8%AC%D8%AF%D8%A7%D8%AA",
+    "source": "https://www.men.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:12.611Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.men.gov.ma/%D8%A8%D9%84%D8%A7%D8%BA%D8%A7%D8%AA-%D8%B5%D8%AD%D9%81%D9%8A%D8%A9/%D8%A8%D9%84%D8%A7%D8%BA-%D8%B5%D8%AD%D9%81%D9%8A-%D8%A8%D8%B4%D8%A3%D9%86-%D8%AA%D9%85%D8%AF%D9%8A%D8%AF-%D9%81%D8%AA%D8%B1%D8%A9-%D8%A5%D9%8A%D8%AF%D8%A7%D8%B9-%D8%B7%D9%84%D8%A8%D8%A7%D8%AA-%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%A7%D8%AF%D8%A9-%D9%85%D9%86-%D8%AE%D8%AF%D9%85%D8%A7%D8%AA-%D8%A7%D9%84%D8%A5%D9%8A%D9%88%D8%A7%D8%A1-%D9%88%D8%A7%D9%84%D8%A5%D8%B7%D8%B9%D8%A7%D9%85-%D9%88%D8%A7%D9%84%D9%86%D9%82%D9%84-%D8%A7%D9%84%D9%85%D8%AF%D8%B1%D8%B3%D9%8A-%D9%88%D8%AF%D9%88%D8%B1-%D8%A7%D9%84%D8%B7%D8%A7%D9%84%D8%A8%D8%A9-%D8%A8%D8%B1%D8%B3%D9%85-%D8%A7%D9%84%D9%85%D9%88%D8%B3%D9%85-%D8%A7%D9%84%D8%AF%D8%B1%D8%A7%D8%B3%D9%8A-2026-2027",
+    "source": "https://www.men.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:12.611Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.men.gov.ma/%D9%85%D8%B0%D9%83%D8%B1%D8%A7%D8%AA/Notes01-160726",
+    "source": "https://www.men.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:12.611Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.men.gov.ma/%D8%A7%D9%84%D9%88%D8%B2%D8%A7%D8%B1%D8%A9-%D8%AA%D9%86%D8%B8%D9%85-%D9%8A%D9%88%D9%85-%D8%AF%D8%B1%D8%A7%D8%B3%D9%8A-%D8%AD%D9%88%D9%84-%D8%A7%D9%84%D8%A7%D8%B1%D8%AA%D9%82%D8%A7%D8%A1-%D8%A8%D8%A3%D8%AF%D8%A7%D8%A1-%D9%85%D8%A4%D8%B3%D8%B3%D8%A7%D8%AA-%D8%A7%D9%84%D8%AA%D9%81%D8%AA%D8%AD/%D8%A7%D9%84%D9%85%D8%B3%D8%AA%D8%AC%D8%AF%D8%A7%D8%AA",
+    "source": "https://www.men.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:12.611Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.men.gov.ma/%D8%A7%D9%86%D8%B7%D9%84%D8%A7%D9%82-%D8%A7%D9%84%D8%A3%D9%86%D8%B4%D8%B7%D8%A9-%D8%A7%D9%84%D8%B5%D9%8A%D9%81%D9%8A%D8%A9-%D9%84%D9%81%D8%A7%D8%A6%D8%AF%D8%A9-%D8%A7%D9%84%D8%AA%D9%84%D9%85%D9%8A%D8%B0%D8%A7%D8%AA-%D9%88%D8%A7%D9%84%D8%AA%D9%84%D8%A7%D9%85%D9%8A%D8%B0-%D8%A7%D9%84%D9%85%D9%87%D8%AF%D8%AF%D9%8A%D9%86-%D8%A8%D8%A7%D9%84%D8%A7%D9%86%D9%82%D8%B7%D8%A7%D8%B9-%D8%B9%D9%86-%D8%A7%D9%84%D8%AF%D8%B1%D8%A7%D8%B3%D8%A9-%D8%A8%D8%B1%D8%B3%D9%85-%D8%A7%D9%84%D9%85%D9%88%D8%B3%D9%85-%D8%A7%D9%84%D8%AF%D8%B1%D8%A7%D8%B3%D9%8A-2025/2026/%D8%A7%D9%84%D9%85%D8%B3%D8%AA%D8%AC%D8%AF%D8%A7%D8%AA",
+    "source": "https://www.men.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:12.611Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.men.gov.ma/",
+    "source": "https://www.men.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:12.611Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.men.gov.ma/#",
+    "source": "https://www.men.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:12.611Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.men.gov.ma/%D9%85%D9%87%D8%A7%D9%85-%D8%A7%D9%84%D9%88%D8%B2%D8%A7%D8%B1%D8%A9",
+    "source": "https://www.men.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:12.611Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.men.gov.ma/%D8%A7%D9%84%D9%87%D9%8A%D9%83%D9%84-%D8%A7%D9%84%D8%AA%D9%86%D8%B8%D9%8A%D9%85%D9%8A",
+    "source": "https://www.men.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:12.611Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.men.gov.ma/%D8%A7%D9%84%D8%AA%D8%B1%D8%A8%D9%8A%D8%A9-%D8%A7%D9%84%D9%88%D8%B7%D9%86%D9%8A%D8%A9",
+    "source": "https://www.men.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:12.611Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.men.gov.ma/%D8%A7%D9%84%D8%B4%D8%B1%D8%A7%D9%83%D8%A7%D8%AA-%D9%88%D8%A7%D9%84%D8%AA%D8%B9%D8%A7%D9%88%D9%86-%D8%A7%D9%84%D8%AF%D9%88%D9%84%D9%8A",
+    "source": "https://www.men.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:12.611Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.men.gov.ma/%D8%A7%D9%84%D8%AA%D9%88%D8%AC%D9%87%D8%A7%D8%AA-%D8%A7%D9%84%D9%85%D9%84%D9%83%D9%8A%D8%A9",
+    "source": "https://www.men.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:12.611Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.men.gov.ma/%D8%A7%D9%84%D9%85%D8%B1%D8%A7%D8%AC%D8%B9-%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D8%B1%D8%A7%D8%AA%D9%8A%D8%AC%D9%8A%D8%A9",
+    "source": "https://www.men.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:12.611Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.men.gov.ma/#projets-phares",
+    "source": "https://www.men.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:12.611Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.men.gov.ma/%D9%85%D8%A8%D8%A7%D8%B1%D9%8A%D8%A7%D8%AA",
+    "source": "https://www.men.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:12.611Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.men.gov.ma/%D9%85%D8%B0%D9%83%D8%B1%D8%A7%D8%AA",
+    "source": "https://www.men.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:12.611Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.men.gov.ma/%D8%B7%D9%84%D8%A8%D8%A7%D8%AA-%D8%A7%D9%84%D8%B9%D8%B1%D9%88%D8%B6",
+    "source": "https://www.men.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:12.611Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.men.gov.ma/%D8%A5%D8%B9%D9%84%D8%A7%D9%86%D8%A7%D8%AA",
+    "source": "https://www.men.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:12.611Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.men.gov.ma/%D9%85%D8%B3%D8%AA%D8%AC%D8%AF%D8%A7%D8%AA",
+    "source": "https://www.men.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:12.611Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.men.gov.ma/%D8%A8%D9%84%D8%A7%D8%BA%D8%A7%D8%AA",
+    "source": "https://www.men.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:12.611Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.men.gov.ma/%D9%86%D8%B4%D8%B1%D8%A7%D8%AA",
+    "source": "https://www.men.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:12.611Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.men.gov.ma/%D9%85%D8%B6%D8%A7%D9%85%D9%8A%D9%86-%D8%A5%D8%B9%D9%84%D8%A7%D9%85%D9%8A%D8%A9",
+    "source": "https://www.men.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:12.611Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.men.gov.ma/%D9%88%D8%AB%D8%A7%D8%A6%D9%82-%D8%B1%D8%B3%D9%85%D9%8A%D8%A9",
+    "source": "https://www.men.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:12.611Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.men.gov.ma/%D8%A3%D9%84%D8%A8%D9%88%D9%85-%D8%A7%D9%84%D8%B5%D9%88%D8%B1",
+    "source": "https://www.men.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:12.611Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.men.gov.ma/%D8%A3%D9%84%D8%A8%D9%88%D9%85-%D8%A7%D9%84%D9%81%D9%8A%D8%AF%D9%8A%D9%88%D9%87%D8%A7%D8%AA",
+    "source": "https://www.men.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:12.611Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.men.gov.ma/fr",
+    "source": "https://www.men.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:12.611Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.men.gov.ma/tzm",
+    "source": "https://www.men.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:12.611Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.sgg.gov.ma/Resources/Shared/stylesheets/dnndefault/7.0.0/default.css?cdv=502",
+    "source": "https://www.sgg.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:14.011Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.sgg.gov.ma/DesktopModules/Announcements/module.css?cdv=502",
+    "source": "https://www.sgg.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:14.011Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.sgg.gov.ma/DesktopModules/MVC/LastBOs/module.css?cdv=502",
+    "source": "https://www.sgg.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:14.011Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.sgg.gov.ma/DesktopModules/HTML/module.css?cdv=502",
+    "source": "https://www.sgg.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:14.011Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.sgg.gov.ma/DesktopModules/moteur_rech_accueil_ar/module.css?cdv=502",
+    "source": "https://www.sgg.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:14.011Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.sgg.gov.ma/Resources/Search/SearchSkinObjectPreview.css?cdv=502",
+    "source": "https://www.sgg.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:14.011Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.sgg.gov.ma/Portals/_default/skins/xcillion/bootstrap-ar/css/bootstrap-arabic.min.css?cdv=502",
+    "source": "https://www.sgg.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:14.011Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.sgg.gov.ma/Portals/_default/skins/xcillion/css/jquery.smartmenus.bootstrap.css?cdv=502",
+    "source": "https://www.sgg.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:14.011Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.sgg.gov.ma/Portals/_default/skins/xcillion/skin.css?cdv=502",
+    "source": "https://www.sgg.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:14.011Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.sgg.gov.ma/Portals/1/portal.css?cdv=502",
+    "source": "https://www.sgg.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:14.011Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.sgg.gov.ma/Portals/_default/skins/xcillion/Css/owl.carousel.min.css?cdv=502",
+    "source": "https://www.sgg.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:14.011Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.sgg.gov.ma/Portals/_default/skins/xcillion/Css/jquery.fancybox.min.css?cdv=502",
+    "source": "https://www.sgg.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:14.011Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.sgg.gov.ma/Portals/_default/skins/xcillion/Css/font-awesome.min.css?cdv=502",
+    "source": "https://www.sgg.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:14.011Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.sgg.gov.ma/Portals/_default/skins/xcillion/Css/slick/slick.css?cdv=502",
+    "source": "https://www.sgg.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:14.011Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.sgg.gov.ma/Portals/_default/skins/xcillion/skin-sgg.css?cdv=502",
+    "source": "https://www.sgg.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:14.011Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.sgg.gov.ma/Portals/_default/skins/xcillion/skin-sgg-responsive.css?cdv=502",
+    "source": "https://www.sgg.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:14.011Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.sgg.gov.ma/Portals/_default/skins/xcillion/Css/bootstrap4custom.min.css?cdv=502",
+    "source": "https://www.sgg.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:14.011Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.sgg.gov.ma/Portals/_default/skins/xcillion/assets/SggOrganigrame/css/style.css?cdv=502",
+    "source": "https://www.sgg.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:14.011Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.sgg.gov.ma/Portals/_default/skins/xcillion/assets/SggTimeline/css/SggTimeline.css?cdv=502",
+    "source": "https://www.sgg.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:14.011Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.sgg.gov.ma/Portals/_default/skins/xcillion/assets/SggTabs/css/style.css?cdv=502",
+    "source": "https://www.sgg.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:14.011Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.sgg.gov.ma/Portals/_default/skins/xcillion/assets/SggVerticalCarousel/css/style.css?cdv=502",
+    "source": "https://www.sgg.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:14.011Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.sgg.gov.ma/Portals/1/favicon.ico?ver=ulqc6EciZ5BD4YMH3wxtJA%3d%3d",
+    "source": "https://www.sgg.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:14.011Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.sgg.gov.ma/arabe/Accueil.aspx",
+    "source": "https://www.sgg.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:14.011Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.sgg.gov.ma/tifinagh/Accueil.aspx",
+    "source": "https://www.sgg.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:14.011Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.sgg.gov.ma/Accueil.aspx",
+    "source": "https://www.sgg.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:14.011Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.sgg.gov.ma/arabe/Accueil/contacts.aspx",
+    "source": "https://www.sgg.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:14.011Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.sgg.gov.ma/arabe/Accueil/websiteMap.aspx",
+    "source": "https://www.sgg.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:14.011Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.sgg.gov.ma/arabe/Accueil/Liensutiles.aspx",
+    "source": "https://www.sgg.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:14.011Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.sgg.gov.ma/arabe/galerie.aspx",
+    "source": "https://www.sgg.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:14.011Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.sgg.gov.ma/arabe/LeSGG.aspx",
+    "source": "https://www.sgg.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:14.011Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.sgg.gov.ma/arabe/conseilministres.aspx",
+    "source": "https://www.sgg.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:14.011Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.sgg.gov.ma/arabe/travailgouvernemental.aspx",
+    "source": "https://www.sgg.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:14.011Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.sgg.gov.ma/arabe/Legislation.aspx",
+    "source": "https://www.sgg.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:14.011Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.sgg.gov.ma/arabe/BulletinOfficiel.aspx",
+    "source": "https://www.sgg.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:14.011Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.sgg.gov.ma/arabe/ProfessionsReglementees.aspx",
+    "source": "https://www.sgg.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:14.011Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.sgg.gov.ma/arabe/Associations.aspx",
+    "source": "https://www.sgg.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:14.011Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.sgg.gov.ma/arabe/imprimerieofficielle.aspx",
+    "source": "https://www.sgg.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:14.011Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.sgg.gov.ma/arabe/Commissionnationaledelacommandepublique.aspx",
+    "source": "https://www.sgg.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:14.011Z",
+    "status": "ok"
+  },
+  {
+    "title": "",
+    "url": "https://www.sgg.gov.ma/LinkClick.aspx?fileticket=twQwm-bxgDY%3d&amp;tabid=158&amp;portalid=1&amp;mid=2596",
+    "source": "https://www.sgg.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:14.011Z",
+    "status": "broken"
+  },
+  {
+    "title": "",
+    "url": "https://www.sgg.gov.ma/LinkClick.aspx?fileticket=eb9oJeQzqgU%3d&amp;tabid=158&amp;portalid=1&amp;mid=2596",
+    "source": "https://www.sgg.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:14.011Z",
+    "status": "broken"
+  }
+]

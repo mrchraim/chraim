@@ -1,6 +1,6 @@
 # CHRVVIM Knowledge Atlas (scaffold)
 
-**الحالة:** scaffold فقط — لا crawling فعلي (احترام robots/ToS).
+**الحالة:** scaffold + small verified crawl (3 sources, 120 links, 114 ok, 6 broken).
 
 ## 1. ما تم
 - `data/source-registry.json` — 10 مصادر (MEN, SGG, عدالة, ENSUP, ANEAQ, tarbiaa, UIZ, FSJP).

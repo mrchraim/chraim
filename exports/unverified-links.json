@@ -1,1 +1,44 @@
-[]
+[
+  {
+    "title": "",
+    "url": "https://fsjpa.uiz.ac.ma/index.html",
+    "source": "https://fsjpa.uiz.ac.ma/",
+    "discovered_at": "2026-10-27T01:04:11.643Z",
+    "status": "broken"
+  },
+  {
+    "title": "",
+    "url": "https://fsjpa.uiz.ac.ma/announcements/8",
+    "source": "https://fsjpa.uiz.ac.ma/",
+    "discovered_at": "2026-10-27T01:04:11.643Z",
+    "status": "broken"
+  },
+  {
+    "title": "",
+    "url": "https://fsjpa.uiz.ac.ma/announcements/1",
+    "source": "https://fsjpa.uiz.ac.ma/",
+    "discovered_at": "2026-10-27T01:04:11.643Z",
+    "status": "broken"
+  },
+  {
+    "title": "",
+    "url": "https://fsjpa.uiz.ac.ma/announcements/3",
+    "source": "https://fsjpa.uiz.ac.ma/",
+    "discovered_at": "2026-10-27T01:04:11.643Z",
+    "status": "broken"
+  },
+  {
+    "title": "",
+    "url": "https://www.sgg.gov.ma/LinkClick.aspx?fileticket=twQwm-bxgDY%3d&amp;tabid=158&amp;portalid=1&amp;mid=2596",
+    "source": "https://www.sgg.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:14.011Z",
+    "status": "broken"
+  },
+  {
+    "title": "",
+    "url": "https://www.sgg.gov.ma/LinkClick.aspx?fileticket=eb9oJeQzqgU%3d&amp;tabid=158&amp;portalid=1&amp;mid=2596",
+    "source": "https://www.sgg.gov.ma/",
+    "discovered_at": "2026-10-27T01:04:14.011Z",
+    "status": "broken"
+  }
+]
