@@ -2,12 +2,65 @@
   "version": "2026-10-27",
   "note": "روابط مصادر رسمية (لا إعادة استضافة). تحقق قبل الاستعمال.",
   "sources": [
-    { "title": "كلية العلوم القانونية والسياسية — أكادير (FSJP)", "url": "https://fsjpa.uiz.ac.ma/", "type": "official", "level": "university" },
-    { "title": "جامعة ابن زهر (UIZ)", "url": "https://www.uiz.ac.ma/", "type": "official", "level": "university" },
-    { "title": "FSJP — استعمالات الزمن S5 (قانون عام/خاص)", "url": "https://fsjpa.uiz.ac.ma/announcements/8", "type": "timetable", "level": "university" },
-    { "title": "FSJP — استعمالات الزمن S3 (جذع مشترك)", "url": "https://fsjpa.uiz.ac.ma/announcements/15", "type": "timetable", "level": "university" },
-    { "title": "FSJP — استعمالات الزمن S5 (محين)", "url": "https://fsjpa.uiz.ac.ma/announcements/16", "type": "timetable", "level": "university" },
-    { "title": "وزارة التربية الوطنية (MEN)", "url": "https://www.men.gov.ma/", "type": "official", "level": "all" },
-    { "title": "الأكاديمية الجهوية للتربية والتكوين — سوس ماسة", "url": "https://arefsm.men.gov.ma/", "type": "official", "level": "school" }
+    {
+      "title": "كلية العلوم القانونية والسياسية — أكادير (FSJP)",
+      "url": "https://fsjpa.uiz.ac.ma/",
+      "type": "official",
+      "level": "university"
+    },
+    {
+      "title": "جامعة ابن زهر (UIZ)",
+      "url": "https://www.uiz.ac.ma/",
+      "type": "official",
+      "level": "university"
+    },
+    {
+      "title": "FSJP — استعمالات الزمن S5 (قانون عام/خاص)",
+      "url": "https://fsjpa.uiz.ac.ma/announcements/8",
+      "type": "timetable",
+      "level": "university"
+    },
+    {
+      "title": "FSJP — استعمالات الزمن S3 (جذع مشترك)",
+      "url": "https://fsjpa.uiz.ac.ma/announcements/15",
+      "type": "timetable",
+      "level": "university"
+    },
+    {
+      "title": "FSJP — استعمالات الزمن S5 (محين)",
+      "url": "https://fsjpa.uiz.ac.ma/announcements/16",
+      "type": "timetable",
+      "level": "university"
+    },
+    {
+      "title": "وزارة التربية الوطنية (MEN)",
+      "url": "https://www.men.gov.ma/",
+      "type": "official",
+      "level": "all"
+    },
+    {
+      "title": "الأكاديمية الجهوية للتربية والتكوين — سوس ماسة",
+      "url": "https://arefsm.men.gov.ma/",
+      "type": "official",
+      "level": "school"
+    },
+    {
+      "title": "AlloSchool — موارد تعليمية (روابط)",
+      "url": "https://www.alloschool.com/",
+      "type": "external",
+      "level": "all",
+      "emoji": "📚",
+      "desc": "روابط فقط (لا إعادة استضافة).",
+      "badge": "خارجي"
+    },
+    {
+      "title": "Scool.ma — موارد تعليمية",
+      "url": "https://scool.ma/",
+      "type": "external",
+      "level": "all",
+      "emoji": "📚",
+      "desc": "روابط فقط (لا إعادة استضافة).",
+      "badge": "خارجي"
+    }
   ]
 }
