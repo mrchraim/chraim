@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>فضاء الطالب — CHRAIM</title>
+<style>body{font-family:system-ui,Segoe UI,Tahoma,sans-serif;background:#060B19;color:#F3E5AB;padding:24px;max-width:960px;margin:0 auto}
+.card{background:rgba(28,37,65,.7);border:1px solid rgba(212,175,55,.2);border-radius:12px;padding:16px;margin:12px 0}
+a{color:#D4AF37}
+</style>
+</head>
+<body>
+<h1>فضاء الطالب</h1>
+<div class="card">
+  <h2>ملفك المحفوظ</h2>
+  <div id="profile"></div>
+</div>
+<div class="card">
+  <h2>اختصارات</h2>
+  <ul>
+    <li><a href="/index.html#schedule">جدولي</a></li>
+    <li><a href="/portal.html#exams">امتحاناتي</a></li>
+    <li><a href="/portal.html#gpa">المعدل</a></li>
+    <li><a href="/portal.html#docs">الوثائق</a></li>
+    <li><a href="/levels/">المستويات</a></li>
+    <li><a href="/lessons/">الدروس</a></li>
+  </ul>
+</div>
+<p><a href="/" style="color:#D4AF37">← العودة للرئيسية</a></p>
+<script>
+try {
+  const p = JSON.parse(localStorage.getItem('chraim_profile_v1')||'null');
+  const el = document.getElementById('profile');
+  if (p) {
+    el.innerHTML = '<div>الفصل: '+ (p.sem||'—') +'</div><div>المسار: '+ (p.selectedPathwayName||'—') +'</div><div>النسب: '+ (p.name||'—') +'</div>';
+  } else {
+    el.textContent = 'لا يوجد ملف محفوظ. ابحث في الصفحة الرئيسية.';
+  }
+} catch(e){ document.getElementById('profile').textContent='تعذر قراءة الملف.'; }
+</script>
+</body>
+</html>
