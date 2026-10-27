@@ -1,0 +1,10 @@
+{
+  "version": "2026-10-27",
+  "status": "placeholder",
+  "note": "غير متوفر بعد — سيتم ملؤه من مصادر رسمية (MEN, académies).",
+  "levels": {
+    "primary": { "name": "ابتدائي", "subjects": [] },
+    "middle": { "name": "إعدادي", "subjects": [] },
+    "high": { "name": "ثانوي", "branches": { "common": [], "bac": {} } }
+  }
+}
