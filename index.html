@@ -2,7 +2,20 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
+    <link rel="alternate" hreflang="ar" href="/">
+    <link rel="alternate" hreflang="fr" href="/">
+    <link rel="alternate" hreflang="en" href="/">
+    <link rel="alternate" hreflang="x-default" href="/">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CHRAIM — منصة طالب مستقلة لجامعة ابن زهر أكادير: الأفواج، استعمالات الزمن، المؤسسات، التكوينات، المستجدات.">
+    <meta property="og:title" content="CHRAIM — منصة الطالب الموحّدة">
+    <meta property="og:description" content="منصة طالب مستقلة لجامعة ابن زهر أكادير.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ar_MA">
+    <meta name="twitter:card" content="summary">
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"EducationalOrganization","name":"CHRAIM — منصة الطالب","url":"/","inLanguage":"ar"}
+    </script>
     <title>دليل الطالب أكادير | CHRAIM — المنصة الجامعية المتكاملة</title>
     <!-- CSS مبني محلياً (Tailwind 3.4.17) + خط Cairo محلي: متوافق مع CSP ويعمل دون إنترنت -->
     <link rel="stylesheet" href="/assets/fonts/cairo.css">
@@ -15,6 +28,7 @@
     </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between">
+    <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-gold-500 text-navy-950 px-3 py-1 rounded">انتقل إلى المحتوى</a>
 
     <!-- Header Navigation -->
     <header class="bg-navy-900/90 border-b border-gold-500/30 sticky top-0 z-50 backdrop-blur-md">
@@ -27,7 +41,12 @@
                 </div>
             </div>
             <div class="flex items-center gap-2">
-                <a href="/orientation.html" class="text-xs bg-gold-500 text-navy-950 px-3 py-1 rounded-full flex items-center gap-1.5 font-black hover:bg-gold-400">
+                <select id="langSelect" onchange="if(window.CHRVVIM_PAGE)CHRVVIM_PAGE.apply(this.value); try{localStorage.setItem('chraim_lang',this.value)}catch(e){}" class="text-xs bg-navy-900 text-gold-400 border border-gold-500/30 px-2 py-1 rounded-full font-bold">
+    <option value="ar">AR</option>
+    <option value="fr">FR</option>
+    <option value="en">EN</option>
+</select>
+<a href="/orientation.html" class="text-xs bg-gold-500 text-navy-950 px-3 py-1 rounded-full flex items-center gap-1.5 font-black hover:bg-gold-400">
                     <i data-lucide="sparkles" class="w-4 h-4"></i> مرشد التوجيه
                 </a>
                 <span class="hidden sm:flex text-xs bg-gold-500/10 text-gold-400 border border-gold-500/30 px-3 py-1 rounded-full flex items-center gap-1.5 font-bold">
@@ -38,7 +57,7 @@
     </header>
 
     <!-- Main Content Container -->
-    <main class="flex-1 max-w-7xl w-full mx-auto px-4 py-8 space-y-8">
+    <main id="main" class="flex-1 max-w-7xl w-full mx-auto px-4 py-8 space-y-8">
 
         <!-- Hero Status Banner -->
         <section class="glass-card rounded-2xl p-6 md:p-8 shadow-2xl relative overflow-hidden">
@@ -52,8 +71,31 @@
                     بوابة طالب <span class="gold-gradient-text">كلية العلوم القانونية والسياسية (FSJP Agadir)</span>
                 </h2>
                 <p class="text-gray-300 text-xs md:text-sm leading-relaxed">
-                    تم تحيين بيانات البوابة وفق التسمية والمسارات الرسمية الجديدة للكلية للموسم الجامعي 2026–2027[cite: 1, 4]. يمكنك الآن البحث الفوري عن الفوج، المجموعات، وأوقات المحاضرات لجميع مسارات السداسي الثالث والپنفس الخامس[cite: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17].
+                    تم تحيين بيانات البوابة وفق التسمية والمسارات الرسمية الجديدة للكلية للموسم الجامعي 2026–2027. يمكنك الآن البحث الفوري عن الفوج، المجموعات، وأوقات المحاضرات لجميع مسارات السداسي الثالث والالسداسي الخامس.
                 </p>
+            </div>
+        </section>
+
+        <!-- ماذا تريد اليوم؟ (Phase 4) -->
+        <section class="glass-card rounded-2xl p-6 shadow-2xl space-y-4">
+            <h3 class="text-xl font-bold text-white flex items-center gap-2.5">
+                <i data-lucide="sparkles" class="text-gold-500 w-6 h-6"></i> ماذا تريد اليوم؟
+            </h3>
+            <div class="flex gap-2">
+                <input id="homeSearch" type="search" aria-label="بحث سريع" placeholder="ابحث عن كلية، مدرسة، صفحة… (Ctrl+K)" class="flex-1 bg-navy-950 border border-navy-700 text-white rounded-xl p-3 text-sm focus:border-gold-500 outline-none" readonly>
+                <button onclick="document.getElementById('cmdkBtn').click()" class="bg-gold-500 text-navy-950 font-bold px-4 rounded-xl text-sm">بحث</button>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+                <a href="#schedule" class="glass-card p-3 rounded-xl text-center text-xs font-bold text-white hover:border-gold-500/40">📅 جدولي</a>
+                <a href="/portal.html#exams" class="glass-card p-3 rounded-xl text-center text-xs font-bold text-white">📝 امتحاناتي</a>
+                <a href="/academic-updates.html" class="glass-card p-3 rounded-xl text-center text-xs font-bold text-white">📰 المستجدات</a>
+                <a href="/etablissements/" class="glass-card p-3 rounded-xl text-center text-xs font-bold text-white">🏛️ المؤسسة</a>
+                <a href="/portal.html#gpa" class="glass-card p-3 rounded-xl text-center text-xs font-bold text-white">🧮 المعدل</a>
+                <a href="/portal.html#docs" class="glass-card p-3 rounded-xl text-center text-xs font-bold text-white">📄 الوثائق</a>
+            </div>
+            <div id="todayCard" class="hidden bg-navy-950/90 border border-gold-500/30 rounded-xl p-4 text-xs text-gray-300"></div>
+            <div class="flex gap-2 justify-end">
+                <button onclick="clearSavedProfile()" class="text-xs text-gray-400 hover:text-gold-400">مسح البيانات المحفوظة</button>
             </div>
         </section>
 
@@ -64,7 +106,7 @@
                     <h3 class="text-xl font-bold text-white flex items-center gap-2.5">
                         <i data-lucide="search-code" class="text-gold-500 w-6 h-6"></i> محرك البحث التفاعلي للأفواج واستعمالات الزمن
                     </h3>
-                    <p class="text-xs text-gray-400 mt-1">أدخل أول حروف النسب باللاتينية واختر المسار للحصول على معلومات الفوج والقاعات مباشرة[cite: 1, 2, 3, 4, 5].</p>
+                    <p class="text-xs text-gray-400 mt-1">أدخل أول حروف النسب باللاتينية واختر المسار للحصول على معلومات الفوج والقاعات مباشرة.</p>
                 </div>
             </div>
 
@@ -103,7 +145,7 @@
                 <!-- Schedule Table -->
                 <div class="space-y-3">
                     <h4 class="text-sm font-bold text-white flex items-center gap-2">
-                        <i data-lucide="calendar" class="text-gold-500 w-4 h-4"></i> استعمال الزمن الخاص بهذا المسار (الموسم 2026–2027)[cite: 4, 5, 12, 13, 14, 15, 16, 17]
+                        <i data-lucide="calendar" class="text-gold-500 w-4 h-4"></i> استعمال الزمن الخاص بهذا المسار (الموسم 2026–2027)
                     </h4>
                     <div class="overflow-x-auto rounded-xl border border-navy-700">
                         <table class="w-full text-xs text-right text-gray-300">
@@ -134,8 +176,8 @@
                 <div class="glass-card p-4 rounded-xl flex justify-between items-start border-gold-500/40">
                     <div>
                         <span class="text-[10px] bg-gold-500/20 text-gold-400 font-bold px-2 py-0.5 rounded">الاسم الرسمي الجديد</span>
-                        <h4 class="font-bold text-white mt-1 text-sm">كلية العلوم القانونية والسياسية (FSJP)[cite: 1, 4]</h4>
-                        <p class="text-xs text-gray-400 mt-0.5">Faculté des Sciences Juridiques et Politiques - Agadir[cite: 1, 4]</p>
+                        <h4 class="font-bold text-white mt-1 text-sm">كلية العلوم القانونية والسياسية (FSJP)</h4>
+                        <p class="text-xs text-gray-400 mt-0.5">Faculté des Sciences Juridiques et Politiques - Agadir</p>
                     </div>
                     <i data-lucide="check-circle-2" class="text-gold-500 w-5 h-5 flex-shrink-0"></i>
                 </div>
@@ -166,14 +208,25 @@
     </footer>
 
     <!-- Comprehensive JavaScript Logic -->
-    <script>
+<script>
         document.addEventListener('DOMContentLoaded', () => window.lucide && lucide.createIcons());
 
-        // Database Definition for FSJP Agadir 2026-2027
-        const pathwaysData = {
+        // ---- Utilities ----
+        function esc(v){ return String(v==null?'':v).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
+        function compareNames(a,b){
+            // Names with a space (composite) come before names without a space.
+            const ca = String(a||'').trim(), cb = String(b||'').trim();
+            const sa = ca.includes(' '), sb = cb.includes(' ');
+            if (sa !== sb) return sa ? -1 : 1;
+            return ca.localeCompare(cb, 'fr', { sensitivity: 'base' });
+        }
+
+        // ---- Database Definition for FSJP Agadir 2026-2027 ----
+        let pathwaysData = {
             S3: [
                 { id: "priv_s3", name: "القانون الخاص — جذع مشترك" },
-                { id: "pub_s3", name: "القانون العام — جذع مشترك" }
+                { id: "pub_s3", name: "القانون العام — جذع مشترك" },
+                { id: "pub_fr_s3", name: "القانون العام — بالفرنسية" }
             ],
             S5: [
                 { id: "priv_crim_s5", name: "القانون الخاص — مسار العلوم الجنائية" },
@@ -185,7 +238,7 @@
             ]
         };
 
-        const scheduleDatabase = {
+        let scheduleDatabase = {
             priv_s3: [
                 { day: "الإثنين", time: "08:00 - 10:00", subject: "قانون الأسرة", professor: "أيوب عبد الرزاق", room: "المدرج الكبير" },
                 { day: "الإثنين", time: "10:00 - 12:00", subject: "القانون الجنائي الخاص", professor: "ازراف أحمد", room: "المدرج 10" },
@@ -237,11 +290,105 @@
             ]
         };
 
+        // ---- Groups data (loaded from data/groups.json, fallback inline) ----
+        let groupsData = null;
+        const groupsFallback = {
+            "S3": {
+                "priv_s3": {"mainGroup": null, "language": [{"name":"Fr-A","maxName":"EL KARZABI"},{"name":"Fr-B","maxName":null}]},
+                "pub_s3": {"mainGroup": null, "language": [{"name":"Fr-A","maxName":"EL KARZABI"},{"name":"Fr-B","maxName":null}]}
+            },
+            "S5": {}
+        };
+
+        async function loadGroups(){
+            try {
+                const res = await fetch('./data/groups.json', { cache: 'no-cache' });
+                if (res && res.ok) { groupsData = await res.json(); return; }
+            } catch(e) { /* offline or missing */ }
+            groupsData = { semesters: groupsFallback };
+        }
+
+        function getPathwayGroupConfig(sem, pathwayId){
+            if (groupsData && groupsData.semesters && groupsData.semesters[sem] && groupsData.semesters[sem][pathwayId]) {
+                return groupsData.semesters[sem][pathwayId];
+            }
+            if (groupsFallback[sem] && groupsFallback[sem][pathwayId]) return groupsFallback[sem][pathwayId];
+            return null;
+        }
+
+        function computeLanguageGroup(sem, name, pathwayId){
+            const cfg = getPathwayGroupConfig(sem, pathwayId);
+            if (!cfg || !cfg.language) return 'غير محدد';
+            const list = cfg.language;
+            for (let i = 0; i < list.length; i++){
+                const item = list[i];
+                if (item.maxName === null) return item.name;
+                if (compareNames(name, item.maxName) <= 0) return item.name;
+            }
+            return list[list.length-1].name;
+        }
+
+        // ---- Academic data (from data/academic-data.json, extracted from official PDFs) ----
+        let academicData = null;
+        const sectionMap = { S3: {}, S5: {} };
+        const BRANCH_MAP = {
+            S3: { priv_s3: 'priv_ar', pub_s3: 'pub_ar', pub_fr_s3: 'pub_fr' },
+            S5: { priv_crim_s5: 's5_crim', priv_civ_s5: 's5_civil', priv_biz_s5: 's5_biz', priv_jud_s5: 's5_prof', pub_admin_s5: 's5_admin', pub_pol_s5: 's5_pol' }
+        };
+
+        async function loadAcademicData() {
+            try {
+                const res = await fetch('./data/academic-data.json', { cache: 'no-cache' });
+                if (res && res.ok) {
+                    academicData = await res.json();
+                    rebuildFromAcademicData();
+                }
+            } catch (e) { /* keep fallback */ }
+        }
+
+        function rebuildFromAcademicData() {
+            if (!academicData) return;
+            const newPaths = { S3: [], S5: [] };
+            const newSched = {};
+            ['S3','S5'].forEach(sem => {
+                const branches = (academicData[sem] && academicData[sem].branches) || {};
+                const map = BRANCH_MAP[sem] || {};
+                const rev = {};
+                Object.keys(map).forEach(pid => { rev[map[pid]] = pid; });
+                Object.keys(branches).forEach(bk => {
+                    const b = branches[bk];
+                    const pid = rev[bk] || bk;
+                    if (!newPaths[sem].some(p => p.id === pid)) newPaths[sem].push({ id: pid, name: b.name });
+                    sectionMap[sem][pid] = b.sections || [];
+                    newSched[pid] = (b.schedules || []).map(s => ({ day: s.day, time: s.time, subject: s.subject, professor: s.prof, room: s.room, group: s.group }));
+                });
+                // preserve any fallback pathways not in new data
+                (pathwaysData[sem] || []).forEach(p => {
+                    if (!newPaths[sem].some(x => x.id === p.id)) newPaths[sem].push(p);
+                });
+                pathwaysData[sem] = newPaths[sem];
+            });
+            Object.keys(newSched).forEach(pid => { scheduleDatabase[pid] = newSched[pid]; });
+        }
+
+        function findSection(sem, pathwayId, name) {
+            const secs = sectionMap[sem] && sectionMap[sem][pathwayId];
+            if (!secs || !secs.length) return null;
+            const upper = String(name || '').trim().toUpperCase();
+            for (const sec of secs) {
+                if (sec.de === 'جميع الطلبة المسجلين بالمسار' || sec.a === '-') return sec;
+                const cmpDe = compareNames(upper, sec.de);
+                const cmpA = compareNames(upper, sec.a);
+                if (cmpDe >= 0 && cmpA <= 0) return sec;
+            }
+            return null;
+        }
+
         function updatePathways() {
             const sem = document.getElementById('semesterSelect').value;
             const pathwaySelect = document.getElementById('pathwaySelect');
             pathwaySelect.innerHTML = '';
-            pathwaysData[sem].forEach(p => {
+            (pathwaysData[sem] || []).forEach(p => {
                 const opt = document.createElement('option');
                 opt.value = p.id;
                 opt.textContent = p.name;
@@ -253,75 +400,208 @@
             const sem = document.getElementById('semesterSelect').value;
             const pathwaySelect = document.getElementById('pathwaySelect');
             const pathwayId = pathwaySelect.value;
-            const selectedPathwayName = pathwaySelect.options[pathwaySelect.selectedIndex].text;
+            const selectedPathwayName = pathwaySelect.options[pathwaySelect.selectedIndex] ? pathwaySelect.options[pathwaySelect.selectedIndex].text : '';
             const name = document.getElementById('nameInput').value.trim().toUpperCase();
-            
+
             const container = document.getElementById('resultsContainer');
             const groupInfoOutput = document.getElementById('groupInfoOutput');
             const scheduleTableBody = document.getElementById('scheduleTableBody');
 
-            container.classList.remove('hidden');
-
-            // Dynamic logic for foreign language sections
-            let langGroup = 'غير محدد';
-            if (sem === 'S3') {
-                langGroup = (name.localeCompare('EL KARZABI') <= 0) ? 'Fr-A' : 'Fr-B';
-            } else {
-                if (name.localeCompare('BOUASRY') <= 0) langGroup = 'Ang-A (المجموعات 1-6)';
-                else if (name.localeCompare('ELHAMIL') <= 0) langGroup = 'Ang-B (المجموعات 7-12)';
-                else if (name.localeCompare('LAMIN') <= 0) langGroup = 'Ang-C (المجموعات 13-18)';
-                else langGroup = 'Ang-D (المجموعات 19-24)';
+            if (!name) {
+                container.classList.remove('hidden');
+                groupInfoOutput.innerHTML = '<div class="p-3 bg-gold-500/10 border border-gold-500/30 rounded-lg text-xs text-gold-400">الرجاء إدخال النسب (اللقب) لحساب الفوج.</div>';
+                scheduleTableBody.innerHTML = '';
+                return;
             }
 
-            groupInfoOutput.innerHTML = `
-                <div class="border-r-4 border-gold-500 pr-4 py-1 flex flex-col md:flex-row md:items-center justify-between gap-2">
-                    <div>
-                        <h4 class="text-white font-bold text-base">نتيجة توزيع الفوج لـ: <span class="text-gold-400">${name || 'كافة المسجلين'}</span></h4>
-                        <p class="text-xs text-gray-300 mt-0.5">المسار التخصصي: <strong>${selectedPathwayName}</strong></p>
-                    </div>
-                    <span class="text-[11px] bg-gold-500/10 text-gold-400 border border-gold-500/30 px-3 py-1 rounded-full w-fit">
-                        كلية العلوم القانونية والسياسية بأكادير
-                    </span>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-3 bg-navy-900 p-4 rounded-xl border border-navy-800 text-xs">
-                    <div><span class="text-gray-400 block mb-1">الفوج والمجموعات العادية:</span> <strong class="text-white text-sm">الفوج A (المجموعات 1 - 4)</strong></div>
-                    <div><span class="text-gray-400 block mb-1">فوج اللغة الأجنبية المخصص:</span> <strong class="text-gold-400 text-sm">${langGroup}</strong></div>
-                    <div><span class="text-gray-400 block mb-1">المقر الجامعي:</span> <strong class="text-white text-sm">الملحق الجامعي / القاعات والمدرجات</strong></div>
-                </div>
-                <div class="p-3 bg-gold-500/10 border border-gold-500/30 rounded-lg text-xs text-gold-400 flex items-start gap-2">
-                    <i data-lucide="alert-circle" class="w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5"></i>
-                    <span>ملاحظة تنظيمية هامة: الترتيب الأبجدي يعتمد قاعدة: الأسماء المركبة والمصحوبة بفراغ (مثل: <code>EL MANSOURI</code>) تأتي دائماً قبل الأسماء غير المركبة (مثل: <code>ELMANSOURI</code>)[cite: 1, 2, 3, 6, 7, 8, 9, 10, 11].</span>
-                </div>
-            `;
+            container.classList.remove('hidden');
+
+            const sec = findSection(sem, pathwayId, name);
+            const langGroup = computeLanguageGroup(sem, name, pathwayId);
+            const mainGroup = sec ? (sec.code + ' — ' + sec.group) : 'غير متوفر بعد (بيانات غير متوفرة)';
+            const sectionRange = sec ? ('من [ ' + sec.de + ' ] إلى [ ' + sec.a + ' ]') : '—';
+
+            // Build result safely (no innerHTML with user values)
+            groupInfoOutput.innerHTML = '';
+            const wrap = document.createElement('div');
+            wrap.className = 'border-r-4 border-gold-500 pr-4 py-1 flex flex-col md:flex-row md:items-center justify-between gap-2';
+            const left = document.createElement('div');
+            const h4 = document.createElement('h4');
+            h4.className = 'text-white font-bold text-base';
+            h4.innerHTML = 'نتيجة توزيع الفوج لـ: <span class="text-gold-400"></span>';
+            h4.querySelector('span').textContent = name || 'كافة المسجلين';
+            const p = document.createElement('p');
+            p.className = 'text-xs text-gray-300 mt-0.5';
+            p.innerHTML = 'المسار التخصصي: <strong></strong>';
+            p.querySelector('strong').textContent = selectedPathwayName;
+            left.appendChild(h4); left.appendChild(p);
+            const badge = document.createElement('span');
+            badge.className = 'text-[11px] bg-gold-500/10 text-gold-400 border border-gold-500/30 px-3 py-1 rounded-full w-fit';
+            badge.textContent = 'كلية العلوم القانونية والسياسية بأكادير';
+            wrap.appendChild(left); wrap.appendChild(badge);
+
+            const grid = document.createElement('div');
+            grid.className = 'grid grid-cols-1 md:grid-cols-3 gap-3 bg-navy-950 p-4 rounded-xl border border-navy-800 text-xs';
+            const c1 = document.createElement('div');
+            c1.innerHTML = '<span class="text-gray-400 block mb-1">الفوج والمجموعات العادية:</span> <strong class="text-white text-sm"></strong>';
+            c1.querySelector('strong').textContent = mainGroup;
+            const c2 = document.createElement('div');
+            c2.innerHTML = '<span class="text-gray-400 block mb-1">فوج اللغة外国 المخصص:</span> <strong class="text-gold-400 text-sm"></strong>';
+            c2.querySelector('strong').textContent = langGroup;
+            const c3 = document.createElement('div');
+            c3.innerHTML = '<span class="text-gray-400 block mb-1">نطاق النسب:</span> <strong class="text-white text-sm"></strong><br><span class="text-gray-400">المقر:</span> <span class="text-white text-sm">الملحق الجامعي / القاعات والمدرجات</span>';
+            c3.querySelector('strong').textContent = sectionRange;
+            grid.appendChild(c1); grid.appendChild(c2); grid.appendChild(c3);
+
+            const note = document.createElement('div');
+            note.className = 'p-3 bg-gold-500/10 border border-gold-500/30 rounded-lg text-xs text-gold-400 flex items-start gap-2';
+            const ic = document.createElement('i');
+            ic.setAttribute('data-lucide','alert-circle');
+            ic.className = 'w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5';
+            const span = document.createElement('span');
+            span.textContent = 'ملاحظة تنظيمية هامة: الترتيب الأبجدي يعتمد قاعدة: الأسماء المركبة والمصحوبة بفراغ (مثل: EL MANSOURI) تأتي دائماً قبل الأسماء غير المركبة (مثل: ELMANSOURI).';
+            note.appendChild(ic); note.appendChild(span);
+
+            groupInfoOutput.appendChild(wrap);
+            groupInfoOutput.appendChild(grid);
+            groupInfoOutput.appendChild(note);
 
             // Populate Timetable
             scheduleTableBody.innerHTML = '';
-            const scheduleList = scheduleDatabase[pathwayId] || [];
-            
+            let scheduleList = scheduleDatabase[pathwayId] || [];
+            if (sec && sec.group) {
+                const g = sec.group;
+                const filtered = scheduleList.filter(it => it.group === g || (it.group && it.group.includes(sec.code)));
+                if (filtered.length) scheduleList = filtered;
+            }
             if (scheduleList.length > 0) {
                 scheduleList.forEach(item => {
                     const tr = document.createElement('tr');
                     tr.className = "hover:bg-navy-800/60 transition-colors";
-                    tr.innerHTML = `
-                        <td class="p-3 font-bold text-white">${item.day}</td>
-                        <td class="p-3 text-gold-400">${item.time}</td>
-                        <td class="p-3 font-semibold text-white">${item.subject}</td>
-                        <td class="p-3 text-gray-300">${item.professor}</td>
-                        <td class="p-3"><span class="bg-navy-950 px-2.5 py-1 rounded border border-navy-700 text-gold-300">${item.room}</span></td>
-                    `;
+                    const cells = [item.day, item.time, item.subject, item.professor, item.room];
+                    cells.forEach((val, idx) => {
+                        const td = document.createElement('td');
+                        td.className = idx===0 ? 'p-3 font-bold text-white' : (idx===1 ? 'p-3 text-gold-400' : (idx===2 ? 'p-3 font-semibold text-white' : (idx===3 ? 'p-3 text-gray-300' : 'p-3')));
+                        if (idx===4) {
+                            const span = document.createElement('span');
+                            span.className = 'bg-navy-950 px-2.5 py-1 rounded border border-navy-700 text-gold-300';
+                            span.textContent = val;
+                            td.appendChild(span);
+                        } else {
+                            td.textContent = val;
+                        }
+                        tr.appendChild(td);
+                    });
                     scheduleTableBody.appendChild(tr);
                 });
             } else {
-                scheduleTableBody.innerHTML = `<tr><td colspan="5" class="p-4 text-center text-gray-400">لا توجد بيانات جدول أسبوعي متاحة حالياً لهذا المسار.</td></tr>`;
+                const tr = document.createElement('tr');
+                const td = document.createElement('td');
+                td.colSpan = 5;
+                td.className = 'p-4 text-center text-gray-400';
+                td.textContent = 'لا توجد بيانات جدول أسبوعي متاحة حالياً لهذا المسار.';
+                tr.appendChild(td);
+                scheduleTableBody.appendChild(tr);
             }
 
             window.lucide && lucide.createIcons();
         }
 
+        // ---- Personal profile (localStorage, try/catch) ----
+        const PROFILE_KEY = 'chraim_profile_v1';
+        function saveProfile(){
+            try {
+                const sem = document.getElementById('semesterSelect').value;
+                const pathwaySelect = document.getElementById('pathwaySelect');
+                const pathwayId = pathwaySelect.value;
+                const selectedPathwayName = pathwaySelect.options[pathwaySelect.selectedIndex] ? pathwaySelect.options[pathwaySelect.selectedIndex].text : '';
+                const name = document.getElementById('nameInput').value.trim().toUpperCase();
+                localStorage.setItem(PROFILE_KEY, JSON.stringify({ sem, pathwayId, selectedPathwayName, name, savedAt: new Date().toISOString() }));
+            } catch(e) { /* ignore */ }
+            renderToday();
+        }
+        function loadProfile(){
+            try { return JSON.parse(localStorage.getItem(PROFILE_KEY) || 'null'); } catch(e){ return null; }
+        }
+        function clearSavedProfile(){
+            try { localStorage.removeItem(PROFILE_KEY); } catch(e){}
+            const tc = document.getElementById('todayCard');
+            if (tc) { tc.classList.add('hidden'); tc.textContent = ''; }
+        }
+        function renderToday(){
+            const tc = document.getElementById('todayCard');
+            if (!tc) return;
+            const prof = loadProfile();
+            if (!prof || !prof.pathwayId) { tc.classList.add('hidden'); return; }
+            const list = scheduleDatabase[prof.pathwayId] || [];
+            const days = ['الأحد','الإثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'];
+            const today = days[new Date().getDay()];
+            const todayItems = list.filter(x => x.day === today);
+            tc.classList.remove('hidden');
+            tc.innerHTML = '';
+            const h = document.createElement('div');
+            h.className = 'font-bold text-gold-400 mb-2';
+            h.textContent = 'حصص اليوم (' + today + ') — ' + (prof.selectedPathwayName || '');
+            tc.appendChild(h);
+            if (todayItems.length === 0) {
+                const e = document.createElement('div');
+                e.className = 'text-gray-400';
+                e.textContent = 'لا توجد حصص اليوم.';
+                tc.appendChild(e);
+            } else {
+                todayItems.forEach(it => {
+                    const d = document.createElement('div');
+                    d.className = 'flex justify-between gap-2 py-1 border-b border-navy-800 last:border-0';
+                    const left = document.createElement('span');
+                    left.className = 'text-white font-semibold';
+                    left.textContent = it.subject + ' — ' + it.professor;
+                    const right = document.createElement('span');
+                    right.className = 'text-gold-400';
+                    right.textContent = it.time + ' · ' + it.room;
+                    d.appendChild(left); d.appendChild(right);
+                    tc.appendChild(d);
+                });
+            }
+            // ICS export link
+            const exp = document.createElement('button');
+            exp.className = 'mt-3 text-xs bg-gold-500 text-navy-950 font-bold px-3 py-1 rounded-full';
+            exp.textContent = 'تصدير .ics';
+            exp.onclick = () => exportICS(prof.pathwayId, prof.selectedPathwayName || '');
+            tc.appendChild(exp);
+        }
+        function exportICS(pathwayId, title){
+            const list = scheduleDatabase[pathwayId] || [];
+            const lines = ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//CHRAIM//Schedule//AR','CALSCALE:GREGORIAN','METHOD:PUBLISH'];
+            const dayMap = {'الأحد':'SU','الإثنين':'MO','الثلاثاء':'TU','الأربعاء':'WE','الخميس':'TH','الجمعة':'FR','السبت':'SA'};
+            list.forEach((it, idx) => {
+                const dow = dayMap[it.day] || 'MO';
+                lines.push('BEGIN:VEVENT');
+                lines.push('UID:' + pathwayId + '-' + idx + '@chraim');
+                lines.push('SUMMARY:' + (it.subject || ''));
+                lines.push('DESCRIPTION:' + (it.professor || '') + ' - ' + (it.room || ''));
+                lines.push('DTSTART;TZID=Africa/Casablanca:20260907T' + (it.time||'').slice(0,5).replace(':','') + '00');
+                lines.push('DURATION:PT2H');
+                lines.push('RRULE:FREQ=WEEKLY;BYDAY=' + dow);
+                lines.push('END:VEVENT');
+            });
+            lines.push('END:VCALENDAR');
+            const blob = new Blob([lines.join('\r\n')], { type: 'text/calendar;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url; a.download = (title || 'schedule') + '.ics';
+            document.body.appendChild(a); a.click(); document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        // save profile whenever search runs
+        const _origSearchGroup = searchGroup;
+        searchGroup = function(){ _origSearchGroup(); saveProfile(); };
+
         // Initialize on load
-        document.addEventListener('DOMContentLoaded', updatePathways);
+        document.addEventListener('DOMContentLoaded', async () => { await loadAcademicData(); updatePathways(); loadGroups(); renderToday(); try{const l=localStorage.getItem('chraim_lang'); if(l&&window.CHRVVIM_PAGE){const sel=document.getElementById('langSelect'); if(sel) sel.value=l; CHRVVIM_PAGE.apply(l);} }catch(e){} });
     </script>
 <script src="/assets/back-home.js" defer></script>
 <script src="/assets/cmdk.js" defer></script>
+<script src="/page-i18n.js" defer></script>
 </body>
 </html>

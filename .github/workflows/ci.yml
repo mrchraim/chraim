@@ -1,0 +1,30 @@
+name: CI
+
+on:
+  push:
+    branches: [main, improve/*]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - run: npm ci || npm install
+      - run: npm run lint
+      - run: npm run format:check
+      - run: npm test
+
+  links-and-security:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python tools/build-dist.py --out dist --clean
+      - run: python tools/audit-links.py --root dist
+      - run: python tools/audit-security.py

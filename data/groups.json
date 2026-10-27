@@ -1,0 +1,21 @@
+{
+  "version": "2026-10-27",
+  "updated": "2026-10-23",
+  "source": "FSJP Agadir — توزيع الأفواج (بيانات مستخرجة من التسمية/الملحق (لا قرار إداري))",
+  "note": "هذا ملف بيانات، لا قرار إداري. القيم (mainGroup) غير متوفرة رسمياً → null = 'غير متوفر بعد'.",
+  "rule": "الأسماء المركبة (مع فراغ، مثل EL MANSOURI) تسبق غير المركبة (ELMANSOURI) في الترتيب الأبجدي.",
+  "semesters": {
+    "S3": {
+      "priv_s3": { "mainGroup": null, "language": [ { "name": "Fr-A", "maxName": "EL KARZABI" }, { "name": "Fr-B", "maxName": null } ] },
+      "pub_s3": { "mainGroup": null, "language": [ { "name": "Fr-A", "maxName": "EL KARZABI" }, { "name": "Fr-B", "maxName": null } ] }
+    },
+    "S5": {
+      "priv_crim_s5": { "mainGroup": null, "language": [ { "name": "Ang-A (المجموعات 1-6)", "maxName": "BOUASRY" }, { "name": "Ang-B (المجموعات 7-12)", "maxName": "ELHAMIL" }, { "name": "Ang-C (المجموعات 13-18)", "maxName": "LAMIN" }, { "name": "Ang-D (المجموعات 19-24)", "maxName": null } ] },
+      "priv_civ_s5": { "mainGroup": null, "language": [ { "name": "Ang-A (المجموعات 1-6)", "maxName": "BOUASRY" }, { "name": "Ang-B (المجموعات 7-12)", "maxName": "ELHAMIL" }, { "name": "Ang-C (المجموعات 13-18)", "maxName": "LAMIN" }, { "name": "Ang-D (المجموعات 19-24)", "maxName": null } ] },
+      "priv_biz_s5": { "mainGroup": null, "language": [ { "name": "Ang-A (المجموعات 1-6)", "maxName": "BOUASRY" }, { "name": "Ang-B (المجموعات 7-12)", "maxName": "ELHAMIL" }, { "name": "Ang-C (المجموعات 13-18)", "maxName": "LAMIN" }, { "name": "Ang-D (المجموعات 19-24)", "maxName": null } ] },
+      "priv_jud_s5": { "mainGroup": null, "language": [ { "name": "Ang-A (المجموعات 1-6)", "maxName": "BOUASRY" }, { "name": "Ang-B (المجموعات 7-12)", "maxName": "ELHAMIL" }, { "name": "Ang-C (المجموعات 13-18)", "maxName": "LAMIN" }, { "name": "Ang-D (المجموعات 19-24)", "maxName": null } ] },
+      "pub_admin_s5": { "mainGroup": null, "language": [ { "name": "Ang-A (المجموعات 1-6)", "maxName": "BOUASRY" }, { "name": "Ang-B (المجموعات 7-12)", "maxName": "ELHAMIL" }, { "name": "Ang-C (المجموعات 13-18)", "maxName": "LAMIN" }, { "name": "Ang-D (المجموعات 19-24)", "maxName": null } ] },
+      "pub_pol_s5": { "mainGroup": null, "language": [ { "name": "Ang-A (المجموعات 1-6)", "maxName": "BOUASRY" }, { "name": "Ang-B (المجموعات 7-12)", "maxName": "ELHAMIL" }, { "name": "Ang-C (المجموعات 13-18)", "maxName": "LAMIN" }, { "name": "Ang-D (المجموعات 19-24)", "maxName": null } ] }
+    }
+  }
+}
