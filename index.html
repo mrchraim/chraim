@@ -27,6 +27,16 @@
         .glass-card { background: rgba(28, 37, 65, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(212, 175, 55, 0.2); }
         .gold-gradient-text { background: linear-gradient(135deg, #FFF8DC 0%, #D4AF37 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     </style>
+<style>
+        html.light body { background:#F8F6F2; color:#1F2937; }
+        html.light .glass-card { background:rgba(255,255,255,.8); color:#1F2937; border-color:rgba(212,175,55,.3); }
+        html.light .text-white { color:#1F2937; }
+        html.light .text-gray-300, html.light .text-gray-400 { color:#374151; }
+    </style>
+    <script>
+        function toggleTheme(){ const h=document.documentElement; if(h.classList.contains('light')){ h.classList.remove('light'); localStorage.setItem('chraim_theme','dark'); document.getElementById('themeToggle').textContent='🌙'; } else { h.classList.add('light'); localStorage.setItem('chraim_theme','light'); document.getElementById('themeToggle').textContent='☀️'; } }
+        document.addEventListener('DOMContentLoaded', ()=>{ try{ if(localStorage.getItem('chraim_theme')==='light'){ document.documentElement.classList.add('light'); const b=document.getElementById('themeToggle'); if(b) b.textContent='☀️'; } }catch(e){} });
+    </script>
 </head>
 <body class="min-h-screen flex flex-col justify-between">
     <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-gold-500 text-navy-950 px-3 py-1 rounded">انتقل إلى المحتوى</a>
@@ -37,7 +47,7 @@
             <div class="flex items-center space-x-3 space-x-reverse">
                 <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-gold-400 to-gold-600 text-navy-950 font-black flex items-center justify-center text-xl shadow-lg shadow-gold-500/20">CH</div>
                 <div>
-                    <h1 class="font-extrabold text-lg text-white leading-tight tracking-wide">CHRAIM</h1>
+                    <h1 class="font-extrabold text-lg text-white leading-tight tracking-wide" data-i18n="hero.h1html">CHRAIM</h1>
                     <p class="text-[11px] text-gold-400 opacity-90" data-i18n="hero.motto">دليل الطالب أكادير — جامعة ابن زهر</p>
                 </div>
             </div>
@@ -47,6 +57,7 @@
     <option value="fr">FR</option>
     <option value="en">EN</option>
 </select>
+<button id="themeToggle" onclick="toggleTheme()" class="text-xs bg-navy-900 text-gold-400 border border-gold-500/30 px-2 py-1 rounded-full font-bold">🌙</button>
 <a href="/orientation.html" class="text-xs bg-gold-500 text-navy-950 px-3 py-1 rounded-full flex items-center gap-1.5 font-black hover:bg-gold-400">
                     <i data-lucide="sparkles" class="w-4 h-4"></i> مرشد التوجيه
                 </a>
