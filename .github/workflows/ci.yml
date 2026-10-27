@@ -28,3 +28,7 @@ jobs:
       - run: python tools/build-dist.py --out dist --clean
       - run: python tools/audit-links.py --root dist
       - run: python tools/audit-security.py
+      - name: Secret scan (gitleaks)
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
