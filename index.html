@@ -76,6 +76,19 @@
             </div>
         </section>
 
+        <!-- بطاقة الترحيب/المصطلح (Phase Creative) -->
+        <section class="glass-card rounded-2xl p-6 shadow-2xl space-y-3">
+            <div class="flex items-center justify-between gap-3">
+                <h3 id="greeting" class="text-xl font-bold text-white"></h3>
+                <span id="todayDate" class="text-xs text-gold-400"></span>
+            </div>
+            <div class="bg-navy-950/90 border border-gold-500/30 rounded-xl p-4">
+                <div class="text-xs text-gray-400 mb-1">مصطلح قانوني اليوم</div>
+                <div id="termTitle" class="text-white font-bold"></div>
+                <div id="termDef" class="text-xs text-gray-300 mt-1"></div>
+            </div>
+        </section>
+
         <!-- ماذا تريد اليوم؟ (Phase 4) -->
         <section class="glass-card rounded-2xl p-6 shadow-2xl space-y-4">
             <h3 class="text-xl font-bold text-white flex items-center gap-2.5">
@@ -389,6 +402,32 @@
             return null;
         }
 
+        // ---- Creative: greeting + legal term of the day ----
+        const LEGAL_TERMS = [
+            { t: "الاختصاص", d: "صلاحية المحكمة للنظر في الدعوى (مكاني/نوعي/قيمي)." },
+            { t: "التبليغ", d: "إشعار الطرف بالإجراء (مسطرة) لضمان حق الدفاع." },
+            { t: "البطلان", d: "إبطال إجراء لمخالفته شكل/مبدأ قانوني." },
+            { t: "الدفع", d: "طلب من المدعى عليه (مثلاً: عدم الاختصاص)." },
+            { t: "الاستئناف", d: "طعن في حكم ابتدائي (أجل محدد)." },
+            { t: "النقض", d: "طعن أمام محكمة النقض (نقاط قانون)." },
+            { t: "التنفيذ", d: "تطبيق الحكم (إجباري/طوعي)." },
+            { t: "الإثبات", d: "إثبات الوقائع (حجة، شهادة، خبرة)." }
+        ];
+        function renderGreeting(){
+            const h = new Date().getHours();
+            const greet = h < 12 ? 'صباح الخير' : (h < 18 ? 'طاب يومك' : 'مساء الخير');
+            const gEl = document.getElementById('greeting');
+            if (gEl) gEl.textContent = greet + ' — CHRAIM';
+            const dEl = document.getElementById('todayDate');
+            if (dEl) dEl.textContent = new Date().toLocaleDateString('ar-MA');
+            const idx = new Date().getDate() % LEGAL_TERMS.length;
+            const term = LEGAL_TERMS[idx];
+            const tEl = document.getElementById('termTitle');
+            const defEl = document.getElementById('termDef');
+            if (tEl) tEl.textContent = term.t;
+            if (defEl) defEl.textContent = term.d;
+        }
+
         function updatePathways() {
             const sem = document.getElementById('semesterSelect').value;
             const pathwaySelect = document.getElementById('pathwaySelect');
@@ -603,7 +642,7 @@
         searchGroup = function(){ _origSearchGroup(); saveProfile(); };
 
         // Initialize on load
-        document.addEventListener('DOMContentLoaded', async () => { await loadAcademicData(); updatePathways(); loadGroups(); renderToday(); try{const l=localStorage.getItem('chraim_lang'); if(l&&window.CHRVVIM_PAGE){const sel=document.getElementById('langSelect'); if(sel) sel.value=l; CHRVVIM_PAGE.apply(l);} }catch(e){} });
+        document.addEventListener('DOMContentLoaded', async () => { await loadAcademicData(); updatePathways(); loadGroups(); renderToday(); renderGreeting(); try{const l=localStorage.getItem('chraim_lang'); if(l&&window.CHRVVIM_PAGE){const sel=document.getElementById('langSelect'); if(sel) sel.value=l; CHRVVIM_PAGE.apply(l);} }catch(e){} });
     </script>
 <script src="/assets/back-home.js" defer></script>
 <script src="/assets/cmdk.js" defer></script>
