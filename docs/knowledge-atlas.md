@@ -25,3 +25,7 @@
 2. تطبيق crawler (batch small) + review.
 3. تصدير JSON/CSV.
 4. UI search integration.
+## 5. How to add a source
+1. Edit data/source-registry.json.
+2. Add entry with id,name,url,domain,categories,priority,allowed_crawl.
+3. Run small verified crawl if needed.
