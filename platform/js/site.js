@@ -1,3 +1,4 @@
+function escapeHtml(v){return String(v==null?"":v).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
 /* ===== منصة الطلبة — منطق الموقع العام ===== */
 
 // إعدادات قابلة للتغيير
