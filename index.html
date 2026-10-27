@@ -57,6 +57,29 @@
             </div>
         </section>
 
+        <!-- ماذا تريد اليوم؟ (Phase 4) -->
+        <section class="glass-card rounded-2xl p-6 shadow-2xl space-y-4">
+            <h3 class="text-xl font-bold text-white flex items-center gap-2.5">
+                <i data-lucide="sparkles" class="text-gold-500 w-6 h-6"></i> ماذا تريد اليوم؟
+            </h3>
+            <div class="flex gap-2">
+                <input id="homeSearch" type="search" placeholder="ابحث عن كلية، مدرسة، صفحة… (Ctrl+K)" class="flex-1 bg-navy-950 border border-navy-700 text-white rounded-xl p-3 text-sm focus:border-gold-500 outline-none" readonly>
+                <button onclick="document.getElementById('cmdkBtn').click()" class="bg-gold-500 text-navy-950 font-bold px-4 rounded-xl text-sm">بحث</button>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+                <a href="#schedule" class="glass-card p-3 rounded-xl text-center text-xs font-bold text-white hover:border-gold-500/40">📅 جدولي</a>
+                <a href="/portal.html#exams" class="glass-card p-3 rounded-xl text-center text-xs font-bold text-white">📝 امتحاناتي</a>
+                <a href="/academic-updates.html" class="glass-card p-3 rounded-xl text-center text-xs font-bold text-white">📰 المستجدات</a>
+                <a href="/etablissements/" class="glass-card p-3 rounded-xl text-center text-xs font-bold text-white">🏛️ المؤسسة</a>
+                <a href="/portal.html#gpa" class="glass-card p-3 rounded-xl text-center text-xs font-bold text-white">🧮 المعدل</a>
+                <a href="/portal.html#docs" class="glass-card p-3 rounded-xl text-center text-xs font-bold text-white">📄 الوثائق</a>
+            </div>
+            <div id="todayCard" class="hidden bg-navy-950/90 border border-gold-500/30 rounded-xl p-4 text-xs text-gray-300"></div>
+            <div class="flex gap-2 justify-end">
+                <button onclick="clearSavedProfile()" class="text-xs text-gray-400 hover:text-gold-400">مسح البيانات المحفوظة</button>
+            </div>
+        </section>
+
         <!-- Interactive Schedule & Group Finder Widget -->
         <section class="glass-card rounded-2xl p-6 shadow-2xl space-y-6">
             <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-navy-700/80 pb-4">
@@ -401,8 +424,98 @@
             window.lucide && lucide.createIcons();
         }
 
+        // ---- Personal profile (localStorage, try/catch) ----
+        const PROFILE_KEY = 'chraim_profile_v1';
+        function saveProfile(){
+            try {
+                const sem = document.getElementById('semesterSelect').value;
+                const pathwaySelect = document.getElementById('pathwaySelect');
+                const pathwayId = pathwaySelect.value;
+                const selectedPathwayName = pathwaySelect.options[pathwaySelect.selectedIndex] ? pathwaySelect.options[pathwaySelect.selectedIndex].text : '';
+                const name = document.getElementById('nameInput').value.trim().toUpperCase();
+                localStorage.setItem(PROFILE_KEY, JSON.stringify({ sem, pathwayId, selectedPathwayName, name, savedAt: new Date().toISOString() }));
+            } catch(e) { /* ignore */ }
+            renderToday();
+        }
+        function loadProfile(){
+            try { return JSON.parse(localStorage.getItem(PROFILE_KEY) || 'null'); } catch(e){ return null; }
+        }
+        function clearSavedProfile(){
+            try { localStorage.removeItem(PROFILE_KEY); } catch(e){}
+            const tc = document.getElementById('todayCard');
+            if (tc) { tc.classList.add('hidden'); tc.textContent = ''; }
+        }
+        function renderToday(){
+            const tc = document.getElementById('todayCard');
+            if (!tc) return;
+            const prof = loadProfile();
+            if (!prof || !prof.pathwayId) { tc.classList.add('hidden'); return; }
+            const list = scheduleDatabase[prof.pathwayId] || [];
+            const days = ['الأحد','الإثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'];
+            const today = days[new Date().getDay()];
+            const todayItems = list.filter(x => x.day === today);
+            tc.classList.remove('hidden');
+            tc.innerHTML = '';
+            const h = document.createElement('div');
+            h.className = 'font-bold text-gold-400 mb-2';
+            h.textContent = 'حصص اليوم (' + today + ') — ' + (prof.selectedPathwayName || '');
+            tc.appendChild(h);
+            if (todayItems.length === 0) {
+                const e = document.createElement('div');
+                e.className = 'text-gray-400';
+                e.textContent = 'لا توجد حصص اليوم.';
+                tc.appendChild(e);
+            } else {
+                todayItems.forEach(it => {
+                    const d = document.createElement('div');
+                    d.className = 'flex justify-between gap-2 py-1 border-b border-navy-800 last:border-0';
+                    const left = document.createElement('span');
+                    left.className = 'text-white font-semibold';
+                    left.textContent = it.subject + ' — ' + it.professor;
+                    const right = document.createElement('span');
+                    right.className = 'text-gold-400';
+                    right.textContent = it.time + ' · ' + it.room;
+                    d.appendChild(left); d.appendChild(right);
+                    tc.appendChild(d);
+                });
+            }
+            // ICS export link
+            const exp = document.createElement('button');
+            exp.className = 'mt-3 text-xs bg-gold-500 text-navy-950 font-bold px-3 py-1 rounded-full';
+            exp.textContent = 'تصدير .ics';
+            exp.onclick = () => exportICS(prof.pathwayId, prof.selectedPathwayName || '');
+            tc.appendChild(exp);
+        }
+        function exportICS(pathwayId, title){
+            const list = scheduleDatabase[pathwayId] || [];
+            const lines = ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//CHRAIM//Schedule//AR','CALSCALE:GREGORIAN','METHOD:PUBLISH'];
+            const dayMap = {'الأحد':'SU','الإثنين':'MO','الثلاثاء':'TU','الأربعاء':'WE','الخميس':'TH','الجمعة':'FR','السبت':'SA'};
+            list.forEach((it, idx) => {
+                const dow = dayMap[it.day] || 'MO';
+                lines.push('BEGIN:VEVENT');
+                lines.push('UID:' + pathwayId + '-' + idx + '@chraim');
+                lines.push('SUMMARY:' + (it.subject || ''));
+                lines.push('DESCRIPTION:' + (it.professor || '') + ' - ' + (it.room || ''));
+                lines.push('DTSTART;TZID=Africa/Casablanca:20260907T' + (it.time||'').slice(0,5).replace(':','') + '00');
+                lines.push('DURATION:PT2H');
+                lines.push('RRULE:FREQ=WEEKLY;BYDAY=' + dow);
+                lines.push('END:VEVENT');
+            });
+            lines.push('END:VCALENDAR');
+            const blob = new Blob([lines.join('\r\n')], { type: 'text/calendar;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url; a.download = (title || 'schedule') + '.ics';
+            document.body.appendChild(a); a.click(); document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        // save profile whenever search runs
+        const _origSearchGroup = searchGroup;
+        searchGroup = function(){ _origSearchGroup(); saveProfile(); };
+
         // Initialize on load
-        document.addEventListener('DOMContentLoaded', () => { updatePathways(); loadGroups(); });
+        document.addEventListener('DOMContentLoaded', () => { updatePathways(); loadGroups(); renderToday(); });
     </script>
 <script src="/assets/back-home.js" defer></script>
 <script src="/assets/cmdk.js" defer></script>
