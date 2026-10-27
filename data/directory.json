@@ -395,6 +395,23 @@
       "format": "portal",
       "formatLabel": "بوابة/منصة",
       "details": "مجالات وتواصيف امتحانات البكالوريا. — رابط رسمي (تحقق قبل الاعتماد)."
+    },
+    {
+      "id": 999,
+      "title": "منصة Moutamadris — cours",
+      "category": "k12",
+      "url": "https://moutamadris.ma/cours/",
+      "desc": "روابط فقط (لا إعادة استضافة).",
+      "badge": "خارجي",
+      "type": "منصة",
+      "format": "portal",
+      "formatLabel": "بوابة/منصة",
+      "emoji": "📚",
+      "keywords": [
+        "moutamadris",
+        "دروس"
+      ],
+      "details": "روابط فقط."
     }
   ]
 }

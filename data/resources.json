@@ -61,6 +61,15 @@
       "emoji": "📚",
       "desc": "روابط فقط (لا إعادة استضافة).",
       "badge": "خارجي"
+    },
+    {
+      "title": "منصة Moutamadris — cours",
+      "url": "https://moutamadris.ma/cours/",
+      "type": "external",
+      "level": "all",
+      "emoji": "📚",
+      "desc": "روابط فقط (لا إعادة استضافة).",
+      "badge": "خارجي"
     }
   ]
 }
