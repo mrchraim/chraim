@@ -1665,6 +1665,9 @@ window.CHRVVIM_PAGE=(function(){
   "zgh": "ⴰⵃⵔⴰⵣ ⴰⵎⴻⵣⴳⵉ ⵓⵔ ⵢⴻⵍⵉ ⴷⴻⴳ ⵢⵉⵎⵉⵏⵉⴳ-ⴰ; ⵜⵉⵡⵓⵔⵉⵡⵉⵏ ⴰⴷ ⵇⵉⵎⴻⵏⵜ ⴰⵍⴰⵎⴰ ⵜⴻⵖⵍⴻⵇ ⵓⵙⴻⴱⵜⴻⵔ.",
   "zgh-latn": "Aḥraz amezgi ur yelli deg yiminig-a; tiwuriwin ad qqiment alamma teɣleq usebter."
  }
+  "home.greeting": { "ar": "صباح الخير — CHRAIM", "fr": "Bonjour — CHRAIM", "en": "Good morning — CHRAIM", "zgh": "Azul — CHRAIM", "zgh-latn": "Azul — CHRAIM" },
+  "home.termTitle": { "ar": "مصطلح قانوني اليوم", "fr": "Terme juridique du jour", "en": "Legal term of the day", "zgh": "Awal uzref n wass", "zgh-latn": "Awal uzref n wass" },
+  "home.annTitle": { "ar": "آخر المستجدات", "fr": "Dernières actualités", "en": "Latest updates", "zgh": "Isallen imaynuten", "zgh-latn": "Isallen imaynuten" },
 };
 
   var LANGS=["ar","fr","en","zgh","zgh-latn"];
