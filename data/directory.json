@@ -1,0 +1,35 @@
+{
+  "version": "2026-10-27",
+  "source": "البوابة الوطنية (مسودة) — روابط رسمية (لا إعادة استضافة)",
+  "categories": [
+    { "id": "all", "name": "الكل" },
+    { "id": "ministries", "name": "الوزارات والمؤسسات" },
+    { "id": "k12", "name": "التعليم الأساسي والثانوي" },
+    { "id": "higher_ed", "name": "التعليم العالي والجامعات" },
+    { "id": "legal", "name": "القانون والعلوم الجنائية" },
+    { "id": "memos", "name": "المذكرات والقرارات" }
+  ],
+  "items": [
+    {"id":1,"title":"وزارة التربية الوطنية والتعليم الأولية والرياضة","category":"ministries","url":"https://www.men.gov.ma","desc":"البوابة الرسمية للتربية الوطنية بالمغرب.","badge":"رسمي حكومي","type":"موقع رسمي","emoji":"🏛️","keywords":["وزارة","تربية","مذكرات"]},
+    {"id":2,"title":"وزارة التعليم العالي والبحث العلمي والابتكار","category":"ministries","url":"https://www.enssup.gov.ma","desc":"الموقع الرسمي المشرف على الجامعة والبحث العلمي.","badge":"رسمي حكومي","type":"موقع رسمي","emoji":"🎓","keywords":["تعليم عالی","جامعة","بحث"]},
+    {"id":3,"title":"الجريدة الرسمية - الأمانة العامة للحكومة","category":"ministries","url":"http://www.sgg.gov.ma","desc":"نشر الظهائر والقوانين والمراسيم.","badge":"تشريعي رسمي","type":"جريدة رسمية","emoji":"📜","keywords":["جريدة","قانون","مراسيم"]},
+    {"id":4,"title":"البوابة الوطنية للوظيفة العمومية","category":"ministries","url":"https://www.emploi-public.ma","desc":"مباريات التوظيف في القطاعات الحكومية.","badge":"توظيف حكومي","type":"بوابة توظيف","emoji":"💼","keywords":["مباريات","توظيف"]},
+    {"id":5,"title":"المكتب الوطني للأعمال الجامعية (ONOUSC)","category":"ministries","url":"https://www.onousc.ma","desc":"الأحياء الجامعية، المطاعم، المنح.","badge":"خدمات طلابية","type":"مؤسسة عمومية","emoji":"🏠","keywords":["حي جامعي","منح"]},
+    {"id":6,"title":"منصة متمدرس (Massar)","category":"k12","url":"https://moutamadris.men.gov.ma","desc":"متابعة النقط، الغيابات، النتائج.","badge":"فضاء التلميذ","type":"منصة تفاعلية","emoji":"📊","keywords":["مسار","نقط","نتائج"]},
+    {"id":7,"title":"منصة TelmidTICE للدروس الرقمية","category":"k12","url":"https://telmidtice.men.gov.ma","desc":"الدعم المدرسي الرقمي (دروس وتمارين).","badge":"دروس وملفات","type":"منصة تعليمية","emoji":"💻","keywords":["تلميذ تيس","دروس","تمارين"]},
+    {"id":8,"title":"بوابة التوجيه المدرسي والمهني (Tawjih.net)","category":"k12","url":"https://www.tawjih.net","desc":"دليل المدارس والمؤسسات العليا بعد البكالوريا.","badge":"توجيه وإعلام","type":"دليل توجيه","emoji":"🧭","keywords":["توجيه","مدارس العليا"]},
+    {"id":9,"title":"بوابة امتحانات البكالوريا الوطنية","category":"k12","url":"https://bac.men.gov.ma","desc":"نتائج الامتحانات الوطنية للبكالوريا.","badge":"نتائج رسمية","type":"بوابة امتحانات","emoji":"📝","keywords":["بكالوريا","نتائج"]},
+    {"id":10,"title":"جامعة محمد الخامس - الرباط","category":"higher_ed","url":"https://www.um5.ac.ma","desc":"كليات الحقوق، الآداب، العلوم والطب.","badge":"جامعة حكومية","type":"موقع جامعي","emoji":"🎓","keywords":["محمد الخامس","الرباط","um5"]},
+    {"id":11,"title":"جامعة القاضي عياض - مراكش","category":"higher_ed","url":"https://www.uca.ma","desc":"البوابة الرسمية لجامعة القاضي عياض.","badge":"جامعة حكومية","type":"موقع جامعي","emoji":"🎓","keywords":["القاضي عياض","مراكش","uca"]},
+    {"id":12,"title":"جامعة ابن زهر - أكادير","category":"higher_ed","url":"https://www.uiz.ac.ma","desc":"تغطي جهات سوس ماسة والأقاليم الجنوبية.","badge":"جامعة حكومية","type":"موقع جامعي","emoji":"🎓","keywords":["ابن زهر","أكادير","uiz"]},
+    {"id":13,"title":"جامعة الحسن الثاني - الدار البيضاء","category":"higher_ed","url":"http://www.univh2c.ma","desc":"قطبي عين الشق والمحمدية.","badge":"جامعة حكومية","type":"موقع جامعي","emoji":"🎓","keywords":["الحسن الثاني","الدار البيضاء"]},
+    {"id":14,"title":"منصة المنح الجامعية (Minhaty)","category":"higher_ed","url":"https://www.minhaty.ma","desc":"إيداع وتتبع طلبات المنحة الدراسية.","badge":"منح طلابية","type":"منصة خدمية","emoji":"💰","keywords":["منحتي","منحة"]},
+    {"id":15,"title":"وزارة العدل والمحاكم المغربية","category":"legal","url":"https://www.justice.gov.ma","desc":"تتبع القضايا، السجل العدلي، النصوص التشريعية.","badge":"عدالة وقضاء","type":"بوابة رسمية","emoji":"⚖️","keywords":["عدل","محاكم","قانون"]},
+    {"id":16,"title":"مدونة الأسرة (نص رسمي)","category":"legal","url":"https://www.sgg.gov.ma/Portals/0/pdf/Code_famille_ar.pdf","desc":"النسخة الرسمية لمدونة الأسرة.","badge":"تشريع رسمي","type":"وثيقة قانونية","emoji":"📜","keywords":["مدونة الأسرة","قانون"]},
+    {"id":17,"title":"القانون الجنائي وقانون المسطرة الجنائية","category":"legal","url":"https://www.justice.gov.ma/fileadmin/user_upload/pdf/code_penal_ar.pdf","desc":"المجموعة الكاملة للقانون الجنائي.","badge":"قانون جنائي","type":"وثيقة قانونية","emoji":"⚖️","keywords":["قانون جنائي","مسطرة"]},
+    {"id":18,"title":"مجلات قانونية وأبحاث أكاديمية","category":"legal","url":"https://www.maghrebcom.com","desc":"أبحاث، مجلات، اجتهادات قضائية.","badge":"أبحاث وفقه","type":"مكتبة قانونية","emoji":"📚","keywords":["اجتهاد","محكمة النقض"]},
+    {"id":19,"title":"أرشيف المذكرات الوزارية","category":"memos","url":"https://www.men.gov.ma/Ar/Pages/NotesMinisterielles.aspx","desc":"الأرشيف الرسمي للمذكرات (حسب السنوات).","badge":"أرشيف رسمي","type":"مذكرات وزارية","emoji":"📁","keywords":["مذكرات","مقرر"]},
+    {"id":20,"title":"المقرر الوزاري لتنظيم السنة الدراسية","category":"memos","url":"https://www.men.gov.ma/Ar/Pages/ReglementScolaire.aspx","desc":"اللائحة والتواريخ والتقويم.","badge":"مقرر سنوي","type":"قرار وزاري","emoji":"📅","keywords":["عطل","مقرر","تنظيم"]},
+    {"id":21,"title":"الأطر المرجعية للامتحانات","category":"memos","url":"https://www.men.gov.ma/Ar/Pages/CadresReferentiels.aspx","desc":"مجالات وتواصيف امتحانات البكالوريا.","badge":"تراخيص وتواصيف","type":"إطار مرجعي","emoji":"🎯","keywords":["أطر مرجعية","جهوي","وطني"]}
+  ]
+}

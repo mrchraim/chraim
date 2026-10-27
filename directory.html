@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>الدليل — CHRAIM</title>
+<style>body{font-family:system-ui,Segoe UI,Tahoma,sans-serif;background:#060B19;color:#F3E5AB;padding:24px;max-width:1100px;margin:0 auto}
+.card{background:rgba(28,37,65,.7);border:1px solid rgba(212,175,55,.2);border-radius:12px;padding:16px;margin:12px 0}
+a{color:#D4AF37}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.badge{font-size:.7rem;background:rgba(212,175,55,.15);color:#D4AF37;padding:2px 8px;border-radius:6px;border:1px solid rgba(212,175,55,.3)}
+input,select{background:#0B132B;color:#F3E5AB;border:1px solid rgba(212,175,55,.3);border-radius:8px;padding:8px}
+</style>
+</head>
+<body>
+<h1>الدليل (روابط رسمية)</h1>
+<div style="display:flex;gap:8px;flex-wrap:wrap;margin:12px 0">
+  <input id="q" placeholder="بحث..." oninput="render()" style="flex:1;min-width:200px">
+  <select id="cat" onchange="render()"></select>
+</div>
+<div id="grid" class="grid"></div>
+<p><a href="/">← العودة للرئيسية</a></p>
+<script>
+let data=null;
+async function load(){
+  try {
+    const r=await fetch('/data/directory.json');
+    data=await r.json();
+    const sel=document.getElementById('cat');
+    (data.categories||[]).forEach(c=>{const o=document.createElement('option');o.value=c.id;o.textContent=c.name;sel.appendChild(o);});
+    render();
+  } catch(e){ document.getElementById('grid').textContent='تعذر تحميل البيانات'; }
+}
+function render(){
+  if(!data) return;
+  const q=document.getElementById('q').value.trim().toLowerCase();
+  const cat=document.getElementById('cat').value;
+  const grid=document.getElementById('grid');
+  grid.innerHTML='';
+  (data.items||[]).filter(it=>{
+    const mc = cat==='all' || it.category===cat;
+    const ms = !q || (it.title+ ' ' + (it.desc||'') + ' ' + (it.keywords||[]).join(' ')).toLowerCase().includes(q);
+    return mc && ms;
+  }).forEach(it=>{
+    const card=document.createElement('div'); card.className='card';
+    const a=document.createElement('a'); a.href=it.url; a.target='_blank'; a.rel='noopener noreferrer'; a.style.fontWeight='bold'; a.textContent=(it.emoji?it.emoji+' ':'')+it.title;
+    const desc=document.createElement('div'); desc.style.fontSize='.85rem'; desc.style.color='#9aa3b5'; desc.textContent=it.desc;
+    const meta=document.createElement('div'); meta.style.fontSize='.75rem'; meta.style.marginTop='6px';
+    const b=document.createElement('span'); b.className='badge'; b.textContent=it.badge; meta.appendChild(b);
+    card.appendChild(a); card.appendChild(desc); card.appendChild(meta);
+    grid.appendChild(card);
+  });
+}
+load();
+</script>
+</body>
+</html>
