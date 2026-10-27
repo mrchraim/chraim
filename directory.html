@@ -4,12 +4,17 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>الدليل — CHRAIM</title>
-<style>body{font-family:system-ui,Segoe UI,Tahoma,sans-serif;background:#060B19;color:#F3E5AB;padding:24px;max-width:1100px;margin:0 auto}
+<style>
+body{font-family:system-ui,Segoe UI,Tahoma,sans-serif;background:#060B19;color:#F3E5AB;padding:24px;max-width:1100px;margin:0 auto}
 .card{background:rgba(28,37,65,.7);border:1px solid rgba(212,175,55,.2);border-radius:12px;padding:16px;margin:12px 0}
 a{color:#D4AF37}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
 .badge{font-size:.7rem;background:rgba(212,175,55,.15);color:#D4AF37;padding:2px 8px;border-radius:6px;border:1px solid rgba(212,175,55,.3)}
-input,select{background:#0B132B;color:#F3E5AB;border:1px solid rgba(212,175,55,.3);border-radius:8px;padding:8px}
+input,select,button{background:#0B132B;color:#F3E5AB;border:1px solid rgba(212,175,55,.3);border-radius:8px;padding:8px}
+.btn{background:#D4AF37;color:#0B132B;font-weight:bold;cursor:pointer}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.7);display:none;align-items:center;justify-content:center;padding:16px;z-index:50}
+.modal.on{display:flex}
+.modalbox{background:#0B132B;border:1px solid rgba(212,175,55,.3);border-radius:12px;padding:20px;max-width:600px;width:100%;max-height:80vh;overflow:auto}
 </style>
 </head>
 <body>
@@ -17,11 +22,39 @@ input,select{background:#0B132B;color:#F3E5AB;border:1px solid rgba(212,175,55,.
 <div style="display:flex;gap:8px;flex-wrap:wrap;margin:12px 0">
   <input id="q" placeholder="بحث..." oninput="render()" style="flex:1;min-width:200px">
   <select id="cat" onchange="render()"></select>
+  <select id="fmt" onchange="render()">
+    <option value="all">الكل</option>
+    <option value="pdf">PDF</option>
+    <option value="portal">بوابة/منصة</option>
+  </select>
+  <button class="btn" onclick="toggleFavDrawer()">المفضلة</button>
 </div>
 <div id="grid" class="grid"></div>
-<p><a href="/">← العودة للرئيسية</a></p>
+<div id="empty" style="display:none;text-align:center;color:#9aa3b5;padding:20px">لا نتائج</div>
+
+<div id="favDrawer" class="modal">
+  <div class="modalbox">
+    <h3>المفضلة</h3>
+    <div id="favList"></div>
+    <button class="btn" onclick="closeFavDrawer()" style="margin-top:12px">إغلاق</button>
+  </div>
+</div>
+
+<div id="previewModal" class="modal">
+  <div class="modalbox">
+    <h3 id="modalTitle"></h3>
+    <div id="modalBody" style="margin:12px 0;font-size:.9rem;color:#9aa3b5"></div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <a id="modalLink" target="_blank" rel="noopener noreferrer" class="btn" style="text-decoration:none">زيارة</a>
+      <button class="btn" onclick="closePreview()">إغلاق</button>
+    </div>
+  </div>
+</div>
+
+<p><a href="/" style="color:#D4AF37">← العودة للرئيسية</a></p>
 <script>
 let data=null;
+let favs=JSON.parse(localStorage.getItem('chraim_favs')||'[]');
 async function load(){
   try {
     const r=await fetch('/data/directory.json');
@@ -35,22 +68,53 @@ function render(){
   if(!data) return;
   const q=document.getElementById('q').value.trim().toLowerCase();
   const cat=document.getElementById('cat').value;
+  const fmt=document.getElementById('fmt').value;
   const grid=document.getElementById('grid');
   grid.innerHTML='';
-  (data.items||[]).filter(it=>{
-    const mc = cat==='all' || it.category===cat;
-    const ms = !q || (it.title+ ' ' + (it.desc||'') + ' ' + (it.keywords||[]).join(' ')).toLowerCase().includes(q);
-    return mc && ms;
-  }).forEach(it=>{
+  const filtered=(data.items||[]).filter(it=>{
+    const mc=cat==='all'||it.category===cat;
+    const mf=fmt==='all'||it.format===fmt;
+    const ms=!q||(it.title+' '+(it.desc||'')+' '+(it.keywords||[]).join(' ')).toLowerCase().includes(q);
+    return mc && mf && ms;
+  });
+  document.getElementById('empty').style.display=filtered.length?'none':'block';
+  filtered.forEach(it=>{
     const card=document.createElement('div'); card.className='card';
+    const favBtn=document.createElement('button'); favBtn.textContent=favs.includes(it.id)?'★':'☆'; favBtn.style.marginLeft='8px';
+    favBtn.onclick=()=>toggleFav(it.id);
     const a=document.createElement('a'); a.href=it.url; a.target='_blank'; a.rel='noopener noreferrer'; a.style.fontWeight='bold'; a.textContent=(it.emoji?it.emoji+' ':'')+it.title;
     const desc=document.createElement('div'); desc.style.fontSize='.85rem'; desc.style.color='#9aa3b5'; desc.textContent=it.desc;
     const meta=document.createElement('div'); meta.style.fontSize='.75rem'; meta.style.marginTop='6px';
     const b=document.createElement('span'); b.className='badge'; b.textContent=it.badge; meta.appendChild(b);
-    card.appendChild(a); card.appendChild(desc); card.appendChild(meta);
+    const prev=document.createElement('button'); prev.textContent='معاينة'; prev.className='btn'; prev.style.marginTop='8px'; prev.onclick=()=>openPreview(it);
+    card.appendChild(favBtn); card.appendChild(a); card.appendChild(desc); card.appendChild(meta); card.appendChild(prev);
     grid.appendChild(card);
   });
 }
+function toggleFav(id){
+  if(favs.includes(id)) favs=favs.filter(x=>x!==id); else favs.push(id);
+  localStorage.setItem('chraim_favs',JSON.stringify(favs));
+  render(); updateFavList();
+}
+function updateFavList(){
+  const list=document.getElementById('favList');
+  list.innerHTML='';
+  if(!favs.length){ list.textContent='لا عناصر محفوظة'; return; }
+  (data.items||[]).filter(it=>favs.includes(it.id)).forEach(it=>{
+    const d=document.createElement('div'); d.style.margin='8px 0';
+    const a=document.createElement('a'); a.href=it.url; a.target='_blank'; a.rel='noopener noreferrer'; a.textContent=it.title; a.style.color='#D4AF37';
+    d.appendChild(a); list.appendChild(d);
+  });
+}
+function toggleFavDrawer(){ document.getElementById('favDrawer').classList.add('on'); updateFavList(); }
+function closeFavDrawer(){ document.getElementById('favDrawer').classList.remove('on'); }
+function openPreview(it){
+  document.getElementById('modalTitle').textContent=it.title;
+  document.getElementById('modalBody').textContent=it.details||it.desc;
+  document.getElementById('modalLink').href=it.url;
+  document.getElementById('previewModal').classList.add('on');
+}
+function closePreview(){ document.getElementById('previewModal').classList.remove('on'); }
 load();
 </script>
 </body>
