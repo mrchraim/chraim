@@ -10,6 +10,7 @@ PAGES = [
     ("بوابة الطالب", "portal.html", "جداول وثائق معدل بوابة حقوق قانون FSJP"),
     ("رفيق الطالب", "rafiq-altalib.html", "جدول معدل مواعيد حساب النقط"),
     ("دليل جامعة ابن زهر", "university-directory.html", "دليل مؤسسات الجامعة"),
+    ("المصادر", "sources.html", "مصادر official registry"),
     ("فضاء الطالب", "student.html", "فضاء طالب تفضيلات جدول"),
     ("بوابات الكليات", "faculties/index.html", "FSJP كليات جامعات"),
     ("المساعد الذكي", "ai-assistant.html", "مساعد ذكي AI"),
