@@ -1,12 +1,92 @@
 [
-  { "name": "وزارة التربية الوطنية والتعليم الأولية والرياضة", "url": "https://www.men.gov.ma/", "categories": ["education","official-documents","circulars","curricula"], "priority": 1 },
-  { "name": "وزارة التربية الوطنية - الوثائق الرسمية", "url": "https://www.men.gov.ma/", "categories": ["official-documents","pedagogy","education"], "priority": 1 },
-  { "name": "الأمانة العامة للحكومة", "url": "https://www.sgg.gov.ma/", "categories": ["official-gazette","laws","decrees","decisions"], "priority": 1 },
-  { "name": "بوابة التشريع للأمانة العامة للحكومة", "url": "https://www.sgg.gov.ma/", "categories": ["legislation","draft-laws","regulations"], "priority": 1 },
-  { "name": "وزارة العدل - بوابة عدالة", "url": "https://adala.justice.gov.ma/", "categories": ["moroccan-law","legislation","legal-resources"], "priority": 1 },
-  { "name": "وزارة التعليم العالي والبحث العلمي والابتكار", "url": "https://www.enssup.gov.ma/", "categories": ["higher-education","universities","regulations"], "priority": 1 },
-  { "name": "الوكالة الوطنية لتقييم وضمان جودة التعليم العالي (ANEAQ)", "url": "https://www.aneaq.ma/", "categories": ["higher-education","legal-texts","quality-assurance"], "priority": 2 },
-  { "name": "المكتبة الرقمية تربية", "url": "https://tarbiaa.ma/", "categories": ["education","references","pedagogy"], "priority": 2 },
-  { "name": "جامعة ابن زهر", "url": "https://www.uiz.ac.ma/", "categories": ["university","higher-education"], "priority": 1 },
-  { "name": "كلية العلوم القانونية والسياسية - أكادير", "url": "https://fsjpa.uiz.ac.ma/", "categories": ["university","law","faculty"], "priority": 1 }
+  {
+    "id": "src-men-gov",
+    "name": "وزارة التربية الوطنية والتعليم الأولي والرياضة",
+    "url": "https://www.men.gov.ma/",
+    "domain": "men.gov.ma",
+    "categories": ["education", "official-documents", "circulars", "curricula"],
+    "priority": 1,
+    "allowed_crawl": true,
+    "last_checked_at": "2026-10-27T00:00:00Z"
+  },
+  {
+    "id": "src-men-docs",
+    "name": "وزارة التربية الوطنية - الوثائق الرسمية",
+    "url": "https://www.men.gov.ma/Ar/Pages/DocOfficial.aspx",
+    "domain": "men.gov.ma",
+    "categories": ["official-documents", "pedagogy", "education"],
+    "priority": 1,
+    "allowed_crawl": true,
+    "last_checked_at": "2026-10-27T00:00:00Z"
+  },
+  {
+    "id": "src-sgg-gov",
+    "name": "الأمانة العامة للحكومة - الجريدة الرسمية",
+    "url": "https://www.sgg.gov.ma/",
+    "domain": "sgg.gov.ma",
+    "categories": ["official-gazette", "laws", "decrees", "decisions"],
+    "priority": 1,
+    "allowed_crawl": true,
+    "last_checked_at": "2026-10-27T00:00:00Z"
+  },
+  {
+    "id": "src-sgg-leg",
+    "name": "بوابة التشريع للأمانة العامة للحكومة",
+    "url": "https://www.sgg.gov.ma/Legislation.aspx",
+    "domain": "sgg.gov.ma",
+    "categories": ["legislation", "draft-laws", "regulations"],
+    "priority": 1,
+    "allowed_crawl": true,
+    "last_checked_at": "2026-10-27T00:00:00Z"
+  },
+  {
+    "id": "src-adala-justice",
+    "name": "وزارة العدل - بوابة عدالة",
+    "url": "https://adala.justice.gov.ma/",
+    "domain": "adala.justice.gov.ma",
+    "categories": ["moroccan-law", "legislation", "legal-resources"],
+    "priority": 1,
+    "allowed_crawl": true,
+    "last_checked_at": "2026-10-27T00:00:00Z"
+  },
+  {
+    "id": "src-enssup-gov",
+    "name": "وزارة التعليم العالي والبحث العلمي والابتكار",
+    "url": "https://www.enssup.gov.ma/",
+    "domain": "enssup.gov.ma",
+    "categories": ["higher-education", "universities", "regulations"],
+    "priority": 1,
+    "allowed_crawl": true,
+    "last_checked_at": "2026-10-27T00:00:00Z"
+  },
+  {
+    "id": "src-uiz-ac",
+    "name": "جامعة ابن زهر - أكادير",
+    "url": "https://www.uiz.ac.ma/",
+    "domain": "uiz.ac.ma",
+    "categories": ["higher-education", "universities", "research", "courses"],
+    "priority": 1,
+    "allowed_crawl": true,
+    "last_checked_at": "2026-10-27T00:00:00Z"
+  },
+  {
+    "id": "src-aneaq-gov",
+    "name": "الوكالة الوطنية لتقييم وضمان جودة التعليم العالي",
+    "url": "https://www.aneaq.ma/legal-texts/",
+    "domain": "aneaq.ma",
+    "categories": ["higher-education", "legal-texts", "quality-assurance"],
+    "priority": 2,
+    "allowed_crawl": true,
+    "last_checked_at": "2026-10-27T00:00:00Z"
+  },
+  {
+    "id": "src-tarbiaa-ma",
+    "name": "المكتبة الرقمية تربية",
+    "url": "https://tarbiaa.ma/maktaba/",
+    "domain": "tarbiaa.ma",
+    "categories": ["education", "references", "pedagogy"],
+    "priority": 2,
+    "allowed_crawl": true,
+    "last_checked_at": "2026-10-27T00:00:00Z"
+  }
 ]
