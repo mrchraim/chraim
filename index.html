@@ -693,6 +693,14 @@
         const _origSearchGroup = searchGroup;
         searchGroup = function(){ _origSearchGroup(); saveProfile(); };
 
+        // ---- Theme toggle (light/dark) ----
+        function toggleDark(){
+            const h=document.documentElement;
+            if(h.classList.contains('light')){ h.classList.remove('light'); localStorage.setItem('chraim_theme','dark'); const b=document.getElementById('darkToggle'); if(b) b.textContent='🌙'; }
+            else { h.classList.add('light'); localStorage.setItem('chraim_theme','light'); const b=document.getElementById('darkToggle'); if(b) b.textContent='☀️'; }
+        }
+        document.addEventListener('DOMContentLoaded', ()=>{ try{ if(localStorage.getItem('chraim_theme')==='light'){ document.documentElement.classList.add('light'); const b=document.getElementById('darkToggle'); if(b) b.textContent='☀️'; } }catch(e){} });
+
         // Initialize on load
         document.addEventListener('DOMContentLoaded', async () => { await loadAcademicData(); updatePathways(); loadGroups(); renderToday(); renderGreeting(); loadAnnouncements(); try{const l=localStorage.getItem('chraim_lang'); if(l&&window.CHRVVIM_PAGE){const sel=document.getElementById('langSelect'); if(sel) sel.value=l; CHRVVIM_PAGE.apply(l);} }catch(e){} });
     </script>
