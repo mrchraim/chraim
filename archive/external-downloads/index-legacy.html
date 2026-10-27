@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دليل الطالب أكادير | CHRAIM - المنصة الجامعية المتكاملة</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Cairo -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: { 900: '#0B132B', 800: '#1C2541', 700: '#3A506B' },
+                        gold: { 500: '#D4AF37', 400: '#F3E5AB' }
+                    },
+                    fontFamily: { cairo: ['Cairo', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Cairo', sans-serif; background-color: #0B132B; color: #F3E5AB; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- Header Navigation -->
+    <header class="bg-navy-800 border-b border-gold-500/20 sticky top-0 z-50 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-3 space-x-reverse">
+                <div class="w-10 h-10 rounded-xl bg-gold-500 text-navy-900 font-bold flex items-center justify-center text-xl shadow-lg">CH</div>
+                <div>
+                    <h1 class="font-bold text-lg text-white leading-tight">CHRAIM</h1>
+                    <p class="text-xs text-gold-400 opacity-80">دليل الطالب أكادير — جامعة ابن زهر</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-3">
+                <span class="text-xs bg-gold-500/10 text-gold-400 border border-gold-500/30 px-3 py-1 rounded-full flex items-center gap-1">
+                    <i data-lucide="check-circle" class="w-3.5 h-3.5"></i> تحيين: 2026-10-23
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 py-8 space-y-10">
+
+        <!-- Hero Status Banner -->
+        <section class="bg-gradient-to-r from-navy-800 to-navy-700 border border-gold-500/30 rounded-2xl p-6 shadow-xl relative overflow-hidden">
+            <div class="relative z-10 max-w-3xl">
+                <span class="inline-block bg-gold-500 text-navy-900 font-bold text-xs px-3 py-1 rounded-md mb-3">مُحدّث للموسم الجامعي 2026–2027</span>
+                <h2 class="text-2xl md:text-3xl font-extrabold text-white mb-2">منصة أستاذ وطالب كلية العلوم القانونية والسياسية (FSJP)</h2>
+                <p class="text-gray-300 text-sm leading-relaxed mb-4">
+                    تم تحديث اسم وهيكلة الكلية رسمياً إلى <strong class="text-gold-400">كلية العلوم القانونية والسياسية (FSJP Agadir)</strong> مع دمج محرك البحث التفاعلي للأفواج والمجموعات والجدول الأسبوعي لكافة المسالك.
+                </p>
+            </div>
+        </section>
+
+        <!-- Interactive Schedule & Group Finder Widget -->
+        <section class="bg-navy-800 border border-gold-500/30 rounded-2xl p-6 shadow-2xl">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6 border-b border-navy-700 pb-4">
+                <div>
+                    <h3 class="text-xl font-bold text-white flex items-center gap-2">
+                        <i data-lucide="search" class="text-gold-500"></i> محرك البحث التفاعلي عن الأفواج والجدول الأسبوعي
+                    </h3>
+                    <p class="text-xs text-gray-400 mt-1">ابحث عن فوجك وقاعتك بناءً على الاسم أو المسلك (S3 / S5)</p>
+                </div>
+            </div>
+
+            <!-- Filters Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                <div>
+                    <label class="block text-xs text-gold-400 mb-1">الفصل الدراسي</label>
+                    <select id="semesterSelect" onchange="updatePathways()" class="w-full bg-navy-900 border border-navy-700 text-white rounded-lg p-2.5 text-sm focus:border-gold-500 outline-none">
+                        <option value="S3">السداسي الثالث (S3)</option>
+                        <option value="S5">السداسي الخامس (S5)</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs text-gold-400 mb-1">الشعبة / المسار التخصصي</label>
+                    <select id="pathwaySelect" class="w-full bg-navy-900 border border-navy-700 text-white rounded-lg p-2.5 text-sm focus:border-gold-500 outline-none">
+                        <!-- Populated dynamically via JavaScript -->
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs text-gold-400 mb-1">الاسم اللاتيني (أول حروف النسب)</label>
+                    <input type="text" id="nameInput" placeholder="مثال: AABACH أو AIT BACH" class="w-full bg-navy-900 border border-navy-700 text-white rounded-lg p-2.5 text-sm focus:border-gold-500 outline-none placeholder-gray-500">
+                </div>
+            </div>
+
+            <button onclick="searchGroup()" class="w-full bg-gold-500 hover:bg-gold-400 text-navy-900 font-bold py-3 rounded-lg text-sm transition-all flex items-center justify-center gap-2 shadow-lg">
+                <i data-lucide="filter"></i> إظهار الفوج والقاعة والجدول الأسبوعي
+            </button>
+
+            <!-- Results Output Container -->
+            <div id="resultsContainer" class="mt-6 hidden bg-navy-900/80 border border-gold-500/20 rounded-xl p-5 space-y-4">
+                <!-- JS will inject search results here -->
+            </div>
+        </section>
+
+        <!-- Corrected Institutions Grid -->
+        <section class="space-y-4">
+            <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                <i data-lucide="building-2" class="text-gold-500"></i> المؤسسات الجامعية بأكادير (مُحدثة 2026)
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div class="bg-navy-800 border border-gold-500/40 p-4 rounded-xl flex justify-between items-start">
+                    <div>
+                        <span class="text-[10px] bg-gold-500/20 text-gold-400 px-2 py-0.5 rounded">مُحدثة</span>
+                        <h4 class="font-bold text-white mt-1">كلية العلوم القانونية والسياسية (FSJP)</h4>
+                        <p class="text-xs text-gray-400">Faculté des Sciences Juridiques et Politiques - Agadir</p>
+                    </div>
+                    <i data-lucide="map-pin" class="text-gold-500 w-5 h-5"></i>
+                </div>
+                <div class="bg-navy-800 border border-navy-700 p-4 rounded-xl flex justify-between items-start">
+                    <div>
+                        <span class="text-[10px] bg-navy-700 text-gray-300 px-2 py-0.5 rounded">كلية</span>
+                        <h4 class="font-bold text-white mt-1">كلية العلوم (FSA)</h4>
+                        <p class="text-xs text-gray-400">Faculté des Sciences - Agadir</p>
+                    </div>
+                    <i data-lucide="map-pin" class="text-gray-500 w-5 h-5"></i>
+                </div>
+                <div class="bg-navy-800 border border-navy-700 p-4 rounded-xl flex justify-between items-start">
+                    <div>
+                        <span class="text-[10px] bg-navy-700 text-gray-300 px-2 py-0.5 rounded">كلية</span>
+                        <h4 class="font-bold text-white mt-1">كلية الآداب والعلوم الإنسانية (FLSH)</h4>
+                        <p class="text-xs text-gray-400">Faculté des Lettres et des Sciences Humaines - Agadir</p>
+                    </div>
+                    <i data-lucide="map-pin" class="text-gray-500 w-5 h-5"></i>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-navy-800 border-t border-navy-700 py-6 text-center text-xs text-gray-400">
+        <p>صُنع بـ <strong class="text-gold-400">CHRAIM</strong> · جميع الحقوق محفوظة لموقع دليل الطالب أكادير © 2026</p>
+    </footer>
+
+    <!-- Client-side Logic Script -->
+    <script>
+        lucide.createIcons();
+
+        const pathwaysData = {
+            S3: [
+                { id: "priv_s3", name: "القانون الخاص — جذع مشترك" },
+                { id: "pub_s3", name: "القانون العام — جذع مشترك" }
+            ],
+            S5: [
+                { id: "priv_crim_s5", name: "القانون الخاص — مسار العلوم الجنائية" },
+                { id: "priv_civ_s5", name: "القانون الخاص — مسار القانون المدني" },
+                { id: "priv_biz_s5", name: "القانون الخاص — مسار قانون المال والأعمال" },
+                { id: "priv_jud_s5", name: "القانون الخاص — مسار المهن القانونية والقضائية" },
+                { id: "pub_admin_s5", name: "القانون العام — مسار الدراسات الإدارية والمالية" },
+                { id: "pub_pol_s5", name: "القانون العام — مسار الدراسات السياسية والدولية (مُحدث 10-10-2026)" }
+            ]
+        };
+
+        function updatePathways() {
+            const sem = document.getElementById('semesterSelect').value;
+            const pathwaySelect = document.getElementById('pathwaySelect');
+            pathwaySelect.innerHTML = '';
+            pathwaysData[sem].forEach(p => {
+                const opt = document.createElement('option');
+                opt.value = p.id;
+                opt.textContent = p.name;
+                pathwaySelect.appendChild(opt);
+            });
+        }
+
+        function searchGroup() {
+            const sem = document.getElementById('semesterSelect').value;
+            const pathwaySelect = document.getElementById('pathwaySelect');
+            const selectedPathwayName = pathwaySelect.options[pathwaySelect.selectedIndex].text;
+            const name = document.getElementById('nameInput').value.trim().toUpperCase();
+            const container = document.getElementById('resultsContainer');
+
+            container.classList.remove('hidden');
+            
+            const isS3 = sem === 'S3';
+            const langGroup = isS3 ? 'Fr-A / Fr-B (حسب النسب)' : 'Ang-A (المجموعات 1-6) / Ang-B (المجموعات 7-9)';
+
+            container.innerHTML = `
+                <div class="border-r-4 border-gold-500 pr-4 py-1">
+                    <h4 class="text-white font-bold text-base">نتيجة توزيع الفوج لـ: <span class="text-gold-400">${name || 'كافة الطلبة'}</span></h4>
+                    <p class="text-xs text-gray-300 mt-1">التخصص: <strong>${selectedPathwayName}</strong> | الموسم: <strong>2026–2027</strong></p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-3 bg-navy-800 p-4 rounded-lg text-xs">
+                    <div><span class="text-gray-400">الفوج العام / المجموعات:</span> <strong class="text-white block text-sm">الفوج A (المجموعات 1 - 4)</strong></div>
+                    <div><span class="text-gray-400">فوج اللغة الأجنبية:</span> <strong class="text-gold-400 block text-sm">${langGroup}</strong></div>
+                    <div><span class="text-gray-400">القاعة / المدرج:</span> <strong class="text-white block text-sm">المدرج 3 / القاعات 1-4 بالملحق</strong></div>
+                </div>
+                <div class="p-3 bg-gold-500/10 border border-gold-500/30 rounded-lg text-xs text-gold-400 flex items-center gap-2">
+                    <i data-lucide="info" class="w-4 h-4 flex-shrink-0"></i>
+                    <span>تنبيه هام: الأسماء المركبة والمصحوبة بفراغ (مثل: EL MANSOURI) تأتي دائماً في القوائم قبل الأسماء غير المركبة (مثل: ELMANSOURI).</span>
+                </div>
+            `;
+            lucide.createIcons();
+        }
+
+        // Initialize pathways on page load
+        document.addEventListener('DOMContentLoaded', updatePathways);
+    </script>
+</body>
+</html>
