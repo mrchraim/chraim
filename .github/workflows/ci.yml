@@ -32,3 +32,34 @@ jobs:
         uses: gitleaks/gitleaks-action@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  lighthouse:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python tools/build-dist.py --out dist --clean
+      - name: Lighthouse CI
+        uses: treosh/lighthouse-ci-action@v11
+        with:
+          urls: |
+            http://localhost:8000/
+          uploadArtifacts: true
+          temporaryPublicStorage: true
+
+  axe:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python tools/build-dist.py --out dist --clean
+      - name: Serve dist
+        run: python -m http.server 8000 --directory dist &
+      - name: axe-core
+        run: npx @axe-core/cli http://localhost:8000/ --exit
