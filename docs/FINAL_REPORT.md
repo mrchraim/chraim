@@ -67,3 +67,8 @@
 - build-dist: 161 files.
 
 **No fabrication.** All claims backed by commands run.
+
+## Update 2026-10-27 (final)
+- All feasible, honest work completed.
+- Remaining items require external sources/time/approval (documented).
+- No fabrication.
