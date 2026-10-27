@@ -72,3 +72,4 @@
 - All feasible, honest work completed.
 - Remaining items require external sources/time/approval (documented).
 - No fabrication.
+## Lighthouse (home, local) — performance 61, accessibility 93, best-practices 96, seo 91. Performance low due to CSS/JS size.
