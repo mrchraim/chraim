@@ -27,3 +27,26 @@
 1. Prototype Worker with RAG.
 2. Tests (accuracy, refusal).
 3. Gradual rollout.
+
+## 6. Architecture (design only)
+- RAG over `assets/search-index.json`, `documents/`, `etablissements/`, `academic-offer.html`.
+- No API keys in client. Proxy via Cloudflare Worker / Supabase Edge Function.
+- Rate limiting + caching + streaming.
+- Citation per answer (file + section).
+- "لا أعرف" fallback.
+
+## 7. Cost & Risks
+- LLM API cost (per query).
+- Hallucination → mitigated by RAG + citation + refuse unknown.
+- Privacy: no PII stored; logs anonymized.
+
+## 8. Decisions needed (approval)
+1. Provider (OpenAI/Anthropic/etc.).
+2. Budget cap (USD/day).
+3. Hosting (Cloudflare Worker vs Supabase Edge Function).
+4. Scope (ar only vs ar/fr/en).
+
+## 9. Steps (after approval)
+1. Prototype Worker with RAG.
+2. Tests (accuracy, refusal).
+3. Gradual rollout.
