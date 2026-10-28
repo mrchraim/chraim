@@ -1,24 +1,413 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" data-theme="dark">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Portal Simple — CHRAIM</title>
-<style>body{font-family:system-ui,Segoe UI,Tahoma,sans-serif;background:#060B19;color:#F3E5AB;padding:24px;max-width:960px;margin:0 auto}
-.card{background:rgba(28,37,65,.7);border:1px solid rgba(212,175,55,.2);border-radius:12px;padding:16px;margin:12px 0}
-a{color:#D4AF37}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>بوابة طلبة جامعة ابن زهر | UIZ Student Portal</title>
+  
+  <!-- خطوط جوجل (Tajawal & Inter) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- إطار عمل Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: ['class', '[data-theme="dark"]'],
+      theme: {
+        extend: {
+          colors: {
+            midnight: { 900: '#070C18', 800: '#0B132B', 700: '#1C2541', 600: '#2A365C' },
+            gold: { 300: '#FFE885', 400: '#F3CF55', 500: '#D4AF37', 600: '#AA8820' }
+          },
+          fontFamily: { sans: ['Tajawal', 'Inter', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* المتغيرات الأساسية والتصميم الزجاجي */
+    :root {
+      --font-scale: 1;
+      --duration-normal: 250ms;
+      --ease-apple: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    [data-theme="dark"] {
+      --bg-primary: #070c18;
+      --bg-secondary: #0b132b;
+      --bg-tertiary: #1c2541;
+      --bg-glass: rgba(11, 19, 43, 0.65);
+      --bg-glass-card: rgba(28, 37, 65, 0.45);
+      --border-color: rgba(212, 175, 55, 0.18);
+      --border-hover: rgba(212, 175, 55, 0.5);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent-gold: #d4af37;
+      --shadow-card: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 1px 1px rgba(212, 175, 55, 0.15);
+    }
+    
+    [data-theme="light"] {
+      --bg-primary: #f8fafc;
+      --bg-secondary: #ffffff;
+      --bg-tertiary: #f1f5f9;
+      --bg-glass: rgba(255, 255, 255, 0.85);
+      --bg-glass-card: rgba(255, 255, 255, 0.9);
+      --border-color: rgba(11, 19, 43, 0.12);
+      --border-hover: rgba(212, 175, 55, 0.7);
+      --text-main: #0b132b;
+      --text-muted: #475569;
+      --accent-gold: #b38b14;
+      --shadow-card: 0 10px 25px -5px rgba(11, 19, 43, 0.08), 0 0 1px 1px rgba(11, 19, 43, 0.05);
+    }
+
+    html {
+      font-size: calc(16px * var(--font-scale));
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      scroll-behavior: smooth;
+      transition: background-color 0.4s var(--ease-apple), color 0.4s var(--ease-apple);
+    }
+
+    /* تأثيرات الزليج والبطاقات */
+    .zellige-pattern {
+      background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg stroke='%23D4AF37' stroke-width='0.6' stroke-opacity='0.18'%3E%3Cpath d='M0 0h80v80H0z'/%3E%3Cpath d='M40 0l40 40-40 40L0 40z'/%3E%3Cpath d='M0 0l80 80M80 0L0 80'/%3E%3Ccircle cx='40' cy='40' r='12'/%3E%3Cpath d='M40 20l20 20-20 20-20-20z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    
+    .glass-panel {
+      background: var(--bg-glass);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border-color);
+    }
+
+    .glass-card {
+      background: var(--bg-glass-card);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-card);
+      transition: all var(--duration-normal) var(--ease-apple);
+    }
+    .glass-card:hover { border-color: var(--border-hover); transform: translateY(-4px); }
+
+    /* الشريط الإخباري (Ticker) */
+    .ticker-container { overflow: hidden; background: var(--accent-gold); color: #070c18; white-space: nowrap; }
+    .ticker-track { display: inline-block; animation: ticker 30s linear infinite; }
+    @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(50%); } }
+    
+    /* الشريط العائم (Floating Dock) */
+    .floating-dock {
+      position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
+      z-index: 100; transition: transform 0.4s var(--ease-apple), opacity 0.4s ease;
+    }
+    .floating-dock.hidden-dock { transform: translateX(-50%) translateY(100px); opacity: 0; pointer-events: none; }
+  </style>
 </head>
-<body>
-<h1>Portal Simple (قيد التكامل)</h1>
-<p>المصدر محفوظ في archive/external-downloads/ (CSP: يستخدم CDN).</p>
-<div class="card">
-  <h2>روابط</h2>
-  <ul>
-    <li><a href="/portal.html">البوابة الحالية (portal.html)</a></li>
-    <li><a href="/index.html">الرئيسية</a></li>
-  </ul>
-</div>
-<p><a href="/" style="color:#D4AF37">← العودة للرئيسية</a></p>
+
+<body class="min-h-screen flex flex-col selection:bg-gold-500 selection:text-midnight-900 relative">
+
+  <!-- ==========================================================================
+       الرأس (Header & Navbar)
+       ========================================================================== -->
+  <header class="sticky top-0 z-50 glass-panel border-b border-[var(--border-color)]">
+    <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3 group focus:outline-none">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-midnight-800 to-midnight-700 dark:from-gold-500 dark:to-gold-600 flex items-center justify-center text-gold-400 dark:text-midnight-900 font-extrabold text-xl shadow-lg border border-gold-500/30 group-hover:scale-105 transition-transform">ز</div>
+        <div class="flex flex-col">
+          <span class="font-extrabold text-lg text-[var(--text-main)] group-hover:text-[var(--accent-gold)]">دليل طلبة <span class="text-[var(--accent-gold)]">جامعة ابن زهر</span></span>
+          <span class="text-xs text-[var(--text-muted)] font-medium hidden sm:block">البوابة الطلابية الرسمية والشاملة</span>
+        </div>
+      </a>
+
+      <div class="flex items-center gap-2">
+        <button id="cmdSearchBtn" class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[var(--bg-tertiary)] border border-[var(--border-color)] text-xs text-[var(--text-muted)] hover:text-[var(--text-main)] transition-colors">
+          <span>🔍</span><span class="hidden md:inline">بحث ذكي</span><kbd class="hidden sm:inline-block px-1 bg-[var(--bg-primary)] rounded font-mono text-[10px]">⌘K</kbd>
+        </button>
+        <button id="themeToggle" class="p-2 rounded-xl bg-[var(--bg-tertiary)] border border-[var(--border-color)] hover:border-[var(--accent-gold)] transition-all">🌓</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- الشريط الإخباري -->
+  <div class="ticker-container py-2 border-y border-black/10">
+    <div class="ticker-track text-xs font-bold px-4 flex gap-12">
+      <span>📢 إعلان: انطلاق التسجيل في مسالك البكالوريوس</span>
+      <span>⏱️ تحديث استعمالات الزمن للفصل الخريفي</span>
+      <span>🎓 إيداع ملفات المنحة عبر منصة رفيق الطالب</span>
+      <!-- تكرار للحركة -->
+      <span>📢 إعلان: انطلاق التسجيل في مسالك البكالوريوس</span>
+      <span>⏱️ تحديث استعمالات الزمن للفصل الخريفي</span>
+      <span>🎓 إيداع ملفات المنحة عبر منصة رفيق الطالب</span>
+    </div>
+  </div>
+
+  <main class="flex-grow relative z-10 max-w-7xl mx-auto px-4 py-12 space-y-20">
+    
+    <!-- خلفية الزليج -->
+    <div class="fixed inset-0 zellige-pattern opacity-30 pointer-events-none -z-10"></div>
+
+    <!-- ==========================================================================
+         قسم الترحيب (Hero Section)
+         ========================================================================== -->
+    <section class="text-center max-w-4xl mx-auto space-y-6">
+      <div class="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-[var(--bg-tertiary)] border border-[var(--border-color)] text-xs font-bold text-[var(--accent-gold)]">
+        <span class="w-2 h-2 rounded-full bg-green-500 animate-ping"></span> البوابة المركزية v3.0
+      </div>
+      <h1 class="text-4xl sm:text-6xl font-black tracking-tight leading-tight">المنظومة الرقمية الشاملة <br> لطلبة <span class="text-[var(--accent-gold)]">جامعة ابن زهر</span></h1>
+      <p class="text-lg text-[var(--text-muted)] max-w-2xl mx-auto">وصول فوري لاستعمالات الزمن، مجتمعات التواصل، الكليات، ودليل الأساتذة.</p>
+      
+      <!-- الإحصائيات -->
+      <div class="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-6 pt-8 border-t border-[var(--border-color)]">
+        <div class="glass-card p-6 rounded-2xl">
+          <div class="text-4xl font-black text-[var(--accent-gold)]">17</div>
+          <div class="text-sm font-bold text-[var(--text-muted)] mt-2">مسلكاً أكاديمياً</div>
+        </div>
+        <div class="glass-card p-6 rounded-2xl">
+          <div class="text-4xl font-black text-[var(--accent-gold)]">452</div>
+          <div class="text-sm font-bold text-[var(--text-muted)] mt-2">حصة أسبوعياً</div>
+        </div>
+        <div class="glass-card p-6 rounded-2xl">
+          <div class="text-4xl font-black text-[var(--accent-gold)]">6+</div>
+          <div class="text-sm font-bold text-[var(--text-muted)] mt-2">مؤسسات جامعية</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         مجموعات الواتساب (WhatsApp Groups)
+         ========================================================================== -->
+    <section id="whatsapp-section" class="space-y-6">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+        <div>
+          <h2 class="text-2xl font-black text-[var(--text-main)]">مجتمعات الواتساب الطلابية</h2>
+          <p class="text-sm text-[var(--text-muted)]">انضم لمجموعتك حسب السداسي والشعبة</p>
+        </div>
+        <input type="text" id="wa-search" placeholder="ابحث (مثال: القانون S1)..." class="w-full md:w-1/3 px-4 py-2.5 rounded-xl bg-[var(--bg-glass)] border border-[var(--border-color)] text-[var(--text-main)] focus:outline-none focus:border-[var(--accent-gold)]">
+      </div>
+      <div id="wa-groups" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Groups rendered by JS -->
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         الخدمات (Services Cards)
+         ========================================================================== -->
+    <section class="space-y-6">
+      <h2 class="text-2xl font-black text-center mb-8">الخدمات <span class="text-[var(--accent-gold)]">المركزية</span></h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <a href="#" class="glass-card p-6 rounded-2xl group">
+          <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-500 flex items-center justify-center mb-4 text-2xl">📘</div>
+          <h3 class="text-lg font-bold group-hover:text-[var(--accent-gold)] transition">دليل الطالب</h3>
+          <p class="text-sm text-[var(--text-muted)] mt-2">القوانين الجامعية، المسالك، ونظام الامتحانات.</p>
+        </a>
+        <a href="#" class="glass-card p-6 rounded-2xl group">
+          <div class="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-500 flex items-center justify-center mb-4 text-2xl">📅</div>
+          <h3 class="text-lg font-bold group-hover:text-[var(--accent-gold)] transition">منصة رفيق الطالب</h3>
+          <p class="text-sm text-[var(--text-muted)] mt-2">استعمالات الزمن والإعلانات الفورية.</p>
+        </a>
+        <a href="#" class="glass-card p-6 rounded-2xl group">
+          <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center mb-4 text-2xl">👨‍🏫</div>
+          <h3 class="text-lg font-bold group-hover:text-[var(--accent-gold)] transition">دليل الأساتذة</h3>
+          <p class="text-sm text-[var(--text-muted)] mt-2">وسائل التواصل وساعات التأطير الأكاديمي.</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         الخريطة والمؤسسات (Campuses & Map)
+         ========================================================================== -->
+    <section class="space-y-6">
+      <div>
+        <h2 class="text-2xl font-black text-[var(--text-main)]">المؤسسات والمواقع الجامعية</h2>
+        <p class="text-sm text-[var(--text-muted)]">عناوين وتحديد مسار الكليات عبر الخريطة</p>
+      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div id="campuses-list" class="space-y-3 lg:col-span-1">
+          <!-- Campuses rendered by JS -->
+        </div>
+        <div class="lg:col-span-2 h-[400px] rounded-2xl overflow-hidden glass-panel p-2">
+          <iframe id="campus-map" class="w-full h-full rounded-xl border-0" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================================================
+       شريط التنقل العائم (Smart Floating Dock)
+       ========================================================================== -->
+  <div id="floatingDock" class="floating-dock">
+    <nav class="glass-panel px-6 py-3 rounded-full shadow-2xl flex items-center gap-6 font-bold text-sm">
+      <a href="#" class="hover:text-[var(--accent-gold)] flex items-center gap-2 transition">
+        <span>⌂</span> الرئيسية
+      </a>
+      <span class="w-px h-5 bg-[var(--border-color)]"></span>
+      <button onclick="window.history.back()" class="hover:text-[var(--accent-gold)] flex items-center gap-2 transition">
+        <span>↩</span> رجوع
+      </button>
+    </nav>
+  </div>
+
+  <!-- ==========================================================================
+       لوحة البحث والأوامر (Command Palette Modal)
+       ========================================================================== -->
+  <div id="cmdModal" class="fixed inset-0 z-[100] bg-black/60 backdrop-blur-md hidden items-start justify-center pt-24 px-4">
+    <div class="glass-panel w-full max-w-xl rounded-2xl shadow-2xl flex flex-col max-h-[70vh]">
+      <div class="p-4 border-b border-[var(--border-color)] flex items-center gap-3">
+        <span class="text-[var(--accent-gold)]">🔍</span>
+        <input type="text" id="cmdInput" placeholder="اكتب للبحث السريع (أستاذ، مجموعة، كلية)..." class="w-full bg-transparent border-none text-[var(--text-main)] focus:outline-none focus:ring-0">
+        <kbd class="px-2 py-1 text-[10px] bg-[var(--bg-tertiary)] border border-[var(--border-color)] rounded">ESC</kbd>
+      </div>
+      <div id="cmdResults" class="p-2 overflow-y-auto"></div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="border-t border-[var(--border-color)] bg-[var(--bg-secondary)] py-8 text-center text-xs text-[var(--text-muted)] mt-12">
+    <p>جميع الحقوق محفوظة © 2026 دليل طلبة جامعة ابن زهر — chraim.pages.dev</p>
+  </footer>
+
+  <!-- ==========================================================================
+       منطق جافاسكريبت (JavaScript Logic)
+       ========================================================================== -->
+  <script>
+    /* --- 1. البيانات (Data) --- */
+    const GROUPS = [
+      { s: 'S1', t: 'القانون بالعربية - شعبة A', k: 'law', id: 'Kv1opKq6b9Q34MCkFFixvG' },
+      { s: 'S1', t: 'القانون بالعربية - شعبة B', k: 'law', id: 'Hh0NWc1Cbqw9v8D2lr9LbU' },
+      { s: 'S3', t: 'القانون الخاص - شعبة AB', k: 'law', id: 'IHFUUZ0Xq9LK0GUY4s462d' },
+      { s: 'S5', t: 'المهن القانونية والقضائية', k: 'law', id: 'IYGoBdRpUfoLYLJthAN7qj' },
+      { s: 'S5', t: 'قانون المال والأعمال', k: 'law', id: 'JwEDLJbihTgBZyWfwdKvHh' },
+      { s: 'S5', t: 'القانون الجنائي', k: 'law', id: 'FoitsuCbJH3KWKI3p4M8Uf' }
+    ];
+
+    const CAMPUSES = [
+      { t: 'المركب الجامعي الجديد - أيت ملول', a: 'القطب الجامعي، أيت ملول', p: '0528 22 71 25', q: 'Université Ibn Zohr Ait Melloul' },
+      { t: 'كلية العلوم (FSA)', a: 'حي الداخلة، أكادير', p: '0528 22 09 57', q: 'Faculté des Sciences Agadir' },
+      { t: 'كلية الآداب والعلوم الإنسانية', a: 'حي الداخلة، أكادير', p: '0528 22 71 25', q: 'Faculté des Lettres et des Sciences Humaines Agadir' }
+    ];
+
+    const CMD_ITEMS = [
+      { title: 'دليل الطالب الجامعي', type: 'خدمة' },
+      { title: 'منصة رفيق الطالب', type: 'خدمة' },
+      { title: 'د. محمد الإدريسي - أستاذ', type: 'أستاذ', desc: 'كلية العلوم' }
+    ];
+    // دمج المجموعات والكليات في البحث الذكي
+    GROUPS.forEach(g => CMD_ITEMS.push({ title: g.t, type: 'مجموعة S'+g.s, desc: 'واتساب' }));
+    CAMPUSES.forEach(c => CMD_ITEMS.push({ title: c.t, type: 'كلية', desc: c.a }));
+
+    /* --- 2. دوال المساعدة (Utils) --- */
+    const norm = t => String(t).toLowerCase().replace(/[\u064B-\u0652\u0640]/g,'').replace(/[أإآ]/g,'ا').replace(/ى/g,'ي').replace(/ة/g,'ه');
+    const el = (tag, cls, html) => { const e = document.createElement(tag); if(cls) e.className = cls; if(html) e.innerHTML = html; return e; };
+
+    /* --- 3. التهيئة العامة (Initialization) --- */
+    document.addEventListener('DOMContentLoaded', () => {
+      initTheme();
+      renderGroups();
+      renderCampuses();
+      initFloatingDockScroll();
+      initCmdPalette();
+    });
+
+    /* --- 4. الوضع الداكن (Dark Mode) --- */
+    function initTheme() {
+      const savedTheme = localStorage.getItem('uiz_theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      
+      document.getElementById('themeToggle').addEventListener('click', () => {
+        const curr = document.documentElement.getAttribute('data-theme');
+        const next = curr === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('uiz_theme', next);
+      });
+    }
+
+    /* --- 5. مجتمعات الواتساب (WhatsApp Logic) --- */
+    function renderGroups() {
+      const box = document.getElementById('wa-groups');
+      GROUPS.forEach(g => {
+        const card = el('div', 'glass-card p-6 rounded-2xl flex flex-col justify-between wa-card');
+        card.dataset.tags = norm(g.t + ' ' + g.s + ' ' + g.k);
+        card.innerHTML = `
+          <div class="flex justify-between items-start mb-4">
+            <h3 class="font-bold text-lg leading-tight text-[var(--text-main)]">${g.t}</h3>
+            <span class="text-xs px-2 py-1 rounded bg-[var(--bg-tertiary)] border border-[var(--border-color)] text-[var(--accent-gold)] font-bold">${g.s}</span>
+          </div>
+          <a href="https://chat.whatsapp.com/${g.id}" target="_blank" class="block text-center rounded-lg py-2 mt-4 bg-[var(--bg-tertiary)] border border-[var(--border-color)] font-bold hover:bg-[var(--accent-gold)] hover:text-midnight-900 transition">انضمام</a>
+        `;
+        box.appendChild(card);
+      });
+
+      document.getElementById('wa-search').addEventListener('input', e => {
+        const term = norm(e.target.value.trim());
+        document.querySelectorAll('.wa-card').forEach(c => {
+          c.style.display = c.dataset.tags.includes(term) ? '' : 'none';
+        });
+      });
+    }
+
+    /* --- 6. الكليات والخريطة (Campuses & Map Logic) --- */
+    function renderCampuses() {
+      const list = document.getElementById('campuses-list');
+      const map = document.getElementById('campus-map');
+      
+      CAMPUSES.forEach((c, i) => {
+        const btn = el('button', 'w-full text-start glass-card p-4 rounded-xl hover:border-[var(--accent-gold)] transition focus:outline-none');
+        btn.innerHTML = `<div class="font-bold text-[var(--text-main)]">${c.t}</div><div class="text-xs text-[var(--text-muted)] mt-1">${c.a}</div><div class="text-xs mt-1 font-mono text-[var(--accent-gold)]">${c.p}</div>`;
+        btn.addEventListener('click', () => { 
+          map.src = 'https://www.google.com/maps?q=' + encodeURIComponent(c.q) + '&output=embed'; 
+        });
+        list.appendChild(btn);
+        if (i === 0) map.src = 'https://www.google.com/maps?q=' + encodeURIComponent(c.q) + '&output=embed';
+      });
+    }
+
+    /* --- 7. الشريط العائم (Smart Floating Dock Scroll) --- */
+    function initFloatingDockScroll() {
+      const dock = document.getElementById('floatingDock');
+      let lastScroll = window.scrollY;
+      window.addEventListener('scroll', () => {
+        const current = window.scrollY;
+        if (current > lastScroll && current > 150) dock.classList.add('hidden-dock');
+        else dock.classList.remove('hidden-dock');
+        lastScroll = current;
+      });
+    }
+
+    /* --- 8. لوحة الأوامر (Command Palette) --- */
+    function initCmdPalette() {
+      const modal = document.getElementById('cmdModal');
+      const input = document.getElementById('cmdInput');
+      const results = document.getElementById('cmdResults');
+
+      const open = () => { modal.classList.remove('hidden'); modal.classList.add('flex'); input.focus(); filter(''); };
+      const close = () => { modal.classList.add('hidden'); modal.classList.remove('flex'); };
+
+      document.getElementById('cmdSearchBtn').addEventListener('click', open);
+      modal.addEventListener('click', e => { if (e.target === modal) close(); });
+      
+      window.addEventListener('keydown', e => {
+        if ((e.ctrlKey || e.metaKey) && e.key === 'k') { e.preventDefault(); modal.classList.contains('hidden') ? open() : close(); }
+        if (e.key === 'Escape') close();
+      });
+
+      const filter = (query) => {
+        const q = norm(query);
+        const filtered = CMD_ITEMS.filter(i => norm(i.title).includes(q) || (i.desc && norm(i.desc).includes(q)) || norm(i.type).includes(q));
+        results.innerHTML = '';
+        if(!filtered.length) { results.innerHTML = '<div class="p-4 text-center text-sm text-[var(--text-muted)]">لا توجد نتائج</div>'; return; }
+        
+        filtered.forEach(i => {
+          const row = el('div', 'p-3 border-b border-[var(--border-color)] hover:bg-[var(--bg-tertiary)] cursor-pointer flex justify-between items-center rounded-lg mb-1');
+          row.innerHTML = `<div><div class="font-bold text-sm text-[var(--text-main)]">${i.title}</div>${i.desc ? `<div class="text-xs text-[var(--text-muted)] mt-0.5">${i.desc}</div>` : ''}</div><span class="px-2 py-0.5 rounded text-[10px] bg-[var(--bg-primary)] text-[var(--accent-gold)]">${i.type}</span>`;
+          row.addEventListener('click', close);
+          results.appendChild(row);
+        });
+      };
+      
+      input.addEventListener('input', e => filter(e.target.value));
+    }
+  </script>
 </body>
 </html>
