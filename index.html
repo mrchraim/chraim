@@ -43,6 +43,37 @@
         html.dark .text-white { color:#F3E5AB; }
         html.dark .text-gray-300, html.dark .text-gray-400 { color:#9aa3b5; }
     </style>
+<style id="chraim-theme-fix">
+/* ===== وضع النهار: تباين كامل لكل العناصر (كان النص يختفي على الصناديق الداكنة) ===== */
+html.light{color-scheme:light}
+html.light header{background:rgba(255,255,255,.92)!important;border-color:rgba(138,101,8,.25)!important}
+html.light .bg-navy-900,html.light .bg-navy-900\/90,html.light .bg-navy-950,html.light .bg-navy-950\/90{background:#fff!important;color:#1F2937!important}
+html.light .bg-navy-900{border-color:rgba(138,101,8,.35)!important}
+html.light .border-navy-700{border-color:#e3dcc8!important}
+html.light .text-gold-400,html.light .text-gold-500{color:#7a5806!important}
+html.light .bg-gold-500{background:#e9c04a!important;color:#1a1300!important}
+html.light .bg-gold-500\/10{background:rgba(138,101,8,.08)!important}
+html.light .text-white,html.light h1,html.light h2,html.light h3{color:#141a3a!important}
+html.light .text-gray-300,html.light .text-gray-400{color:#3b4256!important}
+html.light select,html.light option{background:#fff!important;color:#141a3a!important}
+html.light #annList *,html.light #termDef,html.light #termTitle{color:#1F2937!important}
+html.light .glass-card{box-shadow:0 8px 28px rgba(20,26,58,.08)!important}
+/* وضع الليل: ثبات الألوان */
+html:not(.light) .glass-card a,html:not(.light) .glass-card{color:#F3E5AB}
+/* عنوان الدليل: الجزء المميّز بالذهبي */
+h2 b{background:linear-gradient(135deg,#FFF8DC,#D4AF37);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;font-weight:900}
+html.light h2 b{background:linear-gradient(135deg,#8a6508,#c79a1c);-webkit-background-clip:text;background-clip:text}
+/* حجم الخط الكبير */
+html.big-text{font-size:118%}
+#themeToggle,#fontToggle{min-width:36px;min-height:32px;cursor:pointer;transition:transform .15s,background .15s}
+#themeToggle:hover,#fontToggle:hover{transform:translateY(-1px)}
+#fontToggle[aria-pressed=true]{background:#D4AF37!important;color:#1a1300!important}
+html.light .gold-gradient-text{background:linear-gradient(135deg,#8a6508,#c79a1c)!important;-webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important}
+html.light #themeToggle,html.light #fontToggle,html.light #langSelect{background:#fff!important;color:#5c4305!important;border:1px solid rgba(138,101,8,.45)!important}
+html.light body header #themeToggle,html.light body header #fontToggle{background:#fff!important;background-color:#fff!important;color:#5c4305!important;border:1px solid rgba(138,101,8,.45)!important}
+html.light #themeToggle,html.light #fontToggle{opacity:1!important;filter:none!important;background-image:none!important}
+html.light #fontToggle[aria-pressed=true]{background:#e9c04a!important;color:#1a1300!important}
+</style>
 </head>
 <body class="min-h-screen flex flex-col justify-between">
     <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-gold-500 text-navy-950 px-3 py-1 rounded">انتقل إلى المحتوى</a>
@@ -53,7 +84,7 @@
             <div class="flex items-center space-x-3 space-x-reverse">
                 <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-gold-400 to-gold-600 text-navy-950 font-black flex items-center justify-center text-xl shadow-lg shadow-gold-500/20">CH</div>
                 <div>
-                    <h1 class="font-extrabold text-lg text-white leading-tight tracking-wide" data-i18n="hero.h1html">CHRAIM</h1>
+                    <h1 class="font-extrabold text-lg text-white leading-tight tracking-wide">CHRAIM</h1>
                     <p class="text-[11px] text-gold-400 opacity-90" data-i18n="hero.motto">دليل الطالب أكادير — جامعة ابن زهر</p>
                 </div>
             </div>
@@ -63,8 +94,8 @@
     <option value="fr">FR</option>
     <option value="en">EN</option>
 </select>
-<button id="themeToggle" onclick="toggleTheme()" class="text-xs bg-navy-900 text-gold-400 border border-gold-500/30 px-2 py-1 rounded-full font-bold">🌙</button>
-<button id="darkToggle" onclick="toggleDark()" class="text-xs bg-navy-900 text-gold-400 border border-gold-500/30 px-2 py-1 rounded-full font-bold">🌙</button>
+<button id="themeToggle" onclick="toggleTheme()" aria-label="تبديل وضع النهار والليل" title="نهار / ليل" class="text-xs bg-navy-900 text-gold-400 border border-gold-500/30 px-2 py-1 rounded-full font-bold">🌙</button>
+<button id="fontToggle" onclick="toggleFont()" aria-pressed="false" aria-label="تكبير الخط" title="تكبير الخط" class="text-xs bg-navy-900 text-gold-400 border border-gold-500/30 px-2 py-1 rounded-full font-bold">A+</button>
 <a href="/orientation.html" class="text-xs bg-gold-500 text-navy-950 px-3 py-1 rounded-full flex items-center gap-1.5 font-black hover:bg-gold-400">
                     <i data-lucide="sparkles" class="w-4 h-4"></i> مرشد التوجيه
                 </a>
@@ -86,7 +117,7 @@
                     <span class="bg-gold-500 text-navy-950 font-bold text-xs px-3 py-1 rounded-md">تحديث الكلية الرسمي</span>
                     <span class="text-xs text-gray-300 bg-navy-900 px-2.5 py-0.5 rounded border border-navy-700">آخر تحيين: 2026-10-23</span>
                 </div>
-                <h2 class="text-2xl md:text-4xl font-black text-white leading-tight" data-i18n="hero.h1html">
+                <h2 class="text-2xl md:text-4xl font-black text-white leading-tight" data-i18n-html="hero.h1html">
                     بوابة طالب <span class="gold-gradient-text">كلية العلوم القانونية والسياسية (FSJP Agadir)</span>
                 </h2>
                 <p class="text-gray-300 text-xs md:text-sm leading-relaxed" data-i18n="hero.p">
@@ -723,13 +754,14 @@
         const _origSearchGroup = searchGroup;
         searchGroup = function(){ _origSearchGroup(); saveProfile(); };
 
-        // ---- Theme toggle (light/dark) ----
-        function toggleDark(){
-            const h=document.documentElement;
-            if(h.classList.contains('light')){ h.classList.remove('light'); localStorage.setItem('chraim_theme','dark'); const b=document.getElementById('darkToggle'); if(b) b.textContent='🌙'; }
-            else { h.classList.add('light'); localStorage.setItem('chraim_theme','light'); const b=document.getElementById('darkToggle'); if(b) b.textContent='☀️'; }
+        // ---- Text size toggle ----
+        function toggleFont(){
+            const h=document.documentElement, on=!h.classList.contains('big-text');
+            h.classList.toggle('big-text',on);
+            try{localStorage.setItem('chraim_big',on?'1':'0')}catch(e){}
+            const b=document.getElementById('fontToggle'); if(b){ b.setAttribute('aria-pressed',on); b.textContent=on?'A−':'A+'; }
         }
-        document.addEventListener('DOMContentLoaded', ()=>{ try{ if(localStorage.getItem('chraim_theme')==='light'){ document.documentElement.classList.add('light'); const b=document.getElementById('darkToggle'); if(b) b.textContent='☀️'; } }catch(e){} });
+        document.addEventListener('DOMContentLoaded', ()=>{ try{ if(localStorage.getItem('chraim_big')==='1'){ document.documentElement.classList.add('big-text'); const b=document.getElementById('fontToggle'); if(b){b.textContent='A−'; b.setAttribute('aria-pressed','true');} } }catch(e){} });
 
         // Initialize on load
         document.addEventListener('DOMContentLoaded', async () => { await loadAcademicData(); updatePathways(); loadGroups(); renderToday(); renderGreeting(); loadAnnouncements(); try{const l=localStorage.getItem('chraim_lang'); if(l&&window.CHRVVIM_PAGE){const sel=document.getElementById('langSelect'); if(sel) sel.value=l; CHRVVIM_PAGE.apply(l);} }catch(e){} });
