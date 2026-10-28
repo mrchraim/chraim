@@ -1,0 +1,24 @@
+/* Glass card (CSP-safe, no Tailwind) */
+.glass-card {
+  background: rgba(255,255,255,0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.125);
+  box-shadow: 0 10px 25px -5px rgba(0,0,0,.15);
+  border-radius: 1rem;
+  transition: transform .3s, box-shadow .3s, border-color .3s;
+}
+.dark .glass-card, html.dark .glass-card {
+  background: rgba(15,23,42,0.65);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.glass-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px -10px rgba(0,0,0,.25);
+  border-color: rgba(56,189,248,0.5);
+}
+.hero-bg {
+  background: linear-gradient(135deg, rgba(14,165,233,0.2), rgba(168,85,247,0.2));
+}
+.dark .hero-bg, html.dark .hero-bg {
+  background: linear-gradient(135deg, rgba(56,189,248,0.2), rgba(126,34,206,0.2));
+}
