@@ -1,35 +1,76 @@
 <!doctype html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" data-theme="dark">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#0b1220">
-<title>الصفحة غير موجودة — CHRAIM</title>
+<meta name="theme-color" content="#071225">
+<title>404 — 页面未找到 | CHRAIM</title>
 <meta name="robots" content="noindex">
 <link rel="stylesheet" href="/assets/fonts/fonts.css">
+<link rel="stylesheet" href="/assets/design-tokens.css">
 <style>
- body{margin:0;min-height:100vh;display:grid;place-items:center;background:#0b1220;color:#eef4ff;
-   font-family:system-ui,-apple-system,"Segoe UI",Tahoma,Arial,sans-serif;text-align:center;padding:24px}
- .box{border:1px solid #31435b;border-radius:20px;padding:34px 26px;max-width:560px;background:#101d30;box-shadow:0 18px 50px #0006}
- h1{margin:0 0 6px;font-size:2.4rem;letter-spacing:.04em}
- p{color:#aebbd0;line-height:1.9;margin:0 0 18px}
- .btn{display:inline-block;margin:6px 4px;padding:11px 18px;border-radius:999px;text-decoration:none;
-   font-weight:700;background:linear-gradient(135deg,#e0c078,#c79a3a);color:#0b1220}
- .btn.alt{background:none;border:1px solid #31435b;color:#e6c77c}
+  body {
+    margin: 0; min-height: 100vh;
+    display: grid; place-items: center;
+    background: var(--page); color: var(--text);
+    font-family: var(--font-body);
+    text-align: center; padding: 24px;
+    overflow: hidden;
+  }
+  .error-card {
+    position: relative; z-index: 2;
+    border: 1px solid var(--border); border-radius: var(--radius-lg);
+    padding: 48px 32px; max-width: 520px;
+    background: var(--surface-glass); backdrop-filter: blur(16px);
+    box-shadow: var(--shadow-float);
+  }
+  .error-code {
+    font-size: clamp(6rem, 20vw, 10rem); font-weight: 900;
+    line-height: 1; margin: 0;
+    background: linear-gradient(135deg, var(--gold), var(--gold-bright));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .error-title { font-size: var(--type-lg); margin: 12px 0 8px; color: var(--text); }
+  .error-desc { color: var(--text-muted); line-height: 1.9; margin: 0 0 24px; }
+  .btn {
+    display: inline-block; margin: 6px 4px; padding: 12px 24px;
+    border-radius: var(--radius-pill); text-decoration: none;
+    font-weight: 700; font-size: var(--type-sm);
+    background: linear-gradient(135deg, var(--gold), var(--gold-bright));
+    color: #071225; transition: transform var(--motion-base) var(--ease-standard);
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn.alt {
+    background: transparent; border: 1px solid var(--border);
+    color: var(--gold); backdrop-filter: blur(8px);
+  }
+  .zellige-bg {
+    position: fixed; inset: 0; pointer-events: none; opacity: .06;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='88' height='88' viewBox='0 0 88 88'%3E%3Cg fill='none' stroke='%23d4a72c' stroke-width='1.2'%3E%3Cpath d='M44 0 88 44 44 88 0 44Z M44 12 76 44 44 76 12 44Z'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: 88px 88px;
+  }
+  .floating-symbol {
+    position: fixed; font-size: clamp(8rem, 30vw, 20rem); opacity: .03;
+    color: var(--gold); pointer-events: none; user-select: none;
+    top: 50%; left: 50%; transform: translate(-50%, -50%);
+  }
 </style>
 </head>
 <body>
- <main class="box">
-   <h1>404</h1>
-   <p>ما لقيناش هاد الصفحة. يمكن جيتي من رابط قديم، ولا الرابط مكتوب غلط.</p>
-   <p>
-     <a class="btn" href="/">⌂ الصفحة الرئيسية</a>
-     <a class="btn alt" href="/portal.html">بوابة الطالب</a>
-     <a class="btn alt" href="/etablissements/">دليل المؤسسات</a>
-   </p>
- </main>
- <script src="/assets/back-home.js" defer></script>
-<script src="/assets/cmdk.js" defer></script>
-<script src="/assets/site-footer.js" defer></script>
+  <div class="zellige-bg"></div>
+  <div class="floating-symbol">§</div>
+  <main class="error-card">
+    <h1 class="error-code">404</h1>
+    <h2 class="error-title">الصفحة غير موجودة</h2>
+    <p class="error-desc">عذراً، الصفحة التي تبحث عنها غير متوفرة. ربما تم نقلها أو حذفها. استخدم الروابط أدناه للعودة إلى المحتوى.</p>
+    <p>
+      <a class="btn" href="/">← العودة للرئيسية</a>
+      <a class="btn alt" href="/portal.html">البوابة الطلابية</a>
+      <a class="btn alt" href="/etablissements/">المؤسسات</a>
+    </p>
+  </main>
+  <script src="/assets/back-home.js" defer></script>
+  <script src="/assets/design-upgrade.js" defer></script>
 </body>
 </html>

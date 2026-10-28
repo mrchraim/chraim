@@ -20,6 +20,8 @@
     <!-- CSS مبني محلياً (Tailwind 3.4.17) + خط Cairo محلي: متوافق مع CSP ويعمل دون إنترنت -->
     <link rel="stylesheet" href="/assets/fonts/cairo.css">
     <link rel="stylesheet" href="/assets/tailwind-home.css">
+    <link rel="stylesheet" href="/assets/glass.css">
+    <link rel="stylesheet" href="/assets/design-tokens.css">
     <link rel="stylesheet" href="/assets/components.css">
     <script src="/assets/lib/lucide-0.454.0.min.js" defer></script>
     <style>
@@ -74,6 +76,13 @@ html.light body header #themeToggle,html.light body header #fontToggle{backgroun
 html.light #themeToggle,html.light #fontToggle{opacity:1!important;filter:none!important;background-image:none!important}
 html.light #fontToggle[aria-pressed=true]{background:#e9c04a!important;color:#1a1300!important}
 </style>
+<style>
+        .hero-cinematic { background: radial-gradient(circle at 20% 30%, rgba(212,175,55,.15), transparent 40%), radial-gradient(circle at 80% 70%, rgba(20,61,156,.25), transparent 45%), linear-gradient(135deg, #0b2a6f, #143d9c 60%, #0b2a6f); position:relative; overflow:hidden; }
+        .hero-cinematic::before { content:""; position:absolute; inset:0; opacity:.08; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cpath d='M30 3l7 14 15-7-7 15 14 7-14 7 7 15-15-7-7 14-7-14-15 7 7-15-14-7 14-7-7-15 15 7z' fill='none' stroke='%23d4a72c' stroke-width='1'/%3E%3C/svg%3E"); background-size:60px 60px; pointer-events:none; }
+        .glass-card { background: rgba(28,37,65,.6); backdrop-filter: blur(12px); border: 1px solid rgba(212,175,55,.2); border-radius: 1rem; padding: 1rem; transition: transform .2s, box-shadow .2s; }
+        .glass-card:hover { transform: translateY(-3px); box-shadow: 0 10px 22px rgba(11,42,111,.25); }
+        @media (prefers-reduced-motion: reduce) { .glass-card:hover { transform:none; } }
+    </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between">
     <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-gold-500 text-navy-950 px-3 py-1 rounded">انتقل إلى المحتوى</a>
@@ -110,7 +119,7 @@ html.light #fontToggle[aria-pressed=true]{background:#e9c04a!important;color:#1a
     <main id="main" class="flex-1 max-w-7xl w-full mx-auto px-4 py-8 space-y-8">
 
         <!-- Hero Status Banner -->
-        <section class="glass-card rounded-2xl p-6 md:p-8 shadow-2xl relative overflow-hidden">
+        <section class="hero-cinematic glass-card rounded-2xl p-6 md:p-8 shadow-2xl relative overflow-hidden">
             <div class="absolute -left-10 -bottom-10 w-48 h-48 bg-gold-500/10 rounded-full blur-3xl pointer-events-none"></div>
             <div class="relative z-10 max-w-4xl space-y-3">
                 <div class="flex flex-wrap items-center gap-2">
@@ -770,5 +779,6 @@ html.light #fontToggle[aria-pressed=true]{background:#e9c04a!important;color:#1a
 <script src="/assets/cmdk.js" defer></script>
 <script src="/page-i18n.js" defer></script>
 <script src="/assets/site-nav.js" defer></script>\n<script src="/assets/site-footer.js" defer></script>
+<script src="/assets/design-upgrade.js" defer></script>
 </body>
 </html>

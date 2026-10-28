@@ -1,0 +1,9 @@
+old_path,new_path,type,status,notes
+/public/documents/*,/documents/:splat,200,implemented,Cloudflare Pages internal rewrite
+/public/assets/*,/assets/:splat,200,implemented,Cloudflare Pages internal rewrite
+/admin.html,/admin,308,automatic,Cloudflare clean URLs (automatic)
+/admin,/admin.html,200,netlify,Netlify redirect (status 200)
+/portal.html,/portal,308,automatic,Cloudflare clean URLs
+/rafiq-altalib.html,/rafiq-altalib,308,automatic,Cloudflare clean URLs
+/students-guide.html,/students-guide,308,automatic,Cloudflare clean URLs
+/index.html,/,308,automatic,Cloudflare clean URLs

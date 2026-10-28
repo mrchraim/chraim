@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>بوابة جامعة ابن زهر | Ibn Zohr Portal</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { sans: ['Tajawal','Inter','system-ui','sans-serif'] } } } }
+</script>
+<style>
+  :root { --btn-bg:#0369a1; --btn-fg:#ffffff; }                 /* 5.9:1 on white text */
+  .dark { --btn-bg:#38bdf8; --btn-fg:#0f172a; }                 /* 8.6:1 */
+  .glass { background:rgba(255,255,255,.8); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border:1px solid rgba(15,23,42,.1); }
+  .dark .glass { background:rgba(15,23,42,.75); border-color:rgba(255,255,255,.1); }
+  .btn { background:var(--btn-bg); color:var(--btn-fg); }
+  *:focus-visible { outline:2px solid var(--btn-bg); outline-offset:2px; }
+  @media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style>
+<script>
+  // apply the saved or system theme before paint (no flash)
+  (function(){ var t=null; try{ t=localStorage.getItem('uiz_theme'); }catch(e){}
+    if(!t) t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    document.documentElement.classList.toggle('dark', t==='dark'); })();
+</script>
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-50 min-h-screen font-sans transition-colors">
+
+<nav class="sticky top-0 z-50 glass border-b border-slate-200 dark:border-slate-800">
+  <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 btn rounded-full flex items-center justify-center font-bold" aria-hidden="true">UIZ</div>
+      <span class="font-bold text-lg hidden sm:block">جامعة ابن زهر</span>
+    </div>
+    <button id="themeBtn" type="button" aria-label="تبديل المظهر (ليلي / نهاري)" aria-pressed="false"
+            class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition text-xl">🌓</button>
+  </div>
+</nav>
+
+<main class="max-w-7xl mx-auto px-4 py-8 space-y-14">
+  <header class="text-center space-y-3">
+    <h1 class="text-4xl font-extrabold tracking-tight">البوابة الطلابية الشاملة</h1>
+    <p class="text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">وصول سريع للمؤسسات الجامعية ومجتمعات التواصل الطلابية بجامعة ابن زهر بأكادير.</p>
+  </header>
+
+  <section aria-labelledby="wa-h" class="space-y-6">
+    <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+      <h2 id="wa-h" class="text-2xl font-bold">مجتمعات الواتساب الطلابية</h2>
+      <label class="w-full md:w-1/3">
+        <span class="sr-only">تصفية المجموعات</span>
+        <input id="q" type="search" placeholder="ابحث عن شعبة أو سداسي (مثال: القانون S1)..."
+          class="w-full px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800">
+      </label>
+    </div>
+    <div id="groups" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    <p id="none" class="hidden text-center text-slate-600 dark:text-slate-300">لا توجد مجموعات مطابقة.</p>
+  </section>
+
+  <section aria-labelledby="c-h" class="space-y-6 pt-8 border-t border-slate-200 dark:border-slate-800">
+    <h2 id="c-h" class="text-2xl font-bold">المؤسسات والمواقع الجامعية</h2>
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div id="campuses" class="space-y-3 lg:col-span-1"></div>
+      <div class="lg:col-span-2 h-[360px] rounded-xl overflow-hidden glass">
+        <iframe id="map" title="خريطة المؤسسات الجامعية" class="w-full h-full border-0" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+/* بيانات المجموعات: الروابط منقولة من صفحة البوابة الأصلية */
+const GROUPS = [
+  {s:'S1', t:'القانون بالعربية - شعبة A',  k:'law', id:'Kv1opKq6b9Q34MCkFFixvG'},
+  {s:'S1', t:'القانون بالعربية - شعبة B',  k:'law', id:'Hh0NWc1Cbqw9v8D2lr9LbU'},
+  {s:'S3', t:'القانون الخاص - شعبة AB',    k:'law', id:'IHFUUZ0Xq9LK0GUY4s462d'},
+  {s:'S5', t:'المهن القانونية والقضائية',   k:'law', id:'IYGoBdRpUfoLYLJthAN7qj'},
+  {s:'S5', t:'قانون المال والأعمال',        k:'law', id:'JwEDLJbihTgBZyWfwdKvHh'},
+  {s:'S5', t:'القانون الجنائي والعلوم الأمنية', k:'law', id:'FoitsuCbJH3KWKI3p4M8Uf'}
+];
+/* المواقع: الهواتف والعناوين كما وردت في الصفحة الأصلية، ويُنصح بالتحقق منها */
+const CAMPUSES = [
+  {t:'المركب الجامعي الجديد - أيت ملول', a:'Nouveau complexe universitaire, Agadir', p:'0528 22 71 25', q:'Université Ibn Zohr Ait Melloul'},
+  {t:'رئاسة جامعة ابن زهر',              a:'Rue 2, B.P 8106, Agadir',               p:'0528 22 71 25', q:'Présidence Université Ibn Zohr Agadir'},
+  {t:'كلية العلوم (FSA) - أكادير',       a:'B.P 8106, Hay Dakhla, Agadir',          p:'0528 22 09 57', q:'Faculté des Sciences Agadir'}
+];
+const norm = t => String(t).toLowerCase().replace(/[\u064B-\u0652\u0640]/g,'').replace(/[أإآ]/g,'ا').replace(/ى/g,'ي').replace(/ة/g,'ه');
+const el = (tag, cls, txt) => { const e=document.createElement(tag); if(cls) e.className=cls; if(txt!=null) e.textContent=txt; return e; };
+
+/* groups */
+const gBox = document.getElementById('groups'), none = document.getElementById('none');
+GROUPS.forEach(g => {
+  const c = el('div','glass p-6 rounded-xl shadow-sm group-card');
+  c.dataset.tags = norm(g.t+' '+g.s+' '+g.k);
+  const top = el('div','flex justify-between items-start mb-4');
+  top.append(el('h3','font-bold text-lg',g.t), el('span','text-xs px-2 py-1 rounded-full bg-slate-200 text-slate-900 font-bold',g.s));
+  const a = el('a','btn block text-center rounded-lg py-2 font-bold hover:opacity-90 transition','انضمام للمجموعة');
+  a.href='https://chat.whatsapp.com/'+g.id; a.target='_blank'; a.rel='noopener noreferrer';
+  c.append(top,a); gBox.appendChild(c);
+});
+document.getElementById('q').addEventListener('input', e => {
+  const t = norm(e.target.value.trim()); let n=0;
+  gBox.querySelectorAll('.group-card').forEach(c => { const ok = c.dataset.tags.includes(t); c.style.display = ok ? '' : 'none'; if(ok) n++; });
+  none.classList.toggle('hidden', n>0);
+});
+
+/* campuses + map */
+const map = document.getElementById('map'), cBox = document.getElementById('campuses');
+const mapUrl = q => 'https://www.google.com/maps?q='+encodeURIComponent(q)+'&output=embed';
+CAMPUSES.forEach((c,i) => {
+  const b = el('button','w-full text-start glass p-4 rounded-lg hover:border-sky-500 transition');
+  b.type='button';
+  b.append(el('div','font-bold',c.t), el('div','text-sm text-slate-600 dark:text-slate-300 mt-1',c.a), el('div','text-sm mt-1 font-mono',c.p));
+  b.addEventListener('click', () => { map.src = mapUrl(c.q); });
+  cBox.appendChild(b); if(i===0) map.src = mapUrl(c.q);
+});
+
+/* theme */
+const root=document.documentElement, tb=document.getElementById('themeBtn');
+const sync=()=>tb.setAttribute('aria-pressed', root.classList.contains('dark'));
+sync();
+tb.addEventListener('click',()=>{ root.classList.toggle('dark'); sync(); try{localStorage.setItem('uiz_theme', root.classList.contains('dark')?'dark':'light');}catch(e){} });
+</script>
+</body>
+</html>

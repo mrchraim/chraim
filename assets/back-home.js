@@ -26,7 +26,7 @@
     '@media print{#chraimBackHome{display:none!important}}';
 
   function inject() {
-    if (document.getElementById('chraimBackHome')) return;
+    if (document.getElementById('chraimBackHome') || document.getElementById('floatingDock')) return; // الصفحة لديها شريط تنقل خاص بها
 
     var style = document.createElement('style');
     style.id = 'chraimBackHomeStyle';
