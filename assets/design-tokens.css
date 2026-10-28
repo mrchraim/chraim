@@ -1,0 +1,41 @@
+/* CHRAIM design tokens */
+:root {
+  --ch-navy: #0b2a6f;
+  --ch-blue: #143d9c;
+  --ch-gold: #d4a72c;
+  --ch-bg: #0b132b;
+  --ch-card: #1c2541;
+  --ch-text: #edf2f4;
+  --ch-muted: #8d99ae;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --shadow-sm: 0 2px 8px rgba(0,0,0,.08);
+  --shadow-md: 0 8px 16px rgba(0,0,0,.3);
+  --motion-fast: 150ms;
+  --motion-normal: 250ms;
+  --font-heading: 'Cairo', 'Tajawal', sans-serif;
+  --font-body: 'Cairo', system-ui, sans-serif;
+}
+[data-theme="light"] {
+  --ch-bg: #f8f9fa;
+  --ch-card: #ffffff;
+  --ch-text: #0f2038;
+  --ch-muted: #5a6b84;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --ch-bg: #f8f9fa;
+    --ch-card: #ffffff;
+    --ch-text: #0f2038;
+    --ch-muted: #5a6b84;
+  }
+}
+body { background: var(--ch-bg); color: var(--ch-text); font-family: var(--font-body); }
