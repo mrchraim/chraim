@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>دليل طلبة جامعة ابن زهر | Ibn Zohr University Portal</title>
+  
+  <!-- Font Preloads (Tajawal & Inter) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: ['class', '[data-theme="dark"]'],
+      theme: {
+        extend: {
+          colors: {
+            midnight: {
+              900: '#070C18',
+              800: '#0B132B',
+              700: '#1C2541',
+              600: '#2A365C'
+            },
+            gold: {
+              300: '#FFE885',
+              400: '#F3CF55',
+              500: '#D4AF37',
+              600: '#AA8820'
+            }
+          },
+          fontFamily: {
+            sans: ['Tajawal', 'Inter', 'sans-serif'],
+            display: ['Tajawal', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* ==========================================================================
+       DESIGN SYSTEM & TOKENS (assets/design-tokens.css embedded)
+       ========================================================================== */
+    :root {
+      /* Typography scale */
+      --font-scale: 1;
+      --font-family-base: 'Tajawal', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+      /* Spacing scale */
+      --space-1: 0.25rem;  /* 4px */
+      --space-2: 0.5rem;   /* 8px */
+      --space-3: 0.75rem;  /* 12px */
+      --space-4: 1rem;     /* 16px */
+      --space-6: 1.5rem;   /* 24px */
+      --space-8: 2rem;     /* 32px */
+      --space-12: 3rem;    /* 48px */
+
+      /* Transitions */
+      --ease-apple: cubic-bezier(0.16, 1, 0.3, 1);
+      --duration-fast: 150ms;
+      --duration-normal: 250ms;
+      --duration-slow: 400ms;
+
+      /* Border radius */
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-full: 9999px;
+    }
+
+    /* DARK THEME (DEFAULT) */
+    [data-theme="dark"] {
+      --bg-primary: #070c18;
+      --bg-secondary: #0b132b;
+      --bg-tertiary: #1c2541;
+      --bg-glass: rgba(11, 19, 43, 0.65);
+      --bg-glass-card: rgba(28, 37, 65, 0.45);
+      
+      --border-color: rgba(212, 175, 55, 0.18);
+      --border-color-hover: rgba(212, 175, 55, 0.5);
+      
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      
+      --accent-gold: #d4af37;
+      --accent-gold-light: #ffd700;
+      --accent-glow: rgba(212, 175, 55, 0.25);
+
+      --shadow-card: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 1px 1px rgba(212, 175, 55, 0.15);
+      --shadow-float: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
+
+      --ticker-bg: #d4af37;
+      --ticker-text: #070c18;
+    }
+
+    /* LIGHT THEME */
+    [data-theme="light"] {
+      --bg-primary: #f8fafc;
+      --bg-secondary: #ffffff;
+      --bg-tertiary: #f1f5f9;
+      --bg-glass: rgba(255, 255, 255, 0.85);
+      --bg-glass-card: rgba(255, 255, 255, 0.9);
+      
+      --border-color: rgba(11, 19, 43, 0.12);
+      --border-color-hover: rgba(212, 175, 55, 0.7);
+      
+      --text-main: #0b132b;
+      --text-muted: #475569;
+      --text-dim: #64748b;
+      
+      --accent-gold: #b38b14;
+      --accent-gold-light: #d4af37;
+      --accent-glow: rgba(212, 175, 55, 0.15);
+
+      --shadow-card: 0 10px 25px -5px rgba(11, 19, 43, 0.08), 0 0 1px 1px rgba(11, 19, 43, 0.05);
+      --shadow-float: 0 20px 35px -10px rgba(11, 19, 43, 0.15);
+
+      --ticker-bg: #1c2541;
+      --ticker-text: #ffffff;
+    }
+
+    /* Global Typography Base & Dynamic Scaling */
+    html {
+      font-size: calc(16px * var(--font-scale));
+      font-family: var(--font-family-base);
+      scroll-behavior: smooth;
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      transition: background-color var(--duration-slow) var(--ease-apple), color var(--duration-slow) var(--ease-apple);
+    }
+
+    /* Zellige Geometric Overlay Background */
+    .zellige-bg {
+      background-image: radial-gradient(var(--border-color) 1px, transparent 0);
+      background-size: 24px 24px;
+    }
+
+    /* Hero Parallax Zellige Canvas Simulation */
+    .zellige-pattern {
+      background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg stroke='%23D4AF37' stroke-width='0.6' stroke-opacity='0.18'%3E%3Cpath d='M0 0h80v80H0z'/%3E%3Cpath d='M40 0l40 40-40 40L0 40z'/%3E%3Cpath d='M0 0l80 80M80 0L0 80'/%3E%3Ccircle cx='40' cy='40' r='12'/%3E%3Cpath d='M40 20l20 20-20 20-20-20z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    /* Glassmorphism Classes */
+    .glass-panel {
+      background: var(--bg-glass);
+      backdrop-filter: blur(16px) saturate(180%);
+      -webkit-backdrop-filter: blur(16px) saturate(180%);
+      border: 1px solid var(--border-color);
+    }
+
+    .glass-card {
+      background: var(--bg-glass-card);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-card);
+      transition: transform var(--duration-normal) var(--ease-apple), 
+                  box-shadow var(--duration-normal) var(--ease-apple),
+                  border-color var(--duration-normal) var(--ease-apple);
+      will-change: transform;
+    }
+
+    .glass-card:hover {
+      border-color: var(--border-color-hover);
+      box-shadow: 0 15px 35px -10px var(--accent-glow), 0 0 20px rgba(212, 175, 55, 0.2);
+    }
+
+    /* Section Symbol (§) Watermark Animation */
+    .glowing-section-symbol {
+      font-family: Georgia, serif;
+      background: linear-gradient(135deg, var(--accent-gold-light) 0%, rgba(212, 175, 55, 0.05) 70%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 0 40px rgba(212, 175, 55, 0.15));
+      user-select: none;
+    }
+
+    /* MARQUEE TICKER BAR - Edge to Edge Requirement */
+    .ticker-container {
+      width: 100vw;
+      position: relative;
+      left: 50%;
+      right: 50%;
+      margin-left: -50vw;
+      margin-right: -50vw;
+      overflow: hidden;
+      background: var(--ticker-bg);
+      color: var(--ticker-text);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .ticker-track {
+      display: flex;
+      white-space: nowrap;
+      animation: tickerAnimation 28s linear infinite;
+      will-change: transform;
+    }
+
+    .ticker-container:hover .ticker-track,
+    .ticker-container:focus-within .ticker-track {
+      animation-play-state: paused;
+    }
+
+    @keyframes tickerAnimation {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    [dir="ltr"] .ticker-track {
+      animation: tickerAnimationLTR 28s linear infinite;
+    }
+    @keyframes tickerAnimationLTR {
+      0% { transform: translateX(-50%); }
+      100% { transform: translateX(0); }
+    }
+
+    /* Floating Navigation Dock Isolation */
+    .floating-nav-isolated {
+      all: initial;
+      font-family: var(--font-family-base);
+      position: fixed;
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(0);
+      z-index: 99;
+      max-height: 52px;
+      height: 52px;
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
+      box-sizing: border-border-box;
+    }
+
+    .floating-nav-isolated.nav-hidden {
+      transform: translateX(-50%) translateY(120px);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* Word Fade-in Animation for Title */
+    .word-fade {
+      opacity: 0;
+      transform: translateY(12px);
+      animation: wordAppear 0.6s var(--ease-apple) forwards;
+    }
+
+    @keyframes wordAppear {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Accessibility High Focus Outline */
+    *:focus-visible {
+      outline: 2px solid var(--accent-gold) !important;
+      outline-offset: 3px !important;
+    }
+
+    /* Reduced Motion Accessibility Override */
+    @media (prefers-reduced-motion: reduce) {
+      *, ::before, ::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .ticker-track {
+        animation: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="min-h-screen flex flex-col antialiased selection:bg-gold-500 selection:text-midnight-900 zellige-bg">
+
+  <!-- ==========================================================================
+       HEADER & TOP NAVBAR
+       ========================================================================== -->
+  <header class="sticky top-0 z-50 glass-panel border-b border-[var(--border-color)] transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between py-3">
+      
+      <!-- Brand Logo / Title -->
+      <a href="#portal" class="flex items-center gap-3 group focus:outline-none">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-midnight-800 to-midnight-700 dark:from-gold-500 dark:to-gold-600 flex items-center justify-center text-gold-400 dark:text-midnight-900 font-extrabold text-xl shadow-lg border border-gold-500/30 group-hover:scale-105 transition-transform duration-300">
+          ز
+        </div>
+        <div class="flex flex-col">
+          <span class="font-extrabold text-lg tracking-tight text-[var(--text-main)] group-hover:text-[var(--accent-gold)] transition-colors" data-i18n-html="app.title">
+            دليل طلبة <span class="text-[var(--accent-gold)]">جامعة ابن زهر</span>
+          </span>
+          <span class="text-xs text-[var(--text-muted)] font-medium hidden sm:inline" data-i18n="app.subtitle">
+            البوابة الطلابية الرسمية والشاملة
+          </span>
+        </div>
+      </a>
+
+      <!-- Quick Actions / Controls -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        
+        <!-- Command Palette Shortcut Button -->
+        <button id="cmdSearchBtn" class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[var(--bg-tertiary)] border border-[var(--border-color)] text-xs text-[var(--text-muted)] hover:border-[var(--border-color-hover)] hover:text-[var(--text-main)] transition-all cursor-pointer">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          <span class="hidden md:inline" data-i18n="search.placeholder">ابحث عن أستاذ، مسلك، حصة...</span>
+          <kbd class="hidden sm:inline-block px-1.5 py-0.5 text-[10px] bg-[var(--bg-primary)] border border-[var(--border-color)] rounded text-[var(--text-dim)] font-mono">⌘K</kbd>
+        </button>
+
+        <!-- Font Size Scale Button (#fontToggle - Fixed A+/A-) -->
+        <button id="fontToggle" aria-label="تغيير حجم الخط" title="تغيير حجم الخط (A+ / A-)" class="p-2.5 rounded-xl bg-[var(--bg-tertiary)] border border-[var(--border-color)] text-[var(--text-main)] hover:border-[var(--accent-gold)] transition-all active:scale-95 cursor-pointer flex items-center justify-center font-bold text-xs">
+          <span id="fontToggleLabel">A+</span>
+        </button>
+
+        <!-- Language Switcher -->
+        <div class="relative inline-block text-left">
+          <select id="langSelect" aria-label="اختيار اللغة" class="px-2.5 py-1.5 rounded-xl bg-[var(--bg-tertiary)] border border-[var(--border-color)] text-xs font-semibold text-[var(--text-main)] hover:border-[var(--accent-gold)] focus:outline-none transition-all cursor-pointer appearance-none pr-7 ltr:pl-7">
+            <option value="ar">العربية</option>
+            <option value="fr">Français</option>
+            <option value="en">English</option>
+          </select>
+          <div class="pointer-events-none absolute inset-y-0 right-0 ltr:right-auto ltr:left-0 flex items-center px-2 text-[var(--text-muted)]">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </div>
+        </div>
+
+        <!-- Theme Toggle (Night/Day - #themeToggle) -->
+        <button id="themeToggle" aria-label="تبديل المظهر" class="p-2.5 rounded-xl bg-[var(--bg-tertiary)] border border-[var(--border-color)] text-[var(--text-main)] hover:border-[var(--accent-gold)] transition-all active:scale-95 cursor-pointer">
+          <!-- Sun Icon -->
+          <svg id="sunIcon" class="w-4 h-4 hidden dark:block text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+          <!-- Moon Icon -->
+          <svg id="moonIcon" class="w-4 h-4 block dark:hidden text-indigo-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+        </button>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       MARQUEE TICKER BAR (.ticker) - Fully Edge-To-Edge Requirement
+       ========================================================================== -->
+  <div class="ticker-container ticker border-y border-gold-500/20 py-2.5 my-0">
+    <div class="ticker-track text-xs font-bold tracking-wide flex items-center gap-8 px-4">
+      <span class="inline-flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span> 📢 إعلان هام: انطلاق التسجيل في مسالك البكالوريوس والدبلومات الرقمية للعام الجامعي جديد</span>
+      <span>✦</span>
+      <span class="inline-flex items-center gap-2">⏱️ جاري تحديث استعمالات الزمن للفصل الخريفي لكافة الكليات والأقطاب</span>
+      <span>✦</span>
+      <span class="inline-flex items-center gap-2">🎓 فتح باب إيداع ملفات المنحة الجامعية عبر منصة رفيق الطالب</span>
+      <span>✦</span>
+      <span class="inline-flex items-center gap-2">📍 جامعة ابن زهر أكادير: أكثر من 177 أستاذ باحث في خدمتكم</span>
+      <span>✦</span>
+      <!-- Duplicate content for infinite loop continuity -->
+      <span class="inline-flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span> 📢 إعلان هام: انطلاق التسجيل في مسالك البكالوريوس والدبلومات الرقمية للعام الجامعي جديد</span>
+      <span>✦</span>
+      <span class="inline-flex items-center gap-2">⏱️ جاري تحديث استعمالات الزمن للفصل الخريفي لكافة الكليات والأقطاب</span>
+      <span>✦</span>
+      <span class="inline-flex items-center gap-2">🎓 فتح باب إيداع ملفات المنحة الجامعية عبر منصة رفيق الطالب</span>
+      <span>✦</span>
+      <span class="inline-flex items-center gap-2">📍 جامعة ابن زهر أكادير: أكثر من 177 أستاذ باحث في خدمتكم</span>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       HERO SECTION WITH CINEMATIC LIGHTING & ZELLIGE PARALLAX
+       ========================================================================== -->
+  <main id="portal" class="flex-grow relative overflow-hidden">
+    
+    <!-- Background Watermark Symbol § -->
+    <div class="absolute inset-0 pointer-events-none flex items-center justify-center overflow-hidden z-0">
+      <span class="glowing-section-symbol text-[22rem] md:text-[36rem] font-bold opacity-10 select-none transform -translate-y-10">§</span>
+    </div>
+
+    <!-- Zellige Dynamic Pattern Layer -->
+    <div class="absolute inset-0 zellige-pattern opacity-60 dark:opacity-30 pointer-events-none z-0"></div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-20 sm:pt-16 sm:pb-28">
+      
+      <!-- Hero Headline with Word-by-Word Reveal -->
+      <div class="text-center max-w-4xl mx-auto space-y-6">
+        
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[var(--bg-tertiary)] border border-[var(--border-color)] text-xs font-semibold text-[var(--accent-gold)] shadow-sm">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+          <span>منصة الطالب الرقمية الموحدة v2.5</span>
+        </div>
+
+        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black text-[var(--text-main)] tracking-tight leading-tight sm:leading-none">
+          <span class="block text-balance" id="heroTitle">
+            <!-- Populated sequentially by JavaScript -->
+          </span>
+        </h1>
+
+        <p class="text-base sm:text-xl text-[var(--text-muted)] max-w-2xl mx-auto font-normal leading-relaxed" data-i18n="hero.subtitle">
+          الوصول المباشر إلى استعمالات الزمن، بطائق المسالك، دليل الأساتذة، والخدمات الجامعية لكليات أقاليم الجنوب.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-wrap items-center justify-center gap-4 pt-4">
+          <a href="#services" class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-gold-500 to-gold-600 text-midnight-900 font-extrabold text-sm shadow-lg shadow-gold-500/20 hover:scale-105 transition-all active:scale-95 cursor-pointer flex items-center gap-2">
+            <span data-i18n="btn.explore">استكشف الخدمات</span>
+            <svg class="w-4 h-4 ltr:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </a>
+
+          <button onclick="openCmdPalette()" class="px-6 py-3.5 rounded-xl glass-card text-[var(--text-main)] font-bold text-sm hover:border-[var(--accent-gold)] transition-all active:scale-95 cursor-pointer flex items-center gap-2">
+            <svg class="w-4 h-4 text-[var(--accent-gold)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+            <span data-i18n="btn.quickSearch">بحث سريع بالكلمات</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Live Count-Up Stats Section -->
+      <div class="mt-16 sm:mt-24 grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
+        
+        <div class="glass-card p-6 rounded-2xl text-center space-y-2 group">
+          <div class="text-3xl sm:text-4xl font-black text-[var(--accent-gold)] font-mono tracking-tight" id="stat-maslak" data-target="17">0</div>
+          <div class="text-xs sm:text-sm font-bold text-[var(--text-muted)] uppercase tracking-wider" data-i18n="stats.pathways">مسلكًا أكاديميًا مُعتمدًا</div>
+        </div>
+
+        <div class="glass-card p-6 rounded-2xl text-center space-y-2 group">
+          <div class="text-3xl sm:text-4xl font-black text-[var(--accent-gold)] font-mono tracking-tight" id="stat-hissa" data-target="452">0</div>
+          <div class="text-xs sm:text-sm font-bold text-[var(--text-muted)] uppercase tracking-wider" data-i18n="stats.sessions">حصة دراسية أسبوعيًا</div>
+        </div>
+
+        <div class="glass-card p-6 rounded-2xl text-center space-y-2 group">
+          <div class="text-3xl sm:text-4xl font-black text-[var(--accent-gold)] font-mono tracking-tight" id="stat-ostad" data-target="177">0</div>
+          <div class="text-xs sm:text-sm font-bold text-[var(--text-muted)] uppercase tracking-wider" data-i18n="stats.professors">أستاذًا وباحثًا جامعيًا</div>
+        </div>
+
+      </div>
+
+      <!-- ==========================================================================
+           GLASSMORPHISM SERVICE CARDS SECTION WITH 3D TILT EFFECT
+           ========================================================================== -->
+      <section id="services" class="mt-24 space-y-10">
+        
+        <div class="text-center space-y-3">
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-[var(--text-main)]" data-i18n-html="section.services.title">
+            الخدمات <span class="text-[var(--accent-gold)]">الجامعية المركزية</span>
+          </h2>
+          <p class="text-xs sm:text-sm text-[var(--text-muted)]" data-i18n="section.services.subtitle">
+            اختر البوابة أو الخدمة المطلوبة للولوج المباشر
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          
+          <!-- Card 1: دليل الطالب -->
+          <a href="./students-guide.html" class="glass-card tilt-card p-7 rounded-2xl flex flex-col justify-between group cursor-pointer focus:outline-none">
+            <div class="space-y-4">
+              <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-[var(--accent-gold)] flex items-center justify-center group-hover:scale-110 transition-transform">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+              </div>
+              <h3 class="text-xl font-bold text-[var(--text-main)] group-hover:text-[var(--accent-gold)] transition-colors">دليل الطالب الجامعي</h3>
+              <p class="text-xs leading-relaxed text-[var(--text-muted)]">دليل شامل للقوانين الجامعية، مسالك الإجازة والماستر، ونظام الامتحانات في الجامعة.</p>
+            </div>
+            <div class="mt-6 flex items-center justify-between text-xs font-bold text-[var(--accent-gold)] pt-4 border-t border-[var(--border-color)]">
+              <span>تصفح الدليل</span>
+              <svg class="w-4 h-4 group-hover:translate-x-[-4px] ltr:group-hover:translate-x-[4px] transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </div>
+          </a>
+
+          <!-- Card 2: رفيق الطالب -->
+          <a href="./rafiq-altalib.html" class="glass-card tilt-card p-7 rounded-2xl flex flex-col justify-between group cursor-pointer focus:outline-none">
+            <div class="space-y-4">
+              <div class="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              </div>
+              <h3 class="text-xl font-bold text-[var(--text-main)] group-hover:text-[var(--accent-gold)] transition-colors">منصة «رفيق الطالب»</h3>
+              <p class="text-xs leading-relaxed text-[var(--text-muted)]">متابعة استعمالات الزمن، الإعلانات الفورية، وتتبع الحصص الدراسية الملغاة والمدرجة.</p>
+            </div>
+            <div class="mt-6 flex items-center justify-between text-xs font-bold text-[var(--accent-gold)] pt-4 border-t border-[var(--border-color)]">
+              <span>ولوج المنصة</span>
+              <svg class="w-4 h-4 group-hover:translate-x-[-4px] ltr:group-hover:translate-x-[4px] transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </div>
+          </a>
+
+          <!-- Card 3: دليل الأساتذة -->
+          <div onclick="openCmdPalette('أستاذ')" class="glass-card tilt-card p-7 rounded-2xl flex flex-col justify-between group cursor-pointer">
+            <div class="space-y-4">
+              <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+              </div>
+              <h3 class="text-xl font-bold text-[var(--text-main)] group-hover:text-[var(--accent-gold)] transition-colors">دليل الأساتذة والتواصل</h3>
+              <p class="text-xs leading-relaxed text-[var(--text-muted)]">البحث عن البريد الإلكتروني الأكاديمي، مكاتب التواصل، وساعات التأطير للأساتذة.</p>
+            </div>
+            <div class="mt-6 flex items-center justify-between text-xs font-bold text-[var(--accent-gold)] pt-4 border-t border-[var(--border-color)]">
+              <span>ابحث الآن</span>
+              <svg class="w-4 h-4 group-hover:translate-x-[-4px] ltr:group-hover:translate-x-[4px] transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ==========================================================================
+       COMMAND PALETTE DIALOG (CTRL+K / CMD+K)
+       ========================================================================== -->
+  <div id="cmdPaletteModal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-md flex items-start justify-center pt-20 px-4 hidden transition-opacity duration-200">
+    <div class="glass-panel w-full max-w-xl rounded-2xl shadow-2xl border border-[var(--border-color)] overflow-hidden flex flex-col max-h-[80vh]">
+      
+      <!-- Input Header -->
+      <div class="p-4 border-b border-[var(--border-color)] flex items-center gap-3">
+        <svg class="w-5 h-5 text-[var(--accent-gold)] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+        <input type="text" id="cmdInput" placeholder="اكتب للبحث (أستاذ، وحدة، مسلك، قاعة)..." class="w-full bg-transparent text-sm text-[var(--text-main)] placeholder-[var(--text-dim)] focus:outline-none" dir="auto" />
+        <kbd class="px-2 py-1 text-[10px] bg-[var(--bg-tertiary)] border border-[var(--border-color)] rounded text-[var(--text-dim)]">ESC</kbd>
+      </div>
+
+      <!-- Results List -->
+      <div id="cmdResults" class="p-2 overflow-y-auto divide-y divide-[var(--border-color)] text-xs">
+        <!-- Dynamically filled by JS -->
+      </div>
+
+      <!-- Footer Info -->
+      <div class="p-3 bg-[var(--bg-tertiary)] border-t border-[var(--border-color)] flex items-center justify-between text-[11px] text-[var(--text-dim)]">
+        <span>استعمل أسهم المفاتيح للتنقل و <kbd class="px-1 border rounded bg-[var(--bg-primary)]">Enter</kbd> للاختيار</span>
+        <span>جامعة ابن زهر</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       SMART FLOATING DOCK NAVBAR (Isolation Guarantee: assets/back-home.js)
+       ========================================================================== -->
+  <div id="floatingDock" class="floating-nav-isolated">
+    <nav role="navigation" class="glass-panel px-4 py-2 rounded-full border border-[var(--border-color)] shadow-2xl flex items-center gap-4 text-xs font-bold text-[var(--text-main)]">
+      <a href="#portal" class="hover:text-[var(--accent-gold)] flex items-center gap-1.5 transition-colors">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+        <span data-i18n="nav.home">الرئيسية</span>
+      </a>
+      <span class="w-px h-4 bg-[var(--border-color)]"></span>
+      <button onclick="window.history.back()" class="hover:text-[var(--accent-gold)] flex items-center gap-1.5 transition-colors cursor-pointer">
+        <svg class="w-4 h-4 ltr:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+        <span data-i18n="nav.back">رجوع</span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- ==========================================================================
+       FOOTER
+       ========================================================================== -->
+  <footer class="border-t border-[var(--border-color)] bg-[var(--bg-secondary)] py-8 text-center text-xs text-[var(--text-muted)] space-y-2">
+    <p>جميع الحقوق محفوظة © 2026 دليل طلبة جامعة ابن زهر — chraim.pages.dev</p>
+    <p class="text-[11px] text-[var(--text-dim)]">تصميم وتطوير مستند لرؤية عالمية واضحة وهوية مغربية جامعية اصيلة</p>
+  </footer>
+
+  <!-- ==========================================================================
+       JAVASCRIPT LOGIC
+       ========================================================================== -->
+  <script>
+    /* --------------------------------------------------------------------------
+       1. TRANSLATION & DICTIONARIES
+       -------------------------------------------------------------------------- */
+    const translations = {
+      ar: {
+        'app.title': 'دليل طلبة <span class="text-[var(--accent-gold)]">جامعة ابن زهر</span>',
+        'app.subtitle': 'البوابة الطلابية الرسمية والشاملة',
+        'search.placeholder': 'ابحث عن أستاذ، مسلك، حصة...',
+        'hero.title': 'دليل طلبة جامعة ابن زهر',
+        'hero.subtitle': 'الوصول المباشر إلى استعمالات الزمن، بطائق المسالك، دليل الأساتذة، والخدمات الجامعية لكليات أقاليم الجنوب.',
+        'btn.explore': 'استكشف الخدمات',
+        'btn.quickSearch': 'بحث سريع بالكلمات',
+        'stats.pathways': 'مسلكًا أكاديميًا مُعتمدًا',
+        'stats.sessions': 'حصة دراسية أسبوعيًا',
+        'stats.professors': 'أستاذًا وباحثًا جامعيًا',
+        'section.services.title': 'الخدمات <span class="text-[var(--accent-gold)]">الجامعية المركزية</span>',
+        'section.services.subtitle': 'اختر البوابة أو الخدمة المطلوبة للولوج المباشر',
+        'nav.home': 'الرئيسية',
+        'nav.back': 'رجوع'
+      },
+      fr: {
+        'app.title': 'Guide Etudiants <span class="text-[var(--accent-gold)]">UIZ</span>',
+        'app.subtitle': 'Portail Etudiant Officiel et Intégré',
+        'search.placeholder': 'Rechercher un prof, module...',
+        'hero.title': 'Guide Des Etudiants Université Ibn Zohr',
+        'hero.subtitle': 'Accès direct aux emplois du temps, filières, annuaire des enseignants et services universitaires.',
+        'btn.explore': 'Explorer les services',
+        'btn.quickSearch': 'Recherche Rapide',
+        'stats.pathways': 'Filières Accréditées',
+        'stats.sessions': 'Séances Hebdomadaires',
+        'stats.professors': 'Enseignants Chercheurs',
+        'section.services.title': 'Services <span class="text-[var(--accent-gold)]">Universitaires</span>',
+        'section.services.subtitle': 'Choisissez le portail ou service désiré pour un accès direct',
+        'nav.home': 'Accueil',
+        'nav.back': 'Retour'
+      },
+      en: {
+        'app.title': 'Student Guide <span class="text-[var(--accent-gold)]">UIZ</span>',
+        'app.subtitle': 'Official Comprehensive Student Portal',
+        'search.placeholder': 'Search professors, courses...',
+        'hero.title': 'Ibn Zohr University Student Portal',
+        'hero.subtitle': 'Direct access to course schedules, degree programs, faculty directories, and campus services.',
+        'btn.explore': 'Explore Services',
+        'btn.quickSearch': 'Quick Search',
+        'stats.pathways': 'Accredited Programs',
+        'stats.sessions': 'Weekly Sessions',
+        'stats.professors': 'Faculty Members',
+        'section.services.title': 'University <span class="text-[var(--accent-gold)]">Services</span>',
+        'section.services.subtitle': 'Select a service portal for instant access',
+        'nav.home': 'Home',
+        'nav.back': 'Back'
+      }
+    };
+
+    /* --------------------------------------------------------------------------
+       2. MOCK COMMAND PALETTE DATA
+       -------------------------------------------------------------------------- */
+    const searchableItems = [
+      { title: 'دليل الطالب الجامعي', type: 'خدمة', link: './students-guide.html' },
+      { title: 'منصة رفيق الطالب - استعمالات الزمن', type: 'خدمة', link: './rafiq-altalib.html' },
+      { title: 'د. محمد الإدريسي - أستاذ الذكاء الاصطناعي', type: 'أستاذ', desc: 'كلية العلوم بأكادير - مكتب 12' },
+      { title: 'د. أمينة العمراني - أستاذة القانون العام', type: 'أستاذة', desc: 'كلية العلوم القانونية - مكتب 04' },
+      { title: 'مسلك القانون باللغة العربية (الإجازة)', type: 'مسلك', desc: 'FSJES Agadir' },
+      { title: 'مسلك العلوم الرياضياتية والتطبيقات (SMA)', type: 'مسلك', desc: 'FSA Agadir' },
+      { title: 'حصة الفيزياء الحديثة - المدرج 3', type: 'حصة', desc: 'الإثنين 08:30 - 10:30' }
+    ];
+
+    /* --------------------------------------------------------------------------
+       3. INITIALIZATION & STATE MANAGEMENT
+       -------------------------------------------------------------------------- */
+    let currentLang = localStorage.getItem('uiz_lang') || 'ar';
+    let currentScale = parseFloat(localStorage.getItem('uiz_scale')) || 1.0;
+
+    window.addEventListener('DOMContentLoaded', () => {
+      initTheme();
+      initFontScale();
+      initLang(currentLang);
+      renderHeroTitle();
+      initCountersObserver();
+      initSmartFloatingDock();
+      init3DTiltEffect();
+      initCmdPalette();
+    });
+
+    /* --------------------------------------------------------------------------
+       4. THEME TOGGLE WITH CIRCULAR VIEW TRANSITIONS API
+       -------------------------------------------------------------------------- */
+    function initTheme() {
+      const savedTheme = localStorage.getItem('uiz_theme') || 
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    }
+
+    const themeBtn = document.getElementById('themeToggle');
+    themeBtn.addEventListener('click', (e) => {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+      // View Transitions API circular expansion effect fallback
+      if (!document.startViewTransition) {
+        document.documentElement.setAttribute('data-theme', nextTheme);
+        localStorage.setItem('uiz_theme', nextTheme);
+        return;
+      }
+
+      const x = e.clientX;
+      const y = e.clientY;
+      const endRadius = Math.hypot(
+        Math.max(x, window.innerWidth - x),
+        Math.max(y, window.innerHeight - y)
+      );
+
+      const transition = document.startViewTransition(() => {
+        document.documentElement.setAttribute('data-theme', nextTheme);
+        localStorage.setItem('uiz_theme', nextTheme);
+      });
+
+      transition.ready.then(() => {
+        const clipPath = [
+          `circle(0px at ${x}px ${y}px)`,
+          `circle(${endRadius}px at ${x}px ${y}px)`
+        ];
+        document.documentElement.animate(
+          { clipPath: clipPath },
+          {
+            duration: 400,
+            easing: 'cubic-bezier(0.16, 1, 0.3, 1)',
+            pseudoElement: '::view-transition-new(root)'
+          }
+        );
+      });
+    });
+
+    /* --------------------------------------------------------------------------
+       5. FONT SIZE SCALER (#fontToggle A+ / A-)
+       -------------------------------------------------------------------------- */
+    function initFontScale() {
+      document.documentElement.style.setProperty('--font-scale', currentScale);
+      updateFontScaleLabel();
+    }
+
+    function updateFontScaleLabel() {
+      const label = document.getElementById('fontToggleLabel');
+      if (label) {
+        label.textContent = currentScale > 1.0 ? 'A−' : 'A+';
+      }
+    }
+
+    document.getElementById('fontToggle').addEventListener('click', () => {
+      currentScale = currentScale === 1.0 ? 1.15 : 1.0;
+      document.documentElement.style.setProperty('--font-scale', currentScale);
+      localStorage.setItem('uiz_scale', currentScale);
+      updateFontScaleLabel();
+    });
+
+    /* --------------------------------------------------------------------------
+       6. LANGUAGE SWITCHER & DOM UPDATES
+       -------------------------------------------------------------------------- */
+    const langSelect = document.getElementById('langSelect');
+    langSelect.value = currentLang;
+
+    langSelect.addEventListener('change', (e) => {
+      currentLang = e.target.value;
+      localStorage.setItem('uiz_lang', currentLang);
+      initLang(currentLang);
+      renderHeroTitle();
+    });
+
+    function initLang(lang) {
+      document.documentElement.setAttribute('lang', lang);
+      document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+
+      // Replace text elements with data-i18n
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang] && translations[lang][key]) {
+          el.textContent = translations[lang][key];
+        }
+      });
+
+      // Replace HTML elements with data-i18n-html
+      document.querySelectorAll('[data-i18n-html]').forEach(el => {
+        const key = el.getAttribute('data-i18n-html');
+        if (translations[lang] && translations[lang][key]) {
+          el.innerHTML = translations[lang][key];
+        }
+      });
+    }
+
+    /* --------------------------------------------------------------------------
+       7. HERO SEQUENTIAL WORD FADE-IN
+       -------------------------------------------------------------------------- */
+    function renderHeroTitle() {
+      const container = document.getElementById('heroTitle');
+      const text = translations[currentLang]['hero.title'] || translations['ar']['hero.title'];
+      const words = text.split(' ');
+
+      container.innerHTML = '';
+      words.forEach((word, idx) => {
+        const span = document.createElement('span');
+        span.className = 'word-fade inline-block mx-1';
+        span.style.animationDelay = `${idx * 0.12}s`;
+        span.textContent = word;
+        container.appendChild(span);
+      });
+    }
+
+    /* --------------------------------------------------------------------------
+       8. ANIMATED COUNT-UP STATS (IntersectionObserver)
+       -------------------------------------------------------------------------- */
+    function initCountersObserver() {
+      const targets = [
+        document.getElementById('stat-maslak'),
+        document.getElementById('stat-hissa'),
+        document.getElementById('stat-ostad')
+      ];
+
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animateCount(entry.target);
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.4 });
+
+      targets.forEach(el => el && observer.observe(el));
+    }
+
+    function animateCount(el) {
+      const targetNum = parseInt(el.getAttribute('data-target'), 10);
+      let currentNum = 0;
+      const duration = 1500; // ms
+      const stepTime = Math.abs(Math.floor(duration / targetNum));
+
+      const timer = setInterval(() => {
+        currentNum += Math.ceil(targetNum / 30);
+        if (currentNum >= targetNum) {
+          el.textContent = targetNum;
+          clearInterval(timer);
+        } else {
+          el.textContent = currentNum;
+        }
+      }, stepTime);
+    }
+
+    /* --------------------------------------------------------------------------
+       9. SMART FLOATING DOCK (Hide on Scroll Down, Reveal on Scroll Up)
+       -------------------------------------------------------------------------- */
+    function initSmartFloatingDock() {
+      const dock = document.getElementById('floatingDock');
+      let lastScrollY = window.scrollY;
+
+      window.addEventListener('scroll', () => {
+        const currentScrollY = window.scrollY;
+        
+        if (currentScrollY > lastScrollY && currentScrollY > 100) {
+          dock.classList.add('nav-hidden');
+        } else {
+          dock.classList.remove('nav-hidden');
+        }
+        lastScrollY = currentScrollY;
+      }, { passive: true });
+    }
+
+    /* --------------------------------------------------------------------------
+       10. 3D CARD TILT INTERACTION
+       -------------------------------------------------------------------------- */
+    function init3DTiltEffect() {
+      const cards = document.querySelectorAll('.tilt-card');
+
+      cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+
+          const rotateX = ((y - centerY) / centerY) * -6; // deg
+          const rotateY = ((x - centerX) / centerX) * 6; // deg
+
+          card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+        });
+
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
+        });
+      });
+    }
+
+    /* --------------------------------------------------------------------------
+       11. COMMAND PALETTE MODAL LOGIC (Ctrl+K)
+       -------------------------------------------------------------------------- */
+    const cmdModal = document.getElementById('cmdPaletteModal');
+    const cmdInput = document.getElementById('cmdInput');
+    const cmdResults = document.getElementById('cmdResults');
+
+    function initCmdPalette() {
+      // Event listeners for keyboard shortcuts
+      window.addEventListener('keydown', (e) => {
+        if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+          e.preventDefault();
+          if (cmdModal.classList.contains('hidden')) {
+            openCmdPalette();
+          } else {
+            closeCmdPalette();
+          }
+        }
+        if (e.key === 'Escape' && !cmdModal.classList.contains('hidden')) {
+          closeCmdPalette();
+        }
+      });
+
+      cmdModal.addEventListener('click', (e) => {
+        if (e.target === cmdModal) closeCmdPalette();
+      });
+
+      cmdInput.addEventListener('input', (e) => {
+        filterCmdResults(e.target.value);
+      });
+
+      const cmdSearchBtn = document.getElementById('cmdSearchBtn');
+      if (cmdSearchBtn) {
+        cmdSearchBtn.addEventListener('click', () => openCmdPalette());
+      }
+    }
+
+    function openCmdPalette(initialFilter = '') {
+      cmdModal.classList.remove('hidden');
+      cmdInput.value = initialFilter;
+      filterCmdResults(initialFilter);
+      setTimeout(() => cmdInput.focus(), 50);
+    }
+
+    function closeCmdPalette() {
+      cmdModal.classList.add('hidden');
+    }
+
+    function filterCmdResults(query) {
+      const q = query.trim().toLowerCase();
+      const filtered = searchableItems.filter(item => 
+        item.title.toLowerCase().includes(q) || 
+        (item.desc && item.desc.toLowerCase().includes(q)) ||
+        item.type.toLowerCase().includes(q)
+      );
+
+      cmdResults.innerHTML = '';
+
+      if (filtered.length === 0) {
+        cmdResults.innerHTML = '<div class="p-4 text-center text-[var(--text-muted)]">لا توجد نتائج مطابقة لجميع معايير البحث</div>';
+        return;
+      }
+
+      filtered.forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'p-3 rounded-lg hover:bg-[var(--bg-tertiary)] flex items-center justify-between cursor-pointer transition-colors';
+        div.innerHTML = `
+          <div>
+            <div class="font-bold text-[var(--text-main)]">${item.title}</div>
+            ${item.desc ? `<div class="text-[11px] text-[var(--text-muted)] mt-0.5">${item.desc}</div>` : ''}
+          </div>
+          <span class="px-2 py-0.5 rounded text-[10px] bg-[var(--bg-primary)] border border-[var(--border-color)] text-[var(--accent-gold)]">${item.type}</span>
+        `;
+        div.addEventListener('click', () => {
+          closeCmdPalette();
+          if (item.link) window.location.href = item.link;
+        });
+        cmdResults.appendChild(div);
+      });
+    }
+  </script>
+</body>
+</html>
