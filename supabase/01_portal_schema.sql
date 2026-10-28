@@ -24,6 +24,7 @@ create table if not exists public.admins (
 );
 
 alter table public.admins enable row level security;
+alter table public.admins force row level security;
 
 -- كل مستعمل يشوف غير سطرو هو (كفاية باش نعرفو واش هو مسؤول)
 drop policy if exists "admins_read_self" on public.admins;
@@ -65,6 +66,7 @@ create index if not exists idx_announcements_status
   on public.announcements (status, updated_at desc);
 
 alter table public.announcements enable row level security;
+alter table public.announcements force row level security;
 
 -- قراءة عمومية للمنشور فقط
 drop policy if exists "ann_read_published" on public.announcements;
@@ -112,6 +114,7 @@ create index if not exists idx_exam_files_subject
   on public.exam_files (subject_id);
 
 alter table public.exam_files enable row level security;
+alter table public.exam_files force row level security;
 
 -- قراءة عمومية للموافق عليه فقط
 drop policy if exists "ef_read_approved" on public.exam_files;
@@ -147,18 +150,49 @@ $$;
 
 grant execute on function public.bump_exam_download(bigint) to anon, authenticated;
 
+-- عدّاد التحميلات: حارس (منع التلاعب)
+create or replace function public.guard_exam_downloads()
+returns trigger
+language plpgsql
+security definer
+set search_path = public
+as $$
+begin
+  if new.downloads is distinct from old.downloads + 1 then
+    if not public.is_admin() then
+      new.downloads := old.downloads;
+    end if;
+  end if;
+  return new;
+end;
+$$;
+
+drop trigger if exists guard_exam_downloads on public.exam_files;
+create trigger guard_exam_downloads
+  before update on public.exam_files
+  for each row
+  when (old.downloads is distinct from new.downloads)
+  execute function public.guard_exam_downloads();
+
 -- ---------------------------------------------------------------------------
 -- 4) التخزين: حاوية edu-files (خاصة — الوصول عبر روابط مؤقتة)
 -- ---------------------------------------------------------------------------
-insert into storage.buckets (id, name, public)
-values ('edu-files', 'edu-files', false)
-on conflict (id) do nothing;
+insert into storage.buckets (id, name, public, file_size_limit, allowed_mime_types)
+values ('edu-files', 'edu-files', false, 26214400, array['application/pdf', 'image/png', 'image/jpeg', 'image/webp'])
+on conflict (id) do update set file_size_limit = 26214400, allowed_mime_types = array['application/pdf', 'image/png', 'image/jpeg', 'image/webp'];
 
--- قراءة الكائنات (ضرورية لتوليد الروابط المؤقتة) — الملفات تبقى خاصة
+-- قراءة الكائنات: فقط الملفات المرتبطة بامتحانات موافق عليها
 drop policy if exists "edu_files_read" on storage.objects;
 create policy "edu_files_read" on storage.objects
   for select to anon, authenticated
-  using (bucket_id = 'edu-files');
+  using (
+    bucket_id = 'edu-files'
+    and exists (
+      select 1 from public.exam_files ef
+      where ef.status = 'approved'
+        and (ef.file_path = name or ef.correction_path = name)
+    )
+  );
 
 -- الزوار: رفع فقط داخل المجلد contrib/
 drop policy if exists "edu_files_insert_contrib" on storage.objects;
