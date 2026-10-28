@@ -5,27 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>بوابة طلبة جامعة ابن زهر | UIZ Student Portal</title>
   
-  <!-- خطوط جوجل (Tajawal & Inter) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+  <!-- خطوط محلية (Cairo + Tajawal + Inter) — CSP-safe -->
+  <link rel="stylesheet" href="/assets/fonts/cairo.css">
+  <link rel="stylesheet" href="/assets/fonts/fonts.css">
   
-  <!-- إطار عمل Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: ['class', '[data-theme="dark"]'],
-      theme: {
-        extend: {
-          colors: {
-            midnight: { 900: '#070C18', 800: '#0B132B', 700: '#1C2541', 600: '#2A365C' },
-            gold: { 300: '#FFE885', 400: '#F3CF55', 500: '#D4AF37', 600: '#AA8820' }
-          },
-          fontFamily: { sans: ['Tajawal', 'Inter', 'sans-serif'] }
-        }
-      }
-    }
-  </script>
+  <!-- Tailwind CSS مبني محلياً (CSP-safe) -->
+  <link rel="stylesheet" href="/assets/tailwind-home.css">
+  <link rel="stylesheet" href="/assets/components.css">
 
   <style>
     /* المتغيرات الأساسية والتصميم الزجاجي */
@@ -334,7 +320,7 @@
             <h3 class="font-bold text-lg leading-tight text-[var(--text-main)]">${g.t}</h3>
             <span class="text-xs px-2 py-1 rounded bg-[var(--bg-tertiary)] border border-[var(--border-color)] text-[var(--accent-gold)] font-bold">${g.s}</span>
           </div>
-          <a href="https://chat.whatsapp.com/${g.id}" target="_blank" class="block text-center rounded-lg py-2 mt-4 bg-[var(--bg-tertiary)] border border-[var(--border-color)] font-bold hover:bg-[var(--accent-gold)] hover:text-midnight-900 transition">انضمام</a>
+          <a href="https://chat.whatsapp.com/${g.id}" target="_blank" rel="noopener noreferrer" class="block text-center rounded-lg py-2 mt-4 bg-[var(--bg-tertiary)] border border-[var(--border-color)] font-bold hover:bg-[var(--accent-gold)] hover:text-midnight-900 transition">انضمام</a>
         `;
         box.appendChild(card);
       });
@@ -409,5 +395,9 @@
       input.addEventListener('input', e => filter(e.target.value));
     }
   </script>
+  <!-- i18n (ar/fr/en/zgh) -->
+  <script src="/page-i18n.js" defer></script>
+  <!-- back-home floating nav -->
+  <script src="/assets/back-home.js" defer></script>
 </body>
 </html>
