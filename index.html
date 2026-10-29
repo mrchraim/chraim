@@ -85,27 +85,27 @@ html.light #fontToggle[aria-pressed=true]{background:#e9c04a!important;color:#1a
     </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between">
-    <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-gold-500 text-navy-950 px-3 py-1 rounded">انتقل إلى المحتوى</a>
+    <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-gold-500 text-black px-3 py-1 rounded">انتقل إلى المحتوى</a>
 
     <!-- Header Navigation -->
     <header class="bg-navy-900/90 border-b border-gold-500/30 sticky top-0 z-50 backdrop-blur-md">
         <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center space-x-3 space-x-reverse">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-gold-400 to-gold-600 text-navy-950 font-black flex items-center justify-center text-xl shadow-lg shadow-gold-500/20">CH</div>
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-gold-400 to-gold-600 text-black font-black flex items-center justify-center text-xl shadow-lg shadow-gold-500/20">CH</div>
                 <div>
                     <h1 class="font-extrabold text-lg text-white leading-tight tracking-wide">CHRAIM</h1>
                     <p class="text-[11px] text-gold-400 opacity-90" data-i18n="hero.motto">دليل الطالب أكادير — جامعة ابن زهر</p>
                 </div>
             </div>
             <div class="flex items-center gap-2">
-                <select id="langSelect" onchange="if(window.CHRVVIM_PAGE)CHRVVIM_PAGE.apply(this.value); try{localStorage.setItem('chraim_lang',this.value)}catch(e){}" class="text-xs bg-navy-900 text-gold-400 border border-gold-500/30 px-2 py-1 rounded-full font-bold">
+                <select id="langSelect" aria-label="Language selector" onchange="if(window.CHRVVIM_PAGE)CHRVVIM_PAGE.apply(this.value); try{localStorage.setItem('chraim_lang',this.value)}catch(e){}" class="text-xs bg-navy-900 text-white border border-gold-500/30 px-2 py-1 rounded-full font-bold">
     <option value="ar">AR</option>
     <option value="fr">FR</option>
     <option value="en">EN</option>
 </select>
 <button id="themeToggle" onclick="toggleTheme()" aria-label="تبديل وضع النهار والليل" title="نهار / ليل" class="text-xs bg-navy-900 text-gold-400 border border-gold-500/30 px-2 py-1 rounded-full font-bold">🌙</button>
-<button id="fontToggle" onclick="toggleFont()" aria-pressed="false" aria-label="تكبير الخط" title="تكبير الخط" class="text-xs bg-navy-900 text-gold-400 border border-gold-500/30 px-2 py-1 rounded-full font-bold">A+</button>
-<a href="/orientation.html" class="text-xs bg-gold-500 text-navy-950 px-3 py-1 rounded-full flex items-center gap-1.5 font-black hover:bg-gold-400">
+<button id="fontToggle" onclick="toggleFont()" aria-pressed="false" aria-label="A+" title="تكبير الخط" class="text-xs bg-navy-900 text-gold-400 border border-gold-500/30 px-2 py-1 rounded-full font-bold">A+</button>
+<a href="/orientation.html" class="text-xs bg-gold-600 text-white px-3 py-1 rounded-full flex items-center gap-1.5 font-black hover:bg-gold-500">
                     <i data-lucide="sparkles" class="w-4 h-4"></i> مرشد التوجيه
                 </a>
                 <span class="hidden sm:flex text-xs bg-gold-500/10 text-gold-400 border border-gold-500/30 px-3 py-1 rounded-full flex items-center gap-1.5 font-bold">
@@ -123,7 +123,7 @@ html.light #fontToggle[aria-pressed=true]{background:#e9c04a!important;color:#1a
             <div class="absolute -left-10 -bottom-10 w-48 h-48 bg-gold-500/10 rounded-full blur-3xl pointer-events-none"></div>
             <div class="relative z-10 max-w-4xl space-y-3">
                 <div class="flex flex-wrap items-center gap-2">
-                    <span class="bg-gold-500 text-navy-950 font-bold text-xs px-3 py-1 rounded-md">تحديث الكلية الرسمي</span>
+                    <span class="bg-gold-500 text-black font-bold text-xs px-3 py-1 rounded-md">تحديث الكلية الرسمي</span>
                     <span class="text-xs text-gray-300 bg-navy-900 px-2.5 py-0.5 rounded border border-navy-700">آخر تحيين: 2026-10-23</span>
                 </div>
                 <h2 class="text-2xl md:text-4xl font-black text-white leading-tight" data-i18n-html="hero.h1html">
@@ -194,7 +194,7 @@ html.light #fontToggle[aria-pressed=true]{background:#e9c04a!important;color:#1a
             </h3>
             <div class="flex gap-2">
                 <input id="homeSearch" type="search" aria-label="بحث سريع" placeholder="ابحث عن كلية، مدرسة، صفحة… (Ctrl+K)" class="flex-1 bg-navy-950 border border-navy-700 text-white rounded-xl p-3 text-sm focus:border-gold-500 outline-none" readonly>
-                <button onclick="document.getElementById('cmdkBtn').click()" class="bg-gold-500 text-navy-950 font-bold px-4 rounded-xl text-sm">بحث</button>
+                <button onclick="document.getElementById('cmdkBtn').click()" class="bg-gold-600 text-white font-bold px-4 rounded-xl text-sm">بحث</button>
             </div>
             <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
                 <a href="#schedule" class="glass-card p-3 rounded-xl text-center text-xs font-bold text-white hover:border-gold-500/40" data-i18n="hub.c12b">📅 جدولي</a>
@@ -229,14 +229,14 @@ html.light #fontToggle[aria-pressed=true]{background:#e9c04a!important;color:#1a
             <!-- Filters Grid -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div>
-                    <label class="block text-xs font-bold text-gold-400 mb-1.5">1. الفصل الدراسي</label>
+                    <label for="semesterSelect" class="block text-xs font-bold text-gold-400 mb-1.5">1. الفصل الدراسي</label>
                     <select id="semesterSelect" onchange="updatePathways()" class="w-full bg-navy-950 border border-navy-700 text-white rounded-xl p-3 text-sm focus:border-gold-500 outline-none transition-all">
                         <option value="S3">السداسي الثالث (S3)</option>
                         <option value="S5">السداسي الخامس (S5)</option>
                     </select>
                 </div>
                 <div>
-                    <label class="block text-xs font-bold text-gold-400 mb-1.5">2. الشعبة / المسار التخصصي</label>
+                    <label for="pathwaySelect" class="block text-xs font-bold text-gold-400 mb-1.5">2. الشعبة / المسار التخصصي</label>
                     <select id="pathwaySelect" class="w-full bg-navy-950 border border-navy-700 text-white rounded-lg p-3 text-sm focus:border-gold-500 outline-none transition-all">
                         <!-- Populated dynamically via JS -->
                     </select>
@@ -247,7 +247,7 @@ html.light #fontToggle[aria-pressed=true]{background:#e9c04a!important;color:#1a
                 </div>
             </div>
 
-            <button onclick="searchGroup()" class="w-full bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-400 hover:to-gold-500 text-navy-950 font-extrabold py-3.5 rounded-xl text-sm transition-all flex items-center justify-center gap-2 shadow-xl shadow-gold-500/10 cursor-pointer">
+            <button onclick="searchGroup()" class="w-full bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-400 hover:to-gold-500 text-black font-extrabold py-3.5 rounded-xl text-sm transition-all flex items-center justify-center gap-2 shadow-xl shadow-gold-500/10 cursor-pointer">
                 <i data-lucide="sparkles" class="w-4 h-4"></i> إظهار الفوج وتفاصيل الجدول الأسبوعي
             </button>
 
@@ -730,7 +730,7 @@ html.light #fontToggle[aria-pressed=true]{background:#e9c04a!important;color:#1a
             }
             // ICS export link
             const exp = document.createElement('button');
-            exp.className = 'mt-3 text-xs bg-gold-500 text-navy-950 font-bold px-3 py-1 rounded-full';
+            exp.className = 'mt-3 text-xs bg-gold-500 text-black font-bold px-3 py-1 rounded-full';
             exp.textContent = 'تصدير .ics';
             exp.onclick = () => exportICS(prof.pathwayId, prof.selectedPathwayName || '');
             tc.appendChild(exp);
