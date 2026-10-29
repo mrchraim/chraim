@@ -10,10 +10,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
-      - run: npm ci || npm install
+          cache: npm
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: npm ci
       - run: npm run lint
       - run: npm run format:check
       - run: npm test
@@ -22,14 +29,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+
+      - run: npm ci
       - run: npm run build:css
       - run: python tools/build-dist.py --out dist --clean
       - run: python tools/audit-links.py --root dist
       - run: python tools/audit-security.py
-      - name: Secret scan (gitleaks)
+
+      - name: Secret scan
         uses: gitleaks/gitleaks-action@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -39,11 +55,30 @@ jobs:
     continue-on-error: true
     steps:
       - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+
+      - run: npm ci
       - run: npm run build:css
       - run: python tools/build-dist.py --out dist --clean
+
+      - name: Serve dist
+        run: |
+          python -m http.server 8000 --directory dist > /tmp/chraim-http.log 2>&1 &
+          for i in $(seq 1 30); do
+            curl -fsS http://localhost:8000/ >/dev/null && exit 0
+            sleep 1
+          done
+          cat /tmp/chraim-http.log
+          exit 1
+
       - name: Lighthouse CI
         uses: treosh/lighthouse-ci-action@v11
         with:
@@ -57,12 +92,29 @@ jobs:
     continue-on-error: true
     steps:
       - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+
+      - run: npm ci
       - run: npm run build:css
       - run: python tools/build-dist.py --out dist --clean
+
       - name: Serve dist
-        run: python -m http.server 8000 --directory dist &
+        run: |
+          python -m http.server 8000 --directory dist > /tmp/chraim-axe.log 2>&1 &
+          for i in $(seq 1 30); do
+            curl -fsS http://localhost:8000/ >/dev/null && exit 0
+            sleep 1
+          done
+          cat /tmp/chraim-axe.log
+          exit 1
+
       - name: axe-core
-        run: npx @axe-core/cli http://localhost:8000/ --exit
+        run: npx --yes @axe-core/cli http://localhost:8000/ --exit
