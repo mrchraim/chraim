@@ -52,19 +52,75 @@
       "status": "verified"
     },
     {
+      "id": 20,
+      "title": "استعمال الزمن الفصل الثاني- ماستر المنازعات والمهن القانونية والقضائية -خاص بموظفي وزارة العدل ،السنة الجامعية 2026-2027.",
+      "date": "2026-10-16",
+      "url": "https://fsjpa.uiz.ac.ma/announcements/20",
+      "type": "emplois_du_temps",
+      "status": "verified"
+    },
+    {
+      "id": 18,
+      "title": "النتائج النهائية لولوج سلك الماستر - التوقيت الميسر",
+      "date": "2026-10-16",
+      "url": "https://fsjpa.uiz.ac.ma/announcements/18",
+      "type": "concours",
+      "status": "verified"
+    },
+    {
       "id": 17,
       "title": "تنبيه هام للطلبة: تحيين استعمالات الزمن",
-      "date": "2026-10-28",
+      "date": "2026-10-16",
       "url": "https://fsjpa.uiz.ac.ma/announcements/17",
       "type": "warning",
       "status": "verified"
     },
     {
-      "id": 8,
+      "id": 16,
       "title": "جدول استعمالات الزمن الفصل الخامس ، شعبة القانون العام ، شعبة القانون الخاص بالعربية",
-      "date": "2026-10-06",
-      "url": "https://fsjpa.uiz.ac.ma/announcements/8",
+      "date": "2026-10-16",
+      "url": "https://fsjpa.uiz.ac.ma/announcements/16",
       "type": "emplois_du_temps",
+      "status": "verified"
+    },
+    {
+      "id": 15,
+      "title": "جدول استعمالات الزمن الفصل الثالث الجذع المشترك ، شعبة القانون العام ، شعبة القانون الخاص بالعربية",
+      "date": "2026-10-16",
+      "url": "https://fsjpa.uiz.ac.ma/announcements/15",
+      "type": "emplois_du_temps",
+      "status": "verified"
+    },
+    {
+      "id": 13,
+      "title": "استعمال الزمن الفصل الأول-جذع مشترك - شعبة القانون الخاص شعبة القانون العام ،السنة الجامعية 2026-2027.",
+      "date": "2026-10-16",
+      "url": "https://fsjpa.uiz.ac.ma/announcements/13",
+      "type": "emplois_du_temps",
+      "status": "verified"
+    },
+    {
+      "id": 14,
+      "title": "الإعلان عن فتح باب الترشيحات لولوج إطار أستاذ التعليم العالي بالمؤسسات الجامعية التابعة لجامعة ابن زهر برسم سنة 2026+ المرفقات",
+      "date": "2026-10-11",
+      "url": "https://fsjpa.uiz.ac.ma/announcements/14",
+      "type": "avis",
+      "status": "verified"
+    },
+    {
+      "id": 12,
+      "title": "Emploi du temps - Session d'Automne Filière : Droit en Français (Droit Public / Droit Privé) Semestres : S1 - S3 - S5",
+      "date": "2026-10-07",
+      "url": "https://fsjpa.uiz.ac.ma/announcements/12",
+      "type": "emplois_du_temps",
+      "status": "verified"
+    },
+    {
+      "id": 9,
+      "title": "هام للطلبة الراغبين في الاستفادة من خدمات المطعم الجامعي",
+      "date": "2026-10-06",
+      "url": "https://fsjpa.uiz.ac.ma/announcements/9",
+      "type": "avis",
       "status": "verified"
     },
     {
@@ -76,18 +132,26 @@
       "status": "verified"
     },
     {
-      "id": 3,
-      "title": "Liste des candidats convoqués aux entretiens oraux",
-      "date": "2026-09-21",
-      "url": "https://fsjpa.uiz.ac.ma/announcements/3",
-      "type": "concours",
+      "id": 6,
+      "title": "استعمالات الزمن الخاصة بالفصل الثالث لمسالك الماستر، الموسم الجامعي 2026-2027",
+      "date": "2026-10-04",
+      "url": "https://fsjpa.uiz.ac.ma/announcements/6",
+      "type": "emplois_du_temps",
       "status": "verified"
     },
     {
-      "id": 1,
-      "title": "Liste des candidats convoqués",
-      "date": "2026-09-18",
-      "url": "https://fsjpa.uiz.ac.ma/announcements/1",
+      "id": 5,
+      "title": "إعلان هام: الطلبة المقبولين في عملية الانتقال لكلية العلوم القانونية والسياسية أكادير.",
+      "date": "2026-10-04",
+      "url": "https://fsjpa.uiz.ac.ma/announcements/5",
+      "type": "avis",
+      "status": "verified"
+    },
+    {
+      "id": 4,
+      "title": "لائحة انتقاء حاملي الباكالوريا القديمة والباكالوريا أحرار",
+      "date": "2026-10-04",
+      "url": "https://fsjpa.uiz.ac.ma/announcements/4",
       "type": "concours",
       "status": "verified"
     }
@@ -106,7 +170,24 @@
       "url": "https://fsjpa.uiz.ac.ma/announcements/25",
       "type": "emplois_du_temps",
       "status": "verified"
+    },
+    {
+      "title": "استعمال الزمن الفصل الثاني- ماستر المنازعات والمهن القانونية والقضائية -خاص بموظفي وزارة العدل ،السنة الجامعية 2026-2027.",
+      "date": "2026-10-16",
+      "url": "https://fsjpa.uiz.ac.ma/announcements/20",
+      "type": "emplois_du_temps",
+      "status": "verified"
+    },
+    {
+      "title": "استعمالات الزمن الخاصة بالفصل الثالث لمسالك الماستر، الموسم الجامعي 2026-2027",
+      "date": "2026-10-04",
+      "url": "https://fsjpa.uiz.ac.ma/announcements/6",
+      "type": "emplois_du_temps",
+      "status": "verified"
     }
   ],
-  "disclaimer": "موقع مستقل غير رسمي. البيانات منقولة عن الوثائق الرسمية المعلنة بالكلية. المصدر الرسمي المعتمد هو https://fsjpa.uiz.ac.ma. عند أي اختلاف تكون النسخة الرسمية هي المرجع."
+  "disclaimer": "موقع مستقل غير رسمي. البيانات منقولة عن الوثائق الرسمية المعلنة بالكلية. المصدر الرسمي المعتمد هو https://fsjpa.uiz.ac.ma. عند أي اختلاف تكون النسخة الرسمية هي المرجع.",
+  "total_announcements": 19,
+  "total_timetables": 4,
+  "source_verified_on": "2026-10-29"
 }
