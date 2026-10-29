@@ -1,6 +1,6 @@
 # CHRAIM — إعداد Netlify (الرؤوس الأمنية تأتي من ملف _headers الذي يُنسخ إلى dist/)
 [build]
-  command = "python3 tools/build-dist.py --out dist --clean && python3 tools/audit-links.py --root dist"
+  command = "npm run build:css && python3 tools/build-dist.py --out dist --clean && python3 tools/audit-links.py --root dist"
   publish = "dist"
 
 [build.environment]
