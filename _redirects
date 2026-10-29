@@ -1,22 +1,9 @@
-# Cloudflare Pages redirects
-# ملاحظة: Cloudflare كيدير "clean URLs" بوحدو: /admin.html → /admin (308).
-# إذن ما نزيدوش قاعدة /admin → /admin.html حيت كتخلق حلقة لا نهائية.
-/public/documents/* /documents/:splat 200
-/public/assets/* /assets/:splat 200
-
-# Proposed redirects (REVIEW REQUIRED — not applied)
-# These redirects would redirect existing pages to portal-simple-final.html or index.html
-# WARNING: These may break existing site functionality. Review before applying.
-# /academic-offer.html     /index.html#discover   302
-# /academic-updates.html   /index.html#discover   302
-# /students-guide.html     /portal-simple-final.html 302
-# /rafiq-altalib.html      /portal-simple-final.html 302
-# /orientation.html        /index.html#discover   302
-# /directory.html          /index.html#discover   302
-# /resources.html          /index.html#discover   302
-# /atlas.html              /index.html#discover   302
-# /ai-assistant.html       /portal-simple-final.html 302
-
-# Legacy domain redirects (to be configured in Cloudflare dashboard)
-# management-system-16j.pages.dev/* https://chraim.pages.dev/platform/:splat 301
-# ms-ops-7f3a9c.pages.dev/* https://chraim.pages.dev/admin 301
+/academic-offer.html     /index.html#discover          302
+/academic-updates.html   /index.html#discover          302
+/students-guide.html     /portal-simple-final.html     302
+/rafiq-altalib.html      /portal-simple-final.html     302
+/orientation.html        /index.html#discover          302
+/directory.html          /index.html#discover          302
+/resources.html          /index.html#discover          302
+/atlas.html              /index.html#discover          302
+/ai-assistant.html       /portal-simple-final.html     302
