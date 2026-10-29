@@ -3,3 +3,7 @@
 # إذن ما نزيدوش قاعدة /admin → /admin.html حيت كتخلق حلقة لا نهائية.
 /public/documents/* /documents/:splat 200
 /public/assets/* /assets/:splat 200
+
+# Legacy domain redirects (to be configured in Cloudflare dashboard)
+# management-system-16j.pages.dev/* https://chraim.pages.dev/platform/:splat 301
+# ms-ops-7f3a9c.pages.dev/* https://chraim.pages.dev/admin 301
