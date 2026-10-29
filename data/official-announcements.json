@@ -1,0 +1,112 @@
+{
+  "source": "Faculté des Sciences Juridiques et Politiques d'Agadir (FSJPA)",
+  "source_url": "https://fsjpa.uiz.ac.ma",
+  "verified_on": "2026-10-29",
+  "announcements": [
+    {
+      "id": 26,
+      "title": "إعلان لجميع الطلبة: مواعيد توقف الدراسة وانطلاق امتحانات الدورة الخريفية",
+      "date": "2026-10-28",
+      "url": "https://fsjpa.uiz.ac.ma/announcements/26",
+      "type": "avis",
+      "status": "verified"
+    },
+    {
+      "id": 19,
+      "title": "استعمال الزمن الفصل الأول- سلك الماستر -الزمن العادي-،السنة الجامعية 2026-2027.",
+      "date": "2026-10-28",
+      "url": "https://fsjpa.uiz.ac.ma/announcements/19",
+      "type": "emplois_du_temps",
+      "status": "verified"
+    },
+    {
+      "id": 25,
+      "title": "استعمالات الزمن الماستر (الفصل الأول - الفصل الثالث) - تحيين بتارخ 28 أكتوبر 2026",
+      "date": "2026-10-28",
+      "url": "https://fsjpa.uiz.ac.ma/announcements/25",
+      "type": "emplois_du_temps",
+      "status": "verified"
+    },
+    {
+      "id": 24,
+      "title": "إعلان إتمام التسجيل لطلبة الماستر التوقيت الميسر (السنة الأولى)",
+      "date": "2026-10-27",
+      "url": "https://fsjpa.uiz.ac.ma/announcements/24",
+      "type": "avis",
+      "status": "verified"
+    },
+    {
+      "id": 23,
+      "title": "إعلان إعادة التسجيل لطلبة الماستر التوقيت الميسر (السنة الثانية)",
+      "date": "2026-10-27",
+      "url": "https://fsjpa.uiz.ac.ma/announcements/23",
+      "type": "avis",
+      "status": "verified"
+    },
+    {
+      "id": 22,
+      "title": "إعلان عن إحداث أندية طلابية",
+      "date": "2026-10-27",
+      "url": "https://fsjpa.uiz.ac.ma/announcements/22",
+      "type": "avis",
+      "status": "verified"
+    },
+    {
+      "id": 17,
+      "title": "تنبيه هام للطلبة: تحيين استعمالات الزمن",
+      "date": "2026-10-28",
+      "url": "https://fsjpa.uiz.ac.ma/announcements/17",
+      "type": "warning",
+      "status": "verified"
+    },
+    {
+      "id": 8,
+      "title": "جدول استعمالات الزمن الفصل الخامس ، شعبة القانون العام ، شعبة القانون الخاص بالعربية",
+      "date": "2026-10-06",
+      "url": "https://fsjpa.uiz.ac.ma/announcements/8",
+      "type": "emplois_du_temps",
+      "status": "verified"
+    },
+    {
+      "id": 7,
+      "title": "النتائج النهائية لولوج سلك الماستر - التوقيت العادي",
+      "date": "2026-10-06",
+      "url": "https://fsjpa.uiz.ac.ma/announcements/7",
+      "type": "concours",
+      "status": "verified"
+    },
+    {
+      "id": 3,
+      "title": "Liste des candidats convoqués aux entretiens oraux",
+      "date": "2026-09-21",
+      "url": "https://fsjpa.uiz.ac.ma/announcements/3",
+      "type": "concours",
+      "status": "verified"
+    },
+    {
+      "id": 1,
+      "title": "Liste des candidats convoqués",
+      "date": "2026-09-18",
+      "url": "https://fsjpa.uiz.ac.ma/announcements/1",
+      "type": "concours",
+      "status": "verified"
+    }
+  ],
+  "timetables": [
+    {
+      "title": "استعمال الزمن الفصل الأول- سلك الماستر -الزمن العادي-،السنة الجامعية 2026-2027",
+      "date": "2026-10-28",
+      "url": "https://fsjpa.uiz.ac.ma/announcements/19",
+      "type": "emplois_du_temps",
+      "status": "verified"
+    },
+    {
+      "title": "استعمالات الزمن الماستر (الفصل الأول - الفصل الثالث) - تحيين بتارخ 28 أكتوبر 2026",
+      "date": "2026-10-28",
+      "url": "https://fsjpa.uiz.ac.ma/announcements/25",
+      "type": "emplois_du_temps",
+      "status": "verified"
+    }
+  ],
+  "disclaimer": "موقع مستقل غير رسمي. البيانات منقولة عن الوثائق الرسمية المعلنة بالكلية. المصدر الرسمي المعتمد هو https://fsjpa.uiz.ac.ma. عند أي اختلاف تكون النسخة الرسمية هي المرجع."
+}
