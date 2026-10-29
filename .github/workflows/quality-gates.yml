@@ -1,0 +1,163 @@
+name: CHRAIM Quality Gates
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: chraim-quality-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-unit:
+    name: Build, unit tests, lint, format
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install locked dependencies
+        run: npm ci
+      - name: Lint (required script)
+        run: |
+          node -e "if (!require('./package.json').scripts?.lint) { console.error('Missing npm script: lint'); process.exit(1) }"
+          npm run lint
+      - name: Format check (required script)
+        run: |
+          node -e "if (!require('./package.json').scripts?.['format:check']) { console.error('Missing npm script: format:check'); process.exit(1) }"
+          npm run format:check
+      - name: Unit tests (required script)
+        run: |
+          node -e "if (!require('./package.json').scripts?.test) { console.error('Missing npm script: test'); process.exit(1) }"
+          npm test -- --runInBand
+      - name: Build CSS when configured
+        run: |
+          if node -e "process.exit(require('./package.json').scripts?.['build:css'] ? 0 : 1)"; then
+            npm run build:css
+          else
+            echo "No build:css script found; checking whether project build helper exists."
+          fi
+      - name: Build distribution
+        run: |
+          if [ -f tools/build-dist.py ]; then
+            python tools/build-dist.py
+          elif node -e "process.exit(require('./package.json').scripts?.build ? 0 : 1)"; then
+            npm run build
+          else
+            echo "::error::No tools/build-dist.py or npm run build found."
+            exit 1
+          fi
+      - name: Verify generated site exists
+        run: |
+          test -d dist || { echo "::error::Build did not create dist/"; exit 1; }
+          test -f dist/index.html || { echo "::error::dist/index.html is missing"; exit 1; }
+      - uses: actions/upload-artifact@v4
+        with:
+          name: chraim-dist
+          path: dist/
+          if-no-files-found: error
+          retention-days: 7
+
+  links-security:
+    name: Links and security checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: npm ci
+      - name: Build distribution
+        run: |
+          if [ -f tools/build-dist.py ]; then
+            python tools/build-dist.py
+          elif node -e "process.exit(require('./package.json').scripts?.build ? 0 : 1)"; then
+            npm run build
+          else
+            echo "::error::No supported build command found."
+            exit 1
+          fi
+      - name: Dependency audit (high severity and above)
+        run: npm audit --audit-level=high
+      - name: Scan repository for secrets
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Check local links in generated site
+        run: |
+          npx --yes linkinator@6 dist --recurse --skip "https?://.*" --silent
+      - name: Verify headers and redirects files
+        run: python tools/verify_deployment_config.py
+
+  browser-a11y:
+    name: Lighthouse and axe accessibility
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    needs: build-and-unit
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: npm ci
+      - name: Build distribution
+        run: |
+          if [ -f tools/build-dist.py ]; then
+            python tools/build-dist.py
+          elif node -e "process.exit(require('./package.json').scripts?.build ? 0 : 1)"; then
+            npm run build
+          else
+            echo "::error::No supported build command found."
+            exit 1
+          fi
+      - name: Install Chromium for browser audits
+        run: |
+          npm install --no-save --no-package-lock @lhci/cli@0.14.0 @axe-core/playwright@4.10.2 playwright@1.51.1
+          npx playwright install --with-deps chromium
+      - name: Start local site
+        run: |
+          python -m http.server 8000 --directory dist > /tmp/chraim-http.log 2>&1 &
+          echo $! > /tmp/chraim-http.pid
+          for i in $(seq 1 40); do
+            if curl --fail --silent http://127.0.0.1:8000/ >/dev/null; then
+              echo "Local site ready."
+              exit 0
+            fi
+            sleep 1
+          done
+          cat /tmp/chraim-http.log
+          echo "::error::Local site did not start within 40 seconds."
+          exit 1
+      - name: Run Lighthouse CI with thresholds
+        run: npx lhci autorun --config=.lighthouserc.json
+      - name: Run axe WCAG 2.2 AA smoke test
+        run: node tools/run-axe-audit.cjs
+      - name: Upload Lighthouse reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-reports
+          path: .lighthouseci/
+          if-no-files-found: warn
+          retention-days: 7
