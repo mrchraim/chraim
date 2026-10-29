@@ -11,12 +11,14 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "build": "python tools/build-dist.py --out dist --clean",
+    "build:css": "npx tailwindcss -i assets/tailwind-input.css -o assets/tailwind-home.css --minify",
     "audit:links": "python tools/audit-links.py --root dist",
     "audit:security": "python tools/audit-security.py"
   },
   "devDependencies": {
     "eslint": "^9.0.0",
     "prettier": "^3.0.0",
+    "tailwindcss": "^3.4.19",
     "vitest": "^5.0.5"
   }
 }
