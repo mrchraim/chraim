@@ -11,7 +11,7 @@
     'width:auto!important;height:auto!important;max-height:48px!important;min-height:0!important;margin:0!important;padding:4px!important;gap:4px;' +
     'box-sizing:border-box;background:rgba(11,18,32,.88)!important;color:#fff;border:1px solid rgba(224,192,120,.55)!important;border-radius:999px!important;' +
     'overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.08);backdrop-filter:blur(14px) saturate(1.4);-webkit-backdrop-filter:blur(14px) saturate(1.4);' +
-    'font:700 13px/1 system-ui,-apple-system,"Segoe UI",Tahoma,Arial,sans-serif;direction:rtl}' +
+    'font:700 13px/1 system-ui,-apple-system,"Segoe UI",Tahoma,Arial,sans-serif;direction:rtl;max-height:48px!important;all:initial;position:fixed!important;inset:auto auto calc(16px + env(safe-area-inset-bottom,0px)) 50%!important;box-sizing:border-box;display:inline-flex!important;align-items:center!important;z-index:900!important}' +
     '#chraimBackHome>*{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex!important;align-items:center;justify-content:center;' +
     'height:38px!important;min-width:0!important;padding:0 16px!important;gap:7px;border-radius:999px!important;color:#fff;' +
     'font:700 13px/1 system-ui,-apple-system,"Segoe UI",Tahoma,Arial,sans-serif;white-space:nowrap;transition:background .15s,transform .15s}' +
@@ -26,7 +26,7 @@
     '@media print{#chraimBackHome{display:none!important}}';
 
   function inject() {
-    if (document.getElementById('chraimBackHome') || document.getElementById('floatingDock')) return; // الصفحة لديها شريط تنقل خاص بها
+    if (document.getElementById('chraimBackHome')) return;
 
     var style = document.createElement('style');
     style.id = 'chraimBackHomeStyle';
@@ -62,6 +62,12 @@
     bar.appendChild(home);
     bar.appendChild(back);
     (document.body || document.documentElement).appendChild(bar);
+    var lastY = window.scrollY, pending = false;
+    window.addEventListener('scroll', function(){ if(pending) return; pending=true; requestAnimationFrame(function(){ var y=window.scrollY; if(y<80 || y<lastY-4) bar.classList.remove('is-hidden'); else if(y>lastY+6) bar.classList.add('is-hidden'); lastY=y; pending=false; }); }, {passive:true});
+    var motion=document.createElement('style'); motion.textContent='#chraimBackHome.is-hidden{opacity:0!important;transform:translate(-50%,14px)!important;pointer-events:none!important}@media(prefers-reduced-motion:reduce){#chraimBackHome{transition:none!important}}'; document.head.appendChild(motion);
+    var lastY = window.scrollY, pending = false;
+    window.addEventListener('scroll', function(){ if(pending) return; pending=true; requestAnimationFrame(function(){ var y=window.scrollY; if(y<80 || y<lastY-4) bar.classList.remove('is-hidden'); else if(y>lastY+6) bar.classList.add('is-hidden'); lastY=y; pending=false; }); }, {passive:true});
+    var motion=document.createElement('style'); motion.textContent='#chraimBackHome.is-hidden{opacity:0!important;transform:translate(-50%,14px)!important;pointer-events:none!important}@media(prefers-reduced-motion:reduce){#chraimBackHome{transition:none!important}}'; document.head.appendChild(motion);
   }
 
   if (document.readyState === 'loading') {

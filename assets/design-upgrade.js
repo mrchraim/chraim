@@ -9,24 +9,24 @@
   };
 
   // Honor explicit preference first, then system preference on first visit.
-  const savedTheme = storage.get('chrvvim-theme');
+  const savedTheme = storage.get('chrvvim-theme') || storage.get('chraim_theme') || storage.get('cc_theme');
   if (savedTheme === 'light' || savedTheme === 'dark') root.dataset.theme = savedTheme;
   else if (!root.dataset.theme) root.dataset.theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 
   function applyTheme(theme) {
-    const change = () => { root.dataset.theme = theme; storage.set('chrvvim-theme', theme); };
+    const change = () => { root.dataset.theme = theme; storage.set('chrvvim-theme', theme); storage.set('chraim_theme', theme); storage.set('cc_theme', theme); storage.set('chraim_theme', theme); storage.set('cc_theme', theme); };
     const active = doc.activeElement;
     if (!reduced && document.startViewTransition) {
       try { doc.startViewTransition(change); } catch (_) { change(); }
     } else change();
-    doc.querySelectorAll('#themeToggle, [data-theme-toggle], #darkToggle').forEach(el => {
+    doc.querySelectorAll('#themeToggle, [data-theme-toggle], #darkToggle, #theme').forEach(el => {
       el.setAttribute('aria-pressed', String(theme === 'dark'));
       const label = theme === 'dark' ? 'التبديل إلى الوضع النهاري' : 'التبديل إلى الوضع الليلي';
       if (!el.hasAttribute('data-preserve-label')) el.setAttribute('aria-label', label);
     });
     if (active && active.isConnected) active.focus({preventScroll:true});
   }
-  doc.querySelectorAll('#themeToggle, [data-theme-toggle], #darkToggle').forEach(el => {
+  doc.querySelectorAll('#themeToggle, [data-theme-toggle], #darkToggle, #theme').forEach(el => {
     if (el.dataset.designThemeBound) return;
     el.dataset.designThemeBound = '1';
     el.addEventListener('click', e => {
@@ -52,10 +52,13 @@
   }
   if (fontButton) {
     applyFont();
-    fontButton.addEventListener('click', () => { largeFont = !largeFont; applyFont(); });
+    fontButton.addEventListener('click', e => { e.preventDefault(); e.stopImmediatePropagation(); largeFont = !largeFont; applyFont(); }, true);
   }
 
   // Reveal content gently, with a no-animation fallback.
+  const hero = doc.querySelector('.hero, .hero-section, [data-design-hero]');
+  if (hero && !hero.querySelector(':scope > .design-zellige')) { const pattern = doc.createElement('div'); pattern.className = 'design-zellige'; pattern.setAttribute('aria-hidden','true'); hero.prepend(pattern); }
+
   const revealTargets = doc.querySelectorAll('.hero h1, .hero h2, .hero-title, .service-card, .feature-card, .tool-card, .stat-card, [data-reveal]');
   if ('IntersectionObserver' in window && !reduced) {
     const revealObserver = new IntersectionObserver(entries => entries.forEach(entry => {
@@ -123,6 +126,8 @@
   doc.addEventListener('keydown', e => {
     if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
       const palette = doc.querySelector('[data-cmdk], #commandPalette, #cmdk, [role="dialog"][aria-label*="بحث"]');
+      if (!palette) { const search = doc.querySelector('#instSearch, input[type=search], input[placeholder*="بحث"], input[placeholder*="بحث"]'); if (search) { e.preventDefault(); search.focus(); search.scrollIntoView({block:'center',behavior:reduced?'auto':'smooth'}); } }
+      if (!palette) { const search = doc.querySelector('#instSearch, input[type=search], input[placeholder*="بحث"], input[placeholder*="بحث"]'); if (search) { e.preventDefault(); search.focus(); search.scrollIntoView({block:'center',behavior:reduced?'auto':'smooth'}); } }
       if (palette) {
         e.preventDefault();
         palette.hidden = false;
