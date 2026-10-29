@@ -1,75 +1,87 @@
-name: CI
+name: CI & Quality Gates
 
 on:
   push:
-    branches: [main, improve/*]
+    branches: [main, "improve/*"]
   pull_request:
+    branches: [main]
 
 jobs:
-  test:
+  # 1. وظيفة البناء والتجهيز الموحد (Build Artifact)
+  build:
+    name: Build & Asset Packaging
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
           cache: npm
-
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - run: npm ci
+      - run: npm run build:css
+      - run: python tools/build-dist.py --out dist --clean
+      - name: Upload Build Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist-files
+          path: dist/
+          retention-days: 1
 
+  # 2. جودة الكود واختبارات الوحدة
+  code-quality:
+    name: Lint, Format & Unit Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
       - run: npm ci
       - run: npm run lint
       - run: npm run format:check
       - run: npm test
 
-  links-and-security:
+  # 3. التدقيق الأمني وفحص الروابط وإعدادات النشر
+  security-and-links:
+    name: Security & Link Audit
     runs-on: ubuntu-latest
+    needs: build
     steps:
       - uses: actions/checkout@v4
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: "20"
-          cache: npm
-
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-
-      - run: npm ci
-      - run: npm run build:css
-      - run: python tools/build-dist.py --out dist --clean
+      - uses: actions/download-artifact@v4
+        with:
+          name: dist-files
+          path: dist
       - run: python tools/audit-links.py --root dist
       - run: python tools/audit-security.py
-
-      - name: Secret scan
+      - run: python tools/verify_deployment_config.py
+      - name: Gitleaks Secret Scan
         uses: gitleaks/gitleaks-action@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  lighthouse:
+  # 4. قياس الأداء وبوابات Lighthouse القياسية
+  lighthouse-audit:
+    name: Lighthouse Performance & SEO
     runs-on: ubuntu-latest
-    continue-on-error: true
+    needs: build
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
-          cache: npm
-
-      - uses: actions/setup-python@v5
+      - uses: actions/download-artifact@v4
         with:
-          python-version: "3.12"
-
-      - run: npm ci
-      - run: npm run build:css
-      - run: python tools/build-dist.py --out dist --clean
-
-      - name: Serve dist
+          name: dist-files
+          path: dist
+      - name: Serve Static Dist
         run: |
           python -m http.server 8000 --directory dist > /tmp/chraim-http.log 2>&1 &
           for i in $(seq 1 30); do
@@ -78,43 +90,42 @@ jobs:
           done
           cat /tmp/chraim-http.log
           exit 1
-
-      - name: Lighthouse CI
+      - name: Lighthouse CI Evaluation
         uses: treosh/lighthouse-ci-action@v11
         with:
           urls: |
             http://localhost:8000/
+          configPath: .lighthouserc.json
           uploadArtifacts: true
           temporaryPublicStorage: true
 
-  axe:
+  # 5. تدقيق إمكانية الوصول المتقدم (axe Accessibility Audit)
+  accessibility-audit:
+    name: axe Accessibility Compliance
     runs-on: ubuntu-latest
-    continue-on-error: true
+    needs: build
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
-          cache: npm
-
-      - uses: actions/setup-python@v5
+      - uses: actions/download-artifact@v4
         with:
-          python-version: "3.12"
-
-      - run: npm ci
-      - run: npm run build:css
-      - run: python tools/build-dist.py --out dist --clean
-
-      - name: Serve dist
+          name: dist-files
+          path: dist
+      - name: Serve Static Dist
         run: |
-          python -m http.server 8000 --directory dist > /tmp/chraim-axe.log 2>&1 &
+          python -m http.server 8001 --directory dist > /tmp/chraim-axe.log 2>&1 &
           for i in $(seq 1 30); do
-            curl -fsS http://localhost:8000/ >/dev/null && exit 0
+            curl -fsS http://localhost:8001/ >/dev/null && exit 0
             sleep 1
           done
           cat /tmp/chraim-axe.log
           exit 1
-
-      - name: axe-core
-        run: npx --yes @axe-core/cli http://localhost:8000/ --exit
+      - name: Run axe Accessibility Engine
+        run: |
+          if [ -f "tools/run-axe-audit.cjs" ]; then
+            node tools/run-axe-audit.cjs http://localhost:8001/
+          else
+            npx --yes @axe-core/cli http://localhost:8001/ --exit
+          fi
