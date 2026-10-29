@@ -26,7 +26,7 @@ jobs:
         with:
           python-version: "3.12"
       - run: npm run build:css
-  - run: python tools/build-dist.py --out dist --clean
+      - run: python tools/build-dist.py --out dist --clean
       - run: python tools/audit-links.py --root dist
       - run: python tools/audit-security.py
       - name: Secret scan (gitleaks)
@@ -43,7 +43,7 @@ jobs:
         with:
           python-version: "3.12"
       - run: npm run build:css
-  - run: python tools/build-dist.py --out dist --clean
+      - run: python tools/build-dist.py --out dist --clean
       - name: Lighthouse CI
         uses: treosh/lighthouse-ci-action@v11
         with:
@@ -61,7 +61,7 @@ jobs:
         with:
           python-version: "3.12"
       - run: npm run build:css
-  - run: python tools/build-dist.py --out dist --clean
+      - run: python tools/build-dist.py --out dist --clean
       - name: Serve dist
         run: python -m http.server 8000 --directory dist &
       - name: axe-core
