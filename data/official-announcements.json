@@ -184,10 +184,43 @@
       "url": "https://fsjpa.uiz.ac.ma/announcements/6",
       "type": "emplois_du_temps",
       "status": "verified"
+    },
+    {
+      "title": "جدول استعمالات الزمن الفصل الخامس ، شعبة القانون العام ، شعبة القانون الخاص بالعربية",
+      "date": "2026-10-16",
+      "url": "https://fsjpa.uiz.ac.ma/announcements/16",
+      "type": "emplois_du_temps",
+      "status": "verified",
+      "resources": [
+        {
+          "name": "توزيع أفواج السداسي الخامس قانون الخاص المهن القانونية والقضائية",
+          "url": "https://drive.google.com/file/d/1-mlSPa8e5B4-cTjigEYu7ot-9er82xhG/view?usp=drive_link"
+        },
+        {
+          "name": "توزيع أفواج السداسي الخامس قانون الخاص قانون المال والاعمال",
+          "url": "https://drive.google.com/file/d/1WhtgL3pf6Hfta3J8RO2zomMezy5Rarin/view?usp=drive_link"
+        },
+        {
+          "name": "توزيع أفواج السداسي الخامس قانون الخاص القانون المدني",
+          "url": "https://drive.google.com/file/d/1h5jk-zKNedDy6htX8iiAAg-6fPJ8mwI-/view?usp=drive_link"
+        },
+        {
+          "name": "توزيع أفواج السداسي الخامس قانون الخاص - القانون المدني اللغة الانجليزية",
+          "url": "https://drive.google.com/file/d/1rXE7lzrPKULXYeBsI6HP25ijhM83viXZ/view?usp=drive_link"
+        },
+        {
+          "name": "توزيع أفواج السداسي الخامس قانون الخاص - المهن القانونية والقضائية اللغة الانجليزية",
+          "url": "https://drive.google.com/file/d/1duADQGq-G4dZ2i6MWl-OXW6rmXioArcs/view?usp=drive_link"
+        },
+        {
+          "name": "توزيع أفواج السداسي الخامس قانون الخاص - قانون المال والأعمال اللغة الانجليزية",
+          "url": "https://drive.google.com/file/d/1uM09LE9_ZhVkVAs-fLHqGwp0e8LLegEZ/view?usp=drive_link"
+        }
+      ]
     }
   ],
   "disclaimer": "موقع مستقل غير رسمي. البيانات منقولة عن الوثائق الرسمية المعلنة بالكلية. المصدر الرسمي المعتمد هو https://fsjpa.uiz.ac.ma. عند أي اختلاف تكون النسخة الرسمية هي المرجع.",
   "total_announcements": 19,
-  "total_timetables": 4,
+  "total_timetables": 5,
   "source_verified_on": "2026-10-29"
 }
