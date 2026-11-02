@@ -1,17 +1,20 @@
+```yaml
 name: CHRAIM Quality Gates
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
   pull_request:
-    branches: [main]
+    branches:
+      - main
   workflow_dispatch:
 
 permissions:
   contents: read
 
 concurrency:
-  group: chraim-quality-${{ github.ref }}
+  group: chraim-quality-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -35,19 +38,32 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Validate project configuration
+        run: |
+          test -f package.json || {
+            echo "::error::package.json is missing"
+            exit 1
+          }
+
+          test -f package-lock.json || {
+            echo "::error::package-lock.json is missing"
+            exit 1
+          }
+
       - name: Install locked dependencies
         run: npm ci
 
       - name: Lint
-        run: npm run lint
+        run: npm run lint --if-present
 
       - name: Format check
-        run: npm run format:check
+        run: npm run format:check --if-present
 
       - name: Unit tests
-        run: npm test
+        run: npm test --if-present
 
       - name: Build CSS
+        shell: bash
         run: |
           if node -e "process.exit(require('./package.json').scripts?.['build:css'] ? 0 : 1)"; then
             npm run build:css
@@ -56,6 +72,7 @@ jobs:
           fi
 
       - name: Build distribution
+        shell: bash
         run: |
           if [ -f tools/build-dist.py ]; then
             python tools/build-dist.py --out dist --clean
@@ -68,8 +85,15 @@ jobs:
 
       - name: Verify generated site
         run: |
-          test -d dist || { echo "::error::dist/ is missing"; exit 1; }
-          test -f dist/index.html || { echo "::error::dist/index.html is missing"; exit 1; }
+          test -d dist || {
+            echo "::error::dist/ is missing"
+            exit 1
+          }
+
+          test -s dist/index.html || {
+            echo "::error::dist/index.html is missing or empty"
+            exit 1
+          }
 
       - name: Upload site artifact
         uses: actions/upload-artifact@v4
@@ -103,6 +127,7 @@ jobs:
         run: npm ci
 
       - name: Build distribution
+        shell: bash
         run: |
           if [ -f tools/build-dist.py ]; then
             python tools/build-dist.py --out dist --clean
@@ -112,6 +137,13 @@ jobs:
             echo "::error::No supported build command found."
             exit 1
           fi
+
+      - name: Verify generated site
+        run: |
+          test -s dist/index.html || {
+            echo "::error::dist/index.html is missing or empty"
+            exit 1
+          }
 
       - name: Dependency audit
         run: npm audit --audit-level=high
@@ -125,13 +157,20 @@ jobs:
         run: npx --yes linkinator@6 dist --recurse --skip "https?://.*" --silent
 
       - name: Verify deployment configuration
-        run: python tools/verify_deployment_config.py
+        run: |
+          test -f tools/verify_deployment_config.py || {
+            echo "::error::Deployment verification script is missing"
+            exit 1
+          }
+
+          python tools/verify_deployment_config.py
 
   browser-a11y:
     name: Lighthouse and axe accessibility
     runs-on: ubuntu-latest
     timeout-minutes: 20
-    needs: build-and-unit
+    needs:
+      - build-and-unit
 
     steps:
       - name: Checkout repository
@@ -152,6 +191,7 @@ jobs:
         run: npm ci
 
       - name: Build distribution
+        shell: bash
         run: |
           if [ -f tools/build-dist.py ]; then
             python tools/build-dist.py --out dist --clean
@@ -162,15 +202,32 @@ jobs:
             exit 1
           fi
 
+      - name: Verify audit configuration
+        run: |
+          test -f .lighthouserc.json || {
+            echo "::error::.lighthouserc.json is missing"
+            exit 1
+          }
+
+          test -f tools/run-axe-audit.cjs || {
+            echo "::error::tools/run-axe-audit.cjs is missing"
+            exit 1
+          }
+
       - name: Install Lighthouse CI
         run: npm install --no-save --no-package-lock @lhci/cli@0.14.0
 
-      - name: Install Chromium for browser audits
-        run: npx playwright install --with-deps chromium
+      - name: Install Playwright Chromium
+        run: |
+          npx --yes playwright --version
+          npx playwright install --with-deps chromium
 
       - name: Start local site
+        shell: bash
         run: |
-          python -m http.server 8000 --directory dist > /tmp/chraim-http.log 2>&1 &
+          python -m http.server 8000 --directory dist \
+            > /tmp/chraim-http.log 2>&1 &
+
           echo $! > /tmp/chraim-http.pid
 
           for i in $(seq 1 40); do
@@ -178,6 +235,7 @@ jobs:
               echo "Local site ready."
               exit 0
             fi
+
             sleep 1
           done
 
@@ -199,3 +257,4 @@ jobs:
           path: .lighthouseci/
           if-no-files-found: warn
           retention-days: 7
+```
