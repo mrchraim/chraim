@@ -16,3 +16,6 @@ Thumbs.db
 
 # Generated build output
 /dist/
+
+# Design concepts (not for production)
+archive/design-concepts/
