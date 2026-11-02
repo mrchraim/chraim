@@ -6,11 +6,19 @@ on:
   pull_request:
     branches: [main]
 
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  # 1. وظيفة البناء والتجهيز الموحد (Build Artifact)
+  # 1. Build one artifact; all downstream audits consume the same output.
   build:
     name: Build & Asset Packaging
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -30,10 +38,11 @@ jobs:
           path: dist/
           retention-days: 1
 
-  # 2. جودة الكود واختبارات الوحدة
+  # 2. Source quality and unit tests.
   code-quality:
     name: Lint, Format & Unit Tests
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -45,10 +54,11 @@ jobs:
       - run: npm run format:check
       - run: npm test
 
-  # 3. التدقيق الأمني وفحص الروابط وإعدادات النشر
+  # 3. Link/security checks run against the exact built artifact.
   security-and-links:
     name: Security & Link Audit
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     needs: build
     steps:
       - uses: actions/checkout@v4
@@ -67,65 +77,76 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  # 4. قياس الأداء وبوابات Lighthouse القياسية
+  # 4. Lighthouse runs on the same build artifact. Reports stay in GitHub artifacts,
+  # not in Lighthouse's public temporary storage.
   lighthouse-audit:
     name: Lighthouse Performance & SEO
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     needs: build
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
       - uses: actions/download-artifact@v4
         with:
           name: dist-files
           path: dist
       - name: Serve Static Dist
         run: |
-          python -m http.server 8000 --directory dist > /tmp/chraim-http.log 2>&1 &
+          python -m http.server 8000 --bind 127.0.0.1 --directory dist > /tmp/chraim-http.log 2>&1 &
           for i in $(seq 1 30); do
-            curl -fsS http://localhost:8000/ >/dev/null && exit 0
+            curl -fsS http://127.0.0.1:8000/ >/dev/null && exit 0
             sleep 1
           done
           cat /tmp/chraim-http.log
+          echo 'Local preview server did not become ready.' >&2
           exit 1
       - name: Lighthouse CI Evaluation
         uses: treosh/lighthouse-ci-action@v11
         with:
           urls: |
-            http://localhost:8000/
+            http://127.0.0.1:8000/
           configPath: .lighthouserc.json
           uploadArtifacts: true
-          temporaryPublicStorage: true
+          temporaryPublicStorage: false
 
-  # 5. تدقيق إمكانية الوصول المتقدم (axe Accessibility Audit)
+  # 5. axe accessibility smoke audit.
   accessibility-audit:
     name: axe Accessibility Compliance
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     needs: build
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
       - uses: actions/download-artifact@v4
         with:
           name: dist-files
           path: dist
       - name: Serve Static Dist
         run: |
-          python -m http.server 8001 --directory dist > /tmp/chraim-axe.log 2>&1 &
+          python -m http.server 8001 --bind 127.0.0.1 --directory dist > /tmp/chraim-axe.log 2>&1 &
           for i in $(seq 1 30); do
-            curl -fsS http://localhost:8001/ >/dev/null && exit 0
+            curl -fsS http://127.0.0.1:8001/ >/dev/null && exit 0
             sleep 1
           done
           cat /tmp/chraim-axe.log
+          echo 'Local preview server did not become ready.' >&2
           exit 1
       - name: Run axe Accessibility Engine
         run: |
           if [ -f "tools/run-axe-audit.cjs" ]; then
-            node tools/run-axe-audit.cjs http://localhost:8001/
+            node tools/run-axe-audit.cjs http://127.0.0.1:8001/
           else
-            npx --yes @axe-core/cli http://localhost:8001/ --exit
+            npx --yes @axe-core/cli http://127.0.0.1:8001/ --exit
           fi
