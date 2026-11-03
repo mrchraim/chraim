@@ -18,6 +18,7 @@ DEFAULT_BASE = "https://chraim.pages.dev"   # ← بدّلها بالدومين 
 FIXED = [
     "",                                 # الصفحة الرئيسية
     "portal.html",
+    "campus2.html",                     # Campus 2.0 — مدموجة
     "etablissements/",
     "platform/",
     "university-directory.html",

@@ -1,9 +1,11 @@
-/academic-offer.html     /index.html#discover          302
-/academic-updates.html   /index.html#discover          302
-/students-guide.html     /portal-simple-final.html     302
-/rafiq-altalib.html      /portal-simple-final.html     302
-/orientation.html        /index.html#discover          302
-/directory.html          /index.html#discover          302
-/resources.html          /index.html#discover          302
-/atlas.html              /index.html#discover          302
-/ai-assistant.html       /portal-simple-final.html     302
+# CHRAIM — إعادة توجيهات Cloudflare Pages
+# المبدأ: لا نحجب صفحة موجودة، ولا نوجّه إلى مسار غير موجود.
+# الصفحات الحقيقية تُقدَّم كأصول ثابتة؛ ما هنا للروابط البديلة/القديمة فقط.
+
+# مسار قديم كان يشير إلى صفحة غير موجودة (portal-simple-final.html) ← البوابة الكاملة
+/portal-simple-final.html   /portal.html   302
+/portal-simple-final        /portal.html   302
+
+# اسمان مختصران للصفحة المدموجة Campus 2.0
+/campus-2                   /campus2.html  302
+/campus2.0                  /campus2.html  302

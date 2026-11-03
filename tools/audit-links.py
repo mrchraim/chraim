@@ -27,6 +27,7 @@ HTML_ATTR = re.compile(r'(?:href|src)\s*=\s*["\']([^"\']+)["\']', re.I)
 CSS_URL = re.compile(r'url\(\s*["\']?([^"\')]+)["\']?\s*\)', re.I)
 
 
+
 def walk_files(root, exts):
     for base, dirs, files in os.walk(root):
         dirs[:] = [d for d in dirs if d not in EXCLUDE_DIRS and not d.startswith(".")]
@@ -56,6 +57,9 @@ def exists(target):
     # دليل بلا امتداد: /foo  ⇒  /foo/index.html
     if not os.path.splitext(target)[1] and os.path.exists(os.path.join(target, "index.html")):
         return True
+    # Cloudflare Pages clean URLs: /portal  ⇒  /portal.html
+    if not os.path.splitext(target)[1] and os.path.exists(target + ".html"):
+        return True
     return False
 
 
@@ -72,12 +76,15 @@ def main():
     for page in walk_files(root, (".html",)):
         txt = io.open(page, encoding="utf-8", errors="replace").read()
         for m in HTML_ATTR.finditer(txt):
-            target = resolve(root, page, m.group(1))
+            raw = m.group(1).strip()
+            if "${" in raw or "{{" in raw:   # قالب JS ديناميكي — لا يمكن التحقق منه ستاتيكياً
+                continue
+            target = resolve(root, page, raw)
             if target is None:
                 continue
             checked += 1
             if not exists(target):
-                broken.setdefault(os.path.relpath(page, root), set()).add(m.group(1).strip())
+                broken.setdefault(os.path.relpath(page, root), set()).add(raw)
 
     for css in walk_files(root, (".css",)):
         txt = io.open(css, encoding="utf-8", errors="replace").read()

@@ -6,6 +6,45 @@
 
 ---
 
+## 🔀 دمج 2026-11-03 — ثلاثة مصادر، موقع واحد
+
+كانت هناك ثلاثة عناوين تُظنّ ثلاثة مشاريع، وهي في الحقيقة **مستودع واحد بِنشرين مختلفين**:
+
+| العنوان | ما كان | ما صار |
+|---------|--------|--------|
+| `github.com/mrchraim/chraim` | المصدر الوحيد (موقع ثابت كامل) | يبقى المصدر الوحيد — لا نسخة ثانية |
+| `chraim.cheraimmohamed20.workers.dev` | نشر `wrangler` بالصفحة الرئيسية الجديدة + `/orientation` | مرآة مطابقة للبناء نفسه |
+| `chraim.pages.dev` | نشر Pages **متأخر**: رئيسية قديمة و`/orientation` = 404 | **النطاق المرجعي (canonical)** بعد نشر البناء الموحّد |
+
+**سبب الفرق** لم يكن محتوى: `.github/workflows/deploy-cloudflare-pages.yml` يتخطى النشر بصمت إذا غابت `CLOUDFLARE_API_TOKEN` / `CLOUDFLARE_ACCOUNT_ID`، فبقي Pages على بناء 2026-10-18 بينما كان `wrangler deploy` يحدّث Workers يدوياً.
+
+### ما نُفِّذ في هذا الدمج
+
+1. **`campus2.html` صارت صفحة حيّة** بدل صفحة «قيد التكامل»: نُقل `archive/external-downloads/campus2-legacy.html` بكامل بياناته وأدواته (دليل المؤسسات، مكتبة الوثائق، فضاء الحقوق، حاسبة المعدل، المؤقّت، العدّاد، مركز الثقة) مع:
+   - إزالة Google Fonts (كان محجوباً بـCSP) واستبدالها بالخطوط المستضافة ذاتياً `/assets/fonts/`
+   - `canonical` + Open Graph + وصف محدّث
+   - شريط دمج يربط الأقسام الجديدة، ورابط «الرئيسية» في التنقّل، ورمز العودة العائم
+2. **الصفحة الرئيسية**: حُذفت `hreflang` الوهمية (`/ar/` `/fr/` `/en/` كانت 404)، وأُضيف `canonical` ورابط `og:url` مطلق، وصار زر «OPEN THE EXPERIENCE» يشير إلى `/portal` بدل الإشارة إلى النطاق نفسه، وأُضيف مربّع `Campus 2.0` إلى لوحة الروابط.
+3. **`_redirects`**: أُزيلت 8 قواعد كانت تحجب صفحات حقيقية وتُحوّلها إلى `/index.html#discover`، وصُحّح هدف معطوب (`/portal-simple-final.html` غير موجود) → `/portal.html`.
+4. **`sitemap.xml` + `robots.txt`** أُعيد توليدهما على `https://chraim.pages.dev` وأُضيفت `/campus2`.
+5. **`tools/audit-links.py`**: يفهم الآن clean URLs (`/portal` ⇒ `portal.html`) ويتجاهل القوالب الديناميكية فقط (`${…}`) بدل تجاهل كل السكربتات. النتيجة: **873 رابطاً، 0 مكسور** (كانت 4 مكسورة).
+
+### أوامر النشر الموحّد
+
+```bash
+python tools/make-search-index.py
+python tools/make-seo.py --base https://chraim.pages.dev
+python tools/build-dist.py --out dist --clean
+python tools/audit-links.py --root dist
+wrangler pages deploy dist --project-name=chraim     # النطاق المرجعي
+wrangler deploy                                       # مرآة workers.dev (نفس dist)
+```
+
+> لكي لا يعود الانقسام: أضف `CLOUDFLARE_API_TOKEN` و`CLOUDFLARE_ACCOUNT_ID` في GitHub → Settings → Secrets،
+> وإلا سيستمر الـworkflow في تخطّي النشر بصمت. المرجع النهائي هو ما في `dist/` لا ما في لوحة Cloudflare.
+
+---
+
 ## 🗂️ هيكل المستودع
 
 ```

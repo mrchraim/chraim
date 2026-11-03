@@ -14,7 +14,7 @@ PAGES = [
     ("Portal Ibn Zohr", "portal-ibn-zohr.html", "Portal Ibn Zohr بوابة"),
     ("Portal v2", "portal-v2.html", "Portal v2 بوابة"),
     ("Portal Tajawal", "portal-tajawal.html", "Portal Tajawal بوابة"),
-    ("CHRVVIM Campus 2.0", "campus2.html", "Campus 2.0 بوابة طالب"),
+    ("Campus 2.0 (مدموجة)", "campus2.html", "Campus 2.0 بوابة طالب مؤسسات وثائق أدوات مركز الثقة"),
     ("المصادر", "sources.html", "مصادر official registry"),
     ("فضاء الطالب", "student.html", "فضاء طالب تفضيلات جدول"),
     ("بوابات الكليات", "faculties/index.html", "FSJP كليات جامعات"),
