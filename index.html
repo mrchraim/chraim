@@ -1,784 +1,2601 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<!doctype html>
+
+<html lang="ar" dir="rtl" data-theme="light">
+
 <head>
-    <meta charset="UTF-8">
-    <link rel="alternate" hreflang="ar" href="/">
-    <link rel="alternate" hreflang="fr" href="/">
-    <link rel="alternate" hreflang="en" href="/">
-    <link rel="alternate" hreflang="x-default" href="/">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="CHRAIM — منصة طالب مستقلة لجامعة ابن زهر أكادير: الأفواج، استعمالات الزمن، المؤسسات، التكوينات، المستجدات.">
-    <meta property="og:title" content="CHRAIM — منصة الطالب الموحّدة">
-    <meta property="og:description" content="منصة طالب مستقلة لجامعة ابن زهر أكادير.">
-    <meta property="og:type" content="website">
-    <meta property="og:locale" content="ar_MA">
-    <meta name="twitter:card" content="summary">
-    <script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"EducationalOrganization","name":"CHRAIM — منصة الطالب","url":"/","inLanguage":"ar"}
-    </script>
-    <title>دليل الطالب أكادير | CHRAIM — المنصة الجامعية المتكاملة</title>
-    <!-- CSS مبني محلياً (Tailwind 3.4.17) + خط Cairo محلي: متوافق مع CSP ويعمل دون إنترنت -->
-    <link rel="stylesheet" href="/assets/fonts/cairo.css">
-    <link rel="stylesheet" href="/assets/tailwind-home.css">
-    <link rel="stylesheet" href="/assets/glass.css">
-    <link rel="stylesheet" href="/assets/design-tokens.css">
-    <link rel="stylesheet" href="/assets/components.css">
-    <script src="/assets/lib/lucide-0.454.0.min.js" defer></script>
-    <style>
-        body { font-family: 'Cairo', system-ui, -apple-system, 'Segoe UI', Tahoma, sans-serif; background-color: #060B19; color: #F3E5AB; }
-        .glass-card { background: rgba(28, 37, 65, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(212, 175, 55, 0.2); }
-        .gold-gradient-text { background: linear-gradient(135deg, #FFF8DC 0%, #D4AF37 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    </style>
+
+<meta charset="utf-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="theme-color" content="#f5f3ec">
+
+<meta name="color-scheme" content="light dark">
+
+<meta name="description" content="CHRAIM Campus — دليل طلابي مستقل + محرك استعمالات الزمن لكلية العلوم القانونية والسياسية بأكادير.">
+
+<link rel="alternate" hreflang="ar" href="/ar/">
+
+<link rel="alternate" hreflang="fr" href="/fr/">
+
+<link rel="alternate" hreflang="en" href="/en/">
+
+<link rel="alternate" hreflang="x-default" href="/">
+
+<meta property="og:title" content="CHRAIM Campus — مستقبلك، أوضح.">
+
+<meta property="og:description" content="دليل طلابي مستقل + محرك أفواج FSJP أكادير.">
+
+<meta property="og:type" content="website">
+
+<meta property="og:url" content="/">
+
+<meta property="og:locale" content="ar_MA">
+
+<meta name="twitter:card" content="summary">
+
+<script type="application/ld+json">
+
+{"@context":"https://schema.org","@type":"EducationalOrganization","name":"CHRAIM Campus","url":"/","inLanguage":"ar"}
+
+</script>
+
+<title>CHRAIM Campus — مستقبلك، أوضح.</title>
+
 <style>
-        html.light body { background:#F8F6F2; color:#1F2937; }
-        html.light .glass-card { background:rgba(255,255,255,.8); color:#1F2937; border-color:rgba(212,175,55,.3); }
-        html.light .text-white { color:#1F2937; }
-        html.light .text-gray-300, html.light .text-gray-400 { color:#374151; }
-    </style>
-    <script>
-        function toggleTheme(){ const h=document.documentElement; if(h.classList.contains('light')){ h.classList.remove('light'); localStorage.setItem('chraim_theme','dark'); document.getElementById('themeToggle').textContent='🌙'; } else { h.classList.add('light'); localStorage.setItem('chraim_theme','light'); document.getElementById('themeToggle').textContent='☀️'; } }
-        document.addEventListener('DOMContentLoaded', ()=>{ try{ if(localStorage.getItem('chraim_theme')==='light'){ document.documentElement.classList.add('light'); const b=document.getElementById('themeToggle'); if(b) b.textContent='☀️'; } }catch(e){} });
-    </script>
-<style>
-        html.dark body { background:#060B19; color:#F3E5AB; }
-        html.dark .glass-card { background:rgba(28,37,65,.7); color:#F3E5AB; border-color:rgba(212,175,55,.2); }
-        html.dark .text-white { color:#F3E5AB; }
-        html.dark .text-gray-300, html.dark .text-gray-400 { color:#9aa3b5; }
-    </style>
-<style id="chraim-theme-fix">
-/* ===== وضع النهار: تباين كامل لكل العناصر (كان النص يختفي على الصناديق الداكنة) ===== */
-html.light{color-scheme:light}
-html.light header{background:rgba(255,255,255,.92)!important;border-color:rgba(138,101,8,.25)!important}
-html.light .bg-navy-900,html.light .bg-navy-900\/90,html.light .bg-navy-950,html.light .bg-navy-950\/90{background:#fff!important;color:#1F2937!important}
-html.light .bg-navy-900{border-color:rgba(138,101,8,.35)!important}
-html.light .border-navy-700{border-color:#e3dcc8!important}
-html.light .text-gold-400,html.light .text-gold-500{color:#7a5806!important}
-html.light .bg-gold-500{background:#e9c04a!important;color:#1a1300!important}
-html.light .bg-gold-500\/10{background:rgba(138,101,8,.08)!important}
-html.light .text-white,html.light h1,html.light h2,html.light h3{color:#141a3a!important}
-html.light .text-gray-300,html.light .text-gray-400{color:#3b4256!important}
-html.light select,html.light option{background:#fff!important;color:#141a3a!important}
-html.light #annList *,html.light #termDef,html.light #termTitle{color:#1F2937!important}
-html.light .glass-card{box-shadow:0 8px 28px rgba(20,26,58,.08)!important}
-/* وضع الليل: ثبات الألوان */
-html:not(.light) .glass-card a,html:not(.light) .glass-card{color:#F3E5AB}
-/* عنوان الدليل: الجزء المميّز بالذهبي */
-h2 b{background:linear-gradient(135deg,#FFF8DC,#D4AF37);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;font-weight:900}
-html.light h2 b{background:linear-gradient(135deg,#8a6508,#c79a1c);-webkit-background-clip:text;background-clip:text}
-/* حجم الخط الكبير */
-html.big-text{font-size:118%}
-#themeToggle,#fontToggle{min-width:36px;min-height:32px;cursor:pointer;transition:transform .15s,background .15s}
-#themeToggle:hover,#fontToggle:hover{transform:translateY(-1px)}
-#fontToggle[aria-pressed=true]{background:#D4AF37!important;color:#1a1300!important}
-html.light .gold-gradient-text{background:linear-gradient(135deg,#8a6508,#c79a1c)!important;-webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important}
-html.light #themeToggle,html.light #fontToggle,html.light #langSelect{background:#fff!important;color:#5c4305!important;border:1px solid rgba(138,101,8,.45)!important}
-html.light body header #themeToggle,html.light body header #fontToggle{background:#fff!important;background-color:#fff!important;color:#5c4305!important;border:1px solid rgba(138,101,8,.45)!important}
-html.light #themeToggle,html.light #fontToggle{opacity:1!important;filter:none!important;background-image:none!important}
-html.light #fontToggle[aria-pressed=true]{background:#e9c04a!important;color:#1a1300!important}
+
+:root{--paper:#f4f1e8;--surface:#fbfaf5;--ink:#1b211b;--muted:#70796d;--line:#d9ddd0;--lime:#d9ff54;--lime-dark:#b8dc2e;--dark:#121713;--dark-2:#1a211d;--radius:2px;--shadow:0 22px 70px rgba(20,29,18,.12);--font:"IBM Plex Sans Arabic","Cairo","Noto Sans Arabic",Tahoma,system-ui,sans-serif;--mono:ui-monospace,SFMono-Regular,Consolas,monospace;color-scheme:light}
+
+[data-theme="dark"]{--paper:#121714;--surface:#1a211d;--ink:#f0f2e9;--muted:#a0a99e;--line:#323b34;--dark:#0d110f;--dark-2:#1a211d;color-scheme:dark}
+
+*,*::before,*::after{box-sizing:border-box}
+
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font);line-height:1.75;-webkit-font-smoothing:antialiased;background-image:radial-gradient(ellipse at 4% 35%,color-mix(in srgb,var(--lime) 7%,transparent),transparent 28%);transition:background-color .25s ease,color .25s ease}
+
+body,button,input,select{font-family:var(--font)}
+
+a{color:inherit;text-decoration:none}
+
+button{cursor:pointer}
+
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,[tabindex]:focus-visible{outline:3px solid #7e9d10;outline-offset:4px}
+
+::selection{background:var(--lime);color:#171c1a}
+
+.shell{width:min(1200px,calc(100% - 64px));margin-inline:auto}
+
+.skip-link{position:absolute;z-index:100;top:-60px;inset-inline-start:16px;padding:10px 16px;background:var(--lime);color:#171c1a;border-radius:10px}
+
+.skip-link:focus{top:12px}
+
+.reading-progress{position:fixed;z-index:100;top:0;inset-inline-start:0;height:3px;width:0;background:var(--lime);box-shadow:0 0 12px #d9ff5480;pointer-events:none;transition:width .08s linear}
+
+.announcement{background:var(--dark);color:#cbd1c5;font-size:.72rem;letter-spacing:.01em}
+
+.announcement__inner{min-height:37px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+
+.announcement__pulse{width:7px;height:7px;background:var(--lime);border-radius:50%;box-shadow:0 0 0 4px #d9ff541b;flex-shrink:0}
+
+.announcement__right{margin-inline-start:auto;display:flex;align-items:center;gap:8px;color:#919a90}
+
+.tiny-square{width:6px;height:6px;background:var(--lime);display:inline-block}
+
+.announcement kbd{background:#ffffff1a;padding:1px 6px;border-radius:4px;font:.7rem var(--mono);color:#d9ff54}
+
+.site-header{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(18px);border-bottom:1px solid var(--line);box-shadow:0 8px 30px #10171008}
+
+.nav{min-height:82px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+
+.brand{display:inline-flex;align-items:center;gap:10px;flex-shrink:0}
+
+.brand__mark{width:43px;height:43px;background:var(--lime);color:var(--dark);border-radius:2px;display:grid;place-items:center;box-shadow:5px 5px 0 var(--dark);transform:rotate(-4deg);transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s}
+
+.brand:hover .brand__mark{transform:rotate(0) translateY(-2px);box-shadow:7px 7px 0 var(--dark)}
+
+.brand__mark svg{width:32px;fill:none;stroke:var(--dark);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+
+.brand__word{font-family:var(--mono),sans-serif;font-size:1.1rem;font-weight:500;letter-spacing:-.07em;line-height:1.15;direction:ltr;text-align:left}
+
+.brand__dot{color:#9bc323}
+
+.brand__word small{display:block;font-family:var(--mono);font-size:.55rem;letter-spacing:.13em;color:var(--muted);margin-top:4px}
+
+.brand__small-accent{color:#9bc323}
+
+.nav__links{display:flex;align-items:center;gap:32px;color:var(--muted);font-size:.88rem}
+
+.nav__links a{transition:color .2s}
+
+.nav__links a:hover{color:var(--ink)}
+
+.nav__actions{display:flex;align-items:center;gap:9px}
+
+.icon-button,.language-button,.cmd-trigger{height:42px;border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:2px;display:inline-flex;align-items:center;justify-content:center;gap:6px;transition:transform .15s,background .15s}
+
+.icon-button{width:42px}
+
+.icon-button:hover,.language-button:hover,.cmd-trigger:hover{transform:translateY(-1px);background:var(--surface)}
+
+.icon-button svg{width:19px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+
+.language-button{padding:0 12px;font:500 .72rem var(--mono);direction:ltr}
+
+.language-button span{color:#9bc323}
+
+.cmd-trigger{padding:0 10px;color:var(--muted);font:.7rem var(--mono)}
+
+.cmd-trigger kbd{background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:1px 5px;font-size:.68rem}
+
+.button{min-height:48px;padding:0 18px;border:0;border-radius:2px;display:inline-flex;align-items:center;justify-content:center;gap:22px;font-size:.88rem;font-weight:700;letter-spacing:-.02em;transition:transform .2s,background .2s,box-shadow .2s}
+
+.button:hover{transform:translateY(-2px)}
+
+.button--dark{background:var(--dark);color:#fff}
+
+.button--lime{background:var(--lime);color:#171c1a;box-shadow:5px 5px 0 #f5f6ee20}
+
+.button--lime:hover{background:#e4ff7e;box-shadow:7px 7px 0 #f5f6ee30}
+
+.nav__cta{min-height:42px;font-size:.78rem;padding:0 15px;gap:15px}
+
+.hero{background:#121713;background-image:radial-gradient(ellipse at 12% 10%,#2d3a26 0,transparent 37%),linear-gradient(135deg,#121713 0%,#171e17 70%,#101410 100%);color:#f5f6ee;position:relative;overflow:hidden;padding-top:82px;isolation:isolate}
+
+.hero__grid-pattern{position:absolute;inset:0;opacity:.12;pointer-events:none;background-image:linear-gradient(#879082 1px,transparent 1px),linear-gradient(90deg,#879082 1px,transparent 1px);background-size:44px 44px;mask-image:linear-gradient(110deg,transparent 0%,#000 40%,#000 100%)}
+
+.hero__layout{position:relative;display:grid;grid-template-columns:1fr .92fr;gap:7.5%;align-items:center;padding-bottom:67px}
+
+.hero__copy{max-width:650px}
+
+.eyebrow{display:flex;align-items:center;gap:11px;font:.66rem var(--mono);letter-spacing:.06em;color:#a8b1a5}
+
+.eyebrow__index{color:var(--lime)}
+
+.eyebrow__line{height:1px;width:35px;background:#697266}
+
+.hero h1{font-size:clamp(3.25rem,6.2vw,6.4rem);line-height:1.14;letter-spacing:-.075em;margin:25px 0 20px;font-weight:700;max-width:760px}
+
+.hero h1 .highlight{color:var(--lime);text-decoration:underline;text-decoration-thickness:3px;text-underline-offset:10px;text-decoration-color:#d9ff5480;white-space:nowrap}
+
+.hero__description{max-width:520px;color:#b6beb3;font-size:1.02rem;line-height:2.05;margin:0}
+
+.hero__actions{display:flex;align-items:center;gap:25px;flex-wrap:wrap;margin-top:30px}
+
+.text-link{display:inline-flex;align-items:center;gap:10px;color:#e0e5d9;font-size:.84rem}
+
+.text-link span:last-child{color:var(--lime)}
+
+.hero__footnote{display:flex;align-items:center;gap:10px;color:#929d90;font-size:.72rem;margin-top:37px}
+
+.footnote__mark{color:var(--lime);font-size:1.15rem}
+
+.hero-art{min-height:490px;position:relative;border:1px solid #4b554b;background-color:#1a2119;background-image:linear-gradient(145deg,#222b20 0%,#141914 68%);box-shadow:16px 16px 0 color-mix(in srgb,var(--lime) 16%,transparent);overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;padding:17px 19px}
+
+.hero-art::before{content:"";position:absolute;inset:0;opacity:.22;background-image:radial-gradient(#c6d0be .8px,transparent .8px);background-size:13px 13px;mask-image:radial-gradient(ellipse at center,#000 0%,transparent 80%);pointer-events:none}
+
+.hero-art::after{content:"";position:absolute;inset:12px;border:1px solid #e8efdb2b;pointer-events:none}
+
+.hero-art__top,.hero-art__bottom{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:8px;color:#8d9989;font:.56rem var(--mono);letter-spacing:.08em}
+
+.hero-art__status{display:flex;align-items:center;gap:6px}
+
+.hero-art__status i{display:inline-block;width:6px;height:6px;background:var(--lime);border-radius:50%}
+
+.hero-art__orb{position:absolute;width:min(82%,350px);aspect-ratio:1;top:50%;left:50%;transform:translate(-50%,-48%);border-radius:50%;display:grid;place-items:center;animation:atlas-drift 24s linear infinite}
+
+.orb__ring{position:absolute;border:1px dotted #c7d0bb3b;border-radius:50%;inset:0;animation:atlas-spin 42s linear infinite}
+
+.orb__ring--two{inset:12%;border-color:#d9ff546b;border-style:solid;border-radius:48% 52% 42% 58% / 44% 38% 62% 56%;animation:atlas-counterspin 32s linear infinite}
+
+.orb__ring--three{inset:25%;border-color:#e5e9dc38;border-style:dashed;animation:none}
+
+.orb__core{width:42%;aspect-ratio:1;border-radius:2px;background:var(--lime);color:#182018;display:grid;place-items:center;font:500 clamp(2rem,4vw,3.4rem) var(--mono);letter-spacing:-.13em;box-shadow:8px 8px 0 #111711,0 0 70px #d9ff5420;transform:rotate(-8deg)}
+
+.orb__core span{font-size:.55em;vertical-align:top}
+
+.orb__node{position:absolute;width:12px;height:12px;background:var(--lime);border:3px solid #202720;border-radius:50%;box-shadow:0 0 0 1px var(--lime)}
+
+.orb__node--a{top:15%;right:20%}
+
+.orb__node--b{bottom:17%;left:14%;width:8px;height:8px}
+
+.orb__node--c{right:3%;bottom:37%;width:6px;height:6px}
+
+.hero-art__sticker{position:absolute;z-index:3;bottom:63px;right:27px;width:111px;height:111px;background:var(--lime);color:#171c1a;transform:rotate(7deg);display:flex;flex-direction:column;justify-content:center;align-items:center;line-height:1.1;box-shadow:6px 6px 0 #121713;outline:1px solid #121713;outline-offset:5px}
+
+.hero-art__sticker span{font:.56rem var(--mono);letter-spacing:.2em}
+
+.hero-art__sticker strong{font:700 .98rem var(--mono);letter-spacing:-.06em;margin-top:6px;text-align:center}
+
+.hero-art__sticker i{font-style:normal;font-size:1.2rem;margin-top:4px}
+
+.hero-art__coordinates{position:absolute;z-index:3;top:74px;left:22px;display:flex;flex-direction:column;gap:7px;color:#a6b09d;font:.55rem var(--mono);letter-spacing:.12em;direction:ltr}
+
+.hero-art__coordinates span:last-child{color:var(--lime)}
+
+.hero-art__index{position:absolute;top:48%;left:17px;writing-mode:vertical-rl;color:var(--lime);font:.7rem var(--mono);letter-spacing:.15em;opacity:.8}
+
+.hero__ticker{position:relative;min-height:58px;border-top:1px solid #d9ff5430;display:flex;align-items:center;gap:17px;color:#b3bcae;font-size:.73rem;letter-spacing:.02em;flex-wrap:wrap}
+
+.hero__ticker>i{width:5px;height:5px;background:var(--lime);border-radius:50%}
+
+.ticker__edition{margin-inline-start:auto;font:.58rem var(--mono);color:#7f8b7c;letter-spacing:.09em}
+
+@keyframes atlas-spin{to{transform:rotate(332deg)}}
+
+@keyframes atlas-counterspin{to{transform:rotate(-388deg)}}
+
+@keyframes atlas-drift{0%,100%{translate:0 0}50%{translate:0 -5px}}
+
+.next-class{position:relative;z-index:2;background:#0e1410;border:1px solid #d9ff5440;padding:16px 18px;margin-top:26px;max-width:520px;box-shadow:5px 5px 0 #d9ff5420}
+
+.next-class__head{display:flex;align-items:center;justify-content:space-between;gap:10px;font:.6rem var(--mono);letter-spacing:.1em;color:#9aa795;margin-bottom:10px}
+
+.next-class__live{display:inline-flex;align-items:center;gap:6px;color:var(--lime)}
+
+.next-class__live i{width:6px;height:6px;background:var(--lime);border-radius:50%;box-shadow:0 0 0 3px #d9ff5420;animation:pulse 1.6s ease-in-out infinite}
+
+@keyframes pulse{50%{opacity:.55}}
+
+.next-class__subject{font-size:1.05rem;font-weight:700;color:#f5f6ee;line-height:1.4;margin:0}
+
+.next-class__meta{color:#a8b2a4;font-size:.78rem;margin-top:5px}
+
+.next-class__countdown{display:flex;align-items:baseline;gap:8px;margin-top:12px;padding-top:12px;border-top:1px solid #ffffff1a}
+
+.next-class__countdown b{font:700 1.6rem/1 var(--mono);color:var(--lime);letter-spacing:-.04em}
+
+.next-class__countdown span{font-size:.72rem;color:#9aa795}
+
+.next-class__btn{margin-top:12px;background:transparent;border:1px solid #d9ff5455;color:var(--lime);font:600 .7rem var(--mono);padding:6px 10px;letter-spacing:.06em;transition:background .2s,color .2s}
+
+.next-class__btn:hover{background:var(--lime);color:#121713}
+
+.section{padding-block:clamp(76px,9vw,124px)}
+
+.section-heading{display:grid;grid-template-columns:1fr .7fr;align-items:end;gap:clamp(24px,5vw,64px);margin-bottom:36px}
+
+.section-kicker{display:flex;align-items:center;gap:11px;font:.66rem var(--mono);letter-spacing:.06em;color:var(--muted);margin-bottom:14px}
+
+.section-kicker span:first-child{display:inline-grid;place-items:center;width:27px;height:27px;background:var(--lime);color:var(--dark);font:.68rem var(--mono)}
+
+.section-heading h2,.principles h2{font-size:clamp(2.4rem,4.6vw,4.15rem);line-height:1.22;letter-spacing:-.075em;margin:0;font-weight:700}
+
+.section-heading h2 span,.principles h2 span{color:#8ba927}
+
+.section-heading>p{max-width:445px;margin:0 0 7px;color:var(--muted);font-size:.9rem;line-height:2}
+
+.launchpad{position:relative;overflow:hidden;background:#e9e9df;color:#172018;border-block:1px solid #d3d7ca}
+
+[data-theme="dark"] .launchpad{background:#1b221c;color:#e7ecdf;border-color:#2e3630}
+
+.launchpad__inner{position:relative;display:grid;grid-template-columns:.82fr 1.18fr;gap:8%;padding-block:82px}
+
+.launchpad__eyebrow{font:.62rem var(--mono);letter-spacing:.16em;color:#64705e}
+
+.launchpad__lead h2{font-size:clamp(2.7rem,5vw,4.9rem);line-height:1.08;letter-spacing:-.075em;margin:23px 0 17px}
+
+.launchpad__lead h2 em{font-style:normal;color:#718d1c}
+
+.launchpad__lead p{max-width:390px;color:#626c60;font-size:.9rem;line-height:2}
+
+.launchpad__main{display:flex;align-items:center;justify-content:space-between;gap:20px;max-width:390px;background:#172018;color:#f4f5eb;padding:18px 20px;margin-top:29px;box-shadow:6px 6px 0 #c3d83b;transition:transform .2s,box-shadow .2s}
+
+.launchpad__main:hover{transform:translate(-3px,-3px);box-shadow:9px 9px 0 #c3d83b}
+
+.launchpad__main span{display:grid;gap:5px}
+
+.launchpad__main small{font:.55rem var(--mono);letter-spacing:.12em;color:#b5c1a9}
+
+.launchpad__main b{font-size:.9rem}
+
+.launchpad__main strong{font-size:1.7rem;color:var(--lime)}
+
+.launchpad__tiles{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+
+.launch-tile{position:relative;min-height:190px;padding:19px;background:#f8f8f1;border:1px solid #d5d9ce;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;transition:transform .25s,border-color .25s,box-shadow .25s;color:#172018}
+
+[data-theme="dark"] .launch-tile{background:#1e261f;border-color:#313a32;color:#e7ecdf}
+
+.launch-tile:hover{transform:translateY(-5px);border-color:#9bbd2b;box-shadow:var(--shadow)}
+
+.launch-tile--primary{background:#d9ff54;border-color:#d9ff54;color:#172018}
+
+.launch-tile__num{position:absolute;top:17px;inset-inline-start:18px;font:.54rem var(--mono);letter-spacing:.08em;color:#65705a}
+
+.launch-tile__symbol{position:absolute;top:13px;inset-inline-end:17px;font-size:1.5rem}
+
+.launch-tile b{font-size:1.25rem;letter-spacing:-.04em}
+
+.launch-tile small{color:#687164;font-size:.73rem;margin-top:4px}
+
+.launchpad__manifesto{grid-column:1/-1;min-height:112px;background:#172018;color:#eff2e7;display:flex;align-items:center;justify-content:space-between;padding:20px 25px;gap:20px}
+
+.launchpad__manifesto span,.launchpad__manifesto i{font:.56rem var(--mono);letter-spacing:.12em;color:#b4c0a9;font-style:normal}
+
+.launchpad__manifesto b{font-size:clamp(1.1rem,2.4vw,1.8rem);line-height:1.35;color:var(--lime)}
+
+.launchpad__ticker{position:relative;display:flex;align-items:center;justify-content:center;gap:clamp(14px,3vw,42px);min-height:48px;background:#d9ff54;color:#172018;font:.58rem var(--mono);letter-spacing:.13em;white-space:nowrap;overflow:hidden}
+
+.launchpad__ticker i{font-style:normal;font-size:.8rem}
+
+.finder-section{background:var(--surface);border-block:1px solid var(--line)}
+
+.finder{display:grid;gap:20px}
+
+.finder__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+
+.field{display:grid;gap:6px}
+
+.field label{font:700 .72rem var(--mono);letter-spacing:.06em;color:#6a7a5f;text-transform:uppercase}
+
+.field select,.field input{width:100%;height:52px;padding:0 14px;background:var(--paper);border:1px solid var(--line);border-radius:2px;color:var(--ink);font-size:.9rem;transition:border-color .2s,background .2s}
+
+.field input:focus,.field select:focus{outline:2px solid var(--lime);outline-offset:2px;border-color:var(--lime-dark)}
+
+.finder__actions{display:flex;gap:12px;flex-wrap:wrap}
+
+.finder__submit{flex:1;min-width:220px}
+
+.finder__aux{background:transparent;border:1px solid var(--line);color:var(--muted);border-radius:2px;padding:0 16px;font-size:.78rem;transition:color .2s,border-color .2s}
+
+.finder__aux:hover{color:var(--ink);border-color:var(--muted)}
+
+.finder-result{display:none;gap:16px}
+
+.finder-result.is-visible{display:grid}
+
+.result-card{background:var(--paper);border:1px solid var(--line);border-inline-start:4px solid var(--lime);padding:20px}
+
+.result-card__head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;flex-wrap:wrap;padding-bottom:14px;border-bottom:1px solid var(--line)}
+
+.result-card__title{font-size:1.05rem;font-weight:800;margin:0;letter-spacing:-.02em}
+
+.result-card__title span{color:#8ba927}
+
+.result-card__sub{color:var(--muted);font-size:.8rem;margin:4px 0 0}
+
+.result-card__badge{background:#d9ff54;color:#171c1a;font:700 .66rem var(--mono);padding:5px 9px;letter-spacing:.04em;white-space:nowrap}
+
+.result-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;padding-top:16px}
+
+.result-cell{background:var(--surface);border:1px solid var(--line);padding:12px}
+
+.result-cell small{display:block;color:var(--muted);font:600 .66rem var(--mono);letter-spacing:.04em;margin-bottom:6px;text-transform:uppercase}
+
+.result-cell strong{font-size:.92rem;line-height:1.5;font-weight:800}
+
+.result-cell--gold strong{color:#7a5806}
+
+[data-theme="dark"] .result-cell--gold strong{color:var(--lime)}
+
+.result-note{margin-top:14px;background:var(--surface);border:1px dashed var(--line);padding:12px 14px;font-size:.78rem;line-height:1.7;color:var(--muted)}
+
+.result-note b{color:var(--ink)}
+
+.schedule-table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:2px;background:var(--paper)}
+
+.schedule-table{width:100%;border-collapse:collapse;font-size:.8rem;text-align:right}
+
+.schedule-table thead{background:#1b221c;color:var(--lime)}
+
+.schedule-table th{padding:11px 12px;font:700 .7rem var(--mono);letter-spacing:.04em;text-transform:uppercase;text-align:right}
+
+.schedule-table td{padding:11px 12px;border-top:1px solid var(--line);vertical-align:top}
+
+.schedule-table tbody tr{transition:background .15s}
+
+.schedule-table tbody tr:hover{background:color-mix(in srgb,var(--lime) 8%,transparent)}
+
+.schedule-table td:first-child{font-weight:700}
+
+.schedule-table td:nth-child(2){color:#7a5806;font-family:var(--mono);font-size:.78rem;white-space:nowrap}
+
+[data-theme="dark"] .schedule-table td:nth-child(2){color:var(--lime)}
+
+.room-chip{display:inline-block;background:#1b221c;color:var(--lime);padding:3px 8px;border-radius:2px;font:600 .7rem var(--mono);white-space:nowrap}
+
+.finder-empty{padding:26px;text-align:center;border:1px dashed var(--line);color:var(--muted);font-size:.88rem;background:var(--paper)}
+
+.finder-terms{margin-top:16px;background:var(--paper);border:1px solid var(--line);padding:14px 16px;font-size:.76rem;line-height:1.75;color:var(--muted)}
+
+.finder-terms b{color:var(--ink)}
+
+.focus-btn{background:transparent;border:1px solid var(--line);color:var(--muted);font:.7rem var(--mono);padding:6px 12px;letter-spacing:.06em;transition:all .2s}
+
+.focus-btn[aria-pressed="true"]{background:var(--lime);border-color:var(--lime);color:#171c1a}
+
+body.focus-schedule .site-header,body.focus-schedule .announcement,body.focus-schedule .hero,body.focus-schedule .launchpad,body.focus-schedule .directory-section,body.focus-schedule .atlas-section,body.focus-schedule .principles,body.focus-schedule .closing-band,body.focus-schedule .site-footer{opacity:.35;pointer-events:none;transition:opacity .3s}
+
+body.focus-schedule .finder-section{position:relative;z-index:2;box-shadow:0 0 0 100vmax #0d110f66}
+
+.directory-section{background-image:linear-gradient(180deg,transparent 0%,color-mix(in srgb,var(--lime) 4%,transparent) 100%)}
+
+.directory-tools{display:flex;gap:12px;align-items:center;margin-bottom:17px}
+
+.search-field{height:57px;display:flex;align-items:center;gap:12px;padding:0 17px;border:1px solid var(--line);background:var(--paper);border-radius:2px;flex:1;min-width:0}
+
+.search-field:focus-within{outline:2px solid var(--lime);outline-offset:2px}
+
+.search-field svg{width:21px;flex-shrink:0;fill:none;stroke:var(--muted);stroke-width:1.7;stroke-linecap:round}
+
+.search-field input{width:100%;min-width:0;border:0;outline:0;background:transparent;color:var(--ink);font-size:.87rem}
+
+.search-field kbd{border:1px solid var(--line);background:var(--surface);border-radius:4px;padding:1px 7px;color:var(--muted);font:.76rem var(--mono)}
+
+.favorites-toggle{height:55px;border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:2px;padding:0 15px;display:flex;align-items:center;gap:9px;white-space:nowrap;font-size:.8rem;transition:background .2s}
+
+.favorites-toggle[aria-pressed="true"]{background:var(--lime);border-color:var(--lime);color:#171c1a}
+
+.favorites-toggle>b{font:.67rem var(--mono);background:var(--paper);padding:2px 6px;border-radius:4px}
+
+.filter-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+
+.filter-chip{display:inline-flex;align-items:center;gap:12px;border:1px solid var(--line);background:transparent;color:var(--muted);border-radius:2px;padding:8px 12px;font-size:.77rem;transition:background .2s,color .2s}
+
+.filter-chip span{font:.61rem var(--mono);opacity:.7}
+
+.filter-chip[aria-pressed="true"]{background:var(--dark);border-color:var(--dark);color:#fff;box-shadow:3px 3px 0 var(--lime)}
+
+.results-meta{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:14px;color:var(--muted);font-size:.7rem;flex-wrap:wrap}
+
+.results-meta span:first-child{color:var(--ink);font-family:var(--mono)}
+
+.directory-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}
+
+.institution-card{border:1px solid var(--line);padding:19px 19px 15px;display:flex;flex-direction:column;transition:transform .22s,border-color .22s,box-shadow .22s,background .22s;background:var(--surface);position:relative;min-height:250px;box-shadow:3px 3px 0 #1b211b08}
+
+.institution-card:hover{transform:translateY(-5px) rotate(-.25deg);border-color:#9bbd2b;box-shadow:6px 8px 0 #d9ff5480}
+
+.institution-card[hidden]{display:none}
+
+.institution-card__top{display:flex;justify-content:space-between;align-items:start}
+
+.institution-card__monogram{display:inline-flex;align-items:center;gap:7px;font:500 1.15rem var(--mono);letter-spacing:-.08em;direction:ltr}
+
+.institution-card__monogram span{font-size:.8rem;color:#8ba927}
+
+.save-button{width:34px;height:34px;border:1px solid var(--line);background:transparent;color:var(--muted);border-radius:2px;font-size:1.2rem;line-height:1;transition:background .2s}
+
+.save-button[aria-pressed="true"]{background:var(--lime);color:#171c1a;border-color:var(--lime)}
+
+.institution-card__body{margin-top:auto;padding-block:19px 17px}
+
+.institution-card__eyebrow{display:flex;align-items:center;justify-content:space-between;gap:8px;font:.57rem var(--mono);letter-spacing:.04em;color:var(--muted)}
+
+.status-label{display:inline-flex;align-items:center;gap:5px;font:.63rem var(--font);letter-spacing:0}
+
+.status-label i{width:5px;height:5px;border-radius:50%;background:#d6a33e;display:inline-block}
+
+.institution-card h3{font-size:1rem;line-height:1.65;letter-spacing:-.025em;margin:12px 0 5px}
+
+.institution-card__location{display:flex;align-items:center;gap:6px;color:var(--muted);font-size:.78rem;margin:0}
+
+.institution-card__location span:first-child{color:#8ba927}
+
+.institution-card__bottom{border-top:1px solid var(--line);padding-top:12px;display:flex;align-items:center;justify-content:space-between;gap:8px;color:var(--muted);font-size:.72rem}
+
+.compare-pick{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:transparent;color:var(--muted);padding:6px 8px;font-size:.68rem;cursor:pointer;white-space:nowrap;transition:all .2s}
+
+.compare-pick[aria-pressed="true"]{background:var(--lime);color:#171c1a;border-color:var(--lime)}
+
+.empty-state{padding:50px 20px;text-align:center;border:1px dashed var(--line);border-radius:2px}
+
+.empty-state[hidden]{display:none}
+
+.empty-state>span{font-size:2.4rem;color:#9bbd2b}
+
+.empty-state h3{margin:5px 0}
+
+.empty-state p{color:var(--muted);font-size:.85rem}
+
+.empty-state .button{margin-top:12px}
+
+.directory-note{display:flex;align-items:flex-start;gap:13px;margin-top:21px;padding:16px 18px;background:var(--paper);border:1px solid var(--line);border-inline-start:4px solid var(--lime);border-radius:2px}
+
+.directory-note__symbol{width:23px;height:23px;display:grid;place-items:center;flex-shrink:0;background:var(--lime);border-radius:50%;font:500 .8rem var(--mono);color:#171c1a}
+
+.directory-note p{margin:0;color:var(--muted);font-size:.75rem;line-height:1.9}
+
+.atlas-section{padding:clamp(54px,8vw,110px) 0;background:var(--paper);color:var(--ink);position:relative;overflow:hidden}
+
+.atlas-section::before{content:"ATLAS / MA";position:absolute;right:-.02em;top:8px;font-size:clamp(4rem,13vw,12rem);font-weight:950;letter-spacing:-.09em;line-height:1;color:currentColor;opacity:.035;pointer-events:none}
+
+.atlas-head{display:grid;grid-template-columns:1fr minmax(220px,.65fr);gap:32px;align-items:end;margin-bottom:30px;position:relative}
+
+.atlas-kicker{font:800 .72rem/1.3 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:#4f8d5a}
+
+.atlas-head h2{font-size:clamp(2rem,5vw,4.5rem);line-height:.98;letter-spacing:-.06em;margin:14px 0 0;max-width:760px}
+
+.atlas-head h2 span{color:#77a94a}
+
+.atlas-head p{color:var(--muted);margin:0;max-width:420px}
+
+.atlas-controls{display:flex;gap:10px;flex-wrap:wrap;margin:26px 0}
+
+.atlas-search{flex:1;min-width:220px;display:flex;gap:10px;align-items:center;padding:12px 15px;border:1px solid #8b998b55;background:var(--surface);border-radius:2px}
+
+.atlas-search input{border:0;outline:0;background:transparent;width:100%;color:var(--ink);font-size:.85rem}
+
+.atlas-filter{border:1px solid #7d8d7c66;background:transparent;color:inherit;border-radius:2px;padding:10px 14px;font-weight:750;font-size:.78rem;transition:all .2s}
+
+.atlas-filter[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+
+.atlas-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px;position:relative}
+
+.atlas-card{border:1px solid #89988955;background:var(--surface);border-radius:2px;padding:18px;display:flex;flex-direction:column;min-height:190px;transition:transform .2s,border-color .2s,box-shadow .2s,background .2s;color:var(--ink)}
+
+.atlas-card:hover{transform:translateY(-4px);border-color:#79a84b;box-shadow:0 18px 40px #15281712}
+
+.atlas-card[hidden]{display:none}
+
+.atlas-card__top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+
+.atlas-code{font:900 .76rem/1 var(--mono);letter-spacing:.06em;background:#dce8d4;color:#17211d;padding:8px 9px;border-radius:4px}
+
+.atlas-type{font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:#648063}
+
+.atlas-card h3{font-size:1.03rem;line-height:1.35;margin:18px 0 7px}
+
+.atlas-card p{font-size:.83rem;color:var(--muted);margin:0 0 18px}
+
+.atlas-card__link{margin-top:auto;display:flex;justify-content:space-between;align-items:center;font-weight:850;font-size:.82rem;color:#316b3e;border-top:1px solid #8998893b;padding-top:12px}
+
+.atlas-card__link span{font-size:1.2rem}
+
+[data-theme="dark"] .atlas-card__link{color:#d9f56d}
+
+[data-theme="dark"] .atlas-type{color:#b8d4b8}
+
+[data-theme="dark"] .atlas-code{background:#d9f56d;color:#17211d}
+
+.atlas-card--featured{background:#17211d;color:#f5f7ef;border-color:#17211d}
+
+.atlas-card--featured .atlas-code{background:#d9f56d;color:#17211d}
+
+.atlas-card--featured p{color:#bdc9bb}
+
+.atlas-card--featured .atlas-card__link{color:#d9f56d;border-color:#ffffff24}
+
+.atlas-card--featured .atlas-type{color:#d9f56d}
+
+.atlas-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0 0}
+
+.atlas-metric{border-top:1px solid #8b998b66;padding:12px 0}
+
+.atlas-metric b{display:block;font-size:clamp(1.35rem,3vw,2rem);line-height:1.1;letter-spacing:-.05em}
+
+.atlas-metric span{font-size:.76rem;color:var(--muted)}
+
+.atlas-note{margin-top:20px;border-inline-end:3px solid #8eb75c;padding:8px 14px;color:var(--muted);font-size:.82rem;max-width:880px}
+
+.atlas-empty{padding:22px;border:1px dashed #89988988;border-radius:2px;display:none;color:inherit}
+
+.atlas-empty.show{display:block}
+
+.atlas-bottom{margin-top:26px;display:flex;justify-content:space-between;gap:15px;align-items:center;flex-wrap:wrap}
+
+.atlas-bottom a{font-weight:850;color:#4e8247}
+
+[data-theme="dark"] .atlas-bottom a{color:#d9f56d}
+
+.atlas-pill{border:1px solid #89988977;border-radius:999px;padding:8px 12px;font-size:.78rem}
+
+.principles{display:grid;grid-template-columns:.8fr 1.2fr;gap:9%;align-items:center}
+
+.principles__visual{min-height:440px;position:relative;overflow:hidden;background:linear-gradient(135deg,#d9ff54,#c8ed42);color:#171c1a;display:flex;flex-direction:column;justify-content:space-between;padding:27px}
+
+.principles__visual::before{content:"";position:absolute;width:340px;height:340px;border:1px solid #171c1a30;border-radius:50%;top:48%;left:50%;transform:translate(-50%,-50%);box-shadow:0 0 0 35px #171c1a08,0 0 0 70px #171c1a06}
+
+.principles__visual::after{content:"";position:absolute;width:210px;height:210px;border:1px dashed #171c1a;border-radius:50%;top:48%;left:50%;transform:translate(-50%,-50%) rotate(27deg)}
+
+.principles__stamp{position:relative;z-index:1;align-self:flex-start;border:1px solid #171c1a;padding:8px 12px;font:.8rem/1.1 var(--mono);letter-spacing:.12em;transform:rotate(-7deg);box-shadow:4px 4px 0 #171c1a25}
+
+.principles__stamp span{font-size:1.3rem;display:block;text-align:center;margin-top:3px}
+
+.principles__big-number{position:relative;z-index:1;font:500 clamp(5rem,10vw,9rem)/.9 var(--mono);letter-spacing:-.12em}
+
+.principles__big-number span{font-size:1.4rem;letter-spacing:0}
+
+.principles__caption{position:relative;z-index:1;font-size:.83rem}
+
+.principles__content h2{font-size:clamp(2.4rem,4vw,3.8rem);line-height:1.25;margin:0 0 28px}
+
+.principle-list{border-top:1px solid var(--line)}
+
+.principle{display:grid;grid-template-columns:35px 1fr 20px;gap:12px;padding:17px 0;border-bottom:1px solid var(--line);align-items:start}
+
+.principle>span:first-child{font:.68rem var(--mono);color:#8ba927;padding-top:5px}
+
+.principle h3{font-size:.95rem;margin:0 0 3px}
+
+.principle p{font-size:.78rem;line-height:1.8;color:var(--muted);margin:0}
+
+.principle__symbol{color:#8ba927;text-align:end}
+
+.closing-band{background:var(--dark);color:#f5f6ee;overflow:hidden}
+
+.closing-band__inner{min-height:350px;display:flex;align-items:center;gap:45px;position:relative;padding-block:70px}
+
+.closing-band__eyebrow{align-self:flex-start;margin-top:12px;color:#929c90;font:.62rem var(--mono);letter-spacing:.08em;writing-mode:vertical-rl}
+
+.closing-band h2{font-size:clamp(2.6rem,5vw,4.6rem);line-height:1.2;letter-spacing:-.075em;margin:0;position:relative;z-index:1}
+
+.closing-band h2 span{color:var(--lime)}
+
+.closing-band .button{margin-inline-start:auto;position:relative;z-index:2;white-space:nowrap;border:1px solid #d9ff54}
+
+.closing-band__shape{position:absolute;right:35%;top:-130px;font:500 35rem/.9 var(--mono);color:#ffffff05;pointer-events:none;direction:ltr}
+
+.site-footer{background:#111711;color:#f2f4eb;border-top:1px solid #384138}
+
+.footer-main{min-height:120px;display:flex;align-items:center;gap:25px;padding-block:25px;flex-wrap:wrap}
+
+.brand--footer .brand__word{color:#f3f5ec;font-size:.98rem}
+
+.brand--footer .brand__mark{border:1px solid #465043}
+
+.footer-main p{color:#9ca598;font-size:.76rem;max-width:460px;margin:0 auto}
+
+.back-top{font-size:.76rem;white-space:nowrap;color:#d5dbcf;transition:color .2s,transform .2s}
+
+.back-top:hover{color:var(--lime);transform:translateY(-3px)}
+
+.footer-bottom{min-height:47px;border-top:1px solid #30382f;display:flex;align-items:center;justify-content:space-between;gap:15px;color:#7e897c;font:.57rem var(--mono);letter-spacing:.04em;direction:ltr;flex-wrap:wrap;padding-block:13px}
+
+.footer-bottom span:nth-child(2){font-family:var(--font);font-size:.66rem;letter-spacing:0;direction:rtl}
+
+.toast{position:fixed;z-index:80;bottom:20px;inset-inline-start:20px;max-width:min(420px,calc(100vw - 40px));padding:12px 17px;border:1px solid #4a5548;border-inline-start:4px solid var(--lime);border-radius:2px;background:var(--dark);color:#fff;box-shadow:var(--shadow);font-size:.8rem;opacity:0;transform:translateY(10px);pointer-events:none;transition:opacity .2s,transform .2s}
+
+.toast.is-visible{opacity:1;transform:translateY(0);pointer-events:auto}
+
+.compare-dock{position:fixed;z-index:30;bottom:18px;left:50%;transform:translateX(-50%);width:min(760px,calc(100% - 28px));padding:12px 15px;background:#171c1a;color:#f3f5eb;border:1px solid #414a3d;box-shadow:0 18px 55px #0004;display:flex;align-items:center;justify-content:space-between;gap:14px}
+
+.compare-dock[hidden]{display:none}
+
+.compare-dock>div,.compare-dock__actions{display:flex;align-items:center;gap:11px}
+
+.compare-dock strong{font:.8rem var(--mono);color:var(--lime)}
+
+.compare-dock span:not(.compare-dock__signal){font-size:.77rem}
+
+.compare-dock button:not(.button){background:transparent;color:#e8ecdf;border:0;text-decoration:underline;cursor:pointer;font-size:.75rem}
+
+.compare-dock .button{padding:10px 14px;color:#171c1a;font-size:.76rem}
+
+.compare-dock .button:disabled{opacity:.35;cursor:not-allowed}
+
+.compare-dialog{width:min(850px,calc(100% - 26px));max-height:min(85vh,760px);overflow:auto;border:1px solid var(--line);padding:clamp(20px,4vw,38px);background:var(--surface);color:var(--ink);box-shadow:0 25px 100px #0006}
+
+.compare-dialog::backdrop{background:#080d0acc;backdrop-filter:blur(5px)}
+
+.compare-dialog__head{display:flex;align-items:flex-start;justify-content:space-between;gap:18px}
+
+.compare-dialog h2{font-size:clamp(1.8rem,4vw,3rem);margin:14px 0 0;letter-spacing:-.06em}
+
+.compare-close{width:38px;height:38px;border:1px solid var(--line);background:transparent;color:var(--ink);font-size:1.6rem;cursor:pointer}
+
+.compare-dialog__note{color:var(--muted);font-size:.8rem;line-height:1.9;max-width:680px}
+
+.compare-table{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:24px}
+
+.compare-column{border:1px solid var(--line);padding:17px;min-width:0}
+
+.compare-column__code{font:.7rem var(--mono);color:#8ba927}
+
+.compare-column h3{font-size:1rem;line-height:1.7;margin:17px 0}
+
+.compare-row{border-top:1px solid var(--line);padding-top:10px;margin-top:10px}
+
+.compare-row small{display:block;color:var(--muted);font-size:.65rem;margin-bottom:4px}
+
+.compare-row strong{font-size:.8rem;line-height:1.7}
+
+.compare-warning{grid-column:1/-1;background:var(--paper);padding:12px;margin-top:12px;font-size:.7rem;line-height:1.8;color:var(--muted)}
+
+.cmdk{width:min(620px,calc(100% - 24px));border:1px solid var(--line);background:var(--surface);color:var(--ink);padding:0;box-shadow:0 30px 100px #0006;border-radius:2px}
+
+.cmdk::backdrop{background:#080d0ad9;backdrop-filter:blur(6px)}
+
+.cmdk__head{display:flex;align-items:center;gap:10px;padding:14px 18px;border-bottom:1px solid var(--line)}
+
+.cmdk__head svg{width:18px;stroke:var(--muted);fill:none;stroke-width:2;stroke-linecap:round}
+
+.cmdk__input{flex:1;border:0;background:transparent;color:var(--ink);outline:0;font-size:1rem;font-family:var(--font)}
+
+.cmdk__esc{font:.65rem var(--mono);background:var(--paper);color:var(--muted);padding:2px 7px;border:1px solid var(--line);border-radius:4px}
+
+.cmdk__list{max-height:min(60vh,420px);overflow-y:auto;padding:8px}
+
+.cmdk__item{width:100%;display:flex;align-items:center;gap:12px;padding:10px 12px;border:0;background:transparent;color:var(--ink);text-align:start;border-radius:2px;cursor:pointer;font-size:.88rem;transition:background .12s}
+
+.cmdk__item:hover,.cmdk__item[aria-selected="true"]{background:var(--lime);color:#171c1a}
+
+.cmdk__item[aria-selected="true"] .cmdk__kbd{background:#171c1a;color:var(--lime);border-color:#171c1a}
+
+.cmdk__icon{width:24px;height:24px;display:grid;place-items:center;font-size:1rem;background:var(--paper);border-radius:2px;flex-shrink:0}
+
+.cmdk__label{flex:1}
+
+.cmdk__kbd{font:.7rem var(--mono);background:var(--paper);color:var(--muted);padding:2px 7px;border:1px solid var(--line);border-radius:4px}
+
+.cmdk__empty{padding:24px 18px;text-align:center;color:var(--muted);font-size:.85rem}
+
+.cmdk__foot{display:flex;gap:14px;padding:10px 18px;border-top:1px solid var(--line);font:.68rem var(--mono);color:var(--muted);flex-wrap:wrap}
+
+.cmdk__foot kbd{background:var(--paper);border:1px solid var(--line);padding:1px 5px;border-radius:3px}
+
+.term-flip{perspective:1000px;margin-top:14px;height:92px;position:relative}
+
+.term-flip__inner{position:relative;width:100%;height:100%;transition:transform .8s cubic-bezier(.2,.8,.2,1);transform-style:preserve-3d}
+
+.term-flip.is-flipped .term-flip__inner{transform:rotateX(180deg)}
+
+.term-flip__face{position:absolute;inset:0;backface-visibility:hidden;background:var(--paper);border:1px solid var(--line);padding:12px 16px;display:flex;flex-direction:column;justify-content:center}
+
+.term-flip__face--back{transform:rotateX(180deg);background:var(--lime);color:#171c1a;border-color:var(--lime)}
+
+.term-flip__label{font:700 .62rem var(--mono);letter-spacing:.06em;color:var(--muted);text-transform:uppercase}
+
+.term-flip__face--back .term-flip__label{color:#3a4a1f}
+
+.term-flip__title{font-size:1.05rem;font-weight:800;margin:4px 0 0}
+
+.term-flip__def{font-size:.78rem;color:var(--muted);margin:3px 0 0;line-height:1.5}
+
+.term-flip__face--back .term-flip__def{color:#3a4a1f}
+
+@media(max-width:960px){.shell{width:min(100% - 40px,1200px)}.nav__links{gap:18px}.hero__layout{gap:4%;grid-template-columns:1fr .88fr}.directory-grid,.atlas-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.principles{gap:5%}.principles__visual{min-height:380px}.closing-band__inner{gap:28px}.finder__grid,.result-grid{grid-template-columns:1fr}.launchpad__inner{grid-template-columns:1fr;gap:34px}}
+
+@media(max-width:700px){.shell{width:calc(100% - 32px)}.announcement__right{display:none}.nav{min-height:70px;gap:10px}.brand__mark{width:37px;height:37px}.nav__links{display:none}.icon-button,.language-button,.cmd-trigger{height:37px}.icon-button{width:37px}.nav__cta{min-height:38px;padding-inline:10px;font-size:.7rem}.hero{padding-top:48px}.hero__layout{grid-template-columns:1fr;gap:35px;padding-bottom:42px}.hero h1{font-size:clamp(2.8rem,10.5vw,4.4rem);margin:22px 0 15px}.hero-art{min-height:355px;box-shadow:8px 8px 0 color-mix(in srgb,var(--lime) 16%,transparent)}.hero-art__orb{animation:none}.hero__ticker{gap:10px;padding-block:12px}.ticker__edition{display:none}.section{padding-block:70px}.section-heading{grid-template-columns:1fr;gap:13px;margin-bottom:26px}.section-heading h2,.principles h2{font-size:clamp(2.4rem,10vw,3.5rem)}.launchpad__inner{padding-block:58px}.launchpad__tiles{grid-template-columns:1fr 1fr}.launch-tile{min-height:160px;padding:14px}.launchpad__manifesto{padding:17px;flex-wrap:wrap}.launchpad__manifesto b{order:3;width:100%}.launchpad__ticker{justify-content:flex-start;padding-inline:18px}.directory-tools{flex-wrap:wrap}.search-field{height:53px;min-width:100%}.search-field kbd{display:none}.directory-grid,.atlas-grid{grid-template-columns:1fr}.principles{grid-template-columns:1fr;gap:35px}.closing-band__inner{min-height:330px;display:grid;grid-template-columns:30px 1fr;gap:13px;padding-block:55px}.closing-band__eyebrow{grid-row:1/3}.closing-band .button{grid-column:2;margin:8px 0 0;justify-self:start}.footer-main{flex-wrap:wrap;gap:17px}.footer-main p{order:3;flex-basis:100%;margin:0}.schedule-table{font-size:.72rem}.schedule-table th,.schedule-table td{padding:8px}.compare-table{grid-template-columns:1fr}.compare-dock{align-items:flex-start;flex-direction:column}.compare-dock__actions{width:100%;justify-content:space-between}}
+
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+
 </style>
-<style>
-        .hero-cinematic { background: radial-gradient(circle at 20% 30%, rgba(212,175,55,.15), transparent 40%), radial-gradient(circle at 80% 70%, rgba(20,61,156,.25), transparent 45%), linear-gradient(135deg, #0b2a6f, #143d9c 60%, #0b2a6f); position:relative; overflow:hidden; }
-        .hero-cinematic::before { content:""; position:absolute; inset:0; opacity:.08; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cpath d='M30 3l7 14 15-7-7 15 14 7-14 7 7 15-15-7-7 14-7-14-15 7 7-15-14-7 14-7-7-15 15 7z' fill='none' stroke='%23d4a72c' stroke-width='1'/%3E%3C/svg%3E"); background-size:60px 60px; pointer-events:none; }
-        .glass-card { background: rgba(28,37,65,.6); backdrop-filter: blur(12px); border: 1px solid rgba(212,175,55,.2); border-radius: 1rem; padding: 1rem; transition: transform .2s, box-shadow .2s; }
-        .glass-card:hover { transform: translateY(-3px); box-shadow: 0 10px 22px rgba(11,42,111,.25); }
-        @media (prefers-reduced-motion: reduce) { .glass-card:hover { transform:none; } }
-    </style>
+
 </head>
-<body class="min-h-screen flex flex-col justify-between">
-    <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-gold-500 text-black px-3 py-1 rounded">انتقل إلى المحتوى</a>
 
-    <!-- Header Navigation -->
-    <header class="bg-navy-900/90 border-b border-gold-500/30 sticky top-0 z-50 backdrop-blur-md">
-        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
-            <div class="flex items-center space-x-3 space-x-reverse">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-gold-400 to-gold-600 text-black font-black flex items-center justify-center text-xl shadow-lg shadow-gold-500/20">CH</div>
-                <div>
-                    <h1 class="font-extrabold text-lg text-white leading-tight tracking-wide">CHRAIM</h1>
-                    <p class="text-[11px] text-gold-400 opacity-90" data-i18n="hero.motto">دليل الطالب أكادير — جامعة ابن زهر</p>
-                </div>
-            </div>
-            <div class="flex items-center gap-2">
-                <select id="langSelect" aria-label="Language selector" onchange="if(window.CHRVVIM_PAGE)CHRVVIM_PAGE.apply(this.value); try{localStorage.setItem('chraim_lang',this.value)}catch(e){}" class="text-xs bg-navy-900 text-white border border-gold-500/30 px-2 py-1 rounded-full font-bold">
-    <option value="ar">AR</option>
-    <option value="fr">FR</option>
-    <option value="en">EN</option>
+<body>
+
+<div class="reading-progress" id="readingProgress" aria-hidden="true"></div>
+
+<a class="skip-link" href="#main">تجاوز إلى المحتوى</a>
+
+
+
+<div class="announcement"><div class="shell announcement__inner"><span class="announcement__pulse" aria-hidden="true"></span><span>دليل طلابي مستقل · تحقق دائمًا من المصدر الرسمي</span><span class="announcement__right"><span class="tiny-square" aria-hidden="true"></span><span>المغرب، بعيون الطالب</span><kbd>Ctrl</kbd><span>+</span><kbd>K</kbd><span>للبحث السريع</span></span></div></div>
+
+
+
+<header class="site-header">
+
+<div class="shell nav">
+
+<a class="brand" href="#top" aria-label="CHRAIM Campus — الصفحة الرئيسية">
+
+<span class="brand__mark" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M27.8 10.5a13 13 0 1 0 0 19"/><path d="M28 10.5v8.2h-8.2"/><path d="M12 20h10"/></svg></span>
+
+<span class="brand__word">CHRAIM<span class="brand__dot">.</span><small>CAM<span class="brand__small-accent">P</span>US / 01</small></span>
+
+</a>
+
+<nav class="nav__links" aria-label="التنقل الرئيسي">
+
+<a href="#finder">الأفواج</a>
+
+<a href="#directory">المؤسسات</a>
+
+<a href="#atlas">المصادر</a>
+
+<a href="#principles">منهجنا</a>
+
+</nav>
+
+<div class="nav__actions">
+
+<button class="cmd-trigger" id="cmdTrigger" type="button" aria-label="فتح لوحة الأوامر" title="لوحة الأوامر"><span aria-hidden="true">⌘</span><kbd>K</kbd></button>
+
+<button class="icon-button" id="themeToggle" type="button" aria-label="تبديل المظهر" aria-pressed="false" title="تبديل المظهر">
+
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 15.3A8.7 8.7 0 0 1 8.7 3.5 8.8 8.8 0 1 0 20.5 15.3Z"/></svg>
+
+</button>
+
+<button class="language-button" id="languageToggle" type="button" aria-label="Switch to French">FR <span aria-hidden="true">↗</span></button>
+
+<a class="button button--dark nav__cta" href="#finder"><span>ابدأ البحث</span><span aria-hidden="true">↙</span></a>
+
+</div>
+
+</div>
+
+</header>
+
+
+
+<main id="main">
+
+
+
+<section class="hero" id="top">
+
+<div class="hero__grid-pattern" aria-hidden="true"></div>
+
+<div class="shell hero__layout">
+
+<div class="hero__copy">
+
+<div class="eyebrow"><span class="eyebrow__index">01 / 06</span><span class="eyebrow__line"></span><span>مساحتك الجامعية تبدأ هنا</span></div>
+
+<h1>فوجك، جدولك،<br><span class="highlight">ومصدرك — واضح.</span></h1>
+
+<p class="hero__description">محرك بحث فعلي لاستعمالات الزمن بكلية العلوم القانونية والسياسية بأكادير (FSJP)، ودليل مؤسسات، وأطلس مصادر رسمية — في مساحة واحدة، مصممة بعقل الطالب.</p>
+
+<div class="hero__actions">
+
+<a class="button button--lime" href="#finder"><span>ابحث عن فوجي</span><span class="button__arrow" aria-hidden="true">↙</span></a>
+
+<a class="text-link" href="#principles"><span>كيف نرتّب المعلومة؟</span><span aria-hidden="true">↗</span></a>
+
+</div>
+
+<div class="next-class" id="nextClass" aria-live="polite">
+
+<div class="next-class__head"><span>LIVE / ACADEMIC PULSE</span><span class="next-class__live"><i></i> الآن</span></div>
+
+<p class="next-class__subject" id="nextSubject">لم يتم حفظ ملف طالب بعد</p>
+
+<div class="next-class__meta" id="nextMeta">ابحث عن فوجك أولاً لحساب حصصك القادمة تلقائيًا.</div>
+
+<div class="next-class__countdown" id="nextCountdown" hidden><b>—</b><span>حتى الحصة القادمة</span></div>
+
+<button class="next-class__btn" id="nextJump" type="button" hidden>اذهب إلى الجدول ↙</button>
+
+</div>
+
+<div class="hero__footnote"><span class="footnote__mark" aria-hidden="true">✳</span><span>مستقلّون عن المؤسسات · نضع التحقق قبل التوصية</span></div>
+
+</div>
+
+<div class="hero-art" role="img" aria-label="هوية CHRAIM البصرية">
+
+<div class="hero-art__coordinates" aria-hidden="true"><span>30°25′N</span><span>MAP / 001</span></div>
+
+<div class="hero-art__top"><span>FIELD NOTES / MOROCCO</span><span class="hero-art__status"><i></i> STUDENT FIRST</span></div>
+
+<div class="hero-art__orb" aria-hidden="true"><div class="orb__ring"></div><div class="orb__ring orb__ring--two"></div><div class="orb__ring orb__ring--three"></div><div class="orb__core">CH<span>↗</span></div><div class="orb__node orb__node--a"></div><div class="orb__node orb__node--b"></div><div class="orb__node orb__node--c"></div></div>
+
+<div class="hero-art__sticker" aria-hidden="true"><span>YOUR</span><strong>NEXT<br>CHAPTER</strong><i>↙</i></div>
+
+<div class="hero-art__bottom"><span>30°25′N — 9°36′W</span><span>EST. FOR STUDENTS</span></div>
+
+<span class="hero-art__index" aria-hidden="true">C/01</span>
+
+</div>
+
+</div>
+
+<div class="shell hero__ticker"><span>وضوح</span><i></i><span>استكشاف</span><i></i><span>مصادر</span><i></i><span>اختيار واعٍ</span><span class="ticker__edition">SIGNATURE EDITION — 2026</span></div>
+
+</section>
+
+
+
+<section class="launchpad" aria-label="روابط سريعة">
+
+<div class="shell launchpad__inner">
+
+<div class="launchpad__lead">
+
+<span class="launchpad__eyebrow">CHRAIM / YOUR CAMPUS COMPASS</span>
+
+<h2>كل ما تحتاجه،<br><em>أقرب مما تظن.</em></h2>
+
+<p>محرك الأفواج يعمل مباشرة في هذه الصفحة. أدناه مسارات رسمية إضافية للتحقق من المصدر.</p>
+
+<a class="launchpad__main" href="https://chraim.pages.dev/" target="_blank" rel="noopener noreferrer">
+
+<span><small>OPEN THE EXPERIENCE</small><b>ادخل إلى CHRAIM Campus</b></span><strong>↗</strong>
+
+</a>
+
+</div>
+
+<div class="launchpad__tiles">
+
+<a class="launch-tile launch-tile--primary" href="#finder">
+
+<span class="launch-tile__num">01 / MAIN FEATURE</span><span class="launch-tile__symbol">⌕</span>
+
+<b>محرك الأفواج</b><small>استعمالات الزمن الرسمية</small>
+
+</a>
+
+<a class="launch-tile" href="https://www.uiz.ac.ma/" target="_blank" rel="noopener noreferrer">
+
+<span class="launch-tile__num">02 / OFFICIAL SOURCE</span><span class="launch-tile__symbol">⌁</span>
+
+<b>جامعة ابن زهر</b><small>المصدر الجامعي الرسمي</small>
+
+</a>
+
+<a class="launch-tile" href="https://preinscription.uiz.ac.ma/" target="_blank" rel="noopener noreferrer">
+
+<span class="launch-tile__num">03 / STUDENT SERVICE</span><span class="launch-tile__symbol">↗</span>
+
+<b>التسجيل القبلي</b><small>البوابة الرسمية</small>
+
+</a>
+
+<div class="launchpad__manifesto"><span>DESIGNED IN MOROCCO</span><b>وضوحٌ أكثر.<br>اختياراتٌ أذكى.</b><i>CH / 2026</i></div>
+
+</div>
+
+</div>
+
+<div class="launchpad__ticker" aria-hidden="true"><span>DISCOVER</span><i>✳</i><span>COMPARE</span><i>✳</i><span>VERIFY</span><i>✳</i><span>MOVE FORWARD</span><i>✳</i><span>CHRAIM CAMPUS</span></div>
+
+</section>
+
+
+
+<section class="finder-section" id="finder">
+
+<div class="shell section">
+
+<div class="section-heading">
+
+<div>
+
+<div class="section-kicker"><span>02</span><span>FSJP / AGADIR</span></div>
+
+<h2>ابحث عن <span>فوجك.</span></h2>
+
+</div>
+
+<p>محرك تفاعلي لاستعمالات الزمن بكلية العلوم القانونية والسياسية بأكادير. اختر السداسي والمسار، أدخل أول حروف نسبك، واحصل على فوجك وجدولك الأسبوعي.</p>
+
+</div>
+
+<div class="finder">
+
+<div class="finder__grid">
+
+<div class="field">
+
+<label for="semesterSelect">1 · السداسي</label>
+
+<select id="semesterSelect">
+
+<option value="S3">السداسي الثالث (S3)</option>
+
+<option value="S5">السداسي الخامس (S5)</option>
+
 </select>
-<button id="themeToggle" onclick="toggleTheme()" aria-label="تبديل وضع النهار والليل" title="نهار / ليل" class="text-xs bg-navy-900 text-gold-400 border border-gold-500/30 px-2 py-1 rounded-full font-bold">🌙</button>
-<button id="fontToggle" onclick="toggleFont()" aria-pressed="false" aria-label="A+" title="تكبير الخط" class="text-xs bg-navy-900 text-gold-400 border border-gold-500/30 px-2 py-1 rounded-full font-bold">A+</button>
-<a href="/orientation.html" class="text-xs bg-gold-600 text-white px-3 py-1 rounded-full flex items-center gap-1.5 font-black hover:bg-gold-500">
-                    <i data-lucide="sparkles" class="w-4 h-4"></i> مرشد التوجيه
-                </a>
-                <span class="hidden sm:flex text-xs bg-gold-500/10 text-gold-400 border border-gold-500/30 px-3 py-1 rounded-full flex items-center gap-1.5 font-bold">
-                    <i data-lucide="shield-check" class="w-4 h-4 text-gold-500"></i> بيانات رسمية 2026–2027
-                </span>
-            </div>
-        </div>
-    </header>
 
-    <!-- Main Content Container -->
-    <main id="main" class="flex-1 max-w-7xl w-full mx-auto px-4 py-8 space-y-8">
+</div>
 
-        <!-- Hero Status Banner -->
-        <section class="hero-cinematic glass-card rounded-2xl p-6 md:p-8 shadow-2xl relative overflow-hidden">
-            <div class="absolute -left-10 -bottom-10 w-48 h-48 bg-gold-500/10 rounded-full blur-3xl pointer-events-none"></div>
-            <div class="relative z-10 max-w-4xl space-y-3">
-                <div class="flex flex-wrap items-center gap-2">
-                    <span class="bg-gold-500 text-black font-bold text-xs px-3 py-1 rounded-md">تحديث الكلية الرسمي</span>
-                    <span class="text-xs text-gray-300 bg-navy-900 px-2.5 py-0.5 rounded border border-navy-700">آخر تحيين: 2026-10-23</span>
-                </div>
-                <h2 class="text-2xl md:text-4xl font-black text-white leading-tight" data-i18n-html="hero.h1html">
-                    بوابة طالب <span class="gold-gradient-text">كلية العلوم القانونية والسياسية (FSJP Agadir)</span>
-                </h2>
-                <p class="text-gray-300 text-xs md:text-sm leading-relaxed" data-i18n="hero.p">
-                    تم تحيين بيانات البوابة وفق التسمية والمسارات الرسمية الجديدة للكلية للموسم الجامعي 2026–2027. يمكنك الآن البحث الفوري عن الفوج، المجموعات، وأوقات المحاضرات لجميع مسارات السداسي الثالث والالسداسي الخامس.
-                </p>
-            </div>
-        </section>
+<div class="field">
 
-        <!-- بطاقة الترحيب/المصطلح (Phase Creative) -->
-        <section class="glass-card rounded-2xl p-6 shadow-2xl space-y-3">
-            <div class="flex items-center justify-between gap-3">
-                <h3 id="greeting" class="text-xl font-bold text-white" data-i18n="home.greeting"></h3>
-                <span id="todayDate" class="text-xs text-gold-400"></span>
-            </div>
-            <div class="bg-navy-950/90 border border-gold-500/30 rounded-xl p-4">
-                <div class="text-xs text-gray-400 mb-1">مصطلح قانوني اليوم</div>
-                <div id="termTitle" class="text-white font-bold" data-i18n="home.termTitle"></div>
-                <div id="termDef" class="text-xs text-gray-300 mt-1"></div>
-            </div>
-        </section>
+<label for="pathwaySelect">2 · المسار التخصصي</label>
 
-        <!-- المستجدات (Phase 4) -->
-        <section class="glass-card rounded-2xl p-6 shadow-2xl space-y-3">
-            <h3 class="text-xl font-bold text-white flex items-center gap-2.5" data-i18n="home.annTitle">
-                <i data-lucide="bell" class="text-gold-500 w-6 h-6"></i> آخر المستجدات
-            </h3>
-            <div id="annList" class="space-y-2 text-xs text-gray-300"></div>
-            <a href="/academic-updates.html" class="text-xs text-gold-400 hover:underline">عرض كل المستجدات →</a>
-        </section>
+<select id="pathwaySelect"></select>
 
-        <!-- فهرس شامل (Phase Creative) -->
-        <section class="glass-card rounded-2xl p-6 shadow-2xl space-y-3">
-            <h3 class="text-xl font-bold text-white flex items-center gap-2.5">
-                <i data-lucide="list" class="text-gold-500 w-6 h-6"></i> فهرس شامل
-            </h3>
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-3 text-xs">
-                <a href="/" class="glass-card p-3 rounded-xl text-center font-bold text-white">🏠 الرئيسية</a>
-                <a href="/portal.html" class="glass-card p-3 rounded-xl text-center font-bold text-white">🚪 البوابة</a>
-                <a href="/levels/" class="glass-card p-3 rounded-xl text-center font-bold text-white">🎓 المستويات</a>
-                <a href="/lessons/" class="glass-card p-3 rounded-xl text-center font-bold text-white">📚 الدروس</a>
-                <a href="/support/" class="glass-card p-3 rounded-xl text-center font-bold text-white">🛠️ الدعم</a>
-                <a href="/directory.html" class="glass-card p-3 rounded-xl text-center font-bold text-white">🗂️ الدليل</a>
-                <a href="/resources.html" class="glass-card p-3 rounded-xl text-center font-bold text-white">🔗 الموارد</a>
-                <a href="/atlas.html" class="glass-card p-3 rounded-xl text-center font-bold text-white">🗺️ الأطلس</a>
-                <a href="/documents/legal/" class="glass-card p-3 rounded-xl text-center font-bold text-white">⚖️ المكتبة القانونية</a>
-                <a href="/faculties/" class="glass-card p-3 rounded-xl text-center font-bold text-white">🏛️ الكليات</a>
-                <a href="/student.html" class="glass-card p-3 rounded-xl text-center font-bold text-white">👤 فضاء الطالب</a>
-                <a href="/orientation.html" class="glass-card p-3 rounded-xl text-center font-bold text-white">🧭 مرشد التوجيه</a>
-                <a href="/academic-offer.html" class="glass-card p-3 rounded-xl text-center font-bold text-white">📋 عرض التكوينات</a>
-                <a href="/academic-updates.html" class="glass-card p-3 rounded-xl text-center font-bold text-white">📰 المستجدات</a>
-                <a href="/university-directory.html" class="glass-card p-3 rounded-xl text-center font-bold text-white">🏫 دليل الجامعة</a>
-                <a href="/rafiq-altalib.html" class="glass-card p-3 rounded-xl text-center font-bold text-white">🤝 رفيق الطالب</a>
-                <a href="/students-guide.html" class="glass-card p-3 rounded-xl text-center font-bold text-white">📖 دليل الطالب</a>
-                <a href="/sources.html" class="glass-card p-3 rounded-xl text-center font-bold text-white">🔗 المصادر</a>
-                <a href="/ai-assistant.html" class="glass-card p-3 rounded-xl text-center font-bold text-white">🤖 المساعد</a>
-                <a href="/privacy.html" class="glass-card p-3 rounded-xl text-center font-bold text-white">🔒 الخصوصية</a>
-                <a href="/terms.html" class="glass-card p-3 rounded-xl text-center font-bold text-white">📜 الشروط</a>
-            </div>
-        </section>
+</div>
 
-        <!-- ماذا تريد اليوم؟ (Phase 4) -->
-        <section class="glass-card rounded-2xl p-6 shadow-2xl space-y-4">
-            <h3 class="text-xl font-bold text-white flex items-center gap-2.5">
-                <i data-lucide="sparkles" class="text-gold-500 w-6 h-6"></i> ماذا تريد اليوم؟
-            </h3>
-            <div class="flex gap-2">
-                <input id="homeSearch" type="search" aria-label="بحث سريع" placeholder="ابحث عن كلية، مدرسة، صفحة… (Ctrl+K)" class="flex-1 bg-navy-950 border border-navy-700 text-white rounded-xl p-3 text-sm focus:border-gold-500 outline-none" readonly>
-                <button onclick="document.getElementById('cmdkBtn').click()" class="bg-gold-600 text-white font-bold px-4 rounded-xl text-sm">بحث</button>
-            </div>
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
-                <a href="#schedule" class="glass-card p-3 rounded-xl text-center text-xs font-bold text-white hover:border-gold-500/40" data-i18n="hub.c12b">📅 جدولي</a>
-                <a href="/portal.html#exams" class="glass-card p-3 rounded-xl text-center text-xs font-bold text-white" data-i18n="hub.c6b">📝 امتحاناتي</a>
-                <a href="/academic-updates.html" class="glass-card p-3 rounded-xl text-center text-xs font-bold text-white" data-i18n="hub.c18b">📰 المستجدات</a>
-                <a href="/etablissements/" class="glass-card p-3 rounded-xl text-center text-xs font-bold text-white" data-i18n="ig.title">🏛️ المؤسسة</a>
-                <a href="/portal.html#gpa" class="glass-card p-3 rounded-xl text-center text-xs font-bold text-white" data-i18n="hub.c11b">🧮 المعدل</a>
-                <a href="/portal.html#docs" class="glass-card p-3 rounded-xl text-center text-xs font-bold text-white" data-i18n="hub.c7b">📄 الوثائق</a>
-                <a href="/levels/" class="glass-card p-3 rounded-xl text-center text-xs font-bold text-white">🎓 المستويات</a>
-                <a href="/lessons/" class="glass-card p-3 rounded-xl text-center text-xs font-bold text-white">📚 الدروس</a>
-                <a href="/resources.html" class="glass-card p-3 rounded-xl text-center text-xs font-bold text-white">🔗 الموارد</a>
-                <a href="/directory.html" class="glass-card p-3 rounded-xl text-center text-xs font-bold text-white">🗂️ الدليل</a>
-                <a href="/documents/legal/" class="glass-card p-3 rounded-xl text-center text-xs font-bold text-white">⚖️ مكتبة قانونية</a>
-            </div>
-            <div id="todayCard" class="hidden bg-navy-950/90 border border-gold-500/30 rounded-xl p-4 text-xs text-gray-300"></div>
-            <div class="flex gap-2 justify-end">
-                <button onclick="clearSavedProfile()" class="text-xs text-gray-400 hover:text-gold-400">مسح البيانات المحفوظة</button>
-            </div>
-        </section>
+<div class="field">
 
-        <!-- Interactive Schedule & Group Finder Widget -->
-        <section class="glass-card rounded-2xl p-6 shadow-2xl space-y-6">
-            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-navy-700/80 pb-4">
-                <div>
-                    <h3 class="text-xl font-bold text-white flex items-center gap-2.5">
-                        <i data-lucide="search-code" class="text-gold-500 w-6 h-6"></i> محرك البحث التفاعلي للأفواج واستعمالات الزمن
-                    </h3>
-                    <p class="text-xs text-gray-400 mt-1">أدخل أول حروف النسب باللاتينية واختر المسار للحصول على معلومات الفوج والقاعات مباشرة.</p>
-                </div>
-            </div>
+<label for="nameInput">3 · النسب باللاتينية</label>
 
-            <!-- Filters Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div>
-                    <label for="semesterSelect" class="block text-xs font-bold text-gold-400 mb-1.5">1. الفصل الدراسي</label>
-                    <select id="semesterSelect" onchange="updatePathways()" class="w-full bg-navy-950 border border-navy-700 text-white rounded-xl p-3 text-sm focus:border-gold-500 outline-none transition-all">
-                        <option value="S3">السداسي الثالث (S3)</option>
-                        <option value="S5">السداسي الخامس (S5)</option>
-                    </select>
-                </div>
-                <div>
-                    <label for="pathwaySelect" class="block text-xs font-bold text-gold-400 mb-1.5">2. الشعبة / المسار التخصصي</label>
-                    <select id="pathwaySelect" class="w-full bg-navy-950 border border-navy-700 text-white rounded-lg p-3 text-sm focus:border-gold-500 outline-none transition-all">
-                        <!-- Populated dynamically via JS -->
-                    </select>
-                </div>
-                <div>
-                    <label class="block text-xs font-bold text-gold-400 mb-1.5">3. النسب باللاتينية (اللقب)</label>
-                    <input type="text" id="nameInput" placeholder="مثال: AABACH, AIT BACH, ZOUINE..." class="w-full bg-navy-950 border border-navy-700 text-white rounded-xl p-3 text-sm focus:border-gold-500 outline-none placeholder-gray-500 transition-all uppercase">
-                </div>
-            </div>
+<input type="text" id="nameInput" placeholder="مثال: AABACH, EL MANSOURI…" autocomplete="off" spellcheck="false">
 
-            <button onclick="searchGroup()" class="w-full bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-400 hover:to-gold-500 text-black font-extrabold py-3.5 rounded-xl text-sm transition-all flex items-center justify-center gap-2 shadow-xl shadow-gold-500/10 cursor-pointer">
-                <i data-lucide="sparkles" class="w-4 h-4"></i> إظهار الفوج وتفاصيل الجدول الأسبوعي
-            </button>
+</div>
 
-            <!-- Results Output Container -->
-            <div id="resultsContainer" class="hidden space-y-6 pt-2">
-                <!-- Group Info Card -->
-                <div id="groupInfoOutput" class="bg-navy-950/90 border border-gold-500/30 rounded-xl p-5 space-y-4 shadow-inner">
-                    <!-- Injected by JS -->
-                </div>
+</div>
 
-                <!-- Schedule Table -->
-                <div class="space-y-3">
-                    <h4 class="text-sm font-bold text-white flex items-center gap-2">
-                        <i data-lucide="calendar" class="text-gold-500 w-4 h-4"></i> استعمال الزمن الخاص بهذا المسار (الموسم 2026–2027)
-                    </h4>
-                    <div class="overflow-x-auto rounded-xl border border-navy-700">
-                        <table class="w-full text-xs text-right text-gray-300">
-                            <thead class="bg-navy-800 text-gold-400 border-b border-navy-700">
-                                <tr>
-                                    <th class="p-3">اليوم</th>
-                                    <th class="p-3">التوقيت</th>
-                                    <th class="p-3">المادة / وحدة التكوين</th>
-                                    <th class="p-3">الأستاذ(ة)</th>
-                                    <th class="p-3">القاعة / المدرج</th>
-                                </tr>
-                            </thead>
-                            <tbody id="scheduleTableBody" class="divide-y divide-navy-800 bg-navy-900/50">
-                                <!-- Injected by JS -->
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </section>
+<div class="finder__actions">
 
-        <!-- Corrected Institutions Grid -->
-        <section class="space-y-4">
-            <h3 class="text-lg font-bold text-white flex items-center gap-2">
-                <i data-lucide="building" class="text-gold-500"></i> دليل المؤسسات الجامعية بأكادير (مُحدث 2026)
-            </h3>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div class="glass-card p-4 rounded-xl flex justify-between items-start border-gold-500/40">
-                    <div>
-                        <span class="text-[10px] bg-gold-500/20 text-gold-400 font-bold px-2 py-0.5 rounded">الاسم الرسمي الجديد</span>
-                        <h4 class="font-bold text-white mt-1 text-sm">كلية العلوم القانونية والسياسية (FSJP)</h4>
-                        <p class="text-xs text-gray-400 mt-0.5">Faculté des Sciences Juridiques et Politiques - Agadir</p>
-                    </div>
-                    <i data-lucide="check-circle-2" class="text-gold-500 w-5 h-5 flex-shrink-0"></i>
-                </div>
-                <div class="glass-card p-4 rounded-xl flex justify-between items-start">
-                    <div>
-                        <span class="text-[10px] bg-navy-700 text-gray-300 px-2 py-0.5 rounded">كلية</span>
-                        <h4 class="font-bold text-white mt-1 text-sm">كلية العلوم (FSA)</h4>
-                        <p class="text-xs text-gray-400 mt-0.5">Faculté des Sciences - Agadir</p>
-                    </div>
-                    <i data-lucide="map-pin" class="text-gray-500 w-5 h-5 flex-shrink-0"></i>
-                </div>
-                <div class="glass-card p-4 rounded-xl flex justify-between items-start">
-                    <div>
-                        <span class="text-[10px] bg-navy-700 text-gray-300 px-2 py-0.5 rounded">كلية</span>
-                        <h4 class="font-bold text-white mt-1 text-sm">كلية الآداب والعلوم الإنسانية (FLSH)</h4>
-                        <p class="text-xs text-gray-400 mt-0.5">Faculté des Lettres et des Sciences Humaines - Agadir</p>
-                    </div>
-                    <i data-lucide="map-pin" class="text-gray-500 w-5 h-5 flex-shrink-0"></i>
-                </div>
-            </div>
-        </section>
+<button class="button button--dark finder__submit" id="searchGroup" type="button"><span>إظهار الفوج والجدول</span><span aria-hidden="true">↙</span></button>
 
-    </main>
+<button class="finder__aux" id="clearProfile" type="button">مسح البيانات المحفوظة</button>
 
-    <!-- Footer -->
-    <footer class="bg-navy-900 border-t border-navy-800 py-6 text-center text-xs text-gray-400">
-        <p data-i18n="hub.foot">صُنع بـ <strong class="text-gold-400">CHRAIM</strong> · منصة دليل الطالب أكادير © 2026</p>
-    </footer>
+<button class="focus-btn" id="focusToggle" type="button" aria-pressed="false">وضع التركيز</button>
 
-    <!-- Comprehensive JavaScript Logic -->
+</div>
+
+
+
+<div class="finder-result" id="finderResult" aria-live="polite">
+
+<div class="result-card">
+
+<div class="result-card__head">
+
+<div>
+
+<h3 class="result-card__title">نتيجة توزيع الفوج لـ: <span id="resultName">—</span></h3>
+
+<p class="result-card__sub" id="resultPathway">—</p>
+
+</div>
+
+<span class="result-card__badge">FSJP AGADIR</span>
+
+</div>
+
+<div class="result-grid">
+
+<div class="result-cell"><small>الفوج / المجموعة</small><strong id="resultGroup">—</strong></div>
+
+<div class="result-cell result-cell--gold"><small>فوج اللغة الأجنبية</small><strong id="resultLang">—</strong></div>
+
+<div class="result-cell"><small>نطاق النسب</small><strong id="resultRange">—</strong></div>
+
+</div>
+
+<div class="result-note"><b>ملاحظة تنظيمية:</b> الأسماء المركبة (بفراغ، مثل <span dir="ltr" style="font-family:var(--mono)">EL MANSOURI</span>) تُرتَّب قبل الأسماء غير المركبة (مثل <span dir="ltr" style="font-family:var(--mono)">ELMANSOURI</span>).</div>
+
+</div>
+
+<div>
+
+<h4 style="margin:0 0 10px;font-size:.95rem">الجدول الأسبوعي — <span id="resultScheduleTitle">—</span></h4>
+
+<div class="schedule-table-wrap">
+
+<table class="schedule-table">
+
+<thead><tr><th>اليوم</th><th>التوقيت</th><th>المادة</th><th>الأستاذ(ة)</th><th>القاعة</th></tr></thead>
+
+<tbody id="scheduleBody"></tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="finder-empty" id="finderEmpty" hidden>أدخل النسب أولاً لعرض النتيجة.</div>
+
+<div class="finder-terms">
+
+<b>مصطلح اليوم:</b> <span id="termTitle">—</span> — <span id="termDef">—</span>
+
+<div class="term-flip" id="termFlip" title="اضغط لقلب البطاقة">
+
+<div class="term-flip__inner">
+
+<div class="term-flip__face"><span class="term-flip__label">TERM / TODAY</span><span class="term-flip__title" id="termTitleFlip">—</span><span class="term-flip__def" id="termDefFlip">—</span></div>
+
+<div class="term-flip__face term-flip__face--back"><span class="term-flip__label">AND NEXT</span><span class="term-flip__title" id="termTitleNext">—</span><span class="term-flip__def" id="termDefNext">—</span></div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<section class="directory-section" id="directory">
+
+<div class="shell section">
+
+<div class="section-heading">
+
+<div>
+
+<div class="section-kicker"><span>03</span><span>THE DIRECTORY</span></div>
+
+<h2>ابحث عن <span>مكانك.</span></h2>
+
+</div>
+
+<p>دليل تجريبي للمؤسسات الجامعية بأكادير. للتفاصيل الرسمية، ارجع دائمًا إلى موقع الجامعة.</p>
+
+</div>
+
+<div class="directory-tools">
+
+<label class="search-field"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg><input id="searchInput" type="search" placeholder="ابحث باسم المؤسسة أو المدينة..." autocomplete="off" aria-label="البحث في المؤسسات"><kbd>/</kbd></label>
+
+<button class="favorites-toggle" id="favoritesToggle" type="button" aria-pressed="false"><span aria-hidden="true">☆</span><span>المحفوظات</span><b id="favoritesCount">0</b></button>
+
+</div>
+
+<div class="filter-row" role="group" aria-label="تصفية حسب المجال" id="filters">
+
+<button class="filter-chip" type="button" data-filter="all" aria-pressed="true">الكل <span>06</span></button>
+
+<button class="filter-chip" type="button" data-filter="engineering" aria-pressed="false">الهندسة <span>02</span></button>
+
+<button class="filter-chip" type="button" data-filter="health" aria-pressed="false">الصحة <span>01</span></button>
+
+<button class="filter-chip" type="button" data-filter="business" aria-pressed="false">التدبير <span>01</span></button>
+
+<button class="filter-chip" type="button" data-filter="law" aria-pressed="false">القانون <span>01</span></button>
+
+<button class="filter-chip" type="button" data-filter="science" aria-pressed="false">العلوم <span>01</span></button>
+
+</div>
+
+<div class="results-meta"><span id="resultCount" aria-live="polite">— نتائج تجريبية</span><span>بيانات توضيحية · ليست توصية رسمية</span></div>
+
+<div class="directory-grid" id="directoryGrid">
+
+<article class="institution-card" data-category="law" data-search="fsjp agadir كلية العلوم القانونية والسياسية أكادير قانون"><div class="institution-card__top"><span class="institution-card__monogram">FSJP<span>↗</span></span><button class="save-button" type="button" aria-label="حفظ المؤسسة" aria-pressed="false" data-save="fsjp-agadir">☆</button></div><div class="institution-card__body"><div class="institution-card__eyebrow"><span>LAW & POLITICS</span><span class="status-label"><i></i>تحقق من المصدر</span></div><h3>كلية العلوم القانونية والسياسية</h3><p class="institution-card__location"><span aria-hidden="true">⌖</span> أكادير</p></div><div class="institution-card__bottom"><span>قانون · سياسة</span><span class="institution-card__arrow" aria-hidden="true">↙</span></div></article>
+
+<article class="institution-card" data-category="engineering" data-search="ensa agadir école nationale sciences appliquées المدرسة الوطنية للعلوم التطبيقية أكادير هندسة"><div class="institution-card__top"><span class="institution-card__monogram">ENSA<span>↗</span></span><button class="save-button" type="button" aria-label="حفظ المؤسسة" aria-pressed="false" data-save="ensa-agadir">☆</button></div><div class="institution-card__body"><div class="institution-card__eyebrow"><span>ENGINEERING</span><span class="status-label"><i></i>تحقق من المصدر</span></div><h3>المدرسة الوطنية للعلوم التطبيقية</h3><p class="institution-card__location"><span aria-hidden="true">⌖</span> أكادير</p></div><div class="institution-card__bottom"><span>هندسة · تكنولوجيا</span><span class="institution-card__arrow" aria-hidden="true">↙</span></div></article>
+
+<article class="institution-card" data-category="business" data-search="encg agadir commerce gestion المدرسة الوطنية للتجارة والتسيير أكادير تدبير"><div class="institution-card__top"><span class="institution-card__monogram">ENCG<span>↗</span></span><button class="save-button" type="button" aria-label="حفظ المؤسسة" aria-pressed="false" data-save="encg-agadir">☆</button></div><div class="institution-card__body"><div class="institution-card__eyebrow"><span>BUSINESS</span><span class="status-label"><i></i>تحقق من المصدر</span></div><h3>المدرسة الوطنية للتجارة والتسيير</h3><p class="institution-card__location"><span aria-hidden="true">⌖</span> أكادير</p></div><div class="institution-card__bottom"><span>تجارة · تدبير</span><span class="institution-card__arrow" aria-hidden="true">↙</span></div></article>
+
+<article class="institution-card" data-category="health" data-search="fmp agadir médecine pharmacie كلية الطب والصيدلة أكادير صحة"><div class="institution-card__top"><span class="institution-card__monogram">FMP<span>↗</span></span><button class="save-button" type="button" aria-label="حفظ المؤسسة" aria-pressed="false" data-save="fmp-agadir">☆</button></div><div class="institution-card__body"><div class="institution-card__eyebrow"><span>HEALTH</span><span class="status-label"><i></i>تحقق من المصدر</span></div><h3>كلية الطب والصيدلة</h3><p class="institution-card__location"><span aria-hidden="true">⌖</span> أكادير</p></div><div class="institution-card__bottom"><span>طب · صيدلة</span><span class="institution-card__arrow" aria-hidden="true">↙</span></div></article>
+
+<article class="institution-card" data-category="science" data-search="fsa agadir sciences كلية العلوم أكادير علوم"><div class="institution-card__top"><span class="institution-card__monogram">FSA<span>↗</span></span><button class="save-button" type="button" aria-label="حفظ المؤسسة" aria-pressed="false" data-save="fsa-agadir">☆</button></div><div class="institution-card__body"><div class="institution-card__eyebrow"><span>SCIENCE</span><span class="status-label"><i></i>تحقق من المصدر</span></div><h3>كلية العلوم</h3><p class="institution-card__location"><span aria-hidden="true">⌖</span> أكادير</p></div><div class="institution-card__bottom"><span>علوم أساسية</span><span class="institution-card__arrow" aria-hidden="true">↙</span></div></article>
+
+<article class="institution-card" data-category="engineering" data-search="ensa taroudant sciences appliquées مدرسة العلوم التطبيقية تارودانت هندسة"><div class="institution-card__top"><span class="institution-card__monogram">ENSA<span>↗</span></span><button class="save-button" type="button" aria-label="حفظ المؤسسة" aria-pressed="false" data-save="ensa-taroudant">☆</button></div><div class="institution-card__body"><div class="institution-card__eyebrow"><span>ENGINEERING</span><span class="status-label"><i></i>تحقق من المصدر</span></div><h3>مدرسة وطنية للعلوم التطبيقية</h3><p class="institution-card__location"><span aria-hidden="true">⌖</span> تارودانت</p></div><div class="institution-card__bottom"><span>هندسة · تكنولوجيا</span><span class="institution-card__arrow" aria-hidden="true">↙</span></div></article>
+
+</div>
+
+<div class="empty-state" id="emptyState" hidden><span aria-hidden="true">⌕</span><h3 id="emptyTitle">ما لقينا نتيجة مطابقة.</h3><p>جرّب كلمة أخرى أو غيّر المجال المحدد.</p><button class="button button--dark" id="resetFilters" type="button">إعادة ضبط البحث</button></div>
+
+<div class="directory-note"><span class="directory-note__symbol" aria-hidden="true">!</span><p>الأسماء والمجالات هنا لأغراض العرض. تحقق من التسمية الرسمية والعروض وشروط الولوج من موقع كل مؤسسة قبل أي قرار.</p></div>
+
+</div>
+
+</section>
+
+
+
+<section class="atlas-section" id="atlas">
+
+<div class="shell">
+
+<div class="atlas-head">
+
+<div><div class="atlas-kicker">04 / SOURCE ATLAS — MOROCCO</div><h2>معلومة من مكانها.<br><span>كل الطرق في بوابة واحدة.</span></h2></div>
+
+<p>CHRAIM يجمع روابط البداية ويعيدك إلى المصدر الأصلي. لا نستبدل مواقع المؤسسات ولا نخمن المواعيد.</p>
+
+</div>
+
+<div class="atlas-controls" role="search">
+
+<label class="atlas-search"><span aria-hidden="true">⌕</span><input id="atlasSearch" type="search" placeholder="ابحث عن خدمة أو مؤسسة أو مدينة..." aria-label="البحث في المصادر" autocomplete="off"></label>
+
+<button class="atlas-filter" type="button" data-atlas-filter="all" aria-pressed="true">الكل</button>
+
+<button class="atlas-filter" type="button" data-atlas-filter="university" aria-pressed="false">الجامعة</button>
+
+<button class="atlas-filter" type="button" data-atlas-filter="student" aria-pressed="false">خدمات الطالب</button>
+
+</div>
+
+<div class="atlas-grid" id="atlasGrid">
+
+<a class="atlas-card atlas-card--featured" data-atlas-category="university" data-atlas-search="جامعة ابن زهر اكادير ibn zohr university" href="https://www.uiz.ac.ma/" target="_blank" rel="noopener noreferrer"><div class="atlas-card__top"><span class="atlas-code">UIZ / 00</span><span class="atlas-type">UNIVERSITY</span></div><h3>جامعة ابن زهر — البوابة الرسمية</h3><p>المؤسسات التابعة، الأخبار الجامعية، البرامج، والإعلانات الرسمية.</p><span class="atlas-card__link">فتح الموقع <span>↗</span></span></a>
+
+<a class="atlas-card" data-atlas-category="student" data-atlas-search="التسجيل القبلي preinscription" href="https://preinscription.uiz.ac.ma/" target="_blank" rel="noopener noreferrer"><div class="atlas-card__top"><span class="atlas-code">UIZ / 01</span><span class="atlas-type">STUDENT</span></div><h3>التسجيل القبلي</h3><p>بوابة التسجيل الجامعي؛ تحقق من فتح الخدمة للسنة الحالية.</p><span class="atlas-card__link">بوابة التسجيل <span>↗</span></span></a>
+
+<a class="atlas-card" data-atlas-category="student" data-atlas-search="دروس اللغات مركز اللغات ecours" href="https://ecours-cl.uiz.ac.ma/" target="_blank" rel="noopener noreferrer"><div class="atlas-card__top"><span class="atlas-code">UIZ / 02</span><span class="atlas-type">LANGUAGES</span></div><h3>مركز اللغات</h3><p>منصة مركز اللغات المدرج ضمن خدمات الجامعة.</p><span class="atlas-card__link">فتح المنصة <span>↗</span></span></a>
+
+<a class="atlas-card" data-atlas-category="student" data-atlas-search="مهارات شخصية soft skills cours" href="https://e-soft-skills.uiz.ac.ma/" target="_blank" rel="noopener noreferrer"><div class="atlas-card__top"><span class="atlas-code">UIZ / 03</span><span class="atlas-type">SKILLS</span></div><h3>المهارات الشخصية</h3><p>بوابة المهارات الناعمة ضمن منصات الجامعة.</p><span class="atlas-card__link">فتح المنصة <span>↗</span></span></a>
+
+<a class="atlas-card" data-atlas-category="student" data-atlas-search="مباريات توظيف gconcours" href="https://gconcours.uiz.ac.ma/" target="_blank" rel="noopener noreferrer"><div class="atlas-card__top"><span class="atlas-code">UIZ / 04</span><span class="atlas-type">CONCOURS</span></div><h3>بوابة المباريات</h3><p>مباريات التوظيف؛ لا تخلطها مع مباريات ولوج الطلبة.</p><span class="atlas-card__link">فتح البوابة <span>↗</span></span></a>
+
+<a class="atlas-card" data-atlas-category="university" data-atlas-search="اخبار الجامعة إعلانات مستجدات" href="https://www.uiz.ac.ma/index.php" target="_blank" rel="noopener noreferrer"><div class="atlas-card__top"><span class="atlas-code">UIZ / NEWS</span><span class="atlas-type">ANNOUNCEMENTS</span></div><h3>الأخبار والإعلانات</h3><p>للمواعيد واللوائح، ارجع إلى المنشور الأصلي وتاريخه.</p><span class="atlas-card__link">تصفح المستجدات <span>↗</span></span></a>
+
+</div>
+
+<div class="atlas-empty" id="atlasEmpty">لا توجد مصادر تطابق البحث.</div>
+
+<div class="atlas-metrics" aria-label="حقائق رسمية"><div class="atlas-metric"><b>8</b><span>مدن جامعية — حسب صفحة الجامعة</span></div><div class="atlas-metric"><b>5</b><span>جهات — حسب صفحة الجامعة</span></div><div class="atlas-metric"><b>23</b><span>مؤسسة — وفق الصفحة الرئيسية</span></div></div>
+
+<p class="atlas-note">أطلس روابط موحّد، وليس نسخًا آليًا. الروابط تُفتح على المصدر الأصلي. تحقق دائمًا من الصفحة الرسمية وتاريخها.</p>
+
+<div class="atlas-bottom"><span class="atlas-pill">SOURCE-FIRST · STUDENT-FIRST · MOROCCO</span><a href="https://chraim.pages.dev" target="_blank" rel="noopener noreferrer">زيارة CHRAIM Campus ↗</a></div>
+
+</div>
+
+</section>
+
+
+
+<section class="shell principles section" id="principles">
+
+<div class="principles__visual" aria-hidden="true"><div class="principles__stamp">NO<br>NOISE<span>✳</span></div><div class="principles__big-number">03<span>/03</span></div><div class="principles__caption">قواعد بسيطة. ثقة أكبر.</div></div>
+
+<div class="principles__content">
+
+<div class="section-kicker"><span>05</span><span>OUR PROMISE</span></div>
+
+<h2>لا نبيعك حلمًا.<br><span>نوضح لك الطريق.</span></h2>
+
+<div class="principle-list">
+
+<div class="principle"><span>01</span><div><h3>المصدر أولًا</h3><p>المواعيد وشروط الولوج تتغير؛ المصدر الرسمي هو نقطة التحقق.</p></div><span class="principle__symbol">↗</span></div>
+
+<div class="principle"><span>02</span><div><h3>لا نخلط بين المؤكد والمحتمل</h3><p>نوضح ما يحتاج إلى مراجعة، ولا نعرض التخمين على أنه حقيقة.</p></div><span class="principle__symbol">◌</span></div>
+
+<div class="principle"><span>03</span><div><h3>الطالب في المركز</h3><p>واجهة سهلة وسريعة، ومعلومات مرتبة تساعدك على الاستكشاف.</p></div><span class="principle__symbol">✳</span></div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<section class="closing-band">
+
+<div class="shell closing-band__inner">
+
+<span class="closing-band__eyebrow">YOUR FUTURE ISN'T A GUESS.</span>
+
+<h2>ابدأ بالسؤال.<br><span>وصل للمصدر.</span></h2>
+
+<a class="button button--lime" href="#finder"><span>استكشف الأفواج</span><span aria-hidden="true">↙</span></a>
+
+<span class="closing-band__shape" aria-hidden="true">C</span>
+
+</div>
+
+</section>
+
+
+
+</main>
+
+
+
+<footer class="site-footer">
+
+<div class="shell footer-main">
+
+<a class="brand brand--footer" href="#top" aria-label="CHRAIM Campus">
+
+<span class="brand__mark" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M27.8 10.5a13 13 0 1 0 0 19"/><path d="M28 10.5v8.2h-8.2"/><path d="M12 20h10"/></svg></span>
+
+<span class="brand__word">CHRAIM<span class="brand__dot">.</span><small>CAMPUS / SIGNATURE</small></span>
+
+</a>
+
+<p>مشروع طلابي مستقل. هدفنا تنظيم الوصول إلى المعلومة، لا استبدال المصادر الرسمية.</p>
+
+<a class="back-top" href="#top">العودة للأعلى ↑</a>
+
+</div>
+
+<div class="shell footer-bottom">
+
+<span>© <span id="year">2026</span> CHRAIM CAMPUS</span>
+
+<span>نسخة تصميمية أولية · لا تمثل جهة جامعية رسمية</span>
+
+<span>MADE WITH INTENT / MA</span>
+
+</div>
+
+</footer>
+
+
+
+<div class="compare-dock" id="compareDock" hidden aria-live="polite">
+
+<div><span class="compare-dock__signal"></span><strong id="compareCount">0 / 3</strong><span>مؤسسات للمقارنة</span></div>
+
+<div class="compare-dock__actions"><button id="clearCompare" type="button">مسح</button><button id="openCompare" class="button button--lime" type="button" disabled>قارن الآن ↗</button></div>
+
+</div>
+
+<dialog class="compare-dialog" id="compareDialog" aria-labelledby="compareTitle">
+
+<div class="compare-dialog__head">
+
+<div><span class="atlas-kicker" style="color:#8ba927">NEXUS / SIDE BY SIDE</span><h2 id="compareTitle">قارن قبل أن تقرر.</h2></div>
+
+<button id="closeCompare" class="compare-close" type="button" aria-label="إغلاق المقارنة">×</button>
+
+</div>
+
+<p class="compare-dialog__note">هذه مقارنة تنظيمية بين بيانات النموذج فقط؛ تحقق من البرامج وشروط الولوج من المصادر الرسمية.</p>
+
+<div id="compareTable" class="compare-table"></div>
+
+</dialog>
+
+
+
+<dialog class="cmdk" id="cmdk" aria-label="لوحة الأوامر">
+
+<div class="cmdk__head">
+
+<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg>
+
+<input class="cmdk__input" id="cmdkInput" type="text" placeholder="اكتب أمرًا أو ابحث…" autocomplete="off" aria-label="بحث الأوامر">
+
+<span class="cmdk__esc">ESC</span>
+
+</div>
+
+<div class="cmdk__list" id="cmdkList" role="listbox"></div>
+
+<div class="cmdk__foot"><span><kbd>↑</kbd> <kbd>↓</kbd> للتنقل</span><span><kbd>↵</kbd> للتنفيذ</span><span><kbd>ESC</kbd> للإغلاق</span></div>
+
+</dialog>
+
+
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+
+
 <script>
-        document.addEventListener('DOMContentLoaded', () => window.lucide && lucide.createIcons());
 
-        // ---- Utilities ----
-        function esc(v){ return String(v==null?'':v).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
-        function compareNames(a,b){
-            // Names with a space (composite) come before names without a space.
-            const ca = String(a||'').trim(), cb = String(b||'').trim();
-            const sa = ca.includes(' '), sb = cb.includes(' ');
-            if (sa !== sb) return sa ? -1 : 1;
-            return ca.localeCompare(cb, 'fr', { sensitivity: 'base' });
-        }
+(() => {
 
-        // ---- Database Definition for FSJP Agadir 2026-2027 ----
-        let pathwaysData = {
-            S3: [
-                { id: "priv_s3", name: "القانون الخاص — جذع مشترك" },
-                { id: "pub_s3", name: "القانون العام — جذع مشترك" },
-                { id: "pub_fr_s3", name: "القانون العام — بالفرنسية" }
-            ],
-            S5: [
-                { id: "priv_crim_s5", name: "القانون الخاص — مسار العلوم الجنائية" },
-                { id: "priv_civ_s5", name: "القانون الخاص — مسار القانون المدني" },
-                { id: "priv_biz_s5", name: "القانون الخاص — مسار قانون المال والأعمال" },
-                { id: "priv_jud_s5", name: "القانون الخاص — مسار المهن القانونية والقضائية" },
-                { id: "pub_admin_s5", name: "القانون العام — مسار الدراسات الإدارية والمالية" },
-                { id: "pub_pol_s5", name: "القانون العام — مسار الدراسات السياسية والدولية (مُحدث 10-10-2026)" }
-            ]
-        };
+'use strict';
 
-        let scheduleDatabase = {
-            priv_s3: [
-                { day: "الإثنين", time: "08:00 - 10:00", subject: "قانون الأسرة", professor: "أيوب عبد الرزاق", room: "المدرج الكبير" },
-                { day: "الإثنين", time: "10:00 - 12:00", subject: "القانون الجنائي الخاص", professor: "ازراف أحمد", room: "المدرج 10" },
-                { day: "الثلاثاء", time: "08:00 - 10:00", subject: "المسؤولية المدنية", professor: "العلمي محمد", room: "القاعة 1" },
-                { day: "الأربعاء", time: "10:00 - 12:00", subject: "اللغة الأجنبية (الفرنسية)", professor: "غوثة سميرة", room: "القاعة 10 بلوك C" }
-            ],
-            pub_s3: [
-                { day: "الإثنين", time: "08:00 - 10:00", subject: "قانون الأسرة", professor: "حموش عبد الرحمان", room: "القاعة 4 بلوك B" },
-                { day: "الإثنين", time: "10:00 - 12:00", subject: "المالية العامة", professor: "محاسيني محمد", room: "القاعة 1" },
-                { day: "الثلاثاء", time: "14:00 - 16:00", subject: "القانون الدولي العام", professor: "محاسيني محمد", room: "المدرج 7" },
-                { day: "الخميس", time: "16:00 - 18:00", subject: "اللغة الأجنبية (الفرنسية)", professor: "نجود متحضر", room: "القاعة 12 بلوك C" }
-            ],
-            priv_crim_s5: [
-                { day: "الإثنين", time: "10:00 - 12:00", subject: "مسرح الجريمة", professor: "سعيدي يونس", room: "القاعة 1" },
-                { day: "الإثنين", time: "14:00 - 16:00", subject: "القانون الجنائي الرقمي والذكاء الاصطناعي", professor: "أيت عبد الكريم ياسين", room: "القاعة 11 بلوك C" },
-                { day: "الإثنين", time: "16:00 - 18:00", subject: "القانون الجنائي للأعمال", professor: "اطويف محمد", room: "القاعة 3" },
-                { day: "الثلاثاء", time: "14:00 - 16:00", subject: "السياسة الجنائية", professor: "احطاب إبراهيم", room: "القاعة 4" },
-                { day: "الخميس", time: "16:00 - 18:00", subject: "اللغات الأجنبية (الانكليزية)", professor: "كاضيض شيماء", room: "القاعة 13 بلوك C" }
-            ],
-            priv_civ_s5: [
-                { day: "الإثنين", time: "08:00 - 10:00", subject: "القانون العقاري 2 الحقوق العينية", professor: "بن حفو حليمة", room: "القاعة 3 بلوك B" },
-                { day: "الإثنين", time: "14:00 - 16:00", subject: "العقود المدنية الخاصة", professor: "مجاهدين خالد", room: "القاعة 7" },
-                { day: "الثلاثاء", time: "08:00 - 10:00", subject: "القانون الدولي الخاص", professor: "دريسي جليلة", room: "القاعة 1" },
-                { day: "الخميس", time: "16:00 - 18:00", subject: "اللغات الأجنبية (الانكليزية)", professor: "آسيا الخليل", room: "القاعة 2" }
-            ],
-            priv_biz_s5: [
-                { day: "الثلاثاء", time: "10:00 - 12:00", subject: "القانون الجنائي للأعمال", professor: "اطويف محمد", room: "القاعة 11 بلوك B" },
-                { day: "الأربعاء", time: "14:00 - 16:00", subject: "قانون صعوبات المقاولة", professor: "مضي خديجة", room: "القاعة 3" },
-                { day: "الخميس", time: "08:00 - 10:00", subject: "وسائل الأداء والائتمان", professor: "الحرفاوي عبد الهادي", room: "القاعة 3" },
-                { day: "الخميس", time: "16:00 - 18:00", subject: "اللغات الأجنبية (الانكليزية)", professor: "إكرام الصردي", room: "القاعة 3" }
-            ],
-            priv_jud_s5: [
-                { day: "الإثنين", time: "08:00 - 10:00", subject: "صعوبات المقاولة", professor: "اطويف محمد", room: "المدرج 9" },
-                { day: "الإثنين", time: "14:00 - 16:00", subject: "العقود الخاصة", professor: "المالوكي فاطمة", room: "القاعة 1" },
-                { day: "الأربعاء", time: "08:00 - 10:00", subject: "الحقوق العينية", professor: "العلمي محمد", room: "المدرج الكبير" },
-                { day: "الخميس", time: "16:00 - 18:00", subject: "اللغات الأجنبية (الانكليزية)", professor: "كاضيض شيماء / دلال أرسلان", room: "القاعة 3 / القاعة 1" }
-            ],
-            pub_admin_s5: [
-                { day: "الثلاثاء", time: "08:00 - 10:00", subject: "إجراءات التقاضي في المادة الإدارية", professor: "صفاحي إسماعيل", room: "القاعة 5" },
-                { day: "الثلاثاء", time: "10:00 - 12:00", subject: "المرافق العامة الكبرى", professor: "الرامي الحسين", room: "القاعة 5" },
-                { day: "الخميس", time: "16:00 - 18:00", subject: "مناهج العلوم الاجتماعية", professor: "اولتيت إبراهيم", room: "القاعة 7" },
-                { day: "الجمعة", time: "16:00 - 18:00", subject: "الوظيفة العمومية وتدبير الموارد البشرية", professor: "كديرة رشيد", room: "القاعة 7" }
-            ],
-            pub_pol_s5: [
-                { day: "الإثنين", time: "16:00 - 18:00", subject: "القانون الدولي الإنساني", professor: "فاطمة الزهراء العيني", room: "القاعة 4" },
-                { day: "الثلاثاء", time: "16:00 - 18:00", subject: "اللغات الأجنبية (الانكليزية)", professor: "سمير سعد", room: "القاعة 5" },
-                { day: "الجمعة", time: "16:00 - 18:00", subject: "العمل البرلماني", professor: "هيا مبارك", room: "القاعة 7" },
-                { day: "السبت", time: "08:00 - 10:00", subject: "سوسيولوجيا العلاقات الدولية", professor: "الوادراسي محمد", room: "القاعة 4" }
-            ]
-        };
+const $ = (s, r = document) => r.querySelector(s);
 
-        // ---- Groups data (loaded from data/groups.json, fallback inline) ----
-        let groupsData = null;
-        const groupsFallback = {
-            "S3": {
-                "priv_s3": {"mainGroup": null, "language": [{"name":"Fr-A","maxName":"EL KARZABI"},{"name":"Fr-B","maxName":null}]},
-                "pub_s3": {"mainGroup": null, "language": [{"name":"Fr-A","maxName":"EL KARZABI"},{"name":"Fr-B","maxName":null}]}
-            },
-            "S5": {}
-        };
+const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
 
-        async function loadGroups(){
-            try {
-                const res = await fetch('./data/groups.json', { cache: 'no-cache' });
-                if (res && res.ok) { groupsData = await res.json(); return; }
-            } catch(e) { /* offline or missing */ }
-            groupsData = { semesters: groupsFallback };
-        }
 
-        function getPathwayGroupConfig(sem, pathwayId){
-            if (groupsData && groupsData.semesters && groupsData.semesters[sem] && groupsData.semesters[sem][pathwayId]) {
-                return groupsData.semesters[sem][pathwayId];
-            }
-            if (groupsFallback[sem] && groupsFallback[sem][pathwayId]) return groupsFallback[sem][pathwayId];
-            return null;
-        }
 
-        function computeLanguageGroup(sem, name, pathwayId){
-            const cfg = getPathwayGroupConfig(sem, pathwayId);
-            if (!cfg || !cfg.language) return 'غير محدد';
-            const list = cfg.language;
-            for (let i = 0; i < list.length; i++){
-                const item = list[i];
-                if (item.maxName === null) return item.name;
-                if (compareNames(name, item.maxName) <= 0) return item.name;
-            }
-            return list[list.length-1].name;
-        }
+const state = {
 
-        // ---- Academic data (from data/academic-data.json, extracted from official PDFs) ----
-        let academicData = null;
-        const sectionMap = { S3: {}, S5: {} };
-        const BRANCH_MAP = {
-            S3: { priv_s3: 'priv_ar', pub_s3: 'pub_ar', pub_fr_s3: 'pub_fr' },
-            S5: { priv_crim_s5: 's5_crim', priv_civ_s5: 's5_civil', priv_biz_s5: 's5_biz', priv_jud_s5: 's5_prof', pub_admin_s5: 's5_admin', pub_pol_s5: 's5_pol' }
-        };
+theme: readStorage('chraim-theme', 'light'),
 
-        async function loadAcademicData() {
-            try {
-                const res = await fetch('./data/academic-data.json', { cache: 'no-cache' });
-                if (res && res.ok) {
-                    academicData = await res.json();
-                    rebuildFromAcademicData();
-                }
-            } catch (e) { /* keep fallback */ }
-        }
+lang: readStorage('chraim-lang', 'ar'),
 
-        function rebuildFromAcademicData() {
-            if (!academicData) return;
-            const newPaths = { S3: [], S5: [] };
-            const newSched = {};
-            ['S3','S5'].forEach(sem => {
-                const branches = (academicData[sem] && academicData[sem].branches) || {};
-                const map = BRANCH_MAP[sem] || {};
-                const rev = {};
-                Object.keys(map).forEach(pid => { rev[map[pid]] = pid; });
-                Object.keys(branches).forEach(bk => {
-                    const b = branches[bk];
-                    const pid = rev[bk] || bk;
-                    if (!newPaths[sem].some(p => p.id === pid)) newPaths[sem].push({ id: pid, name: b.name });
-                    sectionMap[sem][pid] = b.sections || [];
-                    newSched[pid] = (b.schedules || []).map(s => ({ day: s.day, time: s.time, subject: s.subject, professor: s.prof, room: s.room, group: s.group }));
-                });
-                // preserve any fallback pathways not in new data
-                (pathwaysData[sem] || []).forEach(p => {
-                    if (!newPaths[sem].some(x => x.id === p.id)) newPaths[sem].push(p);
-                });
-                pathwaysData[sem] = newPaths[sem];
-            });
-            Object.keys(newSched).forEach(pid => { scheduleDatabase[pid] = newSched[pid]; });
-        }
+favorites: readStorage('chraim-favs', []),
 
-        function findSection(sem, pathwayId, name) {
-            const secs = sectionMap[sem] && sectionMap[sem][pathwayId];
-            if (!secs || !secs.length) return null;
-            const upper = String(name || '').trim().toUpperCase();
-            for (const sec of secs) {
-                if (sec.de === 'جميع الطلبة المسجلين بالمسار' || sec.a === '-') return sec;
-                const cmpDe = compareNames(upper, sec.de);
-                const cmpA = compareNames(upper, sec.a);
-                if (cmpDe >= 0 && cmpA <= 0) return sec;
-            }
-            return null;
-        }
+profile: readStorage('chraim-profile-v1', null),
 
-        // ---- Creative: greeting + legal term of the day ----
-        const LEGAL_TERMS = [
-            { t: "الاختصاص", d: "صلاحية المحكمة للنظر في الدعوى (مكاني/نوعي/قيمي)." },
-            { t: "التبليغ", d: "إشعار الطرف بالإجراء (مسطرة) لضمان حق الدفاع." },
-            { t: "البطلان", d: "إبطال إجراء لمخالفته شكل/مبدأ قانوني." },
-            { t: "الدفع", d: "طلب من المدعى عليه (مثلاً: عدم الاختصاص)." },
-            { t: "الاستئناف", d: "طعن في حكم ابتدائي (أجل محدد)." },
-            { t: "النقض", d: "طعن أمام محكمة النقض (نقاط قانون)." },
-            { t: "التنفيذ", d: "تطبيق الحكم (إجباري/طوعي)." },
-            { t: "الإثبات", d: "إثبات الوقائع (حجة، شهادة، خبرة)." }
-        ];
-        function renderGreeting(){
-            const h = new Date().getHours();
-            const greet = h < 12 ? 'صباح الخير' : (h < 18 ? 'طاب يومك' : 'مساء الخير');
-            const gEl = document.getElementById('greeting');
-            if (gEl) gEl.textContent = greet + ' — CHRAIM';
-            const dEl = document.getElementById('todayDate');
-            if (dEl) dEl.textContent = new Date().toLocaleDateString('ar-MA');
-            const idx = new Date().getDate() % LEGAL_TERMS.length;
-            const term = LEGAL_TERMS[idx];
-            const tEl = document.getElementById('termTitle');
-            const defEl = document.getElementById('termDef');
-            if (tEl) tEl.textContent = term.t;
-            if (defEl) defEl.textContent = term.d;
-        }
+activeFilter: 'all',
 
-        // ---- Load announcements (client-side) ----
-        async function loadAnnouncements(){
-            const container = document.getElementById('annList');
-            if (!container) return;
-            try {
-                const r = await fetch('./announcements.json');
-                const d = await r.json();
-                const items = (d.items || d || []).slice(0,3);
-                if (!items.length) { container.textContent = 'لا مستجدات حالياً.'; return; }
-                items.forEach(it => {
-                    const div = document.createElement('div');
-                    div.className = 'p-3 bg-navy-950/90 border border-gold-500/30 rounded-xl';
-                    const title = document.createElement('div');
-                    title.className = 'text-white font-semibold';
-                    title.textContent = it.title || it.name || 'مستجد';
-                    const meta = document.createElement('div');
-                    meta.className = 'text-[10px] text-gray-400 mt-1';
-                    meta.textContent = it.date || it.published || '';
-                    div.appendChild(title); div.appendChild(meta);
-                    container.appendChild(div);
-                });
-            } catch(e){ container.textContent = 'تعذر تحميل المستجدات.'; }
-        }
+favoritesOnly: false,
 
-        function updatePathways() {
-            const sem = document.getElementById('semesterSelect').value;
-            const pathwaySelect = document.getElementById('pathwaySelect');
-            pathwaySelect.innerHTML = '';
-            (pathwaysData[sem] || []).forEach(p => {
-                const opt = document.createElement('option');
-                opt.value = p.id;
-                opt.textContent = p.name;
-                pathwaySelect.appendChild(opt);
-            });
-        }
+atlasFilter: 'all',
 
-        function searchGroup() {
-            const sem = document.getElementById('semesterSelect').value;
-            const pathwaySelect = document.getElementById('pathwaySelect');
-            const pathwayId = pathwaySelect.value;
-            const selectedPathwayName = pathwaySelect.options[pathwaySelect.selectedIndex] ? pathwaySelect.options[pathwaySelect.selectedIndex].text : '';
-            const name = document.getElementById('nameInput').value.trim().toUpperCase();
+sourceFilterQuery: '',
 
-            const container = document.getElementById('resultsContainer');
-            const groupInfoOutput = document.getElementById('groupInfoOutput');
-            const scheduleTableBody = document.getElementById('scheduleTableBody');
+compareSet: new Set(),
 
-            if (!name) {
-                container.classList.remove('hidden');
-                groupInfoOutput.innerHTML = '<div class="p-3 bg-gold-500/10 border border-gold-500/30 rounded-lg text-xs text-gold-400">الرجاء إدخال النسب (اللقب) لحساب الفوج.</div>';
-                scheduleTableBody.innerHTML = '';
-                return;
-            }
+focusMode: false,
 
-            container.classList.remove('hidden');
+termFlipped: false
 
-            const sec = findSection(sem, pathwayId, name);
-            const langGroup = computeLanguageGroup(sem, name, pathwayId);
-            const mainGroup = sec ? (sec.code + ' — ' + sec.group) : 'غير متوفر بعد (بيانات غير متوفرة)';
-            const sectionRange = sec ? ('من [ ' + sec.de + ' ] إلى [ ' + sec.a + ' ]') : '—';
+};
 
-            // Build result safely (no innerHTML with user values)
-            groupInfoOutput.innerHTML = '';
-            const wrap = document.createElement('div');
-            wrap.className = 'border-r-4 border-gold-500 pr-4 py-1 flex flex-col md:flex-row md:items-center justify-between gap-2';
-            const left = document.createElement('div');
-            const h4 = document.createElement('h4');
-            h4.className = 'text-white font-bold text-base';
-            h4.innerHTML = 'نتيجة توزيع الفوج لـ: <span class="text-gold-400"></span>';
-            h4.querySelector('span').textContent = name || 'كافة المسجلين';
-            const p = document.createElement('p');
-            p.className = 'text-xs text-gray-300 mt-0.5';
-            p.innerHTML = 'المسار التخصصي: <strong></strong>';
-            p.querySelector('strong').textContent = selectedPathwayName;
-            left.appendChild(h4); left.appendChild(p);
-            const badge = document.createElement('span');
-            badge.className = 'text-[11px] bg-gold-500/10 text-gold-400 border border-gold-500/30 px-3 py-1 rounded-full w-fit';
-            badge.textContent = 'كلية العلوم القانونية والسياسية بأكادير';
-            wrap.appendChild(left); wrap.appendChild(badge);
 
-            const grid = document.createElement('div');
-            grid.className = 'grid grid-cols-1 md:grid-cols-3 gap-3 bg-navy-950 p-4 rounded-xl border border-navy-800 text-xs';
-            const c1 = document.createElement('div');
-            c1.innerHTML = '<span class="text-gray-400 block mb-1">الفوج والمجموعات العادية:</span> <strong class="text-white text-sm"></strong>';
-            c1.querySelector('strong').textContent = mainGroup;
-            const c2 = document.createElement('div');
-            c2.innerHTML = '<span class="text-gray-400 block mb-1">فوج اللغة外国 المخصص:</span> <strong class="text-gold-400 text-sm"></strong>';
-            c2.querySelector('strong').textContent = langGroup;
-            const c3 = document.createElement('div');
-            c3.innerHTML = '<span class="text-gray-400 block mb-1">نطاق النسب:</span> <strong class="text-white text-sm"></strong><br><span class="text-gray-400">المقر:</span> <span class="text-white text-sm">الملحق الجامعي / القاعات والمدرجات</span>';
-            c3.querySelector('strong').textContent = sectionRange;
-            grid.appendChild(c1); grid.appendChild(c2); grid.appendChild(c3);
 
-            const note = document.createElement('div');
-            note.className = 'p-3 bg-gold-500/10 border border-gold-500/30 rounded-lg text-xs text-gold-400 flex items-start gap-2';
-            const ic = document.createElement('i');
-            ic.setAttribute('data-lucide','alert-circle');
-            ic.className = 'w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5';
-            const span = document.createElement('span');
-            span.textContent = 'ملاحظة تنظيمية هامة: الترتيب الأبجدي يعتمد قاعدة: الأسماء المركبة والمصحوبة بفراغ (مثل: EL MANSOURI) تأتي دائماً قبل الأسماء غير المركبة (مثل: ELMANSOURI).';
-            note.appendChild(ic); note.appendChild(span);
+const pathwaysData = {
 
-            groupInfoOutput.appendChild(wrap);
-            groupInfoOutput.appendChild(grid);
-            groupInfoOutput.appendChild(note);
+S3: [
 
-            // Populate Timetable
-            scheduleTableBody.innerHTML = '';
-            let scheduleList = scheduleDatabase[pathwayId] || [];
-            if (sec && sec.group) {
-                const g = sec.group;
-                const filtered = scheduleList.filter(it => it.group === g || (it.group && it.group.includes(sec.code)));
-                if (filtered.length) scheduleList = filtered;
-            }
-            if (scheduleList.length > 0) {
-                scheduleList.forEach(item => {
-                    const tr = document.createElement('tr');
-                    tr.className = "hover:bg-navy-800/60 transition-colors";
-                    const cells = [item.day, item.time, item.subject, item.professor, item.room];
-                    cells.forEach((val, idx) => {
-                        const td = document.createElement('td');
-                        td.className = idx===0 ? 'p-3 font-bold text-white' : (idx===1 ? 'p-3 text-gold-400' : (idx===2 ? 'p-3 font-semibold text-white' : (idx===3 ? 'p-3 text-gray-300' : 'p-3')));
-                        if (idx===4) {
-                            const span = document.createElement('span');
-                            span.className = 'bg-navy-950 px-2.5 py-1 rounded border border-navy-700 text-gold-300';
-                            span.textContent = val;
-                            td.appendChild(span);
-                        } else {
-                            td.textContent = val;
-                        }
-                        tr.appendChild(td);
-                    });
-                    scheduleTableBody.appendChild(tr);
-                });
-            } else {
-                const tr = document.createElement('tr');
-                const td = document.createElement('td');
-                td.colSpan = 5;
-                td.className = 'p-4 text-center text-gray-400';
-                td.textContent = 'لا توجد بيانات جدول أسبوعي متاحة حالياً لهذا المسار.';
-                tr.appendChild(td);
-                scheduleTableBody.appendChild(tr);
-            }
+{ id: 'priv_s3', name: 'القانون الخاص — جذع مشترك' },
 
-            window.lucide && lucide.createIcons();
-        }
+{ id: 'pub_s3', name: 'القانون العام — جذع مشترك' },
 
-        // ---- Personal profile (localStorage, try/catch) ----
-        const PROFILE_KEY = 'chraim_profile_v1';
-        function saveProfile(){
-            try {
-                const sem = document.getElementById('semesterSelect').value;
-                const pathwaySelect = document.getElementById('pathwaySelect');
-                const pathwayId = pathwaySelect.value;
-                const selectedPathwayName = pathwaySelect.options[pathwaySelect.selectedIndex] ? pathwaySelect.options[pathwaySelect.selectedIndex].text : '';
-                const name = document.getElementById('nameInput').value.trim().toUpperCase();
-                localStorage.setItem(PROFILE_KEY, JSON.stringify({ sem, pathwayId, selectedPathwayName, name, savedAt: new Date().toISOString() }));
-            } catch(e) { /* ignore */ }
-            renderToday();
-        }
-        function loadProfile(){
-            try { return JSON.parse(localStorage.getItem(PROFILE_KEY) || 'null'); } catch(e){ return null; }
-        }
-        function clearSavedProfile(){
-            try { localStorage.removeItem(PROFILE_KEY); } catch(e){}
-            const tc = document.getElementById('todayCard');
-            if (tc) { tc.classList.add('hidden'); tc.textContent = ''; }
-        }
-        function renderToday(){
-            const tc = document.getElementById('todayCard');
-            if (!tc) return;
-            const prof = loadProfile();
-            if (!prof || !prof.pathwayId) { tc.classList.add('hidden'); return; }
-            const list = scheduleDatabase[prof.pathwayId] || [];
-            const days = ['الأحد','الإثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'];
-            const today = days[new Date().getDay()];
-            const todayItems = list.filter(x => x.day === today);
-            tc.classList.remove('hidden');
-            tc.innerHTML = '';
-            const h = document.createElement('div');
-            h.className = 'font-bold text-gold-400 mb-2';
-            h.textContent = 'حصص اليوم (' + today + ') — ' + (prof.selectedPathwayName || '');
-            tc.appendChild(h);
-            if (todayItems.length === 0) {
-                const e = document.createElement('div');
-                e.className = 'text-gray-400';
-                e.textContent = 'لا توجد حصص اليوم.';
-                tc.appendChild(e);
-            } else {
-                todayItems.forEach(it => {
-                    const d = document.createElement('div');
-                    d.className = 'flex justify-between gap-2 py-1 border-b border-navy-800 last:border-0';
-                    const left = document.createElement('span');
-                    left.className = 'text-white font-semibold';
-                    left.textContent = it.subject + ' — ' + it.professor;
-                    const right = document.createElement('span');
-                    right.className = 'text-gold-400';
-                    right.textContent = it.time + ' · ' + it.room;
-                    d.appendChild(left); d.appendChild(right);
-                    tc.appendChild(d);
-                });
-            }
-            // ICS export link
-            const exp = document.createElement('button');
-            exp.className = 'mt-3 text-xs bg-gold-500 text-black font-bold px-3 py-1 rounded-full';
-            exp.textContent = 'تصدير .ics';
-            exp.onclick = () => exportICS(prof.pathwayId, prof.selectedPathwayName || '');
-            tc.appendChild(exp);
-        }
-        function exportICS(pathwayId, title){
-            const list = scheduleDatabase[pathwayId] || [];
-            const lines = ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//CHRAIM//Schedule//AR','CALSCALE:GREGORIAN','METHOD:PUBLISH'];
-            const dayMap = {'الأحد':'SU','الإثنين':'MO','الثلاثاء':'TU','الأربعاء':'WE','الخميس':'TH','الجمعة':'FR','السبت':'SA'};
-            list.forEach((it, idx) => {
-                const dow = dayMap[it.day] || 'MO';
-                lines.push('BEGIN:VEVENT');
-                lines.push('UID:' + pathwayId + '-' + idx + '@chraim');
-                lines.push('SUMMARY:' + (it.subject || ''));
-                lines.push('DESCRIPTION:' + (it.professor || '') + ' - ' + (it.room || ''));
-                lines.push('DTSTART;TZID=Africa/Casablanca:20260907T' + (it.time||'').slice(0,5).replace(':','') + '00');
-                lines.push('DURATION:PT2H');
-                lines.push('RRULE:FREQ=WEEKLY;BYDAY=' + dow);
-                lines.push('END:VEVENT');
-            });
-            lines.push('END:VCALENDAR');
-            const blob = new Blob([lines.join('\r\n')], { type: 'text/calendar;charset=utf-8' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url; a.download = (title || 'schedule') + '.ics';
-            document.body.appendChild(a); a.click(); document.body.removeChild(a);
-            URL.revokeObjectURL(url);
-        }
+{ id: 'pub_fr_s3', name: 'القانون العام — بالفرنسية' }
 
-        // save profile whenever search runs
-        const _origSearchGroup = searchGroup;
-        searchGroup = function(){ _origSearchGroup(); saveProfile(); };
+],
 
-        // ---- Text size toggle ----
-        function toggleFont(){
-            const h=document.documentElement, on=!h.classList.contains('big-text');
-            h.classList.toggle('big-text',on);
-            try{localStorage.setItem('chraim_big',on?'1':'0')}catch(e){}
-            const b=document.getElementById('fontToggle'); if(b){ b.setAttribute('aria-pressed',on); b.textContent=on?'A−':'A+'; }
-        }
-        document.addEventListener('DOMContentLoaded', ()=>{ try{ if(localStorage.getItem('chraim_big')==='1'){ document.documentElement.classList.add('big-text'); const b=document.getElementById('fontToggle'); if(b){b.textContent='A−'; b.setAttribute('aria-pressed','true');} } }catch(e){} });
+S5: [
 
-        // Initialize on load
-        document.addEventListener('DOMContentLoaded', async () => { await loadAcademicData(); updatePathways(); loadGroups(); renderToday(); renderGreeting(); loadAnnouncements(); try{const l=localStorage.getItem('chraim_lang'); if(l&&window.CHRVVIM_PAGE){const sel=document.getElementById('langSelect'); if(sel) sel.value=l; CHRVVIM_PAGE.apply(l);} }catch(e){} });
-    </script>
-<script src="/assets/back-home.js" defer></script>
-<script src="/assets/cmdk.js" defer></script>
-<script src="/page-i18n.js" defer></script>
-<script src="/assets/site-nav.js" defer></script>\n<script src="/assets/site-footer.js" defer></script>
-<script src="/assets/design-upgrade.js" defer></script>
+{ id: 'priv_crim_s5', name: 'القانون الخاص — مسار العلوم الجنائية' },
+
+{ id: 'priv_civ_s5', name: 'القانون الخاص — مسار القانون المدني' },
+
+{ id: 'priv_biz_s5', name: 'القانون الخاص — مسار قانون المال والأعمال' },
+
+{ id: 'priv_jud_s5', name: 'القانون الخاص — مسار المهن القانونية والقضائية' },
+
+{ id: 'pub_admin_s5', name: 'القانون العام — مسار الدراسات الإدارية والمالية' },
+
+{ id: 'pub_pol_s5', name: 'القانون العام — مسار الدراسات السياسية والدولية' }
+
+]
+
+};
+
+
+
+const scheduleDatabase = {
+
+priv_s3: [
+
+{ day: 'الإثنين', time: '08:00 - 10:00', subject: 'قانون الأسرة', professor: 'أيوب عبد الرزاق', room: 'المدرج الكبير' },
+
+{ day: 'الإثنين', time: '10:00 - 12:00', subject: 'القانون الجنائي الخاص', professor: 'ازراف أحمد', room: 'المدرج 10' },
+
+{ day: 'الثلاثاء', time: '08:00 - 10:00', subject: 'المسؤولية المدنية', professor: 'العلمي محمد', room: 'القاعة 1' },
+
+{ day: 'الأربعاء', time: '10:00 - 12:00', subject: 'اللغة الأجنبية (الفرنسية)', professor: 'غوثة سميرة', room: 'القاعة 10 بلوك C' }
+
+],
+
+pub_s3: [
+
+{ day: 'الإثنين', time: '08:00 - 10:00', subject: 'قانون الأسرة', professor: 'حموش عبد الرحمان', room: 'القاعة 4 بلوك B' },
+
+{ day: 'الإثنين', time: '10:00 - 12:00', subject: 'المالية العامة', professor: 'محاسيني محمد', room: 'القاعة 1' },
+
+{ day: 'الثلاثاء', time: '14:00 - 16:00', subject: 'القانون الدولي العام', professor: 'محاسيني محمد', room: 'المدرج 7' },
+
+{ day: 'الخميس', time: '16:00 - 18:00', subject: 'اللغة الأجنبية (الفرنسية)', professor: 'نجود متحضر', room: 'القاعة 12 بلوك C' }
+
+],
+
+pub_fr_s3: [
+
+{ day: 'الأربعاء', time: '08:00 - 10:00', subject: 'Droit de la famille', professor: 'Équipe pédagogique', room: 'Amphi B' },
+
+{ day: 'الخميس', time: '10:00 - 12:00', subject: 'Finances publiques', professor: 'Équipe pédagogique', room: 'Salle 5' }
+
+],
+
+priv_crim_s5: [
+
+{ day: 'الإثنين', time: '10:00 - 12:00', subject: 'مسرح الجريمة', professor: 'سعيدي يونس', room: 'القاعة 1' },
+
+{ day: 'الإثنين', time: '14:00 - 16:00', subject: 'القانون الجنائي الرقمي والذكاء الاصطناعي', professor: 'أيت عبد الكريم ياسين', room: 'القاعة 11 بلوك C' },
+
+{ day: 'الإثنين', time: '16:00 - 18:00', subject: 'القانون الجنائي للأعمال', professor: 'اطويف محمد', room: 'القاعة 3' },
+
+{ day: 'الثلاثاء', time: '14:00 - 16:00', subject: 'السياسة الجنائية', professor: 'احطاب إبراهيم', room: 'القاعة 4' },
+
+{ day: 'الخميس', time: '16:00 - 18:00', subject: 'اللغات الأجنبية (الإنجليزية)', professor: 'كاضيض شيماء', room: 'القاعة 13 بلوك C' }
+
+],
+
+priv_civ_s5: [
+
+{ day: 'الإثنين', time: '08:00 - 10:00', subject: 'القانون العقاري 2 — الحقوق العينية', professor: 'بن حفو حليمة', room: 'القاعة 3 بلوك B' },
+
+{ day: 'الإثنين', time: '14:00 - 16:00', subject: 'العقود المدنية الخاصة', professor: 'مجاهدين خالد', room: 'القاعة 7' },
+
+{ day: 'الثلاثاء', time: '08:00 - 10:00', subject: 'القانون الدولي الخاص', professor: 'دريسي جليلة', room: 'القاعة 1' },
+
+{ day: 'الخميس', time: '16:00 - 18:00', subject: 'اللغات الأجنبية (الإنجليزية)', professor: 'آسيا الخليل', room: 'القاعة 2' }
+
+],
+
+priv_biz_s5: [
+
+{ day: 'الثلاثاء', time: '10:00 - 12:00', subject: 'القانون الجنائي للأعمال', professor: 'اطويف محمد', room: 'القاعة 11 بلوك B' },
+
+{ day: 'الأربعاء', time: '14:00 - 16:00', subject: 'قانون صعوبات المقاولة', professor: 'مضي خديجة', room: 'القاعة 3' },
+
+{ day: 'الخميس', time: '08:00 - 10:00', subject: 'وسائل الأداء والائتمان', professor: 'الحرفاوي عبد الهادي', room: 'القاعة 3' },
+
+{ day: 'الخميس', time: '16:00 - 18:00', subject: 'اللغات الأجنبية (الإنجليزية)', professor: 'إكرام الصردي', room: 'القاعة 3' }
+
+],
+
+priv_jud_s5: [
+
+{ day: 'الإثنين', time: '08:00 - 10:00', subject: 'صعوبات المقاولة', professor: 'اطويف محمد', room: 'المدرج 9' },
+
+{ day: 'الإثنين', time: '14:00 - 16:00', subject: 'العقود الخاصة', professor: 'المالوكي فاطمة', room: 'القاعة 1' },
+
+{ day: 'الأربعاء', time: '08:00 - 10:00', subject: 'الحقوق العينية', professor: 'العلمي محمد', room: 'المدرج الكبير' },
+
+{ day: 'الخميس', time: '16:00 - 18:00', subject: 'اللغات الأجنبية (الإنجليزية)', professor: 'كاضيض شيماء', room: 'القاعة 3' }
+
+],
+
+pub_admin_s5: [
+
+{ day: 'الثلاثاء', time: '08:00 - 10:00', subject: 'إجراءات التقاضي الإداري', professor: 'صفاحي إسماعيل', room: 'القاعة 5' },
+
+{ day: 'الثلاثاء', time: '10:00 - 12:00', subject: 'المرافق العامة الكبرى', professor: 'الرامي الحسين', room: 'القاعة 5' },
+
+{ day: 'الخميس', time: '16:00 - 18:00', subject: 'مناهج العلوم الاجتماعية', professor: 'اولتيت إبراهيم', room: 'القاعة 7' },
+
+{ day: 'الجمعة', time: '16:00 - 18:00', subject: 'الوظيفة العمومية', professor: 'كديرة رشيد', room: 'القاعة 7' }
+
+],
+
+pub_pol_s5: [
+
+{ day: 'الإثنين', time: '16:00 - 18:00', subject: 'القانون الدولي الإنساني', professor: 'فاطمة الزهراء العيني', room: 'القاعة 4' },
+
+{ day: 'الثلاثاء', time: '16:00 - 18:00', subject: 'اللغات الأجنبية (الإنجليزية)', professor: 'سمير سعد', room: 'القاعة 5' },
+
+{ day: 'الجمعة', time: '16:00 - 18:00', subject: 'العمل البرلماني', professor: 'هيا مبارك', room: 'القاعة 7' },
+
+{ day: 'السبت', time: '08:00 - 10:00', subject: 'سوسيولوجيا العلاقات الدولية', professor: 'الوادراسي محمد', room: 'القاعة 4' }
+
+]
+
+};
+
+
+
+const groupsData = {
+
+S3: {
+
+priv_s3: { language: [{ name: 'Fr-A', maxName: 'EL KARZABI' }, { name: 'Fr-B', maxName: null }] },
+
+pub_s3: { language: [{ name: 'Fr-A', maxName: 'EL KARZABI' }, { name: 'Fr-B', maxName: null }] },
+
+pub_fr_s3: { language: [{ name: 'Fr-Unique', maxName: null }] }
+
+},
+
+S5: {
+
+priv_crim_s5: { language: [{ name: 'En-A', maxName: 'EL KARZABI' }, { name: 'En-B', maxName: null }] },
+
+priv_civ_s5: { language: [{ name: 'En-A', maxName: 'EL KARZABI' }, { name: 'En-B', maxName: null }] },
+
+priv_biz_s5: { language: [{ name: 'En-A', maxName: 'EL KARZABI' }, { name: 'En-B', maxName: null }] },
+
+priv_jud_s5: { language: [{ name: 'En-A', maxName: 'EL KARZABI' }, { name: 'En-B', maxName: null }] },
+
+pub_admin_s5: { language: [{ name: 'Fr-A', maxName: 'EL KARZABI' }, { name: 'Fr-B', maxName: null }] },
+
+pub_pol_s5: { language: [{ name: 'Fr-A', maxName: 'EL KARZABI' }, { name: 'Fr-B', maxName: null }] }
+
+}
+
+};
+
+
+
+const LEGAL_TERMS = [
+
+{ t: 'الاختصاص', d: 'صلاحية المحكمة للنظر في الدعوى (مكاني/نوعي/قيمي).' },
+
+{ t: 'التبليغ', d: 'إشعار الطرف بالإجراء لضمان حق الدفاع.' },
+
+{ t: 'البطلان', d: 'إبطال إجراء لمخالفته شكلًا أو مبدأً قانونيًا.' },
+
+{ t: 'الدفع', d: 'طلب من المدعى عليه (مثلاً: عدم الاختصاص).' },
+
+{ t: 'الاستئناف', d: 'طعن في حكم ابتدائي (أجل محدد).' },
+
+{ t: 'النقض', d: 'طعن أمام محكمة النقض (نقاط قانون).' },
+
+{ t: 'التنفيذ', d: 'تطبيق الحكم (إجباري/طوعي).' },
+
+{ t: 'الإثبات', d: 'إثبات الوقائع (حجة، شهادة، خبرة).' }
+
+];
+
+
+
+function readStorage(key, fallback) {
+
+try { const v = JSON.parse(localStorage.getItem(key)); return v ?? fallback; }
+
+catch { return fallback; }
+
+}
+
+function writeStorage(key, value) {
+
+try { localStorage.setItem(key, JSON.stringify(value)); } catch {}
+
+}
+
+function normalize(str) {
+
+return String(str || '').toLocaleLowerCase('ar').normalize('NFD')
+
+.replace(/[\u0300-\u036f]/g, '').replace(/[أإآ]/g, 'ا').replace(/ة/g, 'ه').trim();
+
+}
+
+function compareNames(a, b) {
+
+const ca = String(a || '').trim().toUpperCase();
+
+const cb = String(b || '').trim().toUpperCase();
+
+const sa = ca.includes(' '), sb = cb.includes(' ');
+
+if (sa !== sb) return sa ? -1 : 1;
+
+return ca.localeCompare(cb, 'fr', { sensitivity: 'base' });
+
+}
+
+let toastTimer;
+
+function say(msg) {
+
+const t = $('#toast');
+
+t.textContent = msg;
+
+t.classList.add('is-visible');
+
+clearTimeout(toastTimer);
+
+toastTimer = setTimeout(() => t.classList.remove('is-visible'), 2400);
+
+}
+
+
+
+function applyTheme(theme) {
+
+document.documentElement.dataset.theme = theme;
+
+state.theme = theme;
+
+const btn = $('#themeToggle');
+
+if (btn) {
+
+btn.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false');
+
+btn.innerHTML = theme === 'dark'
+
+? '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M5 19l1.5-1.5M17.5 6.5 19 5"/></svg>'
+
+: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 15.3A8.7 8.7 0 0 1 8.7 3.5 8.8 8.8 0 1 0 20.5 15.3Z"/></svg>';
+
+}
+
+writeStorage('chraim-theme', theme);
+
+}
+
+function toggleTheme() {
+
+applyTheme(state.theme === 'dark' ? 'light' : 'dark');
+
+say(state.theme === 'dark' ? 'تم تفعيل المظهر الداكن' : 'تم تفعيل المظهر الفاتح');
+
+}
+
+function applyLang(lang) {
+
+state.lang = lang;
+
+document.documentElement.lang = lang;
+
+document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+
+const btn = $('#languageToggle');
+
+if (btn) {
+
+btn.innerHTML = lang === 'ar' ? 'FR <span aria-hidden="true">↗</span>' : 'AR <span aria-hidden="true">↗</span>';
+
+btn.setAttribute('aria-label', lang === 'ar' ? 'Switch to French' : 'Changer la langue en arabe');
+
+}
+
+writeStorage('chraim-lang', lang);
+
+}
+
+
+
+function updatePathways() {
+
+const sem = $('#semesterSelect').value;
+
+const sel = $('#pathwaySelect');
+
+sel.innerHTML = '';
+
+pathwaysData[sem].forEach(p => {
+
+const o = document.createElement('option');
+
+o.value = p.id; o.textContent = p.name;
+
+sel.appendChild(o);
+
+});
+
+}
+
+function computeLanguageGroup(sem, name, pid) {
+
+const cfg = groupsData[sem]?.[pid];
+
+if (!cfg) return 'غير محدد';
+
+for (const item of cfg.language) {
+
+if (item.maxName === null) return item.name;
+
+if (compareNames(name, item.maxName) <= 0) return item.name;
+
+}
+
+return cfg.language[cfg.language.length - 1].name;
+
+}
+
+function findSection(sem, pid, name) {
+
+const cfg = groupsData[sem]?.[pid];
+
+if (!cfg) return null;
+
+const L = cfg.language;
+
+for (let i = 0; i < L.length; i++) {
+
+if (L[i].maxName === null) return { code: L[i].name, de: i === 0 ? 'A' : L[i-1].maxName, a: 'ZZZ' };
+
+if (compareNames(name, L[i].maxName) <= 0) {
+
+return { code: L[i].name, de: i === 0 ? 'A' : L[i-1].maxName, a: L[i].maxName };
+
+}
+
+}
+
+return null;
+
+}
+
+function renderSchedule(sem, pid) {
+
+const body = $('#scheduleBody');
+
+body.innerHTML = '';
+
+const list = scheduleDatabase[pid] || [];
+
+if (!list.length) {
+
+body.innerHTML = '<tr><td colspan="5" style="text-align:center;padding:20px;color:var(--muted)">لا توجد حصص متاحة.</td></tr>';
+
+return;
+
+}
+
+list.forEach(it => {
+
+const tr = document.createElement('tr');
+
+[it.day, it.time, it.subject, it.professor, it.room].forEach((v, i) => {
+
+const td = document.createElement('td');
+
+if (i === 4) {
+
+const s = document.createElement('span');
+
+s.className = 'room-chip';
+
+s.textContent = v;
+
+td.appendChild(s);
+
+} else {
+
+td.textContent = v;
+
+}
+
+tr.appendChild(td);
+
+});
+
+body.appendChild(tr);
+
+});
+
+}
+
+function searchGroup() {
+
+const sem = $('#semesterSelect').value;
+
+const pid = $('#pathwaySelect').value;
+
+const name = $('#nameInput').value.trim().toUpperCase();
+
+const empty = $('#finderEmpty');
+
+if (!name) {
+
+$('#finderResult').classList.remove('is-visible');
+
+empty.hidden = false;
+
+empty.textContent = 'الرجاء إدخال النسب (اللقب) لحساب الفوج.';
+
+return;
+
+}
+
+empty.hidden = true;
+
+const sec = findSection(sem, pid, name);
+
+const lang = computeLanguageGroup(sem, name, pid);
+
+const pathName = $('#pathwaySelect').selectedOptions[0]?.textContent || '';
+
+$('#resultName').textContent = name;
+
+$('#resultPathway').textContent = pathName;
+
+$('#resultGroup').textContent = sec ? sec.code : 'غير متوفر';
+
+$('#resultLang').textContent = lang;
+
+$('#resultRange').textContent = sec ? `[ ${sec.de} → ${sec.a} ]` : '—';
+
+$('#resultScheduleTitle').textContent = pathName;
+
+renderSchedule(sem, pid);
+
+$('#finderResult').classList.add('is-visible');
+
+state.profile = { sem, pid, pathName, name, savedAt: Date.now() };
+
+writeStorage('chraim-profile-v1', state.profile);
+
+renderNextClass();
+
+$('#finderResult').scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+}
+
+
+
+function parseSlot(timeStr) {
+
+const m = String(timeStr).match(/(\d{1,2}):(\d{2})\s*[-–]\s*(\d{1,2}):(\d{2})/);
+
+if (!m) return null;
+
+return { startH: +m[1], startM: +m[2], endH: +m[3], endM: +m[4] };
+
+}
+
+function renderNextClass() {
+
+const subj = $('#nextSubject');
+
+const meta = $('#nextMeta');
+
+const cd = $('#nextCountdown');
+
+const jump = $('#nextJump');
+
+if (!subj) return;
+
+
+
+if (!state.profile) {
+
+subj.textContent = 'لم يتم حفظ ملف طالب بعد';
+
+meta.textContent = 'ابحث عن فوجك أولاً لحساب حصصك القادمة تلقائيًا.';
+
+cd.hidden = true;
+
+jump.hidden = true;
+
+return;
+
+}
+
+const days = ['الأحد','الإثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'];
+
+const list = scheduleDatabase[state.profile.pid] || [];
+
+const now = new Date();
+
+const todayIdx = now.getDay();
+
+const nowMin = now.getHours() * 60 + now.getMinutes();
+
+
+
+let target = null;
+
+for (let offset = 0; offset < 7; offset++) {
+
+const idx = (todayIdx + offset) % 7;
+
+const dayName = days[idx];
+
+const dayClasses = list.filter(c => c.day === dayName);
+
+for (const c of dayClasses) {
+
+const slot = parseSlot(c.time);
+
+if (!slot) continue;
+
+if (offset === 0 && (slot.endH * 60 + slot.endM) <= nowMin) continue;
+
+target = { ...c, slot, offset };
+
+break;
+
+}
+
+if (target) break;
+
+}
+
+
+
+if (!target) {
+
+subj.textContent = 'لا حصص قادمة هذا الأسبوع';
+
+meta.textContent = 'استمتع بالراحة — أو راجع جدولك الأسبوعي.';
+
+cd.hidden = true;
+
+jump.hidden = true;
+
+return;
+
+}
+
+
+
+subj.textContent = target.subject;
+
+meta.textContent = `${target.day} · ${target.time} · ${target.room} · ${target.professor}`;
+
+jump.hidden = false;
+
+jump.onclick = () => $('#finder').scrollIntoView({ behavior: 'smooth' });
+
+
+
+function tick() {
+
+const n = new Date();
+
+const nowM = n.getHours() * 60 + n.getMinutes();
+
+const startM = target.slot.startH * 60 + target.slot.startM;
+
+let diff = startM - nowM + target.offset * 24 * 60;
+
+if (diff < 0) diff += 7 * 24 * 60;
+
+const h = Math.floor(diff / 60);
+
+const m = diff % 60;
+
+const b = cd.querySelector('b');
+
+if (b) b.textContent = h > 0 ? `${h}س ${m}د` : `${m}د`;
+
+cd.hidden = false;
+
+}
+
+tick();
+
+if (window._nextTick) clearInterval(window._nextTick);
+
+window._nextTick = setInterval(tick, 60000);
+
+}
+
+
+
+function renderTerms() {
+
+const idx = new Date().getDate() % LEGAL_TERMS.length;
+
+const cur = LEGAL_TERMS[idx];
+
+const next = LEGAL_TERMS[(idx + 1) % LEGAL_TERMS.length];
+
+$('#termTitle').textContent = cur.t;
+
+$('#termDef').textContent = cur.d;
+
+$('#termTitleFlip').textContent = cur.t;
+
+$('#termDefFlip').textContent = cur.d;
+
+$('#termTitleNext').textContent = next.t;
+
+$('#termDefNext').textContent = next.d;
+
+}
+
+function setupTermFlip() {
+
+const flip = $('#termFlip');
+
+if (!flip) return;
+
+const doFlip = () => {
+
+state.termFlipped = !state.termFlipped;
+
+flip.classList.toggle('is-flipped', state.termFlipped);
+
+};
+
+flip.addEventListener('click', doFlip);
+
+flip.addEventListener('keydown', e => {
+
+if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); doFlip(); }
+
+});
+
+flip.setAttribute('tabindex', '0');
+
+flip.setAttribute('role', 'button');
+
+flip.setAttribute('aria-label', 'قلب بطاقة المصطلح');
+
+}
+
+
+
+function toggleFocus() {
+
+state.focusMode = !state.focusMode;
+
+document.body.classList.toggle('focus-schedule', state.focusMode);
+
+const btn = $('#focusToggle');
+
+btn.setAttribute('aria-pressed', state.focusMode ? 'true' : 'false');
+
+btn.textContent = state.focusMode ? 'إلغاء التركيز' : 'وضع التركيز';
+
+if (state.focusMode) $('#finder').scrollIntoView({ behavior: 'smooth' });
+
+}
+
+
+
+function renderFavorites() {
+
+$$('.institution-card').forEach(card => {
+
+const btn = $('[data-save]', card);
+
+if (!btn) return;
+
+const saved = state.favorites.includes(btn.dataset.save);
+
+btn.setAttribute('aria-pressed', saved ? 'true' : 'false');
+
+btn.textContent = saved ? '★' : '☆';
+
+});
+
+$('#favoritesCount').textContent = state.favorites.length;
+
+}
+
+function applyFilters() {
+
+const q = normalize($('#searchInput').value);
+
+let shown = 0;
+
+$$('.institution-card').forEach(card => {
+
+const id = $('[data-save]', card).dataset.save;
+
+const matchCat = state.activeFilter === 'all' || card.dataset.category === state.activeFilter;
+
+const matchQ = !q || normalize(card.dataset.search + ' ' + card.innerText).includes(q);
+
+const matchFav = !state.favoritesOnly || state.favorites.includes(id);
+
+const visible = matchCat && matchQ && matchFav;
+
+card.hidden = !visible;
+
+if (visible) shown++;
+
+});
+
+$('#resultCount').textContent = `${String(shown).padStart(2, '0')} نتائج تجريبية`;
+
+$('#emptyState').hidden = shown !== 0;
+
+if (shown === 0) {
+
+$('#emptyTitle').textContent = (state.favoritesOnly && state.favorites.length === 0)
+
+? 'لا توجد مؤسسات محفوظة بعد.'
+
+: 'ما لقينا نتيجة مطابقة.';
+
+}
+
+}
+
+function renderCompareButtons() {
+
+$$('.institution-card').forEach(card => {
+
+const id = $('[data-save]', card).dataset.save;
+
+const bottom = $('.institution-card__bottom', card);
+
+let btn = $('.compare-pick', card);
+
+if (!btn) {
+
+btn = document.createElement('button');
+
+btn.type = 'button';
+
+btn.className = 'compare-pick';
+
+bottom.appendChild(btn);
+
+}
+
+const sel = state.compareSet.has(id);
+
+btn.setAttribute('aria-pressed', sel ? 'true' : 'false');
+
+btn.textContent = sel ? '✓ إزالة' : '+ للمقارنة';
+
+btn.onclick = () => {
+
+if (state.compareSet.has(id)) state.compareSet.delete(id);
+
+else if (state.compareSet.size >= 3) { say('يمكن مقارنة 3 مؤسسات كحد أقصى.'); return; }
+
+else state.compareSet.add(id);
+
+renderCompareButtons(); renderCompareDock();
+
+};
+
+});
+
+}
+
+function renderCompareDock() {
+
+$('#compareDock').hidden = state.compareSet.size === 0;
+
+$('#compareCount').textContent = `${state.compareSet.size} / 3`;
+
+$('#openCompare').disabled = state.compareSet.size < 2;
+
+}
+
+function openComparison() {
+
+if (state.compareSet.size < 2) { say('اختر مؤسستين على الأقل.'); return; }
+
+const table = $('#compareTable');
+
+table.innerHTML = '';
+
+[...state.compareSet].forEach((id, i) => {
+
+const card = $$('.institution-card').find(c => $('[data-save]', c).dataset.save === id);
+
+if (!card) return;
+
+const name = $('.institution-card__body h3', card).textContent.trim();
+
+const city = $('.institution-card__location', card).innerText.replace('⌖', '').trim();
+
+const field = $('.institution-card__bottom > span:first-child', card).textContent.trim();
+
+const code = $('.institution-card__monogram', card).innerText.replace('↗', '').trim();
+
+const col = document.createElement('article');
+
+col.className = 'compare-column';
+
+col.innerHTML = `<div class="compare-column__code">${String(i+1).padStart(2,'0')} / ${code}</div><h3>${name}</h3><div class="compare-row"><small>المدينة</small><strong>${city}</strong></div><div class="compare-row"><small>المجال</small><strong>${field}</strong></div><div class="compare-row"><small>حالة التحقق</small><strong>يحتاج إلى تحقق رسمي</strong></div>`;
+
+table.appendChild(col);
+
+});
+
+const warn = document.createElement('p');
+
+warn.className = 'compare-warning';
+
+warn.textContent = 'بيانات نموذجية — لا تستخدم هذه المقارنة بدل المصادر الرسمية.';
+
+table.appendChild(warn);
+
+const d = $('#compareDialog');
+
+if (typeof d.showModal === 'function') d.showModal();
+
+else d.setAttribute('open', '');
+
+}
+
+function closeCompareDialog() {
+
+const d = $('#compareDialog');
+
+if (typeof d.close === 'function') d.close();
+
+else d.removeAttribute('open');
+
+}
+
+
+
+function applyAtlasFilter() {
+
+const q = normalize(state.sourceFilterQuery);
+
+let count = 0;
+
+$$('.atlas-card[data-atlas-category]').forEach(card => {
+
+const cat = state.atlasFilter === 'all' || card.dataset.atlasCategory === state.atlasFilter;
+
+const text = normalize(card.dataset.atlasSearch + ' ' + card.innerText);
+
+const m = !q || text.includes(q);
+
+card.hidden = !(cat && m);
+
+if (!card.hidden) count++;
+
+});
+
+$('#atlasEmpty').classList.toggle('show', count === 0);
+
+}
+
+
+
+const COMMANDS = [
+
+{ id: 'finder', icon: '⌕', label: 'محرك الأفواج', hint: 'S', run: () => $('#finder').scrollIntoView({ behavior: 'smooth' }) },
+
+{ id: 'directory', icon: '⌗', label: 'دليل المؤسسات', hint: 'D', run: () => $('#directory').scrollIntoView({ behavior: 'smooth' }) },
+
+{ id: 'atlas', icon: '✳', label: 'أطلس المصادر', hint: 'A', run: () => $('#atlas').scrollIntoView({ behavior: 'smooth' }) },
+
+{ id: 'principles', icon: '◌', label: 'منهجنا', hint: 'P', run: () => $('#principles').scrollIntoView({ behavior: 'smooth' }) },
+
+{ id: 'theme', icon: '◐', label: 'تبديل المظهر', hint: 'T', run: () => toggleTheme() },
+
+{ id: 'lang', icon: '⇄', label: 'تبديل اللغة (AR / FR)', hint: 'L', run: () => applyLang(state.lang === 'ar' ? 'fr' : 'ar') },
+
+{ id: 'focus', icon: '◎', label: 'وضع التركيز على الجدول', hint: 'F', run: () => toggleFocus() },
+
+{ id: 'flip', icon: '↻', label: 'قلب بطاقة المصطلح', hint: 'R', run: () => $('#termFlip')?.click() },
+
+{ id: 'clear', icon: '⌫', label: 'مسح ملف الطالب المحفوظ', hint: 'C', run: () => { writeStorage('chraim-profile-v1', null); state.profile = null; renderNextClass(); say('تم مسح البيانات المحفوظة.'); } }
+
+];
+
+let cmdkIndex = 0, cmdkFiltered = COMMANDS;
+
+
+
+function openCmdk() {
+
+const d = $('#cmdk');
+
+if (typeof d.showModal === 'function') d.showModal();
+
+else d.setAttribute('open', '');
+
+$('#cmdkInput').value = '';
+
+cmdkIndex = 0;
+
+renderCmdk('');
+
+setTimeout(() => $('#cmdkInput').focus(), 30);
+
+}
+
+function closeCmdk() {
+
+const d = $('#cmdk');
+
+if (typeof d.close === 'function') d.close();
+
+else d.removeAttribute('open');
+
+}
+
+function renderCmdk(query) {
+
+const q = normalize(query);
+
+cmdkFiltered = COMMANDS.filter(c => !q || normalize(c.label).includes(q));
+
+const list = $('#cmdkList');
+
+list.innerHTML = '';
+
+if (!cmdkFiltered.length) {
+
+list.innerHTML = '<div class="cmdk__empty">لا نتائج مطابقة.</div>';
+
+return;
+
+}
+
+cmdkFiltered.forEach((c, i) => {
+
+const btn = document.createElement('button');
+
+btn.type = 'button';
+
+btn.className = 'cmdk__item';
+
+btn.setAttribute('role', 'option');
+
+btn.setAttribute('aria-selected', i === cmdkIndex ? 'true' : 'false');
+
+btn.innerHTML = `<span class="cmdk__icon">${c.icon}</span><span class="cmdk__label">${c.label}</span><kbd class="cmdk__kbd">${c.hint}</kbd>`;
+
+btn.addEventListener('click', () => { closeCmdk(); c.run(); });
+
+list.appendChild(btn);
+
+});
+
+}
+
+function cmdkMove(dir) {
+
+if (!cmdkFiltered.length) return;
+
+cmdkIndex = (cmdkIndex + dir + cmdkFiltered.length) % cmdkFiltered.length;
+
+renderCmdk($('#cmdkInput').value);
+
+}
+
+function cmdkRun() {
+
+const c = cmdkFiltered[cmdkIndex];
+
+if (c) { closeCmdk(); c.run(); }
+
+}
+
+
+
+function updateReadingProgress() {
+
+const max = document.documentElement.scrollHeight - window.innerHeight;
+
+const ratio = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+
+$('#readingProgress').style.width = `${ratio * 100}%`;
+
+}
+
+
+
+$('#semesterSelect').addEventListener('change', updatePathways);
+
+$('#searchGroup').addEventListener('click', searchGroup);
+
+$('#nameInput').addEventListener('keydown', e => { if (e.key === 'Enter') searchGroup(); });
+
+$('#clearProfile').addEventListener('click', () => {
+
+writeStorage('chraim-profile-v1', null);
+
+state.profile = null;
+
+renderNextClass();
+
+$('#finderResult').classList.remove('is-visible');
+
+say('تم مسح البيانات المحفوظة.');
+
+});
+
+$('#focusToggle').addEventListener('click', toggleFocus);
+
+$('#themeToggle').addEventListener('click', toggleTheme);
+
+$('#languageToggle').addEventListener('click', () => applyLang(state.lang === 'ar' ? 'fr' : 'ar'));
+
+$('#searchInput').addEventListener('input', applyFilters);
+
+$$('#filters .filter-chip').forEach(b => b.addEventListener('click', () => {
+
+state.activeFilter = b.dataset.filter;
+
+$$('#filters .filter-chip').forEach(x => x.setAttribute('aria-pressed', x === b ? 'true' : 'false'));
+
+applyFilters();
+
+}));
+
+$('#favoritesToggle').addEventListener('click', () => {
+
+state.favoritesOnly = !state.favoritesOnly;
+
+$('#favoritesToggle').setAttribute('aria-pressed', state.favoritesOnly ? 'true' : 'false');
+
+$('#favoritesToggle').querySelector('span').textContent = state.favoritesOnly ? '★' : '☆';
+
+applyFilters();
+
+});
+
+$('#resetFilters').addEventListener('click', () => {
+
+$('#searchInput').value = '';
+
+state.activeFilter = 'all';
+
+state.favoritesOnly = false;
+
+$$('#filters .filter-chip').forEach(x => x.setAttribute('aria-pressed', x.dataset.filter === 'all' ? 'true' : 'false'));
+
+$('#favoritesToggle').setAttribute('aria-pressed', 'false');
+
+$('#favoritesToggle').querySelector('span').textContent = '☆';
+
+applyFilters();
+
+say('تمت إعادة الضبط.');
+
+});
+
+$$('.save-button').forEach(btn => btn.addEventListener('click', () => {
+
+const id = btn.dataset.save;
+
+if (state.favorites.includes(id)) {
+
+state.favorites = state.favorites.filter(x => x !== id);
+
+say('أُزيلت من المحفوظات.');
+
+} else {
+
+state.favorites.push(id);
+
+say('أُضيفت إلى المحفوظات.');
+
+}
+
+writeStorage('chraim-favs', state.favorites);
+
+renderFavorites();
+
+applyFilters();
+
+}));
+
+$('#clearCompare').addEventListener('click', () => { state.compareSet.clear(); renderCompareButtons(); renderCompareDock(); });
+
+$('#openCompare').addEventListener('click', openComparison);
+
+$('#closeCompare').addEventListener('click', closeCompareDialog);
+
+$('#compareDialog').addEventListener('click', e => { if (e.target === $('#compareDialog')) closeCompareDialog(); });
+
+$('#atlasSearch').addEventListener('input', e => { state.sourceFilterQuery = e.target.value; applyAtlasFilter(); });
+
+$$('[data-atlas-filter]').forEach(b => b.addEventListener('click', () => {
+
+state.atlasFilter = b.dataset.atlasFilter;
+
+$$('[data-atlas-filter]').forEach(x => x.setAttribute('aria-pressed', x === b ? 'true' : 'false'));
+
+applyAtlasFilter();
+
+}));
+
+$('#cmdTrigger').addEventListener('click', openCmdk);
+
+$('#cmdkInput').addEventListener('input', e => { cmdkIndex = 0; renderCmdk(e.target.value); });
+
+$('#cmdkInput').addEventListener('keydown', e => {
+
+if (e.key === 'ArrowDown') { e.preventDefault(); cmdkMove(1); }
+
+else if (e.key === 'ArrowUp') { e.preventDefault(); cmdkMove(-1); }
+
+else if (e.key === 'Enter') { e.preventDefault(); cmdkRun(); }
+
+else if (e.key === 'Escape') { e.preventDefault(); closeCmdk(); }
+
+});
+
+document.addEventListener('keydown', e => {
+
+if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); openCmdk(); }
+
+else if (e.key === '/' && !['INPUT','TEXTAREA','SELECT'].includes(document.activeElement.tagName) && !$('#cmdk').open) { e.preventDefault(); $('#searchInput').focus(); }
+
+else if (e.key === 'Escape' && state.focusMode) { toggleFocus(); }
+
+});
+
+$('#cmdk').addEventListener('click', e => { if (e.target === $('#cmdk')) closeCmdk(); });
+
+window.addEventListener('scroll', updateReadingProgress, { passive: true });
+
+window.addEventListener('resize', updateReadingProgress);
+
+
+
+function init() {
+
+applyTheme(state.theme);
+
+applyLang(state.lang);
+
+updatePathways();
+
+renderTerms();
+
+setupTermFlip();
+
+renderFavorites();
+
+renderCompareButtons();
+
+renderCompareDock();
+
+applyFilters();
+
+applyAtlasFilter();
+
+renderNextClass();
+
+updateReadingProgress();
+
+$('#year').textContent = new Date().getFullYear();
+
+if (state.profile) {
+
+$('#semesterSelect').value = state.profile.sem;
+
+updatePathways();
+
+$('#pathwaySelect').value = state.profile.pid;
+
+$('#nameInput').value = state.profile.name;
+
+}
+
+}
+
+init();
+
+})();
+
+</script>
+
 </body>
+
 </html>
