@@ -40,18 +40,19 @@ jobs:
       - name: Audit links in dist/
         run: python tools/audit-links.py --root dist
 
+      # كان هذا الفحص يمرّ بـ"نجاح" مع تخطّي خطوة النشر، فيبدو الـworkflow أخضر
+      # بينما الموقع الحيّ لم يتغيّر أبدًا. الآن يفشل صراحةً حتى لا يتكرر الانقسام.
       - name: Check Cloudflare credentials
         id: creds
         run: |
           if [ -n "$CF_TOKEN" ] && [ -n "$CF_ACCOUNT" ]; then
             echo "ready=true" >> "$GITHUB_OUTPUT"
           else
-            echo "ready=false" >> "$GITHUB_OUTPUT"
-            echo "::warning title=Skipping deploy::Add CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID in Settings -> Secrets and variables -> Actions"
+            echo "::error title=النشر مستحيل::CLOUDFLARE_API_TOKEN و/أو CLOUDFLARE_ACCOUNT_ID غير مضبوطين، لذا لن يُنشر أي شيء. أضفهما في Settings → Secrets and variables → Actions، ثم أعد تشغيل هذا الـworkflow."
+            exit 1
           fi
 
       - name: Publish to Cloudflare Pages
-        if: steps.creds.outputs.ready == 'true'
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
