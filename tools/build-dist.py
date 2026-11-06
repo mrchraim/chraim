@@ -19,6 +19,13 @@ import argparse
 EXCLUDE_DIRS = {
     "archive", "vendor", "_dev", "tools", "supabase", "docs",
     ".git", ".github", ".wrangler", "node_modules", "__pycache__",
+    "tests", ".netlify",
+}
+
+# ملفات إعداد/بناء داخلية لا معنى لنشرها
+EXCLUDE_FILES = {
+    "eslint.config.js", "vitest.config.js", "tailwind.config.js",
+    "package.json", "package-lock.json",
 }
 
 # امتدادات تُستثنى (ملفات داخلية/وثائق/سكربتات)
@@ -46,6 +53,8 @@ def should_skip(rel_path):
     name = parts[-1]
     if name in ALLOW_NAMES or name in ALLOW_FILES or name in EXTRA_INCLUDE_NAMES:
         return False
+    if name in EXCLUDE_FILES:
+        return True
     if name.startswith("."):
         return True
     ext = os.path.splitext(name)[1].lower()

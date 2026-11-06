@@ -1,0 +1,60 @@
+name: Verify production matches main
+
+# سبب وجود هذا الملف: كان النشر إلى Cloudflare Pages يتخطّاه الـworkflow بصمت
+# عند غياب الأسرار، فبقي الموقع الحيّ على بناء قديم بينما المستودع يتقدّم.
+# هذه المراقبة تفشل بصوت عالٍ حين يتخلّف النطاق المرجعي عن `main`.
+
+on:
+  schedule:
+    - cron: "17 5 * * *" # يوميًا 05:17 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  drift:
+    name: chraim.pages.dev freshness
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Canonical routes are live and current
+        shell: bash
+        run: |
+          set -u
+          BASE=https://chraim.pages.dev
+          fail=0
+
+          check() { # path, marker, label
+            body=$(curl -fsS --retry 3 --max-time 30 "$BASE$1") || {
+              echo "::error::$3 — $BASE$1 غير متاح"; fail=1; return
+            }
+            if printf '%s' "$body" | grep -qF "$2"; then
+              echo "ok: $3"
+            else
+              echo "::error::$3 — $BASE$1 لا يحتوي «$2» (نشر قديم؟)"
+              fail=1
+            fi
+          }
+
+          check "/"           'href="/campus2"' "الرئيسية الموحّدة"
+          check "/campus2"    'مدموجة'           "الصفحة المدموجة Campus 2.0"
+          check "/orientation" "مرشد التوجيه"     "مرشد التوجيه"
+          check "/portal"     'canonical'        "بوابة الطالب"
+          exit $fail
+
+      - name: Deployed sitemap equals the repository
+        shell: bash
+        run: |
+          curl -fsS --retry 3 --max-time 30 "$BASE/sitemap.xml" -o /tmp/live-sitemap.xml || {
+            echo "::error::sitemap.xml غير متاح على النطاق المرجعي"; exit 1; }
+          if ! diff -q /tmp/live-sitemap.xml sitemap.xml; then
+            echo "::error::sitemap.xml المنشور يختلف عن المستودع — أعد النشر (wrangler pages deploy dist --project-name=chraim)"
+            diff /tmp/live-sitemap.xml sitemap.xml | head -40 || true
+            exit 1
+          fi
+          echo "ok: sitemap.xml مطابق"
+        env:
+          BASE: https://chraim.pages.dev

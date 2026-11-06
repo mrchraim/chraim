@@ -18,7 +18,11 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="repla
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MAN = os.path.join(ROOT, "BUILD_MANIFEST.sha256")
 
-EXCLUDE_DIRS = {"_dev", "tools", "__pycache__"}
+EXCLUDE_DIRS = {
+    "_dev", "tools", "__pycache__", "dist",
+    ".git", ".github", ".wrangler", ".netlify",
+    "node_modules", "tests", "archive", "vendor", "supabase", "docs",
+}
 KEEP_ROOT_UNDERSCORE = {"_headers", "_redirects"}
 
 
