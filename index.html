@@ -16,6 +16,20 @@
 
 <link rel="canonical" href="https://chraim.pages.dev/">
 
+<!-- PWA -->
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="apple-touch-icon" href="/assets/chrvvim-icon.svg">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="CHRAIM">
+<meta name="keywords" content="جامعة ابن زهر, FSJP أكادير, استعمالات الزمن, أفواج, كلية الحقوق, أكادير, CHRAIM">
+<meta name="author" content="CHRAIM Campus">
+
+<!-- JSON-LD expanded -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[{"@type":"EducationalOrganization","@id":"https://chraim.pages.dev/#org","name":"CHRAIM Campus","url":"https://chraim.pages.dev/","inLanguage":"ar","description":"دليل طلابي مستقل + محرك استعمالات الزمن لكلية العلوم القانونية والسياسية بأكادير."},{"@type":"WebSite","@id":"https://chraim.pages.dev/#website","url":"https://chraim.pages.dev/","name":"CHRAIM Campus","inLanguage":"ar","publisher":{"@id":"https://chraim.pages.dev/#org"},"potentialAction":{"@type":"SearchAction","target":"https://chraim.pages.dev/?q={search_term_string}","query-input":"required name=search_term_string"}}]}
+</script>
+
 <meta property="og:title" content="CHRAIM Campus — مستقبلك، أوضح.">
 
 <meta property="og:description" content="دليل طلابي مستقل + محرك أفواج FSJP أكادير.">
@@ -2598,6 +2612,14 @@ init();
 
 </script>
 
+
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function () {
+    navigator.serviceWorker.register('/sw.js').catch(function () {});
+  });
+}
+</script>
 </body>
 
 </html>
