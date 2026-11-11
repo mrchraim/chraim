@@ -1,9 +1,35 @@
 {
   "note": "إعلانات ثابتة تُضمن في الموقع لضمان نفس المحتوى على كل الاستضافات. الإعلانات المنشورة من لوحة التحكم (إن توفّر خادم الإدارة) تتقدّم على هذه القائمة.",
   "merged_from": "official UIZ / faculty scrape (announcements.json, 2026-10-17T02:55:00+00:00)",
-  "updated_at": "2026-10-17T02:55:00+00:00",
-  "count": 39,
+  "updated_at": "2026-11-11T00:00:00+00:00",
+  "count": 41,
   "items": [
+    {
+      "id": "reinscription-2026-ar",
+      "title": "إعلان لفائدة الطلبة: إعادة التسجيل برسم السنة الجامعية 2026-2027 (حالة الطلبة الذين اجتازوا امتحانات السنة الجامعية 2025-2026)",
+      "body": "يُنهى إلى علم الطلبة المسجلين بصفة منتظمة برسم السنة الجامعية 2025-2026، أن عملية إعادة التسجيل برسم السنة الجامعية 2026-2027 ستنطلق ابتداء من يوم الأربعاء 12 نونبر 2026. وفي هذا الإطار، يُطلب من الطلبة المعنيين تأكيد إعادة تسجيلهم عبر تطبيق MY-UIZ، وذلك في أجل أقصاه يوم الأحد 15 نونبر 2026 على الساعة السادسة مساءً (18h00).",
+      "kind": "avis",
+      "starts_at": "2026-11-12",
+      "ends_at": "2026-11-15T18:00:00+00:00",
+      "updated_at": "2026-11-11",
+      "etablissement": "",
+      "type": "avis",
+      "date": "2026-11-11",
+      "url": "https://myuiz.uiz.ac.ma/etudiant/login"
+    },
+    {
+      "id": "reinscription-2026-fr",
+      "title": "Réinscription au titre de l'année universitaire 2026/2027 (Cas des étudiants présents aux examens 2025/2026)",
+      "body": "Il est porté à la connaissance des étudiants régulièrement inscrits au titre de l'année universitaire 2025/2026 que les réinscriptions au titre de l'année universitaire 2026/2027 Cela débutera à partir du mercredi 12 novembre 2026. À cet effet, les étudiants concernés sont priés de confirmer leur réinscription via l'application MY-UIZ, au plus tard le dimanche 14 novembre 2026 à 18h00.",
+      "kind": "avis",
+      "starts_at": "2026-11-12",
+      "ends_at": "2026-11-15T18:00:00+00:00",
+      "updated_at": "2026-11-11",
+      "etablissement": "",
+      "type": "avis",
+      "date": "2026-11-11",
+      "url": "https://myuiz.uiz.ac.ma/etudiant/login"
+    },
     {
       "id": "welcome-2026",
       "title": "مرحباً بكم في CHRVVIM CAMPUS — الموسم الجامعي 2026/2027",
