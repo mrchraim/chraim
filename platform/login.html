@@ -107,7 +107,7 @@
         );
         window.location.href = "dashboard.html";
       } catch (err) {
-        errEl.textContent = t("login_error") + ": " + err.message;
+        errEl.textContent = safeAuthErrorMessage(err, "err_invalid_credentials");
         errEl.style.display = "block";
       }
     });
@@ -137,7 +137,7 @@
         okEl.style.display = "block";
         setTimeout(() => { document.getElementById("toggle-link").click(); }, 2000);
       } catch (err) {
-        errEl.textContent = t("register_error") + ": " + err.message;
+        errEl.textContent = safeAuthErrorMessage(err, "err_generic");
         errEl.style.display = "block";
       }
     });
@@ -164,7 +164,8 @@
         errEl.style.color = "var(--success)";
         errEl.style.display = "block";
       } catch (err) {
-        errEl.textContent = t("error") + ": " + err.message;
+        errEl.style.color = "";
+        errEl.textContent = safeAuthErrorMessage(err, "err_generic");
         errEl.style.display = "block";
       }
     }
