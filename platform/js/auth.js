@@ -95,6 +95,25 @@ function hasPlatformAdminAccess(profile) {
   );
 }
 
+// رسائل أخطاء المصادقة المعروضة للمستخدم.
+// لا نعرض err.message الخام: قد يكشف تفاصيل قاعدة البيانات أو أسماء القيود.
+function safeAuthErrorMessage(err, fallbackKey) {
+  console.warn("auth error:", err);
+  const code = String((err && err.code) || "");
+  const byCode = {
+    invalid_credentials: "err_invalid_credentials",
+    invalid_grant: "err_invalid_credentials",
+    email_not_confirmed: "err_email_not_confirmed",
+    email_exists: "err_email_exists",
+    user_already_exists: "err_email_exists",
+    weak_password: "err_weak_password",
+    over_email_send_rate_limit: "err_rate_limit",
+    over_request_rate_limit: "err_rate_limit",
+    over_sms_send_rate_limit: "err_rate_limit",
+  };
+  return t(byCode[code] || fallbackKey || "err_generic");
+}
+
 // الحصول على الملف الشخصي
 async function getProfile(userId) {
   const { data, error } = await db
