@@ -31,6 +31,7 @@ const baseGlobals = {
   Event: "readonly",
   IntersectionObserver: "readonly",
   MutationObserver: "readonly",
+  ResizeObserver: "readonly",
   alert: "readonly",
   confirm: "readonly",
   history: "readonly",
