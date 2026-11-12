@@ -1,0 +1,79 @@
+/* cx-theme-lamp — مبدّل الوضع (مصباح) — إضافة معزولة، بادئة cx- */
+.cx-lamp {
+  position: relative;
+  overflow: visible;
+}
+
+.cx-lamp__icon {
+  width: 20px;
+  height: 20px;
+  display: block;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              filter 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 0.3s ease;
+  transform-origin: 50% 60%;
+}
+
+/* الوضع الفاتح (المصباح "مضاء") */
+.cx-lamp.cx-lamp--on .cx-lamp__icon {
+  transform: rotate(-6deg);
+  filter: drop-shadow(0 0 6px #d9ff54) drop-shadow(0 0 12px rgba(217, 255, 84, 0.45));
+  opacity: 1;
+}
+
+/* الوضع الداكن (المصباح "مطفأ") */
+.cx-lamp:not(.cx-lamp--on) .cx-lamp__icon {
+  opacity: 0.72;
+  filter: none;
+  transform: rotate(0deg);
+}
+
+/* توهج خفيف خلف المصباح */
+.cx-lamp::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(217, 255, 84, 0.28), transparent 62%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.cx-lamp.cx-lamp--on::after {
+  opacity: 1;
+}
+
+/* نبضة عند التبديل */
+.cx-lamp.cx-lamp--pulse .cx-lamp__icon {
+  animation: cx-lamp-pulse 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes cx-lamp-pulse {
+  0%   { transform: rotate(0deg) scale(1); }
+  40%  { transform: rotate(-12deg) scale(1.15); }
+  100% { transform: rotate(-6deg) scale(1); }
+}
+
+.cx-lamp:not(.cx-lamp--on).cx-lamp--pulse .cx-lamp__icon {
+  animation: cx-lamp-pulse-off 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes cx-lamp-pulse-off {
+  0%   { transform: rotate(-6deg) scale(1); }
+  40%  { transform: rotate(6deg) scale(1.1); }
+  100% { transform: rotate(0deg) scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cx-lamp__icon,
+  .cx-lamp::after {
+    transition: none;
+    animation: none;
+  }
+  .cx-lamp.cx-lamp--pulse .cx-lamp__icon,
+  .cx-lamp:not(.cx-lamp--on).cx-lamp--pulse .cx-lamp__icon {
+    animation: none;
+  }
+}
