@@ -17,6 +17,14 @@ async function initApp() {
     console.warn("profile error:", e);
   }
 
+  // حماية إضافية للواجهة: لوحة التحكم مخصّصة للمشرفين فقط.
+  // أي حساب بدون صلاحية إدارية يُعاد إلى صفحة الحساب.
+  // خط الدفاع الأساسي يبقى سياسات RLS في قاعدة البيانات.
+  if (!hasPlatformAdminAccess(currentProfile)) {
+    window.location.replace("account.html");
+    return;
+  }
+
   // تحديث الواجهة
   document.getElementById("welcome-msg").textContent =
     t("welcome") + "، " + (currentProfile?.full_name_ar || currentProfile?.full_name || session.user.email);

@@ -70,6 +70,31 @@ async function logActivity(action, entity, entityId, details) {
   }
 }
 
+// هل يملك المستخدم صلاحية إدارة المنصة؟
+// ملاحظة: هذا فحص للواجهة فقط. خط الدفاع الأساسي هو RLS في قاعدة البيانات.
+function hasPlatformAdminAccess(profile) {
+  if (!profile || !profile.roles) return false;
+
+  const role = profile.roles;
+  let perms = role.permissions || {};
+  if (typeof perms === "string") {
+    try {
+      perms = JSON.parse(perms);
+    } catch (e) {
+      perms = {};
+    }
+  }
+
+  const name = String(role.name || "").toLowerCase();
+  return (
+    name === "admin" ||
+    name === "administrator" ||
+    name === "owner" ||
+    perms.admin === true ||
+    perms.is_admin === true
+  );
+}
+
 // الحصول على الملف الشخصي
 async function getProfile(userId) {
   const { data, error } = await db
