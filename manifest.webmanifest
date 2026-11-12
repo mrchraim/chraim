@@ -1,0 +1,26 @@
+{
+  "name": "CHRAIM Campus — مستقبلك، أوضح.",
+  "short_name": "CHRAIM",
+  "description": "دليل طلابي مستقل + محرك أفواج FSJP أكادير + أطلس مصادر رسمية.",
+  "lang": "ar",
+  "dir": "rtl",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#f5f3ec",
+  "theme_color": "#f5f3ec",
+  "categories": [
+    "education",
+    "reference",
+    "productivity"
+  ],
+  "icons": [
+    {
+      "src": "assets/chrvvim-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
