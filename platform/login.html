@@ -159,7 +159,9 @@
         return;
       }
       try {
-        await db.auth.resetPasswordForEmail(email);
+        await db.auth.resetPasswordForEmail(email, {
+          redirectTo: window.location.origin + "/platform/reset-password.html",
+        });
         errEl.textContent = t("reset_password_sent");
         errEl.style.color = "var(--success)";
         errEl.style.display = "block";
