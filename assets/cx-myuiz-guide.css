@@ -1,0 +1,122 @@
+/* cx-myuiz-guide — دليل إعادة التسجيل عبر MY-UIZ — إضافة معزولة */
+:root {
+  --cx-bg: #f4f1e8;
+  --cx-surface: #fbfaf5;
+  --cx-ink: #1b211b;
+  --cx-muted: #70796d;
+  --cx-line: #d9ddd0;
+  --cx-lime: #d9ff54;
+  --cx-lime-dark: #b8dc2e;
+  --cx-dark: #121713;
+  --cx-dark-2: #1a211d;
+  --cx-radius: 12px;
+  --cx-font: "IBM Plex Sans Arabic", "Cairo", "Noto Sans Arabic", Tahoma, system-ui, sans-serif;
+  color-scheme: light;
+}
+[data-theme="dark"] {
+  --cx-bg: #121714;
+  --cx-surface: #1a211d;
+  --cx-ink: #f0f2e9;
+  --cx-muted: #a0a99e;
+  --cx-line: #323b34;
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --cx-bg: #121714;
+    --cx-surface: #1a211d;
+    --cx-ink: #f0f2e9;
+    --cx-muted: #a0a99e;
+    --cx-line: #323b34;
+    color-scheme: dark;
+  }
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body.cx-myuiz {
+  margin: 0;
+  background: var(--cx-bg);
+  color: var(--cx-ink);
+  font-family: var(--cx-font);
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+.cx-wrap { max-width: 860px; margin: 0 auto; padding: 24px 20px 60px; }
+.cx-back { display: inline-flex; align-items: center; gap: 6px; margin-bottom: 18px; color: var(--cx-muted); font-size: .85rem; text-decoration: none; }
+.cx-back:hover { color: var(--cx-ink); }
+.cx-back svg { width: 16px; height: 16px; }
+.cx-title { font-size: clamp(1.5rem, 4vw, 2.2rem); font-weight: 800; margin: 0 0 6px; letter-spacing: -0.02em; }
+.cx-sub { color: var(--cx-muted); font-size: .95rem; margin: 0 0 24px; }
+.cx-warn {
+  background: #fff3cd; border: 1px solid #ffe08a; color: #5a4a00;
+  border-radius: var(--cx-radius); padding: 14px 16px; margin-bottom: 24px;
+  font-size: .9rem; line-height: 1.7;
+}
+[data-theme="dark"] .cx-warn, :root:not([data-theme="light"]) .cx-warn {
+  background: #2a2410; border-color: #5a4a1a; color: #f0e6b0;
+}
+.cx-warn strong { display: block; margin-bottom: 4px; }
+.cx-warn a { color: inherit; text-decoration: underline; font-weight: 700; }
+.cx-step {
+  background: var(--cx-surface); border: 1px solid var(--cx-line);
+  border-radius: var(--cx-radius); margin-bottom: 14px; overflow: hidden;
+}
+.cx-step__head {
+  display: flex; align-items: center; gap: 12px; width: 100%;
+  padding: 14px 16px; border: 0; background: transparent; cursor: pointer;
+  text-align: start; font: inherit; color: var(--cx-ink);
+}
+.cx-step__head:focus-visible { outline: 3px solid #7e9d10; outline-offset: 2px; }
+.cx-step__num {
+  width: 32px; height: 32px; border-radius: 50%; background: var(--cx-dark); color: var(--cx-lime);
+  display: grid; place-items: center; font-weight: 800; font-size: .85rem; flex: none;
+}
+.cx-step__title { flex: 1; font-weight: 700; font-size: .95rem; }
+.cx-step__chev { width: 18px; height: 18px; transition: transform .25s ease; color: var(--cx-muted); }
+.cx-step[aria-expanded="true"] .cx-step__chev { transform: rotate(180deg); }
+.cx-step__body { padding: 0 16px 16px; display: none; }
+.cx-step[aria-expanded="true"] .cx-step__body { display: block; }
+.cx-step__body p, .cx-step__body li { font-size: .9rem; color: var(--cx-ink); }
+.cx-step__body code {
+  display: inline-block; direction: ltr; unicode-bidi: embed;
+  background: var(--cx-bg); border: 1px solid var(--cx-line); border-radius: 6px;
+  padding: 2px 8px; font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-size: .85rem; color: var(--cx-ink);
+}
+.cx-example { background: var(--cx-bg); border: 1px solid var(--cx-line); border-radius: 8px; padding: 12px 14px; margin: 10px 0; }
+.cx-example b { display: block; font-size: .8rem; color: var(--cx-muted); margin-bottom: 4px; }
+.cx-example code { display: block; margin: 2px 0; }
+.cx-note { font-size: .82rem; color: var(--cx-muted); margin-top: 8px; }
+.cx-btn {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 46px;
+  padding: 0 18px; border: 0; border-radius: 8px; font: 700 .9rem var(--cx-font);
+  text-decoration: none; cursor: pointer; transition: transform .15s, box-shadow .15s;
+}
+.cx-btn:hover { transform: translateY(-2px); }
+.cx-btn--primary { background: var(--cx-dark); color: var(--cx-lime); box-shadow: 4px 4px 0 rgba(0,0,0,.15); }
+.cx-btn--primary:hover { background: #1a211d; }
+.cx-btn--ghost { background: transparent; border: 1px solid var(--cx-line); color: var(--cx-ink); }
+.cx-btn svg { width: 18px; height: 18px; }
+.cx-domain { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: .78rem; color: var(--cx-muted); margin-inline-start: 6px; }
+.cx-assist { background: var(--cx-surface); border: 1px solid var(--cx-line); border-radius: var(--cx-radius); padding: 16px; margin: 12px 0; }
+.cx-assist label { display: block; font-size: .82rem; font-weight: 700; margin-bottom: 4px; }
+.cx-assist input { width: 100%; padding: 10px 12px; border: 1px solid var(--cx-line); border-radius: 8px; background: var(--cx-bg); color: var(--cx-ink); font: inherit; }
+.cx-assist .cx-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+@media (max-width: 560px) { .cx-assist .cx-row { grid-template-columns: 1fr; } }
+.cx-assist__result { margin-top: 12px; padding: 10px 12px; background: var(--cx-bg); border: 1px dashed var(--cx-line); border-radius: 8px; font-size: .85rem; min-height: 40px; }
+.cx-assist__result code { display: block; margin: 2px 0; }
+.cx-assist__note { font-size: .78rem; color: var(--cx-muted); margin-top: 8px; }
+.cx-checklist { list-style: none; padding: 0; margin: 0; }
+.cx-checklist li { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px dashed var(--cx-line); font-size: .9rem; }
+.cx-checklist li:last-child { border-bottom: 0; }
+.cx-checklist input { width: 18px; height: 18px; }
+.cx-live { min-height: 1.2em; font-size: .85rem; color: var(--cx-muted); margin-top: 8px; }
+.cx-footer { margin-top: 32px; padding-top: 20px; border-top: 1px solid var(--cx-line); font-size: .8rem; color: var(--cx-muted); text-align: center; }
+.cx-footer a { color: var(--cx-ink); text-decoration: underline; }
+@media (prefers-reduced-motion: reduce) {
+  .cx-step__chev { transition: none; }
+  .cx-btn { transition: none; }
+}
+@media (max-width: 560px) {
+  .cx-wrap { padding: 18px 14px 40px; }
+}
