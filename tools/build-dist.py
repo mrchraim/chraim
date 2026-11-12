@@ -19,7 +19,7 @@ import argparse
 EXCLUDE_DIRS = {
     "archive", "vendor", "_dev", "tools", "supabase", "docs",
     ".git", ".github", ".wrangler", "node_modules", "__pycache__",
-    "tests", ".netlify",
+    "tests", ".netlify", "functions",
 }
 
 # ملفات إعداد/بناء داخلية لا معنى لنشرها
