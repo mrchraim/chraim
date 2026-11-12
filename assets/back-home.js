@@ -6,14 +6,15 @@
   window.__chraimBackHome = true;
 
   var CSS =
-    '#chraimBackHome{all:initial;position:fixed!important;inset:auto auto calc(16px + env(safe-area-inset-bottom,0px)) 50%!important;' +
-    'transform:translateX(-50%)!important;z-index:900;display:inline-flex!important;flex-direction:row!important;align-items:center!important;' +
-    'width:auto!important;height:auto!important;max-height:48px!important;min-height:0!important;margin:0!important;padding:4px!important;gap:4px;' +
+    'body{padding-bottom:64px}' +
+    '#chraimBackHome{all:initial;position:fixed!important;inset:auto 16px calc(16px + env(safe-area-inset-bottom,0px)) auto!important;' +
+    'transform:none!important;z-index:900;display:inline-flex!important;flex-direction:row!important;align-items:center!important;' +
+    'width:auto!important;height:auto!important;max-height:44px!important;min-height:0!important;margin:0!important;padding:4px!important;gap:4px;' +
     'box-sizing:border-box;background:rgba(11,18,32,.88)!important;color:#fff;border:1px solid rgba(224,192,120,.55)!important;border-radius:999px!important;' +
     'overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.08);backdrop-filter:blur(14px) saturate(1.4);-webkit-backdrop-filter:blur(14px) saturate(1.4);' +
-    'font:700 13px/1 system-ui,-apple-system,"Segoe UI",Tahoma,Arial,sans-serif;direction:rtl;max-height:48px!important;all:initial;position:fixed!important;inset:auto auto calc(16px + env(safe-area-inset-bottom,0px)) 50%!important;box-sizing:border-box;display:inline-flex!important;align-items:center!important;z-index:900!important}' +
+    'font:700 13px/1 system-ui,-apple-system,"Segoe UI",Tahoma,Arial,sans-serif;direction:rtl;max-height:44px!important;all:initial;position:fixed!important;inset:auto 16px calc(16px + env(safe-area-inset-bottom,0px)) auto!important;box-sizing:border-box;display:inline-flex!important;align-items:center!important;z-index:900!important}' +
     '#chraimBackHome>*{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex!important;align-items:center;justify-content:center;' +
-    'height:38px!important;min-width:0!important;padding:0 16px!important;gap:7px;border-radius:999px!important;color:#fff;' +
+    'height:36px!important;min-width:0!important;padding:0 14px!important;gap:7px;border-radius:999px!important;color:#fff;' +
     'font:700 13px/1 system-ui,-apple-system,"Segoe UI",Tahoma,Arial,sans-serif;white-space:nowrap;transition:background .15s,transform .15s}' +
     '#chraimBackHome>.cnb-back{background:rgba(255,255,255,.08)}' +
     '#chraimBackHome>.cnb-back:hover{background:rgba(255,255,255,.18)}' +
@@ -22,7 +23,7 @@
     '#chraimBackHome>*:hover{transform:translateY(-1px)}' +
     '#chraimBackHome>*:focus-visible{outline:2px solid #e0c078;outline-offset:1px}' +
     '#chraimBackHome .cnb-ic{font-size:15px;line-height:1}' +
-    '@media(max-width:520px){#chraimBackHome>*{height:36px!important;padding:0 13px!important;font-size:12px}}' +
+    '@media(max-width:520px){#chraimBackHome>*{height:34px!important;padding:0 12px!important;font-size:12px}}' +
     '@media print{#chraimBackHome{display:none!important}}';
 
   function inject() {
