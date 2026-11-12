@@ -25,7 +25,29 @@ const baseGlobals = {
   btoa: "readonly",
   Blob: "readonly",
   module: "readonly",
-  define: "readonly"
+  define: "readonly",
+  // Browser globals
+  URLSearchParams: "readonly",
+  Event: "readonly",
+  IntersectionObserver: "readonly",
+  alert: "readonly",
+  confirm: "readonly",
+  history: "readonly",
+  matchMedia: "readonly",
+  performance: "readonly",
+  requestAnimationFrame: "readonly",
+  cancelAnimationFrame: "readonly",
+  Chart: "readonly",
+  // Site globals
+  db: "readonly",
+  currentLang: "readonly",
+  checkAuth: "readonly",
+  getProfile: "readonly",
+  initI18n: "readonly",
+  logActivity: "readonly",
+  renderAll: "readonly",
+  setLang: "readonly",
+  t: "readonly"
 };
 
 const warnRules = {
