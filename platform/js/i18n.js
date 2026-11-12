@@ -164,6 +164,14 @@ const translations = {
     // استعادة كلمة المرور
     reset_password: "استعادة كلمة المرور",
     reset_password_sent: "تم إرسال رابط الاستعادة إلى بريدك",
+    reset_title: "تعيين كلمة مرور جديدة",
+    reset_subtitle: "أدخل كلمة المرور الجديدة لحسابك",
+    new_password: "كلمة المرور الجديدة",
+    update_password: "تحديث كلمة المرور",
+    back_to_login: "العودة لتسجيل الدخول",
+    reset_invalid_link: "رابط الاستعادة غير صالح أو انتهت صلاحيته. اطلب رابطاً جديداً.",
+    reset_success: "تم تحديث كلمة المرور. جارٍ تحويلك لتسجيل الدخول...",
+    passwords_mismatch: "كلمتا المرور غير متطابقتين",
 
     // التعليم
     edu_section: "التعليم",
@@ -372,6 +380,14 @@ const translations = {
     // Password reset
     reset_password: "Reset Password",
     reset_password_sent: "Reset link sent to your email",
+    reset_title: "Set a new password",
+    reset_subtitle: "Enter a new password for your account",
+    new_password: "New password",
+    update_password: "Update password",
+    back_to_login: "Back to sign in",
+    reset_invalid_link: "This reset link is invalid or has expired. Request a new one.",
+    reset_success: "Password updated. Redirecting you to sign in...",
+    passwords_mismatch: "Passwords do not match",
 
     // Education
     edu_section: "Education",
