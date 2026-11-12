@@ -1,0 +1,84 @@
+/* CHRAIM Campus — motion layer (progressive enhancement).
+   Loaded by index.html only. Without JS, without GSAP, or with
+   prefers-reduced-motion the page renders exactly as before. */
+
+/* ---- Lenis base styles (MIT — see lib/lenis-LICENSE.txt) ---- */
+html.lenis,
+html.lenis body { height: auto; }
+
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+.lenis.lenis-smooth iframe { pointer-events: none; }
+
+/* ---- Hero light rays (decorative, aria-hidden) ---- */
+.hero__rays {
+  position: absolute;
+  inset: -25%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: .14;
+  background: conic-gradient(
+    from 210deg at 66% 30%,
+    transparent 0deg,
+    var(--lime) 14deg,
+    transparent 30deg,
+    transparent 100deg,
+    var(--lime) 112deg,
+    transparent 128deg,
+    transparent 208deg,
+    var(--lime) 220deg,
+    transparent 236deg
+  );
+  filter: blur(42px);
+  animation: cx-rays-spin 34s linear infinite;
+}
+
+@keyframes cx-rays-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Keep hero content above the decorative layer. */
+.hero > .shell { position: relative; z-index: 1; }
+.hero > .hero__grid-pattern { z-index: 1; }
+
+/* ---- Star border on the primary CTA ----
+   Adapted to the site's flat, sharp-cornered design: a 1px lime ring with a
+   slow highlight sweep, only on hover/focus. No glow, no rounded corners. */
+.button--lime {
+  position: relative;
+  isolation: isolate;
+}
+
+.button--lime::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  z-index: -1;
+  background-color: var(--lime);
+  background-image: linear-gradient(110deg, transparent 28%, #ffffffb8 46%, transparent 64%);
+  background-size: 240% 100%;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity .25s ease;
+  animation: cx-ring-sweep 3.4s linear infinite;
+}
+
+.button--lime:hover::before,
+.button--lime:focus-visible::before { opacity: .95; }
+
+@keyframes cx-ring-sweep {
+  from { background-position: 190% 0; }
+  to { background-position: -90% 0; }
+}
+
+/* ---- Reduced motion and touch guards ---- */
+@media (prefers-reduced-motion: reduce) {
+  .hero__rays,
+  .button--lime::before { animation: none !important; }
+  .hero__rays { opacity: .07; }
+}
+
+@media (hover: none) {
+  .button--lime::before { display: none; }
+}
