@@ -1,11 +1,13 @@
 /* portal-extras.css — premium dashboard components shared by every CHRAIM page.
    Vanilla conversion of the React reference (StatsCard / LampToggle / DownloadButton).
    Every colour derives from `currentColor` or a token so the block stays readable
-   on light pages, dark pages and hardcoded-dark pages alike — no fixed text colours. */
+   on light pages, dark pages and hardcoded-dark pages alike — no fixed text colours
+   for the section chrome; stat cards intentionally use dark glass (works everywhere). */
 
 :root{
   --pe-gold:#D4AF37;
   --pe-lamp-bg:#0a0f1a;
+  --pe-emerald:#34d399;
 }
 
 @keyframes pe-rise{
@@ -13,17 +15,19 @@
   to{opacity:1;transform:none}
 }
 
-/* ---------- Glass stats cards ---------- */
+/* ---------- Glass stats cards (dark glass — readable on every theme) ---------- */
 .pe-stats{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
   gap:16px;margin:24px 0;
 }
 .pe-stat{
-  background:color-mix(in srgb, currentColor 5%, transparent);
-  border:1px solid color-mix(in srgb, currentColor 15%, transparent);
-  border-radius:16px;padding:20px;color:inherit;
-  box-shadow:0 4px 16px rgb(0 0 0 / .10);
+  position:relative;
+  background:rgba(8,10,14,.62);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:16px;padding:20px;color:#fff;
+  box-shadow:0 10px 30px rgba(0,0,0,.35);
   transition:transform .25s, box-shadow .25s, background .25s;
   animation:pe-rise .55s cubic-bezier(.2,.75,.25,1) backwards;
 }
@@ -32,18 +36,22 @@
 .pe-stat:nth-child(4){animation-delay:.21s}
 .pe-stat:hover{
   transform:translateY(-5px);
-  background:color-mix(in srgb, currentColor 9%, transparent);
-  box-shadow:0 10px 26px rgb(0 0 0 / .16);
+  background:rgba(8,10,14,.74);
+  box-shadow:0 14px 40px rgba(0,0,0,.5);
 }
-.pe-stat .pe-title{margin:0 0 6px;font-size:.8rem;font-weight:500;opacity:.66}
+.pe-stat .pe-title{margin:0 0 6px;font-size:.8rem;font-weight:500;color:rgba(255,255,255,.62)}
 .pe-stat .pe-value{
   margin:0 0 8px;font-size:1.75rem;font-weight:800;
-  letter-spacing:-.02em;line-height:1.15;color:inherit;
+  letter-spacing:-.02em;line-height:1.15;color:#fff;
 }
 .pe-stat .pe-change{
   margin:0;display:flex;align-items:center;gap:5px;
-  font-size:.8rem;font-weight:700;
-  color:color-mix(in srgb, currentColor 58%, #10b981);
+  font-size:.8rem;font-weight:700;color:var(--pe-emerald);
+}
+.pe-icon{
+  position:absolute;top:16px;inset-inline-end:16px;
+  padding:9px;border-radius:50%;background:rgba(255,255,255,.08);
+  color:rgba(255,255,255,.55);
 }
 
 /* ---------- Lamp toggle ---------- */
@@ -51,13 +59,13 @@
   display:flex;align-items:center;justify-content:center;
   min-height:180px;padding:24px;border-radius:16px;
   background:var(--pe-lamp-bg);
-  border:1px solid rgb(255 255 255 / .10);
+  border:1px solid rgba(255,255,255,.12);
   position:relative;overflow:hidden;
 }
 .pe-lamp-glow{
   position:absolute;inset:0;pointer-events:none;opacity:0;
   transition:opacity .4s ease;
-  background:radial-gradient(circle at 50% 50%, rgb(250 204 21 / .22), transparent 62%);
+  background:radial-gradient(circle at 50% 45%, rgba(250,204,21,.22), transparent 62%);
 }
 .pe-lamp-wrap.is-on .pe-lamp-glow{opacity:1}
 .pe-lamp-btn{
@@ -70,22 +78,26 @@
 .pe-lamp-btn:focus-visible{outline:2px solid var(--pe-gold);outline-offset:3px}
 .pe-lamp-icon{transition:filter .3s}
 .pe-lamp-wrap.is-on .pe-lamp-btn{color:#facc15}
-.pe-lamp-wrap.is-on .pe-lamp-icon{filter:drop-shadow(0 0 16px rgb(250 204 21 / .75))}
+.pe-lamp-wrap.is-on .pe-lamp-icon{filter:drop-shadow(0 0 16px rgba(250,204,21,.75))}
 
-/* ---------- Download button ---------- */
+/* ---------- Download button (emerald outline, bounces on hover) ---------- */
 .pe-download{
   display:inline-flex;align-items:center;gap:8px;
   padding:12px 26px;border-radius:999px;text-decoration:none;
-  background:transparent;color:inherit;font-family:inherit;
-  border:2px solid color-mix(in srgb, currentColor 45%, #10b981);
+  background:transparent;color:var(--pe-emerald);font-family:inherit;
+  border:2px solid var(--pe-emerald);
   font-weight:700;font-size:.95rem;cursor:pointer;
-  transition:background .25s, transform .2s;
+  transition:background .25s, transform .2s, box-shadow .25s;
 }
-.pe-download:hover{background:color-mix(in srgb, currentColor 12%, transparent);transform:scale(1.04)}
-.pe-download:active{transform:scale(.98)}
+.pe-download:hover{background:rgba(16,185,129,.12);transform:scale(1.05);box-shadow:0 0 0 4px rgba(16,185,129,.18)}
+.pe-download:active{transform:scale(.96)}
 .pe-download:focus-visible{outline:2px solid var(--pe-gold);outline-offset:3px}
 .pe-download svg{transition:transform .25s}
-.pe-download:hover svg{transform:translateY(2px)}
+.pe-download:hover svg{animation:pe-bounce .9s ease-in-out infinite}
+@keyframes pe-bounce{
+  0%,100%{transform:translateY(1px)}
+  50%{transform:translateY(5px)}
+}
 
 /* ---------- Section wrapper ---------- */
 .pe-section{
@@ -109,7 +121,7 @@
 @media (prefers-reduced-motion:reduce){
   .pe-stat{animation:none!important;transition:none!important}
   .pe-stat:hover,.pe-download:hover,.pe-lamp-btn:hover{transform:none}
-  .pe-lamp-btn,.pe-download,.pe-lamp-icon,.pe-lamp-glow{transition:none!important}
+  .pe-lamp-btn,.pe-download,.pe-lamp-icon,.pe-lamp-glow,.pe-download svg{transition:none!important;animation:none!important}
 }
 @media print{
   .pe-section{display:none!important}

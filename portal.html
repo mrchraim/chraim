@@ -1350,6 +1350,7 @@ main#main > .configbar{margin-block-end:10px!important}
 @media(max-width:640px){.hero .stats,.hero .hero-stats{max-width:none;gap:8px}.hero>.ticker{min-height:36px!important;font-size:.85rem!important}}
 </style>
 <link rel="stylesheet" href="/assets/portal-extras.css">
+<link rel="stylesheet" href="/assets/portal-showcase.css">
 </head>
 <body>
 <div id="progress" aria-hidden="true"><i></i></div>
@@ -1773,6 +1774,204 @@ main#main > .configbar{margin-block-end:10px!important}
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',apply); else apply();
 })();
 </script>
+
+<section class="pc-showcase" id="uiKit" aria-labelledby="pcShowcaseTitle">
+  <h2 id="pcShowcaseTitle">مجموعة مكوّنات الواجهة — UI Kit</h2>
+  <p class="pc-subtitle">مكوّنات React محوّلة إلى Vanilla CSS/JS تعمل مباشرة على هذه الصفحة — بدون مكتبات خارجية. الأرقام حقيقية (382 تكويناً · 23 مؤسسة · uiz.ac.ma). الأمثلة غير الوظيفية مصنّفة «نموذج» و«عرض».</p>
+
+  <div class="pc-grid">
+
+    <!-- 1 · Stats glass cards -->
+    <div class="pc-item">
+      <h3>بطاقة الإحصائيات الزجاجية <span class="pc-tag">Vanilla</span></h3>
+      <div class="pc-statlist">
+        <div class="pe-stat">
+          <span class="pe-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg></span>
+          <p class="pe-title">التكوينات الرسمية</p>
+          <p class="pe-value" lang="en" data-count-to="382">382</p>
+          <p class="pe-change"><span aria-hidden="true">&#8599;</span> uiz.ac.ma — 2026-2027</p>
+        </div>
+        <div class="pe-stat">
+          <span class="pe-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/><circle cx="10" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+          <p class="pe-title">الطلبة المستهدفون</p>
+          <p class="pe-value" lang="en" data-count-to="147806">147,806</p>
+          <p class="pe-change"><span aria-hidden="true">&#8599;</span> جامعة ابن زهر</p>
+        </div>
+      </div>
+      <p class="pc-hint">نفس الزجاج الداكن موجود فوق في «لوحة مؤشرات CHRAIM» — هنا مع أيقونات.</p>
+    </div>
+
+    <!-- 2 · Lamp login -->
+    <div class="pc-item">
+      <h3>مصباح الدخول <span class="pc-tag">تفاعلي</span></h3>
+      <div class="pc-lampbody" id="pcLampBody">
+        <div class="pc-lampglow" aria-hidden="true"></div>
+        <p class="pc-lamp-hint">انقر على المصباح</p>
+        <button class="pc-lamp" id="pcLampBtn" type="button" aria-pressed="false" aria-label="إضاءة المصباح لكشف لوحة الدخول">
+          <span class="pc-shade" aria-hidden="true"><span class="pc-bulb"></span></span>
+          <span class="pc-stem" aria-hidden="true"></span>
+        </button>
+        <div class="pc-logincard" role="group" aria-label="دخول المنصة">
+          <h3>أهلاً بك مجدداً</h3>
+          <p>سجّل دخولك إلى منصة الطلبة — جامعة ابن زهر</p>
+          <a class="pc-btn" href="/platform/login.html">
+            <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            تسجيل الدخول
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3 · Download button -->
+    <div class="pc-item">
+      <h3>زر التحميل الزجاجي <span class="pc-tag">حقيقي</span></h3>
+      <div class="pc-download-demo">
+        <a class="pe-download" href="/institutions-database.csv" download>
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><polyline points="7 10 12 15 17 10"/><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/></svg>
+          تحميل دليل المؤسسات
+        </a>
+      </div>
+      <p class="pc-hint">وظيفته حقيقية — حمّل ملف CSV بدليل المؤسسات (آخر تحقق منه 2026-10-17).</p>
+    </div>
+
+    <!-- 4 · Basketball upload -->
+    <div class="pc-item">
+      <h3>رفع كرة السلة <span class="pc-tag">لعبة تفاعلية</span></h3>
+      <div class="pc-court" id="pcCourt">
+        <div class="pc-toast" id="pcToast" aria-live="assertive">في السلة!</div>
+        <div class="pc-court-head">
+          <p class="pc-court-title">ارفع ملفاتك</p>
+          <span class="pc-court-count">ملفات ملتقطة: <b id="pcDropCount">0</b></span>
+        </div>
+        <div class="pc-drop" id="pcDrop">
+          <svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="#9ca3af" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          <p class="pc-drop-title">أفلت الملفات هنا</p>
+          <p class="pc-drop-sub">أو انقر الملف وخبّئه في السلة</p>
+          <svg class="pc-basket" id="pcBasket" viewBox="0 0 80 60" width="80" height="60" aria-hidden="true">
+            <rect x="18" y="2" width="44" height="26" rx="3" fill="#ffffff" stroke="#4b5563" stroke-width="3"/>
+            <rect x="30" y="15" width="20" height="13" fill="none" stroke="#4b5563" stroke-width="2.5"/>
+            <rect x="27" y="34" width="26" height="5" fill="#6b7280"/>
+            <path d="M29 39 L34 56 M51 39 L46 56 M36 39 L38 56 M44 39 L42 56 M34 47 L46 47" stroke="#9ca3af" stroke-width="2" fill="none" stroke-linecap="round"/>
+          </svg>
+          <div class="pc-chip" id="pcChip" role="button" tabindex="0" aria-label="اسحب الملف إلى السلة أو انقر للرمي">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#2563eb" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+            <span class="pc-chip-type">PDF</span>
+          </div>
+        </div>
+        <ul class="pc-filelist" id="pcFileList" aria-live="polite"></ul>
+        <p class="pc-court-foot">رميات في السلة: <b id="pcBasketCount">0</b> · الملفات هنا لا تغادر المتصفح · للرفع الفعلي اذهب إلى <a href="/platform/contribute.html">صفحة المساهمة</a></p>
+      </div>
+    </div>
+
+    <!-- 5 · Hanging card -->
+    <div class="pc-item">
+      <h3>البطاقة المعلّقة <span class="pc-tag">تحريك</span></h3>
+      <div class="pc-hang">
+        <div class="pc-rail" aria-hidden="true"></div>
+        <div class="pc-hangbox">
+          <div class="pc-strap">CHRVVIM</div>
+          <div class="pc-badge" role="img" aria-label="بطاقة الطلبة — جامعة ابن زهر">
+            <div class="pc-badge-top">
+              <p class="pc-badge-brand">chrvvim.</p>
+              <span class="pc-badge-id">بطاقة الطلبة</span>
+            </div>
+            <p class="pc-badge-line">CHAMBRE DES ÉTUDIANTS</p>
+            <p class="pc-badge-line pc-badge-muted">UNIVERSITÉ IBN ZOHR — AGADIR</p>
+            <p class="pc-badge-name">CHRAIM CAMPUS</p>
+            <p class="pc-badge-role">STAGE ACCESS</p>
+            <p class="pc-badge-sub">جامعة ابن زهر · 2026-2027</p>
+            <div class="pc-badge-foot"><span>chraim — كليه الإدارة والتكوين</span><b>CH</b></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6 · Sharingan loader -->
+    <div class="pc-item">
+      <h3>شارينغان — تحمّل <span class="pc-tag">عرض</span></h3>
+      <div class="pc-sharingan" role="img" aria-label="عينان على شكل شارينغان تدور">
+        <div class="pc-eye" aria-hidden="true"><div class="pc-pupil"><div class="pc-tomoe"><i></i><i></i><i></i></div></div></div>
+        <div class="pc-eye" aria-hidden="true"><div class="pc-pupil"><div class="pc-tomoe"><i></i><i></i><i></i></div></div></div>
+      </div>
+      <p class="pc-hint">أنيميشن CSS خالص لتسلية التحميل — لا علاقة لها بوظيفة المنصة.</p>
+    </div>
+
+    <!-- 7 · OTP interactive -->
+    <div class="pc-item">
+      <h3>OTP تفاعلي <span class="pc-tag">نموذج</span></h3>
+      <div class="pc-otp" id="pcOtp">
+        <div class="pc-otp-lock" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <h3 class="pc-otp-title">أكد أنك، أنت</h3>
+        <p class="pc-otp-hint">نموذج تفاعلي فقط — لا يُرسَل أي رمز (المنصة تستعمل البريد فقط).</p>
+        <div class="pc-otp-boxes" role="group" aria-label="أدخل الرمز المكوّن من 4 أرقام">
+          <input class="pc-otp-box" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="1" aria-label="الرقم 1">
+          <input class="pc-otp-box" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="1" aria-label="الرقم 2">
+          <input class="pc-otp-box" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="1" aria-label="الرقم 3">
+          <input class="pc-otp-box" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="1" aria-label="الرقم 4">
+        </div>
+        <div class="pc-progress" aria-hidden="true"><span id="pcOtpProgress"></span></div>
+        <p class="pc-resend"><span id="pcOtpResendNote">أعد الإرسال خلال 0:16</span><br><button type="button" id="pcOtpResend" disabled>إعادة الإرسال خلال 0:16</button></p>
+      </div>
+    </div>
+
+    <!-- 8 · Glassy OTP (static) -->
+    <div class="pc-item">
+      <h3>OTP زجاجي <span class="pc-tag">عرض</span></h3>
+      <div class="pc-otpglass">
+        <div class="pc-otpglass-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <p class="pc-otpglass-title">تأكيد الرقم</p>
+        <p class="pc-otpglass-hint">أرسلنا رمزاً مكوناً من 4 أرقام إلى الرقم المسجّل (عرض بصري)</p>
+        <div class="pc-otpglass-boxes" aria-hidden="true">
+          <div class="pc-otpglass-box is-active"><span class="pc-caret"></span></div>
+          <div class="pc-otpglass-box"></div>
+          <div class="pc-otpglass-box"></div>
+          <div class="pc-otpglass-box"></div>
+        </div>
+        <p class="pc-otpglass-foot">ألم تستلم الرمز؟ <a href="#uiKit">إعادة الإرسال</a></p>
+      </div>
+      <p class="pc-hint">نسخة زجاجية داكنة من نفس الفكرة مع توهّج سماوي.</p>
+    </div>
+
+    <!-- 9 · Glassy nav V5 (dark) -->
+    <div class="pc-item">
+      <h3>شريط زجاجي V5 <span class="pc-tag">روابط حقيقية</span></h3>
+      <div class="pc-navwrap">
+        <nav class="pc-navdark" aria-label="تنقّل زجاجي داكن">
+          <a href="/" class="is-active"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>الرئيسية</span></a>
+          <a href="/portal.html#main"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg><span>بحث</span></a>
+          <a href="/platform/contribute.html"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg><span>ساهم</span></a>
+          <a href="/platform/"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg><span>حسابي</span></a>
+          <a href="/academic-updates.html"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10 21a2 2 0 0 0 4 0"/></svg><span>المستجدات</span></a>
+        </nav>
+      </div>
+      <p class="pc-hint">روابط حقيقية لكل وجهة — لا زر ثابت.</p>
+    </div>
+
+    <!-- 10 · Glassy nav V7 (light) -->
+    <div class="pc-item">
+      <h3>شريط زجاجي V7 <span class="pc-tag">روابط حقيقية</span></h3>
+      <div class="pc-navwrap">
+        <nav class="pc-navlight" aria-label="تنقّل زجاجي فاتح — الدليل">
+          <a href="/"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>رئيسية</span></a>
+          <a href="/university-directory.html"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg><span>الدليل</span></a>
+          <a href="/academic-offer.html" class="is-active"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>التكوينات</span></a>
+          <a href="/platform/"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg><span>حسابي</span></a>
+        </nav>
+        <nav class="pc-navlight" aria-label="تنقّل زجاجي فاتح — البوابة">
+          <a href="/platform/"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg><span>الطالب</span></a>
+          <a href="/portal.html" class="is-active"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><span>البوابة</span></a>
+          <a href="/academic-updates.html"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10 21a2 2 0 0 0 4 0"/></svg><span>المستجدات</span></a>
+        </nav>
+      </div>
+      <p class="pc-hint">شريطان زجاجيان فاتحان — نفس الروابط الحقيقية.</p>
+    </div>
+
+  </div>
+</section>
 </main>
 
 
@@ -2154,5 +2353,6 @@ main#main > .configbar{margin-block-end:10px!important}
 <script src="/assets/site-nav.js" defer></script>
 <script src="/assets/design-upgrade.js" defer></script>
 <script src="/assets/portal-extras.js" defer></script>
+<script src="/assets/portal-showcase.js" defer></script>
 </body>
 </html>
