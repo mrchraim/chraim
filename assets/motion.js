@@ -71,13 +71,9 @@
 
     // Section reveals: container level, so dynamically injected cards are not
     // left in a half-animated state.
-    reveal('.launchpad__inner');
-    reveal('.finder');
-    reveal('.directory-tools');
-    reveal('.directory-grid');
-    reveal('.atlas-section .shell');
-    reveal('.principles');
-    reveal('.closing-band');
+    reveal('.box');
+    reveal('.card');
+    reveal('.hero .pill');
 
     ScrollTrigger.refresh();
     window.addEventListener('load', () => ScrollTrigger.refresh(), { once: true });
