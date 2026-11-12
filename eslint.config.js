@@ -30,6 +30,7 @@ const baseGlobals = {
   URLSearchParams: "readonly",
   Event: "readonly",
   IntersectionObserver: "readonly",
+  MutationObserver: "readonly",
   alert: "readonly",
   confirm: "readonly",
   history: "readonly",

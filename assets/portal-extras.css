@@ -1,65 +1,116 @@
-/* portal-extras.css — premium components for portal.html (vanilla conversion of React components) */
+/* portal-extras.css — premium dashboard components shared by every CHRAIM page.
+   Vanilla conversion of the React reference (StatsCard / LampToggle / DownloadButton).
+   Every colour derives from `currentColor` or a token so the block stays readable
+   on light pages, dark pages and hardcoded-dark pages alike — no fixed text colours. */
+
 :root{
-  --pe-glass:rgba(255,255,255,.08);
-  --pe-glass-border:rgba(255,255,255,.18);
-  --pe-accent:#3ecf9a;
   --pe-gold:#D4AF37;
+  --pe-lamp-bg:#0a0f1a;
 }
 
-/* Glass stats cards */
-.pe-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin:24px 0}
+@keyframes pe-rise{
+  from{opacity:0;transform:translateY(14px)}
+  to{opacity:1;transform:none}
+}
+
+/* ---------- Glass stats cards ---------- */
+.pe-stats{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:16px;margin:24px 0;
+}
 .pe-stat{
-  background:var(--pe-glass);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
-  border:1px solid var(--pe-glass-border);border-radius:16px;padding:20px;
-  color:#fff;transition:transform .25s,box-shadow .25s,background .25s;
-  box-shadow:0 4px 16px rgba(0,0,0,.12);
+  background:color-mix(in srgb, currentColor 5%, transparent);
+  border:1px solid color-mix(in srgb, currentColor 15%, transparent);
+  border-radius:16px;padding:20px;color:inherit;
+  box-shadow:0 4px 16px rgb(0 0 0 / .10);
+  transition:transform .25s, box-shadow .25s, background .25s;
+  animation:pe-rise .55s cubic-bezier(.2,.75,.25,1) backwards;
 }
-.pe-stat:hover{transform:translateY(-5px);background:rgba(255,255,255,.12);
-  box-shadow:0 8px 24px rgba(0,0,0,.18)}
-.pe-stat .pe-title{font-size:.8rem;opacity:.7;margin:0 0 6px;font-weight:500}
-.pe-stat .pe-value{font-size:1.7rem;font-weight:800;margin:0 0 8px;letter-spacing:-.02em}
-.pe-stat .pe-change{display:flex;align-items:center;gap:4px;font-size:.8rem;
-  color:var(--pe-accent);font-weight:600}
-.pe-stat .pe-icon{opacity:.5;font-size:1.5rem}
+.pe-stat:nth-child(2){animation-delay:.07s}
+.pe-stat:nth-child(3){animation-delay:.14s}
+.pe-stat:nth-child(4){animation-delay:.21s}
+.pe-stat:hover{
+  transform:translateY(-5px);
+  background:color-mix(in srgb, currentColor 9%, transparent);
+  box-shadow:0 10px 26px rgb(0 0 0 / .16);
+}
+.pe-stat .pe-title{margin:0 0 6px;font-size:.8rem;font-weight:500;opacity:.66}
+.pe-stat .pe-value{
+  margin:0 0 8px;font-size:1.75rem;font-weight:800;
+  letter-spacing:-.02em;line-height:1.15;color:inherit;
+}
+.pe-stat .pe-change{
+  margin:0;display:flex;align-items:center;gap:5px;
+  font-size:.8rem;font-weight:700;
+  color:color-mix(in srgb, currentColor 58%, #10b981);
+}
 
-/* Lamp toggle */
-.pe-lamp-wrap{display:flex;align-items:center;justify-content:center;
-  min-height:180px;background:#0a0f1a;border-radius:16px;padding:24px;
-  position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.1)}
-.pe-lamp-glow{position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(250,204,21,.18),transparent 60%);
-  opacity:0;transition:opacity .4s;pointer-events:none}
+/* ---------- Lamp toggle ---------- */
+.pe-lamp-wrap{
+  display:flex;align-items:center;justify-content:center;
+  min-height:180px;padding:24px;border-radius:16px;
+  background:var(--pe-lamp-bg);
+  border:1px solid rgb(255 255 255 / .10);
+  position:relative;overflow:hidden;
+}
+.pe-lamp-glow{
+  position:absolute;inset:0;pointer-events:none;opacity:0;
+  transition:opacity .4s ease;
+  background:radial-gradient(circle at 50% 50%, rgb(250 204 21 / .22), transparent 62%);
+}
 .pe-lamp-wrap.is-on .pe-lamp-glow{opacity:1}
-.pe-lamp-btn{background:none;border:0;cursor:pointer;padding:8px;
-  transition:transform .4s cubic-bezier(.34,1.56,.64,1);z-index:2;position:relative}
+.pe-lamp-btn{
+  background:none;border:0;cursor:pointer;padding:8px;border-radius:12px;
+  position:relative;z-index:2;color:#4b5563;
+  transition:transform .4s cubic-bezier(.34,1.56,.64,1), color .3s;
+}
 .pe-lamp-btn:hover{transform:scale(1.08)}
 .pe-lamp-btn:active{transform:scale(.95)}
-.pe-lamp-icon{transition:color .3s,filter .3s}
-.pe-lamp-wrap.is-on .pe-lamp-icon{color:#facc15;filter:drop-shadow(0 0 16px rgba(250,204,21,.75))}
-.pe-lamp-wrap:not(.is-on) .pe-lamp-icon{color:#4b5563}
+.pe-lamp-btn:focus-visible{outline:2px solid var(--pe-gold);outline-offset:3px}
+.pe-lamp-icon{transition:filter .3s}
+.pe-lamp-wrap.is-on .pe-lamp-btn{color:#facc15}
+.pe-lamp-wrap.is-on .pe-lamp-icon{filter:drop-shadow(0 0 16px rgb(250 204 21 / .75))}
 
-/* Download button */
-.pe-download{display:inline-flex;align-items:center;gap:8px;
-  padding:12px 28px;border-radius:999px;background:transparent;
-  border:2px solid var(--pe-accent);color:var(--pe-accent);
+/* ---------- Download button ---------- */
+.pe-download{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:12px 26px;border-radius:999px;text-decoration:none;
+  background:transparent;color:inherit;font-family:inherit;
+  border:2px solid color-mix(in srgb, currentColor 45%, #10b981);
   font-weight:700;font-size:.95rem;cursor:pointer;
-  transition:background .25s,color .25s,transform .2s;
-  font-family:inherit}
-.pe-download:hover{background:var(--pe-accent);color:#0a0f1a;transform:scale(1.04)}
+  transition:background .25s, transform .2s;
+}
+.pe-download:hover{background:color-mix(in srgb, currentColor 12%, transparent);transform:scale(1.04)}
 .pe-download:active{transform:scale(.98)}
+.pe-download:focus-visible{outline:2px solid var(--pe-gold);outline-offset:3px}
 .pe-download svg{transition:transform .25s}
 .pe-download:hover svg{transform:translateY(2px)}
 
-/* Section wrapper */
-.pe-section{margin:32px 0;padding:28px;border-radius:20px;
-  background:linear-gradient(135deg,rgba(10,15,26,.03),rgba(212,175,55,.04));
-  border:1px solid var(--line,#e5e1d8)}
-.pe-section h2{margin:0 0 20px;font-size:1.3rem;font-weight:800;
-  color:var(--blue,#0F172A);border-inline-start:4px solid var(--gold,#D4AF37);
-  padding-inline-start:12px}
-.pe-row{display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:center;margin-top:20px}
+/* ---------- Section wrapper ---------- */
+.pe-section{
+  margin:32px 0;padding:28px;border-radius:20px;
+  background:linear-gradient(135deg,
+    color-mix(in srgb, currentColor 3%, transparent),
+    color-mix(in srgb, var(--pe-gold) 8%, transparent));
+  border:1px solid color-mix(in srgb, currentColor 14%, transparent);
+}
+.pe-section h2{
+  margin:0 0 20px;font-size:1.3rem;font-weight:800;color:inherit;
+  border-inline-start:4px solid var(--pe-gold);
+  padding-inline-start:12px;
+}
+.pe-row{
+  display:flex;flex-wrap:wrap;gap:24px;
+  align-items:center;justify-content:center;margin-top:20px;
+}
 
-/* reduced motion */
+/* ---------- Accessibility ---------- */
 @media (prefers-reduced-motion:reduce){
-  .pe-stat,.pe-lamp-btn,.pe-download{transition:none!important}
-  .pe-stat:hover,.pe-download:hover{transform:none}
+  .pe-stat{animation:none!important;transition:none!important}
+  .pe-stat:hover,.pe-download:hover,.pe-lamp-btn:hover{transform:none}
+  .pe-lamp-btn,.pe-download,.pe-lamp-icon,.pe-lamp-glow{transition:none!important}
+}
+@media print{
+  .pe-section{display:none!important}
 }
