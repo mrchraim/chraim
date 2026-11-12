@@ -52,6 +52,20 @@ export default [
     rules: warnRules
   },
   {
+    files: ["functions/**/*.js"],
+    languageOptions: {
+      ecmaVersion: 2022,
+      sourceType: "module",
+      globals: {
+        ...baseGlobals,
+        crypto: "readonly",
+        Request: "readonly",
+        Headers: "readonly"
+      }
+    },
+    rules: warnRules
+  },
+  {
     files: ["**/*.mjs", "vitest.config.js", "eslint.config.js"],
     languageOptions: {
       sourceType: "module",
