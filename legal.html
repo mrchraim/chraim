@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>الموسوعة القانونية التفاعلية | CHRAIM — دليل الطلبة القانونيين</title>
+<link rel="canonical" href="https://chraim.pages.dev/legal">
+<meta name="description" content="شروحات مبسطة لأهم القوانين المغربية (القانون 58.25 — المسطرة المدنية، القانون الجبائي، شركات الأموال، الجهوية، المحاكم الإدارية، القانون الجنائي، محكمة النقض، SARL) — دليل طلبة القانون بجامعة ابن زهر.">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ar_MA">
+<meta property="og:site_name" content="CHRAIM">
+<meta property="og:title" content="الموسوعة القانونية التفاعلية | CHRAIM">
+<meta property="og:description" content="أهم القوانين المغربية — شروحات مبسطة للطلبة القانونيين">
+<meta name="theme-color" content="#0b1220">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230b1220'/%3E%3Ctext x='32' y='42' font-size='34' text-anchor='middle' fill='%23D4AF37' font-family='Cairo,serif' font-weight='900'%3E%C2%A7%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="/assets/fonts/fonts.css">
+<link rel="stylesheet" href="/assets/fonts/cairo.css">
+<link rel="stylesheet" href="/assets/design-tokens.css">
+<style>
+:root{
+  --paper:#F6F4ED; --card:#FFFFFF; --ink:#141B2D; --muted:#5A6274;
+  --navy:#0B1220; --navy2:#14243A; --navy3:#1C2E4A; --gold:#C8A04A; --gold2:#D4AF37; --gold-soft:#EFE3BD;
+  --line:#E4E0D2; --ring:#C8A04A; --ok:#1a7f4b; --danger:#B4232A;
+  --shadow:0 10px 28px rgba(11,18,32,.16); --shadow-lg:0 18px 48px rgba(11,18,32,.26);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:120px}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:'IBM Plex Sans Arabic',system-ui,'Segoe UI',Tahoma,sans-serif;
+  line-height:1.72;-webkit-font-smoothing:antialiased;padding-bottom:env(safe-area-inset-bottom,0px)
+}
+
+/* ========= Hero ========= */
+.hero{
+  position:relative;overflow:hidden;color:#F3F6FC;
+  background:radial-gradient(1200px 500px at 70% -20%, rgba(212,175,55,.20), transparent 60%),
+             linear-gradient(140deg,#101a2f 0%, #0B1220 60%, #060913 100%);
+  padding:96px 20px 56px;text-align:center;
+  border-bottom:4px solid var(--gold)
+}
+.hero-emblem{
+  display:inline-flex;width:74px;height:74px;border-radius:20px;
+  background:linear-gradient(160deg,var(--gold2),#9a7418);
+  color:#0b1220;align-items:center;justify-content:center;
+  font-family:'Cairo',serif;font-weight:900;font-size:2.2rem;
+  box-shadow:0 0 0 1px #fff7 inset, var(--shadow-lg);
+}
+.hero h1{
+  margin:.35em 0 .1em;font-family:'Cairo',sans-serif;font-weight:900;
+  font-size:clamp(1.8rem,4.6vw,3rem);letter-spacing:-.02em;color:#F3F6FC;text-wrap:balance
+}
+.hero p{
+  margin:.1em auto 0;max-width:640px;
+  color:var(--gold-soft);font-weight:600;font-size:clamp(.95rem,2.2vw,1.08rem)
+}
+.hero-rule{
+  width:120px;height:3px;margin:18px auto 0;border-radius:2px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent)
+}
+
+/* search */
+.search-wrap{max-width:560px;margin:22px auto 0;position:relative}
+.search{
+  width:100%;font:inherit;font-size:1rem;color:var(--navy);
+  background:#fff;border:2px solid var(--gold2);border-radius:999px;
+  padding:14px 20px 14px 48px;outline:none;box-shadow:0 8px 26px rgba(11,18,32,.35)
+}
+.search::placeholder{color:#8a93a5}
+.search:focus{box-shadow:0 0 0 3px rgba(212,175,55,.35), 0 8px 26px rgba(11,18,32,.4)}
+.search-icon{position:absolute;left:18px;top:50%;transform:translateY(-50%);pointer-events:none;color:#8a93a5}
+.search-count{color:var(--gold-soft);font-size:.82rem;margin-top:8px;min-height:1.2em}
+
+/* ========= Sticky index bar ========= */
+.index-bar{
+  position:sticky;top:0;z-index:70;
+  background:rgba(11,18,32,.92);backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(212,175,55,.3);padding:8px 12px;overflow-x:auto;
+  display:flex;gap:8px;scrollbar-width:none;white-space:nowrap
+}
+.index-bar::-webkit-scrollbar{display:none}
+.index-bar a{
+  color:#F3E5AB;text-decoration:none;font-size:.85rem;font-weight:700;
+  padding:6px 12px;border-radius:999px;border:1px solid transparent;
+  transition:background .25s,color .25s,border-color .25s
+}
+.index-bar a:hover{background:rgba(212,175,55,.18)}
+.index-bar a.active{background:linear-gradient(135deg,var(--gold2),#c79a3a);color:#0b1220;border-color:#fff6}
+
+/* ========= Sections ========= */
+.doc{max-width:1240px;margin:0 auto;padding:40px 16px}
+.sec{scroll-margin-top:92px;margin:44px auto}
+.sec-head{
+  display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;
+  border-bottom:2px solid var(--line);padding-bottom:12px;margin-bottom:18px
+}
+.sec-num{
+  font-family:'Cairo';font-weight:900;font-size:.9rem;line-height:1;
+  background:linear-gradient(160deg,var(--gold2),#9a7418);color:#0b1220;
+  padding:10px 12px;border-radius:10px;min-width:44px;text-align:center
+}
+.sec h2{
+  margin:0;font-family:'Cairo';font-weight:800;font-size:clamp(1.25rem,2.6vw,1.7rem);
+  color:var(--navy);letter-spacing:-.01em;line-height:1.35
+}
+.sec small{color:var(--muted);font-weight:600;font-size:.8rem}
+
+/* hub */
+.hub{
+  background:var(--card);border:2px solid var(--navy2);border-radius:18px;
+  padding:22px 24px;text-align:center;max-width:760px;margin:0 auto 26px;
+  box-shadow:var(--shadow);position:relative
+}
+.hub h3{margin:0;font-family:'Cairo';font-weight:800;color:var(--navy2);font-size:clamp(1rem,2.4vw,1.3rem);line-height:1.5}
+.hub p{margin:8px auto 0;color:var(--muted);font-size:.92rem;font-weight:600;max-width:60ch}
+
+/* cards */
+.grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(264px,1fr));gap:18px
+}
+.card{
+  background:var(--card);border:1px solid var(--line);border-top:4px solid var(--navy2);
+  border-radius:14px;padding:18px;box-shadow:0 4px 14px rgba(11,18,32,.07);
+  transition:transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s,border-top-color .3s
+}
+.card:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-top-color:var(--gold2)}
+.card h3{
+  margin:0 0 10px;padding-bottom:10px;border-bottom:1px dashed var(--line);
+  font-size:1rem;color:var(--navy2);font-weight:800;display:flex;align-items:center;gap:10px
+}
+.card-icon{
+  flex:none;width:34px;height:34px;border-radius:9px;display:inline-flex;
+  align-items:center;justify-content:center;
+  background:linear-gradient(160deg,var(--navy3),var(--navy2));color:var(--gold2)
+}
+.card ul{margin:0;padding:0;list-style:none}
+.card li{
+  position:relative;padding-right:20px;margin-bottom:8px;
+  font-size:.9rem;color:var(--ink);line-height:1.65;font-weight:500
+}
+.card li::before{
+  content:'✓';position:absolute;right:0;top:0;font-weight:900;color:var(--gold);
+  font-size:.9rem;line-height:1.7
+}
+.hl{color:var(--danger);font-weight:800;background:rgba(180,35,42,.08);padding:0 4px;border-radius:4px}
+
+.sec-kicker{color:var(--muted);font-size:.78rem;font-weight:600;margin:-8px auto 18px;text-align:center;max-width:70ch}
+
+/* ========= footer ========= */
+.foot{
+  background:var(--navy);color:#94a3b8;text-align:center;padding:44px 18px;
+  border-top:4px solid var(--gold);font-size:.85rem
+}
+.foot strong{color:var(--gold2)}
+.foot a{color:var(--gold-soft);text-decoration:none}
+.foot a:hover{text-decoration:underline}
+.foot small{display:block;margin-top:10px;color:#64748b;font-size:.72rem}
+
+/* ========= Scroll reveal ========= */
+.sec{opacity:0;transform:translateY(34px);transition:opacity .7s ease,transform .7s ease}
+.sec.visible{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.sec{opacity:1;transform:none;transition:none}}
+
+/* ========= Responsive ========= */
+@media (max-width:640px){
+  .hero{padding:84px 14px 48px}
+  .hero h1{font-size:1.75rem}
+  .grid{grid-template-columns:1fr}
+  .card{padding:16px}
+}
+@media print{
+  .hero,.index-bar,.search-wrap,#chraimSiteNav,#siteNav{display:none!important}
+  body{background:#fff;color:#000}
+  .card{break-inside:avoid;box-shadow:none}
+  .sec{opacity:1!important;transform:none!important}
+}
+</style>
+</head>
+<body>
+
+<!-- SVG icon symbols (RTL, CSP-safe — inline only) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-gavel" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m13 6-8.5 8.5a2.12 2.12 0 0 0 3 3L16 9"/><path d="m16 23 2-2L13 16l-2 2v5Z"/><path d="m8 22 4-4"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V6a2 2 0 0 1 2-2h12v15H6a2 2 0 0 0-2 2Z"/><path d="M9 8h5"/></symbol>
+  <symbol id="i-scale" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M8 21h8"/><path d="M5 8l4 2-4 2a4 4 0 0 0 8 0"/><path d="M19 8l-4 2 4 2a4 4 0 0 1-8 0"/></symbol>
+  <symbol id="i-building" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10"/><path d="M9 11V6l3-2 3 2v5"/><path d="M9 15h.01M12 15h.01M15 15h.01"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/></symbol>
+  <symbol id="i-crown" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m4 17 1.6-7L12 13l6.4-3L20 17Z"/><path d="M4 20h16"/></symbol>
+  <symbol id="i-cog" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.2"/><path d="M19 12a7 7 0 0 0-.1-1.5l2-1.5-2-3-2.4 1A7 7 0 0 0 14 6l-.5-2.5h-3L10 6A7 7 0 0 0 7.5 8l-2.4-1-2 3 2 1.5a7 7 0 0 0-.1 1.5 7 7 0 0 0 .1 1.5l-2 1.5 2 3 2.4-1A7 7 0 0 0 10 18l.5 2.5h3L14 18a7 7 0 0 0 2.5-1.9l2.5 1 2-3-2.1-1.5A7 7 0 0 0 19 12Z"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19h16"/><path d="M7 16V9M12 16V5M17 16v-6"/></symbol>
+  <symbol id="i-target" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1"/></symbol>
+  <symbol id="i-landmark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V9M19 21V9"/><path d="m12 3 9 7H3z"/><path d="M9 21v-5h6v5"/></symbol>
+  <symbol id="i-timer" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 13V9M9 3h6M12 5V3"/></symbol>
+  <symbol id="i-flag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"/><path d="M5 5h12l-2 4 2 4H5"/></symbol>
+  <symbol id="i-microscope" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18h8"/><path d="M3 22h14"/><path d="M14 22a7 7 0 1 0 0-14h-1"/><path d="M9 14h2"/><circle cx="12.5" cy="7.5" r="1.5"/><path d="M14 4V2"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 2.8 5.9 6.4.9-4.7 4.5 1.2 6.3-5.7-3.1-5.7 3.1 1.2-6.3L4 9.8l6.4-.9Z"/></symbol>
+</svg>
+
+<!-- ====== Hero ====== -->
+<header class="hero" role="banner">
+  <div class="hero-emblem" aria-hidden="true">§</div>
+  <h1>الموسوعة القانونية التفاعلية</h1>
+  <p>شروحات مبسطة لأهم القوانين المغربية — دليل الطلبة القانونيين · جامعة ابن زهر أكادير</p>
+  <div class="hero-rule" aria-hidden="true"></div>
+  <div class="search-wrap">
+    <span class="search-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg>
+    </span>
+    <input class="search" id="lawSearch" type="search" placeholder="ابحث عن عبارة قانونية (مثلاً: المسطرة المدنية، الضريبة، شركة، محكمة)…" aria-label="البحث في الموسوعة" autocomplete="off">
+    <div class="search-count" id="lawSearchCount" aria-live="polite"></div>
+  </div>
+</header>
+
+<!-- ====== Sticky index ====== -->
+<nav class="index-bar" id="indexBar" aria-label="فهرس الموسوعة">
+  <a href="#s1" data-s="s1" class="active">01 · الفصل 58.25</a>
+  <a href="#s2" data-s="s2">02 · الجبائية</a>
+  <a href="#s3" data-s="s3">03 · شركة مساهمة</a>
+  <a href="#s4" data-s="s4">04 · الجهوية</a>
+  <a href="#s5" data-s="s5">05 · المحاكم الإدارية</a>
+  <a href="#s6" data-s="s6">06 · القانون الجنائي</a>
+  <a href="#s7" data-s="s7">07 · محكمة النقض</a>
+  <a href="#s8" data-s="s8">08 · SARL</a>
+</nav>
+
+<main class="doc" id="main">
+
+<p class="sec-kicker">موسوعة أكاديمية مبسطة للقوانين المغربية — مرجع تثقيفي تكميلي للطلبة، لا تُعوّض النص القانوني الرسمي ولا الاستشارة القانونية المتخصصة.</p>
+
+<!-- ====== القسم 1 · القانون 58.25 (المسطرة المدنية) ====== -->
+<section class="sec" id="s1" aria-labelledby="t1">
+  <div class="sec-head">
+    <span class="sec-num" aria-hidden="true">01</span>
+    <h2 id="t1">القانون رقم 58.25 (المسطرة المدنية)</h2>
+  </div>
+  <p class="sec-kicker">النجاعة الإجرائية — مراجعة شاملة للمسطرة لمدنية لتسريع البت في الدعاوى</p>
+  <div class="hub">
+    <h3>تحول إجرائي من أجل عدالة أكثر نجاعة</h3>
+    <p>مراجعة شاملة للمسطرة المدنية لتسريع البت في الدعاوى بإجراءات رقمية أوضح وأسرع.</p>
+  </div>
+  <div class="grid">
+    <article class="card"><h3><span class="card-icon"><svg width="18" height="18"><use href="#i-gavel"/></svg></span>1 · تعزيز دور القاضي</h3><ul><li>توجيه الدعوى وتحديد الإطار</li><li>ضبط الآجال وإدارة الجلسات</li><li>الانتقال من الدور التقليدي للمسطرة إلى الإدارة الفعالة</li></ul></article>
+    <article class="card"><h3><span class="card-icon"><svg width="18" height="18"><use href="#i-chart"/></svg></span>2 · رقمنة الإجراءات</h3><ul><li>إدماج الوسائط الإلكترونية في التبليغ</li><li>التبادل الإلكتروني وتتبع الملفات</li><li>الشفافية والسرعة في الأرشفة الرقمية</li></ul></article>
+    <article class="card"><h3><span class="card-icon"><svg width="18" height="18"><use href="#i-scale"/></svg></span>3 · تحديث قواعد التبليغ</h3><ul><li>تقليل حالات البطلان والتعطيل</li><li>التبليغ عبر الهاتف أو إلكترونياً</li><li>توحيد المساطر وتقليل الأخطاء الشكلية</li></ul></article>
+    <article class="card"><h3><span class="card-icon"><svg width="18" height="18"><use href="#i-target"/></svg></span>4 · إعادة ضبط الاختصاص</h3><ul><li>تحديد أدق للاختصاص</li><li>الحد من الدفوع الشكلية</li><li>احترام قواعد الاختصاص وإحالة سريعة</li></ul></article>
+    <article class="card"><h3><span class="card-icon"><svg width="18" height="18"><use href="#i-timer"/></svg></span>5 · ترشيد الطعون</h3><ul><li>تقنين أسباب الطعن وتحديد آجال قصيرة</li><li>الحد من استعمال الطعون كوسيلة لإطالة أمد النزاع</li><li>فحص مقبولية دقيق وحماية الحق في الطعن</li></ul></article>
+    <article class="card"><h3><span class="card-icon"><svg width="18" height="18"><use href="#i-cog"/></svg></span>6 · تقوية مسطرة التنفيذ</h3><ul><li>تسريع التنفيذ وحجز فعّال</li><li>الإشهار والشفافية في تتبع الأحكام</li><li>تحسين آليات الإنجاز</li></ul></article>
+    <article class="card"><h3><span class="card-icon"><svg width="18" height="18"><use href="#i-book"/></svg></span>7 · الدلالة القانونية</h3><ul><li>الانتقال من منطق المسطرة الثقيلة إلى منطق النجاعة الإجرائية</li><li>جعل المسطرة وسيلة لتحقيق الحسم القضائي داخل آجال معقولة</li></ul></article>
+    <article class="card"><h3><span class="card-icon"><svg width="18" height="18"><use href="#i-building"/></svg></span>8 · إصلاح البنية العملية</h3><ul><li>كتابة الضبط وتنظيم المسار</li><li>النيابة العامة وتتبع أدق</li><li>آليات أنجع وأسرع في الإنجاز</li></ul></article>
+  </div>
+</section>
+
+<!-- ====== القسم 2 · القانون الجبائي ====== -->
+<section class="sec" id="s2" aria-labelledby="t2">
+  <div class="sec-head"><span class="sec-num" aria-hidden="true">02</span><h2 id="t2">القانون الجبائي (الضريبي)</h2></div>
+  <p class="sec-kicker">نظام فرض الضرائب وتحصيلها والرقابة عليها بالمغرب</p>
+  <div class="hub">
+    <h3>ما هو القانون الجبائي؟</h3>
+    <p>مجموعة القواعد القانونية التي تنظم فرض الضرائب وتحصيلها والرقابة عليها.</p>
+  </div>
+  <div class="grid">
+    <article class="card"><h3><span class="card-icon"><svg width="18" height="18"><use href="#i-book"/></svg></span>1 · المبدأ الشرعي للضريبة</h3><ul><li>لا ضريبة إلا بنص قانوني</li><li>تحديد عناصر الضريبة (المكلفون، الوعاء، المعدل، الإعفاءات)</li></ul></article>
+    <article class="card"><h3><span class="card-icon"><svg width="18" height="18"><use href="#i-building"/></svg></span>2 · أركان الضريبة</h3><ul><li>المكلف (الشخص الملزم)</li><li>الوعاء (محل فرض الضريبة)</li><li>المعدل (نسبة الضريبة)</li><li>الضريبة المستحقة (المبلغ)</li></ul></article>
+    <article class="card"><h3><span class="card-icon"><svg width="18" height="18"><use href="#i-chart"/></svg></span>3 · أنواع الضرائب</h3><ul><li><span class="hl">مباشرة:</span> ضريبة الدخل، الشركات، الأرباح، الأراضي</li><li><span class="hl">غير مباشرة:</span> القيمة المضافة، الرسوم الجمركية، الاستهلاك</li></ul></article>
+    <article class="card"><h3><span class="card-icon"><svg width="18" height="18"><use href="#i-scale"/></svg></span>4 · مصادر القانون الجبائي</h3><ul><li>الدستور والقوانين التشريعية</li><li>اللوائح التنفيذية والقرارات الوزارية</li><li>الاتفاقيات الدولية ومبادئ القانون العام</li></ul></article>
+    <article class="card"><h3><span class="card-icon"><svg width="18" height="18"><use href="#i-gavel"/></svg></span>5 · التزامات المكلف</h3><ul><li>التسجيل في الإدارة الضريبية</li><li>تقديم الإقرارات الضريبية في المواعيد</li><li>دفع الضريبة المستحقة</li></ul></article>
+    <article class="card"><h3><span class="card-icon"><svg width="18" height="18"><use href="#i-cog"/></svg></span>6 · إدارة الضرائب</h3><ul><li>التسجيل والحصر الضريبي</li><li>تحديد الوعاء والتقدير</li><li>التحصيل والمراقبة والتدقيق</li></ul></article>
+    <article class="card"><h3><span class="card-icon"><svg width="18" height="18"><use href="#i-shield"/></svg></span>7 · الطعن الضريبي</h3><ul><li>الاعتراض الإداري</li><li>الطعن أمام لجان الطعن</li><li>الطعن أمام القضاء الإداري والمحكمة العليا</li></ul></article>
+    <article class="card"><h3><span class="card-icon"><svg width="18" height="18"><use href="#i-target"/></svg></span>8 · أهداف القانون الجبائي</h3><ul><li>تحقيق العدالة الضريبية وتوزيع العبء بعدالة</li><li>توفير الموارد المالية للدولة</li><li>تشجيع الاستثمار والنمو الاقتصادي</li></ul></article>
+  </div>
+</section>
+
+<!-- ====== القسم 3 · شركة المساهمة ====== -->
+<section class="sec" id="s3" aria-labelledby="t3">
+  <div class="sec-head"><span class="sec-num" aria-hidden="true">03</span><h2 id="t3">شركة المساهمة (SA)</h2></div>
+  <p class="sec-kicker">شركة أموال مساهمة، حصص قابلة للتداول، مسؤولية محدودة</p>
+  <div class="hub">
+    <h3>شركة المساهمة</h3>
+    <p>شركة رأسمال مقسمة إلى أسهم متساوية القيمة، لا يتحمل المساهم إلا بقدر ما يملك.</p>
+  </div>
+  <div class="grid">
+    <article class="card"><h3><span class="card-icon"><svg width="18" height="18"><use href="#i-book"/></svg></span>1 · التعريف</h3><ul><li>شركة أموال مقسمة إلى أسهم متساوية القيمة</li><li>لا يتحمل المساهم إلا بقدر قيمة أسهمه</li></ul></article>
+    <article class="card"><h3><span class="card-icon"><svg width="18" height="18"><use href="#i-star"/></svg></span>2 · الخصائص</h3><ul><li>شخصية اعتبارية مستقلة عن المساهمين</li><li>ذمة مالية مستقلة ورأس مال مقسم لأسهم</li><li>مسؤولية محدودة بقدر قيمة الأسهم</li></ul></article>
+    <article class="card"><h3><span class="card-icon"><svg width="18" height="18"><use href="#i-gavel"/></svg></span>3 · تكوين الشركة</h3><ul><li>عقد التأسيس وفتح الاكتتاب</li><li>تحديد رأس المال وعدد الأسهم</li><li>توثيق النظام الأساسي والحصول على الترخيص</li></ul></article>
+    <article class="card"><h3><span class="card-icon"><svg width="18" height="18"><use href="#i-chart"/></svg></span>4 · رأس المال والأسهم</h3><ul><li>رأس المال = مجموع القيم الاسمية للأسهم</li><li>أسهم عادية (حق التصويت والأرباح)</li><li>أسهم ممتازة (أولوية في الأرباح والتصفية)</li></ul></article>
+    <article class="card"><h3><span class="card-icon"><svg width="18" height="18"><use href="#i-cog"/></svg></span>5 · إدارة الشركة</h3><ul><li>مجلس الإدارة (يدير ويحدد القرارات)</li><li>الجمعية العامة (السلطة العليا في القرارات)</li><li>المدير العام (يتولى الإدارة اليومية)</li></ul></article>
+    <article class="card"><h3><span class="card-icon"><svg width="18" height="18"><use href="#i-shield"/></svg></span>6 · مزايا الشركة</h3><ul><li>جمع أموال ضخمة ومسؤولية محدودة</li><li>سهولة تداول الأسهم واستمرار الشركة</li><li>تنوع مصادر التمويل</li></ul></article>
+    <article class="card"><h3><span class="card-icon"><svg width="18" height="18"><use href="#i-target"/></svg></span>7 · عيوب الشركة</h3><ul><li>ارتفاع تكاليف التأسيس والإدارة</li><li>انتشار الملكية وضعف الرقابة المباشرة</li><li>احتمال تعارض مصالح الإدارة والمساهمين</li></ul></article>
+    <article class="card"><h3><span class="card-icon"><svg width="18" height="18"><use href="#i-building"/></svg></span>8 · حل الشركة وتصفيتها</h3><ul><li>انتهاء المدة أو تحقق الغرض</li><li>اتفاق المساهمين أو الحكم القضائي</li><li>تعيين المصفي، جرد الأصول، سداد الديون، توزيع المتبقي</li></ul></article>
+  </div>
+</section>
+
+<!-- ====== القسم 4 · الجهوية ====== -->
+<section class="sec" id="s4" aria-labelledby="t4">
+  <div class="sec-head"><span class="sec-num" aria-hidden="true">04</span><h2 id="t4">الجهوية الموسعة VS الجهوية المتقدمة</h2></div>
+  <p class="sec-kicker">تحولات عميقة في النموذج الترابي والإداري بالمغرب</p>
+  <div class="hub">
+    <h3>مقدمة الجهوية الموسعة مقابل المتقدمة</h3>
+    <p>مقارنة عملية بين النموذجين في التنظيم الترابي — قبل وبعد دستور 2011.</p>
+  </div>
+  <div class="grid">
+    <article class="card"><h3><span class="card-icon"><svg width="18" height="18"><use href="#i-flag"/></svg></span>1 · مقدمة</h3><ul><li>شهد المغرب تحولات عميقة في نموذجه الترابي والإداري</li><li>الهدف: توضيح الفروقات الجوهرية بين النموذجين</li></ul></article>
+    <article class="card"><h3><span class="card-icon"><svg width="18" height="18"><use href="#i-building"/></svg></span>2 · الجهوية الموسعة</h3><ul><li>شكل من اللامركزية الإدارية</li><li>صلاحيات أوسع لكن مع وصاية مركزية قوية</li><li>دور الجهات استشاري وتنسيقي</li></ul></article>
+    <article class="card"><h3><span class="card-icon"><svg width="18" height="18"><use href="#i-landmark"/></svg></span>3 · الجهوية المتقدمة</h3><ul><li>نقلة نوعية في التنظيم الترابي بالمغرب</li><li>دسترة 2011 وتحقيق لامركزية واسعة</li><li>تعزيز التدبير الحر والاستقلالية المالية والإدارية</li></ul></article>
+    <article class="card"><h3><span class="card-icon"><svg width="18" height="18"><use href="#i-scale"/></svg></span>4 · الفروق الجوهرية</h3><ul><li><span class="hl">الموسعة:</span> إطار قانوني غير دستوري واضح</li><li><span class="hl">المتقدمة:</span> تكريس دستوري صريح في دستور 2011</li></ul></article>
+    <article class="card"><h3><span class="card-icon"><svg width="18" height="18"><use href="#i-landmark"/></svg></span>5 · دور السلطة المركزية</h3><ul><li><span class="hl">الموسعة:</span> دور الوصاية والإشراف المباشر</li><li><span class="hl">المتقدمة:</span> دور المساعدة والمواكبة والتنسيق</li></ul></article>
+    <article class="card"><h3><span class="card-icon"><svg width="18" height="18"><use href="#i-chart"/></svg></span>6 · الاستقلالية المالية</h3><ul><li><span class="hl">الموسعة:</span> استقلالية محدودة واعتماد كبير على المركز</li><li><span class="hl">المتقدمة:</span> تعزيز عبر صندوق التأهيل الاجتماعي وموارد تمويل المشاريع</li></ul></article>
+    <article class="card"><h3><span class="card-icon"><svg width="18" height="18"><use href="#i-target"/></svg></span>7 · الأهداف الاستراتيجية</h3><ul><li><span class="hl">الموسعة:</span> تخفيف العبء عن المركز وتحقيق تنمية محلية</li><li><span class="hl">المتقدمة:</span> جعل الجهة رافعة للتنمية الاقتصادية والاجتماعية</li></ul></article>
+    <article class="card"><h3><span class="card-icon"><svg width="18" height="18"><use href="#i-gavel"/></svg></span>8 · انتخابات المجالس</h3><ul><li><span class="hl">الموسعة:</span> اقتراع غير مباشر</li><li><span class="hl">المتقدمة:</span> اقتراع عام مباشر لتعزيز الديمقراطية المحلية</li></ul></article>
+  </div>
+</section>
+
+<!-- ====== القسم 5 · المحاكم الإدارية ====== -->
+<section class="sec" id="s5" aria-labelledby="t5">
+  <div class="sec-head"><span class="sec-num" aria-hidden="true">05</span><h2 id="t5">المحاكم الإدارية (Cour Administrative)</h2></div>
+  <p class="sec-kicker">ضمانة المشروعية وحماية حقوق الأفراد وتحقيق التوازن بين الإدارة والمواطن</p>
+  <div class="hub"><h3>المحاكم الإدارية</h3><p>ضمانات للمشروعية وحماية حقوق الأفراد في مواجهة الإدارة.</p></div>
+  <div class="grid">
+    <article class="card"><h3><span class="card-icon"><svg width="18" height="18"><use href="#i-shield"/></svg></span>1 · التعريف</h3><ul><li>جهات قضائية متخصصة</li><li>تختص بالمنازعات الناشئة عن أعمال الإدارة التي تمس حقوق الأفراد</li></ul></article>
+    <article class="card"><h3><span class="card-icon"><svg width="18" height="18"><use href="#i-book"/></svg></span>2 · الأسس القانونية</h3><ul><li>الدستور</li><li>القوانين المنظمة واللوائح والأنظمة</li></ul></article>
+    <article class="card"><h3><span class="card-icon"><svg width="18" height="18"><use href="#i-target"/></svg></span>3 · الاختصاص</h3><ul><li>إلغاء القرارات الإدارية والتعويض عن الأضرار</li><li>المنازعات الوظيفية وعقود الإدارة</li><li>مسائل الضبط الإداري</li></ul></article>
+    <article class="card"><h3><span class="card-icon"><svg width="18" height="18"><use href="#i-gavel"/></svg></span>4 · أطراف الدعوى</h3><ul><li><span class="hl">المدعي:</span> الفرد أو جهة متضررة من عمل إداري</li><li><span class="hl">المدعى عليه:</span> جهة إدارية أو مرفق عام</li></ul></article>
+    <article class="card"><h3><span class="card-icon"><svg width="18" height="18"><use href="#i-timer"/></svg></span>5 · إجراءات التقاضي</h3><ul><li>رفع الدعوى وقبولها شكلاً</li><li>تبادل المذكرات وجلسات المرافعة</li><li>إصدار الحكم</li></ul></article>
+    <article class="card"><h3><span class="card-icon"><svg width="18" height="18"><use href="#i-scale"/></svg></span>6 · مبادئ القضاء الإداري</h3><ul><li>مبدأ المشروعية والمساواة</li><li>مبدأ حماية الحقوق</li><li>مبدأ حسن سير المرفق العام</li></ul></article>
+    <article class="card"><h3><span class="card-icon"><svg width="18" height="18"><use href="#i-gavel"/></svg></span>7 · أنواع الأحكام</h3><ul><li>حكم بالإلغاء</li><li>حكم بالتعويض</li><li>حكم بالرفض (قابلة للطعن أمام جهات قضائية أعلى)</li></ul></article>
+    <article class="card"><h3><span class="card-icon"><svg width="18" height="18"><use href="#i-crown"/></svg></span>8 · أهمية المحاكم الإدارية</h3><ul><li>تحقق العدالة وسيادة القانون</li><li>تحمي حقوق الأفراد من تعسف الإدارة</li><li>تكفل التوازن بين الصالح العام والحرية الفردية</li></ul></article>
+  </div>
+</section>
+
+<!-- ====== القسم 6 · القانون الجنائي ====== -->
+<section class="sec" id="s6" aria-labelledby="t6">
+  <div class="sec-head"><span class="sec-num" aria-hidden="true">06</span><h2 id="t6">القانون الجنائي (Criminal Law)</h2></div>
+  <p class="sec-kicker">حارس المجتمع وعدالة الدولة — يحمي الحقوق ويصون الكرامة ويحقق الأمن والاستقرار</p>
+  <div class="hub"><h3>القانون الجنائي</h3><p>حارس المجتمع وعدالة الدولة — يحمي الحقوق ويصون الكرامة ويحقق الأمن والاستقرار.</p></div>
+  <div class="grid">
+    <article class="card"><h3><span class="card-icon"><svg width="18" height="18"><use href="#i-shield"/></svg></span>1 · مفهوم القانون الجنائي</h3><ul><li>فرع من فروع القانون العام</li><li>يضع القواعد التي تحدد الأفعال المجرمة والعقوبات والتدابير</li></ul></article>
+    <article class="card"><h3><span class="card-icon"><svg width="18" height="18"><use href="#i-book"/></svg></span>2 · مصادر القانون الجنائي</h3><ul><li>التشريع (القوانين) والعرف</li><li>المبادئ العامة للقانون والأحكام القضائية</li><li>الفقه القانوني</li></ul></article>
+    <article class="card"><h3><span class="card-icon"><svg width="18" height="18"><use href="#i-cog"/></svg></span>3 · أركان الجريمة</h3><ul><li>الركن الشرعي (وجود نص يجرم الفعل)</li><li>الركن المادي (السلوك والنتيجة والعلاقة السببية)</li><li>الركن المعنوي (القصد الجنائي)</li></ul></article>
+    <article class="card"><h3><span class="card-icon"><svg width="18" height="18"><use href="#i-target"/></svg></span>4 · أنواع الجرائم</h3><ul><li><span class="hl">حسب الخطر:</span> جنايات، جنح، مخالفات</li><li><span class="hl">حسب القصد:</span> عمدية، غير عمدية</li><li><span class="hl">حسب المحل:</span> جرائم الأشخاص، الأموال</li></ul></article>
+    <article class="card"><h3><span class="card-icon"><svg width="18" height="18"><use href="#i-scale"/></svg></span>5 · العقوبات والتدابير</h3><ul><li><span class="hl">الأصلية:</span> الإعدام، السجن، الحبس، الغرامة</li><li><span class="hl">الاحترازية:</span> المراقبة، الإلزام بالعلاج، وضع تحت الحراسة</li></ul></article>
+    <article class="card"><h3><span class="card-icon"><svg width="18" height="18"><use href="#i-timer"/></svg></span>6 · مراحل الدعوى الجنائية</h3><ul><li>تحريك الدعوى بواسطة النيابة العامة</li><li>التحقيق الابتدائي وإحالة المتهم للمحكمة</li><li>المحاكمة وإصدار الحكم وتنفيذه</li></ul></article>
+    <article class="card"><h3><span class="card-icon"><svg width="18" height="18"><use href="#i-scale"/></svg></span>7 · أهم المبادئ</h3><ul><li>لا جريمة ولا عقوبة إلا بنص</li><li>المسؤولية شخصية وافتراض البراءة</li><li>تفسير النصوص لمصلحة المتهم وعدم رجعية القانون</li></ul></article>
+    <article class="card"><h3><span class="card-icon"><svg width="18" height="18"><use href="#i-crown"/></svg></span>8 · الغاية من القانون</h3><ul><li>حماية الأمن والنظام العام</li><li>حماية الحقوق والحريات وتحقيق العدالة الاجتماعية</li><li>الوقاية من الجريمة وإعادة تأهيل الجاني</li></ul></article>
+  </div>
+</section>
+
+<!-- ====== القسم 7 · محكمة النقض ====== -->
+<section class="sec" id="s7" aria-labelledby="t7">
+  <div class="sec-head"><span class="sec-num" aria-hidden="true">07</span><h2 id="t7">محكمة النقض (التجارية والإدارية والجنائية)</h2></div>
+  <p class="sec-kicker">أعلى هيئة قضائية في المغرب — تتربع على قمة الهرم القضائي وتوحّد الاجتهاد</p>
+  <div class="hub"><h3>تقرير مفصل حول محكمة النقض</h3><p>أعلى هيئة قضائية في المغرب — تتربع على قمة الهرم القضائي.</p></div>
+  <div class="grid">
+    <article class="card"><h3><span class="card-icon"><svg width="18" height="18"><use href="#i-crown"/></svg></span>1 · مقدمة</h3><ul><li>أعلى هيئة قضائية في المغرب</li><li>تضمن توحيد الاجتهاد القضائي</li><li>تراقب مدى تطبيق القانون من قبل محاكم الموضوع</li></ul></article>
+    <article class="card"><h3><span class="card-icon"><svg width="18" height="18"><use href="#i-timer"/></svg></span>2 · الإطار القانوني والتاريخي</h3><ul><li>أحدثت غداة الاستقلال باسم المجلس الأعلى</li><li>تم تغيير تسميتها إلى محكمة النقض بمقتضى الظهير الشريف 1.11.170</li><li>القانون المنظم: القانون رقم 58.11 (المواد 353 إلى 401)</li></ul></article>
+    <article class="card"><h3><span class="card-icon"><svg width="18" height="18"><use href="#i-microscope"/></svg></span>3 · طبيعة المحكمة ودورها</h3><ul><li>محكمة قانون وليست محكمة وقائع</li><li>توحيد الاجتهاد القضائي وتفسير القانون</li><li>مراقبة سلامة تطبيق القانون وحماية حقوق الأفراد</li></ul></article>
+    <article class="card"><h3><span class="card-icon"><svg width="18" height="18"><use href="#i-target"/></svg></span>4 · اختصاصات المحكمة</h3><ul><li>الطعن بالنقض في الأحكام النهائية</li><li>طلبات إلغاء المقررات الإدارية بدعوى الشطط في استعمال السلطة</li><li>البث في تنازع الاختصاص (لا تقبل المطالب التي لا تتعدى 20.000 درهم)</li></ul></article>
+    <article class="card"><h3><span class="card-icon"><svg width="18" height="18"><use href="#i-gavel"/></svg></span>5 · مسطرة الطعن بالنقض</h3><ul><li>تمثيل الأطراف بمحام مقبول</li><li>بيان هوية الأطراف وموطنهم الحقيقي</li><li>تحديد الوسائل وبيان النص القانوني المخرق</li><li>إرفاق نسخة من القرار المطعون فيه — الأجل: 30 يوماً</li></ul></article>
+    <article class="card"><h3><span class="card-icon"><svg width="18" height="18"><use href="#i-shield"/></svg></span>6 · أسباب الطعن بالنقض</h3><ul><li>خرق القانون الداخلي (موضوعي أو إجرائي)</li><li>خرق قاعدة مسطرية أضر بأحد الأطراف</li><li>عدم التعليل أو نقصه، تحريف وقائع الدعوى، تجاوز السلطة</li></ul></article>
+    <article class="card"><h3><span class="card-icon"><svg width="18" height="18"><use href="#i-cog"/></svg></span>7 · آثار الطعن بالنقض</h3><ul><li>وقف تنفيذ الحكم (الأصل: لا يوقف التنفيذ)</li><li>إحالة القضية إلى محكمة أخرى من نفس الدرجة</li><li>التصدي للموضوع في حالات استثنائية</li></ul></article>
+    <article class="card"><h3><span class="card-icon"><svg width="18" height="18"><use href="#i-crown"/></svg></span>8 · أهمية محكمة النقض</h3><ul><li>ترسيخ سيادة القانون</li><li>ضمان العدالة والمساواة بين المتقاضين</li><li>استقرار المعاملات وحماية الحقوق (أساس دستوري: الفصل 117)</li></ul></article>
+  </div>
+</section>
+
+<!-- ====== القسم 8 · شركة ذات المسؤولية المحدودة ====== -->
+<section class="sec" id="s8" aria-labelledby="t8">
+  <div class="sec-head"><span class="sec-num" aria-hidden="true">08</span><h2 id="t8">شركة ذات المسؤولية المحدودة (SARL)</h2></div>
+  <p class="sec-kicker">SOCIÉTÉ À RESPONSABILITÉ LIMITÉE — ملائمة للمقاولات الصغرى والمتوسطة</p>
+  <div class="hub"><h3>شركة ذات المسؤولية المحدودة (SARL)</h3><p>Société à Responsabilité Limitée — نموذج مرن ومناسب للمقاولات الصغرى والمتوسطة.</p></div>
+  <div class="grid">
+    <article class="card"><h3><span class="card-icon"><svg width="18" height="18"><use href="#i-book"/></svg></span>1 · التعريف</h3><ul><li>شركة تجارية تتكون من شريك أو أكثر</li><li>تتمتع بالشخصية المعنوية المستقلة عن الشركاء</li><li>تقوم على الاعتبار المالي (تقديم الحصص)</li></ul></article>
+    <article class="card"><h3><span class="card-icon"><svg width="18" height="18"><use href="#i-scale"/></svg></span>2 · الخصائص الأساسية</h3><ul><li>شخصية معنوية مستقلة ومسؤولية محدودة</li><li>اعتبار مالي ومرونة في التنظيم</li><li>قابلة للتحويل والتصرف</li></ul></article>
+    <article class="card"><h3><span class="card-icon"><svg width="18" height="18"><use href="#i-gavel"/></svg></span>3 · تأسيس الشركة</h3><ul><li>توقيع عقد مكتوب بين الشركاء</li><li>تسجيلها في السجل التجاري</li><li>النشر في الجريدة الرسمية</li></ul></article>
+    <article class="card"><h3><span class="card-icon"><svg width="18" height="18"><use href="#i-chart"/></svg></span>4 · رأس المال</h3><ul><li>يتكون من حصص متساوية القيمة</li><li>الحد الأدنى يحدده القانون</li><li>يجب إيداعه كلياً عند التأسيس</li></ul></article>
+    <article class="card"><h3><span class="card-icon"><svg width="18" height="18"><use href="#i-shield"/></svg></span>5 · مسؤولية الشركاء</h3><ul><li>مسؤولية محدودة بمقدار حصصهم في رأس المال</li><li>لا تمتد إلى أموالهم الشخصية</li></ul></article>
+    <article class="card"><h3><span class="card-icon"><svg width="18" height="18"><use href="#i-cog"/></svg></span>6 · إدارة الشركة</h3><ul><li>يمكن أن يديرها شريك أو غير شريك</li><li>يُعيّن المديرون في عقد الشركة أو بقرار من الشركاء</li><li>للمدير صلاحيات واسعة في إدارة الأعمال</li></ul></article>
+    <article class="card"><h3><span class="card-icon"><svg width="18" height="18"><use href="#i-chart"/></svg></span>7 · الربح والخسارة</h3><ul><li>توزيع الأرباح بين الشركاء بنسبة حصصهم</li><li>الخسائر بنفس النسبة ما لم ينص العقد على خلاف ذلك</li></ul></article>
+    <article class="card"><h3><span class="card-icon"><svg width="18" height="18"><use href="#i-building"/></svg></span>8 · انقضاء الشركة</h3><ul><li>انتهاء المدة المحددة في العقد</li><li>تحقق الغرض الذي أنشئت من أجله</li><li>اتفاق الشركاء أو حكم قضائي</li></ul></article>
+  </div>
+</section>
+
+</main>
+
+<!-- ====== Footer ====== -->
+<footer class="foot" role="contentinfo">
+  <p><strong>CHRAIM</strong> — دليل الطلبة القانونيين · جامعة ابن زهر — أكادير</p>
+  <p>هذا المحتوى تثقيفي تكميلي ولا يُعوّض النص القانوني الرسمي ولا الاستشارة القانونية المتخصصة — يُرجى دائماً مراجعة المصدر.</p>
+  <small>المصدر الرسمي: <a href="https://www.boe.gov.ma/" rel="noopener" target="_blank">الجريدة الرسمية للمملكة المغربية</a> · <a href="/legal.html">باقي الموسوعة</a></small>
+</footer>
+
+<script>
+/* الموسوعة القانونية — تفاعلات خفيفة (بحث + فهرس نشط + reveal) */
+(function () {
+  'use strict';
+
+  /* 1) Scroll reveal للأقسام */
+  var revealTargets = document.querySelectorAll('.sec');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.05 });
+    revealTargets.forEach(function (s) { io.observe(s); });
+  } else {
+    revealTargets.forEach(function (s) { s.classList.add('visible'); });
+  }
+
+  /* 2) فهرس الشريط — الرابط النشط مع التمرير */
+  var links = Array.prototype.slice.call(document.querySelectorAll('#indexBar a'));
+  var sections = links.map(function (a) { return document.getElementById(a.getAttribute('data-s')); });
+  function syncIndex() {
+    var current = 0;
+    for (var i = 0; i < sections.length; i++) {
+      var el = sections[i];
+      if (!el) continue;
+      var top = el.getBoundingClientRect().top;
+      if (top <= 140) current = i;
+    }
+    links.forEach(function (a, i) {
+      a.classList.toggle('active', i === current);
+      a.setAttribute('aria-current', i === current ? 'location' : 'false');
+    });
+  }
+  var t;
+  window.addEventListener('scroll', function () {
+    if (t) return;
+    t = window.requestAnimationFrame(function () { syncIndex(); t = 0; });
+  }, { passive: true });
+  syncIndex();
+
+  /* 3) بحث تفاعلي — يخفي/يظهر بطاقات المحتوى + يحسب العدد */
+  var search = document.getElementById('lawSearch');
+  var count = document.getElementById('lawSearchCount');
+  var cards = Array.prototype.slice.call(document.querySelectorAll('.card'));
+  var sectionsAll = Array.prototype.slice.call(document.querySelectorAll('.sec'));
+
+  function norm(s) {
+    return String(s || '').toLowerCase()
+      .replace(/[ً-ٰٟـ]/g, '')           // التشكيل والتطويل
+      .replace(/[إأآا]/g, 'ا')
+      .replace(/ى/g, 'ي')
+      .replace(/ة/g, 'ه')
+      .replace(/\s+/g, ' ').trim();
+  }
+
+  function applySearch() {
+    var q = norm(search.value);
+    if (!q) {
+      cards.forEach(function (c) { c.hidden = false; });
+      sectionsAll.forEach(function (s) { s.style.display = ''; });
+      count.textContent = '';
+      return;
+    }
+    var shown = 0;
+    cards.forEach(function (c) {
+      var hit = norm(c.textContent).indexOf(q) !== -1;
+      c.hidden = !hit;
+      if (hit) shown++;
+    });
+    sectionsAll.forEach(function (s) {
+      var visible = s.querySelectorAll('.card:not([hidden])').length;
+      s.style.display = visible ? '' : 'none';
+    });
+    count.textContent = shown === 0 ? 'لا توجد نتائج مطابقة' : shown + ' نتيجة مطابقة';
+  }
+  if (search) {
+    search.addEventListener('input', applySearch);
+    search.addEventListener('search', applySearch);
+  }
+
+  /* 4) زر حذف البحث مع المحوّل الصوتي */
+  document.addEventListener('keydown', function (e) {
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+      if (search) { e.preventDefault(); search.focus(); }
+    }
+    if (e.key === 'Escape' && search && search === document.activeElement) {
+      search.value = ''; applySearch(); search.blur();
+    }
+  });
+})();
+</script>
+<script src="/assets/site-nav.js" defer></script>
+<script src="/assets/site-footer.js" defer></script>
+<script src="/assets/back-home.js" defer></script>
+<script src="/page-i18n.js" defer></script>
+</body>
+</html>

@@ -14,6 +14,7 @@
   footer.innerHTML = '<div>صُنع بـ <strong style="color:#D4AF37">CHRAIM</strong> · Mohamed Chraim (@chrvvim)</div>' +
     '<div style="margin-top:6px"><a href="https://github.com/mrchraim" target="_blank" rel="noopener">GitHub</a> · ' +
     '<a href="mailto:cheraimmohamed20@gmail.com">Email</a> · ' +
-    '<a href="/privacy.html">الخصوصية</a> · <a href="/terms.html">الشروط</a></div>';
+    '<a href="/privacy.html">الخصوصية</a> · <a href="/terms.html">الشروط</a> · ' +
+    '<a href="/legal.html">الموسوعة القانونية</a></div>';
   (document.body || document.documentElement).appendChild(footer);
 })();
