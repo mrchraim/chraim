@@ -1,0 +1,65 @@
+/* portal-extras.css — premium components for portal.html (vanilla conversion of React components) */
+:root{
+  --pe-glass:rgba(255,255,255,.08);
+  --pe-glass-border:rgba(255,255,255,.18);
+  --pe-accent:#3ecf9a;
+  --pe-gold:#D4AF37;
+}
+
+/* Glass stats cards */
+.pe-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin:24px 0}
+.pe-stat{
+  background:var(--pe-glass);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border:1px solid var(--pe-glass-border);border-radius:16px;padding:20px;
+  color:#fff;transition:transform .25s,box-shadow .25s,background .25s;
+  box-shadow:0 4px 16px rgba(0,0,0,.12);
+}
+.pe-stat:hover{transform:translateY(-5px);background:rgba(255,255,255,.12);
+  box-shadow:0 8px 24px rgba(0,0,0,.18)}
+.pe-stat .pe-title{font-size:.8rem;opacity:.7;margin:0 0 6px;font-weight:500}
+.pe-stat .pe-value{font-size:1.7rem;font-weight:800;margin:0 0 8px;letter-spacing:-.02em}
+.pe-stat .pe-change{display:flex;align-items:center;gap:4px;font-size:.8rem;
+  color:var(--pe-accent);font-weight:600}
+.pe-stat .pe-icon{opacity:.5;font-size:1.5rem}
+
+/* Lamp toggle */
+.pe-lamp-wrap{display:flex;align-items:center;justify-content:center;
+  min-height:180px;background:#0a0f1a;border-radius:16px;padding:24px;
+  position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.1)}
+.pe-lamp-glow{position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(250,204,21,.18),transparent 60%);
+  opacity:0;transition:opacity .4s;pointer-events:none}
+.pe-lamp-wrap.is-on .pe-lamp-glow{opacity:1}
+.pe-lamp-btn{background:none;border:0;cursor:pointer;padding:8px;
+  transition:transform .4s cubic-bezier(.34,1.56,.64,1);z-index:2;position:relative}
+.pe-lamp-btn:hover{transform:scale(1.08)}
+.pe-lamp-btn:active{transform:scale(.95)}
+.pe-lamp-icon{transition:color .3s,filter .3s}
+.pe-lamp-wrap.is-on .pe-lamp-icon{color:#facc15;filter:drop-shadow(0 0 16px rgba(250,204,21,.75))}
+.pe-lamp-wrap:not(.is-on) .pe-lamp-icon{color:#4b5563}
+
+/* Download button */
+.pe-download{display:inline-flex;align-items:center;gap:8px;
+  padding:12px 28px;border-radius:999px;background:transparent;
+  border:2px solid var(--pe-accent);color:var(--pe-accent);
+  font-weight:700;font-size:.95rem;cursor:pointer;
+  transition:background .25s,color .25s,transform .2s;
+  font-family:inherit}
+.pe-download:hover{background:var(--pe-accent);color:#0a0f1a;transform:scale(1.04)}
+.pe-download:active{transform:scale(.98)}
+.pe-download svg{transition:transform .25s}
+.pe-download:hover svg{transform:translateY(2px)}
+
+/* Section wrapper */
+.pe-section{margin:32px 0;padding:28px;border-radius:20px;
+  background:linear-gradient(135deg,rgba(10,15,26,.03),rgba(212,175,55,.04));
+  border:1px solid var(--line,#e5e1d8)}
+.pe-section h2{margin:0 0 20px;font-size:1.3rem;font-weight:800;
+  color:var(--blue,#0F172A);border-inline-start:4px solid var(--gold,#D4AF37);
+  padding-inline-start:12px}
+.pe-row{display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:center;margin-top:20px}
+
+/* reduced motion */
+@media (prefers-reduced-motion:reduce){
+  .pe-stat,.pe-lamp-btn,.pe-download{transition:none!important}
+  .pe-stat:hover,.pe-download:hover{transform:none}
+}
