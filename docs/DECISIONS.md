@@ -67,3 +67,13 @@
 - **Alternatives:** Add sample content with "pending" status
 - **Reason:** Project rules forbid fabrication. Official sources need verification.
 - **Impact:** CONTENT_AUDIT.md is a template with "pending" status.
+
+## DECISION 10: OmniRoute is the AI provider, behind a same-origin Pages Function
+- **Date:** 2026-11-12
+- **Decision:** All LLM traffic goes through `/api/ai` (`functions/api/ai.js`) to OmniRoute with `model: "auto"`. No key in the browser. Retrieval is keyword-based over `assets/search-index.json`; if no entry scores ≥ `AI_MIN_SCORE`, the function returns a refusal **without calling the model**.
+- **Alternatives:** Direct browser calls to OmniRoute (blocked by CSP `connect-src 'self'` and would leak the key); embeddings + vector DB (no infra, index is 10KB); React-based AI SDK (project is vanilla).
+- **Reason:** OmniRoute answers decision 1 of `AI_ASSISTANT.md` (provider) and centralises cost/fallback. Same-origin keeps `_headers` CSP unchanged.
+- **Enforcement split:** request count per IP-hour is enforced in the Worker via `RATE_KV`; the USD ceiling is enforced by OmniRoute's per-key USD quota — the Worker does not pretend to meter dollars.
+- **Limits are env-driven, not hardcoded:** `AI_RATE_LIMIT_PER_HOUR`, `AI_DAILY_USD_CAP`, `AI_ALLOWED_LANGS`, `AI_MIN_SCORE`, `AI_MAX_QUERY_LENGTH`. Defaults are conservative; changing a value requires no code change.
+- **Fail-closed:** if `RATE_KV` is missing the endpoint returns 429 `rate_limit_unavailable` unless `ALLOW_UNLIMITED=1` (local dev only).
+- **Impact:** `functions/` is excluded from `dist/` by `tools/build-dist.py` so the Worker source is never published as a static file. Coverage is currently page-level only (52 index entries); section-level retrieval is a separate change.
