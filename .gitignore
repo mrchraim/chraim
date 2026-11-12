@@ -14,6 +14,9 @@ Thumbs.db
 # Wrangler cache
 .wrangler/cache/
 
+# Netlify CLI local state (site id, generated config, absolute local paths)
+.netlify/
+
 # Generated build output
 /dist/
 
