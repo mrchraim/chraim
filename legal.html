@@ -17,16 +17,12 @@
 <link rel="stylesheet" href="/assets/fonts/cairo.css">
 <link rel="stylesheet" href="/assets/design-tokens.css">
 <style>
-:root{
-  --paper:#F6F4ED; --card:#FFFFFF; --ink:#141B2D; --muted:#5A6274;
-  --navy:#0B1220; --navy2:#14243A; --navy3:#1C2E4A; --gold:#C8A04A; --gold2:#D4AF37; --gold-soft:#EFE3BD;
-  --line:#E4E0D2; --ring:#C8A04A; --ok:#1a7f4b; --danger:#B4232A;
-  --shadow:0 10px 28px rgba(11,18,32,.16); --shadow-lg:0 18px 48px rgba(11,18,32,.26);
-}
+/* CHRAIM OMEGA — Legal Encyclopedia themes handled by design-tokens.css */
+:root{color-scheme:dark;--bg-primary:#080d18;--bg-secondary:#0e1422;--text-primary:#f7f5f0;--text-secondary:#9aa3b5;--border:#26304e;}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:120px}
 body{
-  margin:0;background:var(--paper);color:var(--ink);
+  margin:0;background:var(--bg-primary);color:var(--text-primary);
   font-family:'IBM Plex Sans Arabic',system-ui,'Segoe UI',Tahoma,sans-serif;
   line-height:1.72;-webkit-font-smoothing:antialiased;padding-bottom:env(safe-area-inset-bottom,0px)
 }
