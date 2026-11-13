@@ -101,6 +101,38 @@
     }
   }
 
+  /* ── 6. شريط المؤسس → تبويب «نبذة» ─────────────────────── */
+  var founderBtn = document.getElementById('pdFounder');
+  if (founderBtn) founderBtn.addEventListener('click', function () {
+    var tab = document.querySelector('.tab[data-p="about"]');
+    if (tab) {
+      tab.click();
+      var panel = document.getElementById('p-about');
+      if (panel) panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      markCurrent(null);
+    }
+  });
+
+  /* ── 7. Scrollspy: تمييز روابط الأقسام بالـ Sidebar أثناء التمرير ── */
+  if ('IntersectionObserver' in window) {
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          var id = entry.target.id;
+          var link = root.querySelector('.pd-nav a[href="#' + id + '"]');
+          if (link) {
+            root.querySelectorAll('.pd-nav [aria-current]').forEach(function (b) { b.removeAttribute('aria-current'); });
+            link.setAttribute('aria-current', 'page');
+          }
+        }
+      });
+    }, { rootMargin: '-25% 0px -65% 0px', threshold: 0 });
+    ['instGate', 'campus-announcements'].forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) spy.observe(el);
+    });
+  }
+
   /* ── 6. مواعيد قادمة من announcements.json (بيانات رسمية) ── */
   var rail = document.getElementById('pdEvents');
   function escapeHtml(s) {
