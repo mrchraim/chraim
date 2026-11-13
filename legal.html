@@ -156,6 +156,25 @@ body{
 .foot a:hover{text-decoration:underline}
 .foot small{display:block;margin-top:10px;color:#64748b;font-size:.72rem}
 
+/* ========= Encyclopedia (data-driven) ====== */
+.enc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-top:18px}
+.enc-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;box-shadow:0 4px 14px rgba(11,18,32,.06);transition:transform .2s,border-color .2s,box-shadow .2s}
+.enc-card:hover{transform:translateY(-3px);border-color:var(--gold2);box-shadow:0 10px 24px rgba(11,18,32,.12)}
+.enc-card h3{margin:0 0 6px;font-size:1rem;color:var(--navy2);font-weight:800;display:flex;align-items:center;gap:8px}
+.enc-ref{font-size:.72rem;color:var(--muted);font-weight:600;margin:0 0 10px;display:block}
+.enc-body{display:none;margin-top:8px;padding-top:8px;border-top:1px dashed var(--line)}
+.enc-card.open .enc-body{display:block;animation:fade .25s}
+.enc-body p{margin:0 0 8px;font-size:.88rem;line-height:1.7;color:var(--ink)}
+.enc-body p:last-child{margin-bottom:0}
+.enc-body strong{color:var(--navy2);font-weight:800}
+.enc-toggle{background:none;border:0;color:var(--gold);font:inherit;font-weight:700;cursor:pointer;padding:4px 0;font-size:.82rem}
+.enc-toggle:hover{text-decoration:underline}
+.enc-search{width:100%;font:inherit;font-size:1rem;padding:12px 16px;border:1.5px solid var(--line);border-radius:12px;background:var(--card);color:var(--ink);margin-bottom:12px}
+.enc-search:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(212,167,44,.3);outline:none}
+.enc-count{color:var(--muted);font-size:.85rem;margin-bottom:10px}
+
+@media (max-width:640px){.enc-grid{grid-template-columns:1fr}}
+
 /* ========= Scroll reveal ========= */
 .sec{opacity:0;transform:translateY(34px);transition:opacity .7s ease,transform .7s ease}
 .sec.visible{opacity:1;transform:none}
@@ -221,6 +240,7 @@ body{
   <a href="#s6" data-s="s6">06 · القانون الجنائي</a>
   <a href="#s7" data-s="s7">07 · محكمة النقض</a>
   <a href="#s8" data-s="s8">08 · SARL</a>
+<a href="#encyclopedia" data-s="encyclopedia">موسوعة +</a>
 </nav>
 
 <main class="doc" id="main">
@@ -378,6 +398,16 @@ body{
   </div>
 </section>
 
+<!-- ====== الموسوعة (data-driven) ====== -->
+<section class="sec" id="encyclopedia" aria-labelledby="encTitle">
+  <div class="sec-head"><span class="sec-num" aria-hidden="true">+</span><h2 id="encTitle">موسوعة قانونية تفاعلية — 17 موضوعاً</h2></div>
+  <p class="sec-kicker">محتوى موسّع: نساخة، نفقة، صداق، شغل (CDD/CDI، طرد، إفلاس)، قرار إداري، مالية محلية، تاجر، اختصاص المحاكم الإدارية، ضرائب مباشرة/غير مباشرة، relationship الأجير-المشغل، القانون الإداري، مبادئ الميزانية، 58.25، القانون الجبائي، SARL.</p>
+  <div class="hub"><h3>بحث في الموسوعة</h3><p>ابحث عن أي مصطلح (مثلاً: المسطرة المدنية، الضريبة، شركة، محكمة، نفقة...)</p></div>
+  <input class="enc-search" id="encSearch" type="search" placeholder="ابحث في الموسوعة (17 موضوعاً، ~90 قسماً)…" aria-label="البحث في الموسوعة" autocomplete="off">
+  <div class="enc-count" id="encCount" aria-live="polite"></div>
+  <div class="enc-grid" id="encGrid"></div>
+</section>
+
 </main>
 
 <!-- ====== Footer ====== -->
@@ -477,6 +507,88 @@ body{
       search.value = ''; applySearch(); search.blur();
     }
   });
+})();
+</script>
+<script src="/assets/legal-encyclopedia-data.js"></script>
+<script>
+/* ====== موسوعة قانونية (data-driven) ====== */
+(function () {
+  'use strict';
+  var grid = document.getElementById('encGrid');
+  var search = document.getElementById('encSearch');
+  var count = document.getElementById('encCount');
+  if (!grid || !window.LEGAL_ENCYCLOPEDIA) return;
+
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){return({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]);}); }
+  function norm(s) { return String(s||'').toLowerCase().replace(/[ً-ٰٟـ]/g,'').replace(/[إأآا]/g,'ا').replace(/ى/g,'ي').replace(/ة/g,'ه').replace(/\s+/g,' ').trim(); }
+
+  var data = window.LEGAL_ENCYCLOPEDIA || [];
+  var cards = [];
+
+  function buildCard(topic) {
+    var card = document.createElement('article');
+    card.className = 'enc-card';
+    card.dataset.search = norm(topic.title + ' ' + (topic.legal_reference || '') + ' ' + topic.content_blocks.map(function(b){return b.section + ' ' + b.text;}).join(' '));
+    var h3 = document.createElement('h3');
+    h3.textContent = (topic.image_id ? topic.image_id + ' · ' : '') + topic.title;
+    card.appendChild(h3);
+    if (topic.legal_reference) {
+      var ref = document.createElement('span');
+      ref.className = 'enc-ref';
+      ref.textContent = topic.legal_reference;
+      card.appendChild(ref);
+    }
+    var toggle = document.createElement('button');
+    toggle.className = 'enc-toggle';
+    toggle.type = 'button';
+    toggle.textContent = 'عرض التفاصيل (' + topic.content_blocks.length + ' أقسام)';
+    toggle.setAttribute('aria-expanded', 'false');
+    card.appendChild(toggle);
+    var body = document.createElement('div');
+    body.className = 'enc-body';
+    topic.content_blocks.forEach(function (cb) {
+      var p = document.createElement('p');
+      var strong = document.createElement('strong');
+      strong.textContent = cb.section + ': ';
+      p.appendChild(strong);
+      p.appendChild(document.createTextNode(cb.text));
+      body.appendChild(p);
+    });
+    card.appendChild(body);
+    toggle.addEventListener('click', function () {
+      var open = card.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.textContent = open ? 'إخفاء التفاصيل' : 'عرض التفاصيل (' + topic.content_blocks.length + ' أقسام)';
+    });
+    return card;
+  }
+
+  function render(q) {
+    q = norm(q || '');
+    grid.replaceChildren();
+    var shown = 0;
+    data.forEach(function (topic) {
+      var card = buildCard(topic);
+      if (q && card.dataset.search.indexOf(q) === -1) {
+        card.hidden = true;
+      } else {
+        card.hidden = false;
+        shown++;
+      }
+      grid.appendChild(card);
+    });
+    if (count) {
+      count.textContent = q
+        ? (shown === 0 ? 'لا توجد نتائج مطابقة' : shown + ' نتيجة مطابقة')
+        : data.length + ' موضوع · ' + data.reduce(function (a, t) { return a + t.content_blocks.length; }, 0) + ' قسماً';
+    }
+  }
+
+  if (search) {
+    search.addEventListener('input', function () { render(search.value); });
+    search.addEventListener('search', function () { render(search.value); });
+  }
+  render('');
 })();
 </script>
 <script src="/assets/site-nav.js" defer></script>
