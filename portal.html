@@ -1353,6 +1353,7 @@ main#main > .configbar{margin-block-end:10px!important}
 <link rel="stylesheet" href="/assets/portal-showcase.css">
 <link rel="stylesheet" href="/assets/portal-deeper.css">
 <link rel="stylesheet" href="/assets/portal-creative.css">
+<link rel="stylesheet" href="/assets/portal-v3.css">
 </head>
 <body>
 <div id="progress" aria-hidden="true"><i></i></div>
@@ -2356,13 +2357,6 @@ main#main > .configbar{margin-block-end:10px!important}
 <script src="/assets/design-upgrade.js" defer></script>
 <script src="/assets/portal-extras.js" defer></script>
 <script src="/assets/portal-showcase.js" defer></script>
-<script>
-(function(){
-  function fixBg(){ var b = getComputedStyle(document.body).backgroundColor; document.documentElement.style.background = b; }
-  fixBg();
-  if('MutationObserver' in window){ new MutationObserver(fixBg).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme','data-gender','data-comfort']}); }
-})();
-</script>
 </script>
 </body>
 </html>
