@@ -4,7 +4,7 @@
   if (window.__chraimV2) return;
   window.__chraimV2 = true;
 
-  var SKIP = ['/nexus.html','/admin.html','/admin-dashboard.html','/platform/dashboard.html','/platform/account.html'];
+  var SKIP = ['/nexus.html','/admin.html','/admin-dashboard.html','/platform/dashboard.html','/platform/account.html','/portal.html'];
   var path = location.pathname;
   if (SKIP.some(function (p) { return path === p || path.endsWith(p); })) return;
 

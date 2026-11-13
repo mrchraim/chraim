@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ar" dir="rtl" data-sec="search" data-theme="dark">
+<html lang="ar" dir="rtl" data-sec="search" data-v2theme="light">
 <head>
 <meta charset="utf-8">
 <link rel="stylesheet" href="/assets/design-tokens.css">
@@ -1089,7 +1089,7 @@ input,select,button,a{touch-action:manipulation}
 
 </style>
   <link rel="canonical" href="https://chraim.pages.dev/portal">
-  <link rel="preload" as="script" href="app.js">
+  <link rel="preload" as="script" href="app.js?v=20261113e">
   <link rel="stylesheet" href="chrvvim-plus.css">
   <link rel="stylesheet" href="frontend-quality.css">
   <link rel="stylesheet" href="chrvvim-studio.css">
@@ -1356,7 +1356,9 @@ main#main > .configbar{margin-block-end:10px!important}
 <link rel="stylesheet" href="/assets/portal-v3.css">
   <link rel="stylesheet" href="/assets/fonts/v2.css">
   <link rel="stylesheet" href="/assets/v2.css">
+<link rel="stylesheet" href="/assets/portal-dashboard.css">
   <script defer src="/assets/v2.js"></script>
+<script defer src="/assets/portal-dashboard.js"></script>
 </head>
 <body>
 <div id="progress" aria-hidden="true"><i></i></div>
@@ -1364,9 +1366,55 @@ main#main > .configbar{margin-block-end:10px!important}
 <div id="bgfx" aria-hidden="true"></div>
 <a class="skip-link" href="#main">تجاوز إلى المحتوى</a>
 
-<header class="appbar" id="appbar">
-  <a class="ab-brand" href="#top"><span class="scale">⚖️</span><span>CHRVVIM<i>CHAMBRE · CAMPUS</i></span></a>
-  <nav class="ab-nav" id="abnav" aria-label="تنقّل سريع" data-i18n-aria="aria.nav"></nav>
+<div class="pd-shell" id="pdShell">
+<div class="pd-backdrop" aria-hidden="true"></div>
+
+<aside class="pd-side" id="pdSide" aria-label="قائمة التنقل — لوحة الطالب">
+  <a class="pd-brand" href="/" aria-label="CHRAIM Campus — الرئيسية">
+    <span class="pd-brand__mark"><svg viewBox="0 0 48 48" aria-hidden="true"><g fill="none" stroke="#241207" stroke-width="2.6" stroke-linejoin="round"><path d="M24 3 42 24 24 45 6 24Z"/><path d="M24 12.5 34.5 24 24 35.5 13.5 24Z"/><circle cx="24" cy="24" r="2.6" fill="#241207" stroke="none"/></g></svg></span>
+    <span class="pd-brand__word">CHR<b>AIM</b><small>STUDENT PORTAL · 2026</small></span>
+  </a>
+  <nav class="pd-nav" aria-label="أقسام البوابة">
+    <p class="pd-nav__group">لوحتي</p>
+    <button type="button" data-p="smart" aria-current="page"><span class="pd-ic"><svg viewBox="0 0 24 24"><path d="M12 3.2l1.7 4.3 4.3 1.7-4.3 1.7L12 15.2l-1.7-4.3L6 9.2l4.3-1.7z"/><path d="M18.5 14.5l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z"/></svg></span>الرئيسية</button>
+    <a href="#instGate"><span class="pd-ic"><svg viewBox="0 0 24 24"><path d="M4 20V8l8-5 8 5v12"/><path d="M4 20h16"/><path d="M9.5 20v-6h5v6"/></svg></span>الولوج والتكوينات</a>
+    <a href="#campus-announcements"><span class="pd-ic"><svg viewBox="0 0 24 24"><path d="M4 10v4l2 .5V9.5L4 10z"/><path d="M6 9h10l4-4v14l-4-4H6z"/><path d="M9 17.5V20a1.5 1.5 0 0 0 3 0v-2"/></svg></span>الإعلانات الرسمية</a>
+
+    <p class="pd-nav__group">استعمال الزمن</p>
+    <button type="button" data-p="tt"><span class="pd-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg></span>استعمال الزمن الرسمي</button>
+    <button type="button" data-p="mytt"><span class="pd-ic"><svg viewBox="0 0 24 24"><path d="M5 5.5h14M7 4v3M17 4v3M5 8v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8"/><path d="M9.5 12.5h5M9.5 16h5"/></svg></span>جدولتي</button>
+
+    <p class="pd-nav__group">درجاتي</p>
+    <button type="button" data-p="gpa"><span class="pd-ic"><svg viewBox="0 0 24 24"><path d="M4 19.5h16"/><path d="M6.5 16l5-8.5 4 6 2.2-3.2L20 16"/></svg></span>النقط والمعدّل</button>
+    <button type="button" data-p="deadlines"><span class="pd-ic"><svg viewBox="0 0 24 24"><path d="M6.5 3h11v18l-5.5-4-5.5 4V3z"/></svg></span>مواعيدي</button>
+
+    <p class="pd-nav__group">المعرفة</p>
+    <button type="button" data-p="subjects"><span class="pd-ic"><svg viewBox="0 0 24 24"><path d="M5 5.5A2.5 2.5 0 0 1 7.5 3H19v15H7.5A2.5 2.5 0 0 0 5 20.5V5.5z"/><path d="M5 20.5A2.5 2.5 0 0 1 7.5 18H19"/></svg></span>الوحدات والمواد</button>
+    <button type="button" data-p="exams"><span class="pd-ic"><svg viewBox="0 0 24 24"><path d="M9 3h6M10 3v4.5h4V3"/><path d="M6 7.5h12V20a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V7.5z"/><path d="M9.5 12.5h5M9.5 16h5"/></svg></span>الامتحانات</button>
+    <button type="button" data-p="docs"><span class="pd-ic"><svg viewBox="0 0 24 24"><path d="M6 3h9l5 5v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><path d="M14 3v6h6"/></svg></span>الوثائق والمكتبة</button>
+    <button type="button" data-p="university"><span class="pd-ic"><svg viewBox="0 0 24 24"><path d="M3 9.5 12 4l9 5.5"/><path d="M5.5 10v9M10 10v9M14 10v9M18.5 10v9M3 19.5h18"/></svg></span>الجامعة والتكوينات</button>
+    <button type="button" data-p="legal"><span class="pd-ic"><svg viewBox="0 0 24 24"><path d="M12 3.5v17"/><path d="M8.5 20.5h7M7 7h10l2.5 5.5a3.6 3.6 0 0 1-5 0L17 7M7 7 4.5 12.5a3.6 3.6 0 0 0 5 0L7 7"/></svg></span>المكتبة القانونية</button>
+
+    <p class="pd-nav__group">خدمات</p>
+    <a href="/platform/"><span class="pd-ic"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1.6"/><rect x="13.5" y="4" width="6.5" height="7" rx="1.6"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1.6"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.6"/></svg></span>المنصة — نتائج وملخصات</a>
+    <a href="/platform/support.html"><span class="pd-ic"><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 8.8 11.3L21 21l-6.2-1.4A9 9 0 0 0 12 3z"/><path d="M9.6 10.6h.01M12 10.6h.01M14.4 10.6h.01"/></svg></span>الدعم والشكايات</a>
+    <a href="/platform/account.html"><span class="pd-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4.8 20.4a7.3 7.3 0 0 1 14.4 0"/></svg></span>حسابي</a>
+  </nav>
+  <div class="pd-side-foot">
+    <span class="pd-chip"><i></i> CHRAIM PORTAL — 2026</span>
+    <p>منصة مستقلة غير رسمية لجامعة ابن زهر بأكادير. المعطيات مجمّعة من المصادر الرسمية — تحقق دائماً من <a href="https://www.uiz.ac.ma/" target="_blank" rel="noopener noreferrer">uiz.ac.ma</a>.</p>
+  </div>
+</aside>
+
+<div class="pd-main">
+<header class="pd-topbar">
+  <button class="pd-burger" id="pdBurger" type="button" aria-label="القائمة" aria-expanded="false" aria-controls="pdSide"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  <div class="pd-title">بوابة ابن زهر<small>CHRAIM STUDENT PORTAL</small></div>
+  <button class="pd-search" id="pdSearch" type="button" aria-label="البحث في البوابة"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.8-3.8"/></svg><span>ابحث في المؤسسات والوحدات والوثائق…</span><kbd>Ctrl K</kbd></button>
+  <div class="pd-topdate"><b id="pdDate">…</b><span>التقويم الجامعي</span></div>
+  <button type="button" class="pd-iconbtn" id="pdTheme" aria-label="تبديل المظهر" title="تبديل المظهر">☾</button>
+  <a class="pd-avatar" href="/platform/account.html" aria-label="حسابي"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4.8 20.4a7.3 7.3 0 0 1 14.4 0"/></svg></a>
+  
   <div class="ab-ctl">
     <div class="seg" id="uilang" role="group" aria-label="لغة الواجهة" data-i18n-aria="aria.uilang">
       <button type="button" data-ui="ar" class="on" aria-label="العربية" title="العربية">ع</button>
@@ -1376,53 +1424,33 @@ main#main > .configbar{margin-block-end:10px!important}
       <button type="button" data-ui="zgh-latn" aria-label="Tamaziɣt — Latin" title="Tamaziɣt — Latin">AZ</button>
     </div>
     <button type="button" class="iconbtn" id="comfort" aria-label="وضع راحة العين" title="راحة العين" data-i18n-aria="aria.comfort" data-i18n-title="aria.comfortTitle"><svg class="icn" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2.5 12S6 5.8 12 5.8 21.5 12 21.5 12 18 18.2 12 18.2 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3.1"/></svg></button>
-    <button type="button" class="iconbtn" id="theme" aria-label="تبديل الوضع الليلي" title="الوضع الليلي" data-i18n-aria="aria.theme" data-i18n-title="aria.themeTitle"><svg class="icn" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.5 14.7A8.6 8.6 0 0 1 9.3 3.5a8.6 8.6 0 1 0 11.2 11.2z"/></svg></button>
     <button type="button" class="iconbtn" id="genderBtn" aria-label="طبيعة التصفح" title="طبيعة التصفح" data-i18n-aria="aria.gender" data-i18n-title="aria.genderTitle"><span aria-hidden="true">♀♂</span></button>
     <button type="button" class="iconbtn gold" id="install" hidden><span aria-hidden="true"><svg class="icn" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3.5v11"/><path d="M7.5 10 12 14.5 16.5 10"/><path d="M4.5 19.5h15"/></svg></span> <span id="installLabel">تثبيت التطبيق</span></button>
   </div>
-</header>
-<script>
-(function(){
-  function tr(k,fb){try{if(window.CHRVVIM_PAGE){var v=window.CHRVVIM_PAGE.t(k); if(v&&v!==k) return v;}}catch(e){}return fb;}
-  var g='neutral'; try{ g=localStorage.getItem('cc_gender')||'neutral'; }catch(e){}
-  document.documentElement.setAttribute('data-gender',g);
-  function cycle(){
-    var cur=document.documentElement.getAttribute('data-gender')||'neutral';
-    var next=cur==='neutral'?'male':(cur==='male'?'female':'neutral');
-    document.documentElement.setAttribute('data-gender',next);
-    try{ localStorage.setItem('cc_gender',next); }catch(e){}
-    var b=document.getElementById('genderBtn');
-    if(b){ var lbl = next==='male' ? tr('aria.genderMale','طبيعة: ذكر') : (next==='female' ? tr('aria.genderFemale','طبيعة: أنثى') : tr('aria.genderNeutral','طبيعة: محايد')); b.setAttribute('aria-label', lbl); }
-  }
-  document.addEventListener('DOMContentLoaded',function(){
-    var b=document.getElementById('genderBtn');
-    if(b){ b.addEventListener('click',cycle);
-      var cur=document.documentElement.getAttribute('data-gender')||'neutral';
-      var lbl = cur==='male' ? tr('aria.genderMale','طبيعة: ذكر') : (cur==='female' ? tr('aria.genderFemale','طبيعة: أنثى') : tr('aria.genderNeutral','طبيعة: محايد'));
-      b.setAttribute('aria-label', lbl);
-    }
-  });
-})();
-</script>
-<div class="hero" id="top">
-  <div class="ticker" aria-hidden="true"><div class="tk"><span>CHRVVIM — CHAMBRE · CAMPUS</span><span>مؤسسات جامعة ابن زهر</span><span>دليل الطلبة أكادير</span><span>UNIVERSITÉ IBN ZOHR · AGADIR</span><span>CHRVVIM — CHAMBRE · CAMPUS</span><span>مؤسسات جامعة ابن زهر</span><span>دليل الطلبة أكادير</span><span>UNIVERSITÉ IBN ZOHR · AGADIR</span></div></div>
-  <div class="hero-fx" aria-hidden="true"><i></i><i></i><i></i></div>
-  <div class="motto" data-i18n="hero.motto">🎓 UNIVERSITÉ IBN ZOHR · ÉTABLISSEMENTS 🎓</div>
-  <h1 data-i18n-html="hero.h1html">دليل الطلبة <b>جامعة ابن زهر</b></h1>
-  <p data-i18n="hero.p">بوابة طلابية مستقلة تجمع مؤسسات جامعة ابن زهر: الكليات والمدارس والمعاهد وروابطها الرسمية، مع أدوات كلية العلوم القانونية والسياسية بأكادير — الأفواج، استعمال الزمن، الوثائق والمكتبة القانونية. الموسم الجامعي 2026-2027.</p>
-  <a class="officialchip" href="https://www.uiz.ac.ma/nos-etablissements" target="_blank" rel="noopener"><svg class="icn" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3.6 21.4 20H2.6z"/><path d="M12 9.6v4.6"/><path d="M12 17.2h.01"/></svg> <span data-i18n="hero.chip">موقع مستقل غير رسمي · المصادر الرسمية هي مواقع الجامعة والمؤسسات</span></a>
-  <div class="hero-actions" aria-label="روابط رئيسية" data-i18n-aria="aria.heroActions">
-    <a class="hero-action primary" href="#homeQuick"><span data-i18n="hero.cta">ابدأ من هنا — كل خدمات المنصة</span> <span aria-hidden="true">↓</span></a>
-  </div>
-  <a class="hfound" id="hf"><img id="hfi" alt="محمد شرايم" width="42" height="42" decoding="async"><span>من تطوير <b>محمد شرايم</b> · مؤسس CHRVVIM</span></a>
-  <div class="stats">
-    <div class="stat"><b id="sTracks">0</b><span>مسلك ومسار</span></div>
-    <div class="stat"><b id="sSess">0</b><span>حصة</span></div>
-    <div class="stat"><b id="sProf">0</b><span>أستاذ</span></div>
-  </div>
-  <a class="cta-main" id="startBtn" href="#main">ابدئي من هنا <span aria-hidden="true">←</span></a>
-</div>
 
+</header>
+
+<section class="pd-welcome" aria-labelledby="pdWelcomeTitle">
+  <div>
+    <p class="pd-welcome__kicker">IBN ZOHR UNIV · AGADIR — 2026 / 2027</p>
+    <h1 id="pdWelcomeTitle"><span id="pdGreetWord">مساء الخير</span>، <b>أهلاً بك</b> في بوابة ابن زهر</h1>
+    <p>كل ما يخص مسارك الجامعي في مكان واحد: استعمال الزمن الرسمي للمؤسسات، الوحدات والمواد، النقط والمعدّل، الوثائق الرسمية، وآخر المستجدات — مرتبة، واضحة، ومتحققة من مصادرها الرسمية.</p>
+    <div class="pd-welcome__chips">
+      <span class="pd-chip2"><i></i> السداسي الأول — 2026/2027</span>
+      <span class="pd-chip2"><i></i> جامعة ابن زهر — 8 مدن جامعية</span>
+    </div>
+    <div class="pd-welcome__ctas">
+      <a class="pd-btn-solid" href="#instGate">اكتشف مؤسستك <span aria-hidden="true">↙</span></a>
+      <a class="pd-btn-ghost" href="https://myuiz.uiz.ac.ma/" target="_blank" rel="noopener noreferrer">فضاء MY-UIZ الرسمي <span aria-hidden="true">↗</span></a>
+    </div>
+  </div>
+  <aside class="pd-welcome__rail" aria-labelledby="pdEventsTitle">
+    <h2 id="pdEventsTitle">المواعيد الرسمية القادمة</h2>
+    <ul class="pd-events" id="pdEvents" aria-live="polite">
+      <li class="pd-events-empty">جارٍ تحديث القائمة من المصادر الرسمية…</li>
+    </ul>
+  </aside>
+</section>
 <main id="main">
   
 <section class="pe-section" aria-labelledby="peTitle">
@@ -2017,7 +2045,7 @@ main#main > .configbar{margin-block-end:10px!important}
 <script src="supabase-config.js" defer></script>
 <script src="page-i18n.js?v=20261017t2" defer></script>
 <script src="gender.js" defer></script>
-<script src="app.js" defer></script>
+<script src="app.js?v=20261113e" defer></script>
 <script src="subjects.js" defer></script>
 <script src="legal.js" defer></script>
 <script src="exams.js" defer></script>
@@ -2356,10 +2384,13 @@ main#main > .configbar{margin-block-end:10px!important}
 <script src="/assets/back-home.js" defer></script>
 <script src="/assets/cmdk.js" defer></script>
 <script src="/assets/site-footer.js" defer></script>
-<script src="/assets/site-nav.js" defer></script>
+<script src="/assets/site-nav.js?v=20261113" defer></script>
 <script src="/assets/design-upgrade.js" defer></script>
 <script src="/assets/portal-extras.js" defer></script>
 <script src="/assets/portal-showcase.js" defer></script>
 </script>
+
+</div><!-- /pd-main -->
+</div><!-- /pd-shell -->
 </body>
 </html>

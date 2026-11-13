@@ -1,5 +1,8 @@
 // CHRAIM — shared top nav (injected). CSP-safe, no inline eval.
 (function () {
+  /* DEPRECATED (2026-11-13): this icon bar is superseded by the CHRAIM v2 unified chrome (assets/v2.js) and by the portal dashboard shell. Global no-op. */
+  return;
+
   if (window.__chraimSiteNav) return;
   window.__chraimSiteNav = true;
   if (document.querySelector('.appbar, #siteNav')) return;

@@ -729,13 +729,14 @@ document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{
   b.classList.add('on');$('p-'+b.dataset.p).classList.add('on');
   if(b.dataset.p==='stats') renderStats();if(b.dataset.p==='learn') renderLearn();if(b.dataset.p==='subjects'&&window.Subjects) window.Subjects.render();if(b.dataset.p==='legal'&&window.Legal) window.Legal.render();if(b.dataset.p==='exams'&&window.Exams) window.Exams.render();
 });
-function setTheme(t){document.documentElement.dataset.theme=t;$('theme').innerHTML=t==='dark'?ICON_SUN:ICON_MOON;store.set('cc_theme',t)}
-$('theme').onclick=()=>setTheme(document.documentElement.dataset.theme==='dark'?'light':'dark');
+function setTheme(t){document.documentElement.dataset.theme=t;const _tb=$('theme');if(_tb)_tb.innerHTML=t==='dark'?ICON_SUN:ICON_MOON;store.set('cc_theme',t)}
+const _themeBtn=$('theme'); if(_themeBtn) _themeBtn.onclick=()=>setTheme(document.documentElement.dataset.theme==='dark'?'light':'dark');
 (function init(){
-  $('sTracks').textContent=DATA.tracks.length;
-  $('sSess').textContent=DATA.tracks.reduce((n,t)=>n+t.sessions.length,0);
-  $('sProf').textContent=uniq(DATA.tracks.flatMap(t=>t.sessions.map(s=>s.p)).filter(Boolean)).length;
-  $("hfi").src=PHOTO_SM;$("hf").onclick=()=>{document.querySelectorAll(".tab,.panel").forEach(x=>x.classList.remove("on"));document.querySelector('[data-p=about]').classList.add("on");$("p-about").classList.add("on");$("p-about").scrollIntoView({behavior:"smooth"})};
+  const _s=id=>document.getElementById(id);
+  if(_s('sTracks')) _s('sTracks').textContent=DATA.tracks.length;
+  if(_s('sSess')) _s('sSess').textContent=DATA.tracks.reduce((n,t)=>n+t.sessions.length,0);
+  if(_s('sProf')) _s('sProf').textContent=uniq(DATA.tracks.flatMap(t=>t.sessions.map(s=>s.p)).filter(Boolean)).length;
+  const _hfi=_s("hfi"); if(_hfi){ _hfi.src=PHOTO_SM; const _hf=_s("hf"); if(_hf) _hf.onclick=()=>{document.querySelectorAll(".tab,.panel").forEach(x=>x.classList.remove("on"));document.querySelector('[data-p=about]').classList.add("on");_s("p-about").classList.add("on");_s("p-about").scrollIntoView({behavior:"smooth"})}; }
   fillTracks();refresh();renderAbout();renderDocs();renderGpa();renderMine();renderStats();renderLearn();renderUniversity();
   const th=store.get('cc_theme'); if(th==='dark'||(!th&&window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches)) setTheme('dark');
 })();
@@ -1002,7 +1003,7 @@ async function loadCampusAnnouncements(){
   if(sb&&sb.url&&sb.anonKey){
     try{
       const base=String(sb.url).replace(/\/+$/,'');
-      const r=await fetch(base+'/rest/v1/announcements?select=title,body,kind,starts_at,ends_at,status,updated_at&status=eq.published&order=updated_at.desc&limit=50',{headers:{apikey:sb.anonKey,Authorization:'Bearer '+sb.anonKey},cache:'no-store'});
+      const ctrl=new AbortController();const timer=setTimeout(()=>ctrl.abort(),4000);const r=await fetch(base+'/rest/v1/announcements?select=title,body,kind,starts_at,ends_at,status,updated_at&status=eq.published&order=updated_at.desc&limit=50',{headers:{apikey:sb.anonKey,Authorization:'Bearer '+sb.anonKey},cache:'no-store',signal:ctrl.signal});clearTimeout(timer);
       if(r.ok){const rows=await r.json();if(Array.isArray(rows)&&rows.length)items=rows;}
     }catch(e){}
   }
