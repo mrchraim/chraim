@@ -92,15 +92,32 @@
 /* ── 4. WELCOME BAND (بديل الـ Hero) ───────────────────────── */
 .pd-welcome{
   margin:16px clamp(12px,2vw,22px) 0;
-  border-radius:22px;overflow:hidden;position:relative;isolation:isolate;
-  display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(16px,3vw,36px);align-items:center;
-  padding:clamp(24px,4vw,40px);
-  background:linear-gradient(140deg,#16324A 0%,var(--pd-navy) 55%,var(--pd-navy-2) 100%);
-  color:#F5EFDD;border:1px solid rgba(255,255,255,.08);
+  border-radius:24px;overflow:hidden;position:relative;isolation:isolate;
+  display:grid;grid-template-columns:1.12fr .88fr;gap:clamp(18px,3vw,40px);align-items:center;
+  padding:clamp(26px,4vw,44px);
+  color:#F5EFDD;border:1px solid rgba(255,255,255,.10);
   box-shadow:var(--v2-shadow-lg);
+  background:
+    radial-gradient(560px 340px at 88% -30%, rgba(224,164,88,.30), transparent 60%),
+    radial-gradient(700px 500px at -12% 120%, rgba(21,84,58,.55), transparent 62%),
+    linear-gradient(155deg,#10233A 0%,#0C1B2E 46%,#071120 100%);
 }
-.pd-welcome::before{content:"";position:absolute;width:420px;height:420px;border-radius:50%;border:1px solid rgba(224,164,88,.22);top:-160px;inset-inline-end:-120px;z-index:-1;box-shadow:0 0 0 44px rgba(224,164,88,.05),0 0 0 96px rgba(224,164,88,.035)}
-.pd-welcome::after{content:"§";position:absolute;bottom:-58px;inset-inline-start:14px;font:900 10rem/1 var(--v2-display);color:rgba(224,164,88,.07);z-index:-1}
+/* زخرفة الزليج: نجمة ثمانية مكررة بخط رفيع */
+.pd-welcome__lattice{position:absolute;inset:0;z-index:-1;opacity:.55;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='144' height='144'%3E%3Cg fill='none' stroke='%23E0A458' stroke-opacity='.14' stroke-width='1.1'%3E%3Cpath d='M72 6 138 72 72 138 6 72Z'/%3E%3Cpath d='M72 32 114 72 72 112 32 72Z'/%3E%3Cpath d='M72 6V144M6 72H144'/%3E%3C/g%3E%3C/svg%3E");
+  background-size:144px 144px;
+  mask-image:radial-gradient(ellipse 90% 90% at 30% 20%, #000 20%, transparent 75%);
+  -webkit-mask-image:radial-gradient(ellipse 90% 90% at 30% 20%, #000 20%, transparent 75%);
+}
+.pd-welcome__index{position:absolute;bottom:-24px;inset-inline-end:8px;z-index:-1;
+  font:900 clamp(7rem,15vw,12rem)/.85 var(--v2-display);letter-spacing:-.06em;
+  color:transparent;-webkit-text-stroke:1.2px rgba(239,203,139,.28);pointer-events:none;user-select:none}
+.pd-welcome__tick{position:relative;margin:clamp(22px,3vw,34px) clamp(12px,2vw,22px) 0;overflow:hidden;white-space:nowrap;
+  border:1px solid rgba(224,164,88,.35);border-radius:14px;background:rgba(6,13,22,.55);backdrop-filter:blur(6px);
+  font:600 .68rem var(--v2-mono);letter-spacing:.16em;color:#EFCB8B;padding:11px 0}
+.pd-welcome__tick-inner{display:inline-flex;gap:2.6rem;animation:pdTick 26s linear infinite}
+@keyframes pdTick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.pd-welcome__tick-inner{animation:none}}
 .pd-welcome__kicker{font:600 .62rem var(--v2-mono);letter-spacing:.22em;color:#E0A458;margin:0 0 12px}
 .pd-welcome h1{font-family:var(--v2-display);font-weight:700;font-size:clamp(1.75rem,4.2vw,2.9rem);line-height:1.45;margin:0;color:#FBF7EC !important}
 .pd-welcome h1 b{color:#EFCB8B}
