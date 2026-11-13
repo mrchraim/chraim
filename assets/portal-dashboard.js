@@ -44,7 +44,7 @@
     prof:     { label: 'الدكاترة والأساتذة',   focus: '#pq' },
     tt:       { label: 'استعمال الزمن',        focus: '#ttg' },
     dist:     { label: 'توزيع الأفواج',        focus: null },
-    subjects: { label: 'المواد والوحدات',      focus: null },
+    subjects: { label: 'المواد والوحدات',      focus: '#subjSemester' },
     exams:    { label: 'الامتحانات والفروض',   focus: null },
     docs:     { label: 'وثائق المسلك',         focus: '#dsem' },
     legal:    { label: 'الموسوعة القانونية',   focus: null },
@@ -88,15 +88,23 @@
     setSide(false);
     markCurrent(btn);
     showToast('فُتح — ' + route.label);
+    var panel = document.getElementById('p-' + p);
+    if (panel) {
+      panel.classList.remove('pd-flash');
+      void panel.offsetWidth; // restart animation
+      panel.classList.add('pd-flash');
+      window.setTimeout(function () { panel.classList.remove('pd-flash'); }, 1600);
+    }
     var main = document.getElementById('main');
+    var scrollTarget = panel || main;
     if (route.focus) {
       window.setTimeout(function () {
         var el = document.querySelector(route.focus);
         if (el) { el.focus({ preventScroll: true }); el.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
-        else if (main) main.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        else if (scrollTarget) scrollTarget.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }, 80);
-    } else if (main) {
-      main.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else if (scrollTarget) {
+      scrollTarget.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }
   function markCurrent(btn) {
