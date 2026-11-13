@@ -41,7 +41,7 @@
     root.querySelectorAll('.pd-nav [aria-current]').forEach(function (b) { b.removeAttribute('aria-current'); });
     if (btn) btn.setAttribute('aria-current', 'page');
   }
-  var sideButtons = Array.prototype.slice.call(root.querySelectorAll('.pd-nav button[data-p]'));
+  var sideButtons = Array.prototype.slice.call(root.querySelectorAll('.pd-nav button[data-p], .pd-ajid button[data-p]'));
   function activate(p) {
     var tab = document.querySelector('.tab[data-p="' + p + '"]');
     if (tab) { tab.click(); return true; }

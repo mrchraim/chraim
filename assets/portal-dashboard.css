@@ -203,6 +203,53 @@
 .pd-founder__go span{display:inline-block;transition:transform .2s}
 .pd-founder:hover .pd-founder__go span{transform:translateX(-6px)}
 
+/* ── 11. «أجِد» — LAUNCHPAD ─────────────────────────────────── */
+.pd-ajid{background:var(--v2-card);border:1px solid var(--v2-line);border-radius:22px;box-shadow:var(--v2-shadow);padding:clamp(20px,2.6vw,28px)}
+.pd-ajid__head{margin-bottom:16px}
+.pd-ajid__kicker{font:600 .6rem var(--v2-mono);letter-spacing:.28em;color:var(--v2-terra-strong)}
+html[data-v2theme="dark"] .pd-ajid__kicker{color:var(--v2-saffron)}
+.pd-ajid__head h2{font-family:var(--v2-display)!important;font-weight:700;font-size:clamp(1.6rem,3.4vw,2.2rem);color:var(--v2-ink)!important;margin:8px 0 6px;line-height:1.4}
+.pd-ajid__head h2 em{font-style:normal;color:var(--v2-terra-strong)}
+html[data-v2theme="dark"] .pd-ajid__head h2 em{color:var(--v2-saffron)}
+.pd-ajid__head p{color:var(--v2-ink-soft);font-size:.85rem;margin:0}
+
+.pd-ajid__group{position:relative;padding-top:20px}
+.pd-ajid__label{position:absolute;top:-2px;inset-inline-start:-2px;font:900 3.4rem/.8 var(--v2-display);letter-spacing:-.05em;color:transparent;-webkit-text-stroke:1.1px color-mix(in srgb,var(--v2-green) 42%,transparent);user-select:none;pointer-events:none}
+html[data-v2theme="dark"] .pd-ajid__label{-webkit-text-stroke-color:color-mix(in srgb,var(--v2-saffron) 40%,transparent)}
+.pd-ajid__tiles{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.pd-tile{display:flex;flex-direction:column;align-items:flex-start;gap:14px;min-height:158px;padding:14px;border-radius:16px;border:1px solid var(--v2-line);background:var(--v2-paper-2);cursor:pointer;text-align:start;transition:transform .2s var(--v2-ease),border-color .2s,box-shadow .2s}
+.pd-tile:hover{transform:translateY(-4px);border-color:var(--v2-terra);box-shadow:var(--v2-shadow)}
+.pd-tile__ic{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;color:#FBF7EC}
+.pd-tile__ic--green{background:var(--v2-green)}
+.pd-tile__ic--terra{background:var(--v2-terra-strong)}
+.pd-tile__ic--saffron{background:#C98A2B}
+.pd-tile__ic svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.pd-tile__tx b{display:block;font-size:.92rem;color:var(--v2-ink);line-height:1.5}
+.pd-tile__tx small{display:block;font-size:.66rem;color:var(--v2-ink-soft);line-height:1.75;margin-top:5px}
+.pd-tile:focus-visible{outline:3px solid var(--v2-focus);outline-offset:2px}
+
+.pd-ajid__worlds{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:16px}
+.pd-world{border-radius:18px;padding:14px;border:1px solid var(--v2-line)}
+.pd-world--knowledge{background:linear-gradient(160deg,color-mix(in srgb,var(--v2-saffron) 22%,var(--v2-card)),var(--v2-card))}
+.pd-world--science{background:linear-gradient(160deg,color-mix(in srgb,var(--v2-green) 14%,var(--v2-card)),var(--v2-card))}
+.pd-world--me{background:linear-gradient(160deg,color-mix(in srgb,var(--v2-terra) 14%,var(--v2-card)),var(--v2-card))}
+.pd-world__head{display:flex;align-items:baseline;gap:10px;margin-bottom:10px;flex-wrap:wrap}
+.pd-world__dot{width:9px;height:9px;border-radius:50%;background:var(--v2-terra);align-self:center}
+.pd-world--knowledge .pd-world__dot{background:#C98A2B}
+.pd-world--science .pd-world__dot{background:var(--v2-green)}
+.pd-world h3{font-family:var(--v2-display);font-weight:700;font-size:1.28rem;color:var(--v2-ink);margin:0}
+.pd-world__head small{color:var(--v2-ink-soft);font-size:.68rem}
+.pd-world__items{display:grid;gap:6px}
+.pd-world__btn{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:start;text-align:start;padding:10px 12px;border-radius:12px;border:1px solid transparent;background:transparent;cursor:pointer;text-decoration:none;transition:background .15s,border-color .15s}
+.pd-world__btn > span:first-child{grid-row:span 2;font-size:1.15rem;line-height:1}
+.pd-world__btn b{display:block;font-size:.8rem;color:var(--v2-ink);line-height:1.5}
+.pd-world__btn em{display:block;font-style:normal;color:var(--v2-ink-soft);font-size:.62rem;line-height:1.7;margin-top:2px}
+.pd-world__btn:hover{background:var(--v2-card);border-color:var(--v2-line)}
+
+@media (max-width:1180px){.pd-ajid__tiles{grid-template-columns:repeat(3,minmax(0,1fr))}.pd-ajid__worlds{grid-template-columns:1fr 1fr}}
+@media (max-width:720px){.pd-ajid__tiles{grid-template-columns:repeat(2,minmax(0,1fr))}.pd-ajid__worlds{grid-template-columns:1fr}.pd-ajid__label{font-size:2.4rem}}
+@media (max-width:420px){.pd-ajid__tiles{grid-template-columns:1fr}}
+
 /* ── 9. PRINT ───────────────────────────────────────────────── */
 #bgfx,#bgfx-glow,#uiKit{display:none !important}
 @media (max-width:640px){.pd-title{display:none}}
