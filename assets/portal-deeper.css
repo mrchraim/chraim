@@ -1,0 +1,187 @@
+/* portal-deeper.css — premium dark-glass pass for portal.html ONLY.
+   Mirrors the referenced React glass system: black/40 cards, emerald glow,
+   gold accents, deeper shadows. Theme-gated (dark) + cleaner light fallback. */
+
+/* ============================================================
+   DARK — the premium dashboard look
+   ============================================================ */
+:root[data-theme=dark]{
+  --bg:#070C17;
+  --card:#0E1828;
+  --line:rgba(255,255,255,.10);
+  --soft:#131f33;
+  --gold:#D4AF37;
+  --gold2:#EAD9A8;
+  --muted:#9aa6bd;
+  --pe-emerald:#34d399;
+  --deepen-shadow:0 24px 60px rgba(0,0,0,.55);
+  --glow:0 0 44px rgba(234,217,168,.14);
+}
+
+:root[data-theme=dark],
+:root[data-theme=dark] html{
+  background:#070C17 !important;
+}
+:root[data-theme=dark] body{background:#070C17}
+
+/* Hero — deeper gradient + gold flare */
+:root[data-theme=dark] .hero{
+  background:
+    radial-gradient(1000px 480px at 78% -120px, rgba(234,217,168,.18), transparent 55%),
+    radial-gradient(800px 420px at 18% 110%, rgba(52,211,153,.10), transparent 60%),
+    linear-gradient(160deg,#050E21 0%, #0D1E3A 45%, #16304F 100%);
+  border-bottom:1px solid rgba(212,175,55,.28);
+  box-shadow:0 20px 60px rgba(0,0,0,.5);
+}
+:root[data-theme=dark] .hero-fx i{opacity:.55}
+:root[data-theme=dark] .hero h1 b{
+  background:linear-gradient(90deg,#FFF2BE 0%,#EAD9A8 35%,#C8A04A 75%,#EAD9A8 100%) !important;
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent !important;
+}
+
+/* Ticker — gold shimmer sweep */
+:root[data-theme=dark] .ticker{
+  box-shadow:0 6px 22px rgba(234,217,168,.25), inset 0 -1px 0 rgba(0,0,0,.35);
+}
+
+/* CTA-main — more dramatic glow */
+:root[data-theme=dark] .cta-main{
+  box-shadow:0 0 34px rgba(234,217,168,.28), 0 10px 30px rgba(0,0,0,.45) !important;
+  border:1px solid rgba(255,255,255,.22) !important;
+}
+:root[data-theme=dark] .cta-main:hover{
+  box-shadow:0 0 54px rgba(234,217,168,.4), 0 14px 40px rgba(0,0,0,.55) !important;
+  transform:scale(1.06);
+}
+
+/* Stats chips — emerald-tinted glass */
+:root[data-theme=dark] .hero .stat{
+  background:rgba(10,16,28,.55) !important;
+  backdrop-filter:blur(12px) saturate(1.2);-webkit-backdrop-filter:blur(12px) saturate(1.2);
+  border:1px solid rgba(234,217,168,.32) !important;
+  border-radius:20px !important;
+  padding:20px 28px !important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08), 0 14px 36px rgba(0,0,0,.35) !important;
+}
+:root[data-theme=dark] .hero .stat b{color:#EAD9A8 !important;text-shadow:0 0 26px rgba(234,217,168,.4) !important}
+:root[data-theme=dark] .hero .stat span{color:#cdd5e4 !important;font-weight:700 !important}
+
+/* Cards & sections — true dark glass */
+:root[data-theme=dark] .card,
+:root[data-theme=dark] .home-quick,
+:root[data-theme=dark] .wa-groups,
+:root[data-theme=dark] .panel{
+  background:rgba(13,21,37,.82) !important;
+  backdrop-filter:blur(16px) saturate(1.3);-webkit-backdrop-filter:blur(16px) saturate(1.3);
+  border:1px solid rgba(255,255,255,.08) !important;
+  box-shadow:var(--deepen-shadow), inset 0 1px 0 rgba(255,255,255,.06) !important;
+  border-radius:22px !important;
+}
+:root[data-theme=dark] .card:hover,
+:root[data-theme=dark] .home-quick:hover{
+  border-color:rgba(234,217,168,.28) !important;
+  box-shadow:0 26px 70px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.08) !important;
+}
+:root[data-theme=dark] .quick-card{
+  background:rgba(15,24,43,.75) !important;
+  border:1px solid rgba(255,255,255,.09) !important;
+}
+:root[data-theme=dark] .quick-card:hover{
+  border-color:color-mix(in srgb,var(--q-accent) 65%,transparent) !important;
+  box-shadow:0 0 0 1px color-mix(in srgb,var(--q-accent) 35%,transparent), 0 16px 40px rgba(0,0,0,.45) !important;
+}
+
+/* Inputs / selects — glass */
+:root[data-theme=dark] select,
+:root[data-theme=dark] input[type=text],
+:root[data-theme=dark] input[type=search],
+:root[data-theme=dark] input[type=number],
+:root[data-theme=dark] textarea,
+:root[data-theme=dark] .wa-tools input,
+:root[data-theme=dark] .wa-tools select{
+  background:rgba(10,17,30,.72) !important;
+  border:1px solid rgba(255,255,255,.10) !important;
+  color:#E8E6DE !important;
+  box-shadow:inset 0 2px 6px rgba(0,0,0,.35) !important;
+}
+:root[data-theme=dark] select:focus,
+:root[data-theme=dark] input:focus,
+:root[data-theme=dark] .wa-tools input:focus,
+:root[data-theme=dark] .wa-tools select:focus{
+  border-color:var(--gold2) !important;
+  box-shadow:0 0 0 3px rgba(212,175,55,.28), inset 0 1px 0 rgba(255,255,255,.06) !important;
+  outline:none !important;
+}
+:root[data-theme=dark] select option{background:#0E1828;color:#E8E6DE}
+
+/* Buttons — gold gradient, glass hover */
+:root[data-theme=dark] .btn{
+  background:linear-gradient(135deg,#EAD9A8 0%,#C8A04A 60%,#A8822E 100%) !important;
+  color:#1A1306 !important;border:0 !important;
+  box-shadow:0 8px 26px rgba(200,160,74,.4), inset 0 1px 0 rgba(255,255,255,.35) !important;
+  transition:transform .2s, box-shadow .2s !important;
+}
+:root[data-theme=dark] .btn:hover{transform:translateY(-2px) scale(1.03);box-shadow:0 14px 40px rgba(200,160,74,.55), inset 0 1px 0 rgba(255,255,255,.4) !important}
+
+/* Tabs — glass shell + gold active */
+:root[data-theme=dark] .tab{
+  background:rgba(15,23,40,.65) !important;
+  color:#cdd5e4 !important;
+  border:1px solid rgba(255,255,255,.07) !important;
+}
+:root[data-theme=dark] .tab:hover{background:rgba(25,36,60,.85) !important;color:#EAD9A8 !important}
+:root[data-theme=dark] .tab.on{
+  background:linear-gradient(135deg,#EAD9A8 0%,#C8A04A 100%) !important;
+  color:#0E1C33 !important;
+  box-shadow:0 0 26px rgba(212,175,55,.35), inset 0 1px 0 rgba(255,255,255,.45) !important;
+  font-weight:900 !important;
+}
+
+/* Chips / pills */
+:root[data-theme=dark] .chip{
+  background:rgba(234,217,168,.15) !important;color:#EAD9A8 !important;
+  border:1px solid rgba(212,175,55,.35) !important;
+}
+:root[data-theme=dark] .chip.g{background:rgba(255,255,255,.05) !important;color:#d3d9e6 !important;border-color:rgba(255,255,255,.09) !important}
+
+/* PE stats (board) — emerald accent on dark */
+:root[data-theme=dark] .pe-stat .pe-change{color:var(--pe-emerald) !important}
+
+/* Scrollbar */
+:root[data-theme=dark] ::-webkit-scrollbar{width:9px;height:9px}
+:root[data-theme=dark] ::-webkit-scrollbar-track{background:#0E1828}
+:root[data-theme=dark] ::-webkit-scrollbar-thumb{background:#24334E;border-radius:999px}
+:root[data-theme=dark] ::-webkit-scrollbar-thumb:hover{background:#34466A}
+
+/* Focus ring — gold glow */
+:focus-visible{outline:3px solid rgba(212,175,55,.85) !important;outline-offset:2px !important;border-radius:4px}
+
+/* ============================================================
+   LIGHT — cleaner paper with gold edge accents
+   ============================================================ */
+:root:not([data-theme=dark]) .card,
+:root:not([data-theme=dark]) .home-quick,
+:root:not([data-theme=dark]) .panel{
+  background:#FFFDF8 !important;
+  border:1px solid rgba(212,175,55,.35) !important;
+  box-shadow:0 14px 40px rgba(80,60,10,.09), inset 0 1px 0 #fff !important;
+  border-radius:20px !important;
+}
+:root:not([data-theme=dark]) .card:hover{
+  border-color:rgba(200,160,74,.75) !important;
+  box-shadow:0 18px 50px rgba(80,60,10,.13), inset 0 1px 0 #fff !important;
+}
+:root:not([data-theme=dark]) .btn{
+  background:linear-gradient(135deg,#E8D9B8 0%,#C8A04A 60%,#A8822E 100%) !important;
+  color:#241A07 !important;border:0 !important;
+  box-shadow:0 6px 20px rgba(200,160,74,.35), inset 0 1px 0 rgba(255,255,255,.5) !important;
+}
+:root:not([data-theme=dark]) .btn:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(200,160,74,.5), inset 0 1px 0 rgba(255,255,255,.55) !important}
+:root:not([data-theme=dark]) .tab.on{
+  background:linear-gradient(135deg,#E8D9B8 0%,#C8A04A 100%) !important;color:#1F2937 !important;
+  box-shadow:0 4px 14px rgba(200,160,74,.3) !important;
+}
+:root:not([data-theme=dark]) .chip{background:#F1E7C8 !important;color:#5A3D00 !important;border-color:rgba(200,160,74,.5) !important}
+
+/* Focus ring */
+:focus-visible{outline:3px solid rgba(200,160,74,.8) !important;outline-offset:2px !important;border-radius:4px}
