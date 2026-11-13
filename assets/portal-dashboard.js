@@ -36,26 +36,78 @@
   if (backdrop) backdrop.addEventListener('click', function () { setSide(false); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setSide(false); });
 
-  /* ── 3. مزامنة الـ Sidebar مع التبويبات الموجودة ────────── */
-  function markCurrent(btn) {
-    root.querySelectorAll('.pd-nav [aria-current]').forEach(function (b) { b.removeAttribute('aria-current'); });
-    if (btn) btn.setAttribute('aria-current', 'page');
+  /* ── 3. التوجيه الفعلي: تفعيل التبويب + التركيز + تأكيد مرئي ── */
+  var ROUTES = {
+    smart:    { label: 'لوحة التحكم',          focus: '#sname' },
+    search:   { label: 'البحث عن فوجك',        focus: '#q' },
+    rooms:    { label: 'قاعات الأفواج',        focus: null },
+    prof:     { label: 'الدكاترة والأساتذة',   focus: '#pq' },
+    tt:       { label: 'استعمال الزمن',        focus: '#ttg' },
+    dist:     { label: 'توزيع الأفواج',        focus: null },
+    subjects: { label: 'المواد والوحدات',      focus: null },
+    exams:    { label: 'الامتحانات والفروض',   focus: null },
+    docs:     { label: 'وثائق المسلك',         focus: '#dsem' },
+    legal:    { label: 'الموسوعة القانونية',   focus: null },
+    learn:    { label: 'الدروس والملخصات',     focus: null },
+    gpa:      { label: 'النقط والمعدّل',       focus: '.grow input[type="text"]' },
+    mytt:     { label: 'جدولتي الشخصي',        focus: '#myttSubj' },
+    deadlines:{ label: 'مواعيدي',              focus: '#dlTitle' },
+    university:{ label: 'الجامعة والتكوينات',  focus: null },
+    comments: { label: 'التعليقات',            focus: '#ctext' },
+    stats:    { label: 'الإحصائيات',           focus: null },
+    about:    { label: 'عن CHRAIM',            focus: null }
+  };
+
+  var toastEl = null;
+  var toastTimer = null;
+  function showToast(msg) {
+    if (!toastEl) {
+      toastEl = document.createElement('div');
+      toastEl.className = 'pd-toast';
+      toastEl.setAttribute('role', 'status');
+      toastEl.setAttribute('aria-live', 'polite');
+      document.body.appendChild(toastEl);
+    }
+    toastEl.textContent = msg;
+    toastEl.classList.add('is-visible');
+    if (toastTimer) window.clearTimeout(toastTimer);
+    toastTimer = window.setTimeout(function () { toastEl.classList.remove('is-visible'); }, 2600);
   }
-  var sideButtons = Array.prototype.slice.call(root.querySelectorAll('.pd-nav button[data-p], .pd-ajid button[data-p]'));
+
   function activate(p) {
     var tab = document.querySelector('.tab[data-p="' + p + '"]');
     if (tab) { tab.click(); return true; }
     return false;
   }
+  function activateLaunch(btn) {
+    var p = btn.getAttribute('data-p');
+    if (!p) return;
+    var route = ROUTES[p] || { label: p, focus: null };
+    var ok = activate(p);
+    if (!ok) return;
+    setSide(false);
+    markCurrent(btn);
+    showToast('فُتح — ' + route.label);
+    var main = document.getElementById('main');
+    if (route.focus) {
+      window.setTimeout(function () {
+        var el = document.querySelector(route.focus);
+        if (el) { el.focus({ preventScroll: true }); el.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+        else if (main) main.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 80);
+    } else if (main) {
+      main.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+  function markCurrent(btn) {
+    root.querySelectorAll('.pd-nav [aria-current]').forEach(function (b) { b.removeAttribute('aria-current'); });
+    if (!btn || !btn.closest) return;
+    var navBtn = btn.closest('.pd-nav button[data-p]');
+    if (navBtn) navBtn.setAttribute('aria-current', 'page');
+  }
+  var sideButtons = Array.prototype.slice.call(root.querySelectorAll('.pd-nav button[data-p], .pd-ajid button[data-p]'));
   sideButtons.forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      if (activate(btn.getAttribute('data-p'))) {
-        setSide(false);
-        var main = document.getElementById('main');
-        if (main) main.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        markCurrent(btn);
-      }
-    });
+    btn.addEventListener('click', function () { activateLaunch(btn); });
   });
   root.querySelectorAll('.pd-nav a[href^="#"]').forEach(function (a) {
     a.addEventListener('click', function () { setSide(false); });
