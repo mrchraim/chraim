@@ -1356,9 +1356,9 @@ main#main > .configbar{margin-block-end:10px!important}
 <link rel="stylesheet" href="/assets/portal-v3.css">
   <link rel="stylesheet" href="/assets/fonts/v2.css">
   <link rel="stylesheet" href="/assets/v2.css">
-<link rel="stylesheet" href="/assets/portal-dashboard.css?v=20261113i">
+<link rel="stylesheet" href="/assets/portal-dashboard.css?v=20261113j">
   <script defer src="/assets/v2.js"></script>
-<script defer src="/assets/portal-dashboard.js?v=20261113i"></script>
+<script defer src="/assets/legal-encyclopedia-data.js?v=20261113j"></script>\n<script defer src="/assets/portal-dashboard.js?v=20261113j"></script>
 </head>
 <body>
 <div id="progress" aria-hidden="true"><i></i></div>
@@ -1506,6 +1506,25 @@ main#main > .configbar{margin-block-end:10px!important}
   </div>
 </section>
   
+<section class="pd-today" aria-label="اليوم">
+  <div class="pd-today__card pd-today__card--deadline">
+    <div class="pd-today__label"><span class="pd-today__ping" aria-hidden="true"></span>آخر أجل رسمي قادم</div>
+    <p class="pd-today__deadline" id="pdDeadlineText">يعيد… حساب المواعيد من المصادر الرسمية</p>
+    <div class="pd-countdown" id="pdCountdown" role="timer" aria-live="polite" aria-label="الوقت المتبقي">
+      <div><b data-u="d">—</b><span>يوم</span></div>
+      <div><b data-u="h">—</b><span>ساعة</span></div>
+      <div><b data-u="m">—</b><span>دقيقة</span></div>
+      <div><b data-u="s">—</b><span>ثانية</span></div>
+    </div>
+    <a class="pd-today__cta" id="pdDeadlineLink" href="/academic-updates.html">تابع كل المستجدات ←</a>
+  </div>
+  <div class="pd-today__card pd-today__card--fact">
+    <div class="pd-today__label"><span class="pd-today__star" aria-hidden="true">✦</span>معلومة قانونية اليوم</div>
+    <h3 id="pdFactTitle">…</h3>
+    <p id="pdFactText">…</p>
+    <button class="pd-today__cta pd-today__cta--btn" id="pdFactMore" type="button">اقرأ أكثر في الموسوعة ←</button>
+  </div>
+</section>
 <section class="pe-section" aria-labelledby="peTitle">
   <h2 id="peTitle">لوحة مؤشرات CHRAIM</h2>
   <div class="pe-stats">

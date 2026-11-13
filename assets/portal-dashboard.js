@@ -133,6 +133,85 @@
     });
   }
 
+  /* ── 8. «اليوم» — العدّ التنازلي لأقرب أجل رسمي ────────── */
+  (function deadlineCountdown() {
+    var dlText = document.getElementById('pdDeadlineText');
+    var cd = document.getElementById('pdCountdown');
+    if (!dlText || !cd) return;
+    var link = document.getElementById('pdDeadlineLink');
+    function units(el, key, v) { var n = el.querySelector('[data-u="' + key + '"]'); if (n) n.textContent = String(v).padStart(2, '0'); }
+    function tickParts(target) {
+      var diff = Math.max(0, target - Date.now());
+      return {
+        d: Math.floor(diff / 864e5),
+        h: Math.floor((diff % 864e5) / 36e5),
+        m: Math.floor((diff % 36e5) / 60e3),
+        s: Math.floor((diff % 60e3) / 1e3)
+      };
+    }
+    function paint(p) { units(cd, 'd', p.d); units(cd, 'h', p.h); units(cd, 'm', p.m); units(cd, 's', p.s); }
+    function fallback() {
+      dlText.textContent = 'لا توجد آجال رسمية معلنة حالياً — تابع المستجدات الجامعية للبقاء على اطلاع.';
+      cd.style.opacity = '.35';
+    }
+    fetch('announcements.json', { cache: 'no-store' })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (data) {
+        var items = (data && Array.isArray(data.items)) ? data.items : [];
+        var now = Date.now();
+        var events = [];
+        items.forEach(function (a) {
+          var endStr = a.ends_at || a.starts_at || a.date;
+          if (!endStr) return;
+          var end = new Date(endStr);
+          if (isNaN(end.getTime())) return;
+          if (end.getTime() >= now) events.push({ title: a.title || '', end: end });
+        });
+        events.sort(function (a, b) { return a.end - b.end; });
+        var next = events[0];
+        if (!next) { fallback(); return; }
+        dlText.textContent = next.title;
+        if (link && next.title) { link.setAttribute('href', '/academic-updates.html'); }
+        paint(tickParts(next.end.getTime()));
+        window.setInterval(function () {
+          var p = tickParts(next.end.getTime());
+          paint(p);
+          if (p.d + p.h + p.m + p.s === 0) { dlText.textContent = 'لقد انتهى هذا الأجل.'; }
+        }, 1000);
+      })
+      .catch(fallback);
+  })();
+
+  /* ── 9. «معلومة قانونية اليوم» — من الموسوعة (تاريخية يومياً) ── */
+  (function dailyFact() {
+    var titleEl = document.getElementById('pdFactTitle');
+    var textEl = document.getElementById('pdFactText');
+    var moreBtn = document.getElementById('pdFactMore');
+    if (!titleEl || !textEl || !moreBtn) return;
+    var data = window.LEGAL_ENCYCLOPEDIA;
+    if (!Array.isArray(data) || !data.length) {
+      titleEl.textContent = 'الموسوعة القانونية';
+      textEl.textContent = 'افتح الموسوعة للاطلاع على 40 موضوعاً قانونياً بكلمات بسيطة.';
+      return;
+    }
+    var daySeed = Math.floor(Date.now() / 86400000);
+    var topic = data[daySeed % data.length];
+    var blocks = Array.isArray(topic.content_blocks) ? topic.content_blocks : [];
+    var longest = blocks.reduce(function (acc, b) {
+      return (b && b.text && b.text.length > (acc ? acc.length : 0)) ? b.text : acc;
+    }, '');
+    titleEl.textContent = topic.title;
+    textEl.textContent = longest ? String(longest).slice(0, 240) + (String(longest).length > 240 ? '…' : '') : '';
+    moreBtn.addEventListener('click', function () {
+      var tab = document.querySelector('.tab[data-p="legal"]');
+      if (tab) {
+        tab.click();
+        var panel = document.getElementById('p-legal');
+        if (panel) panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  })();
+
   /* ── 6. مواعيد قادمة من announcements.json (بيانات رسمية) ── */
   var rail = document.getElementById('pdEvents');
   function escapeHtml(s) {

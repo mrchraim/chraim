@@ -250,6 +250,31 @@ html[data-v2theme="dark"] .pd-ajid__label{-webkit-text-stroke-color:color-mix(in
 @media (max-width:720px){.pd-ajid__tiles{grid-template-columns:repeat(2,minmax(0,1fr))}.pd-ajid__worlds{grid-template-columns:1fr}.pd-ajid__label{font-size:2.4rem}}
 @media (max-width:420px){.pd-ajid__tiles{grid-template-columns:1fr}}
 
+/* ── 12. DAILY BRIEF — «اليوم» ─────────────────────────────── */
+.pd-today{display:grid;grid-template-columns:1.15fr 1fr;gap:12px}
+.pd-today__card{border-radius:20px;padding:clamp(18px,2.4vw,26px);border:1px solid var(--v2-line);position:relative;overflow:hidden}
+.pd-today__card--deadline{background:linear-gradient(155deg,#2B1030 0%,#1A0B26 60%,#12071C 100%);border-color:rgba(239,203,139,.25);color:#F6E8D6}
+.pd-today__card--deadline::after{content:"";position:absolute;width:280px;height:280px;border-radius:50%;border:1px solid rgba(239,203,139,.18);bottom:-130px;inset-inline-end:-100px}
+.pd-today__card--fact{background:linear-gradient(160deg,color-mix(in srgb,var(--v2-saffron) 24%,var(--v2-card)),var(--v2-card))}
+.pd-today__label{display:flex;align-items:center;gap:10px;font:600 .62rem var(--v2-mono);letter-spacing:.22em;text-transform:uppercase;color:#EFCB8B;margin-bottom:12px}
+.pd-today__card--fact .pd-today__label{color:#C98A2B}
+.pd-today__ping{width:9px;height:9px;border-radius:50%;background:#FF8A5C;box-shadow:0 0 0 0 rgba(255,138,92,.6);animation:pdPing 1.7s ease-out infinite}
+@keyframes pdPing{0%{box-shadow:0 0 0 0 rgba(255,138,92,.55)}80%,100%{box-shadow:0 0 0 11px rgba(255,138,92,0)}}
+.pd-today__deadline{font-size:.92rem;line-height:1.9;color:#F5DCC0;margin:0 0 12px;font-weight:600;max-width:46ch}
+.pd-countdown{display:flex;gap:14px;margin:6px 0 14px}
+.pd-countdown > div{display:flex;flex-direction:column;align-items:center;gap:4px;min-width:74px;padding:10px 8px;border-radius:14px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12)}
+.pd-countdown b{font:700 1.9rem/1 var(--v2-mono);color:#FFD9A0;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.pd-countdown span{font:600 .56rem var(--v2-mono);color:#C8A98C;letter-spacing:.16em}
+@media (max-width:520px){.pd-countdown{gap:8px}.pd-countdown>div{min-width:60px;padding:8px 6px}.pd-countdown b{font-size:1.4rem}}
+.pd-today__cta{display:inline-flex;align-items:center;gap:8px;color:#F6E8D6;text-decoration:none;font:700 .78rem var(--v2-body);border:1px solid rgba(255,217,160,.4);padding:9px 16px;border-radius:999px;transition:background .16s}
+.pd-today__cta:hover{background:rgba(255,217,160,.14)}
+.pd-today__card--fact h3{font-family:var(--v2-display);font-weight:700;font-size:1.32rem;color:var(--v2-ink);margin:0 0 8px;line-height:1.5}
+.pd-today__card--fact p{color:var(--v2-ink-soft);font-size:.82rem;line-height:1.95;margin:0 0 12px;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+.pd-today__cta--btn{background:var(--v2-green);color:#FBF7EC;border:0;cursor:pointer;font:700 .78rem var(--v2-body)}
+.pd-today__cta--btn:hover{background:var(--v2-terra-strong)}
+@media (max-width:900px){.pd-today{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.pd-today__ping{animation:none}}
+
 /* ── 9. PRINT ───────────────────────────────────────────────── */
 #bgfx,#bgfx-glow,#uiKit{display:none !important}
 @media (max-width:640px){.pd-title{display:none}}
