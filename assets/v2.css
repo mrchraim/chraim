@@ -1,0 +1,266 @@
+/* ============================================================
+   CHRAIM CAMPUS v2 — «ORAKLE» DESIGN SYSTEM
+   هوية جديدة بالكامل: ورق دافئ + أخضر الأطلس + زعفران/طيني.
+   CSP-safe · RTL-first · ذاتي الاستضافة · Light + Dark.
+   يُحمّل آخِر ملف CSS في كل صفحة. التعديلات العامة تطبّق على
+   كل الصفحات؛ لا تُعدِّل العناصر القديمة بل تتجاوزها.
+   ============================================================ */
+
+/* ── 1. TOKENS ─────────────────────────────────────────────── */
+:root{
+  --v2-paper:#FAF6EC;
+  --v2-paper-2:#F1ECDE;
+  --v2-card:#FFFFFF;
+  --v2-ink:#22302B;
+  --v2-ink-soft:#5E6860;
+  --v2-line:#E3DECC;
+  --v2-green:#0F4C3A;
+  --v2-green-strong:#0B3A2C;
+  --v2-green-soft:#E8EFE4;
+  --v2-terra:#C2571B;
+  --v2-terra-strong:#A64213;
+  --v2-saffron:#E0A458;
+  --v2-gold:#C99B3F;
+  --v2-ok:#1E7A45;
+  --v2-danger:#B4232A;
+  --v2-focus:#C2571B;
+  --v2-shadow:0 18px 44px rgba(34,48,43,.10), 0 3px 10px rgba(34,48,43,.06);
+  --v2-shadow-lg:0 32px 80px rgba(34,48,43,.18), 0 6px 18px rgba(34,48,43,.08);
+  --v2-radius:18px;
+  --v2-radius-sm:12px;
+  --v2-radius-pill:999px;
+  --v2-display:'Noto Naskh Arabic','Fraunces',Georgia,'Times New Roman',serif;
+  --v2-body:'IBM Plex Sans Arabic','Inter',system-ui,'Segoe UI',Tahoma,Arial,sans-serif;
+  --v2-mono:ui-monospace,'SFMono-Regular',Consolas,monospace;
+  --v2-ease:cubic-bezier(.22,.61,.21,1);
+  color-scheme:light;
+}
+
+html[data-theme="dark"]{
+  --v2-paper:#101813;
+  --v2-paper-2:#161F1A;
+  --v2-card:#182420;
+  --v2-ink:#ECEDE2;
+  --v2-ink-soft:#A8B0A2;
+  --v2-line:#26332C;
+  --v2-green:#57B78A;
+  --v2-green-strong:#3E9670;
+  --v2-green-soft:#1B2B23;
+  --v2-terra:#E58A4B;
+  --v2-terra-strong:#C96B32;
+  --v2-saffron:#E5B267;
+  --v2-gold:#D8B465;
+  --v2-ok:#57B78A;
+  --v2-danger:#FF7A85;
+  --v2-focus:#E5B267;
+  --v2-shadow:0 18px 44px rgba(0,0,0,.35), 0 3px 10px rgba(0,0,0,.3);
+  --v2-shadow-lg:0 32px 90px rgba(0,0,0,.5), 0 6px 18px rgba(0,0,0,.35);
+  color-scheme:dark;
+}
+
+/* ── 2. NEUTRALIZE LEGACY DECORATION (old identity) ────────── */
+.hero__grid-pattern,.orb__ring,.hero-art__orb,.hero-art::after,.hero-art::before,
+.hero-beams,.hero-beam__beam,.hero-beam__courier,.hero-beam__core,
+.grain,[class*="grain"],.hero__grid,.hero__orb,
+.principles__visual::after,#chraimBackHome{display:none !important;}
+
+/* ── 3. BASE ────────────────────────────────────────────────── */
+html{scroll-behavior:smooth;scroll-padding-top:110px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+html[data-theme] body{
+  background:var(--v2-paper) !important;
+  color:var(--v2-ink) !important;
+  font-family:var(--v2-body) !important;
+  font-size:1rem;line-height:1.85;
+  -webkit-font-smoothing:antialiased;
+  background-image:radial-gradient(circle at 12% -10%,color-mix(in srgb,var(--v2-saffron) 14%,transparent),transparent 42%),
+                   radial-gradient(circle at 110% 30%,color-mix(in srgb,var(--v2-green) 6%,transparent),transparent 46%) !important;
+}
+
+body ::selection{background:color-mix(in srgb,var(--v2-saffron) 55%,transparent);color:#2B1B06}
+
+a{color:var(--v2-green-strong)}
+html[data-theme="dark"] a{color:var(--v2-saffron)}
+html[data-theme] a{text-underline-offset:3px}
+
+:focus-visible{outline:3px solid var(--v2-focus) !important;outline-offset:3px !important;border-radius:6px}
+
+.v2-skip{position:fixed;z-index:1000;top:-64px;inset-inline-start:14px;background:var(--v2-green);color:#FBF7EC;padding:10px 18px;border-radius:0 0 12px 12px;font:700 .82rem var(--v2-body);transition:top .18s var(--v2-ease);text-decoration:none}
+.v2-skip:focus{top:0;color:#FBF7EC}
+
+/* ── 4. TYPOGRAPHY ──────────────────────────────────────────── */
+html[data-theme] h1,html[data-theme] h2,html[data-theme] h3,
+html[data-theme] .hero-title,html[data-theme] .section-title,
+html[data-theme] .v2-display{
+  font-family:var(--v2-display) !important;
+  font-weight:700 !important;
+  letter-spacing:0 !important;
+  line-height:1.4 !important;
+  color:var(--v2-ink) !important;
+  text-wrap:balance;
+}
+html[data-theme] h1{line-height:1.32 !important}
+
+.v2-kicker{display:inline-flex;align-items:center;gap:.65rem;font:700 .68rem var(--v2-mono);letter-spacing:.18em;text-transform:uppercase;color:var(--v2-terra-strong);text-decoration:none}
+html[data-theme="dark"] .v2-kicker{color:var(--v2-saffron)}
+.v2-kicker::before{content:"";width:34px;height:2px;background:currentColor;opacity:.85}
+
+.v2-highlight{box-shadow:inset 0 -.34em color-mix(in srgb,var(--v2-saffron) 60%,transparent)}
+
+p{color:var(--v2-ink)}
+.v2-muted,html[data-theme] .muted,html[data-theme] .text-muted{color:var(--v2-ink-soft) !important}
+
+/* ── 5. UNIFIED CHROME — HEADER ─────────────────────────────── */
+.v2-header{position:sticky;top:0;z-index:60;border-bottom:1px solid var(--v2-line);background:color-mix(in srgb,var(--v2-paper) 88%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.v2-header__bar{display:flex;align-items:center;gap:22px;min-height:76px;width:min(1180px,100% - 40px);margin-inline:auto}
+.v2-brand{display:flex;align-items:center;gap:12px;text-decoration:none;flex-shrink:0}
+.v2-brand__mark{width:44px;height:44px;flex:0 0 44px;border-radius:10px;background:var(--v2-green);display:grid;place-items:center;box-shadow:0 6px 16px color-mix(in srgb,var(--v2-green) 40%,transparent)}
+.v2-brand__mark svg{width:30px;height:30px}
+.v2-brand__word{font-family:var(--v2-display);font-weight:700;font-size:1.42rem;color:var(--v2-ink);line-height:1;letter-spacing:.01em;direction:ltr}
+.v2-brand__word b{color:var(--v2-terra-strong)}
+html[data-theme="dark"] .v2-brand__word b{color:var(--v2-saffron)}
+.v2-brand__word small{display:block;font:600 .5rem var(--v2-mono);letter-spacing:.28em;color:var(--v2-ink-soft);margin-top:4px}
+.v2-nav{display:flex;gap:2px;margin-inline-start:auto;align-items:center}
+.v2-nav a{font:600 .84rem var(--v2-body);color:var(--v2-ink-soft);text-decoration:none;padding:10px 13px;border-radius:10px;transition:color .15s,background .15s}
+.v2-nav a:hover{color:var(--v2-ink);background:var(--v2-paper-2)}
+.v2-nav a[aria-current="page"]{color:var(--v2-green-strong);background:var(--v2-green-soft)}
+html[data-theme="dark"] .v2-nav a[aria-current="page"]{color:var(--v2-saffron);background:var(--v2-green-soft)}
+.v2-header__actions{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.v2-iconbtn{width:44px;height:44px;border:1px solid var(--v2-line);background:var(--v2-card);color:var(--v2-ink);border-radius:12px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;transition:transform .15s,border-color .15s}
+.v2-iconbtn:hover{transform:translateY(-1px);border-color:var(--v2-terra)}
+.v2-cta{display:inline-flex;align-items:center;gap:.5rem;min-height:46px;padding:0 20px;border-radius:var(--v2-radius-pill);border:0;cursor:pointer;background:var(--v2-green);color:#FBF7EC;font:700 .84rem var(--v2-body);text-decoration:none;transition:background .16s,transform .16s}
+.v2-cta:hover{background:var(--v2-terra-strong);transform:translateY(-1px);color:#FBF7EC}
+.v2-burger{display:none;width:44px;height:44px;border:1px solid var(--v2-line);background:var(--v2-card);border-radius:12px;cursor:pointer;color:var(--v2-ink)}
+.v2-mobile{display:none;border-top:1px solid var(--v2-line);padding:10px 20px 18px;background:var(--v2-paper)}
+.v2-mobile a{display:flex;align-items:center;justify-content:space-between;padding:12px 6px;border-bottom:1px dashed var(--v2-line);text-decoration:none;color:var(--v2-ink);font-weight:600}
+.v2-mobile a:last-child{border-bottom:0}
+.v2-mobile a small{color:var(--v2-ink-soft);font:600 .62rem var(--v2-mono)}
+
+@media (max-width:1060px){.v2-nav{display:none}.v2-burger{display:inline-flex;align-items:center;justify-content:center}.v2-cta{display:none}}
+@media (max-width:560px){.v2-brand__word small{display:none}}
+
+/* ── 6. UNIFIED CHROME — FOOTER ─────────────────────────────── */
+.v2-footer{background:var(--v2-green-strong);color:#EDE7D6;margin-top:clamp(3rem,7vw,5rem)}
+html[data-theme="dark"] .v2-footer{background:#0B1A13}
+.v2-footer__inner{width:min(1180px,100% - 40px);margin-inline:auto;padding:clamp(2.5rem,5vw,4rem) 0 0}
+.v2-footer__top{display:grid;grid-template-columns:1.25fr 2fr;gap:clamp(2rem,5vw,4rem);padding-bottom:clamp(1.6rem,3vw,2.6rem)}
+.v2-footer__brand{display:flex;gap:14px;align-items:flex-start}
+.v2-footer__mark{width:52px;height:52px;flex:0 0 52px;border-radius:12px;background:var(--v2-saffron);display:grid;place-items:center}
+.v2-footer__mark svg{width:34px;height:34px}
+.v2-footer__wordmark{font-family:var(--v2-display);font-size:1.8rem;font-weight:700;color:#FBF7EC;line-height:1;direction:ltr;text-align:start}
+.v2-footer__wordmark span{color:var(--v2-saffron)}
+.v2-footer__tag{color:#C9C3AF;font-size:.82rem;margin:.7rem 0 0;max-width:340px;line-height:1.9}
+.v2-footer__cols{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.v2-footer h4{font:600 .66rem var(--v2-mono);letter-spacing:.16em;text-transform:uppercase;color:#A8CEB4;margin:0 0 .6rem}
+.v2-footer ul{list-style:none;margin:0;padding:0;display:grid;gap:.42rem}
+.v2-footer a{color:#EDE7D6;text-decoration:none;font-size:.86rem}
+.v2-footer a:hover{color:var(--v2-saffron);text-decoration:underline}
+.v2-footer__bottom{border-top:1px solid color-mix(in srgb,#FBF7EC 22%,transparent);display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;padding:1.1rem 0 1.3rem;font:600 .68rem var(--v2-mono);color:#B9B49E;letter-spacing:.05em}
+.v2-footer__bottom b{color:var(--v2-saffron);font-weight:700}
+@media (max-width:860px){.v2-footer__top{grid-template-columns:1fr}.v2-footer__cols{grid-template-columns:1fr 1fr}}
+@media (max-width:460px){.v2-footer__cols{grid-template-columns:1fr}}
+
+/* ── 7. HERO & SECTION GRAMMAR (legacy sections re-themed) ──── */
+html[data-theme] .hero,html[data-theme] .hero-section,html[data-theme] section.hero{
+  background:linear-gradient(180deg,var(--v2-paper-2),var(--v2-paper)) !important;
+  color:var(--v2-ink) !important;
+  border-bottom:1px solid var(--v2-line);
+}
+html[data-theme] .hero h1,html[data-theme] .hero h2,html[data-theme] .hero p{color:var(--v2-ink) !important}
+html[data-theme] .hero .pill,html[data-theme] .hero__ticker{background:var(--v2-card);color:var(--v2-ink);border:1px solid var(--v2-line)}
+html[data-theme] .hero .pill b{color:var(--v2-green-strong)}
+html[data-theme] .pe-section,html[data-theme] .pc-showcase,html[data-theme] main>.card,html[data-theme] main>section.card{
+  background:var(--v2-card) !important;color:var(--v2-ink) !important;
+  border:1px solid var(--v2-line) !important;border-radius:var(--v2-radius) !important;
+  box-shadow:var(--v2-shadow) !important;
+}
+html[data-theme] .card h2,html[data-theme] .card h3,html[data-theme] .pe-section h2{color:var(--v2-green-strong) !important;border-inline-start:4px solid var(--v2-terra) !important;padding-inline-start:.75rem}
+html[data-theme="dark"] .card h2,html[data-theme="dark"] .card h3,html[data-theme="dark"] .pe-section h2{color:var(--v2-saffron) !important;border-color:var(--v2-saffron) !important}
+
+/* ── 8. BUTTONS (all legacy variants → v2) ──────────────────── */
+html[data-theme] .button,html[data-theme] .btn,html[data-theme] .button--dark,html[data-theme] .button--lime,
+html[data-theme] .cmd-trigger,html[data-theme] .next-class__btn,html[data-theme] .launchpad__main{
+  background:var(--v2-green) !important;color:#FBF7EC !important;border:1px solid transparent !important;
+  border-radius:var(--v2-radius-pill) !important;box-shadow:0 10px 24px color-mix(in srgb,var(--v2-green) 38%,transparent) !important;
+  transition:transform .16s var(--v2-ease),background .16s var(--v2-ease),box-shadow .16s var(--v2-ease) !important;
+  font-weight:700 !important;
+}
+html[data-theme] .button:hover,html[data-theme] .btn:hover,html[data-theme] .button--dark:hover,
+html[data-theme] .button--lime:hover,html[data-theme] .launchpad__main:hover{background:var(--v2-terra-strong) !important;transform:translateY(-2px);color:#FBF7EC !important}
+html[data-theme] .button--ghost,html[data-theme] .btn.sec,html[data-theme] .btn.ghost,html[data-theme] .finder__aux,html[data-theme] .icon-button,html[data-theme] .language-button{
+  background:transparent !important;color:var(--v2-green-strong) !important;border:1px solid var(--v2-line) !important;box-shadow:none !important;
+}
+html[data-theme="dark"] .button--ghost,html[data-theme="dark"] .btn.sec,html[data-theme="dark"] .btn.ghost,
+html[data-theme="dark"] .finder__aux,html[data-theme="dark"] .icon-button,html[data-theme="dark"] .language-button{color:var(--v2-saffron) !important;border-color:var(--v2-line) !important}
+html[data-theme] .chip,html[data-theme] .room-chip,html[data-theme] .atlas-pill,html[data-theme] .pill{
+  background:var(--v2-green-soft) !important;color:var(--v2-green-strong) !important;border:1px solid color-mix(in srgb,var(--v2-green) 25%,transparent) !important;border-radius:var(--v2-radius-pill) !important;
+}
+html[data-theme="dark"] .chip,html[data-theme="dark"] .room-chip,html[data-theme="dark"] .atlas-pill{color:var(--v2-saffron) !important;border-color:var(--v2-line) !important}
+
+/* ── 9. FORMS ───────────────────────────────────────────────── */
+html[data-theme] input,html[data-theme] select,html[data-theme] textarea,html[data-theme] .field input,html[data-theme] .field select{
+  background:var(--v2-card) !important;color:var(--v2-ink) !important;
+  border:1px solid var(--v2-line) !important;border-radius:var(--v2-radius-sm) !important;box-shadow:none !important;
+}
+html[data-theme] input:focus,html[data-theme] select:focus,html[data-theme] textarea:focus{
+  border-color:var(--v2-green) !important;outline:none !important;
+  box-shadow:0 0 0 3px color-mix(in srgb,var(--v2-saffron) 45%,transparent) !important;
+}
+html[data-theme] label,html[data-theme] .field label{color:var(--v2-terra-strong) !important;font-weight:700}
+html[data-theme="dark"] label,html[data-theme="dark"] .field label{color:var(--v2-saffron) !important}
+
+/* ── 10. CARDS & GRIDS (directory / atlas / platform / etabs) ─ */
+html[data-theme] .institution-card,html[data-theme] .atlas-card,html[data-theme] .result-card,
+html[data-theme] .quick-card,html[data-theme] .launch-tile,html[data-theme] .compare-column,
+html[data-theme] .atlas-card--featured,html[data-theme] .inst-gate,html[data-theme] .focus-studio,
+html[data-theme] .legalcard,html[data-theme] .wa-groups,html[data-theme] .home-quick,html[data-theme] .legal-card{
+  background:var(--v2-card) !important;color:var(--v2-ink) !important;
+  border:1px solid var(--v2-line) !important;border-radius:var(--v2-radius) !important;
+  box-shadow:var(--v2-shadow) !important;
+}
+html[data-theme] .institution-card:hover,html[data-theme] .atlas-card:hover,html[data-theme] .quick-card:hover,html[data-theme] .launch-tile:hover{
+  transform:translateY(-4px) !important;border-color:var(--v2-terra) !important;box-shadow:var(--v2-shadow-lg) !important;
+}
+html[data-theme] .institution-card h3,html[data-theme] .atlas-card h3,html[data-theme] .quick-card b{color:var(--v2-ink) !important}
+html[data-theme] .result-card{border-inline-start:4px solid var(--v2-terra) !important}
+html[data-theme] .result-card__badge{background:var(--v2-saffron) !important;color:#3B2A08 !important}
+
+/* ── 11. TABS (platform portal) ─────────────────────────────── */
+html[data-theme] .tab{background:var(--v2-paper-2) !important;color:var(--v2-ink-soft) !important;border:1px solid var(--v2-line) !important;border-radius:var(--v2-radius-sm) !important;font-weight:700 !important}
+html[data-theme] .tab:hover{color:var(--v2-green-strong) !important}
+html[data-theme="dark"] .tab:hover{color:var(--v2-saffron) !important}
+html[data-theme] .tab.on{background:var(--v2-green) !important;color:#FBF7EC !important;border-color:var(--v2-green) !important;box-shadow:0 8px 22px color-mix(in srgb,var(--v2-green) 40%,transparent) !important}
+
+/* ── 12. TABLES ─────────────────────────────────────────────── */
+html[data-theme] .schedule-table thead,html[data-theme] table thead{background:var(--v2-green) !important;color:#FBF7EC !important}
+html[data-theme] .schedule-table td,html[data-theme] .schedule-table th{border-color:var(--v2-line) !important}
+html[data-theme] .schedule-table tbody tr:hover{background:color-mix(in srgb,var(--v2-saffron) 16%,transparent) !important}
+
+/* ── 13. TICKER & MISC LEGACY ───────────────────────────────── */
+html[data-theme] .ticker,html[data-theme] .launchpad__ticker{
+  background:var(--v2-green-strong) !important;color:#EDE7D6 !important;border:0 !important;
+  font:600 .72rem var(--v2-mono) !important;letter-spacing:.12em !important;
+}
+html[data-theme] .announcement{background:var(--v2-green-strong) !important;color:#D8D2BD !important}
+html[data-theme] .principles__visual,html[data-theme] .closing-band{background:var(--v2-green-strong) !important;color:#EDE7D6 !important}
+html[data-theme] .principles__big-number,html[data-theme] .closing-band h2 span{color:var(--v2-saffron) !important}
+html[data-theme] .launchpad{background:var(--v2-paper-2) !important;border-color:var(--v2-line) !important}
+html[data-theme] .launchpad__main{background:var(--v2-green) !important;color:#FBF7EC !important;box-shadow:0 12px 30px color-mix(in srgb,var(--v2-green) 45%,transparent) !important}
+
+/* ── 14. SCROLLBAR ──────────────────────────────────────────── */
+html[data-theme] ::-webkit-scrollbar{width:10px;height:10px}
+html[data-theme] ::-webkit-scrollbar-track{background:var(--v2-paper-2)}
+html[data-theme] ::-webkit-scrollbar-thumb{background:color-mix(in srgb,var(--v2-green) 55%,var(--v2-paper-2));border-radius:999px}
+html[data-theme] ::-webkit-scrollbar-thumb:hover{background:var(--v2-green)}
+
+/* ── 15. PRINT ──────────────────────────────────────────────── */
+@media print{
+  .v2-header,.v2-footer,.v2-burger,.v2-mobile{display:none !important}
+  body{background:#fff !important;color:#000 !important}
+}
+
+/* ── 16. REDUCED MOTION ─────────────────────────────────────── */
+@media (prefers-reduced-motion:reduce){
+  html[data-theme] *,html[data-theme] *::before,html[data-theme] *::after{animation:none !important;transition:none !important;scroll-behavior:auto !important}
+}

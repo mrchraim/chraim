@@ -1,0 +1,16 @@
+/* CHRAIM Campus — v2 display faces (self-hosted, OFL) */
+@font-face{
+  font-family:'Noto Naskh Arabic';
+  src:url('/assets/fonts/v2/noto-naskh-arabic.ttf') format('truetype-variations');
+  font-weight:400 700;
+  font-style:normal;
+  font-display:swap;
+}
+@font-face{
+  font-family:'Fraunces';
+  src:url('/assets/fonts/v2/fraunces.ttf') format('truetype-variations');
+  font-weight:100 900;
+  font-style:normal;
+  font-optical-sizing:auto;
+  font-display:swap;
+}
