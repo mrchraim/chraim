@@ -190,6 +190,50 @@
   <ul id="tdList" class="list"></ul>
 </section>
 
+<section id="deploy">
+  <h2>نشر تطبيقاتك — Coolify</h2>
+  <div class="note">منصة Coolify: استضافة مفتوحة المصدر (PaaS) بديل لـ Vercel/Heroku/Netlify — كل شيء على سيرفرك الخاص (VPS) بلوحة تحكم بسيطة، مع تحكم كامل. (مصدر: Coolify — مقال تثقيفي للطلبة المطورين)</div>
+  <div class="grid">
+    <div class="card">
+      <h3>ما هي منصة Coolify؟</h3>
+      <p>منصة استضافة مفتوحة المصدر (PaaS) تُعد بديلاً مجانياً وقوياً للمنصات السحابية الشهيرة مثل Vercel وHeroku وNetlify. فكرتها أن تمتلك سيرفراً خاصاً (VPS) وتستضيف عليه تطبيقاتك وقواعد بياناتك ومواقعك، دون التعامل مع تعقيدات إعداد السيرفر يدوياً أو دفع اشتراكات باهظة. كل ذلك عبر لوحة تحكم أنيقة وسهلة، مع احتفاظك بالسيطرة الكاملة على بنيتك التحتية.</p>
+    </div>
+    <div class="card">
+      <h3>أبرز المميزات</h3>
+      <ul class="list">
+        <li>نشر أي تطبيق بسهولة: Node.js، Next.js، Laravel، PHP — مع إمكانية الرفع المباشر من GitHub أو GitLab أو Docker.</li>
+        <li>خدمات بضغطة زر: 360+ خدمة/قاعدة بيانات (PostgreSQL، MySQL، Redis، WordPress، Supabase).</li>
+        <li>أتمتة النشر (CI/CD): بمجرد رفع تحديث جديد على مستودع الأكواد (Git Push)، تقوم الأداة تلقائياً بسحب الكود وبنائه وتشغيله.</li>
+        <li>إدارة النطاقات والشهادات: ربط النطاقات وإصدار وتجديد شهادات SSL/HTTPS تلقائياً عبر Let's Encrypt.</li>
+        <li>التحكم بسيرفرات متعددة: إدارة أكثر من سيرفر من واجهة مركزية واحدة، مع الوصول إلى سجلات التشغيل وموجه الأوامر لكل حاوية.</li>
+        <li>النسخ الاحتياطي والحماية: نسخ احتياطي آلي لقواعد البيانات، إدارة المهام المجدولة (CRON)، وتخزين آمن للمتغيرات البيئية.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>المتطلبات الأساسية</h3>
+      <ul class="list">
+        <li>سيرفر يعمل بنظام Linux (Ubuntu أو Debian أو CentOS).</li>
+        <li>ذاكرة عشوائية (RAM) لا تقل عن 2 جيجابايت.</li>
+        <li>الاتصال بالسيرفر عبر SSH.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>خطوات التثبيت والتشغيل</h3>
+      <ol class="list">
+        <li>اتصال SSH: <code style="background:var(--accent-2);padding:2px 6px;border-radius:6px;font-family:monospace">ssh root@your_server_ip</code> — ثم <code style="background:var(--accent-2);padding:2px 6px;border-radius:6px;font-family:monospace">sudo apt update && sudo apt upgrade -y</code></li>
+        <li>أمر التثبيت: <code style="background:var(--accent-2);padding:2px 6px;border-radius:6px;font-family:monospace">curl -fsSL https://cdn.coollabs.io/coolify/install.sh | bash</code></li>
+        <li>لوحة التحكم: <code style="background:var(--accent-2);padding:2px 6px;border-radius:6px;font-family:monospace">http://&lt;عنوان_IP_السيرفر&gt;:8000</code> — أنشئ حساب Admin فوراً</li>
+        <li>نشر مشروعك: اختر Localhost، اربط حسابك في GitHub، اختر Repository، ثم Deploy</li>
+      </ol>
+    </div>
+    <div class="card">
+      <h3>معلومة إضافية</h3>
+      <p>تعتمد Coolify في عملها على Docker. ولن تحتاج للتيرمنال كثيراً، يمكنك في أي وقت التأكد من أن services Coolify تعمل عبر كتابة الأمر <code style="background:var(--accent-2);padding:2px 6px;border-radius:6px;font-family:monospace">docker ps</code> في سيرفرك.</p>
+      <p class="meta">ملاحظة: المقال من مصدر خارجي (Coolify) — comandات SSH/Apt/Docker تُستخدم على السيرفر (VPS) الخاص بك، لا على جهازك. تأكد من أمانه قبل أي تثبيت.</p>
+    </div>
+  </div>
+</section>
+
 </main>
 <footer>
   هاد الموقع دليل غير رسمي. استعمالات الزمن والنتائج والإعلانات الرسمية كتلقاها دايماً عند المواقع الرسمية للمؤسسات.
@@ -228,7 +272,7 @@ const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 
 const link = (txt, url) => el("a", {href:url, target:"_blank", rel:"noopener noreferrer", textContent:txt});
 
 /* ---------- Tabs ---------- */
-const TABS = [["home","الدليل"],["news","الإعلانات"],["tt","جدولي"],["gpa","المعدل"],["todo","المواعيد"]];
+const TABS = [["home","الدليل"],["news","الإعلانات"],["tt","جدولي"],["gpa","المعدل"],["todo","المواعيد"],["deploy","نشر"]];
 function showTab(id){
   if (!TABS.some(t => t[0] === id)) id = "home";
   document.querySelectorAll("section").forEach(s => s.classList.toggle("active", s.id === id));
