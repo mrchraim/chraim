@@ -14,7 +14,7 @@
   try { saved = localStorage.getItem('chraim-v2-theme'); } catch (e) {}
   var dark = saved ? saved === 'dark'
     : DARK_DEFAULT.some(function (p) { return path === p || path.endsWith(p); });
-  document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+  document.documentElement.setAttribute('data-v2theme', dark ? 'dark' : 'light');
 
   /* ── Hide legacy chrome ─────────────────────────────────── */
   ['header','footer','.announcement','#chraimBackHome','#backHomeStyle'].forEach(function (sel) {
@@ -125,10 +125,10 @@
   });
 
   var themeBtn = header.querySelector('.v2-theme');
-  function syncThemeIcon() { themeBtn.textContent = document.documentElement.getAttribute('data-theme') === 'dark' ? '☀' : '☾'; }
+  function syncThemeIcon() { themeBtn.textContent = document.documentElement.getAttribute('data-v2theme') === 'dark' ? '☀' : '☾'; }
   themeBtn.addEventListener('click', function () {
-    var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-    document.documentElement.setAttribute('data-theme', next);
+    var next = document.documentElement.getAttribute('data-v2theme') === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-v2theme', next);
     try { localStorage.setItem('chraim-v2-theme', next); } catch (e) {}
     syncThemeIcon();
   });
