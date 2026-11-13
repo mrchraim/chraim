@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ar" dir="rtl" data-sec="search">
+<html lang="ar" dir="rtl" data-sec="search" data-theme="dark">
 <head>
 <meta charset="utf-8">
 <link rel="stylesheet" href="/assets/design-tokens.css">
@@ -2355,5 +2355,13 @@ main#main > .configbar{margin-block-end:10px!important}
 <script src="/assets/design-upgrade.js" defer></script>
 <script src="/assets/portal-extras.js" defer></script>
 <script src="/assets/portal-showcase.js" defer></script>
+<script>
+(function(){
+  function fixBg(){ var b = getComputedStyle(document.body).backgroundColor; document.documentElement.style.background = b; }
+  fixBg();
+  if('MutationObserver' in window){ new MutationObserver(fixBg).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme','data-gender','data-comfort']}); }
+})();
+</script>
+</script>
 </body>
 </html>

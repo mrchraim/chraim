@@ -6,8 +6,8 @@
    DARK — the premium dashboard look
    ============================================================ */
 :root[data-theme=dark]{
-  --bg:#070C17;
-  --card:#0E1828;
+  --bg:#070C17 !important;
+  --card:#0E1828 !important;
   --line:rgba(255,255,255,.10);
   --soft:#131f33;
   --gold:#D4AF37;
@@ -18,10 +18,7 @@
   --glow:0 0 44px rgba(234,217,168,.14);
 }
 
-:root[data-theme=dark],
-:root[data-theme=dark] html{
-  background:#070C17 !important;
-}
+html{background:transparent !important}
 :root[data-theme=dark] body{background:#070C17}
 
 /* Hero — deeper gradient + gold flare */
