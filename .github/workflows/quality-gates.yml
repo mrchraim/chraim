@@ -1,4 +1,4 @@
-name: CHRAIM Quality Gates
+﻿name: CHRAIM Quality Gates
 
 on:
   push:
@@ -19,7 +19,7 @@ concurrency:
 jobs:
   build-and-unit:
     name: Build, unit tests, lint, format
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 15
 
     steps:
@@ -104,7 +104,7 @@ jobs:
 
   links-security:
     name: Links and security checks
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 15
 
     steps:
@@ -164,7 +164,7 @@ jobs:
 
   browser-a11y:
     name: Lighthouse and axe accessibility
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 20
     needs:
       - build-and-unit

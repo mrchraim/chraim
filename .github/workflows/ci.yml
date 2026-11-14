@@ -1,4 +1,4 @@
-name: CI & Quality Gates
+﻿name: CI & Quality Gates
 
 on:
   push:
@@ -17,7 +17,7 @@ jobs:
   # 1. Build one artifact; all downstream audits consume the same output.
   build:
     name: Build & Asset Packaging
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
@@ -41,7 +41,7 @@ jobs:
   # 2. Source quality and unit tests.
   code-quality:
     name: Lint, Format & Unit Tests
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
@@ -57,7 +57,7 @@ jobs:
   # 3. Link/security checks run against the exact built artifact.
   security-and-links:
     name: Security & Link Audit
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 20
     needs: build
     steps:
@@ -79,7 +79,7 @@ jobs:
   # not in Lighthouse's public temporary storage.
   lighthouse-audit:
     name: Lighthouse Performance & SEO
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 20
     needs: build
     steps:
@@ -116,7 +116,7 @@ jobs:
   # 5. axe accessibility smoke audit.
   accessibility-audit:
     name: axe Accessibility Compliance
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 20
     needs: build
     steps:
