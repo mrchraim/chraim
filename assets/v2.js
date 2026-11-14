@@ -39,16 +39,17 @@
   var here = norm(path);
 
   /* ── Skip link ──────────────────────────────────────────── */
-  var skip = document.createElement('a');
-  skip.className = 'v2-skip';
-  skip.href = '#main';
-  skip.textContent = 'تخطّي إلى المحتوى';
-  body.insertBefore(skip, body.firstChild);
 
   /* ── Header ─────────────────────────────────────────────── */
   var header = document.createElement('header');
   header.className = 'v2-header';
   header.setAttribute('role', 'banner');
+  header.setAttribute('aria-label', 'CHRAIM Campus');
+  var skip = document.createElement('a');
+  skip.className = 'v2-skip';
+  skip.href = '#main';
+  skip.textContent = 'تخطّي إلى المحتوى';
+  header.appendChild(skip);
   var navHtml = NAV.map(function (item) {
     var current = norm(item[0]) === here ? ' aria-current="page"' : '';
     return '<a href="' + item[0] + '"' + current + '>' + item[1] + '</a>';
@@ -63,7 +64,7 @@
         '<span class="v2-brand__mark">' + svgMark('#F5EFDD') + '</span>' +
         '<span class="v2-brand__word">CHR<b>AIM</b><small>CAMPUS · AGADIR</small></span>' +
       '</a>' +
-      '<nav class="v2-nav" aria-label="التنقل الرئيسي">' + navHtml + '</nav>' +
+      '<nav class="v2-nav" aria-label="CHRAIM — التنقل الرئيسي">' + navHtml + '</nav>' +
       '<div class="v2-header__actions">' +
         '<button class="v2-iconbtn v2-theme" type="button" aria-label="تبديل المظهر" title="تبديل المظهر">☾</button>' +
         '<a class="v2-cta" href="/portal.html">ابدأ البوابة <span aria-hidden="true">↙</span></a>' +
@@ -76,9 +77,9 @@
   /* ── Footer ─────────────────────────────────────────────── */
   var footer = document.createElement('footer');
   footer.className = 'v2-footer';
-  footer.setAttribute('role', 'contentinfo');
+  footer.setAttribute('role', 'presentation');
   footer.innerHTML =
-    '<div class="v2-footer__inner">' +
+    '<nav class="v2-footer__inner" aria-label="CHRAIM — معلومات وأقسام">' +
       '<div class="v2-footer__top">' +
         '<div class="v2-footer__brand">' +
           '<span class="v2-footer__mark">' + svgMark('#241207') + '</span>' +
@@ -88,19 +89,19 @@
           '</span>' +
         '</div>' +
         '<div class="v2-footer__cols">' +
-          '<div><h4>استكشف</h4><ul>' +
+          '<div><h3 class="v2-footer__heading">استكشف</h3><ul>' +
             '<li><a href="/portal.html">بوابة الطالب</a></li>' +
             '<li><a href="/platform/">المنصة — امتحانات وملخصات</a></li>' +
             '<li><a href="/etablissements/">دليل المؤسسات (24)</a></li>' +
             '<li><a href="/orientation.html">مرشد التوجيه</a></li>' +
           '</ul></div>' +
-          '<div><h4>المصادر</h4><ul>' +
+          '<div><h3 class="v2-footer__heading">المصادر</h3><ul>' +
             '<li><a href="/university-directory.html">دليل جامعة ابن زهر</a></li>' +
             '<li><a href="/academic-offer.html">عرض التكوينات</a></li>' +
             '<li><a href="/academic-updates.html">المستجدات الجامعية</a></li>' +
             '<li><a href="/sources.html">المصادر الرسمية</a></li>' +
           '</ul></div>' +
-          '<div><h4>الدعم</h4><ul>' +
+          '<div><h3 class="v2-footer__heading">الدعم</h3><ul>' +
             '<li><a href="/support/">الدعم والمساعدة</a></li>' +
             '<li><a href="/students-guide.html">دليل الطالب</a></li>' +
             '<li><a href="/privacy.html">سياسة الخصوصية</a></li>' +
@@ -112,7 +113,7 @@
         '<span>© 2026 <b>CHRAIM CAMPUS</b> — مشروع طلابي مستقل، غير رسمي</span>' +
         '<span>تحقق دائمًا من المصدر الرسمي: <a href="https://www.uiz.ac.ma/" target="_blank" rel="noopener noreferrer" style="color:#E5B267;text-decoration:none">uiz.ac.ma</a></span>' +
       '</div>' +
-    '</div>';
+    '</nav>';
   body.appendChild(footer);
 
   /* ── Header behaviour ───────────────────────────────────── */

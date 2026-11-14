@@ -72,10 +72,8 @@ jobs:
       - run: python tools/audit-links.py --root dist
       - run: python tools/audit-security.py
       - run: python tools/verify_deployment_config.py
-      - name: Gitleaks Secret Scan
-        uses: gitleaks/gitleaks-action@v2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Secret scan (dependency-free)
+        run: python tools/secret-scan.py
 
   # 4. Lighthouse runs on the same build artifact. Reports stay in GitHub artifacts,
   # not in Lighthouse's public temporary storage.

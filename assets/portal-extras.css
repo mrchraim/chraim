@@ -23,9 +23,8 @@
 }
 .pe-stat{
   position:relative;
-  background:rgba(8,10,14,.62);
-  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-  border:1px solid rgba(255,255,255,.12);
+  background:#05090f;
+  border:1px solid rgba(255,255,255,.14);
   border-radius:16px;padding:20px;color:#fff;
   box-shadow:0 10px 30px rgba(0,0,0,.35);
   transition:transform .25s, box-shadow .25s, background .25s;
@@ -84,8 +83,8 @@
 .pe-download{
   display:inline-flex;align-items:center;gap:8px;
   padding:12px 26px;border-radius:999px;text-decoration:none;
-  background:transparent;color:var(--pe-emerald);font-family:inherit;
-  border:2px solid var(--pe-emerald);
+  background:transparent;color:#065f46;font-family:inherit;
+  border:2px solid #065f46;
   font-weight:700;font-size:.95rem;cursor:pointer;
   transition:background .25s, transform .2s, box-shadow .25s;
 }

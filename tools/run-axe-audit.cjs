@@ -5,8 +5,9 @@ const AxeBuilder = require('@axe-core/playwright').default;
   const browser = await chromium.launch({ headless: true });
   let failed = false;
   try {
+    const context = await browser.newContext();
     for (const route of ['/', '/privacy.html', '/terms.html']) {
-      const page = await browser.newPage();
+      const page = await context.newPage();
       const response = await page.goto(`http://127.0.0.1:8000${route}`, {
         waitUntil: 'networkidle',
         timeout: 30000

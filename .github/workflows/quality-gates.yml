@@ -147,13 +147,11 @@ jobs:
       - name: Dependency audit
         run: npm audit --audit-level=high
 
-      - name: Scan repository for secrets
-        uses: gitleaks/gitleaks-action@v2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Secret scan (dependency-free)
+        run: python tools/secret-scan.py
 
       - name: Check local links
-        run: npx --yes linkinator@6 dist --recurse --skip "https?://.*" --silent
+        run: python tools/audit-links.py --root dist
 
       - name: Verify deployment configuration
         run: |
