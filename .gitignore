@@ -21,5 +21,10 @@ Thumbs.db
 # Generated build output
 /dist/
 
+# نسخ احتياطي قواعد البيانات — المستودع عمومي ولا يمكن رفع أي dump (يحتوي PII)
+backups/
+supabase/.temp/
+supabase/.branches/
+
 # Design concepts (not for production)
 archive/design-concepts/

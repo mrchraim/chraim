@@ -15,11 +15,11 @@ dependency-free scanner.
 
 | # | Check | Result | Notes |
 |---|---|---|---|
-| 1 | HTTPS everywhere | ✅ | Cloudflare Pages enforced; HSTS via `_headers` |
+| 1 | HTTPS everywhere | ✅ | Cloudflare Pages enforced; HSTS via `_headers` with `preload` — **verified preloaded 2026-11-14** (`hstspreload.org` → `status: preloaded`, inherited from the preloaded `.dev` TLD) |
 | 2 | Passwords hashed | ✅ | Supabase Auth (bcrypt/argon2id) |
 | 3 | Sessions httpOnly/Secure | ⚠️ | JWT via supabase-js in localStorage (not httpOnly). Mitigate: strict CSP, no `eval()` |
 | 4 | Password reset token | ✅ | `platform/reset-password.html`; Supabase single-use/expiring |
-| 5 | 2FA for admins | ❌ | Not enforced client-side. Recommend enabling TOTP on admin accounts + Supabase "enforce MFA" on the platform project |
+| 5 | 2FA for admins | ✅ | **TOTP MFA implemented 2026-11-14** (client): `admin.html` enrols/challenges a TOTP factor after the password and gates the dashboard on `aal2`; `platform/login.html` shows the MFA gate **for admins only** (students are exempt); `platform/js/auth.js checkAuth()` signs out admins whose session is not `aal2`. Remaining: enable MFA in Supabase Auth (Authentication → MFA) on both projects and enforce `auth.jwt() ->> 'aal' = 'aal2'` in the admin write policies (server-side) |
 | 6 | Admin Pages server-side | ✅ | Enforced by Postgres RLS; `admin.html` is noindex + `X-Robots-Tag` |
 | 7 | Per-user data isolation | ✅ | RLS: `auth.uid()` filters on `profiles`, `favorites`, `notifications`, `exams` |
 | 8 | RLS enabled | ✅ | **Verified live 2026-11-14 (direct PostgREST probes):** platform `exams`/`announcements` show only approved/published rows to anon (unpublished → 0 rows); `profiles`/`activity_log`/`admins` → 0 rows for anon; portal `exam_files` rejects `status='approved'` inserts (42501) while allowing `status='pending'` contribution inserts by design (`ef_insert_pending`). Both harden migrations are confirmed applied. |
@@ -40,7 +40,7 @@ dependency-free scanner.
 | 23 | Server-side webhook confirm | n/a | no payments |
 | 24 | Dependencies clean | ✅ | `npm audit` → 0 vulnerabilities (devDeps only) |
 | 25 | Logs scrub secrets | ✅ | Email removed from `activity_log` payload (this commit) |
-| 26 | DB backups / restore drill | ⚠️ | Do a one-off `pg_dump` via Supabase CLI before any major change; schedule weekly logical backups |
+| 26 | DB backups / restore drill | ⚠️ | **Tooling ready 2026-11-14:** `tools/backup-supabase.sh` (roles + schema + data, gzip + AES-256-CBC) and `.github/workflows/backup-supabase.yml` (weekly Mon 03:23 UTC + manual, per-project matrix, encrypted artifact kept 90 days, `backups/` gitignored). **First green run pending** the four secrets `SUPABASE_DB_URL_{PORTAL,PLATFORM,ATLAS}` + `BACKUP_PASSPHRASE` — see `docs/BACKUPS.md`. Supabase Free has no automatic backups, so this must not stay red. |
 | 27 | Self-audit report | ✅ | this document |
 
 ## C. What was fixed in this round
@@ -54,16 +54,36 @@ dependency-free scanner.
 - `tools/secret-scan.py`: deterministic repository scanner (replaces unstable Gitleaks action) — confirmed PASS on 1 106+ tracked source files
 - CI runners pinned to `ubuntu-24.04` (Playwright apt repo is broken on the fresh `ubuntu-latest` image)
 - `platform/js/auth.js`: email address no longer written to `activity_log` on login
+- **2FA (TOTP)**: enrolment + challenge UI in `admin.html`, admin-only MFA gate in `platform/login.html`
+  (with QR enrolment), `aal2` re-check in `connect()`/`checkAuth()`; register form now carries an explicit
+  **consent checkbox** linked to the privacy notice (Law 09-08 art. 5/8)
+- **Privacy notices rebuilt as *mentions d'information***: `platform/privacy.html` (controller, data,
+  purposes, sub-processors, cross-border transfer basis, retention, rights, contact, security) and
+  `privacy.html` corrected (it wrongly claimed "no data on our servers" while accounts exist)
+- **Backups**: `tools/backup-supabase.sh` + weekly encrypted-backup workflow; `backups/` and CLI
+  temp state gitignored (repo is public)
+- **CNDP**: `docs/CNDP_DECLARATION.md` — field-by-field pre-fill of form **F-211**, concurrent
+  **F-118** international-transfer section, sub-processor/DPA table, security-measure mapping (§IX),
+  gap list and filing timeline (sources: cndp.ma, checked 2026-11-14)
 
 ## D. Remaining open items
 
 1. ~~**RLS migrations not applied**~~ — **RESOLVED 2026-11-14**: live PostgREST probes confirm RLS is enforced on both projects (see check 8).
-2. **Admin 2FA** — enable TOTP in Supabase Auth settings and require it on owner/admin accounts.
+2. ~~**Admin 2FA**~~ — **CODE DONE 2026-11-14**; still needs two manual steps: (a) enable **MFA → TOTP** in
+   Supabase Auth for the portal and platform projects, (b) run the server-side migration requiring
+   `auth.jwt() ->> 'aal' = 'aal2'` on admin write policies (draft ready, applies in SQL Editor).
 3. **Logout other sessions / session lifetime** — shorten refresh tokens to 90 days in Supabase Auth config.
-4. **Backups** — schedule weekly `supabase db dump` → encrypted storage (or enable PITR if on Pro plan).
-5. **CNDP filings** — see `CNDP` row: register as "déclaration" at the CNDP registry (https://www.cndp.ma — "Déclaration simplifiée" — the lawyer you spoke with is the right path, not a tech task).
+4. **Backups** — workflow is in place; **blocked on secrets**: create a fresh `SUPABASE_ACCESS_TOKEN`
+   or, preferably, set `SUPABASE_DB_URL_PORTAL/PLATFORM/ATLAS` (direct connection, port 5432) and
+   `BACKUP_PASSPHRASE` per `docs/BACKUPS.md`, then trigger **Supabase backups** once manually to prove it.
+5. ~~**CNDP filings**~~ — **DOSSIER READY 2026-11-14**: `docs/CNDP_DECLARATION.md` (F-211 pre-fill +
+   F-118 + pièces jointes). Owner to supply identity/address/GSM fields, confirm the Supabase region,
+   print the sub-processor terms, then file at <https://www.cndp.ma/notifier-un-traitement/> — lawyer review first.
 6. **The upload allow-list (`media-src`)** — tightened to `'self' blob:` (2026-11-14, no external media found in repo).
-7. **`_headers`: HSTS `preload` added** (2026-11-14). To actually enter the preload list, submit https://hstspreload.org/ after confirming permanent HTTPS on the domain.
+7. ~~**`_headers`: HSTS `preload`**~~ — **RESOLVED 2026-11-14**: header carries `preload` and
+   `hstspreload.org` reports `chraim.pages.dev` as **preloaded** (inherited from the preloaded `.dev` TLD) — no submission needed.
+8. **Self-service account deletion** — rights are documented (30-day reply) but executed manually today;
+   a "delete my account" flow would close the loop and simplify the CNDP story.
 
 ## E. CI status (most recent push, d00e438)
 

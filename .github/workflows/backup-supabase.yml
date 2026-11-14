@@ -1,0 +1,79 @@
+name: Supabase backups
+
+# سبب وجود هذا الملف: باقة Supabase المجانية (Free) ما عندها نسخ احتياطي تلقائي
+# حسب التوثيق الرسمي، والمستودع عمومي — لذلك نصدّر، نشفّر، ونرفع كـ artifact
+# خاصّ بالمستودع فقط (ولا commit لأي dump).
+
+on:
+  schedule:
+    - cron: "23 3 * * 1" # كل اثنين 03:23 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: chraim-supabase-backups
+  cancel-in-progress: false
+
+jobs:
+  backup:
+    name: Backup ${{ matrix.name }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: portal
+            env_key: SUPABASE_DB_URL_PORTAL
+          - name: platform
+            env_key: SUPABASE_DB_URL_PLATFORM
+          - name: atlas
+            env_key: SUPABASE_DB_URL_ATLAS
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check required secrets
+        env:
+          DB_URL: ${{ secrets[matrix.env_key] }}
+          PASSPHRASE: ${{ secrets.BACKUP_PASSPHRASE }}
+        shell: bash
+        run: |
+          fail=0
+          if [ -z "$DB_URL" ]; then
+            echo "::error::Secret ${{ matrix.env_key }} غير مضبوط — النسخ الاحتياطي لهذا المشروع لم يتم."
+            fail=1
+          fi
+          if [ -z "$PASSPHRASE" ]; then
+            echo "::error::Secret BACKUP_PASSPHRASE غير مضبوط — بدونه الدumps كتبقى غير مشفّرة فلا نرفعها."
+            fail=1
+          fi
+          if [ "$fail" -ne 0 ]; then
+            echo "::notice::طريقة الإعداد موجودة في docs/BACKUPS.md (gh secret set ...)."
+            exit 1
+          fi
+          echo "credentials ok"
+
+      - name: Install Supabase CLI
+        uses: supabase/setup-supabase@v1
+
+      - name: Dump and encrypt
+        env:
+          SUPABASE_DB_URL_PORTAL: ${{ secrets.SUPABASE_DB_URL_PORTAL }}
+          SUPABASE_DB_URL_PLATFORM: ${{ secrets.SUPABASE_DB_URL_PLATFORM }}
+          SUPABASE_DB_URL_ATLAS: ${{ secrets.SUPABASE_DB_URL_ATLAS }}
+          BACKUP_PASSPHRASE: ${{ secrets.BACKUP_PASSPHRASE }}
+          BACKUP_DIR: backups
+        shell: bash
+        run: bash tools/backup-supabase.sh "${{ matrix.name }}"
+
+      - name: Upload encrypted backup
+        uses: actions/upload-artifact@v4
+        with:
+          name: supabase-backup-${{ matrix.name }}-${{ github.run_number }}
+          path: backups/
+          if-no-files-found: error
+          retention-days: 90
