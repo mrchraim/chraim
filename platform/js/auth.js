@@ -27,7 +27,8 @@ async function signIn(email, password) {
     .eq("id", data.user.id);
 
   // تسجيل النشاط
-  await logActivity("login", "auth", data.user.id, { email });
+  // لم نسجل عنوان البريد في سجل الأنشطة (PII) — نكتفي بالمعرف فقط
+  await logActivity("login", "auth", data.user.id, {});
   return data;
 }
 
