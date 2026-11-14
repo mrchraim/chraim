@@ -39,8 +39,8 @@ jobs:
             fi
           }
 
-          check "/"           'href="/campus2"' "الرئيسية الموحّدة"
-          check "/campus2"    'مدموجة'           "الصفحة المدموجة Campus 2.0"
+          check "/"           'assets/v2.css'   "الرئيسية الموحّدة v2"
+          check "/campus2"    'مدموجة'           "مدموجة Campus 2.0"
           check "/orientation" "مرشد التوجيه"     "مرشد التوجيه"
           check "/portal"     'canonical'        "بوابة الطالب"
           exit $fail
