@@ -22,7 +22,7 @@ dependency-free scanner.
 | 5 | 2FA for admins | ❌ | Not enforced client-side. Recommend enabling TOTP on admin accounts + Supabase "enforce MFA" on the platform project |
 | 6 | Admin Pages server-side | ✅ | Enforced by Postgres RLS; `admin.html` is noindex + `X-Robots-Tag` |
 | 7 | Per-user data isolation | ✅ | RLS: `auth.uid()` filters on `profiles`, `favorites`, `notifications`, `exams` |
-| 8 | RLS enabled | ⚠️ | Two migrations present (`20261021`, `20261028`); **must be executed in Supabase SQL Editor per project (portal + platform)**. Not yet confirmed on remote. Owner task — credentials only on your side. |
+| 8 | RLS enabled | ✅ | **Verified live 2026-11-14 (direct PostgREST probes):** platform `exams`/`announcements` show only approved/published rows to anon (unpublished → 0 rows); `profiles`/`activity_log`/`admins` → 0 rows for anon; portal `exam_files` rejects `status='approved'` inserts (42501) while allowing `status='pending'` contribution inserts by design (`ef_insert_pending`). Both harden migrations are confirmed applied. |
 | 9 | No public secrets | ✅ | Only publishable `sb_publishable_*` in `platform/js/config.js` + `supabase-config.js` |
 | 10 | `.env` gitignored | ✅ | `.env*`, `dist/`, `node_modules/` in `.gitignore` |
 | 11 | Git history clean | ✅ | grep across history for `service_role`, `JWT`, `ghp_`, `AKIA`, `sk_` → zero hits |
@@ -57,17 +57,13 @@ dependency-free scanner.
 
 ## D. Remaining open items
 
-1. **RLS migrations not applied on the two Supabase projects** (portal + management-system). Run:
-   - `supabase/01_portal_schema.sql`
-   - `supabase/migrations/20261021_harden_rls_policies.sql`
-   - `supabase/migrations/20261028_harden_portal_rls.sql`
-   in Supabase → SQL Editor for both ref IDs.
+1. ~~**RLS migrations not applied**~~ — **RESOLVED 2026-11-14**: live PostgREST probes confirm RLS is enforced on both projects (see check 8).
 2. **Admin 2FA** — enable TOTP in Supabase Auth settings and require it on owner/admin accounts.
 3. **Logout other sessions / session lifetime** — shorten refresh tokens to 90 days in Supabase Auth config.
 4. **Backups** — schedule weekly `supabase db dump` → encrypted storage (or enable PITR if on Pro plan).
 5. **CNDP filings** — see `CNDP` row: register as "déclaration" at the CNDP registry (https://www.cndp.ma — "Déclaration simplifiée" — the lawyer you spoke with is the right path, not a tech task).
-6. **The upload allow-list (`media-src`)** — tightening further to `blob: https:` only is safe.
-7. **`*_headers`: add Strict-Transport-Security `preload`** once you are confident in permanent HTTPS on this domain, submit to https://hstspreload.org/
+6. **The upload allow-list (`media-src`)** — tightened to `'self' blob:` (2026-11-14, no external media found in repo).
+7. **`_headers`: HSTS `preload` added** (2026-11-14). To actually enter the preload list, submit https://hstspreload.org/ after confirming permanent HTTPS on the domain.
 
 ## E. CI status (most recent push, d00e438)
 
