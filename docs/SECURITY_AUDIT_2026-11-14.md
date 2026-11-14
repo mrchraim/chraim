@@ -1,5 +1,5 @@
 # CHRAIM Campus — Security & Quality Audit Report
-**Date:** 2026-11-14 · **Commit at audit start:** ef7a0c1 · **Current HEAD:** d00e438
+**Date:** 2026-11-14 · **Commit at audit start:** ef7a0c1 · **Commits covered:** ef7a0c1 → 1d1eb33 + this docs-only update
 
 ## A. Executive summary
 
@@ -19,7 +19,7 @@ dependency-free scanner.
 | 2 | Passwords hashed | ✅ | Supabase Auth (bcrypt/argon2id) |
 | 3 | Sessions httpOnly/Secure | ⚠️ | JWT via supabase-js in localStorage (not httpOnly). Mitigate: strict CSP, no `eval()` |
 | 4 | Password reset token | ✅ | `platform/reset-password.html`; Supabase single-use/expiring |
-| 5 | 2FA for admins | ✅ | **TOTP MFA implemented 2026-11-14** (client): `admin.html` enrols/challenges a TOTP factor after the password and gates the dashboard on `aal2`; `platform/login.html` shows the MFA gate **for admins only** (students are exempt); `platform/js/auth.js checkAuth()` signs out admins whose session is not `aal2`. Remaining: enable MFA in Supabase Auth (Authentication → MFA) on both projects and enforce `auth.jwt() ->> 'aal' = 'aal2'` in the admin write policies (server-side) |
+| 5 | 2FA for admins | ✅ | **TOTP MFA implemented 2026-11-14, client + server**: `admin.html` enrols/challenges a TOTP factor after the password and gates the dashboard on `aal2`; `platform/login.html` shows the MFA gate **for admins only** (students are exempt); `platform/js/auth.js checkAuth()` signs out admins whose session is not `aal2`. **Server side**: `supabase/migrations/20261114_portal_admin_aal2.sql` and `20261114_platform_admin_aal2.sql` add `public.has_aal2()` and AND it into `is_admin()` (platform also `is_editor()`, closing the editor-policy bypass) — so a password-only JWT fails every admin RLS check. Remaining: enable MFA in Supabase Auth (Authentication → MFA) on both projects, then run the two migrations in their SQL Editors |
 | 6 | Admin Pages server-side | ✅ | Enforced by Postgres RLS; `admin.html` is noindex + `X-Robots-Tag` |
 | 7 | Per-user data isolation | ✅ | RLS: `auth.uid()` filters on `profiles`, `favorites`, `notifications`, `exams` |
 | 8 | RLS enabled | ✅ | **Verified live 2026-11-14 (direct PostgREST probes):** platform `exams`/`announcements` show only approved/published rows to anon (unpublished → 0 rows); `profiles`/`activity_log`/`admins` → 0 rows for anon; portal `exam_files` rejects `status='approved'` inserts (42501) while allowing `status='pending'` contribution inserts by design (`ef_insert_pending`). Both harden migrations are confirmed applied. |
@@ -57,6 +57,10 @@ dependency-free scanner.
 - **2FA (TOTP)**: enrolment + challenge UI in `admin.html`, admin-only MFA gate in `platform/login.html`
   (with QR enrolment), `aal2` re-check in `connect()`/`checkAuth()`; register form now carries an explicit
   **consent checkbox** linked to the privacy notice (Law 09-08 art. 5/8)
+- **2FA enforced server-side**: `supabase/migrations/20261114_portal_admin_aal2.sql` +
+  `20261114_platform_admin_aal2.sql` add `public.has_aal2()` and AND it into `is_admin()`
+  (and `is_editor()` on the platform, so the editor policy is not a password-only bypass);
+  students are untouched — run them in the matching projects' SQL Editors **after** enabling MFA
 - **Privacy notices rebuilt as *mentions d'information***: `platform/privacy.html` (controller, data,
   purposes, sub-processors, cross-border transfer basis, retention, rights, contact, security) and
   `privacy.html` corrected (it wrongly claimed "no data on our servers" while accounts exist)
@@ -69,9 +73,11 @@ dependency-free scanner.
 ## D. Remaining open items
 
 1. ~~**RLS migrations not applied**~~ — **RESOLVED 2026-11-14**: live PostgREST probes confirm RLS is enforced on both projects (see check 8).
-2. ~~**Admin 2FA**~~ — **CODE DONE 2026-11-14**; still needs two manual steps: (a) enable **MFA → TOTP** in
-   Supabase Auth for the portal and platform projects, (b) run the server-side migration requiring
-   `auth.jwt() ->> 'aal' = 'aal2'` on admin write policies (draft ready, applies in SQL Editor).
+2. ~~**Admin 2FA**~~ — **CODE + MIGRATIONS DONE 2026-11-14**; still needs two manual steps: (a) enable
+   **MFA → TOTP** in Supabase Auth for the portal and platform projects, (b) run
+   `supabase/migrations/20261114_portal_admin_aal2.sql` and `20261114_platform_admin_aal2.sql` in the
+   matching projects' SQL Editors. **Order matters**: enable MFA first — the migrations fail closed, so
+   running them before TOTP is available would lock every admin write until enrolment works.
 3. **Logout other sessions / session lifetime** — shorten refresh tokens to 90 days in Supabase Auth config.
 4. **Backups** — workflow is in place; **blocked on secrets**: create a fresh `SUPABASE_ACCESS_TOKEN`
    or, preferably, set `SUPABASE_DB_URL_PORTAL/PLATFORM/ATLAS` (direct connection, port 5432) and
@@ -85,10 +91,15 @@ dependency-free scanner.
 8. **Self-service account deletion** — rights are documented (30-day reply) but executed manually today;
    a "delete my account" flow would close the loop and simplify the CNDP story.
 
-## E. CI status (most recent push, d00e438)
+## E. CI status (round of 2026-11-14, code HEAD 1d1eb33)
 
 ```
-Deploy to Cloudflare Pages     ✅  success
-CI & Quality Gates            ✅  success
-CHRAIM Quality Gates          ✅  success  (axe, gitleaks replaced by deterministic scan, build-all green)
+Deploy to Cloudflare Pages     ✅  success   (chraim.pages.dev updated; privacy notice live)
+CI & Quality Gates             ✅  success   (npm audit, secret-scan PASS on 1 108 files, 1 262 links / 0 broken)
+CHRAIM Quality Gates           ✅  success   (lint, format, 33 unit tests, Lighthouse, axe 0 violations)
+Verify production matches main ✅  success   (dispatched after this push)
 ```
+
+**Supabase backups** — workflow added but **not triggered by push** (schedule Monday 03:23 UTC + manual
+only), so it does not colour the PR badges yet. It will start running red until the four secrets are
+set (`docs/BACKUPS.md`); that failure is intentional and must be treated as a task, not as noise.
