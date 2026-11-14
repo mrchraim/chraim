@@ -9,6 +9,19 @@ async function checkAuth() {
     window.location.href = "login.html";
     return null;
   }
+  // بوابة التحقق بخطوتين: الأدمن ما يدخلش اللوحة بجلسة aal1 (بدون تحقق).
+  try {
+    const { data: aal } = await db.auth.mfa.getAuthenticatorAssuranceLevel();
+    const profile = await getProfile(session.user.id);
+    if (hasPlatformAdminAccess(profile) && aal && aal.currentLevel !== "aal2" && aal.nextLevel === "aal2") {
+      await db.auth.signOut();
+      window.location.href = "login.html";
+      return null;
+    }
+  } catch (e) {
+    // فشل الفحص ما خاصوش يمنع الدخول في حالة خطأ شبكة — RLS هي الخط الدفاعي الأساسي.
+    console.warn("MFA gate check skipped:", e);
+  }
   return session;
 }
 

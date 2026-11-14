@@ -47,6 +47,24 @@
         <div id="login-error" class="form-error" style="display:none"></div>
       </form>
 
+      <!-- التحقق بخطوتين (TOTP) — للمسؤولين فقط -->
+      <form id="mfa-form" class="auth-form" style="display:none">
+        <div class="form-group">
+          <label id="mfa-label">رمز التحقق بخطوتين</label>
+          <input type="text" id="mfa-code" inputmode="numeric" autocomplete="one-time-code"
+                 placeholder="123456" maxlength="6" pattern="[0-9]{6}" />
+        </div>
+        <div id="mfa-enroll-box" style="display:none;text-align:center">
+          <p class="small" style="line-height:1.8">
+            🔐 فعّل التحقق بخطوتين: ضيف هذا الحساب في تطبيق المصادقة
+            (Google Authenticator / Authy / 1Password) ثم أدخل الرمز.
+          </p>
+          <div id="mfa-qr"></div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block" id="mfa-submit">تحقق ودخول</button>
+        <div id="mfa-error" class="form-error" style="display:none"></div>
+      </form>
+
       <!-- إنشاء حساب -->
       <form id="register-form" class="auth-form" style="display:none">
         <div class="form-group">
@@ -64,6 +82,15 @@
         <div class="form-group">
           <label data-i18n="confirm_password">تأكيد كلمة المرور</label>
           <input type="password" id="reg-confirm" data-i18n-placeholder="confirm_password" placeholder="تأكيد كلمة المرور" required minlength="6" />
+        </div>
+        <div class="form-group" style="display:flex;gap:9px;align-items:flex-start;font-size:13.5px;line-height:1.8">
+          <input type="checkbox" id="reg-consent" required
+                 style="margin-top:5px;width:16px;height:16px;flex:0 0 auto;accent-color:#0F4C3A" />
+          <label for="reg-consent" style="font-weight:400;margin:0">
+            <span data-i18n="consent_p1">قرأتُ وأوافق على</span>
+            <a href="privacy.html" target="_blank" rel="noopener" data-i18n="consent_policy">سياسة الخصوصية</a>
+            <span data-i18n="consent_p2">بخصوص جمع معطياتي الشخصية (البريد والاسم) لتشغيل الحساب، وفق القانون 09-08.</span>
+          </label>
         </div>
         <button type="submit" class="btn btn-primary btn-block" data-i18n="register">إنشاء حساب جديد</button>
         <div id="reg-error" class="form-error" style="display:none"></div>
@@ -99,15 +126,83 @@
     });
 
     // تسجيل الدخول
+    let mfaUser = null, mfaFactorId = null, mfaChallengeId = null;
+    const mfaErr = (msg) => { const el = document.getElementById("mfa-error"); el.textContent = msg; el.style.display = "block"; };
+
+    async function mfaStartGate(user) {
+      // بوابة التحقق بخطوتين: للأدمن فقط (الطلبة العاديون يدخلون مباشرة).
+      let isAdmin = false;
+      try {
+        const profile = await getProfile(user.id);
+        isAdmin = hasPlatformAdminAccess(profile);
+      } catch (e) { isAdmin = false; }
+      if (!isAdmin) return { admin: false };
+
+      const { data: f, error } = await db.auth.mfa.listFactors(user);
+      if (error) throw error;
+      const verified = (f && f.totp || []).find(x => x.status === "verified");
+      const { data: aal } = await db.auth.mfa.getAuthenticatorAssuranceLevel();
+      if (verified && aal && aal.currentLevel === "aal2") return { admin: true, done: true };
+
+      if (verified) {
+        mfaFactorId = verified.id;
+        const { data: ch, error: chErr } = await db.auth.mfa.challenge({ factorId: verified.id });
+        if (chErr) throw chErr;
+        mfaChallengeId = ch.id;
+        document.getElementById("mfa-enroll-box").style.display = "none";
+        return { admin: true, mode: "challenge" };
+      }
+      const { data: en, error: enErr } = await db.auth.mfa.enroll({ factorType: "totp", factorName: "chraim-platform-admin" });
+      if (enErr) throw enErr;
+      mfaFactorId = en.id;
+      const qr = (en.totp && en.totp.qr_code) || "";
+      const secret = (en.totp && en.totp.secret) || "";
+      document.getElementById("mfa-enroll-box").style.display = "block";
+      document.getElementById("mfa-qr").innerHTML =
+        (qr ? '<img src="' + qr + '" alt="رمز QR" style="width:170px;height:170px;background:#fff;padding:8px;border-radius:10px">' : "") +
+        '<p class="small" style="direction:ltr">' + secret + "</p>";
+      return { admin: true, mode: "enroll" };
+    }
+
+    document.getElementById("mfa-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const errEl = document.getElementById("mfa-error");
+      errEl.style.display = "none";
+      const code = (document.getElementById("mfa-code").value || "").replace(/\D/g, "");
+      if (code.length !== 6) return mfaErr(currentLang === "ar" ? "الرمز كيتكون من 6 أرقام" : "Code must be 6 digits");
+      if (!mfaFactorId) return mfaErr("حالة غير جاهزة، أعد تسجيل الدخول.");
+      if (!mfaChallengeId) {
+        try {
+          const { data: ch, error } = await db.auth.mfa.challenge({ factorId: mfaFactorId });
+          if (error) throw error;
+          mfaChallengeId = ch.id;
+        } catch (err) { return mfaErr("تعذّر إنشاء التحدي، أعد تسجيل الدخول."); }
+      }
+      const { error } = await db.auth.mfa.verify({ factorId: mfaFactorId, challengeId: mfaChallengeId, code });
+      if (error) {
+        mfaChallengeId = null; // التحدي يستعمل مرة واحدة
+        return mfaErr(currentLang === "ar" ? "رمز غير صحيح أو منتهي الصلاحية" : "Invalid or expired code");
+      }
+      window.location.href = "dashboard.html";
+    });
+
     document.getElementById("login-form").addEventListener("submit", async (e) => {
       e.preventDefault();
       const errEl = document.getElementById("login-error");
       errEl.style.display = "none";
       try {
-        await signIn(
+        const data = await signIn(
           document.getElementById("login-email").value.trim(),
           document.getElementById("login-password").value
         );
+        const gate = await mfaStartGate(data.user);
+        if (gate.admin && !gate.done) {
+          // أخفِ نموذج الدخول وأظهر بوابة التحقق بخطوتين
+          document.getElementById("login-form").style.display = "none";
+          document.getElementById("mfa-form").style.display = "block";
+          document.getElementById("mfa-code").focus();
+          return;
+        }
         window.location.href = "dashboard.html";
       } catch (err) {
         errEl.textContent = safeAuthErrorMessage(err, "err_invalid_credentials");

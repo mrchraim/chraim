@@ -95,6 +95,23 @@ a{color:var(--blue)}
     <label for="password">كلمة المرور</label><input id="password" type="password" autocomplete="current-password">
     <button id="login">دخول</button>
     <button id="logout" class="secondary hidden">خروج</button>
+
+    <div id="mfaBox" class="hidden">
+      <hr style="border:0;border-top:1px solid var(--line);margin:14px 0">
+      <div id="mfaEnroll" class="hidden">
+        <h3>🔐 فعّل التحقق بخطوتين (مرة واحدة)</h3>
+        <p class="small">ضيف هذا الحساب في تطبيق المصادقة (Google Authenticator / Authy / 1Password / Microsoft Authenticator)، ثم أدخل الرمز لتفعيل الحماية والدخول.</p>
+        <div id="mfaQr" class="small" style="overflow:auto"></div>
+        <label for="mfaCode">رمز التحقق</label><input id="mfaCode" inputmode="numeric" autocomplete="one-time-code" placeholder="123456">
+        <button id="mfaConfirm" class="green">تفعيل ودخول</button>
+      </div>
+      <div id="mfaChallenge" class="hidden">
+        <h3>🔐 التحقق بخطوتين</h3>
+        <label for="mfaCode2">أدخل الرمز من تطبيق المصادقة</label><input id="mfaCode2" inputmode="numeric" autocomplete="one-time-code" placeholder="123456">
+        <button id="mfaVerify">تحقق ودخول</button>
+      </div>
+      <div id="mfaStatus" class="status hidden" role="status"></div>
+    </div>
   </section>
 
   <section id="dashboard" class="hidden">
@@ -198,7 +215,18 @@ a{color:var(--blue)}
     if (error) throw error;
     $('config').classList.add('hidden');
     showLogin(Boolean(data.session));
-    if (data.session) { currentUser = data.session.user; await loadAnnouncements(); }
+    if (data.session) {
+      // جلسة سابقة: تأكد من المستوى aal2 قبل ما ندخلو اللوحة.
+      const { data: aal } = await client.auth.mfa.getAuthenticatorAssuranceLevel();
+      if (aal && aal.currentLevel !== 'aal2' && aal.nextLevel === 'aal2') {
+        currentUser = data.session.user;
+        showLogin(false);
+        try { await mfaAfterLogin(data.session.user); }
+        catch(e) { globalSay('خطأ في التحقق بخطوتين: ' + (e.message || e), 'err'); }
+        return;
+      }
+      currentUser = data.session.user; await loadAnnouncements();
+    }
     globalSay('تم الاتصال بـ Supabase. دخل بحساب المسؤول.', 'ok');
   }
   $('saveConfig').addEventListener('click', async () => {
@@ -212,6 +240,86 @@ a{color:var(--blue)}
   $('publicKey').value = sessionStorage.getItem('campus_supabase_key') || pub.anonKey || '';
   if ($('projectUrl').value && $('publicKey').value) connect($('projectUrl').value, $('publicKey').value).catch(e => globalSay('تعذر الاتصال: '+e.message, 'err'));
 
+  // ===================== التحقق بخطوتين (TOTP) =====================
+  let mfaFactorId = null, mfaChallengeId = null;
+  const mfaSay = (msg, cls) => { const el = $('mfaStatus'); if (!el) return; el.textContent = msg; el.className = 'status' + (cls ? ' ' + cls : ''); };
+  const mfaShow = (mode) => { // 'hidden' | 'enroll' | 'challenge'
+    $('mfaBox').classList.toggle('hidden', mode === 'hidden');
+    $('mfaEnroll').classList.toggle('hidden', mode !== 'enroll');
+    $('mfaChallenge').classList.toggle('hidden', mode !== 'challenge');
+    if (mode === 'enroll') $('mfaCode').focus();
+    if (mode === 'challenge') $('mfaCode2').focus();
+  };
+  // بعد كلمة السر: نشوف واش عنده عامل TOTP مُفعَّل → نتحدّاه، وإلا نفعّلو الآن.
+  async function mfaAfterLogin(user) {
+    const { data: f, error } = await client.auth.mfa.listFactors(user);
+    if (error) return mfaSay('تعذّر قراءة عوامل الأمان: ' + error.message, 'err');
+    const verified = (f && f.totp || []).find(x => x.status === 'verified');
+    const { data: aal } = await client.auth.mfa.getAuthenticatorAssuranceLevel();
+    if (verified && aal && aal.currentLevel === 'aal2') {
+      // كلشي سالِم — دخول كامل
+      mfaShow('hidden'); await mfaEnter(); return;
+    }
+    if (verified) {
+      mfaFactorId = verified.id;
+      const { data: ch, error: chErr } = await client.auth.mfa.challenge({ factorId: verified.id });
+      if (chErr) return mfaSay('تعذّر إنشاء التحدي: ' + chErr.message, 'err');
+      mfaChallengeId = ch.id;
+      mfaShow('challenge'); mfaSay('أدخل رمز التحقق من تطبيق المصادقة.', 'ok');
+      return;
+    }
+    // ما عندوش عامل بعد → فعيل
+    const { data: en, error: enErr } = await client.auth.mfa.enroll({ factorType: 'totp', factorName: 'chraim-admin' });
+    if (enErr) return mfaSay('تعذّر بدء التفعيل: ' + enErr.message + ' — تأكد أن المصادقة متعددة العوامل مسموحة في Supabase → Authentication → MFA.', 'err');
+    mfaFactorId = en.id;
+    const secret = (en.totp && en.totp.secret) || '';
+    const qr = (en.totp && en.totp.qr_code) || '';
+    $('mfaQr').innerHTML =
+      (qr ? '<img src="' + esc(qr) + '" alt="رمز QR للتحقق بخطوتين" style="width:170px;height:170px;background:#fff;padding:8px;border-radius:10px">' : '') +
+      '<p class="small">أو أدخل الرمز يدوياً في التطبيق:<br><code style="font-size:1.05em;letter-spacing:.12em;direction:ltr;display:inline-block">' + esc(secret) + '</code></p>';
+    mfaShow('enroll'); mfaSay('فعّل التحقق بخطوتين: ضيف الحساب في تطبيق المصادقة ثم أدخل الرمز.', 'ok');
+  }
+  async function mfaVerifyCode(code) {
+    if (!mfaFactorId) return mfaSay('حالة غير جاهزة. أعد تسجيل الدخول.', 'err');
+    if (!mfaChallengeId) {
+      // بعد التفعيل (enroll) ما كيناش تحدي بعد — ننشأوه الآن (التحدي يستعمل مرة واحدة).
+      const { data: ch, error: chErr } = await client.auth.mfa.challenge({ factorId: mfaFactorId });
+      if (chErr) return mfaSay('تعذّر إنشاء التحدي: ' + chErr.message, 'err');
+      mfaChallengeId = ch.id;
+    }
+    const { data, error } = await client.auth.mfa.verify({ factorId: mfaFactorId, challengeId: mfaChallengeId, code });
+    if (error) {
+      // أعد إنشاء التحدي للمحاولة التالية (التحدي يستعمل مرة واحدة)
+      const { data: ch } = await client.auth.mfa.challenge({ factorId: mfaFactorId });
+      mfaChallengeId = ch && ch.id;
+      return mfaSay('رمز غير صحيح أو منتهي: ' + error.message, 'err');
+    }
+    await mfaEnter();
+  }
+  async function mfaEnter() {
+    const { data: { session } } = await client.auth.getSession();
+    currentUser = session && session.user;
+    if (!currentUser) { mfaShow('hidden'); return mfaSay('انتهت الجلسة، أعد تسجيل الدخول.', 'err'); }
+    showLogin(true); $('password').value = ''; $('mfaCode').value = ''; $('mfaCode2').value = '';
+    mfaShow('hidden'); await loadAnnouncements();
+    globalSay('تم تسجيل الدخول (مُتحقَّق بخطوتين).', 'ok');
+  }
+  $('mfaConfirm').addEventListener('click', async () => {
+    const code = ($('mfaCode').value || '').replace(/\D/g, '');
+    if (code.length !== 6) return mfaSay('الرمز كيتكون من 6 أرقام.', 'err');
+    $('mfaConfirm').disabled = true;
+    try { await mfaVerifyCode(code); } finally { $('mfaConfirm').disabled = false; $('mfaCode').value = ''; }
+  });
+  $('mfaVerify').addEventListener('click', async () => {
+    const code = ($('mfaCode2').value || '').replace(/\D/g, '');
+    if (code.length !== 6) return mfaSay('الرمز كيتكون من 6 أرقام.', 'err');
+    $('mfaVerify').disabled = true;
+    try { await mfaVerifyCode(code); } finally { $('mfaVerify').disabled = false; $('mfaCode2').value = ''; }
+  });
+  ['mfaCode','mfaCode2'].forEach(id => $(id).addEventListener('keydown', e => {
+    if (e.key === 'Enter') { e.preventDefault(); $(id === 'mfaCode' ? 'mfaConfirm' : 'mfaVerify').click(); }
+  }));
+
   $('login').addEventListener('click', async () => {
     if (!client) return globalSay('أولاً دخل رابط Supabase والمفتاح العمومي.', 'err');
     const email = $('email').value.trim(), password = $('password').value;
@@ -220,9 +328,9 @@ a{color:var(--blue)}
     const {data,error} = await client.auth.signInWithPassword({email,password});
     $('login').disabled = false;
     if (error) return globalSay('فشل تسجيل الدخول: '+error.message, 'err');
-    currentUser = data.user; showLogin(true); $('password').value = '';
-    await loadAnnouncements();
-    globalSay('تم تسجيل الدخول.', 'ok');
+    $('password').value = '';
+    try { await mfaAfterLogin(data.user); }
+    catch(e) { globalSay('خطأ في التحقق بخطوتين: ' + (e.message || e), 'err'); }
   });
   $('logout').addEventListener('click', async () => {
     if (client) await client.auth.signOut();
