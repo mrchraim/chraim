@@ -60,7 +60,7 @@
 
   header.innerHTML =
     '<div class="v2-header__bar">' +
-      '<a class="v2-brand" href="/" aria-label="CHRAIM CAMPUS · AGADIR">' +
+      '<a class="v2-brand" href="/">' +
         '<span class="v2-brand__mark">' + svgMark('#F5EFDD') + '</span>' +
         '<span class="v2-brand__word">CHR<b>AIM</b><small>CAMPUS · AGADIR</small></span>' +
       '</a>' +
