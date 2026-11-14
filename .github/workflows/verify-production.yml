@@ -31,7 +31,7 @@ jobs:
             body=$(curl -fsS --retry 3 --max-time 30 "$BASE$1") || {
               echo "::error::$3 — $BASE$1 غير متاح"; fail=1; return
             }
-            if printf '%s' "$body" | grep -qF "$2"; then
+            if grep -qF "$2" <<< "$body"; then
               echo "ok: $3"
             else
               echo "::error::$3 — $BASE$1 لا يحتوي «$2» (نشر قديم؟)"
