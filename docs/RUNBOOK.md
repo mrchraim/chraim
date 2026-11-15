@@ -124,6 +124,11 @@ python tools/audit-security.py
 
 > The functions fail closed: an admin who has not enrolled TOTP loses admin
 > read/write until enrolment works.  That is intentional.
+>
+> **Bootstrap caveat:** while the account has **no verified TOTP factor**, anyone
+> holding the password can enrol *their own* factor and reach `aal2`, so the
+> RLS gate alone does not protect that first window.  Enrol now; if the password
+> may have been exposed, rotate it (and sign out other sessions) before enrolling.
 
 ### Backup
 Free-plan projects have **no** dashboard backups. Use the encrypted weekly workflow /

@@ -78,6 +78,8 @@ dependency-free scanner.
    `supabase/migrations/20261114_portal_admin_aal2.sql` and `20261114_platform_admin_aal2.sql` in the
    matching projects' SQL Editors. **Order matters**: enable MFA first — the migrations fail closed, so
    running them before TOTP is available would lock every admin write until enrolment works.
+   **Bootstrap caveat:** before the account has any verified TOTP factor, a password holder can enrol
+   their own factor and reach `aal2`; enrol now and rotate the password first if it may have leaked.
 3. **Logout other sessions / session lifetime** — shorten refresh tokens to 90 days in Supabase Auth config.
 4. **Backups** — workflow is in place; **blocked on secrets**: create a fresh `SUPABASE_ACCESS_TOKEN`
    or, preferably, set `SUPABASE_DB_URL_PORTAL/PLATFORM/ATLAS` (direct connection, port 5432) and
