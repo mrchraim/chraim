@@ -14,9 +14,8 @@
 #  الاستعمال:
 #    export SUPABASE_DB_URL_PORTAL='postgresql://postgres.<ref>:<pass>@<host>:5432/postgres'
 #    export SUPABASE_DB_URL_PLATFORM='...'
-#    export SUPABASE_DB_URL_ATLAS='...'
-#    export BACKUP_PASSPHRASE='phrase-de-chiffrement'   # اختياري لكن موصى به
-#    ./tools/backup-supabase.sh                         # كل المشاريع
+#    export BACKUP_PASSPHRASE='phrase-de-chiffrement'   # إلزامي للـ auth، موصى به للكل
+#    ./tools/backup-supabase.sh                         # portal + platform
 #    ./tools/backup-supabase.sh portal                  # مشروع واحد فقط
 #
 #  ⚠️  مجلد backups/ مُستبعد من Git (شوف .gitignore) — المستودع عمومي.
@@ -26,7 +25,7 @@ set -euo pipefail
 
 OUT_DIR="${BACKUP_DIR:-backups}"
 PASSPHRASE="${BACKUP_PASSPHRASE:-}"
-ALL_PROJECTS="portal platform atlas"
+ALL_PROJECTS="portal platform"
 
 if ! command -v supabase >/dev/null 2>&1; then
   echo "❌ supabase CLI غير مثبّت. ثبّته أولاً (npm i -g supabase أوbrew install supabase/tap/supabase)." >&2
@@ -83,11 +82,18 @@ dump_project() {
     cat "$tmp/data.sql"
   } > "$OUT_DIR/${name}-${STAMP}.sql"
 
-  # 4) أفضل جهد: حسابات المستخدمين (auth) — قد يرفضه الـ CLI حسب الإصدار
-  if supabase db dump --db-url "$url" --data-only --schema auth -f "$tmp/auth-data.sql" >/dev/null 2>&1; then
-    if [ -s "$tmp/auth-data.sql" ]; then
-      gzip -c "$tmp/auth-data.sql" > "$OUT_DIR/${name}-${STAMP}-auth.sql.gz"
-      echo "   ✅ auth data: $OUT_DIR/${name}-${STAMP}-auth.sql.gz"
+  # 4) أفضل جهد: حسابات المستخدمين (auth) — قد يرفضه الـ CLI حسب الإصدار.
+  #    بيانات auth فيها بريد/هاتف/هاش كلمة المرور: ما كنكتبوهاش أبداً بلا تشفير.
+  local auth_sql="$tmp/auth-data.sql"
+  if supabase db dump --db-url "$url" --data-only --schema auth -f "$auth_sql" >/dev/null 2>&1 && [ -s "$auth_sql" ]; then
+    if [ -n "$PASSPHRASE" ] && command -v openssl >/dev/null 2>&1; then
+      local auth_out="$OUT_DIR/${name}-${STAMP}-auth.sql.gz.enc"
+      gzip -c "$auth_sql" | openssl enc -aes-256-cbc -pbkdf2 -iter 210000 -salt \
+        -pass env:BACKUP_PASSPHRASE -out "$auth_out"
+      sha256sum "$auth_out" 2>/dev/null | tee "$auth_out.sha256" || shasum -a 256 "$auth_out" | tee "$auth_out.sha256"
+      echo "   🔒 auth data: $auth_out"
+    else
+      echo "   ⚠️  auth data: تخطّيناها — PII ما كيتكتبش بلا تشفير. اضبط BACKUP_PASSPHRASE."
     fi
   else
     echo "   ⚠️  ما قدرنا نصدّر schema auth — صدّرو يدوياً من Dashboard → SQL Editor."

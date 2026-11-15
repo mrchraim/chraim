@@ -12,11 +12,11 @@
 
 لكل مشروع على حدة:
 
-| الملف                           | المحتوى                                                                                                     |
-| ------------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| `<project>-<stamp>.sql.gz.enc`  | الأدوار (roles) + المخطط (الجداول، الفهارس، الدوال، **سياسات RLS**) + البيانات — مضغوط ومُشفَّر AES-256-CBC |
-| `<project>-<stamp>-auth.sql.gz` | إن أمكن: بيانات حسابات المستخدمين (`auth`)                                                                  |
-| `*.sha256`                      | بصمة التحقق من سلامة الملف                                                                                  |
+| الملف                               | المحتوى                                                                                                     |
+| ----------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| `<project>-<stamp>.sql.gz.enc`      | الأدوار (roles) + المخطط (الجداول، الفهارس، الدوال، **سياسات RLS**) + البيانات — مضغوط ومُشفَّر AES-256-CBC |
+| `<project>-<stamp>-auth.sql.gz.enc` | إن أمكن: بيانات حسابات المستخدمين (`auth`) — **مشفّرة بنفس العبارة السرية** (فيها بريد/هاتف/هاش)            |
+| `*.sha256`                          | بصمة التحقق من سلامة الملف                                                                                  |
 
 المشروعان المُداران من حساب المستودع:
 
@@ -44,9 +44,10 @@
 
 ### أ) سلسلة الاتصال لكل مشروع
 
-الدشبورد → المشروع → **Connect** → تبويب **Direct connection** (المنفذ `5432`)
-→ انسخ الـ URI وبدّل `[YOUR-PASSWORD]` بكلمة مرور قاعدة البيانات.
-**لا تستعمل Session pooler (6543)** مع `pg_dump` — الـ pooling كيكسر التصدير.
+الدشبورد → المشروع → **Connect** → تبويب **Session pooler** → انسخ الـ URI
+(المنفذ `5432`، الصيغة `postgres.<ref>@aws-0-<region>.pooler.supabase.com`)
+وبدّل كلمة المرور. **ماشي Direct connection** — هاد الأخير IPv6 فقط وGitHub
+runners كيخدمو IPv4. و**ماشي Transaction pooler (6543)** — كيكسر `pg_dump`.
 
 ### ب) ضبط الأسرار من سطر الأوامر
 
@@ -78,13 +79,14 @@ gh secret set BACKUP_PASSPHRASE        --body "عبارة-سريحة-طويلة-
 ```bash
 export SUPABASE_DB_URL_PORTAL='postgresql://...'
 export BACKUP_PASSPHRASE='...'
-bash tools/backup-supabase.sh            # كل المشاريع
+bash tools/backup-supabase.sh            # portal + platform
 bash tools/backup-supabase.sh portal     # مشروع واحد
 BACKUP_DIR=/chemin/hors/projet bash tools/backup-supabase.sh
 ```
 
 المتطلبات: `supabase` CLI + Docker + `openssl` + `gzip`.
-بدون `BACKUP_PASSPHRASE` السكربت كينتج `.sql` **غير مشفّر** مع تنبيه.
+بدون `BACKUP_PASSPHRASE` السكربت كيكتب `.sql` **غير مشفّر** مع تنبيه،
+وكيتخطّى ملف `auth` كاملةً (PII ما كيتكتبش بلا تشفير).
 
 ---
 
@@ -98,13 +100,20 @@ openssl enc -d -aes-256-cbc -pbkdf2 -iter 210000 -in portal-20261114T030000Z.sql
 # على مشروع جديد/فارغ:
 psql "$NEW_DB_URL" --single-transaction --variable ON_ERROR_STOP=1 \
   --file portal.sql
+
+# بيانات auth (إن وُجدت) — مشفّرة بنفس العبارة:
+openssl enc -d -aes-256-cbc -pbkdf2 -iter 210000 \
+  -in portal-20261114T030000Z-auth.sql.gz.enc \
+  -pass env:BACKUP_PASSPHRASE | gunzip > portal-auth.sql
+psql "$NEW_DB_URL" --single-transaction --variable ON_ERROR_STOP=1 \
+  --file portal-auth.sql
 ```
 
 نقاط مهمة عند الاسترجاع:
 
-- **`auth.users` مضمّن؟** إن خرج ملف `-auth.sql.gz` استرجِعه في آخره.
-  كلمات المرور محفوظة مُجزّأة (bcrypt) فتبقى صالحة، لكن **JWT secret جديد**
-  يعني إعادة تسجيل دخول الجميع.
+- **`auth.users` مضمّن؟** إن خرج ملف `-auth.sql.gz.enc` فكّ تشفيره واسترجِعه
+  في الآخر. كلمات المرور محفوظة مُجزّأة (bcrypt) فتبقى صالحة، لكن **JWT secret
+  جديد** يعني إعادة تسجيل دخول الجميع.
 - **مفاتيح API**: `anon`/`service_role` الجديدة تُولَّد من الدشبورد وتُستبدل في
   `supabase-config.js` و `platform/js/config.js`.
 - **قبل استيراد البيانات** نفّذ:
