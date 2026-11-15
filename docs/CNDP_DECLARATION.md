@@ -144,7 +144,7 @@
 
 | # | المُستأجر / المتعهد | الدور | المعطيات المعنية | الولاية / النقل | الأساس التعاوضي (DPA) |
 |---|---|---|---|---|---|
-| 1 | **Supabase, Inc.** | استضافة قاعدة البيانات + المصادقة (Auth) + الملفات (Storage) | الاسم، البريد، تفضيلات، سجل النشاط، الملفات المرفوعة | الولايات المتحدة / منطقة AWS المُعلَنة في الدشبورد | [Supabase Terms](https://supabase.com/terms-of-service) + [DPA](https://supabase.com/dpa) |
+| 1 | **Supabase, Inc.** | استضافة قاعدة البيانات + المصادقة (Auth) + الملفات (Storage) | الاسم، البريد، تفضيلات، سجل النشاط، الملفات المرفوعة | **الاتحاد الأوروبي (AWS):** portal `eu-north-1` (ستوكهولم) · platform `eu-west-1` (أيرلندا) — مُؤكَّد 2026-11-15 | [Supabase Terms](https://supabase.com/terms-of-service) + [DPA](https://supabase.com/dpa) |
 | 2 | **Cloudflare, Inc.** | استضافة الموقع (Pages) + CDN + TLS | سجلات الاتصال المُعمَّمة جزئياً (لا PII مقصود) | الولايات المتحدة | [Cloudflare DPA](https://www.cloudflare.com/dpa/) |
 | 3 | **GitHub (Microsoft)** | استضافة الشيفرة المصدرية (مستودع عمومي) | شيفرة فقط — **لا معطيات شخصية** (مُمنوع بـ CI secret-scan) | الولايات المتحدة | [GitHub Terms](https://docs.github.com/site-policy) |
 | — | أي مُستأجر آخر | — | — | — | **يُبلَّغ CNDP بأي إضافة** |
@@ -163,7 +163,7 @@
 | Annulation du transfert ? | Non (النقل مستمر بالطبيعة: استضافة سحابية) |
 | Nature des données transférées | بيانات تعريفية (اسم، بريد)، سجل نشاط، ملفات تعليمية مرفوعة |
 | Catégorie des personnes | طلبة (+ المسؤول) |
-| Pays de destination | **يُؤكَد من الدشبورد**: Supabase → الدشبورد ← Project Settings ← General ← *Region*؛ Cloudflare/GitHub → الولايات المتحدة |
+| Pays de destination | **Supabase → الاتحاد الأوروبي:** portal `eu-north-1` (السويد) · platform `eu-west-1` (أيرلندا) — مُؤكَّد 2026-11-15؛ Cloudflare/GitHub → الولايات المتحدة |
 | Finalité du transfert | تشغيل المنصة (استضافة، مصادقة، تخزين) |
 | Identification du destinataire | Supabase, Inc. / Cloudflare, Inc. (انظر القسم 3) |
 | **الأساس القانوني** (الفصل 44 — هل الدولة ضمن قائمة *protection suffisante*؟) | حسب [القرار 236-2015](https://www.cndp.ma/wp-content/uploads/2023/01/deliberation-n-236-2015-18-12-2015.pdf) (القائمة تشمل دول الاتحاد الأوروبي ونظيراتها). إذا كانت الوجهة **خارجها** → يستعمل أحد ثلاثة أسس الفصل 44:<br>• **clauses contractuelles** بين المسؤول والمُستأجر (الأساس الأقوى هنا: DPA + شروط الخدمة)، و/أو<br>• **consentement exprès** عند التسجيل (مُضمَّن في checkbox الموافقة)، و/أو<br>• règles d'entreprise contraignantes (لا تنطبق). |
@@ -192,7 +192,7 @@
 | 3 | آلية عملية لحق **الحذف/التصحيح** مع أجل مكتوب | ⬜ يدوي حالياً عبر البريد — وجب توثيقه وإضافة واجهة حذف ذاتي لاحقاً |
 | 4 | تحديد **مدة احتفاظ** مكتوبة لكل فئة (V) | ⬜ مُقترحة في هذا الملف — وجب اعتمادها في دليل التشغيل |
 | 5 | تعبئة الهوية الشخصية للمسؤول (اسم/عنوان/GSM/طبيعة النشاط/Code Activité) | ⬜ يدوي — **حقل إلزامي في F-211** |
-| 6 | تأكيد **منطقة استضافة Supabase** وبلد التخزين الفعلي | ⬜ من الدشبورد (مطلوب في F-118) |
+| 6 | تأكيد **منطقة استضافة Supabase** وبلد التخزين الفعلي | ✅ **eu-north-1 + eu-west-1** (2026-11-15) — مطلوب في F-118 |
 | 7 | نسخ شروط المُستأجرَين مطبوعة كـ «contrat de sous-traitance avec clauses de confidentialité» | ⬜ تحميل PDF من روابط القسم 3 |
 | 8 | تعيين بديل تواصل (هاتف) + التزام بأجل الرد | ⬜ يُملأ في F-211 وصفحة «تواصل معنا» |
 

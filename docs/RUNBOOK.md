@@ -8,6 +8,7 @@
 ## 1. Deployment
 
 ### Build
+
 ```bash
 python tools/build-dist.py --out dist --clean
 python tools/audit-links.py --root dist
@@ -15,12 +16,14 @@ python tools/audit-security.py
 ```
 
 ### Deploy to Cloudflare Pages
+
 1. Push to `main` branch (triggers CI)
 2. CI runs: lint → test → build → audit-links → audit-security → gitleaks
 3. Cloudflare Pages deploys from `dist/` directory
 4. Verify at https://chraim.pages.dev
 
 ### Rollback
+
 1. Identify last known good commit: `git log --oneline -10`
 2. Revert: `git revert <commit-hash>` (creates new commit)
 3. Push to main: `git push origin main`
@@ -34,6 +37,7 @@ python tools/audit-security.py
 ## 2. Secret Rotation
 
 ### If a secret is leaked:
+
 1. **Immediately** revoke the leaked secret in its service (Supabase, Cloudflare, GitHub)
 2. Generate a new secret
 3. Update GitHub Secrets / Cloudflare env vars
@@ -43,6 +47,7 @@ python tools/audit-security.py
 7. Notify team
 
 ### Supabase Key Rotation
+
 1. Go to Supabase Dashboard → Settings → API
 2. Generate new anon key
 3. Update `supabase-config.js` and `platform/js/config.js`
@@ -50,6 +55,7 @@ python tools/audit-security.py
 5. Deploy
 
 ### Cloudflare API Token Rotation
+
 1. Go to Cloudflare Dashboard → My Profile → API Tokens
 2. Revoke old token
 3. Create new token with minimal permissions
@@ -61,14 +67,16 @@ python tools/audit-security.py
 ## 3. Incident Response
 
 ### Severity Levels
-| Level | Description | Response Time |
-|-------|-------------|---------------|
-| P1 | Site down, data breach | Immediate |
-| P2 | Major feature broken | 4 hours |
-| P3 | Minor issue | 24 hours |
-| P4 | Cosmetic | Next sprint |
+
+| Level | Description            | Response Time |
+| ----- | ---------------------- | ------------- |
+| P1    | Site down, data breach | Immediate     |
+| P2    | Major feature broken   | 4 hours       |
+| P3    | Minor issue            | 24 hours      |
+| P4    | Cosmetic               | Next sprint   |
 
 ### Incident Checklist
+
 1. **Detect:** Monitor alerts, user reports, CI failures
 2. **Assess:** Determine severity and impact
 3. **Contain:** Disable affected feature if needed
@@ -79,12 +87,14 @@ python tools/audit-security.py
 ### Common Incidents
 
 #### Site Down
+
 1. Check Cloudflare Pages status
 2. Check DNS resolution
 3. Check last deployment
 4. Rollback if needed (see Rollback section)
 
 #### Data Breach
+
 1. Revoke all API keys immediately
 2. Disable Supabase project if needed
 3. Notify affected users
@@ -93,11 +103,13 @@ python tools/audit-security.py
 6. Rotate all secrets
 
 #### Broken Links
+
 1. Run `python tools/audit-links.py --root dist`
 2. Fix broken links
 3. Rebuild and redeploy
 
 #### CSP Violations
+
 1. Check browser console for CSP errors
 2. Update `_headers` if needed
 3. Test with CSP Report-Only first
@@ -108,33 +120,42 @@ python tools/audit-security.py
 ## 4. Supabase Operations
 
 ### Apply Migration
+
 1. Open Supabase SQL Editor **in the matching project** (portal `idpafbyefrywjixskvvu` / platform `uftqrgpzllvqlaztcjbq`)
 2. Paste migration file contents
 3. Run
 4. Verify with test queries
 
-### 2FA enforcement (aal2) — order matters
-1. Authentication → **MFA → enable TOTP** on both projects (otherwise no `aal2` session can exist).
-2. Enrol the admin account once at `https://chraim.pages.dev/admin.html` and
-   `https://chraim.pages.dev/platform/login.html`.
-3. Run `supabase/migrations/20261114_portal_admin_aal2.sql` in the **portal** project
-   and `20261114_platform_admin_aal2.sql` in the **platform** project.
-4. Verify: with an `aal1` token `select public.is_admin();` must return `false`;
-   after the TOTP challenge it returns `true`.  Students are unaffected.
+### 2FA enforcement (aal2) — حالة 2026-11-15
 
-> The functions fail closed: an admin who has not enrolled TOTP loses admin
-> read/write until enrolment works.  That is intentional.
+**Both migrations are applied live** (portal `idpafbyefrywjixskvvu`, platform
+`uftqrgpzllvqlaztcjbq`). The only remaining step is owner enrolment:
+
+1. Authentication → **MFA → TOTP** must be enabled on both projects (otherwise no
+   `aal2` session can exist).
+2. Enrol the admin account at `https://chraim.pages.dev/admin.html` and
+   `https://chraim.pages.dev/platform/login.html` — **do it now**: until a verified
+   factor exists, every admin session is `aal1` and the RLS gate blocks admin
+   reads/writes by design.
+3. Verify: with an `aal1` token `select public.is_admin();` must return `false`;
+   after the TOTP challenge it returns `true`. Students are unaffected.
+
+> **New environment / re-run order:** enable TOTP → enrol → then run the two
+> migrations. Running them first locks admin access until enrolment works.
 >
 > **Bootstrap caveat:** while the account has **no verified TOTP factor**, anyone
-> holding the password can enrol *their own* factor and reach `aal2`, so the
-> RLS gate alone does not protect that first window.  Enrol now; if the password
+> holding the password can enrol _their own_ factor and reach `aal2`, so the
+> RLS gate alone does not protect that first window. Enrol now; if the password
 > may have been exposed, rotate it (and sign out other sessions) before enrolling.
 
 ### Backup
-Free-plan projects have **no** dashboard backups. Use the encrypted weekly workflow /
-`tools/backup-supabase.sh` — see `docs/BACKUPS.md` (secrets, restore drill, limits).
+
+Free-plan projects have **no** dashboard backups. The encrypted weekly workflow is
+**green since 2026-11-15** (run `43752923040`, portal + platform; `auth` dumps encrypted
+too). See `docs/BACKUPS.md` (secrets, restore drill, `atlas` 403 limit).
 
 ### Restore
+
 1. Decrypt and gunzip the artifact (`openssl enc -d … | gunzip`), or download it from Actions.
 2. Restore into a fresh project with `psql --single-transaction --variable ON_ERROR_STOP=1 --file …`
 3. Follow the checklist in `docs/BACKUPS.md` §4 (revoke default privileges first, re-issue API keys,
@@ -145,6 +166,7 @@ Free-plan projects have **no** dashboard backups. Use the encrypted weekly workf
 ## 5. Monitoring
 
 ### What to Monitor
+
 - Site availability (uptime)
 - Error rates (404, 500)
 - Lighthouse scores (performance, accessibility)
@@ -153,6 +175,7 @@ Free-plan projects have **no** dashboard backups. Use the encrypted weekly workf
 - Supabase RLS (monthly review)
 
 ### Tools
+
 - Cloudflare Analytics
 - GitHub Actions CI
 - Lighthouse CI (in CI workflow)
@@ -163,10 +186,10 @@ Free-plan projects have **no** dashboard backups. Use the encrypted weekly workf
 
 ## 6. Contacts
 
-| Role | Contact |
-|------|---------|
-| Project Owner | Mohamed Chraim |
-| Repository | https://github.com/mrchraim/chraim |
-| Live Site | https://chraim.pages.dev |
-| Supabase (Portal) | idpafbyefrywjixskvvu.supabase.co |
-| Supabase (Platform) | uftqrgpzllvqlaztcjbq.supabase.co |
+| Role                | Contact                            |
+| ------------------- | ---------------------------------- |
+| Project Owner       | Mohamed Chraim                     |
+| Repository          | https://github.com/mrchraim/chraim |
+| Live Site           | https://chraim.pages.dev           |
+| Supabase (Portal)   | idpafbyefrywjixskvvu.supabase.co   |
+| Supabase (Platform) | uftqrgpzllvqlaztcjbq.supabase.co   |

@@ -1,6 +1,7 @@
 # Security Checklist (Phase 2)
 
 ## Supabase
+
 - [ ] RLS enabled on all tables.
 - [ ] Default deny policies.
 - [ ] No public write.
@@ -9,11 +10,13 @@
 - [ ] Security Advisor clean.
 
 ## Secrets
+
 - [ ] No secrets in code (only anon key).
 - [ ] GitHub Secrets for CF token/account.
 - [ ] Rotate if leaked (check git history).
 
 ## Headers (_headers)
+
 - [ ] CSP (unsafe-inline still needed for inline scripts).
 - [ ] HSTS.
 - [ ] X-Frame-Options: DENY.
@@ -22,19 +25,24 @@
 - [ ] Permissions-Policy.
 
 ## Admin
-- [x] Supabase Auth + MFA (TOTP client flow + `has_aal2()` in RLS — enable TOTP and apply the two `20261114_*_aal2.sql` migrations).
+
+- [x] Supabase Auth + MFA (TOTP client flow + `has_aal2()` in RLS — both `20261114_*_aal2.sql` migrations applied live 2026-11-15; owner TOTP enrolment still pending).
+- [x] Encrypted weekly backups for portal + platform (`43752923040`; `atlas` excluded — 403, see `docs/BACKUPS.md`).
 - [ ] Cloudflare Access (second layer).
 - [ ] Rate limiting / brute-force protection.
 - [ ] No admin links in public pages.
 
 ## Privacy
+
 - [ ] privacy/terms pages (ar/fr).
 - [ ] Minimal data collection.
 
 ## CI
+
 - [ ] Dependabot.
 - [ ] Secret scanning (gitleaks).
 - [ ] Lint/test/build.
 
 ## Redirects 301
+
 - [ ] Old domains → chraim.pages.dev (Cloudflare Redirect Rules, external config).
