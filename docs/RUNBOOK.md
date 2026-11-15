@@ -108,20 +108,32 @@ python tools/audit-security.py
 ## 4. Supabase Operations
 
 ### Apply Migration
-1. Open Supabase SQL Editor
+1. Open Supabase SQL Editor **in the matching project** (portal `idpafbyefrywjixskvvu` / platform `uftqrgpzllvqlaztcjbq`)
 2. Paste migration file contents
 3. Run
 4. Verify with test queries
 
+### 2FA enforcement (aal2) — order matters
+1. Authentication → **MFA → enable TOTP** on both projects (otherwise no `aal2` session can exist).
+2. Enrol the admin account once at `https://chraim.pages.dev/admin.html` and
+   `https://chraim.pages.dev/platform/login.html`.
+3. Run `supabase/migrations/20261114_portal_admin_aal2.sql` in the **portal** project
+   and `20261114_platform_admin_aal2.sql` in the **platform** project.
+4. Verify: with an `aal1` token `select public.is_admin();` must return `false`;
+   after the TOTP challenge it returns `true`.  Students are unaffected.
+
+> The functions fail closed: an admin who has not enrolled TOTP loses admin
+> read/write until enrolment works.  That is intentional.
+
 ### Backup
-1. Supabase Dashboard → Database → Backups
-2. Download backup
-3. Store securely (encrypted)
+Free-plan projects have **no** dashboard backups. Use the encrypted weekly workflow /
+`tools/backup-supabase.sh` — see `docs/BACKUPS.md` (secrets, restore drill, limits).
 
 ### Restore
-1. Supabase Dashboard → Database → Backups
-2. Select backup
-3. Restore (creates new project or overwrites)
+1. Decrypt and gunzip the artifact (`openssl enc -d … | gunzip`), or download it from Actions.
+2. Restore into a fresh project with `psql --single-transaction --variable ON_ERROR_STOP=1 --file …`
+3. Follow the checklist in `docs/BACKUPS.md` §4 (revoke default privileges first, re-issue API keys,
+   restore `auth` data last, then run a smoke test).
 
 ---
 

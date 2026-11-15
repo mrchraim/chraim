@@ -43,8 +43,8 @@
 
 ### 3.3 Authentication Bypass
 - **Vector:** Admin panel access, role escalation
-- **Controls:** Supabase Auth, RLS on admins table, is_admin() function, Cloudflare Access (proposed)
-- **Residual risk:** Medium (no MFA enforced, no Cloudflare Access yet)
+- **Controls:** Supabase Auth with **TOTP MFA enforced server-side** (`has_aal2()` ANDed into `is_admin()`/`is_editor()`), RLS on admins table, Cloudflare Access (proposed)
+- **Residual risk:** Low–Medium (MFA code + migrations in place; enable TOTP in Supabase Auth and apply the two aal2 migrations; no Cloudflare Access yet)
 
 ### 3.4 Data Leakage
 - **Vector:** RLS bypass, storage policy misconfiguration, API enumeration
@@ -74,15 +74,15 @@
 | HSTS | ✅ Implemented | max-age=31536000 |
 | X-Frame-Options | ✅ DENY | |
 | RLS (platform) | ✅ Hardened | Migration applied |
-| RLS (portal) | ⚠️ Partial | Migration created, not applied |
+| RLS (portal) | ✅ Applied | Verified live via PostgREST probes (2026-11-14) |
 | FORCE RLS | ⚠️ Partial | Platform only |
-| MFA | ❌ Not implemented | Proposed |
+| MFA | ✅ Implemented | TOTP client flow + `has_aal2()` in RLS (apply migrations, enable TOTP) |
 | Cloudflare Access | ❌ Not implemented | Proposed for /admin |
 | Rate limiting | ❌ Not implemented | Proposed |
 | Audit logging | ❌ Not implemented | Proposed |
-| Secret scanning | ✅ CI (gitleaks) | |
+| Secret scanning | ✅ CI (`tools/secret-scan.py`) | Deterministic, no external action |
 | Dependency scanning | ✅ Dependabot | |
-| Backup/restore | ❌ Not documented | RUNBOOK.md needed |
+| Backup/restore | ✅ Documented | `docs/BACKUPS.md` + weekly encrypted workflow (needs secrets) |
 
 ## 5. Recommendations
 

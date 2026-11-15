@@ -22,7 +22,7 @@
 - [ ] Permissions-Policy.
 
 ## Admin
-- [ ] Supabase Auth + MFA.
+- [x] Supabase Auth + MFA (TOTP client flow + `has_aal2()` in RLS — enable TOTP and apply the two `20261114_*_aal2.sql` migrations).
 - [ ] Cloudflare Access (second layer).
 - [ ] Rate limiting / brute-force protection.
 - [ ] No admin links in public pages.
