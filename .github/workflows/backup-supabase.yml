@@ -29,8 +29,10 @@ jobs:
             env_key: SUPABASE_DB_URL_PORTAL
           - name: platform
             env_key: SUPABASE_DB_URL_PLATFORM
-          - name: atlas
-            env_key: SUPABASE_DB_URL_ATLAS
+          # ملاحظة: مشروع atlas (pvoenvxinkipgpnddumt) عندو 403 من حساب
+          # المستودع — ماشي تحت أي org يملكها. ما كنعوضوهش بـ secret فارغ
+          # حتى ما يبقاش الويركفلو أحمر كل أسبوع بلا فايدة.
+          # راجع docs/BACKUPS.md §1.
 
     steps:
       - name: Checkout repository

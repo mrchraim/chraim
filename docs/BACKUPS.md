@@ -12,21 +12,28 @@
 
 لكل مشروع على حدة:
 
-| الملف | المحتوى |
-|---|---|
-| `<project>-<stamp>.sql.gz.enc` | الأدوار (roles) + المخطط (الجداول، الفهارس، الدوال، **سياسات RLS**) + البيانات — مضغوط ومُشفَّر AES-256-CBC |
-| `<project>-<stamp>-auth.sql.gz` | إن أمكن: بيانات حسابات المستخدمين (`auth`) |
-| `*.sha256` | بصمة التحقق من سلامة الملف |
+| الملف                           | المحتوى                                                                                                     |
+| ------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| `<project>-<stamp>.sql.gz.enc`  | الأدوار (roles) + المخطط (الجداول، الفهارس، الدوال، **سياسات RLS**) + البيانات — مضغوط ومُشفَّر AES-256-CBC |
+| `<project>-<stamp>-auth.sql.gz` | إن أمكن: بيانات حسابات المستخدمين (`auth`)                                                                  |
+| `*.sha256`                      | بصمة التحقق من سلامة الملف                                                                                  |
 
-المشاريع الثلاثة:
+المشروعان المُداران من حساب المستودع:
 
-| الاسم | Project ref | يحتوي |
-|---|---|---|
-| `portal` | `idpafbyefrywjixskvvu` | `announcements`, `exam_files`, `admins` |
+| الاسم      | Project ref            | يحتوي                                                |
+| ---------- | ---------------------- | ---------------------------------------------------- |
+| `portal`   | `idpafbyefrywjixskvvu` | `announcements`, `exam_files`, `admins`              |
 | `platform` | `uftqrgpzllvqlaztcjbq` | `exams`, `profiles`, `activity_log`, `announcements` |
-| `atlas` | `pvoenvxinkipgpnddumt` | `legal_documents`, `articles`, `laws`, `sources` |
+
+> **استثناء معروف — `atlas` (`pvoenvxinkipgpnddumt`):**
+> هاد المشروع تابع لتكامل MCP للقراءة فقط، و`GET /v1/projects/pvoenvxinkipgpnddumt`
+> كيرجع **403** («Your account does not have the necessary privileges»)، وماشي
+> داخل أي org يملكها حساب `cheraimmohamed20@gmail.com`. لهذا **خرج من matrix
+> الويركفلو** بدل ما يبقى أحمر كل أسبوع بلا فايدة. إلا تحلّ ليك الصلاحية:
+> ضبط `SUPABASE_DB_URL_ATLAS` وزيدو في `.github/workflows/backup-supabase.yml`.
 
 > ⚠️ كاين نقطتان خارج نطاق `pg_dump`:
+>
 > 1. كائنات **Storage** (ملفات `edu-files`…) — تُصدَّر منفصلة.
 > 2. المخططات `auth`/`storage` كيستثناها الـ CLI افتراضياً؛ السكربت كيجرّبها
 >    بأفضل جهد (`--schema auth`) وإن رفض، صدّرها يدوياً.
@@ -44,9 +51,8 @@
 ### ب) ضبط الأسرار من سطر الأوامر
 
 ```bash
-gh secret set SUPABASE_DB_URL_PORTAL   --body "postgresql://postgres.idpafbyefrywjixskvvu:PASSWORD@aws-0-XX.pooler.supabase.com:5432/postgres"
-gh secret set SUPABASE_DB_URL_PLATFORM --body "postgresql://postgres.uftqrgpzllvqlaztcjbq:PASSWORD@aws-0-XX.pooler.supabase.com:5432/postgres"
-gh secret set SUPABASE_DB_URL_ATLAS    --body "postgresql://postgres.pvoenvxinkipgpnddumt:PASSWORD@aws-0-XX.pooler.supabase.com:5432/postgres"
+gh secret set SUPABASE_DB_URL_PORTAL   --body "postgresql://postgres.idpafbyefrywjixskvvu:PASSWORD@aws-0-eu-north-1.pooler.supabase.com:5432/postgres"
+gh secret set SUPABASE_DB_URL_PLATFORM --body "postgresql://postgres.uftqrgpzllvqlaztcjbq:PASSWORD@aws-0-eu-west-1.pooler.supabase.com:5432/postgres"
 gh secret set BACKUP_PASSPHRASE        --body "عبارة-سريحة-طويلة-وحيدة-الاستخدام"
 ```
 
@@ -96,25 +102,25 @@ psql "$NEW_DB_URL" --single-transaction --variable ON_ERROR_STOP=1 \
 
 نقاط مهمة عند الاسترجاع:
 
-* **`auth.users` مضمّن؟** إن خرج ملف `-auth.sql.gz` استرجِعه في آخره.
+- **`auth.users` مضمّن؟** إن خرج ملف `-auth.sql.gz` استرجِعه في آخره.
   كلمات المرور محفوظة مُجزّأة (bcrypt) فتبقى صالحة، لكن **JWT secret جديد**
   يعني إعادة تسجيل دخول الجميع.
-* **مفاتيح API**: `anon`/`service_role` الجديدة تُولَّد من الدشبورد وتُستبدل في
+- **مفاتيح API**: `anon`/`service_role` الجديدة تُولَّد من الدشبورد وتُستبدل في
   `supabase-config.js` و `platform/js/config.js`.
-* **قبل استيراد البيانات** نفّذ:
+- **قبل استيراد البيانات** نفّذ:
   ```sql
   ALTER DEFAULT PRIVILEGES IN SCHEMA public REVOKE ALL ON TABLES FROM anon, authenticated;
   ```
   (الأوراق المُصدَّر كيرث كل الصلاحيات افتراضياً).
-* **اختبار إلزامي**: استرجاع على مشروع تجريبي قبل الاعتماد عليه في كارثة حقيقية.
-* **الكائنات (Storage)**: تنزَّل يدوياً من الدشبورد أو عبر `supabase storage`.
+- **اختبار إلزامي**: استرجاع على مشروع تجريبي قبل الاعتماد عليه في كارثة حقيقية.
+- **الكائنات (Storage)**: تنزَّل يدوياً من الدشبورد أو عبر `supabase storage`.
 
 ---
 
 ## 5) حالة التحقق
 
-| التاريخ | النتيجة |
-|---|---|
+| التاريخ    | النتيجة                                                                                           |
+| ---------- | ------------------------------------------------------------------------------------------------- |
 | 2026-11-14 | الويركفلو مكتوب ومُختبَر نحوياً (`bash -n` ✅). الانتظار: ضبط الأسرار الأربعة قبل أول تشغيل ناجح. |
 
 راجع أيضاً: `docs/SECURITY_AUDIT_2026-11-14.md` (البند 26).
