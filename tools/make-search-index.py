@@ -34,6 +34,9 @@ PAGES = [
     ("الدليل", "directory.html", "وزارات جامعات مذكرات قانون تعليم"),
     ("سياسة الخصوصية", "privacy.html", "خصوصية بيانات"),
     ("شروط الاستعمال", "terms.html", "شروط استخدام"),
+    ("محتوى المواقع الرسمية FEGA/FSJPA", "etablissements/official-content.html", "جمع محتوى الموقعين الرسميين لجامعة ابن زهر (FEGA و FSJPA)"),
+    ("FEGA — كلية الاقتصاد والتدبير بأكادير", "etablissements/fega.html", "ما ورد في fega.uiz.ac.ma — إعلانات وأخبار واستعمالات الزمن"),
+    ("FSJPA — كلية العلوم القانونية والسياسية بأكادير", "etablissements/fsjpa.html", "ما ورد في fsjpa.uiz.ac.ma — إعلانات وأخبار و Poles & Centers والفيديوهات"),
 ]
 
 # مرادفات شائعة يستعملها الطلبة بحسب بادئة الرمز (slug)
