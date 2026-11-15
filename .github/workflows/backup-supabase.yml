@@ -60,7 +60,9 @@ jobs:
           echo "credentials ok"
 
       - name: Install Supabase CLI
-        uses: supabase/setup-supabase@v1
+        uses: supabase/setup-cli@v1
+        with:
+          version: latest
 
       - name: Dump and encrypt
         env:
