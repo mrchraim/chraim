@@ -91,15 +91,22 @@ dependency-free scanner.
 8. **Self-service account deletion** — rights are documented (30-day reply) but executed manually today;
    a "delete my account" flow would close the loop and simplify the CNDP story.
 
-## E. CI status (round of 2026-11-14, code HEAD 1d1eb33)
+## E. CI status (round of 2026-11-14/15, code HEAD 06edef2)
 
 ```
-Deploy to Cloudflare Pages     ✅  success   (chraim.pages.dev updated; privacy notice live)
-CI & Quality Gates             ✅  success   (npm audit, secret-scan PASS on 1 108 files, 1 262 links / 0 broken)
-CHRAIM Quality Gates           ✅  success   (lint, format, 33 unit tests, Lighthouse, axe 0 violations)
-Verify production matches main ✅  success   (dispatched after this push)
+Deploy to Cloudflare Pages     ✅  success   43744988809  (chraim.pages.dev updated)
+CI & Quality Gates             ✅  success   43744988807  (npm audit, secret-scan PASS on 1 112 files, 1 262 links / 0 broken)
+CHRAIM Quality Gates           ✅  success   43744988734  (lint, format, 33 unit tests, Lighthouse, axe 0 violations)
+Verify production matches main ✅  success   43745381099  (dispatched after this push, HEAD 06edef2)
 ```
+
+Live checks after the deploy: `/platform/login.html` serves the consent checkbox and the admin MFA gate,
+`/admin.html` serves the TOTP enrol/challenge code, `/platform/privacy.html` serves the Law 09-08
+mention d'information.
 
 **Supabase backups** — workflow added but **not triggered by push** (schedule Monday 03:23 UTC + manual
 only), so it does not colour the PR badges yet. It will start running red until the four secrets are
 set (`docs/BACKUPS.md`); that failure is intentional and must be treated as a task, not as noise.
+Current repository secrets are only `CLOUDFLARE_ACCOUNT_ID` and `CLOUDFLARE_API_TOKEN` — the first
+scheduled backup (Monday 2026-11-16 03:23 UTC) will fail until `SUPABASE_DB_URL_{PORTAL,PLATFORM,ATLAS}`
+and `BACKUP_PASSPHRASE` are added.
