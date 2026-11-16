@@ -1007,13 +1007,13 @@ async function loadCampusAnnouncements(){
     try{
       const base=String(sb.url).replace(/\/+$/,'');
       const ctrl=new AbortController();const timer=setTimeout(()=>ctrl.abort(),4000);const r=await fetch(base+'/rest/v1/announcements?select=title,body,kind,starts_at,ends_at,status,updated_at&status=eq.published&order=updated_at.desc&limit=50',{headers:{apikey:sb.anonKey,Authorization:'Bearer '+sb.anonKey},cache:'no-store',signal:ctrl.signal});clearTimeout(timer);
-      if(r.ok){const rows=await r.json();if(Array.isArray(rows))items=rows.filter(isAnnLive);}
+      if(r.ok){const rows=await r.json();if(Array.isArray(rows)){const live=rows.filter(isAnnLive);if(live.length)items=live;}}
     }catch(e){}
   }
   // 2) احتياطياً: إعلانات ثابتة مرفقة بالموقع (تضمن نفس المحتوى بلا خادم).
   if(!items){try{const r=await fetch('announcements.json',{cache:'no-store'});if(r.ok){const d=await r.json();if(d&&Array.isArray(d.items))items=d.items.filter(isAnnLive);}}catch(e){}}
   // 3) احتياطياً أخيراً: واجهة الخادم إن كانت متاحة.
-  if(!items){try{const r=await fetch('/api/public/announcements',{cache:'no-store'});if(r.ok){const d=await r.json();if(d&&Array.isArray(d.items))items=d.items.filter(isAnnLive);}}catch(e){}}
+  if(!items){try{const r=await fetch('/api/public/announcements',{cache:'no-store'});if(r.ok){const d=await r.json();if(d&&Array.isArray(d.items)){const live=d.items.filter(isAnnLive);if(live.length)items=live;}}}catch(e){}}
   if(!items){status.textContent=t('ann.error');return}
   _annItems=items; try{_annPaint(items);}catch(e){status.textContent=t('ann.error');}
 }
