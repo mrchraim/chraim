@@ -320,13 +320,14 @@ function renderNews(){
   if (!rows.length && news.items.length) ul.append(el("li", {className:"note", textContent:"ما كاين حتى نتيجة."}));
 }
 $("#nq").addEventListener("input", e => { news.q = e.target.value; renderNews(); });
+const isAnnLive = i => { const e = i && i.ends_at; if (!e) return true; const p = Date.parse(String(e)); return isNaN(p) || p >= Date.now(); };
 async function loadNews(){
   let data = null;
   try { const r = await fetch("announcements.json", {cache:"no-store"}); if (r.ok) data = await r.json(); } catch(e){}
   if (!data) data = EMBEDDED;
   const note = $("#nNote");
   if (!data) { note.textContent = "ما قدرناش نحملو الإعلانات. تأكد بلي الملف announcements.json كاين حدا هاد الصفحة."; note.classList.remove("hidden"); return; }
-  news.items = data.items || [];
+  news.items = (data.items || []).filter(isAnnLive);
   note.textContent = "آخر تحديث: " + (data.updated_at || "").slice(0, 10) + ". تأكد دايماً من المصدر الرسمي.";
   note.classList.remove("hidden");
   renderNews();

@@ -85,4 +85,14 @@
 3. تنفيذ **P1**: تخصيص مسئول بيانات + DPO رسمي (قرار موثق، يوثق في `docs/DECISIONS.md`).
 4. تنفيذ **P2**: طباعة PDF إلى R2/CDN + إحلال `portal.html` بـ lazy-loaded modules.
 
-الحالة العامة يُحدّث فقط بعد قائمة الفحص: `git status` نظيف · `npm test` 42/42 · `python tools/build-dist.py` ✅ · `python tools/audit-links.py` 0 كسر · live HTTP 200.
+الحالة العامة يُحدّث فقط بعد قائمة الفحص: `git status` نظيف · `npm test` 48/48 · `python tools/build-dist.py` ✅ · `python tools/audit-links.py` 0 كسر · live HTTP 200.
+
+## 7) Phase 2 — 2026-11-16 (مراقبة المصادر + توثيق)
+
+- **فحص المصادر الرسمية** — `tools/verify-official-sources.py` (81 URL: من `sources-register.json` و`institutions-database.json` و`university-formations.json` و`announcements.json` و`official-academic-updates-*.json`)؛ الناتج: `docs/SOURCES_STATUS.md` (68 ✅ OK · 1 FORBIDDEN محليًا · 1 404 على جذر supabase تم إصلاحه بإضافة `/auth/v1/health` · 11 ERROR لروابط مؤسسات ذاتية غير قابلة للحل DNS/SSL).
+- **القنوات الحرجة** `uiz.ac.ma/` · `/nos-etablissements` · `preinscription.uiz.ac.ma/institutions` — كلها `200`.
+- **`.github/workflows/source-watch.yml`** جديد: مجدول (الأربعاء 05:15 UTC) + يدوي؛ يفشل عند انهيار قناة حرجة (`--strict`)؛ يرفع التقرير artifact.
+- **`docs/TOP_INSTITUTIONS_OFFICIAL.md`** جديد: الـ 24 رسمية على الصفحة الرسمية (كل slug فُحص اليوم 200) + روابط جامعة ابن زهر الحقيقية + جدول مواقع فرعية غير موثوقة.
+- **الإعلانات المنتهية (`ends_at`) لم تعد تظهر** — `app.js` / `rafiq-altalib.html` / `students-guide.html` + ملف `myuiz-guide.js` لصفحة الـ dead-line (تعرض «انتهى الأجل المذكور …») + إعلانات إعادة التسجيل 2026-2027 الآن مخفية. الاختبار `announcements-live.test.mjs` (6 اختبارات) يثبت السلوك.
+- **Tests: 48** (كانت 42). `sources-register.json` → `updated_on: 2026-11-16` (بوابات Supabase مسجلة بـ health endpoint).
+- مشتر الوفر: `Deploy/…` ستُضاف بعد push.

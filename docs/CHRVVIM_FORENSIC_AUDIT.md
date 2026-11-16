@@ -50,7 +50,7 @@
 - `platform/login.html` (+ `platform/js/auth.js`) — بوابة TOTP للأدمن فقط (الطلبة معفيون).
 - `university-formations.json` — فهرس 382 تكوين (المصدر `uiz.ac.ma/formation`، محدّث 2026-10-17) + `university-formations.js` (مولّد).
 - `institutions-database.json` — 38 سجل (24 listed_official + 7 official_announcement + 7 portal_name_needs_reconciliation) + `.csv` (38/38 row، ids متطابقة) + `.js` (مولّد) — **كل سجل يحمل `official_source_url` + `last_verified: 2026-10-17`**.
-- `announcements.json` — 42 إعلانًا ثابتًا (سياسة التقديم على لوحة التحكم)؛ `ends_at` أقربها 2026-11-15T18:00.
+- `announcements.json` — 42 إعلانًا ثابتًا (سياسة التقديم على لوحة التحكم)؛ **إعانات إعادة التسجيل 2026-2027 (أقرب `ends_at` = 2026-11-15T18:00) لم تعد تظهر في الواجهة منذ 2026-11-16** — انظر Phase 2.
 - `assets/legal-encyclopedia-data.js` — 40 موضوع (نسخة مُفعَّلة؛ نسخة الجذر القديمة **حُذفت** 2026-11-15).
 - `assets/search-index.json` — الفهرس اليدوي (52 → **55** بعد إضافة FEGA/FSJPA 2026-11-15).
 - `supabase/migrations/20261114_*_aal2.sql` — `has_aal2()` مدمجة في `is_admin()` (+`is_editor()` في platform) — **مطبّقة في الإنتاج 2026-11-15 ومُتحقق منها**.
@@ -75,7 +75,7 @@
 ## 5) الوظائف الجزئية
 
 - **المساعد الذكي** — grounding جيد، لكن التغطية = 52→55 صفحة مربوطة فقط؛ لا يوجد خوارزمية توليف قوية ولا تقييم مستمر للإجابات.
-- **الإعلانات الثابتة** — 42 إعلاناً مُجدَّلة التواريخ؛ أقرب `ends_at` = **2026-11-15T18:00** (اليوم) — العملية تموت بصمت بعده (لا تنبيه).
+- **الإعلانات الثابتة** — 42 إعلاناً مُجدَّلة التواريخ؛ أقرب `ends_at` = **2026-11-15T18:00** (اليوم) — **تم إخفاؤها من الواجهة منذ 2026-11-16**؛ بقيت عملية البديل (banner تلقائي + إشعار لوحة التحكم) قيد التنفيذ.
 - **البحث** — لا تحمل تسامح الأخطاء الإملائية ولا التطبيع الحقيقي خارج العربية/الفرنسية؛ الامتداد يدوي.
 - **البوابة** — 220 KB inline، الزيارة الأولى ثقيلة؛ لا يوجد lazy-loading للبيانات (حمّال التجميعات عند الطلب فقط).
 - **Git في المستودع** — `archive/` (104 MB) يُترجّح مع كل clone؛ لا تُستثنى التبعيات من `.gitignore` (غير ممكن: المحتوى تاريخي).
@@ -150,7 +150,7 @@
 - `axe/Lighthouse` في CI على 3 مسارات فقط — الباقي غير مدقّق.
 - dark mode على etablissements ✓ / على الصفحات الرئيسية جزئية.
 - Ctrl+K index بيدوي (غياب الإدخالات تُرى) — أُضيفت FEGA/FSJPA/اليوم • لا يوجد search tolerant للأخطاء الإملائية.
-- إعلانات تتدهور بعد 2026-11-15T18:00 دون تنبيه.
+- إعلانات ما بعد 2026-11-15T18:00: **أُصلح** — المنتهية مخفيَّة؛ يبقى بديل "banner + إشعار لوحة" للإخفاء التلقائي التام.
 
 ## 14) مخاطر التوسع (إلى الوطنية)
 
@@ -174,7 +174,7 @@
 | #      | المهمة                                                                              | السبب                                                | الحالة          |
 | ------ | ----------------------------------------------------------------------------------- | ---------------------------------------------------- | --------------- |
 | **P0** | المالك يسجّل TOTP في `admin.html` و`platform/login.html`                            | كل جلسة admin اليوم aal1 → الوصول مغلق (fail-closed) | ⛔ يدوي         |
-| **P1** | مراقب منتهي الصلاحية للإعلانات (banner تلقائي + مراقبة)                             | أقرب `ends_at` = اليوم 2026-11-15T18:00              | ⏳ 08-إجراءات   |
+| **P1** | ✅ تم: عروض الإعلانات المنتهية مأخفاة تلقائيًا (`isAnnLive`)؛ يبقى banner + إشعار لوحة التحكم للتحقق الكامل | — | ✅ جزئيًا |
 | **P1** | CNDP F-211 + F-118 + نقل/حذف البيانات                                               | الالتزام القانوني                                    | ⏳ مالك + محامي |
 | **P2** | نقل PDFs إلى R2 + تحديث روابط + إعادة قياس Lighthouse (CI على أكثر صفحات)           | dist 40 MB؛ 35 MB PDFs                               | 🔧 بعد قرار R2  |
 | **P2** | تقليص `portal.html` (Lazy-loading للبيانات، نقل المنطق إلى `assets/portal-page.js`) | 220 KB أول تحميل                                     | 🔧 تدريجي       |
@@ -193,11 +193,21 @@
 
 ---
 
+## Phase 2 (2026-11-16) — مراقبة المصادر والتحقق
+
+- `tools/verify-official-sources.py` جديد: يفحص **كل رابط رسمي مسجل** (81 رابطًا من `sources-register.json` + `institutions-database.json` + `university-formations.json` + `announcements.json`) — HEAD ثم GET بمدى 2048 بايت؛ **reachability فقط**، لا تحقق من المحتوى؛ يكتب `docs/SOURCES_STATUS.md`.
+- **القنوات الحرجة كلها 200:** `uiz.ac.ma/` · `/nos-etablissements` · `preinscription.uiz.ac.ma/institutions`.
+- `.github/workflows/source-watch.yml` جديد: مجدول أسبوعي (الأربعاء 05:15 UTC) + يدوي؛ يفشل الـ run لو تعذرت أي قناة حرجة (`--strict`)؛ يرفع التقرير كـ artifact 30 يومًا.
+- `docs/TOP_INSTITUTIONS_OFFICIAL.md` جديد: المؤسسات الـ **24** المدرجة على الصفحة الرسمية (فُحِصت اليوم — الـ slugs كلها `200`) مع روابط `uiz.ac.ma` الحقيقية.
+- **اكتشاف حرج:** 6 روابط مواقع ذاتية للمؤسسات لا تُحل (DNS) أو شهاداتها معطلة (`fsa.ac.ma`, `fsjes-agadir.org`, `fpo.ma`, `ensiasdt.uiz.ac.ma`, `chariaasmara.com`, `cuam.uiz.ac.ma` → 502, `ims.uiz.ma`). تبقى مُسجلة لكن أُشير إليها في التقرير بأنها **غير موثوقة**؛ المرجع المعتمد هو `uiz.ac.ma/nos-etablissements`.
+- **إصلاح الإعلانات المنتهية:** `loadCampusAnnouncements` (app.js) + `rafiq-altalib.html` + `students-guide.html` لم تعد تعرض ما انتهى `ends_at` الخاص به؛ صفحة MY-UIZ guide تعرض «انتهى الأجل المذكور …» بدل تاريخ ماضٍ (`assets/cx-myuiz-guide.js`)؛ إعلانات «إعادة التسجيل 2026-2027» (آخر أجل 2026-11-15T18:00) لم تعد تظهر.
+- Unit tests: **48** (كانت 42).
+
 ## ملحق — مرجعية قابلة للتحقق
 
 - Links audit: `1324 ✅ / 0 broken` (run lokal + CI 43757955649).
 - Secret-scan: PASS (1 117 ملفًا) — 1114 قبل الحذف + 3 جديدة (بعد فحص هذا السبرينت).
-- Unit tests: **42** passed (كان 33).
+- Unit tests: **48** passed (كان 33 قبل هذا العمل).
 - Build: `276 files copied`؛ manifest **299**.
-- CI runs: Deploy `43757955658` · CI & Quality `43757955649` · Quality Gates `43757955668` · Backup `43752923040` · Verify production `43757868366` — كلها ✅.
+- CI runs: Deploy `43757955658` · CI & Quality `43757955649` · Quality Gates `43757955668` · Backup `43752923040` (+ الجماعة `0bfd873`) · Verify production `43757868366` · Backup المجدول 2026-11-16 `43860242148` — كلها ✅.
 - `Verify production` يتحقق أن `sitemap.xml` المُقدم = git `HEAD:sitemap.xml` (byte-identical).

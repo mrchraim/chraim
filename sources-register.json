@@ -15,10 +15,16 @@
       "status": "مصدر رسمي مرجعي؛ لا يعني ذلك أن كل بيانات المشروع متزامنة معه"
     },
     {
-      "name": "بوابة Supabase المستخدمة في الإعدادات العامة",
-      "url": "https://idpafbyefrywjixskvvu.supabase.co",
+      "name": "بوابة Supabase — المشروع الشخصي (Portal)",
+      "url": "https://idpafbyefrywjixskvvu.supabase.co/auth/v1/health",
       "type": "backend_endpoint",
-      "status": "موجودة في إعدادات الواجهة؛ لم يتم اختبار صلاحيات RLS أو لوحة الإدارة"
+      "status": "200 على GET (تحقق 2026-11-16). القاعدة محمية بـ RLS + aal2 2FA على مسارات admin؛ ما كاينش service_role فالجيت"
+    },
+    {
+      "name": "بوابة Supabase — مشروع المنصة (Management System)",
+      "url": "https://uftqrgpzllvqlaztcjbq.supabase.co/auth/v1/health",
+      "type": "backend_endpoint",
+      "status": "401 على GET بلا apikey / 200 مع publishable key (تحقق 2026-11-16). نفس سياسة RLS وaal2 على مسارات admin وeditor"
     },
     {
       "name": "لائحة المؤسسات — جامعة ابن زهر",
@@ -129,5 +135,5 @@
       "checked_on": "2026-10-17"
     }
   ],
-  "updated_on": "2026-10-17"
+  "updated_on": "2026-11-16"
 }

@@ -16,7 +16,7 @@
 | PART 22-T06     | تقرير التدقيق                       | VERIFIED | `CHRVVIM_FORENSIC_AUDIT.md`      |
 | PART 22-T07     | خمسة اختناقات                       | VERIFIED | §7 “نقاط الضعف” + §14            |
 | PART 22-T08     | أول إصلاحات آمنة ذات قيمة           | VERIFIED | انظر القائمة أدناه               |
-| PART 22-T09     | الاختبارات بعد                      | VERIFIED | `npm test` 42/42 ✅              |
+| PART 22-T09     | الاختبارات بعد                      | VERIFIED | `npm test` 42/42 ✅ (48/48 من Phase 2) |
 | PART 22-T10     | تقرير قبل/بعد                       | VERIFIED | `CHRVVIM_RELEASE_REPORT.md`      |
 
 ## تغييرات هذا السبرينت (2026-11-15)
@@ -29,6 +29,18 @@
 | اختبار سلامة بيانات المؤسسات                | `tests/institutions-database.test.mjs` (+9 اختبارات)                                                                           | TESTED (42/42 ✅)                           |
 | إزالة الكود الميت                           | `legal-encyclopedia-data.js` (جذر) — استبدلت بالنسخة assets (الفعّالة)                                                         | VERIFIED (0 مرجع؛ removal موثق في AUDIT §5) |
 | توثيق هذا التدقيق                           | `docs/CHRVVIM_FORENSIC_AUDIT.md`, `CHRVVIM_MASTER_EXECUTION_LEDGER.md`, `CHRVVIM_MISSING_DATA.md`, `CHRVVIM_RELEASE_REPORT.md` | IMPLEMENTED                                 |
+
+## Phase 2 — 2026-11-16 (مراقبة + توثيق)
+
+| التغيير | الملفات | الحالة |
+|---|---|---|
+| استئصال الإعلانات المنتهية من الواجهة | `app.js`, `rafiq-altalib.html`, `students-guide.html`, `assets/cx-myuiz-guide.js` | TESTED (48/48) · PUBLISHED (نشر هذا السبرينت) |
+| أداة فحص المصادر الرسمية | `tools/verify-official-sources.py` | TESTED (تعمل محليًا · مخرج `docs/SOURCES_STATUS.md`) |
+| تقرير حالة الوصول للمصادر 2026-11-16 | `docs/SOURCES_STATUS.md` | VERIFIED |
+| workflow مراقبة المصادر (الأربعاء + يدوي) | `.github/workflows/source-watch.yml` (`--strict` على القنوات الحرجة) | IMPLEMENTED (أول run بعد `main`) |
+| توثيق المؤسسات الـ 24 على الصفحة الرسمية | `docs/TOP_INSTITUTIONS_OFFICIAL.md` (فُحصت 200/200) | VERIFIED |
+| ضبط مصدر Supabase للتحقق الصحي | `sources-register.json` → `/auth/v1/health` (portal & platform) | VERIFIED |
+| اختبارات `announcements-live` | `tests/announcements-live.test.mjs` | TESTED (48/48) |
 
 ## قبل هذا السبرينت (2026-11-14/15، `500e3b9`→`bbbc769`)
 

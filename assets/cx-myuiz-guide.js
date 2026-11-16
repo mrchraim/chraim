@@ -86,7 +86,12 @@
         });
         if (reItem && dateEl) {
           var when = reItem.ends_at || reItem.date || reItem.starts_at || "";
-          dateEl.textContent = when ? ("الأجل: " + when) : "";
+          var p = when ? Date.parse(String(when)) : NaN;
+          if (when && !isNaN(p) && p < Date.now()) {
+            dateEl.textContent = "انتهى الأجل المذكور (" + when + ") — راجعي بوابة MY-UIZ للتحديث.";
+          } else {
+            dateEl.textContent = when ? ("الأجل: " + when) : "";
+          }
           if (dateFallback) dateFallback.style.display = when ? "none" : "";
         } else {
           if (dateEl) dateEl.textContent = "";

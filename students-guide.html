@@ -194,13 +194,14 @@ function renderGrid() {
   });
 }
 
+const isAnnLive = i => { const e = i && i.ends_at; if (!e) return true; const p = Date.parse(String(e)); return isNaN(p) || p >= Date.now(); };
 async function loadAnnouncements() {
   try {
     const r = await fetch("announcements.json", { cache:"no-store" });
     if (!r.ok) return;
     const data = await r.json();
     const ul = $("#ann");
-    (data.items || []).slice(0, 40).forEach(it => {
+    (data.items || []).filter(isAnnLive).slice(0, 40).forEach(it => {
       const li = document.createElement("li");
       const a = document.createElement("a");
       a.href = it.url; a.target = "_blank"; a.rel = "noopener noreferrer"; a.textContent = it.title;
