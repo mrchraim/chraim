@@ -54,6 +54,7 @@
 | SW cache v28 + تخزين مسبق للصفحتين الجديدتين                      | `sw.js`                                                                                                                                   | PUBLISHED                                                               |
 | مزامنة sitemap + بحث + manifest                                   | `sitemap.xml`، `assets/search-index.json` (56)، `tools/make-search-index.py`، `BUILD_MANIFEST.sha256` (299→300)                          | PUBLISHED                                                               |
 | لا توجد انتهاكات axe على الصفحات المدقوقة                         | `tools/run-axe-audit.cjs` على `/`, `/privacy.html`, `/terms.html`                                                                         | VERIFIED (0 violations)                                                 |
+| الـ SW fix (search-index network-first)                                | `sw.js` (SHELL v28→v29؛ `assets/search-index.json` كما `announcements.json`)    | PUBLISHED · كل الـ workflows خضراء على `d5f2f32` · حي: «منح»→1 نتيجة          |
 | توثيق الإبداع الجديد                                               | هذا الملف + `docs/CHRVVIM_RELEASE_REPORT.md` §8                                                                                           | IMPLEMENTED                                                             |
 
 ## قبل هذا السبرينت (2026-11-14/15، `500e3b9`→`bbbc769`)
