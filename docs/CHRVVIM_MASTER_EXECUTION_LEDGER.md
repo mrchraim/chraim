@@ -8,16 +8,16 @@
 
 ## الحالة العامة
 
-| المرحلة         | المهمة                              | الحالة   | الأدلة                           |
-| --------------- | ----------------------------------- | -------- | -------------------------------- |
-| PART 01         | فحص المستودع + التبعيات             | VERIFIED | `docs/CHRVVIM_FORENSIC_AUDIT.md` |
-| PART 22-T01..04 | اكتشاف الوظائف + البيانات + التكرار | VERIFIED | الفحص + تحليل Python/PowerShell  |
-| PART 22-T05     | الاختبارات قبل التعديل              | VERIFIED | 33/33 قبل · 42/42 بعد            |
-| PART 22-T06     | تقرير التدقيق                       | VERIFIED | `CHRVVIM_FORENSIC_AUDIT.md`      |
-| PART 22-T07     | خمسة اختناقات                       | VERIFIED | §7 “نقاط الضعف” + §14            |
-| PART 22-T08     | أول إصلاحات آمنة ذات قيمة           | VERIFIED | انظر القائمة أدناه               |
+| المرحلة         | المهمة                              | الحالة   | الأدلة                                 |
+| --------------- | ----------------------------------- | -------- | -------------------------------------- |
+| PART 01         | فحص المستودع + التبعيات             | VERIFIED | `docs/CHRVVIM_FORENSIC_AUDIT.md`       |
+| PART 22-T01..04 | اكتشاف الوظائف + البيانات + التكرار | VERIFIED | الفحص + تحليل Python/PowerShell        |
+| PART 22-T05     | الاختبارات قبل التعديل              | VERIFIED | 33/33 قبل · 42/42 بعد                  |
+| PART 22-T06     | تقرير التدقيق                       | VERIFIED | `CHRVVIM_FORENSIC_AUDIT.md`            |
+| PART 22-T07     | خمسة اختناقات                       | VERIFIED | §7 “نقاط الضعف” + §14                  |
+| PART 22-T08     | أول إصلاحات آمنة ذات قيمة           | VERIFIED | انظر القائمة أدناه                     |
 | PART 22-T09     | الاختبارات بعد                      | VERIFIED | `npm test` 42/42 ✅ (48/48 من Phase 2) |
-| PART 22-T10     | تقرير قبل/بعد                       | VERIFIED | `CHRVVIM_RELEASE_REPORT.md`      |
+| PART 22-T10     | تقرير قبل/بعد                       | VERIFIED | `CHRVVIM_RELEASE_REPORT.md`            |
 
 ## تغييرات هذا السبرينت (2026-11-15)
 
@@ -32,15 +32,16 @@
 
 ## Phase 2 — 2026-11-16 (مراقبة + توثيق)
 
-| التغيير | الملفات | الحالة |
-|---|---|---|
-| استئصال الإعلانات المنتهية من الواجهة | `app.js`, `rafiq-altalib.html`, `students-guide.html`, `assets/cx-myuiz-guide.js` | TESTED (48/48) · PUBLISHED (نشر هذا السبرينت) |
-| أداة فحص المصادر الرسمية | `tools/verify-official-sources.py` | TESTED (تعمل محليًا · مخرج `docs/SOURCES_STATUS.md`) |
-| تقرير حالة الوصول للمصادر 2026-11-16 | `docs/SOURCES_STATUS.md` | VERIFIED |
-| workflow مراقبة المصادر (الأربعاء + يدوي) | `.github/workflows/source-watch.yml` (`--strict` على القنوات الحرجة) | IMPLEMENTED (أول run بعد `main`) |
-| توثيق المؤسسات الـ 24 على الصفحة الرسمية | `docs/TOP_INSTITUTIONS_OFFICIAL.md` (فُحصت 200/200) | VERIFIED |
-| ضبط مصدر Supabase للتحقق الصحي | `sources-register.json` → `/auth/v1/health` (portal & platform) | VERIFIED |
-| اختبارات `announcements-live` | `tests/announcements-live.test.mjs` | TESTED (48/48) |
+| التغيير                                   | الملفات                                                                           | الحالة                                                |
+| ----------------------------------------- | --------------------------------------------------------------------------------- | ----------------------------------------------------- |
+| استئصال الإعلانات المنتهية من الواجهة     | `app.js`, `rafiq-altalib.html`, `students-guide.html`, `assets/cx-myuiz-guide.js` | TESTED (48/48) · PUBLISHED (نشر `9774684`، `1a1c8a4`) |
+| تصحيح `?v=` لكسر cache الـ SW (bug حرج)   | `portal.html`                                                                     | VERIFIED (حي: 6 إعلانات ظاهرة 2026-11-16)             |
+| أداة فحص المصادر الرسمية                  | `tools/verify-official-sources.py`                                                | TESTED (تعمل محليًا · مخرج `docs/SOURCES_STATUS.md`)  |
+| تقرير حالة الوصول للمصادر 2026-11-16      | `docs/SOURCES_STATUS.md`                                                          | VERIFIED                                              |
+| workflow مراقبة المصادر (الأربعاء + يدوي) | `.github/workflows/source-watch.yml` (`--strict` على القنوات الحرجة)              | IMPLEMENTED (أول run بعد `main`)                      |
+| توثيق المؤسسات الـ 24 على الصفحة الرسمية  | `docs/TOP_INSTITUTIONS_OFFICIAL.md` (فُحصت 200/200)                               | VERIFIED                                              |
+| ضبط مصدر Supabase للتحقق الصحي            | `sources-register.json` → `/auth/v1/health` (portal & platform)                   | VERIFIED                                              |
+| اختبارات `announcements-live`             | `tests/announcements-live.test.mjs`                                               | TESTED (48/48)                                        |
 
 ## قبل هذا السبرينت (2026-11-14/15، `500e3b9`→`bbbc769`)
 
