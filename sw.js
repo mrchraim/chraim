@@ -1,4 +1,4 @@
-const CACHE='chrvvim-shell-v28';
+const CACHE='chrvvim-shell-v29';
 const SHELL=['./','./portal.html','./campus2.html','./index.html','./students-guide.html','./student-rights.html','./ai-assistant.html','./rafiq-altalib.html','./announcements.json','./university-directory.html','./academic-offer.html','./academic-updates.html','./official-academic-updates-2026-2027.json','./manifest.json','./manifest.webmanifest','./chrvvim-plus.css','./frontend-quality.css','./chrvvim-studio.css','./chrvvim-plus.js','./chrvvim-studio.js','./page-i18n.js','./app.js','./assets/tailwind-home.css','./assets/fonts/cairo.css','./assets/fonts/cairo-arabic.woff2','./assets/lib/lucide-0.454.0.min.js','./assets/cmdk.js','./orientation.html','./assets/orientation.js','./university-formations.json','./assets/search-index.json','./data/groups.json','./campus-data.js','./institutions-database.js','./institutions-resources.js','./institutions-gateway.js','./subjects-data.js','./legal-data.js','./university-data.js','./institutions-database.js','./institutions-database.json','./university-formations.js','./university-formations.json','./subjects.js','./legal.js','./supabase-config.js','./assets/fonts/fonts.css','./assets/back-home.js','./assets/motion.css','./assets/motion.js','./assets/lib/gsap-3.15.1.min.js','./assets/lib/ScrollTrigger-3.15.1.min.js','./assets/lib/lenis-1.3.27.min.js','./assets/chrvvim-icon.svg','./assets/cx-theme-lamp.css','./assets/cx-theme-lamp.js','./assets/portal-extras.css','./assets/portal-extras.js','./assets/portal-showcase.css','./assets/portal-showcase.js','./assets/hero-beam.css','./assets/hero-beam.js','./institutions-database.csv','./assets/legal-encyclopedia-data.js','./legal.html','./assets/creative.css','./assets/creative.js','./assets/grain.svg','./assets/v2.css','./assets/v2.js','./assets/fonts/v2.css','./assets/fonts/v2/noto-naskh-arabic.ttf','./assets/fonts/v2/fraunces.ttf','./assets/portal-creative.css','./assets/portal-v3.css','./admin-dashboard.html','./offline.html'];
 self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(SHELL)).then(()=>self.skipWaiting()).catch(()=>self.skipWaiting()))});
 self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});
@@ -9,9 +9,9 @@ self.addEventListener('fetch',event=>{
   if(url.origin!==self.location.origin)return;
   if(url.pathname.includes('/documents/'))return;   // archived documents: always network (never cached / never stale)
   if(url.pathname==='/admin.html')return;            // admin panel: never cached
-  // 0) Live data (announcements) -> network-first so official notices are always fresh,
-  //    with the last good copy kept as an offline fallback.
-  if(url.pathname.endsWith('/announcements.json')){
+  // 0) Live data (announcements + search index) -> network-first so a fresh deploy
+  //    is visible on the very next load, with the last good copy kept for offline.
+  if(url.pathname.endsWith('/announcements.json')||url.pathname.endsWith('/assets/search-index.json')){
     event.respondWith(
       fetch(req).then(res=>{
         if(res&&res.ok){const copy=res.clone();caches.open(CACHE).then(c=>c.put(req,copy)).catch(()=>{});}
