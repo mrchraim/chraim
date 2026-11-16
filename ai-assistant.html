@@ -2,65 +2,150 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>المساعد الذكي — CHRAIM</title>
-<style>body{font-family:system-ui,Segoe UI,Tahoma,sans-serif;background:#060B19;color:#F3E5AB;padding:24px;max-width:760px;margin:0 auto;line-height:1.9}</style>
-<link rel="stylesheet" href="/assets/design-tokens.css">
-<link rel="stylesheet" href="/assets/portal-extras.css">
-  <link rel="stylesheet" href="/assets/fonts/v2.css">
-  <link rel="stylesheet" href="/assets/v2.css">
-  <script defer src="/assets/v2.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>المساعد التعليمي — CHRAIM</title>
+<link rel="canonical" href="https://chraim.pages.dev/ai-assistant.html">
+<meta name="description" content="مساعد يعتمد على مصادر رسمية وقاعدة المعرفة المحلية: اسأل عن المؤسسات، التكوينات، التسجيلات، الإعلانات والأخبار. كل ظهور نتيجة يربط بالمصدر.">
+<meta property="og:site_name" content="CHRAIM">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ar_MA">
+<meta property="og:title" content="المساعد التعليمي — CHRAIM">
+<meta property="og:description" content="مساعد يعتمد على مصادر رسمية وقاعدة المعرفة المحلية — كل ظهور نتيجة يربط بالمصدر.">
+<meta property="og:url" content="https://chraim.pages.dev/ai-assistant.html">
+<link rel="stylesheet" href="/assets/fonts/v2.css">
+<link rel="stylesheet" href="/assets/v2.css">
+<script defer src="/assets/v2.js"></script>
+<style>
+  .ai-wrap{max-width:860px;margin:0 auto;padding:26px 18px 64px}
+  .ai-hero{border:1px solid var(--v2-line);background:var(--v2-card);border-radius:var(--v2-radius);padding:26px;box-shadow:var(--v2-shadow);margin:18px 0}
+  .ai-hero h1{margin:0 0 6px;font-size:1.9rem;line-height:1.35}
+  .ai-hero p{margin:0;color:var(--v2-ink-soft)}
+  .ai-box{display:flex;gap:10px;margin:18px 0}
+  .ai-box input{flex:1;border:1px solid var(--v2-line);background:var(--v2-paper);color:var(--v2-ink);border-radius:var(--v2-radius-sm);padding:14px 16px;font:inherit;font-size:1.05rem;min-height:52px}
+  .ai-box input:focus{outline:3px solid var(--v2-focus);border-color:transparent}
+  .ai-box button{min-height:52px;padding:0 22px;border:0;border-radius:var(--v2-radius-sm);background:var(--v2-green);color:#fff;font:inherit;font-weight:700;cursor:pointer}
+  .ai-box button:active{transform:translateY(1px)}
+  .ai-chips{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 2px}
+  .ai-chip{border:1px solid var(--v2-line);background:var(--v2-paper-2);color:var(--v2-ink);border-radius:999px;padding:6px 14px;font-size:.9rem;cursor:pointer}
+  .ai-chip:hover{border-color:var(--v2-terra);color:var(--v2-terra-strong)}
+  #aiResults{margin-top:6px}
+  .ai-result{display:block;border:1px solid var(--v2-line);background:var(--v2-card);border-radius:var(--v2-radius-sm);padding:14px 16px;margin:10px 0;text-decoration:none;color:inherit;transition:transform .15s, border-color .15s}
+  .ai-result:hover{transform:translateY(-2px);border-color:var(--v2-terra)}
+  .ai-result:focus-visible{outline:3px solid var(--v2-focus)}
+  .ai-result small{color:var(--v2-ink-soft);font-size:.78rem;display:block;margin-top:4px}
+  .ai-result strong{color:var(--v2-green-strong)}
+  .ai-empty{color:var(--v2-ink-soft);padding:14px 6px}
+  .ai-note{font-size:.85rem;color:var(--v2-ink-soft);border:1px dashed var(--v2-line);border-radius:var(--v2-radius-sm);padding:10px 12px;margin-top:18px;background:color-mix(in srgb,var(--v2-terra) 6%, transparent)}
+  .ai-back{display:inline-block;margin-top:14px;color:var(--v2-green);font-weight:700;text-decoration:none}
+  .ai-back:hover{text-decoration:underline}
+</style>
 </head>
-<body>
-<h1>المساعد الذكي (قيد التصميم)</h1>
-<p>تصميم فقط — لا تنفيذ قبل موافقة صاحب المشروع. راجع <a href="https://github.com/mrchraim/chraim/blob/main/docs/AI_ASSISTANT.md" style="color:#D4AF37">docs/AI_ASSISTANT.md</a>.</p>
-<p><a href="/" style="color:#D4AF37">← العودة للرئيسية</a></p>
-<script src="/assets/site-footer.js" defer></script>
-<script src="/assets/site-nav.js?v=20261113" defer></script>
-<script src="/assets/back-home.js" defer></script>
-<script src="/page-i18n.js" defer></script>
+<body class="v2">
 
-<section class="pe-section" aria-labelledby="peTitle">
-  <h2 id="peTitle">لوحة مؤشرات CHRAIM</h2>
-  <div class="pe-stats">
-    <div class="pe-stat">
-      <p class="pe-title">مؤسسات</p>
-      <p class="pe-value" lang="en" data-count-to="23">23</p>
-      <p class="pe-change"><span aria-hidden="true">&#8599;</span> 24 اسم في الدليل</p>
-    </div>
-    <div class="pe-stat">
-      <p class="pe-title">مسالك</p>
-      <p class="pe-value" lang="en" data-count-to="241">241</p>
-      <p class="pe-change"><span aria-hidden="true">&#8599;</span> 8 مدن جامعية</p>
-    </div>
-    <div class="pe-stat">
-      <p class="pe-title">طلاب</p>
-      <p class="pe-value" lang="en" data-count-to="147806">147,806</p>
-      <p class="pe-change"><span aria-hidden="true">&#8599;</span> 1,592 أستاذ باحث</p>
-    </div>
-    <div class="pe-stat">
-      <p class="pe-title">هياكل بحث</p>
-      <p class="pe-value" lang="en" data-count-to="92">92</p>
-      <p class="pe-change"><span aria-hidden="true">&#8599;</span> 2026-2027</p>
-    </div>
+<header class="ai-wrap ai-hero">
+  <span class="eyebrow" style="color:var(--v2-terra);font-size:.72rem;letter-spacing:.12em">محلي · بدون تسجيل</span>
+  <h1>المساعد التعليمي — يسألك، ما كيخترش إجابة بلا مصدر.</h1>
+  <p>يبحث هذا المساعد داخل دليل جامعة ابن زهر، دليل التكوينات (382 تكوينًا)، وفي صفحة المؤسسات الـ24. كل نتيجة تطلقلك برابطها الرسمي.</p>
+</header>
+
+<main class="ai-wrap">
+  <form id="aiForm" onsubmit="return false" role="search">
+    <label class="ai-box">
+      <input id="aiInput" type="search" placeholder="مثلاً: فاش تجيكلية الطب والصيدلة؟ أو: تسويق ورقية؟" autocomplete="off" aria-label="سؤال">
+      <button type="button" id="aiRun">اسأل</button>
+    </label>
+  </form>
+
+  <div class="ai-chips" id="aiChips" aria-label="أسئلة سريعة">
+    <button class="ai-chip" type="button">كيفاش ندير ملفات التسجيل؟</button>
+    <button class="ai-chip" type="button">استعمالات الزمن S1 Deutsch</button>
+    <button class="ai-chip" type="button">وين نلقى بلاغات جامعة ابن زهر؟</button>
+    <button class="ai-chip" type="button">شنو هي شروط الولوج لكلية العلوم؟</button>
   </div>
-  <div class="pe-row">
-    <div class="pe-lamp-wrap" id="peLampWrap">
-      <div class="pe-lamp-glow" aria-hidden="true"></div>
-      <button class="pe-lamp-btn" id="peLampBtn" type="button" aria-pressed="false" aria-label="تبديل الوضع الليلي">
-        <svg class="pe-lamp-icon" viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M9 21h6"/><path d="M10 17h4"/>
-          <path d="M12 3a6 6 0 0 0-4 10.5c-.6 1.3-.5 2.5 0 3.5h8c.5-1 .6-2.2 0-3.5A6 6 0 0 0 12 3z"/>
-        </svg>
-      </button>
-    </div>
-    <a class="pe-download" href="/institutions-database.csv" download>
-      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-      تحميل دليل المؤسسات
-    </a>
+
+  <div id="aiResults" role="status" aria-live="polite"></div>
+
+  <div class="ai-note">
+    <strong>ملاحظة:</strong> هذا مساعد يعتمد على دليل محلي مصمّم يدويًا ويدلَل عليه — ما كيعوضش بلاغات الجامعة. إذا لقيتي خاطئ في المعلومة، راسلينا عبر فرم Contact أو على cheraimmohamed20@gmail.com، أو راجع مباشرة موقع جامعة ابن زهر:
+    <a href="https://www.uiz.ac.ma/" target="_blank" rel="noopener" style="color:var(--v2-green);font-weight:700">www.uiz.ac.ma</a>.
   </div>
-</section>
-<script src="/assets/design-upgrade.js" defer></script>
-<script src="/assets/portal-extras.js" defer></script>
+
+  <a class="ai-back" href="/">← العودة إلى الرئيسية</a>
+</main>
+
+<script>
+(function () {
+  const input = document.getElementById('aiInput');
+  const out = document.getElementById('aiResults');
+  const chips = document.getElementById('aiChips');
+  const runBtn = document.getElementById('aiRun');
+
+  let index = null;
+  let loading = null;
+  function loadIndex() {
+    if (index) return Promise.resolve(index);
+    if (loading) return loading;
+    loading = fetch('/assets/search-index.json', { cache: 'no-store' })
+      .then(r => r.ok ? r.json() : [])
+      .then(j => Array.isArray(j) ? j : [])
+      .catch(() => [])
+      .then(j => (index = j));
+    return loading;
+  }
+
+  const normalise = s => String(s || '')
+    .toLowerCase()
+    .replace(/[\u0640\u0610-\u061A\u064B-\u0652\u0670\u06D6-\u06ED]/g, '')
+    .replace(/[\u0621\u0622\u0623\u0625]/g, 'ا')
+    .replace(/[\u0629]/g, 'ه')
+    .replace(/[\u0647-]/g, '');
+
+  const tokenise = s => {
+    const t = normalise(s).split(/[^\w\u0600-\u06FF]+/g).filter(x => x.length > 2);
+    return [...new Set(t)];
+  };
+
+  const score = (entry, qTokens) => {
+    const hay = normalise((entry.k || '') + ' ' + (entry.t || ''));
+    let sc = 0;
+    for (const t of qTokens) {
+      if (hay.includes(t)) sc += t.length;
+    }
+    return sc;
+  };
+
+  function esc(s) {
+    return String(s || '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  }
+
+  function renderQuestion() {
+    const q = (input.value || '').trim();
+    if (q.length < 3) { out.innerHTML = '<p class="ai-empty">اكتب سؤال أطول من ثلاث أحرف.</p>'; return; }
+    loadIndex().then(entries => {
+      const tokens = tokenise(q);
+      if (!tokens.length) { out.innerHTML = '<p class="ai-empty">اكتب ما أطول من ثلاث أحرف.</p>'; return; }
+      const ranked = entries
+        .map(e => ({ e, sc: score(e, tokens) }))
+        .filter(x => x.sc > 0)
+        .sort((a, b) => b.sc - a.sc)
+        .slice(0, 5);
+      if (!ranked.length) {
+        out.innerHTML = '<p class="ai-empty">ما لقيتش هذا الشي فدليل ابن زهر. عاود حاولي بسؤال آخر أو راجع البلاغات الرسمية على <a href="https://www.uiz.ac.ma/" target="_blank" rel="noopener" style="color:var(--v2-green)">uiz.ac.ma</a>.</p>';
+        return;
+      }
+      out.innerHTML = ranked.map(({ e }) =>
+        '<a class="ai-result" href="/' + esc(e.u) + '"><strong>' + esc(e.t) + '</strong><small>' + esc(e.k || '') + ' → ' + esc(e.u) + '</small></a>'
+      ).join('');
+    });
+  }
+
+  runBtn.addEventListener('click', renderQuestion);
+  input.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); renderQuestion(); } });
+  chips.querySelectorAll('.ai-chip').forEach(b =>
+    b.addEventListener('click', () => { input.value = b.textContent || ''; renderQuestion(); })
+  );
+  loadIndex();
+})();
+</script>
 </body>
 </html>
