@@ -94,7 +94,9 @@ a{color:var(--blue)}
     <label for="email">البريد الإلكتروني</label><input id="email" type="email" autocomplete="username" placeholder="admin@example.com">
     <label for="password">كلمة المرور</label><input id="password" type="password" autocomplete="current-password">
     <button id="login">دخول</button>
+    <button id="forgotPassword" class="secondary" type="button">نسيت كلمة المرور؟</button>
     <button id="logout" class="secondary hidden">خروج</button>
+    <p id="forgotStatus" class="status hidden" role="status"></p>
 
     <div id="mfaBox" class="hidden">
       <hr style="border:0;border-top:1px solid var(--line);margin:14px 0">
@@ -320,6 +322,27 @@ a{color:var(--blue)}
     if (e.key === 'Enter') { e.preventDefault(); $(id === 'mfaCode' ? 'mfaConfirm' : 'mfaVerify').click(); }
   }));
 
+  $('forgotPassword').addEventListener('click', async () => {
+    if (!client) return globalSay('أولاً دخل رابط Supabase والمفتاح العمومي (كونيكسيون الإعدادات فوق).', 'err');
+    const email = $('email').value.trim();
+    if (!email) return globalSay('دخل البريد الإلكتروني أولاً — غادي نرسلو ليك رابط لاسترجاع كلمة المرور.', 'err');
+    $('forgotPassword').disabled = true;
+    try {
+      const { error } = await client.auth.resetPasswordForEmail(email, {
+        redirectTo: window.location.origin + '/reset-password.html'
+      });
+      const el = $('forgotStatus');
+      el.className = 'status'; el.classList.remove('hidden');
+      if (error) throw error;
+      el.textContent = 'إلا كان هاد البريد مسجّل، وصلك رابط استرجاع كلمة المرور. شوف بريدك (وspam) ثم كمل من /reset-password.html.';
+    } catch (e) {
+      const el = $('forgotStatus');
+      el.className = 'status err'; el.classList.remove('hidden');
+      el.textContent = 'تعذر إرسال الرابط: ' + (e.message || 'خطأ غير معروف');
+    } finally {
+      $('forgotPassword').disabled = false;
+    }
+  });
   $('login').addEventListener('click', async () => {
     if (!client) return globalSay('أولاً دخل رابط Supabase والمفتاح العمومي.', 'err');
     const email = $('email').value.trim(), password = $('password').value;
