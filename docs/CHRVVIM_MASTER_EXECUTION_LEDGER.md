@@ -1,6 +1,6 @@
 # CHRVVIM — Master Execution Ledger
 
-**آخر تحديث:** 2026-11-15 · **الرقم قبل بدء هذا السبرينت:** `bbbc769`
+**آخر تحديث:** 2026-11-16 · **الرقم قبل هذا التحديث:** `b87cf96`
 
 > الحالات: `NOT_STARTED` · `IN_PROGRESS` · `BLOCKED` · `IMPLEMENTED` · `TESTED` · `VERIFIED` · `PUBLISHED`
 >
@@ -42,6 +42,19 @@
 | توثيق المؤسسات الـ 24 على الصفحة الرسمية  | `docs/TOP_INSTITUTIONS_OFFICIAL.md` (فُحصت 200/200)                               | VERIFIED                                              |
 | ضبط مصدر Supabase للتحقق الصحي            | `sources-register.json` → `/auth/v1/health` (portal & platform)                   | VERIFIED                                              |
 | اختبارات `announcements-live`             | `tests/announcements-live.test.mjs`                                               | TESTED (48/48)                                        |
+
+## Phase 3 — 2026-11-16 (إبداع + تكامل الميزات)
+
+| التغيير                                                          | الملفات                                                                                                                                 | الحالة                                                                |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| إصلاح regex الحذف في المساعد (كان يمحو كل الحروف العربية)         | `ai-assistant.html` (تطبيع بـ `[\u0640\u0610-\u061A\u064B-\u0652\u0670\u06D6-\u06ED]`)                                                   | VERIFIED حيًا: «منح»→1 نتيجة، «طب»→3، «استعمالات الزمن»→1 · 0 console errors |
+| دمج روابط الصفحتين الجديدتين في quickstart و`students-guide`      | `index.html` (خامس باب)، `students-guide.html` (بطاقتان)                                                                                 | PUBLISHED                                                               |
+| دليل حقوق الطالب (Law 01-00 / 09-08 / شكايات)                     | `student-rights.html` (جديد)                                                                                                              | VERIFIED حيًا (8 أجزاء، RTL، H1 ظاهر)                                   |
+| المساعد التعليمي يشتغل فعلاً (استرداد محلي + مصادر لكل نتيجة)     | `ai-assistant.html` (أُعيد بناؤه)                                                                                                         | VERIFIED حيًا                                                           |
+| SW cache v28 + تخزين مسبق للصفحتين الجديدتين                      | `sw.js`                                                                                                                                   | PUBLISHED                                                               |
+| مزامنة sitemap + بحث + manifest                                   | `sitemap.xml`، `assets/search-index.json` (56)، `tools/make-search-index.py`، `BUILD_MANIFEST.sha256` (299→300)                          | PUBLISHED                                                               |
+| لا توجد انتهاكات axe على الصفحات المدقوقة                         | `tools/run-axe-audit.cjs` على `/`, `/privacy.html`, `/terms.html`                                                                         | VERIFIED (0 violations)                                                 |
+| توثيق الإبداع الجديد                                               | هذا الملف + `docs/CHRVVIM_RELEASE_REPORT.md` §8                                                                                           | IMPLEMENTED                                                             |
 
 ## قبل هذا السبرينت (2026-11-14/15، `500e3b9`→`bbbc769`)
 
