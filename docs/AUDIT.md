@@ -11,8 +11,8 @@
 | المسار                       | الملف                                           | الدور                                                | الحجم |
 | ---------------------------- | ----------------------------------------------- | ---------------------------------------------------- | ----- |
 | `/`                          | `index.html`                                    | الصفحة الرئيسية: دليل المؤسسات + محرك الأفواج (FSJP) | 13KB  |
-| `/portal.html`               | `portal.html`                                   | بوابة الطالب الكاملة (18 تبويباً)                    | 190KB |
-| `/orientation.html`          | `orientation.html`                              | مرشد التوجيه (382 تكويناً)                           | 6KB   |
+| `/portal.html`               | `portal.html`                                   | بوابة الطالب الكاملة (18 تبويباً)                     | 190KB |
+| `/orientation.html`          | `orientation.html`                              | مرشد التوجيه (382 تكويناً)                            | 6KB   |
 | `/academic-offer.html`       | `academic-offer.html`                           | دليل التكوينات                                       | —     |
 | `/academic-updates.html`     | `academic-updates.html`                         | المستجدات                                            | —     |
 | `/university-directory.html` | `university-directory.html`                     | دليل المؤسسات                                        | —     |
@@ -26,17 +26,17 @@
 
 ## 2. خريطة البيانات
 
-| الملف                                                                                                                                                           | المحتوى                         | الحجم |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------- | ----- |
+| الملف                                                                                                                                                           | المحتوى                        | الحجم |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ | ----- |
 | `app.js`                                                                                                                                                        | المنطق (أوقات، معدّل، مساعد، …) | 141KB |
-| `campus-data.js`, `institutions-database.js`, `institutions-resources.js`, `institutions-gateway.js`, `subjects-data.js`, `legal-data.js`, `university-data.js` | بيانات المؤسسات/التكوينات       | —     |
-| `university-formations.json`                                                                                                                                    | التكوينات (382)                 | —     |
-| `assets/search-index.json`                                                                                                                                      | فهرس بحث Cmd+K                  | —     |
-| `official-academic-updates-2026-2027.json`                                                                                                                      | مستجدات                         | —     |
-| `announcements.json`                                                                                                                                            | إعلانات                         | —     |
-| `sources-register.json`                                                                                                                                         | سجل المصادر                     | 7KB   |
-| `manifest.json`                                                                                                                                                 | PWA                             | —     |
-| `supabase/01_portal_schema.sql`, `02_platform_schema.sql`                                                                                                       | مخطط + RLS                      | —     |
+| `campus-data.js`, `institutions-database.js`, `institutions-resources.js`, `institutions-gateway.js`, `subjects-data.js`, `legal-data.js`, `university-data.js` | بيانات المؤسسات/التكوينات      | —     |
+| `university-formations.json`                                                                                                                                    | التكوينات (382)                | —     |
+| `assets/search-index.json`                                                                                                                                      | فهرس بحث Cmd+K                 | —     |
+| `official-academic-updates-2026-2027.json`                                                                                                                      | مستجدات                        | —     |
+| `announcements.json`                                                                                                                                            | إعلانات                        | —     |
+| `sources-register.json`                                                                                                                                         | سجل المصادر                    | 7KB   |
+| `manifest.json`                                                                                                                                                 | PWA                            | —     |
+| `supabase/01_portal_schema.sql`, `02_platform_schema.sql`                                                                                                       | مخطط + RLS                     | —     |
 
 ## 3. الاعتماديات (Runtime)
 
